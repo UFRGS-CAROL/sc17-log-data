@@ -1,0 +1,70 @@
+2017-03-01 22:37:48:Starting flip_value script
+2017-03-01 22:37:48:Initialization strings:
+2017-03-01 22:37:48:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 22:37:48:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 22:37:48:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 22:37:49:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 22:37:49:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 22:37:49:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 22:37:49:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 22:37:49:initSignal:15
+2017-03-01 22:37:49:endSignal:20
+2017-03-01 22:37:49:seqSignal:20
+2017-03-01 22:38:08:Backtrace BEGIN:
+2017-03-01 22:38:08:#0  0x00007ffff6b641b0 in _itoa_word (value=2, value@entry=240, buflim=0x7fffffffe0ce "40\240U\347\366\377\177", buflim@entry=0x7fffffffe0d0 "\240U\347\366\377\177", base=base@entry=10, upper_case=<optimized out>) at _itoa.c:179
+#1  0x00007ffff6b6781a in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe118) at vfprintf.c:1641
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b5c5 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:470
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-03-01 22:38:08:174	in _itoa.c
+
+2017-03-01 22:38:08:Backtrace END
+2017-03-01 22:38:14:Type: The type is an array.
+2017-03-01 22:38:14:Type sizeof: 120
+2017-03-01 22:38:14:Fliping array at pos: 28
+2017-03-01 22:38:14:Type: The type is an integer type.
+2017-03-01 22:38:14:Type sizeof: 4
+2017-03-01 22:38:14:Mem contents(hex):0x000x000x000x00
+2017-03-01 22:38:14:Fault Mode: Zero bit-flip
+2017-03-01 22:38:14:base address to flip value: 0x7ffff6c38cf0 
+2017-03-01 22:38:14:address max offset: 4
+2017-03-01 22:38:14:Memory content before bitflip:0x000x000x000x00
+2017-03-01 22:38:15:Backtrace BEGIN:
+2017-03-01 22:38:15:#0  0x00007ffff6b641b0 in _itoa_word (value=2, value@entry=240, buflim=0x7fffffffe0ce "40\240U\347\366\377\177", buflim@entry=0x7fffffffe0d0 "\240U\347\366\377\177", base=base@entry=10, upper_case=<optimized out>) at _itoa.c:179
+#1  0x00007ffff6b6781a in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe118) at vfprintf.c:1641
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b5c5 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:470
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-03-01 22:38:15:174	in _itoa.c
+
+2017-03-01 22:38:15:Backtrace END
+2017-03-01 22:38:21:Type: The type is an array.
+2017-03-01 22:38:21:Type sizeof: 120
+2017-03-01 22:38:21:Fliping array at pos: 24
+2017-03-01 22:38:21:Type: The type is an integer type.
+2017-03-01 22:38:21:Type sizeof: 4
+2017-03-01 22:38:21:Mem contents(hex):0x000x000x000x00
+2017-03-01 22:38:21:Fault Mode: Single bit-flip
+2017-03-01 22:38:21:base address to flip value: 0x7ffff6c38de0 
+2017-03-01 22:38:21:address max offset: 4
+2017-03-01 22:38:21:Memory content before bitflip:0x000x000x000x00
+2017-03-01 22:38:21:Memory content after  bitflip:0x000x020x000x00
+2017-03-01 22:38:21:Mem contents(hex):0x000x020x000x00
+2017-03-01 22:38:21:frame name: _IO_vfprintf_internal
+2017-03-01 22:38:21:symbol name: step3a_jumps
+2017-03-01 22:38:21:symbol filename: vfprintf.c
+2017-03-01 22:38:21:symbol line: 1345
+2017-03-01 22:38:21:value: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11329, 0, 0, 0, 7466, 7747, 14505, 15251, 15266, 0, 0, 0, 0, 13086, 512, 0, 0, 0, 0, 0}
+2017-03-01 22:38:21:value address: 0x7ffff6c38d80 <step3a_jumps>
+2017-03-01 22:38:21:Type: The type is an array.
+2017-03-01 22:38:21:Type sizeof: 120
+2017-03-01 22:38:21:Field name: None
+2017-03-01 22:38:21:Field Type:
+2017-03-01 22:38:21:Type: A range type, that is, an integer type with bounds.
+2017-03-01 22:38:21:Type sizeof: 8
+2017-03-01 22:38:21:Type range: (0L, 29L)
+2017-03-01 22:38:21:Fault Injection Successful after 32.9762680531s

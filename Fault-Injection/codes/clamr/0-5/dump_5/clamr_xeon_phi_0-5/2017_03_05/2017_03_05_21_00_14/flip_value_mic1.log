@@ -1,0 +1,69 @@
+[INFO -- 2017-03-05 20:57:31]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-05 20:57:31]
+Initialization strings:
+[INFO -- 2017-03-05 20:57:31]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-05 20:57:31]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 20:57:31]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 20:57:31]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 20:57:31]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 20:57:31]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-05 20:57:31]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-05 20:57:31]
+initSignal:0
+[INFO -- 2017-03-05 20:57:31]
+endSignal:5
+[INFO -- 2017-03-05 20:57:31]
+seqSignal:20
+[INFO -- 2017-03-05 20:57:31]
+faultMode:3
+[INFO -- 2017-03-05 20:57:32]
+Backtrace BEGIN:
+#0  0x00007ffff7df4883 in strcmp (p1=<optimized out>, p2=0x7ffff786886c "sigdelset") at ../string/strcmp.c:34
+#1  0x00007ffff7de5c5e in check_match (undef_name=undef_name@entry=0x7ffff786886c "sigdelset", ref=ref@entry=0x7ffff785e328, version=version@entry=0x7ffff7ff7a78, flags=flags@entry=1, type_class=type_class@entry=1, sym=sym@entry=0x407bb0, symidx=422, strtab=0x417eb8 "", map=0x7ffff7ffe168, versioned_sym=0x7fffffffe7b8, num_versions=0x7fffffffe7b4) at dl-lookup.c:110
+#2  0x00007ffff7de60e1 in do_lookup_x (undef_name=undef_name@entry=0x7ffff786886c "sigdelset", new_hash=new_hash@entry=374786409, old_hash=old_hash@entry=0x7fffffffe880, ref=0x7ffff785e328, result=result@entry=0x7fffffffe890, scope=<optimized out>, i=<optimized out>, version=0x7ffff7ff7a78, flags=1, skip=0x0, type_class=1, undef_map=0x7ffff7ff9000) at dl-lookup.c:448
+#3  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x7ffff786886c "sigdelset", undef_map=undef_map@entry=0x7ffff7ff9000, ref=ref@entry=0x7fffffffe9e0, symbol_scope=symbol_scope@entry=0x7ffff7ff9358, version=0x7ffff7ff7a78, type_class=1, flags=1, skip_map=0x0) at dl-lookup.c:775
+#4  0x00007ffff7de854f in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=<optimized out>, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff7874148, map=0x7ffff7ff9000) at ../sysdeps/x86_64/dl-machine.h:277
+#5  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ff9000) at do-rel.h:137
+#6  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#7  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#8  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec50, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#9  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec50) at rtld.c:308
+#10 _dl_start (arg=0x7fffffffec50) at rtld.c:414
+#11 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#12 0x000000000000000b in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+29	in ../string/strcmp.c
+
+Backtrace END
+Fliping array at pos: 0
+Fliping value of field: lazy
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffea08
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: elf_machine_rela
+symbol name: ranges
+symbol filename: dl-reloc.c
+symbol line: 264
+value: {{start = 140737346180152, size = 47808, nrelative = 1782, lazy = 0}, {start = 0, size = 0, nrelative = 0, lazy = 0}}
+value address: 0x7fffffffe9f0
+Type: The type is an array.
+Type sizeof: 64
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 1L)
+
+[INFO -- 2017-03-05 20:57:32]
+Fault Injection Successful after 1.00276708603s

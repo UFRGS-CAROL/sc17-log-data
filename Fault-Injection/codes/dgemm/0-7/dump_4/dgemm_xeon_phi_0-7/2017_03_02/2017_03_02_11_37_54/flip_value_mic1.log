@@ -1,0 +1,145 @@
+2017-03-02 11:37:03:Starting flip_value script
+2017-03-02 11:37:03:Initialization strings:
+2017-03-02 11:37:03:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 11:37:03:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 11:37:03:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 11:37:03:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-02 11:37:03:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-02 11:37:03:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-03-02 11:37:03:initSignal:0
+2017-03-02 11:37:03:endSignal:7
+2017-03-02 11:37:03:seqSignal:15
+2017-03-02 11:37:06:Backtrace BEGIN:
+2017-03-02 11:37:06:#0  0x00007ffff71388ce in __GI__IO_fread (buf=0x7fffefc9ec90, size=1, count=8, fp=0x6071c0) at iofread.c:41
+#1  0x0000000000403d42 in read_gold (gold=0x7fffeecc9040, fileGold=0x7fffffffee78 "/micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks", order=2048) at dgemm.c:266
+#2  0x00000000004041e3 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:329
+
+2017-03-02 11:37:06:36	in iofread.c
+
+2017-03-02 11:37:06:Backtrace END
+2017-03-02 11:37:06:Type: The type is an integer type.
+2017-03-02 11:37:06:Type sizeof: 4
+2017-03-02 11:37:06:Mem contents(hex):0x010x000x000x00
+2017-03-02 11:37:06:Fault Mode: One bit-flip
+2017-03-02 11:37:06:base address to flip value: 0x7fffffffe8d8
+2017-03-02 11:37:06:address max offset: 4
+2017-03-02 11:37:06:Memory content before bitflip:0x010x000x000x00
+2017-03-02 11:37:07:Backtrace BEGIN:
+2017-03-02 11:37:07:#0  __GI__IO_fread (buf=0x7ffff04db2b8, size=1, count=8, fp=0x6071c0) at iofread.c:35
+#1  0x0000000000403d42 in read_gold (gold=0x7fffeecc9040, fileGold=0x7fffffffee78 "/micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks", order=2048) at dgemm.c:266
+#2  0x00000000004041e3 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:329
+
+2017-03-02 11:37:07:30	in iofread.c
+
+2017-03-02 11:37:07:Backtrace END
+2017-03-02 11:37:07:Type: The type is an integer type.
+2017-03-02 11:37:07:Type sizeof: 4
+2017-03-02 11:37:07:Mem contents(hex):0x040x060x000x00
+2017-03-02 11:37:07:Fault Mode: Zero bit-flip
+2017-03-02 11:37:07:base address to flip value: 0x7fffffffe6c4
+2017-03-02 11:37:07:address max offset: 4
+2017-03-02 11:37:07:Memory content before bitflip:0x040x060x000x00
+2017-03-02 11:37:07:Backtrace BEGIN:
+2017-03-02 11:37:07:#0  __GI___waitpid (pid=175877, stat_loc=stat_loc@entry=0x7fffffffe1d8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x00000000004015a5 in update_timestamp () at ../include/log_helper.c:107
+#3  0x000000000040198a in start_log_file (benchmark_name=0x405830 "openmpDGEMM", test_info=0x7fffffffe7e8 "matrix_dim:2048 threads:228 block_size:16 block_offset:12") at ../include/log_helper.c:196
+#4  0x0000000000404320 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:343
+
+2017-03-02 11:37:07:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-03-02 11:37:07:Backtrace END
+2017-03-02 11:37:07:Type: The type is a pointer.
+2017-03-02 11:37:07:Type sizeof: 8
+2017-03-02 11:37:07:Fliping a bit of the value pointed by a pointer
+2017-03-02 11:37:07:Type: The type is a structure.
+2017-03-02 11:37:07:Type sizeof: 56
+2017-03-02 11:37:07:Fliping value of field: tm_year
+2017-03-02 11:37:07:Type: The type is an integer type.
+2017-03-02 11:37:07:Type sizeof: 4
+2017-03-02 11:37:07:Mem contents(hex):0x480x8b0x440x24
+2017-03-02 11:37:07:Fault Mode: Random bit-flip
+2017-03-02 11:37:07:base address to flip value: 0x7ffff7137a38 
+2017-03-02 11:37:07:address max offset: 4
+2017-03-02 11:37:07:Memory content before bitflip:0x480x8b0x440x24
+2017-03-02 11:37:07:Backtrace BEGIN:
+2017-03-02 11:37:07:#0  0x00000000004043fb in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:367
+
+2017-03-02 11:37:07:362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+371	        kernel_start = timing_get_time();
+
+2017-03-02 11:37:07:Backtrace END
+2017-03-02 11:37:07:Type: The type is a pointer.
+2017-03-02 11:37:07:Type sizeof: 8
+2017-03-02 11:37:07:Fliping a bit of the pointer
+2017-03-02 11:37:07:Mem contents(hex):0x780xee0xff0xff0xff0x7f0x000x00
+2017-03-02 11:37:07:Fault Mode: Zero bit-flip
+2017-03-02 11:37:07:base address to flip value: 0x7fffffffea18
+2017-03-02 11:37:07:address max offset: 8
+2017-03-02 11:37:07:Memory content before bitflip:0x780xee0xff0xff0xff0x7f0x000x00
+2017-03-02 11:37:08:Backtrace BEGIN:
+2017-03-02 11:37:08:#0  0x000000000040440b in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:367
+
+2017-03-02 11:37:08:362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+371	        kernel_start = timing_get_time();
+
+2017-03-02 11:37:08:Backtrace END
+2017-03-02 11:37:08:Type: The type is an integer type.
+2017-03-02 11:37:08:Type sizeof: 4
+2017-03-02 11:37:08:Mem contents(hex):0x000x000x000x00
+2017-03-02 11:37:08:Fault Mode: One bit-flip
+2017-03-02 11:37:08:base address to flip value: 0x7fffffffe93c
+2017-03-02 11:37:08:address max offset: 4
+2017-03-02 11:37:08:Memory content before bitflip:0x000x000x000x00
+2017-03-02 11:37:08:Backtrace BEGIN:
+2017-03-02 11:37:08:#0  0x000000000040440b in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:367
+
+2017-03-02 11:37:08:362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+371	        kernel_start = timing_get_time();
+
+2017-03-02 11:37:08:Backtrace END
+2017-03-02 11:37:08:Type: The type is a pointer.
+2017-03-02 11:37:08:Type sizeof: 8
+2017-03-02 11:37:08:Fliping a bit of the pointer
+2017-03-02 11:37:08:Mem contents(hex):0x000xee0xff0xff0xff0x7f0x000x00
+2017-03-02 11:37:08:Fault Mode: Double bit-flip
+2017-03-02 11:37:08:base address to flip value: 0x7fffffffe9f8
+2017-03-02 11:37:08:address max offset: 8
+2017-03-02 11:37:08:Memory content before bitflip:0x000xee0xff0xff0xff0x7f0x000x00
+2017-03-02 11:37:08:Memory content after  bitflip:0x050xee0xff0xff0xff0x7f0x000x00
+2017-03-02 11:37:08:Mem contents(hex):0x050xee0xff0xff0xff0x7f0x000x00
+2017-03-02 11:37:08:frame name: main
+2017-03-02 11:37:08:symbol name: inputA
+2017-03-02 11:37:08:symbol filename: dgemm.c
+2017-03-02 11:37:08:symbol line: 283
+2017-03-02 11:37:08:value: 0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192"
+2017-03-02 11:37:08:value address: 0x7fffffffe9f8
+2017-03-02 11:37:08:Type: The type is a pointer.
+2017-03-02 11:37:08:Type sizeof: 8
+2017-03-02 11:37:08:Fault Injection Successful after 5.38760900497s
+2017-03-02 11:37:45:event type: exit
+2017-03-02 11:37:45:exit code: 0

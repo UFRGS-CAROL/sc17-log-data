@@ -1,0 +1,45 @@
+2016-10-30 02:28:13:Initialization strings:
+2016-10-30 02:28:13:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-30 02:28:13:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-30 02:28:13:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-30 02:28:13:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-30 02:28:13:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-30 02:28:13:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-30 02:28:13:Trying Fault Injection
+2016-10-30 02:28:13:Backtrace BEGIN:
+2016-10-30 02:28:13:#0  0x00007ffff7439144 in _pthread_cleanup_pop_restore (buffer=0x7fffffffe248, execute=0) at cleanup_defer_compat.c:68
+#1  0x00007ffff710f575 in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:153
+#2  0x0000000000405ccc in update_timestamp () at ../../include/log_helper.c:107
+#3  start_log_file (benchmark_name=0x7fffffffe248 " \367\020\367\377\177", test_info=0x0) at ../../include/log_helper.c:196
+#4  0x0000000000401681 in main (argc=-7608, argv=0x0) at hotspot_check.c:254
+
+2016-10-30 02:28:13:63	in cleanup_defer_compat.c
+
+2016-10-30 02:28:13:Backtrace END
+2016-10-30 02:28:14:Type: The type is an integer type.
+2016-10-30 02:28:14:Type sizeof: 4
+2016-10-30 02:28:14:Mem contents(hex):0x010x000x000x00
+2016-10-30 02:28:14:base address to flip value: 0x608bb0 
+2016-10-30 02:28:14:address max offset: 4
+2016-10-30 02:28:14:Memory content before bitflip:0x010x000x000x00
+2016-10-30 02:28:14:Memory content after  bitflip:0x010x800x000x00
+2016-10-30 02:28:14:Mem contents(hex):0x010x800x000x00
+2016-10-30 02:28:14:frame name: start_log_file
+2016-10-30 02:28:14:symbol name: iter_interval_print
+2016-10-30 02:28:14:symbol filename: ../../include/log_helper.c
+2016-10-30 02:28:14:symbol line: 47
+2016-10-30 02:28:14:value: 32769
+2016-10-30 02:28:14:value address: 0x608bb0 <iter_interval_print>
+2016-10-30 02:28:14:Type: The type is an integer type.
+2016-10-30 02:28:14:Type sizeof: 4
+2016-10-30 02:28:14:Fault Injection Successful after 1.07093191147s
+2016-10-30 02:28:15:Fault Already Injected
+2016-10-30 02:28:17:Fault Already Injected
+2016-10-30 02:28:19:Fault Already Injected
+2016-10-30 02:28:20:Fault Already Injected
+2016-10-30 02:28:22:Fault Already Injected
+2016-10-30 02:28:22:Fault Already Injected
+2016-10-30 02:28:26:Fault Already Injected
+2016-10-30 02:28:26:Fault Already Injected
+2016-10-30 02:28:28:event type: exit
+2016-10-30 02:28:28:exit code: 0

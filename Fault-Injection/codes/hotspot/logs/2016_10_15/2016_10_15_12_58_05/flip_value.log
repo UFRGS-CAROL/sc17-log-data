@@ -1,0 +1,55 @@
+2016-10-15 12:57:43:Initialization strings:
+2016-10-15 12:57:43:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-15 12:57:43:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-15 12:57:43:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-15 12:57:43:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-15 12:57:43:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-15 12:57:43:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-15 12:57:45:Trying Fault Injection
+2016-10-15 12:57:45:Backtrace BEGIN:
+2016-10-15 12:57:45:#0  __memchr (s=s@entry=0x7ffff7f3b704, c_in=c_in@entry=10, n=n@entry=255) at ../string/memchr.c:63
+#1  0x00007ffff7139361 in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe77a "324.434367\n", n=255, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:94
+#2  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe77a "324.434367\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#3  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe77a "324.434367\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#4  0x0000000000401712 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:201
+#5  main (argc=-135022844, argv=0xa) at hotspot_check.c:264
+
+2016-10-15 12:57:45:58	in ../string/memchr.c
+
+2016-10-15 12:57:45:Backtrace END
+2016-10-15 12:57:45:Type: The type is an array.
+2016-10-15 12:57:45:Type sizeof: 256
+2016-10-15 12:57:45:Fliping array at pos: 196
+2016-10-15 12:57:45:Type: The type is an integer type.
+2016-10-15 12:57:45:Type sizeof: 1
+2016-10-15 12:57:45:Mem contents(hex):0x00
+2016-10-15 12:57:45:base address to flip value: 0x7fffffffe83e 
+2016-10-15 12:57:45:address max offset: 1
+2016-10-15 12:57:45:Memory content before bitflip:0x00
+2016-10-15 12:57:45:Memory content after  bitflip:0x01
+2016-10-15 12:57:45:Mem contents(hex):0x01
+2016-10-15 12:57:45:frame name: read_input
+2016-10-15 12:57:45:symbol name: str
+2016-10-15 12:57:45:symbol filename: hotspot_check.c
+2016-10-15 12:57:45:symbol line: 193
+2016-10-15 12:57:45:value: "324.434367\n\000\000\000\020`\336\367\377\177\000\000\f\000\000\000\000\000\000\000\220\325\335\367\377\177\000\000\330\331\377\367\377\177\000\000\070\350\377\377\377\177\000\000\064\350\377\377\377\177\000\000\251\245B\000\000\000\000\000\070L\r\367\377\177\000\000H/\016\367\377\177\000\000U\251\245B\000\000\000\000\310L\r\367\377\177\000\000\070\350\377\377\377\177\000\000\245\226\n\001\000\000\000\000\025\000\000\000\000\000\000\000\020\351\377\377\377\177\000\000\220\325\335\367\377\177\000\000\064\350\377\377\377\177\000\000\000\351\377\377\377\177\000\000\060\206\377\367\377\177\000\000\b\000\000\000\000\000\000\000\034\327\354\366\000\000\000\000.(\274<\000\000\000\000\000\000\000\000\000\000\001\000\230\350"...
+2016-10-15 12:57:45:value address: 0x7fffffffe77a
+2016-10-15 12:57:45:Type: The type is an array.
+2016-10-15 12:57:45:Type sizeof: 256
+2016-10-15 12:57:45:Field name: None
+2016-10-15 12:57:45:Field Type:
+2016-10-15 12:57:45:Type: A range type, that is, an integer type with bounds.
+2016-10-15 12:57:45:Type sizeof: 1
+2016-10-15 12:57:45:Type range: (0L, 255L)
+2016-10-15 12:57:45:Fault Injection Successful after 2.65021896362s
+2016-10-15 12:57:46:Fault Already Injected
+2016-10-15 12:57:47:Fault Already Injected
+2016-10-15 12:57:47:Fault Already Injected
+2016-10-15 12:57:48:Fault Already Injected
+2016-10-15 12:57:52:Fault Already Injected
+2016-10-15 12:57:53:Fault Already Injected
+2016-10-15 12:57:56:Fault Already Injected
+2016-10-15 12:57:57:Fault Already Injected
+2016-10-15 12:57:58:Fault Already Injected
+2016-10-15 12:57:59:event type: exit
+2016-10-15 12:57:59:exit code: 0

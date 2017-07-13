@@ -1,0 +1,72 @@
+[INFO -- 2017-03-23 09:14:38]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-23 09:14:38]
+Initialization strings:
+[INFO -- 2017-03-23 09:14:38]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-23 09:14:38]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-23 09:14:38]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-23 09:14:39]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-23 09:14:39]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-23 09:14:39]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-23 09:14:39]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-23 09:14:39]
+initSignal:30
+[INFO -- 2017-03-23 09:14:39]
+endSignal:35
+[INFO -- 2017-03-23 09:14:39]
+seqSignal:20
+[INFO -- 2017-03-23 09:14:39]
+faultMode:2
+[INFO -- 2017-03-23 09:15:13]
+Backtrace BEGIN:
+#0  Mesh::partition_cells (this=0x7f9a50, numpe=0, z_order=..., method=ORIGINAL_ORDER) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:370
+#1  0x00000000004461e3 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:477
+#2  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+365	   int have_spatial_variables=0;
+366	   switch (method)
+367	   {   case ORIGINAL_ORDER:
+368	         //  Set z_order to the current cell order.
+369	         for (uint ic = 0; ic < ncells; ++ic)
+370	         {   z_order[ic] = ic; }
+371	
+372	         cpu_timers[MESH_TIMER_PARTITION] += cpu_timer_stop(tstart_cpu);
+373	
+374	         return;
+
+Backtrace END
+Fliping value of field: std::_Vector_base<int, std::allocator<int> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_start
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffdfc8
+address max offset: 8
+Memory content after  bitflip:0xa20x3b0x250x760xd60x5f0xf80x40
+frame name: Mesh::partition_cells
+symbol name: i_scaled
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp
+symbol line: 329
+value: {<std::_Vector_base<int, std::allocator<int> >> = {_M_impl = {<std::allocator<int>> = {<__gnu_cxx::new_allocator<int>> = {<No data fields>}, <No data fields>}, _M_start = 0x40f85fd676253ba2, _M_finish = 0x0, _M_end_of_storage = 0x0}}, <No data fields>}
+value address: 0x7fffffffdfc8
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<int, std::allocator<int> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2017-03-23 09:15:13]
+Fault Injection Successful after 34.5797700882s
+[INFO -- 2017-03-23 09:15:14]
+event type: exit
+[EXCEPTION -- 2017-03-23 09:15:14]
+exit code: no exit code available

@@ -1,0 +1,49 @@
+2016-10-12 05:54:34:Initialization strings:
+2016-10-12 05:54:34:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-12 05:54:34:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 05:54:34:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 05:54:34:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-12 05:54:34:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-12 05:54:34:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-12 05:54:35:Trying Fault Injection
+2016-10-12 05:54:35:Backtrace BEGIN:
+2016-10-12 05:54:35:#0  str_to_mpn (str=0x7fffffffe019 "6", str@entry=0x7fffffffe013 ".225566", digcnt=2, digcnt@entry=6, n=n@entry=0x7fffffffdf30, nsize=nsize@entry=0x7fffffffdf18, exponent=exponent@entry=0x7fffffffdf20, decimal_len=decimal_len@entry=1, thousands=0x0, decimal=<optimized out>) at strtod_l.c:413
+#1  0x00007ffff71092a0 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe010 "324.225566", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1449
+#2  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe010 "324.225566", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0) at strtod.c:54
+#3  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2332
+#4  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "324.225566\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#5  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#6  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#7  main (argc=-8173, argv=0x406) at hotspot_check.c:264
+
+2016-10-12 05:54:35:408	in strtod_l.c
+
+2016-10-12 05:54:35:Backtrace END
+2016-10-12 05:54:35:Type: A floating point type.
+2016-10-12 05:54:35:Type sizeof: 4
+2016-10-12 05:54:35:Mem contents(hex):0x6e0x1c0xa20x43
+2016-10-12 05:54:35:base address to flip value: 0x7fffffffe634
+2016-10-12 05:54:35:address max offset: 4
+2016-10-12 05:54:35:Memory content before bitflip:0x6e0x1c0xa20x43
+2016-10-12 05:54:35:Memory content after  bitflip:0x6e0x1c0xa00x43
+2016-10-12 05:54:35:Mem contents(hex):0x6e0x1c0xa00x43
+2016-10-12 05:54:35:frame name: read_input
+2016-10-12 05:54:35:symbol name: val
+2016-10-12 05:54:35:symbol filename: hotspot_check.c
+2016-10-12 05:54:35:symbol line: 194
+2016-10-12 05:54:35:value: 320.222107
+2016-10-12 05:54:35:value address: 0x7fffffffe634
+2016-10-12 05:54:35:Type: A floating point type.
+2016-10-12 05:54:35:Type sizeof: 4
+2016-10-12 05:54:35:Fault Injection Successful after 1.50265097618s
+2016-10-12 05:54:35:Fault Already Injected
+2016-10-12 05:54:37:Fault Already Injected
+2016-10-12 05:54:39:Fault Already Injected
+2016-10-12 05:54:40:Fault Already Injected
+2016-10-12 05:54:41:Fault Already Injected
+2016-10-12 05:54:44:Fault Already Injected
+2016-10-12 05:54:46:Fault Already Injected
+2016-10-12 05:54:46:Fault Already Injected
+2016-10-12 05:54:47:Fault Already Injected
+2016-10-12 05:54:49:event type: exit
+2016-10-12 05:54:49:exit code: 0

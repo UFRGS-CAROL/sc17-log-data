@@ -1,0 +1,153 @@
+2017-03-02 02:01:57:Starting flip_value script
+2017-03-02 02:01:57:Initialization strings:
+2017-03-02 02:01:57:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 02:01:57:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 02:01:57:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 02:01:58:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 02:01:58:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 02:01:58:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-02 02:01:58:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-02 02:01:58:initSignal:25
+2017-03-02 02:01:58:endSignal:30
+2017-03-02 02:01:58:seqSignal:20
+2017-03-02 02:02:23:Backtrace BEGIN:
+2017-03-02 02:02:23:#0  0x0000000000449a20 in std::vector<int, std::allocator<int> >::operator[] (this=0x7f9f58, __n=72431) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x00000000005209f9 in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3209
+#2  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#3  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#4  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-02 02:02:23:775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+2017-03-02 02:02:23:Backtrace END
+2017-03-02 02:02:27:Type: The type is an integer type.
+2017-03-02 02:02:27:Type sizeof: 4
+2017-03-02 02:02:27:Mem contents(hex):0x0d0x000x000x00
+2017-03-02 02:02:27:Fault Mode: Random bit-flip
+2017-03-02 02:02:27:base address to flip value: 0x7d06d8 
+2017-03-02 02:02:27:address max offset: 4
+2017-03-02 02:02:27:Memory content before bitflip:0x0d0x000x000x00
+2017-03-02 02:02:27:Backtrace BEGIN:
+2017-03-02 02:02:27:#0  0x0000000000449a20 in std::vector<int, std::allocator<int> >::operator[] (this=0x7f9f58, __n=72431) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x00000000005209f9 in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3209
+#2  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#3  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#4  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-02 02:02:27:775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+2017-03-02 02:02:27:Backtrace END
+2017-03-02 02:02:31:Type: The type is a pointer.
+2017-03-02 02:02:31:Type sizeof: 8
+2017-03-02 02:02:31:Fliping a bit of the value pointed by a pointer
+2017-03-02 02:02:31:Type: The type is a function.
+2017-03-02 02:02:31:Type sizeof: 1
+2017-03-02 02:02:31:Mem contents(hex):0x55
+2017-03-02 02:02:31:Fault Mode: One bit-flip
+2017-03-02 02:02:31:base address to flip value: 0x54aee9 
+2017-03-02 02:02:31:address max offset: 1
+2017-03-02 02:02:31:Memory content before bitflip:0x55
+2017-03-02 02:02:31:Backtrace BEGIN:
+2017-03-02 02:02:32:#0  0x0000000000449a20 in std::vector<int, std::allocator<int> >::operator[] (this=0x7f9f58, __n=72431) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x00000000005209f9 in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3209
+#2  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#3  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#4  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-02 02:02:32:775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+2017-03-02 02:02:32:Backtrace END
+2017-03-02 02:02:41:Type: The type is a structure.
+2017-03-02 02:02:41:Type sizeof: 24
+2017-03-02 02:02:41:Fliping value of field: std::_Vector_base<int, std::allocator<int> >
+2017-03-02 02:02:41:Type: The type is a structure.
+2017-03-02 02:02:41:Type sizeof: 24
+2017-03-02 02:02:41:Fliping value of field: _M_impl
+2017-03-02 02:02:41:Type: The type is a structure.
+2017-03-02 02:02:41:Type sizeof: 24
+2017-03-02 02:02:41:Fliping value of field: std::allocator<int>
+2017-03-02 02:02:41:Type: The type is a structure.
+2017-03-02 02:02:41:Type sizeof: 1
+2017-03-02 02:02:41:Fliping value of field: __gnu_cxx::new_allocator<int>
+2017-03-02 02:02:41:Type: The type is a structure.
+2017-03-02 02:02:41:Type sizeof: 1
+2017-03-02 02:02:41:Mem contents(hex):0xa0
+2017-03-02 02:02:41:Fault Mode: Random bit-flip
+2017-03-02 02:02:41:base address to flip value: 0x7fffffffe5d0
+2017-03-02 02:02:41:address max offset: 1
+2017-03-02 02:02:41:Memory content before bitflip:0xa0
+2017-03-02 02:02:41:Backtrace BEGIN:
+2017-03-02 02:02:41:#0  0x0000000000449a20 in std::vector<int, std::allocator<int> >::operator[] (this=0x7f9f58, __n=72431) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x00000000005209f9 in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3209
+#2  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#3  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#4  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-02 02:02:41:775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+2017-03-02 02:02:41:Backtrace END
+2017-03-02 02:02:51:Type: The type is an array.
+2017-03-02 02:02:51:Type sizeof: 192
+2017-03-02 02:02:51:Fliping array at pos: 23
+2017-03-02 02:02:51:Type: The type is a pointer.
+2017-03-02 02:02:51:Type sizeof: 8
+2017-03-02 02:02:51:Fliping a bit of the pointer
+2017-03-02 02:02:51:Mem contents(hex):0xe40x210x570x000x000x000x000x00
+2017-03-02 02:02:51:Fault Mode: Single bit-flip
+2017-03-02 02:02:51:base address to flip value: 0x7ceed8 
+2017-03-02 02:02:51:address max offset: 8
+2017-03-02 02:02:51:Memory content before bitflip:0xe40x210x570x000x000x000x000x00
+2017-03-02 02:02:51:Memory content after  bitflip:0xe40x210x570x000x000x000x100x00
+2017-03-02 02:02:51:Mem contents(hex):0xe40x210x570x000x000x000x100x00
+2017-03-02 02:02:51:frame name: Mesh::rezone_all
+2017-03-02 02:02:51:symbol name: mesh_timer_descriptor
+2017-03-02 02:02:51:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+2017-03-02 02:02:51:symbol line: 149
+2017-03-02 02:02:51:value: {0x571f98 "mesh_timer_count_BCs", 0x571fb0 "mesh_timer_calc_neighbors", 0x571fcc "mesh_timer_hash_setup", 0x571fe4 "mesh_timer_hash_query", 0x571ffc "mesh_timer_find_boundary", 0x572018 "mesh_timer_push_setup", 0x572030 "mesh_timer_push_boundary", 0x57204c "mesh_timer_local_list", 0x572064 "mesh_timer_layer1", 0x572078 "mesh_timer_layer2", 0x57208c "mesh_timer_layer_list", 0x5720a4 "mesh_timer_copy_mesh_data", 0x5720c0 "mesh_timer_fill_mesh_ghost", 0x5720dc "mesh_timer_fill_neigh_ghost", 0x5720f8 "mesh_timer_set_corner_neigh", 0x572114 "mesh_timer_neigh_adjust", 0x57212c "mesh_timer_setup_comm", 0x572144 "mesh_timer_kdtree_setup", 0x57215c "mesh_timer_kdtree_query", 0x572174 "mesh_timer_refine_smooth", 0x572190 "mesh_timer_rezone_all", 0x5721a8 "mesh_timer_partition", 0x5721c0 "mesh_timer_calc_spatial_coordinates", 0x100000005721e4 <error: Cannot access memory at address 0x100000005721e4>}
+2017-03-02 02:02:51:value address: 0x7cee20 <mesh_timer_descriptor>
+2017-03-02 02:02:51:Type: The type is an array.
+2017-03-02 02:02:51:Type sizeof: 192
+2017-03-02 02:02:51:Field name: None
+2017-03-02 02:02:51:Field Type:
+2017-03-02 02:02:51:Type: A range type, that is, an integer type with bounds.
+2017-03-02 02:02:51:Type sizeof: 1
+2017-03-02 02:02:51:Type range: (0L, 23L)
+2017-03-02 02:02:51:Fault Injection Successful after 53.2651839256s
+2017-03-02 02:03:21:event type: exit
+2017-03-02 02:03:21:exit code: 0

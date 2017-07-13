@@ -1,0 +1,300 @@
+2017-01-26 09:56:03:Starting flip_value script
+2017-01-26 09:56:03:Initialization strings:
+2017-01-26 09:56:04:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-26 09:56:04:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-26 09:56:04:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-26 09:56:04:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-26 09:56:04:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-26 09:56:04:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-26 09:56:04:initSignal:0
+2017-01-26 09:56:04:endSignal:2
+2017-01-26 09:56:04:seqSignal:30
+2017-01-26 09:56:04:Trying Fault Injection
+2017-01-26 09:56:04:Inferior PID: 143282
+2017-01-26 09:56:04:Inferior is valid: True
+2017-01-26 09:56:04:Inferior #threads: 1
+2017-01-26 09:56:04:Backtrace BEGIN:
+2017-01-26 09:56:04:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000009 in ?? ()
+#7  0x00007fffffffee08 in ?? ()
+#8  0x00007fffffffee3f in ?? ()
+#9  0x00007fffffffee42 in ?? ()
+#10 0x00007fffffffee47 in ?? ()
+#11 0x00007fffffffee4a in ?? ()
+#12 0x00007fffffffee4e in ?? ()
+#13 0x00007fffffffee51 in ?? ()
+#14 0x00007fffffffee90 in ?? ()
+#15 0x00007fffffffee93 in ?? ()
+#16 0x0000000000000000 in ?? ()
+
+2017-01-26 09:56:04:69	in dl-debug.c
+
+2017-01-26 09:56:04:Backtrace END
+2017-01-26 09:56:04:Thread name: None
+2017-01-26 09:56:04:Thread num: 1
+2017-01-26 09:56:04:Thread ptid: (143282, 143282, 0)
+2017-01-26 09:56:04:bitFlip function
+2017-01-26 09:56:04:Type: The type is a structure.
+2017-01-26 09:56:04:Type sizeof: 296
+2017-01-26 09:56:04:Fliping value of field: _dl_verbose
+2017-01-26 09:56:04:bitFlip function
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 4
+2017-01-26 09:56:04:Mem contents(hex):0x000x000x000x00
+2017-01-26 09:56:04:base address to flip value: 0x7ffff7ffccfc 
+2017-01-26 09:56:04:address max offset: 4
+2017-01-26 09:56:04:Memory content before bitflip:0x000x000x000x00
+2017-01-26 09:56:04:Memory content after  bitflip:0x000x100x000x00
+2017-01-26 09:56:04:Mem contents(hex):0x000x100x000x00
+2017-01-26 09:56:04:frame name: _dl_start_final
+2017-01-26 09:56:04:symbol name: _rtld_global_ro
+2017-01-26 09:56:04:symbol filename: rtld.c
+2017-01-26 09:56:04:symbol line: 152
+2017-01-26 09:56:04:value: {_dl_debug_mask = 0, _dl_osversion = 132646, _dl_platform = 0x7fffffffedfb "k1om", _dl_platformlen = 4, _dl_pagesize = 4096, _dl_inhibit_cache = 0, _dl_initial_searchlist = {r_list = 0x7ffff7ff8630, r_nlist = 8}, _dl_clktck = 100, _dl_verbose = 4096, _dl_debug_fd = 2, _dl_lazy = 1, _dl_bind_not = 0, _dl_dynamic_weak = 0, _dl_fpu_control = 895, _dl_correct_cache_id = 771, _dl_hwcap = 285299711, _dl_hwcap_mask = 0, _dl_auxv = 0x7fffffffecb8, _dl_inhibit_rpath = 0x0, _dl_origin_path = 0x0, _dl_use_load_bias = 18446744073709551615, _dl_profile = 0x0, _dl_profile_output = 0x7ffff7df5aa0 "/var/tmp", _dl_trace_prelink = 0x0, _dl_trace_prelink_map = 0x0, _dl_init_all_dirs = 0x7ffff7ffa000, _dl_sysinfo_dso = 0x7ffff7ffb000, _dl_sysinfo_map = 0x7ffff7ffe700, _dl_hwcap2 = 0, _dl_debug_printf = 0x7ffff7decaf0 <_dl_debug_printf>, _dl_catch_error = 0x7ffff7deba10 <_dl_catch_error>, _dl_signal_error = 0x7ffff7deb7d0 <_dl_signal_error>, _dl_mcount = 0x7ffff7dedea0 <__GI__dl_mcount>, _dl_lookup_symbol_x = 0x7ffff7de6770 <_dl_lookup_symbol_x>, _dl_check_caller = 0x7ffff7def3e0 <_dl_check_caller>, _dl_open = 0x7ffff7def8f0 <_dl_open>, _dl_close = 0x7ffff7df1790 <_dl_close>, _dl_tls_get_addr_soft = 0x7ffff7deeff0 <_dl_tls_get_addr_soft>, _dl_discover_osversion = 0x7ffff7df2740 <_dl_discover_osversion>, _dl_audit = 0x0, _dl_naudit = 0, _dl_pointer_guard = 1}
+2017-01-26 09:56:04:value address: 0x7ffff7ffccc0 <_rtld_global_ro>
+2017-01-26 09:56:04:Type: The type is a structure.
+2017-01-26 09:56:04:Type sizeof: 296
+2017-01-26 09:56:04:Field name: _dl_debug_mask
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 4
+2017-01-26 09:56:04:Field name: _dl_osversion
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 4
+2017-01-26 09:56:04:Field name: _dl_platform
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_platformlen
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_pagesize
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_inhibit_cache
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 4
+2017-01-26 09:56:04:Field name: _dl_initial_searchlist
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a structure.
+2017-01-26 09:56:04:Type sizeof: 16
+2017-01-26 09:56:04:Field name: _dl_clktck
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 4
+2017-01-26 09:56:04:Field name: _dl_verbose
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 4
+2017-01-26 09:56:04:Field name: _dl_debug_fd
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 4
+2017-01-26 09:56:04:Field name: _dl_lazy
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 4
+2017-01-26 09:56:04:Field name: _dl_bind_not
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 4
+2017-01-26 09:56:04:Field name: _dl_dynamic_weak
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 4
+2017-01-26 09:56:04:Field name: _dl_fpu_control
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 2
+2017-01-26 09:56:04:Field name: _dl_correct_cache_id
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 4
+2017-01-26 09:56:04:Field name: _dl_hwcap
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_hwcap_mask
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_auxv
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_inhibit_rpath
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_origin_path
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_use_load_bias
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_profile
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_profile_output
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_trace_prelink
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_trace_prelink_map
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_init_all_dirs
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_sysinfo_dso
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_sysinfo_map
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_hwcap2
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_debug_printf
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_catch_error
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_signal_error
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_mcount
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_lookup_symbol_x
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_check_caller
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_open
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_close
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_tls_get_addr_soft
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_discover_osversion
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_audit
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is a pointer.
+2017-01-26 09:56:04:Type sizeof: 8
+2017-01-26 09:56:04:Field name: _dl_naudit
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 4
+2017-01-26 09:56:04:Field name: _dl_pointer_guard
+2017-01-26 09:56:04:Field Type:
+2017-01-26 09:56:04:Type: The type is an integer type.
+2017-01-26 09:56:04:Type sizeof: 4
+2017-01-26 09:56:04:Fault Injection Successful after 0.764513015747s
+2017-01-26 09:56:04:Fault Already Injected
+2017-01-26 09:56:04:Fault Already Injected
+2017-01-26 09:56:05:Fault Already Injected
+2017-01-26 09:56:05:Fault Already Injected
+2017-01-26 09:56:05:Fault Already Injected
+2017-01-26 09:56:05:Fault Already Injected
+2017-01-26 09:56:05:Fault Already Injected
+2017-01-26 09:56:06:Fault Already Injected
+2017-01-26 09:56:06:Fault Already Injected
+2017-01-26 09:56:06:Fault Already Injected
+2017-01-26 09:56:07:Fault Already Injected
+2017-01-26 09:56:07:Fault Already Injected
+2017-01-26 09:56:07:Fault Already Injected
+2017-01-26 09:56:07:Fault Already Injected
+2017-01-26 09:56:07:Fault Already Injected
+2017-01-26 09:56:08:Fault Already Injected
+2017-01-26 09:56:08:Fault Already Injected
+2017-01-26 09:56:08:Fault Already Injected
+2017-01-26 09:56:08:Fault Already Injected
+2017-01-26 09:56:08:Fault Already Injected
+2017-01-26 09:56:08:Fault Already Injected
+2017-01-26 09:56:08:Fault Already Injected
+2017-01-26 09:56:09:Fault Already Injected
+2017-01-26 09:56:09:Fault Already Injected
+2017-01-26 09:56:09:Fault Already Injected
+2017-01-26 09:56:09:Fault Already Injected
+2017-01-26 09:56:10:Fault Already Injected
+2017-01-26 09:56:10:Fault Already Injected
+2017-01-26 09:56:10:Fault Already Injected
+2017-01-26 09:56:11:Fault Already Injected
+2017-01-26 09:56:11:Fault Already Injected
+2017-01-26 09:56:11:Fault Already Injected
+2017-01-26 09:56:12:Fault Already Injected
+2017-01-26 09:56:12:Fault Already Injected
+2017-01-26 09:56:12:Fault Already Injected
+2017-01-26 09:56:12:Fault Already Injected
+2017-01-26 09:56:13:Fault Already Injected
+2017-01-26 09:56:13:Fault Already Injected
+2017-01-26 09:56:13:Fault Already Injected
+2017-01-26 09:56:13:Fault Already Injected
+2017-01-26 09:56:13:Fault Already Injected
+2017-01-26 09:56:14:Fault Already Injected
+2017-01-26 09:56:14:Fault Already Injected
+2017-01-26 09:56:14:Fault Already Injected
+2017-01-26 09:56:15:Fault Already Injected
+2017-01-26 09:56:15:Fault Already Injected
+2017-01-26 09:56:15:Fault Already Injected
+2017-01-26 09:56:16:Fault Already Injected
+2017-01-26 09:56:16:Fault Already Injected
+2017-01-26 09:56:16:Fault Already Injected
+2017-01-26 09:56:16:Fault Already Injected
+2017-01-26 09:56:16:Fault Already Injected
+2017-01-26 09:56:16:Fault Already Injected
+2017-01-26 09:56:17:Fault Already Injected
+2017-01-26 09:56:17:Fault Already Injected
+2017-01-26 09:56:17:Fault Already Injected
+2017-01-26 09:56:18:Fault Already Injected
+2017-01-26 09:56:18:Fault Already Injected
+2017-01-26 09:56:18:Fault Already Injected
+2017-01-26 09:56:18:Fault Already Injected
+2017-01-26 09:56:19:Fault Already Injected
+2017-01-26 09:56:19:Fault Already Injected
+2017-01-26 09:56:19:Fault Already Injected
+2017-01-26 09:56:20:Fault Already Injected
+2017-01-26 09:56:20:Fault Already Injected
+2017-01-26 09:56:20:Fault Already Injected
+2017-01-26 09:56:21:Fault Already Injected
+2017-01-26 09:56:21:Fault Already Injected
+2017-01-26 09:56:24:event type: exit
+2017-01-26 09:56:24:exit code: 1

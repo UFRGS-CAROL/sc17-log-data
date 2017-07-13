@@ -1,0 +1,67 @@
+[INFO -- 2017-03-06 18:31:09]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 18:31:09]
+Initialization strings:
+[INFO -- 2017-03-06 18:31:09]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-06 18:31:09]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 18:31:09]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 18:31:09]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-03-06 18:31:09]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-03-06 18:31:09]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-03-06 18:31:09]
+initSignal:9
+[INFO -- 2017-03-06 18:31:09]
+endSignal:12
+[INFO -- 2017-03-06 18:31:09]
+seqSignal:15
+[INFO -- 2017-03-06 18:31:09]
+faultMode:1
+[INFO -- 2017-03-06 18:31:18]
+Backtrace BEGIN:
+#0  __GI___rawmemchr (s=s@entry=0x7fffffffe640, c_in=c_in@entry=0) at ../string/rawmemchr.c:145
+#1  0x00007ffff7145ad0 in _IO_str_init_static_internal (sf=sf@entry=0x7fffffffe440, ptr=ptr@entry=0x7fffffffe640 "325.098358\n", size=size@entry=0, pstart=pstart@entry=0x0) at strops.c:44
+#2  0x00007ffff71365d5 in __GI___isoc99_vsscanf (string=0x7fffffffe640 "325.098358\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:41
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#5  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+140	in ../string/rawmemchr.c
+
+Backtrace END
+Fliping value of field: _sbf
+Fliping value of field: _f
+Fliping value of field: _IO_read_end
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe450
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000xc00x000x00
+frame name: __GI___isoc99_vsscanf
+symbol name: sf
+symbol filename: isoc99_vsscanf.c
+symbol line: 35
+value: {_sbf = {_f = {_flags = -72515584, _IO_read_ptr = 0x0, _IO_read_end = 0xc00000000000 <error: Cannot access memory at address 0xc00000000000>, _IO_read_base = 0x0, _IO_write_base = 0x0, _IO_write_ptr = 0x0, _IO_write_end = 0x0, _IO_buf_base = 0x0, _IO_buf_end = 0x0, _IO_save_base = 0x0, _IO_backup_base = 0x0, _IO_save_end = 0x0, _markers = 0x0, _chain = 0x0, _fileno = 4196954, _flags2 = 0, _old_offset = 1048576, _cur_column = 0, _vtable_offset = 96 '`', _shortbuf = "", _lock = 0x0, _offset = 16, _codecvt = 0x8991f32, _wide_data = 0xffffffffffffffff, _freeres_list = 0x0, _freeres_buf = 0x3e8, _freeres_size = 0, _mode = -1, _unused2 = "\000\000\000\000\000\000\020\000\000\000\000\000\000X\000\000\000\000\000"}, vtable = 0x7ffff7423780 <_IO_str_jumps>}, _s = {_allocate_buffer = 0x0, _free_buffer = 0x5841ea98}}
+value address: 0x7fffffffe440
+Type: The type is a structure.
+Type sizeof: 240
+Field name: _sbf
+Field Type: The type is a structure.
+Field Type sizeof: 224
+Field name: _s
+Field Type: The type is a structure.
+Field Type sizeof: 16
+
+[INFO -- 2017-03-06 18:31:18]
+Fault Injection Successful after 9.69805407524s
+[INFO -- 2017-03-06 18:31:34]
+event type: exit
+[INFO -- 2017-03-06 18:31:34]
+exit code: 0

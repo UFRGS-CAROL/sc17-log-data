@@ -1,0 +1,48 @@
+2016-10-26 06:11:36:Initialization strings:
+2016-10-26 06:11:37:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-26 06:11:37:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-26 06:11:37:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-26 06:11:37:(4) file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-26 06:11:37:(5) set remote exec-file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-26 06:11:37:(6) set args -s 8192 -n 228 -i /micNfs/gdb-fault-injection-lud/bin/input_8192_th_228 -g /micNfs/gdb-fault-injection-lud/bin/gold_8192_th_228
+2016-10-26 06:11:37:Trying Fault Injection
+2016-10-26 06:11:37:Inferior PID: 114973
+2016-10-26 06:11:37:Inferior is valid: True
+2016-10-26 06:11:37:Inferior #threads: 1
+2016-10-26 06:11:37:Backtrace BEGIN:
+2016-10-26 06:11:37:#0  0x00007ffff71d5f7a in determine_info (symbolp=<optimized out>, mapp=<optimized out>, info=0x7fffffffe8e0, match=0x7ffff7ff99a0, addr=140737338717216) at dl-addr.c:71
+#1  __GI__dl_addr (address=address@entry=0x7ffff714b420 <ptmalloc_init>, info=info@entry=0x7fffffffe8e0, mapp=mapp@entry=0x7fffffffe8d8, symbolp=symbolp@entry=0x0) at dl-addr.c:137
+#2  0x00007ffff714b1e6 in ptmalloc_init () at arena.c:370
+#3  0x00007ffff714b46e in ptmalloc_init () at hooks.c:29
+#4  malloc_hook_ini (sz=552, caller=<optimized out>) at hooks.c:31
+#5  0x00007ffff713847b in __fopen_internal (filename=0x7fffffffee6c "/micNfs/gdb-fault-injection-lud/bin/input_8192_th_228", mode=0x40dfc0 "rb", is32=1) at iofopen.c:69
+#6  0x0000000000402ba0 in main (argc=-150131768, argv=0x0) at lud_check.c:93
+
+2016-10-26 06:11:37:66	in dl-addr.c
+
+2016-10-26 06:11:37:Backtrace END
+2016-10-26 06:11:37:Thread name: None
+2016-10-26 06:11:37:Thread num: 1
+2016-10-26 06:11:37:Thread ptid: (114973, 114973, 0)
+2016-10-26 06:11:37:bitFlip function
+2016-10-26 06:11:37:Type: The type is a pointer.
+2016-10-26 06:11:37:Type sizeof: 8
+2016-10-26 06:11:37:Fliping a bit of the pointer
+2016-10-26 06:11:37:Mem contents(hex):0xd80xe80xff0xff0xff0x7f0x000x00
+2016-10-26 06:11:37:base address to flip value: 0x7fffffffe878
+2016-10-26 06:11:37:address max offset: 8
+2016-10-26 06:11:37:Memory content before bitflip:0xd80xe80xff0xff0xff0x7f0x000x00
+2016-10-26 06:11:37:Memory content after  bitflip:0xd80xe80xff0xff0xff0x7f0x000x80
+2016-10-26 06:11:37:Mem contents(hex):0xd80xe80xff0xff0xff0x7f0x000x80
+2016-10-26 06:11:37:frame name: determine_info
+2016-10-26 06:11:37:symbol name: mapp
+2016-10-26 06:11:37:symbol filename: dl-addr.c
+2016-10-26 06:11:37:symbol line: 125
+2016-10-26 06:11:37:value: 0x7fffffffe8d8
+2016-10-26 06:11:37:value address: 0x7fffffffe878
+2016-10-26 06:11:37:Type: The type is a pointer.
+2016-10-26 06:11:37:Type sizeof: 8
+2016-10-26 06:11:37:Fault Injection Successful after 0.415004014969s
+2016-10-26 06:11:37:Fault Already Injected
+2016-10-26 06:11:37:event type: exit
+2016-10-26 06:11:37:exit code: no exit code available

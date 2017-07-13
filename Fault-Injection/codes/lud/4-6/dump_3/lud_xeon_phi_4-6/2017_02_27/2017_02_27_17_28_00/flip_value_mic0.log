@@ -1,0 +1,79 @@
+2017-02-27 17:27:17:Starting flip_value script
+2017-02-27 17:27:17:Initialization strings:
+2017-02-27 17:27:18:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-27 17:27:18:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 17:27:18:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 17:27:18:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-27 17:27:18:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-27 17:27:18:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-02-27 17:27:18:initSignal:4
+2017-02-27 17:27:18:endSignal:6
+2017-02-27 17:27:18:seqSignal:30
+2017-02-27 17:27:23:Backtrace BEGIN:
+2017-02-27 17:27:23:#0  0x0000000000404ace in L_lud_omp_123__par_loop2_2_5 () at lud_omp.c:138
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-02-27 17:27:23:133	            j_global = offset + BS * (1 + chunk_idx%chunks_in_inter_row);
+134	
+135	            for (i = 0; i < BS; i++) {
+136	#pragma omp simd
+137	                for (j =0; j < BS; j++){
+138	                    temp_top[i*BS + j]  = a[size*(i + offset) + j + j_global ];
+139	                    temp_left[i*BS + j] = a[size*(i + i_global) + offset + j];
+140	                }
+141	            }
+142	
+
+2017-02-27 17:27:23:Backtrace END
+2017-02-27 17:27:45:Type: The type is a pointer.
+2017-02-27 17:27:45:Type sizeof: 8
+2017-02-27 17:27:45:Fliping a bit of the pointer
+2017-02-27 17:27:45:Mem contents(hex):0x010x000x000x000x000x000x000x00
+2017-02-27 17:27:45:Fault Mode: Random bit-flip
+2017-02-27 17:27:45:base address to flip value: 0x7fffffffc740
+2017-02-27 17:27:45:address max offset: 8
+2017-02-27 17:27:45:Memory content before bitflip:0x010x000x000x000x000x000x000x00
+2017-02-27 17:27:46:Backtrace BEGIN:
+2017-02-27 17:27:46:#0  0x0000000000404ace in L_lud_omp_123__par_loop2_2_5 () at lud_omp.c:138
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-02-27 17:27:46:133	            j_global = offset + BS * (1 + chunk_idx%chunks_in_inter_row);
+134	
+135	            for (i = 0; i < BS; i++) {
+136	#pragma omp simd
+137	                for (j =0; j < BS; j++){
+138	                    temp_top[i*BS + j]  = a[size*(i + offset) + j + j_global ];
+139	                    temp_left[i*BS + j] = a[size*(i + i_global) + offset + j];
+140	                }
+141	            }
+142	
+
+2017-02-27 17:27:46:Backtrace END
+2017-02-27 17:27:51:Type: The type is an integer type.
+2017-02-27 17:27:51:Type sizeof: 4
+2017-02-27 17:27:51:Mem contents(hex):0x400x1e0x000x00
+2017-02-27 17:27:51:Fault Mode: Single bit-flip
+2017-02-27 17:27:51:base address to flip value: 0x7fffffffd934
+2017-02-27 17:27:51:address max offset: 4
+2017-02-27 17:27:51:Memory content before bitflip:0x400x1e0x000x00
+2017-02-27 17:27:51:Memory content after  bitflip:0x400x3e0x000x00
+2017-02-27 17:27:51:Mem contents(hex):0x400x3e0x000x00
+2017-02-27 17:27:51:frame name: L_lud_omp_123__par_loop2_2_5
+2017-02-27 17:27:51:symbol name: chunks_per_inter
+2017-02-27 17:27:51:symbol filename: lud_omp.c
+2017-02-27 17:27:51:symbol line: 45
+2017-02-27 17:27:51:value: 15936
+2017-02-27 17:27:51:value address: 0x7fffffffd934
+2017-02-27 17:27:51:Type: The type is an integer type.
+2017-02-27 17:27:51:Type sizeof: 4
+2017-02-27 17:27:51:Fault Injection Successful after 33.6873350143s

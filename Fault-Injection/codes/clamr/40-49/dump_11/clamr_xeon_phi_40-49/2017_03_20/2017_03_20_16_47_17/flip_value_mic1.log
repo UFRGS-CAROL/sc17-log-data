@@ -1,0 +1,58 @@
+[INFO -- 2017-03-20 16:41:28]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-20 16:41:28]
+Initialization strings:
+[INFO -- 2017-03-20 16:41:28]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-20 16:41:28]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-20 16:41:28]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-20 16:41:29]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-20 16:41:29]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-20 16:41:29]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-20 16:41:29]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-20 16:41:29]
+initSignal:40
+[INFO -- 2017-03-20 16:41:29]
+endSignal:49
+[INFO -- 2017-03-20 16:41:29]
+seqSignal:20
+[INFO -- 2017-03-20 16:41:29]
+faultMode:2
+[INFO -- 2017-03-20 16:42:16]
+Backtrace BEGIN:
+#0  __GI___libc_free (mem=0x1920bd0) at malloc.c:2930
+#1  0x0000000000554ade in MallocPlus::memory_replace (this=0x7fa5e0, malloc_mem_ptr_old=0x1920bd0, malloc_mem_ptr_new=0x304ae60) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/MallocPlus/MallocPlus.cpp:921
+#2  0x0000000000451953 in State::calc_finite_difference (this=0x7fa5e0, deltaT=0.00032557304701171045) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1721
+#3  0x0000000000445f6c in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:451
+#4  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2925	in malloc.c
+
+Backtrace END
+Memory content before bitflip:0x010x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7d0754 
+address max offset: 4
+Memory content after  bitflip:0x2d0x670x440x4d
+frame name: do_calc
+symbol name: levmx
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 139
+value: 1296328493
+value address: 0x7d0754 <levmx>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-20 16:42:16]
+Fault Injection Successful after 47.0668940544s
+[INFO -- 2017-03-20 16:42:29]
+event type: exit
+[INFO -- 2017-03-20 16:42:29]
+exit code: 0

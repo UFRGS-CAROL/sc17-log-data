@@ -1,0 +1,65 @@
+2016-10-14 16:02:30:Initialization strings:
+2016-10-14 16:02:30:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-14 16:02:30:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-14 16:02:30:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-14 16:02:30:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-14 16:02:30:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-14 16:02:30:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-14 16:02:32:Trying Fault Injection
+2016-10-14 16:02:32:Inferior PID: 147565
+2016-10-14 16:02:32:Inferior is valid: True
+2016-10-14 16:02:32:Inferior #threads: 1
+2016-10-14 16:02:32:Backtrace BEGIN:
+2016-10-14 16:02:32:#0  __GI__IO_link_in (fp=fp@entry=0x60e1e0) at genops.c:110
+#1  0x00007ffff7142dac in _IO_new_file_init (fp=fp@entry=0x60e1e0) at fileops.c:150
+#2  0x00007ffff71384c1 in __fopen_internal (filename=0x7ffff71f01ba "/etc/localtime", mode=0x7ffff71ee80e "rce", is32=1) at iofopen.c:82
+#3  0x00007ffff713850a in _IO_new_fopen (filename=<optimized out>, mode=<optimized out>) at iofopen.c:97
+#4  0x00007ffff7165f17 in __tzfile_read (file=file@entry=0x7ffff71f01ba "/etc/localtime", extra=extra@entry=0, extrap=extrap@entry=0x0) at tzfile.c:168
+#5  0x00007ffff7165960 in tzset_internal (always=<optimized out>, explicit=explicit@entry=1) at tzset.c:447
+#6  0x00007ffff7165cab in __tz_convert (timer=0x7fffffffe298, use_localtime=0, tp=0x7ffff7429460 <_tmbuf>) at tzset.c:632
+#7  0x0000000000406a62 in start_log_file (benchmark_name=0x408cc0 "openmpLavaMD", test_info=0x7fffffffe688 "box:15 spaceElem:337500 cores:228") at ../../include/log_helper.c:204
+#8  0x0000000000402707 in main (argc=7, argv=0x7fffffffec08) at main_check.c:190
+
+2016-10-14 16:02:32:105	in genops.c
+
+2016-10-14 16:02:32:Backtrace END
+2016-10-14 16:02:32:Thread name: None
+2016-10-14 16:02:32:Thread num: 1
+2016-10-14 16:02:32:Thread ptid: (147565, 147565, 0)
+2016-10-14 16:02:32:bitFlip function
+2016-10-14 16:02:32:Type: The type is an array.
+2016-10-14 16:02:32:Type sizeof: 14
+2016-10-14 16:02:32:Fliping array at pos: 11
+2016-10-14 16:02:32:bitFlip function
+2016-10-14 16:02:32:Type: The type is an integer type.
+2016-10-14 16:02:32:Type sizeof: 1
+2016-10-14 16:02:32:Mem contents(hex):0x61
+2016-10-14 16:02:32:base address to flip value: 0x7ffff71f528b  
+2016-10-14 16:02:32:address max offset: 1
+2016-10-14 16:02:32:Memory content before bitflip:0x61
+2016-10-14 16:02:32:Memory content after  bitflip:0xe1
+2016-10-14 16:02:32:Mem contents(hex):0xe1
+2016-10-14 16:02:32:frame name: __tzfile_read
+2016-10-14 16:02:32:symbol name: __PRETTY_FUNCTION__
+2016-10-14 16:02:32:symbol filename: tzfile.c
+2016-10-14 16:02:32:symbol line: 0
+2016-10-14 16:02:32:value: "__tzfile_re\341d"
+2016-10-14 16:02:32:value address: 0x7ffff71f5280 <__PRETTY_FUNCTION__.5916>
+2016-10-14 16:02:32:Type: The type is an array.
+2016-10-14 16:02:32:Type sizeof: 14
+2016-10-14 16:02:32:Field name: None
+2016-10-14 16:02:32:Field Type:
+2016-10-14 16:02:32:Type: A range type, that is, an integer type with bounds.
+2016-10-14 16:02:32:Type sizeof: 8
+2016-10-14 16:02:32:Type range: (0L, 13L)
+2016-10-14 16:02:32:Fault Injection Successful after 2.30368900299s
+2016-10-14 16:02:32:Fault Already Injected
+2016-10-14 16:02:32:Fault Already Injected
+2016-10-14 16:02:32:Fault Already Injected
+2016-10-14 16:02:35:Fault Already Injected
+2016-10-14 16:02:36:Fault Already Injected
+2016-10-14 16:02:37:Fault Already Injected
+2016-10-14 16:02:37:Fault Already Injected
+2016-10-14 16:02:37:Fault Already Injected
+2016-10-14 16:02:41:event type: exit
+2016-10-14 16:02:41:exit code: 0

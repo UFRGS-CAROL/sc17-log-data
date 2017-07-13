@@ -1,0 +1,56 @@
+[INFO -- 2017-03-28 18:04:52]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-28 18:04:52]
+Initialization strings:
+[INFO -- 2017-03-28 18:04:53]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-28 18:04:53]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 18:04:53]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 18:04:53]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 18:04:53]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 18:04:53]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-28 18:04:53]
+initSignal:0
+[INFO -- 2017-03-28 18:04:53]
+endSignal:3
+[INFO -- 2017-03-28 18:04:53]
+seqSignal:30
+[INFO -- 2017-03-28 18:04:53]
+faultMode:1
+[INFO -- 2017-03-28 18:04:54]
+Backtrace BEGIN:
+#0  0x00007ffff71505dc in __GI_memcpy (dstpp=dstpp@entry=0x7ffff4cf5d78, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#3  0x00000000004025ee in main (argc=7, argv=0x7fffffffebc8) at main_check.c:180
+
+54	in ../string/memcpy.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x410xee0xff0xff0xff0x7f0x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe890
+address max offset: 8
+Memory content after  bitflip:0x410xee0xff0xff0x7b0x7f0x000x00
+frame name: main
+symbol name: input_charges
+symbol filename: main_check.c
+symbol line: 50
+value: 0x7fffffffee41 "/micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15"
+value address: 0x7fffffffe890
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-28 18:04:54]
+Fault Injection Successful after 1.32315611839s
+[INFO -- 2017-03-28 18:05:11]
+event type: exit
+[INFO -- 2017-03-28 18:05:11]
+exit code: 0

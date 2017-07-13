@@ -1,0 +1,69 @@
+2016-10-27 02:40:22:Initialization strings:
+2016-10-27 02:40:22:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-27 02:40:22:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-27 02:40:22:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-27 02:40:22:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-27 02:40:22:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-27 02:40:22:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-27 02:40:23:Trying Fault Injection
+2016-10-27 02:40:23:Inferior PID: 73065
+2016-10-27 02:40:23:Inferior is valid: True
+2016-10-27 02:40:23:Inferior #threads: 1
+2016-10-27 02:40:23:Backtrace BEGIN:
+2016-10-27 02:40:23:#0  syscall () at ../sysdeps/unix/sysv/linux/x86_64/syscall.S:38
+#1  0x00007ffff7916456 in ?? ()
+#2  0x0000000000004000 in ?? ()
+#3  0x000000000000003f in ?? ()
+#4  0x00007ffff6ebbf42 in ?? ()
+#5  0x00007ffff7b9cf9c in ?? ()
+#6  0x00007ffff7b7ba80 in ?? ()
+#7  0x00007ffff791a0e4 in ?? ()
+#8  0x00000000000000c0 in ?? ()
+#9  0x0000000000004000 in ?? ()
+#10 0x00007ffff7b6f2a8 in ?? ()
+#11 0x0000000000000a50 in ?? ()
+#12 0x0000000000000000 in ?? ()
+
+2016-10-27 02:40:23:33	in ../sysdeps/unix/sysv/linux/x86_64/syscall.S
+
+2016-10-27 02:40:23:Backtrace END
+2016-10-27 02:40:23:Error(threadFlip): No Threads with symbols
+2016-10-27 02:40:23:Fault Injection Failed after 1.08010792732s
+2016-10-27 02:40:23:Trying Fault Injection
+2016-10-27 02:40:23:Inferior PID: 73065
+2016-10-27 02:40:23:Inferior is valid: True
+2016-10-27 02:40:23:Inferior #threads: 1
+2016-10-27 02:40:23:Backtrace BEGIN:
+2016-10-27 02:40:23:#0  __GI__IO_fread (buf=0x7ffff607d260, size=1, count=8, fp=0x60e1c0) at iofread.c:41
+#1  0x0000000000402245 in main (argc=7, argv=0x7fffffffec08) at main_check.c:150
+
+2016-10-27 02:40:23:36	in iofread.c
+
+2016-10-27 02:40:23:Backtrace END
+2016-10-27 02:40:23:Thread name: None
+2016-10-27 02:40:23:Thread num: 1
+2016-10-27 02:40:23:Thread ptid: (73065, 73065, 0)
+2016-10-27 02:40:23:bitFlip function
+2016-10-27 02:40:23:Type: The type is a pointer.
+2016-10-27 02:40:23:Type sizeof: 8
+2016-10-27 02:40:23:Fliping a bit of the value pointed by a pointer
+2016-10-27 02:40:23:bitFlip function
+2016-10-27 02:40:23:Type: A floating point type.
+2016-10-27 02:40:23:Type sizeof: 8
+2016-10-27 02:40:23:Mem contents(hex):0x5f0x0d0x400x000x000x000x000x00
+2016-10-27 02:40:23:base address to flip value: 0x7ffff7ff86a0
+2016-10-27 02:40:23:address max offset: 8
+2016-10-27 02:40:23:Memory content before bitflip:0x5f0x0d0x400x000x000x000x000x00
+2016-10-27 02:40:23:Memory content after  bitflip:0x5f0x090x400x000x000x000x000x00
+2016-10-27 02:40:23:Mem contents(hex):0x5f0x090x400x000x000x000x000x00
+2016-10-27 02:40:23:frame name: main
+2016-10-27 02:40:23:symbol name: qv_cpu
+2016-10-27 02:40:23:symbol filename: main_check.c
+2016-10-27 02:40:23:symbol line: 59
+2016-10-27 02:40:23:value: 0x7ffff7ff86a0
+2016-10-27 02:40:23:value address: 0x7fffffffe9e0
+2016-10-27 02:40:23:Type: The type is a pointer.
+2016-10-27 02:40:23:Type sizeof: 8
+2016-10-27 02:40:23:Fault Injection Successful after 1.2210059166s
+2016-10-27 02:40:23:event type: exit
+2016-10-27 02:40:23:exit code: 127

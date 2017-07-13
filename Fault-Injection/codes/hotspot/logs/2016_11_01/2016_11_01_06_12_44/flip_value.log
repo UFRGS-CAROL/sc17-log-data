@@ -1,0 +1,53 @@
+2016-11-01 06:12:32:Initialization strings:
+2016-11-01 06:12:32:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-11-01 06:12:32:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 06:12:32:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 06:12:32:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-01 06:12:32:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-01 06:12:32:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-11-01 06:12:35:Trying Fault Injection
+2016-11-01 06:12:35:Backtrace BEGIN:
+2016-11-01 06:12:35:#0  __GI__IO_sputbackc (fp=fp@entry=0x7fffffffe400, c=51) at genops.c:732
+#1  0x00007ffff7124d59 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:605
+#2  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "324.161450\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#5  main (argc=-7168, argv=0x33) at hotspot_check.c:264
+
+2016-11-01 06:12:35:727	in genops.c
+
+2016-11-01 06:12:35:Backtrace END
+2016-11-01 06:12:35:Type: The type is a pointer.
+2016-11-01 06:12:35:Type sizeof: 8
+2016-11-01 06:12:35:Fault Injection Failed after 3.71222305298s
+2016-11-01 06:12:36:Trying Fault Injection
+2016-11-01 06:12:36:Backtrace BEGIN:
+2016-11-01 06:12:36:#0  0x00007ffff714f7f1 in __memchr (s=s@entry=0x7ffff7f541cc, c_in=c_in@entry=10, n=251, n@entry=255) at ../string/memchr.c:135
+#1  0x00007ffff7139361 in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe77a "323.795462\n", n=255, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:94
+#2  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe77a "323.795462\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#3  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe77a "323.795462\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#4  0x0000000000401712 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:201
+#5  main (argc=-134921776, argv=0xa) at hotspot_check.c:264
+
+2016-11-01 06:12:36:130	in ../string/memchr.c
+
+2016-11-01 06:12:36:Backtrace END
+2016-11-01 06:12:36:Type: The type is an integer type.
+2016-11-01 06:12:36:Type sizeof: 4
+2016-11-01 06:12:36:Mem contents(hex):0x640xee0xff0xff
+2016-11-01 06:12:36:base address to flip value: 0x7fffffffe610
+2016-11-01 06:12:36:address max offset: 4
+2016-11-01 06:12:36:Memory content before bitflip:0x640xee0xff0xff
+2016-11-01 06:12:36:Memory content after  bitflip:0x640xfe0xff0xff
+2016-11-01 06:12:36:Mem contents(hex):0x640xfe0xff0xff
+2016-11-01 06:12:36:frame name: read_input
+2016-11-01 06:12:36:symbol name: errors
+2016-11-01 06:12:36:symbol filename: hotspot_check.c
+2016-11-01 06:12:36:symbol line: 281
+2016-11-01 06:12:36:value: -412
+2016-11-01 06:12:36:value address: 0x7fffffffe610
+2016-11-01 06:12:36:Type: The type is an integer type.
+2016-11-01 06:12:36:Type sizeof: 4
+2016-11-01 06:12:36:Fault Injection Successful after 4.33282589912s
+2016-11-01 06:12:37:event type: exit
+2016-11-01 06:12:37:exit code: 1

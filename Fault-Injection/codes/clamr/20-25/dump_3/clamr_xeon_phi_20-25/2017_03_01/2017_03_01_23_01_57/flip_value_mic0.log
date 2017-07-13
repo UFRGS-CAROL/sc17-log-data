@@ -1,0 +1,97 @@
+2017-03-01 22:58:39:Starting flip_value script
+2017-03-01 22:58:39:Initialization strings:
+2017-03-01 22:58:40:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 22:58:40:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 22:58:40:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 22:58:40:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 22:58:40:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 22:58:40:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 22:58:40:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 22:58:40:initSignal:20
+2017-03-01 22:58:40:endSignal:25
+2017-03-01 22:58:40:seqSignal:20
+2017-03-01 22:59:02:Backtrace BEGIN:
+2017-03-01 22:59:02:#0  0x000000000045eb5c in State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1663
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffdac0 in ?? ()
+#3  0x00007fffffffdab8 in ?? ()
+#4  0x00007fffffffdad0 in ?? ()
+#5  0x00007fffffffdad8 in ?? ()
+#6  0x00007fffffffda38 in ?? ()
+#7  0x00007fffffffda70 in ?? ()
+#8  0x00007fffffffda68 in ?? ()
+#9  0x00007fffffffdba8 in ?? ()
+#10 0x00007fffffffdbc8 in ?? ()
+#11 0x00007fffffffdbe8 in ?? ()
+#12 0x00007fffffffda30 in ?? ()
+#13 0x00000000000000f4 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2017-03-01 22:59:02:1658	         wplusy_H = ((w_corrector(deltaT, (dric+dyt)*HALF, fabs(Vyplus2/Hyplus2) +
+1659	                                  sqrt(g*Hyplus2), Htr-Hic, Hic-Hb2, Htt2-Htr) *
+1660	                      (Htr - Hic))+wplusy_H)*HALF*HALF;
+1661	      }
+1662	
+1663	      real_t wminusy_V = w_corrector(deltaT, (dric+dyb)*HALF, fabs(Vyminus/Hyminus) + sqrt(g*Hyminus),
+1664	                              Vic-Vb, Vb-Vbb, Vt2-Vic);
+1665	
+1666	      wminusy_V *= Vic - Vb;
+1667	
+
+2017-03-01 22:59:02:Backtrace END
+2017-03-01 23:00:18:Type: A floating point type.
+2017-03-01 23:00:18:Type sizeof: 8
+2017-03-01 23:00:18:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-03-01 23:00:18:Fault Mode: One bit-flip
+2017-03-01 23:00:18:base address to flip value: 0x7fffffffce28
+2017-03-01 23:00:18:address max offset: 8
+2017-03-01 23:00:18:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-03-01 23:00:18:Backtrace BEGIN:
+2017-03-01 23:00:18:#0  0x000000000045eb5c in State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1663
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffdac0 in ?? ()
+#3  0x00007fffffffdab8 in ?? ()
+#4  0x00007fffffffdad0 in ?? ()
+#5  0x00007fffffffdad8 in ?? ()
+#6  0x00007fffffffda38 in ?? ()
+#7  0x00007fffffffda70 in ?? ()
+#8  0x00007fffffffda68 in ?? ()
+#9  0x00007fffffffdba8 in ?? ()
+#10 0x00007fffffffdbc8 in ?? ()
+#11 0x00007fffffffdbe8 in ?? ()
+#12 0x00007fffffffda30 in ?? ()
+#13 0x00000000000000f4 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2017-03-01 23:00:18:1658	         wplusy_H = ((w_corrector(deltaT, (dric+dyt)*HALF, fabs(Vyplus2/Hyplus2) +
+1659	                                  sqrt(g*Hyplus2), Htr-Hic, Hic-Hb2, Htt2-Htr) *
+1660	                      (Htr - Hic))+wplusy_H)*HALF*HALF;
+1661	      }
+1662	
+1663	      real_t wminusy_V = w_corrector(deltaT, (dric+dyb)*HALF, fabs(Vyminus/Hyminus) + sqrt(g*Hyminus),
+1664	                              Vic-Vb, Vb-Vbb, Vt2-Vic);
+1665	
+1666	      wminusy_V *= Vic - Vb;
+1667	
+
+2017-03-01 23:00:18:Backtrace END
+2017-03-01 23:00:22:Type: The type is an integer type.
+2017-03-01 23:00:22:Type sizeof: 4
+2017-03-01 23:00:22:Mem contents(hex):0x520x010x000x00
+2017-03-01 23:00:22:Fault Mode: Double bit-flip
+2017-03-01 23:00:22:base address to flip value: 0x7fffffffcb30
+2017-03-01 23:00:22:address max offset: 4
+2017-03-01 23:00:22:Memory content before bitflip:0x520x010x000x00
+2017-03-01 23:00:22:Memory content after  bitflip:0x520x070x000x00
+2017-03-01 23:00:22:Mem contents(hex):0x520x070x000x00
+2017-03-01 23:00:22:frame name: State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37
+2017-03-01 23:00:22:symbol name: nbb
+2017-03-01 23:00:22:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+2017-03-01 23:00:22:symbol line: 1254
+2017-03-01 23:00:22:value: 1874
+2017-03-01 23:00:22:value address: 0x7fffffffcb30
+2017-03-01 23:00:22:Type: The type is an integer type.
+2017-03-01 23:00:22:Type sizeof: 4
+2017-03-01 23:00:22:Fault Injection Successful after 102.395380974s
+2017-03-01 23:00:49:event type: exit
+2017-03-01 23:00:49:exit code: 0

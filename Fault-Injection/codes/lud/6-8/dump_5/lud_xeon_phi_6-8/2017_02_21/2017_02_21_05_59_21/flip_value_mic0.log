@@ -1,0 +1,71 @@
+2017-02-21 05:58:56:Starting flip_value script
+2017-02-21 05:58:56:Initialization strings:
+2017-02-21 05:58:57:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-21 05:58:57:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 05:58:57:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 05:58:57:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-21 05:58:57:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-21 05:58:57:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-02-21 05:58:57:initSignal:6
+2017-02-21 05:58:57:endSignal:8
+2017-02-21 05:58:57:seqSignal:30
+2017-02-21 05:59:04:Backtrace BEGIN:
+2017-02-21 05:59:04:#0  do_system (line=0x7fffffffe630 "echo 1487674455 > /micNfs/carol/logs/timestamp.txt") at ../sysdeps/posix/system.c:116
+#1  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#2  0x0000000000405f16 in log_error_count (kernel_errors=0) at ../include/log_helper.c:369
+#3  0x0000000000402def in main (argc=9, argv=0x7fffffffec08) at lud_check.c:149
+
+2017-02-21 05:59:04:111	in ../sysdeps/posix/system.c
+
+2017-02-21 05:59:04:Backtrace END
+2017-02-21 05:59:07:Type: The type is an integer type.
+2017-02-21 05:59:07:Type sizeof: 4
+2017-02-21 05:59:07:Mem contents(hex):0x000x000x000x00
+2017-02-21 05:59:07:Fault Mode: Random bit-flip
+2017-02-21 05:59:07:base address to flip value: 0x7fffffffe4d8
+2017-02-21 05:59:07:address max offset: 4
+2017-02-21 05:59:07:Memory content before bitflip:0x000x000x000x00
+2017-02-21 05:59:07:Backtrace BEGIN:
+2017-02-21 05:59:07:#0  do_system (line=0x7fffffffe630 "echo 1487674455 > /micNfs/carol/logs/timestamp.txt") at ../sysdeps/posix/system.c:116
+#1  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#2  0x0000000000405f16 in log_error_count (kernel_errors=0) at ../include/log_helper.c:369
+#3  0x0000000000402def in main (argc=9, argv=0x7fffffffec08) at lud_check.c:149
+
+2017-02-21 05:59:07:111	in ../sysdeps/posix/system.c
+
+2017-02-21 05:59:07:Backtrace END
+2017-02-21 05:59:11:Type: The type is an integer type.
+2017-02-21 05:59:11:Type sizeof: 4
+2017-02-21 05:59:11:Mem contents(hex):0x980x1b0x030x00
+2017-02-21 05:59:11:Fault Mode: Zero bit-flip
+2017-02-21 05:59:11:base address to flip value: 0x7fffffffe4b4
+2017-02-21 05:59:11:address max offset: 4
+2017-02-21 05:59:11:Memory content before bitflip:0x980x1b0x030x00
+2017-02-21 05:59:11:Backtrace BEGIN:
+2017-02-21 05:59:11:#0  0x00007ffff78aba3d in ?? ()
+#1  0x00007fff00000001 in ?? ()
+#2  0x0000000000000000 in ?? ()
+
+2017-02-21 05:59:11:111	in ../sysdeps/posix/system.c
+
+2017-02-21 05:59:11:Backtrace END
+2017-02-21 05:59:14:Type: The type is an integer type.
+2017-02-21 05:59:14:Type sizeof: 8
+2017-02-21 05:59:14:Mem contents(hex):0x010x000x000x000x000x000x000x00
+2017-02-21 05:59:14:Fault Mode: Double bit-flip
+2017-02-21 05:59:14:base address to flip value: 0x60bd28 
+2017-02-21 05:59:14:address max offset: 8
+2017-02-21 05:59:14:Memory content before bitflip:0x010x000x000x000x000x000x000x00
+2017-02-21 05:59:14:Memory content after  bitflip:0x010x000x000x000x300x000x000x00
+2017-02-21 05:59:14:Mem contents(hex):0x010x000x000x000x300x000x000x00
+2017-02-21 05:59:14:frame name: update_timestamp
+2017-02-21 05:59:14:symbol name: iteration_number
+2017-02-21 05:59:14:symbol filename: ../include/log_helper.c
+2017-02-21 05:59:14:symbol line: 61
+2017-02-21 05:59:14:value: 206158430209
+2017-02-21 05:59:14:value address: 0x60bd28 <iteration_number>
+2017-02-21 05:59:14:Type: The type is an integer type.
+2017-02-21 05:59:14:Type sizeof: 8
+2017-02-21 05:59:14:Fault Injection Successful after 17.5653259754s
+2017-02-21 05:59:15:event type: exit
+2017-02-21 05:59:15:exit code: 0

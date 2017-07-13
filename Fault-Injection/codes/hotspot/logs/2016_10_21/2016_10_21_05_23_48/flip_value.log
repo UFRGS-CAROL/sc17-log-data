@@ -1,0 +1,73 @@
+2016-10-21 05:23:27:Initialization strings:
+2016-10-21 05:23:27:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-21 05:23:27:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-21 05:23:27:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-21 05:23:27:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-21 05:23:27:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-21 05:23:27:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-21 05:23:28:Trying Fault Injection
+2016-10-21 05:23:28:Backtrace BEGIN:
+2016-10-21 05:23:28:#0  __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe010 "324.267040", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1249
+#1  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe010 "324.267040", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0) at strtod.c:54
+#2  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2332
+#3  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "324.267040\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#4  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#5  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#6  main (argc=0, argv=0x4) at hotspot_check.c:264
+
+2016-10-21 05:23:28:1244	in strtod_l.c
+
+2016-10-21 05:23:28:Backtrace END
+2016-10-21 05:23:28:Type: The type is an array.
+2016-10-21 05:23:28:Type sizeof: 24
+2016-10-21 05:23:28:Fliping array at pos: 0
+2016-10-21 05:23:28:Type: The type is a structure.
+2016-10-21 05:23:28:Type sizeof: 24
+2016-10-21 05:23:28:Fliping value of field: overflow_arg_area
+2016-10-21 05:23:28:Type: The type is a pointer.
+2016-10-21 05:23:28:Type sizeof: 8
+2016-10-21 05:23:28:Fault Injection Failed after 1.28886008263s
+2016-10-21 05:23:28:Trying Fault Injection
+2016-10-21 05:23:28:Backtrace BEGIN:
+2016-10-21 05:23:28:#0  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#1  main (argc=-7552, argv=0x0) at hotspot_check.c:264
+
+2016-10-21 05:23:28:201	        if (fgets(str, STR_SIZE, fp) == NULL) {
+202	            fatal("fgets error");
+203	        }
+204	        if (feof(fp))
+205	            fatal("not enough lines in file");
+206	        if ((sscanf(str, "%f", &val) != 1) )
+207	            fatal("invalid file format");
+208	        vect[i] = val;
+209	    }
+210	
+
+2016-10-21 05:23:28:Backtrace END
+2016-10-21 05:23:28:Type: A floating point type.
+2016-10-21 05:23:28:Type sizeof: 4
+2016-10-21 05:23:28:Mem contents(hex):0x6f0x120x030x3a
+2016-10-21 05:23:28:base address to flip value: 0x407398 
+2016-10-21 05:23:28:address max offset: 4
+2016-10-21 05:23:28:Memory content before bitflip:0x6f0x120x030x3a
+2016-10-21 05:23:28:Memory content after  bitflip:0x6f0x120x030x7a
+2016-10-21 05:23:28:Mem contents(hex):0x6f0x120x030x7a
+2016-10-21 05:23:28:frame name: main
+2016-10-21 05:23:28:symbol name: t_chip
+2016-10-21 05:23:28:symbol filename: hotspot_check.c
+2016-10-21 05:23:28:symbol line: 32
+2016-10-21 05:23:28:value: 1.70141192e+35
+2016-10-21 05:23:28:value address: 0x407398 <t_chip>
+2016-10-21 05:23:28:Type: A floating point type.
+2016-10-21 05:23:28:Type sizeof: 4
+2016-10-21 05:23:28:Fault Injection Successful after 1.56413793564s
+2016-10-21 05:23:29:Fault Already Injected
+2016-10-21 05:23:29:Fault Already Injected
+2016-10-21 05:23:33:Fault Already Injected
+2016-10-21 05:23:34:Fault Already Injected
+2016-10-21 05:23:36:Fault Already Injected
+2016-10-21 05:23:37:Fault Already Injected
+2016-10-21 05:23:37:Fault Already Injected
+2016-10-21 05:23:40:Fault Already Injected
+2016-10-21 05:23:42:event type: exit
+2016-10-21 05:23:42:exit code: 0

@@ -1,0 +1,45 @@
+2017-02-28 06:38:03:Starting flip_value script
+2017-02-28 06:38:03:Initialization strings:
+2017-02-28 06:38:03:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-28 06:38:03:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 06:38:03:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 06:38:03:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 06:38:03:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 06:38:03:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-02-28 06:38:03:initSignal:0
+2017-02-28 06:38:03:endSignal:3
+2017-02-28 06:38:03:seqSignal:15
+2017-02-28 06:38:04:Backtrace BEGIN:
+2017-02-28 06:38:04:#0  0x00007ffff714f799 in __memchr (s=s@entry=0x7ffff7fa7f23, c_in=c_in@entry=10, n=251, n@entry=255) at ../string/memchr.c:67
+#1  0x00007ffff7139361 in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "324.049258\n", n=255, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:94
+#2  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "324.049258\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#3  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe640 "324.049258\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#4  0x0000000000404538 in read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:202
+#5  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+2017-02-28 06:38:04:62	in ../string/memchr.c
+
+2017-02-28 06:38:04:Backtrace END
+2017-02-28 06:38:04:Type: The type is a pointer.
+2017-02-28 06:38:04:Type sizeof: 8
+2017-02-28 06:38:04:Fliping a bit of the value pointed by a pointer
+2017-02-28 06:38:04:Type: The type is an integer type.
+2017-02-28 06:38:04:Type sizeof: 1
+2017-02-28 06:38:04:Mem contents(hex):0x2f
+2017-02-28 06:38:04:Fault Mode: Double bit-flip
+2017-02-28 06:38:04:base address to flip value: 0x7fffffffee07 
+2017-02-28 06:38:04:address max offset: 1
+2017-02-28 06:38:04:Memory content before bitflip:0x2f
+2017-02-28 06:38:04:Memory content after  bitflip:0x3e
+2017-02-28 06:38:04:Mem contents(hex):0x3e
+2017-02-28 06:38:04:frame name: main
+2017-02-28 06:38:04:symbol name: tfile
+2017-02-28 06:38:04:symbol filename: hotspot_check.c
+2017-02-28 06:38:04:symbol line: 232
+2017-02-28 06:38:04:value: 0x7fffffffee07 ">micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024"
+2017-02-28 06:38:04:value address: 0x7fffffffea00
+2017-02-28 06:38:04:Type: The type is a pointer.
+2017-02-28 06:38:04:Type sizeof: 8
+2017-02-28 06:38:04:Fault Injection Successful after 1.57691502571s
+2017-02-28 06:38:29:event type: exit
+2017-02-28 06:38:29:exit code: 0

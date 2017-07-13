@@ -1,0 +1,64 @@
+[INFO -- 2017-03-26 09:42:13]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 09:42:13]
+Initialization strings:
+[INFO -- 2017-03-26 09:42:14]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 09:42:14]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 09:42:14]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 09:42:14]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 09:42:14]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 09:42:14]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 09:42:14]
+initSignal:0
+[INFO -- 2017-03-26 09:42:14]
+endSignal:3
+[INFO -- 2017-03-26 09:42:14]
+seqSignal:30
+[INFO -- 2017-03-26 09:42:14]
+faultMode:1
+[EXCEPTION -- 2017-03-26 09:42:14]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-03-26 09:42:14]
+Backtrace BEGIN:
+#0  0x0000000000401c41 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:106
+
+101	
+102	                box_cpu[nh].x = k;
+103	                box_cpu[nh].y = j;
+104	                box_cpu[nh].z = i;
+105	                box_cpu[nh].number = nh;
+106	                box_cpu[nh].offset = nh * NUMBER_PAR_PER_BOX;
+107	
+108	                box_cpu[nh].nn = 0;
+109	
+110	                for(l=-1; l<2; l++) {
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0xc80xeb0xff0xff0xff0x7f0x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe828
+address max offset: 8
+Memory content after  bitflip:0xc80xeb0xff0xff0xed0x7f0x000x00
+frame name: main
+symbol name: argv
+symbol filename: main_check.c
+symbol line: 43
+value: 0x7fffffffebc8
+value address: 0x7fffffffe828
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-26 09:42:14]
+Fault Injection Successful after 0.792483091354s
+[INFO -- 2017-03-26 09:42:31]
+event type: exit
+[INFO -- 2017-03-26 09:42:31]
+exit code: 0

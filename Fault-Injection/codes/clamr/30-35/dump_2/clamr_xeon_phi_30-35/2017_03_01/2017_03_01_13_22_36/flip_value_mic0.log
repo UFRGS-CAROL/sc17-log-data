@@ -1,0 +1,75 @@
+2017-03-01 13:21:23:Starting flip_value script
+2017-03-01 13:21:23:Initialization strings:
+2017-03-01 13:21:24:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 13:21:24:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 13:21:24:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 13:21:24:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 13:21:24:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 13:21:24:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 13:21:24:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 13:21:24:initSignal:30
+2017-03-01 13:21:24:endSignal:35
+2017-03-01 13:21:24:seqSignal:20
+2017-03-01 13:21:55:Backtrace BEGIN:
+2017-03-01 13:21:55:#0  0x000000000051f46e in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2587
+#1  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-01 13:21:55:2582	   int new_ncells = ncells + add_ncells;
+2583	
+2584	   int ref_entry_count = 0;
+2585	   if (have_state){
+2586	      for (uint ic=0; ic<ncells; ic++) {
+2587	         if (mpot[ic] > 0) ref_entry_count++;
+2588	         if (mpot[ic] < 0) {
+2589	            // Normal cell coarsening
+2590	            if (is_lower_left(i[ic],j[ic]) ) mpot[ic] = -2;
+2591	            // Boundary cell case
+
+2017-03-01 13:21:55:Backtrace END
+2017-03-01 13:21:59:Type: A floating point type.
+2017-03-01 13:21:59:Type sizeof: 8
+2017-03-01 13:21:59:Mem contents(hex):0xfc0x560xeb0xc40xe50xd80x160x40
+2017-03-01 13:21:59:Fault Mode: Zero bit-flip
+2017-03-01 13:21:59:base address to flip value: 0x7d06b0 
+2017-03-01 13:21:59:address max offset: 8
+2017-03-01 13:21:59:Memory content before bitflip:0xfc0x560xeb0xc40xe50xd80x160x40
+2017-03-01 13:21:59:Backtrace BEGIN:
+2017-03-01 13:21:59:#0  0x000000000051f46e in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2587
+#1  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-01 13:21:59:2582	   int new_ncells = ncells + add_ncells;
+2583	
+2584	   int ref_entry_count = 0;
+2585	   if (have_state){
+2586	      for (uint ic=0; ic<ncells; ic++) {
+2587	         if (mpot[ic] > 0) ref_entry_count++;
+2588	         if (mpot[ic] < 0) {
+2589	            // Normal cell coarsening
+2590	            if (is_lower_left(i[ic],j[ic]) ) mpot[ic] = -2;
+2591	            // Boundary cell case
+
+2017-03-01 13:21:59:Backtrace END
+2017-03-01 13:22:03:Type: A floating point type.
+2017-03-01 13:22:03:Type sizeof: 8
+2017-03-01 13:22:03:Mem contents(hex):0xb00xe50xff0xff0xff0x7f0x000x00
+2017-03-01 13:22:03:Fault Mode: Double bit-flip
+2017-03-01 13:22:03:base address to flip value: 0x7fffffffe590
+2017-03-01 13:22:03:address max offset: 8
+2017-03-01 13:22:03:Memory content before bitflip:0xb00xe50xff0xff0xff0x7f0x000x00
+2017-03-01 13:22:03:Memory content after  bitflip:0xb00xe50xff0x5f0xff0x7f0x000x00
+2017-03-01 13:22:03:Mem contents(hex):0xb00xe50xff0x5f0xff0x7f0x000x00
+2017-03-01 13:22:03:frame name: do_calc
+2017-03-01 13:22:03:symbol name: percent_mass_diff
+2017-03-01 13:22:03:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-03-01 13:22:03:symbol line: 501
+2017-03-01 13:22:03:value: 6.9532231827652664e-310
+2017-03-01 13:22:03:value address: 0x7fffffffe590
+2017-03-01 13:22:03:Type: A floating point type.
+2017-03-01 13:22:03:Type sizeof: 8
+2017-03-01 13:22:03:Fault Injection Successful after 39.8987181187s
+2017-03-01 13:22:30:event type: exit
+2017-03-01 13:22:30:exit code: 0

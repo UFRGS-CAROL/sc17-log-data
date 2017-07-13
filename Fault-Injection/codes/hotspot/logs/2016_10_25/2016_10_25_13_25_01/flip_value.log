@@ -1,0 +1,59 @@
+2016-10-25 13:24:40:Initialization strings:
+2016-10-25 13:24:40:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-25 13:24:40:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-25 13:24:40:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-25 13:24:40:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-25 13:24:40:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-25 13:24:40:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-25 13:24:41:Trying Fault Injection
+2016-10-25 13:24:41:Backtrace BEGIN:
+2016-10-25 13:24:41:#0  __pthread_initialize_minimal_internal () at nptl-init.c:383
+#1  0x00007ffff742f529 in _init () at ../sysdeps/x86_64/crti.S:72
+#2  0x00007ffff7ddd380 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#3  0x00007ffff7debb98 in call_init (l=0x7ffff7ff94d0, argc=8, argv=0x7fffffffebe8, env=0x7fffffffec30) at dl-init.c:58
+#4  0x00007ffff7debd57 in call_init (env=0x7fffffffec30, argv=0x7fffffffebe8, argc=8, l=<optimized out>) at dl-init.c:88
+#5  _dl_init (main_map=0x7ffff7ffe168, argc=8, argv=0x7fffffffebe8, env=0x7fffffffec30) at dl-init.c:87
+#6  0x00007ffff7dddbfa in _dl_start_user () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#7  0x0000000000000008 in ?? ()
+#8  0x00007fffffffede9 in ?? ()
+#9  0x00007fffffffee1f in ?? ()
+#10 0x00007fffffffee24 in ?? ()
+#11 0x00007fffffffee29 in ?? ()
+#12 0x00007fffffffee2e in ?? ()
+#13 0x00007fffffffee32 in ?? ()
+#14 0x00007fffffffee64 in ?? ()
+#15 0x00007fffffffee97 in ?? ()
+#16 0x0000000000000000 in ?? ()
+
+2016-10-25 13:24:41:378	in nptl-init.c
+
+2016-10-25 13:24:41:Backtrace END
+2016-10-25 13:24:41:Type: The type is a pointer.
+2016-10-25 13:24:41:Type sizeof: 8
+2016-10-25 13:24:41:Fliping a bit of the pointer
+2016-10-25 13:24:41:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-10-25 13:24:41:base address to flip value: 0x7ffff7646398 
+2016-10-25 13:24:41:address max offset: 8
+2016-10-25 13:24:41:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-10-25 13:24:41:Memory content after  bitflip:0x000x000x000x000x000x000x000x10
+2016-10-25 13:24:41:Mem contents(hex):0x000x000x000x000x000x000x000x10
+2016-10-25 13:24:41:frame name: __pthread_initialize_minimal_internal
+2016-10-25 13:24:41:symbol name: __libc_multiple_threads_ptr
+2016-10-25 13:24:41:symbol filename: nptl-init.c
+2016-10-25 13:24:41:symbol line: 42
+2016-10-25 13:24:41:value: 0x0
+2016-10-25 13:24:41:value address: 0x7ffff7646398 <__libc_multiple_threads_ptr>
+2016-10-25 13:24:41:Type: The type is a pointer.
+2016-10-25 13:24:41:Type sizeof: 8
+2016-10-25 13:24:41:Fault Injection Successful after 1.34812498093s
+2016-10-25 13:24:42:Fault Already Injected
+2016-10-25 13:24:43:Fault Already Injected
+2016-10-25 13:24:44:Fault Already Injected
+2016-10-25 13:24:45:Fault Already Injected
+2016-10-25 13:24:46:Fault Already Injected
+2016-10-25 13:24:47:Fault Already Injected
+2016-10-25 13:24:48:Fault Already Injected
+2016-10-25 13:24:49:Fault Already Injected
+2016-10-25 13:24:52:Fault Already Injected
+2016-10-25 13:24:55:event type: exit
+2016-10-25 13:24:55:exit code: 0

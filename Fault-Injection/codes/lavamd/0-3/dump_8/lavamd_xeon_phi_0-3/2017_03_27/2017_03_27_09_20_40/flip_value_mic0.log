@@ -1,0 +1,77 @@
+[INFO -- 2017-03-27 09:20:14]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 09:20:14]
+Initialization strings:
+[INFO -- 2017-03-27 09:20:14]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 09:20:15]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 09:20:15]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 09:20:15]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 09:20:15]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 09:20:15]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 09:20:15]
+initSignal:0
+[INFO -- 2017-03-27 09:20:15]
+endSignal:3
+[INFO -- 2017-03-27 09:20:15]
+seqSignal:30
+[INFO -- 2017-03-27 09:20:15]
+faultMode:2
+[EXCEPTION -- 2017-03-27 09:20:16]
+pythonException: 'ascii' codec can't encode character u'\u03fb' in position 63: ordinal not in range(128)
+[INFO -- 2017-03-27 09:20:17]
+Backtrace BEGIN:
+#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff74312d0 in ?? () at pthread_create.c:237 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libpthread.so.0
+#2  0x00007fff6aff7900 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+Backtrace END
+Fliping value of field: prev
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: next
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: prev
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: next
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: prev
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: next
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: next
+Fliping a bit of the pointer
+Memory content before bitflip:0xc00x690xff0xf70xff0x7f0x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff76462f0 
+address max offset: 8
+Memory content after  bitflip:0x9e0x990xd60xda0xd40x940xaa0xe8
+frame name: allocate_stack
+symbol name: __GI___stack_user
+symbol filename: allocatestack.c
+symbol line: 124
+value: {next = 0xe8aa94d4dad6999e, prev = 0x7ffff7ff69c0}
+value address: 0x7ffff76462f0 <__stack_user>
+Type: The type is a structure.
+Type sizeof: 16
+Field name: next
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: prev
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-27 09:20:17]
+Fault Injection Successful after 2.64880299568s
+[INFO -- 2017-03-27 09:20:33]
+event type: exit
+[INFO -- 2017-03-27 09:20:33]
+exit code: 0

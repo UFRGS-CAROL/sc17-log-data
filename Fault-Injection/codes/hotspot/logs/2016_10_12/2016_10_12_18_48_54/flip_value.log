@@ -1,0 +1,44 @@
+2016-10-12 18:48:32:Initialization strings:
+2016-10-12 18:48:33:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-12 18:48:33:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 18:48:33:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 18:48:33:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-12 18:48:33:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-12 18:48:33:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-12 18:48:35:Trying Fault Injection
+2016-10-12 18:48:35:Backtrace BEGIN:
+2016-10-12 18:48:35:#0  0x00007ffff713835e in _IO_acquire_lock_fct (p=<synthetic pointer>) at libioP.h:891
+#1  _IO_fgets (buf=0x7fffffffe77a "324.098770\n", n=<optimized out>, fp=0x609b40) at iofgets.c:50
+#2  0x0000000000401712 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:201
+#3  main (argc=-6267, argv=0xfffffffff7fa0234) at hotspot_check.c:264
+
+2016-10-12 18:48:35:886	in libioP.h
+
+2016-10-12 18:48:35:Backtrace END
+2016-10-12 18:48:35:Type: A floating point type.
+2016-10-12 18:48:35:Type sizeof: 4
+2016-10-12 18:48:35:Mem contents(hex):0x6f0x120x830x3c
+2016-10-12 18:48:35:base address to flip value: 0x4073a0 
+2016-10-12 18:48:35:address max offset: 4
+2016-10-12 18:48:35:Memory content before bitflip:0x6f0x120x830x3c
+2016-10-12 18:48:35:Memory content after  bitflip:0x6f0x120x930x3c
+2016-10-12 18:48:35:Mem contents(hex):0x6f0x120x930x3c
+2016-10-12 18:48:35:frame name: read_input
+2016-10-12 18:48:35:symbol name: chip_width
+2016-10-12 18:48:35:symbol filename: hotspot_check.c
+2016-10-12 18:48:35:symbol line: 34
+2016-10-12 18:48:35:value: 0.0179531258
+2016-10-12 18:48:35:value address: 0x4073a0 <chip_width>
+2016-10-12 18:48:35:Type: A floating point type.
+2016-10-12 18:48:35:Type sizeof: 4
+2016-10-12 18:48:35:Fault Injection Successful after 2.1284840107s
+2016-10-12 18:48:37:Fault Already Injected
+2016-10-12 18:48:38:Fault Already Injected
+2016-10-12 18:48:39:Fault Already Injected
+2016-10-12 18:48:39:Fault Already Injected
+2016-10-12 18:48:39:Fault Already Injected
+2016-10-12 18:48:39:Fault Already Injected
+2016-10-12 18:48:43:Fault Already Injected
+2016-10-12 18:48:45:Fault Already Injected
+2016-10-12 18:48:48:event type: exit
+2016-10-12 18:48:48:exit code: 0

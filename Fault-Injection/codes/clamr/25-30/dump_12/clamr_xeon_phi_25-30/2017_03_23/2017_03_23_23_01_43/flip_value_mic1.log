@@ -1,0 +1,55 @@
+[INFO -- 2017-03-23 22:54:14]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-23 22:54:14]
+Initialization strings:
+[INFO -- 2017-03-23 22:54:15]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-23 22:54:15]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-23 22:54:15]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-23 22:54:15]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-23 22:54:15]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-23 22:54:15]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-23 22:54:15]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-23 22:54:15]
+initSignal:25
+[INFO -- 2017-03-23 22:54:15]
+endSignal:30
+[INFO -- 2017-03-23 22:54:15]
+seqSignal:20
+[INFO -- 2017-03-23 22:54:15]
+faultMode:0
+[INFO -- 2017-03-23 22:54:46]
+Backtrace BEGIN:
+#0  0x00007ffff6be6b70 in __close_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6b92ee0 in _IO_new_file_close_it (fp=fp@entry=0x1920e80) at fileops.c:171
+#2  0x00007ffff6b87c17 in _IO_new_fclose (fp=0x1920e80) at iofclose.c:59
+#3  0x000000000054c1c6 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:503
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7d06dc 
+address max offset: 4
+Memory content after  bitflip:0x000x040x000x00
+frame name: main
+symbol name: view_mode
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 112
+value: 1024
+value address: 0x7d06dc <view_mode>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-23 22:54:46]
+Fault Injection Successful after 31.5332798958s

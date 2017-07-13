@@ -1,0 +1,64 @@
+[INFO -- 2017-03-06 17:57:56]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 17:57:56]
+Initialization strings:
+[INFO -- 2017-03-06 17:57:56]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-06 17:57:56]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 17:57:56]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 17:57:56]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-06 17:57:56]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-06 17:57:56]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-03-06 17:57:56]
+initSignal:0
+[INFO -- 2017-03-06 17:57:56]
+endSignal:2
+[INFO -- 2017-03-06 17:57:56]
+seqSignal:30
+[INFO -- 2017-03-06 17:57:56]
+faultMode:1
+[INFO -- 2017-03-06 17:57:57]
+Backtrace BEGIN:
+#0  __GI___waitpid (pid=66245, stat_loc=stat_loc@entry=0x7fffffffe528, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405bb2 in start_iteration () at ../include/log_helper.c:311
+#4  0x0000000000402c5b in main (argc=9, argv=0x7fffffffec08) at lud_check.c:122
+
+26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+Backtrace END
+Fliping value of field: end
+Fliping value of field: tv_usec
+Memory content before bitflip:0xd80xd90xff0xf70xff0x7f0x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe798
+address max offset: 8
+Memory content after  bitflip:0xd80xd90xff0xf70xff0x7f0x000x06
+frame name: main
+symbol name: sw
+symbol filename: lud_check.c
+symbol line: 52
+value: {begin = {tv_sec = 140737351897888, tv_usec = 12}, end = {tv_sec = 140737351897828, tv_usec = 432486301581695448}}
+value address: 0x7fffffffe780
+Type: The type is a structure.
+Type sizeof: 32
+Field name: begin
+Field Type: The type is a structure.
+Field Type sizeof: 16
+Field name: end
+Field Type: The type is a structure.
+Field Type sizeof: 16
+
+[INFO -- 2017-03-06 17:57:57]
+Fault Injection Successful after 1.52668595314s
+[INFO -- 2017-03-06 17:58:16]
+event type: exit
+[INFO -- 2017-03-06 17:58:16]
+exit code: 1

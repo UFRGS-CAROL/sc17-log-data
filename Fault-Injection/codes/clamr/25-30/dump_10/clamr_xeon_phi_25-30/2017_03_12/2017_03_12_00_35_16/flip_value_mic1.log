@@ -1,0 +1,65 @@
+[INFO -- 2017-03-12 00:31:50]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-12 00:31:50]
+Initialization strings:
+[INFO -- 2017-03-12 00:31:50]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-12 00:31:50]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-12 00:31:50]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-12 00:31:50]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-12 00:31:50]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-12 00:31:50]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-12 00:31:50]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-12 00:31:50]
+initSignal:25
+[INFO -- 2017-03-12 00:31:50]
+endSignal:30
+[INFO -- 2017-03-12 00:31:50]
+seqSignal:20
+[INFO -- 2017-03-12 00:31:50]
+faultMode:2
+[INFO -- 2017-03-12 00:32:28]
+Backtrace BEGIN:
+#0  0x00000000005361d6 in Mesh::partition_cells (this=0x7fae50, numpe=0, z_order=..., method=ORIGINAL_ORDER) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:370
+#1  0x00000000004461e3 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:477
+#2  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+365	   int have_spatial_variables=0;
+366	   switch (method)
+367	   {   case ORIGINAL_ORDER:
+368	         //  Set z_order to the current cell order.
+369	         for (uint ic = 0; ic < ncells; ++ic)
+370	         {   z_order[ic] = ic; }
+371	
+372	         cpu_timers[MESH_TIMER_PARTITION] += cpu_timer_stop(tstart_cpu);
+373	
+374	         return;
+
+Backtrace END
+Memory content before bitflip:0x160x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe420
+address max offset: 4
+Memory content after  bitflip:0xd10xec0x910x1b
+frame name: do_calc
+symbol name: nburst
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 428
+value: 462548177
+value address: 0x7fffffffe420
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-12 00:32:28]
+Fault Injection Successful after 38.1604011059s
+[INFO -- 2017-03-12 00:32:51]
+event type: exit
+[INFO -- 2017-03-12 00:32:51]
+exit code: 0

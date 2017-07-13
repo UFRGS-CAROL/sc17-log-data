@@ -1,0 +1,59 @@
+[INFO -- 2017-03-08 06:18:20]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-08 06:18:20]
+Initialization strings:
+[INFO -- 2017-03-08 06:18:20]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-08 06:18:20]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 06:18:20]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 06:18:20]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 06:18:20]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 06:18:20]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-08 06:18:20]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-08 06:18:20]
+initSignal:20
+[INFO -- 2017-03-08 06:18:20]
+endSignal:25
+[INFO -- 2017-03-08 06:18:20]
+seqSignal:20
+[INFO -- 2017-03-08 06:18:20]
+faultMode:2
+[INFO -- 2017-03-08 06:18:47]
+Backtrace BEGIN:
+#0  __GI___waitpid (pid=196682, stat_loc=stat_loc@entry=0x7fffffffe1b8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:40
+#1  0x00007ffff6b5f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x000000000047d449 in update_timestamp () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c:111
+#3  0x000000000047dfd7 in start_iteration () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c:315
+#4  0x0000000000445cfd in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:412
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+35	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+Backtrace END
+Memory content before bitflip:0x0a0x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7cecb0 
+address max offset: 4
+Memory content after  bitflip:0xef0x9f0x950x02
+frame name: start_iteration
+symbol name: iter_interval_print
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c
+symbol line: 47
+value: 43360239
+value address: 0x7cecb0 <iter_interval_print>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-08 06:18:47]
+Fault Injection Successful after 27.2703790665s
+[INFO -- 2017-03-08 06:19:25]
+event type: exit
+[INFO -- 2017-03-08 06:19:25]
+exit code: 0

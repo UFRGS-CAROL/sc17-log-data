@@ -1,0 +1,210 @@
+2017-02-28 15:29:07:Starting flip_value script
+2017-02-28 15:29:07:Initialization strings:
+2017-02-28 15:29:07:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 15:29:07:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 15:29:07:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 15:29:07:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 15:29:07:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 15:29:07:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-02-28 15:29:07:initSignal:12
+2017-02-28 15:29:07:endSignal:15
+2017-02-28 15:29:07:seqSignal:15
+2017-02-28 15:29:20:Backtrace BEGIN:
+2017-02-28 15:29:20:#0  0x00007ffff7107dda in round_and_return (retval=retval@entry=0x7fffffffdf68, exponent=<optimized out>, negative=negative@entry=0, round_limb=<optimized out>, round_limb@entry=4336958658937631551, round_bit=<optimized out>, more_bits=<optimized out>) at strtod_l.c:343
+#1  0x00007ffff7109845 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe050 "323.235107", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1762
+#2  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe050 "323.235107", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0) at strtod.c:54
+#3  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2332
+#4  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "323.235107\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#5  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#6  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#7  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-02-28 15:29:20:338	in strtod_l.c
+
+2017-02-28 15:29:20:Backtrace END
+2017-02-28 15:29:20:Type: The type is an array.
+2017-02-28 15:29:20:Type sizeof: 8
+2017-02-28 15:29:20:Fliping array at pos: 0
+2017-02-28 15:29:20:Type: The type is an integer type.
+2017-02-28 15:29:20:Type sizeof: 8
+2017-02-28 15:29:20:Mem contents(hex):0x180x9e0xa10x000x000x000x000x00
+2017-02-28 15:29:20:Fault Mode: One bit-flip
+2017-02-28 15:29:20:base address to flip value: 0x7fffffffdf68
+2017-02-28 15:29:20:address max offset: 8
+2017-02-28 15:29:20:Memory content before bitflip:0x180x9e0xa10x000x000x000x000x00
+2017-02-28 15:29:20:Backtrace BEGIN:
+2017-02-28 15:29:20:#0  0x00007ffff71382ba in _IO_fgets (buf=0x7fffffffe640 "323.308075\n", n=256, fp=0x609b40) at iofgets.c:50
+#1  0x0000000000404538 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:202
+#2  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-02-28 15:29:20:45	in iofgets.c
+
+2017-02-28 15:29:20:Backtrace END
+2017-02-28 15:29:20:Type: A floating point type.
+2017-02-28 15:29:20:Type sizeof: 4
+2017-02-28 15:29:20:Mem contents(hex):0x000x000xa00x42
+2017-02-28 15:29:20:Fault Mode: One bit-flip
+2017-02-28 15:29:20:base address to flip value: 0x407500 
+2017-02-28 15:29:20:address max offset: 4
+2017-02-28 15:29:20:Memory content before bitflip:0x000x000xa00x42
+2017-02-28 15:29:20:Backtrace BEGIN:
+2017-02-28 15:29:20:#0  str_to_mpn (str=0x7fffffffe056 "8076", str@entry=0x7fffffffe053 ".028076", digcnt=4, digcnt@entry=6, n=n@entry=0x7fffffffdf70, nsize=nsize@entry=0x7fffffffdf58, exponent=exponent@entry=0x7fffffffdf60, decimal_len=decimal_len@entry=1, thousands=0x0, decimal=<optimized out>) at strtod_l.c:400
+#1  0x00007ffff71092a0 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe050 "323.028076", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1449
+#2  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe050 "323.028076", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0) at strtod.c:54
+#3  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2332
+#4  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "323.028076\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#5  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#6  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#7  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-02-28 15:29:20:395	in strtod_l.c
+
+2017-02-28 15:29:20:Backtrace END
+2017-02-28 15:29:21:Type: The type is an array.
+2017-02-28 15:29:21:Type sizeof: 80
+2017-02-28 15:29:21:Fliping array at pos: 0
+2017-02-28 15:29:21:Type: The type is an integer type.
+2017-02-28 15:29:21:Type sizeof: 8
+2017-02-28 15:29:21:Mem contents(hex):0x400x420x0f0x000x000x000x000x00
+2017-02-28 15:29:21:Fault Mode: Random bit-flip
+2017-02-28 15:29:21:base address to flip value: 0x7fffffffdf70
+2017-02-28 15:29:21:address max offset: 8
+2017-02-28 15:29:21:Memory content before bitflip:0x400x420x0f0x000x000x000x000x00
+2017-02-28 15:29:21:Backtrace BEGIN:
+2017-02-28 15:29:21:#0  __GI___rawmemchr (s=s@entry=0x7fffffffe640, c_in=c_in@entry=0) at ../string/rawmemchr.c:65
+#1  0x00007ffff7145ad0 in _IO_str_init_static_internal (sf=sf@entry=0x7fffffffe440, ptr=ptr@entry=0x7fffffffe640 "322.982666\n", size=size@entry=0, pstart=pstart@entry=0x0) at strops.c:44
+#2  0x00007ffff71365d5 in __GI___isoc99_vsscanf (string=0x7fffffffe640 "322.982666\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:41
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#5  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-02-28 15:29:21:60	in ../string/rawmemchr.c
+
+2017-02-28 15:29:21:Backtrace END
+2017-02-28 15:29:21:Type: The type is a structure.
+2017-02-28 15:29:21:Type sizeof: 168
+2017-02-28 15:29:21:Fliping value of field: __seekpos
+2017-02-28 15:29:21:Type: The type is a pointer.
+2017-02-28 15:29:21:Type sizeof: 8
+2017-02-28 15:29:21:Fliping a bit of the pointer
+2017-02-28 15:29:21:Mem contents(hex):0xf00x470x140xf70xff0x7f0x000x00
+2017-02-28 15:29:21:Fault Mode: Zero bit-flip
+2017-02-28 15:29:21:base address to flip value: 0x7ffff74237d0 
+2017-02-28 15:29:21:address max offset: 8
+2017-02-28 15:29:21:Memory content before bitflip:0xf00x470x140xf70xff0x7f0x000x00
+2017-02-28 15:29:21:Backtrace BEGIN:
+2017-02-28 15:29:21:#0  0x00007ffff78a981e in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 15:29:21:60	in ../string/rawmemchr.c
+
+2017-02-28 15:29:21:Backtrace END
+2017-02-28 15:29:23:Backtrace BEGIN:
+2017-02-28 15:29:23:#0  0x00007ffff78a981e in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 15:29:23:60	in ../string/rawmemchr.c
+
+2017-02-28 15:29:23:Backtrace END
+2017-02-28 15:29:24:Backtrace BEGIN:
+2017-02-28 15:29:24:#0  0x00007ffff78a981e in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 15:29:24:60	in ../string/rawmemchr.c
+
+2017-02-28 15:29:24:Backtrace END
+2017-02-28 15:29:26:Backtrace BEGIN:
+2017-02-28 15:29:26:#0  0x00007ffff78a981e in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 15:29:26:60	in ../string/rawmemchr.c
+
+2017-02-28 15:29:26:Backtrace END
+2017-02-28 15:29:27:Backtrace BEGIN:
+2017-02-28 15:29:27:#0  0x00007ffff78a981e in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 15:29:27:60	in ../string/rawmemchr.c
+
+2017-02-28 15:29:27:Backtrace END
+2017-02-28 15:29:28:Backtrace BEGIN:
+2017-02-28 15:29:28:#0  0x00007ffff78a981e in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 15:29:28:60	in ../string/rawmemchr.c
+
+2017-02-28 15:29:28:Backtrace END
+2017-02-28 15:29:40:event type: exit
+2017-02-28 15:29:40:exit code: 0

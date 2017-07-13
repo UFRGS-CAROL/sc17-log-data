@@ -1,0 +1,46 @@
+2017-03-02 00:17:10:Starting flip_value script
+2017-03-02 00:17:10:Initialization strings:
+2017-03-02 00:17:11:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 00:17:11:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 00:17:11:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 00:17:11:(4) file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-03-02 00:17:11:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-03-02 00:17:11:(6) set args 16394 10 228 /micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10 /micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10
+2017-03-02 00:17:11:initSignal:8
+2017-03-02 00:17:11:endSignal:12
+2017-03-02 00:17:11:seqSignal:30
+2017-03-02 00:17:19:Backtrace BEGIN:
+2017-03-02 00:17:19:#0  0x0000000000402c43 in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:330
+#1  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-03-02 00:17:19:325	    //}
+326	
+327	
+328	    for (int i = 1 ; i < max_cols; i++){
+329	        for (int j = 1 ; j < max_rows; j++){
+330	            referrence[i*max_cols+j] = blosum62[input_itemsets[i*max_cols]][input_itemsets[j]];
+331	        }
+332	    }
+333	
+334	    for( int i = 1; i< max_rows ; i++)
+
+2017-03-02 00:17:19:Backtrace END
+2017-03-02 00:17:19:Type: The type is a pointer.
+2017-03-02 00:17:19:Type sizeof: 8
+2017-03-02 00:17:19:Fliping a bit of the pointer
+2017-03-02 00:17:19:Mem contents(hex):0x100x800x530x360xff0x7f0x000x00
+2017-03-02 00:17:19:Fault Mode: Double bit-flip
+2017-03-02 00:17:19:base address to flip value: 0x7fffffffea38
+2017-03-02 00:17:19:address max offset: 8
+2017-03-02 00:17:19:Memory content before bitflip:0x100x800x530x360xff0x7f0x000x00
+2017-03-02 00:17:19:Memory content after  bitflip:0x100x800x710x360xff0x7f0x000x00
+2017-03-02 00:17:19:Mem contents(hex):0x100x800x710x360xff0x7f0x000x00
+2017-03-02 00:17:19:frame name: runTest
+2017-03-02 00:17:19:symbol name: gold_itemsets
+2017-03-02 00:17:19:symbol filename: needle_check.cpp
+2017-03-02 00:17:19:symbol line: 266
+2017-03-02 00:17:19:value: 0x7fff36538010
+2017-03-02 00:17:19:value address: 0x7fffffffea38
+2017-03-02 00:17:19:Type: The type is a pointer.
+2017-03-02 00:17:19:Type sizeof: 8
+2017-03-02 00:17:19:Fault Injection Successful after 8.92254304886s

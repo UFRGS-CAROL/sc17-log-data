@@ -1,0 +1,65 @@
+2017-02-28 10:09:50:Starting flip_value script
+2017-02-28 10:09:50:Initialization strings:
+2017-02-28 10:09:50:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 10:09:50:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 10:09:50:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 10:09:50:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 10:09:50:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 10:09:50:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 10:09:50:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 10:09:50:initSignal:15
+2017-02-28 10:09:50:endSignal:20
+2017-02-28 10:09:50:seqSignal:20
+2017-02-28 10:10:08:Backtrace BEGIN:
+2017-02-28 10:10:08:#0  0x00007ffff6ba0545 in __GI_memcpy (dstpp=0x7ffff7e5c248, srcpp=srcpp@entry=0x7fffffffe0dd, len=len@entry=3) at ../string/memcpy.c:31
+#1  0x00007ffff6b9ff79 in __GI___mempcpy (dest=<optimized out>, src=src@entry=0x7fffffffe0dd, len=len@entry=3) at ../string/mempcpy.c:35
+#2  0x00007ffff6b92c04 in _IO_new_file_xsputn (f=0x1922280, data=0x7fffffffe0dd, n=3) at fileops.c:1307
+#3  0x00007ffff6b677b3 in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1641
+#4  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#5  0x000000000054b9dd in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:479
+#6  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#7  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-28 10:10:08:26	in ../string/memcpy.c
+
+2017-02-28 10:10:08:Backtrace END
+2017-02-28 10:10:14:Type: The type is a structure.
+2017-02-28 10:10:14:Type sizeof: 32
+2017-02-28 10:10:14:Fliping value of field: __routine
+2017-02-28 10:10:14:Type: The type is a pointer.
+2017-02-28 10:10:14:Type sizeof: 8
+2017-02-28 10:10:14:Fliping a bit of the value pointed by a pointer
+2017-02-28 10:10:14:Type: The type is a function.
+2017-02-28 10:10:14:Type sizeof: 1
+2017-02-28 10:10:14:Mem contents(hex):0x48
+2017-02-28 10:10:14:Fault Mode: Double bit-flip
+2017-02-28 10:10:14:base address to flip value: 0x7ffff6b85e30 
+2017-02-28 10:10:14:address max offset: 1
+2017-02-28 10:10:14:Memory content before bitflip:0x48
+2017-02-28 10:10:14:Memory content after  bitflip:0x44
+2017-02-28 10:10:14:Mem contents(hex):0x44
+2017-02-28 10:10:14:frame name: _IO_vfprintf_internal
+2017-02-28 10:10:14:symbol name: _buffer
+2017-02-28 10:10:14:symbol filename: vfprintf.c
+2017-02-28 10:10:14:symbol line: 1319
+2017-02-28 10:10:14:value: {__routine = 0x7ffff6b85e30 <__funlockfile>, __arg = 0x1922280, __canceltype = 0, __prev = 0x0}
+2017-02-28 10:10:14:value address: 0x7fffffffdcd8
+2017-02-28 10:10:14:Type: The type is a structure.
+2017-02-28 10:10:14:Type sizeof: 32
+2017-02-28 10:10:14:Field name: __routine
+2017-02-28 10:10:14:Field Type:
+2017-02-28 10:10:14:Type: The type is a pointer.
+2017-02-28 10:10:14:Type sizeof: 8
+2017-02-28 10:10:14:Field name: __arg
+2017-02-28 10:10:14:Field Type:
+2017-02-28 10:10:14:Type: The type is a pointer.
+2017-02-28 10:10:14:Type sizeof: 8
+2017-02-28 10:10:14:Field name: __canceltype
+2017-02-28 10:10:14:Field Type:
+2017-02-28 10:10:14:Type: The type is an integer type.
+2017-02-28 10:10:14:Type sizeof: 4
+2017-02-28 10:10:14:Field name: __prev
+2017-02-28 10:10:14:Field Type:
+2017-02-28 10:10:14:Type: The type is a pointer.
+2017-02-28 10:10:14:Type sizeof: 8
+2017-02-28 10:10:14:Fault Injection Successful after 24.491642952s

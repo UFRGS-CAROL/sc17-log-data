@@ -1,0 +1,67 @@
+2017-01-25 16:59:47:Starting flip_value script
+2017-01-25 16:59:47:Initialization strings:
+2017-01-25 16:59:48:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 16:59:48:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 16:59:48:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 16:59:48:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 16:59:48:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 16:59:48:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 16:59:48:initSignal:6
+2017-01-25 16:59:48:endSignal:8
+2017-01-25 16:59:48:seqSignal:30
+2017-01-25 16:59:55:Trying Fault Injection
+2017-01-25 16:59:55:Inferior PID: 179478
+2017-01-25 16:59:55:Inferior is valid: True
+2017-01-25 16:59:55:Inferior #threads: 229
+2017-01-25 16:59:55:Backtrace BEGIN:
+2017-01-25 16:59:55:#0  do_system (line=0x7fffffffe650 "echo 1485381266 > /micNfs/carol/logs/timestamp.txt") at ../sysdeps/posix/system.c:116
+#1  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#2  0x0000000000405bee in end_iteration () at ../include/log_helper.c:336
+#3  0x0000000000402c82 in main (argc=9, argv=0x7fffffffec08) at lud_check.c:126
+
+2017-01-25 16:59:55:111	in ../sysdeps/posix/system.c
+
+2017-01-25 16:59:55:Backtrace END
+2017-01-25 16:59:58:Thread name: None
+2017-01-25 16:59:58:Thread num: 1
+2017-01-25 16:59:58:Thread ptid: (179478, 179478, 0)
+2017-01-25 16:59:58:bitFlip function
+2017-01-25 16:59:58:Type: The type is an array.
+2017-01-25 16:59:58:Type sizeof: 100
+2017-01-25 16:59:58:Fliping array at pos: 12
+2017-01-25 16:59:58:bitFlip function
+2017-01-25 16:59:58:Type: The type is an integer type.
+2017-01-25 16:59:58:Type sizeof: 1
+2017-01-25 16:59:58:Mem contents(hex):0x32
+2017-01-25 16:59:58:base address to flip value: 0x7fffffffe65c 
+2017-01-25 16:59:58:address max offset: 1
+2017-01-25 16:59:58:Memory content before bitflip:0x32
+2017-01-25 16:59:58:Memory content after  bitflip:0xb2
+2017-01-25 16:59:58:Mem contents(hex):0xb2
+2017-01-25 16:59:58:frame name: update_timestamp
+2017-01-25 16:59:58:symbol name: string
+2017-01-25 16:59:58:symbol filename: ../include/log_helper.c
+2017-01-25 16:59:58:symbol line: 100
+2017-01-25 16:59:58:value: "echo 1485381\262\066\066 > /micNfs/carol/logs/timestamp.txt", '\000' <repeats 49 times>
+2017-01-25 16:59:58:value address: 0x7fffffffe650
+2017-01-25 16:59:58:Type: The type is an array.
+2017-01-25 16:59:58:Type sizeof: 100
+2017-01-25 16:59:58:Field name: None
+2017-01-25 16:59:58:Field Type:
+2017-01-25 16:59:58:Type: A range type, that is, an integer type with bounds.
+2017-01-25 16:59:58:Type sizeof: 1
+2017-01-25 16:59:58:Type range: (0L, 99L)
+2017-01-25 16:59:58:Fault Injection Successful after 10.4421539307s
+2017-01-25 16:59:58:Fault Already Injected
+2017-01-25 16:59:58:Fault Already Injected
+2017-01-25 16:59:58:Fault Already Injected
+2017-01-25 16:59:58:Fault Already Injected
+2017-01-25 16:59:59:Fault Already Injected
+2017-01-25 16:59:59:Fault Already Injected
+2017-01-25 16:59:59:Fault Already Injected
+2017-01-25 16:59:59:Fault Already Injected
+2017-01-25 17:00:00:Fault Already Injected
+2017-01-25 17:00:00:Fault Already Injected
+2017-01-25 17:00:00:Fault Already Injected
+2017-01-25 17:00:00:event type: exit
+2017-01-25 17:00:00:exit code: 0

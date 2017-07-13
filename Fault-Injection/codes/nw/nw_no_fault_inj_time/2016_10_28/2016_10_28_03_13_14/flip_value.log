@@ -1,0 +1,71 @@
+2016-10-28 03:12:49:Initialization strings:
+2016-10-28 03:12:50:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-28 03:12:50:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-28 03:12:50:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-28 03:12:50:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-28 03:12:50:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-28 03:12:50:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-28 03:12:50:Trying Fault Injection
+2016-10-28 03:12:50:Inferior PID: 160059
+2016-10-28 03:12:50:Inferior is valid: True
+2016-10-28 03:12:50:Inferior #threads: 1
+2016-10-28 03:12:50:Backtrace BEGIN:
+2016-10-28 03:12:50:#0  __GI___waitpid (pid=160068, stat_loc=stat_loc@entry=0x7fffffffe5e8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff6d9d41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x000000000040648c in update_timestamp () at ../../include/log_helper.c:108
+#3  start_log_file (benchmark_name=0x27144 <error: Cannot access memory at address 0x27144>, test_info=0x7fffffffe5e8 "") at ../../include/log_helper.c:197
+#4  0x00000000004014df in runTest (argc=<optimized out>, argv=<optimized out>) at needle_check.cpp:294
+#5  main (argc=160068, argv=0x7fffffffe5e8) at needle_check.cpp:114
+
+2016-10-28 03:12:50:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-28 03:12:50:Backtrace END
+2016-10-28 03:12:50:Thread name: None
+2016-10-28 03:12:50:Thread num: 1
+2016-10-28 03:12:50:Thread ptid: (160059, 160059, 0)
+2016-10-28 03:12:50:bitFlip function
+2016-10-28 03:12:50:Type: The type is a structure.
+2016-10-28 03:12:50:Type sizeof: 152
+2016-10-28 03:12:50:Fliping value of field: sa_flags
+2016-10-28 03:12:50:bitFlip function
+2016-10-28 03:12:50:Type: The type is an integer type.
+2016-10-28 03:12:50:Type sizeof: 4
+2016-10-28 03:12:50:Mem contents(hex):0x000x000x000x00
+2016-10-28 03:12:50:base address to flip value: 0x7ffff70b4568 
+2016-10-28 03:12:50:address max offset: 4
+2016-10-28 03:12:50:Memory content before bitflip:0x000x000x000x00
+2016-10-28 03:12:50:Memory content after  bitflip:0x000x000x400x00
+2016-10-28 03:12:50:Mem contents(hex):0x000x000x400x00
+2016-10-28 03:12:50:frame name: do_system
+2016-10-28 03:12:50:symbol name: intr
+2016-10-28 03:12:50:symbol filename: ../sysdeps/posix/system.c
+2016-10-28 03:12:50:symbol line: 34
+2016-10-28 03:12:50:value: {__sigaction_handler = {sa_handler = 0x0, sa_sigaction = 0x0}, sa_mask = {__val = {0, 6, 140737354102440, 1, 0, 1, 140737354111400, 18446744073709551615, 140737488349284, 0, 140737354112256, 140737488348624, 4294967296, 140737354111400, 140737488348608, 140737338129858}}, sa_flags = 4194304, sa_restorer = 0x7fdb477a5610}
+2016-10-28 03:12:50:value address: 0x7ffff70b44e0 <intr>
+2016-10-28 03:12:50:Type: The type is a structure.
+2016-10-28 03:12:50:Type sizeof: 152
+2016-10-28 03:12:50:Field name: __sigaction_handler
+2016-10-28 03:12:50:Field Type:
+2016-10-28 03:12:50:Type: The type is a union.
+2016-10-28 03:12:50:Type sizeof: 8
+2016-10-28 03:12:50:Field name: sa_mask
+2016-10-28 03:12:50:Field Type:
+2016-10-28 03:12:50:Type: The type is a structure.
+2016-10-28 03:12:50:Type sizeof: 128
+2016-10-28 03:12:50:Field name: sa_flags
+2016-10-28 03:12:50:Field Type:
+2016-10-28 03:12:50:Type: The type is an integer type.
+2016-10-28 03:12:50:Type sizeof: 4
+2016-10-28 03:12:50:Field name: sa_restorer
+2016-10-28 03:12:50:Field Type:
+2016-10-28 03:12:50:Type: The type is a pointer.
+2016-10-28 03:12:50:Type sizeof: 8
+2016-10-28 03:12:50:Fault Injection Successful after 0.823338985443s
+2016-10-28 03:12:55:Fault Already Injected
+2016-10-28 03:12:58:Fault Already Injected
+2016-10-28 03:12:59:Fault Already Injected
+2016-10-28 03:13:00:Fault Already Injected
+2016-10-28 03:13:05:Fault Already Injected
+2016-10-28 03:13:05:Fault Already Injected
+2016-10-28 03:13:07:event type: exit
+2016-10-28 03:13:07:exit code: 0

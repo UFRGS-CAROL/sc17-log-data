@@ -1,0 +1,92 @@
+2016-10-12 12:06:29:Initialization strings:
+2016-10-12 12:06:29:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-12 12:06:29:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 12:06:29:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 12:06:29:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-12 12:06:29:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-12 12:06:29:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-12 12:06:29:Trying Fault Injection
+2016-10-12 12:06:29:Inferior PID: 76081
+2016-10-12 12:06:29:Inferior is valid: True
+2016-10-12 12:06:29:Inferior #threads: 1
+2016-10-12 12:06:29:Backtrace BEGIN:
+2016-10-12 12:06:29:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000007 in ?? ()
+#7  0x00007fffffffedf0 in ?? ()
+#8  0x00007fffffffee1e in ?? ()
+#9  0x00007fffffffee22 in ?? ()
+#10 0x00007fffffffee25 in ?? ()
+#11 0x00007fffffffee62 in ?? ()
+#12 0x00007fffffffee9e in ?? ()
+#13 0x00007fffffffeed8 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2016-10-12 12:06:29:69	in dl-debug.c
+
+2016-10-12 12:06:29:Backtrace END
+2016-10-12 12:06:29:Thread name: None
+2016-10-12 12:06:29:Thread num: 1
+2016-10-12 12:06:29:Thread ptid: (76081, 76081, 0)
+2016-10-12 12:06:29:bitFlip function
+2016-10-12 12:06:29:Type: The type is a pointer.
+2016-10-12 12:06:29:Type sizeof: 8
+2016-10-12 12:06:29:Error gdbException(frameFlip): Attempt to dereference a generic pointer.
+2016-10-12 12:06:29:Fault Injection Failed after 0.969268083572s
+2016-10-12 12:06:30:Trying Fault Injection
+2016-10-12 12:06:30:Inferior PID: 76081
+2016-10-12 12:06:30:Inferior is valid: True
+2016-10-12 12:06:30:Inferior #threads: 1
+2016-10-12 12:06:30:Backtrace BEGIN:
+2016-10-12 12:06:30:#0  __GI___waitpid (pid=76094, stat_loc=stat_loc@entry=0x7fffffffe1d8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000406619 in update_timestamp () at ../../include/log_helper.c:107
+#3  0x000000000040721e in start_iteration () at ../../include/log_helper.c:311
+#4  0x0000000000402875 in main (argc=7, argv=0x7fffffffec08) at main_check.c:236
+
+2016-10-12 12:06:30:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-12 12:06:30:Backtrace END
+2016-10-12 12:06:31:Thread name: None
+2016-10-12 12:06:31:Thread num: 1
+2016-10-12 12:06:31:Thread ptid: (76081, 76081, 0)
+2016-10-12 12:06:31:bitFlip function
+2016-10-12 12:06:31:Type: The type is a pointer.
+2016-10-12 12:06:31:Type sizeof: 8
+2016-10-12 12:06:31:Fliping a bit of the value pointed by a pointer
+2016-10-12 12:06:31:bitFlip function
+2016-10-12 12:06:31:Type: The type is a structure.
+2016-10-12 12:06:31:Type sizeof: 656
+2016-10-12 12:06:31:Fliping value of field: number
+2016-10-12 12:06:31:bitFlip function
+2016-10-12 12:06:31:Type: The type is an integer type.
+2016-10-12 12:06:31:Type sizeof: 4
+2016-10-12 12:06:31:Mem contents(hex):0x000x000x000x00
+2016-10-12 12:06:31:base address to flip value: 0x7ffff6ab001c
+2016-10-12 12:06:31:address max offset: 4
+2016-10-12 12:06:31:Memory content before bitflip:0x000x000x000x00
+2016-10-12 12:06:31:Memory content after  bitflip:0x000x000x010x00
+2016-10-12 12:06:31:Mem contents(hex):0x000x000x010x00
+2016-10-12 12:06:31:frame name: main
+2016-10-12 12:06:31:symbol name: box_cpu
+2016-10-12 12:06:31:symbol filename: main_check.c
+2016-10-12 12:06:31:symbol line: 57
+2016-10-12 12:06:31:value: 0x7ffff6ab0010
+2016-10-12 12:06:31:value address: 0x7fffffffe8f0
+2016-10-12 12:06:31:Type: The type is a pointer.
+2016-10-12 12:06:31:Type sizeof: 8
+2016-10-12 12:06:31:Fault Injection Successful after 2.11241793633s
+2016-10-12 12:06:31:Fault Already Injected
+2016-10-12 12:06:33:Fault Already Injected
+2016-10-12 12:06:36:Fault Already Injected
+2016-10-12 12:06:37:Fault Already Injected
+2016-10-12 12:06:37:Fault Already Injected
+2016-10-12 12:06:38:Fault Already Injected
+2016-10-12 12:06:39:Fault Already Injected
+2016-10-12 12:06:39:Fault Already Injected
+2016-10-12 12:06:40:event type: exit
+2016-10-12 12:06:40:exit code: 0

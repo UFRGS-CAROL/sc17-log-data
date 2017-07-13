@@ -1,0 +1,49 @@
+2017-01-24 17:38:52:Starting flip_value script
+2017-01-24 17:38:52:Initialization strings:
+2017-01-24 17:38:52:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-24 17:38:52:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 17:38:52:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 17:38:52:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-24 17:38:52:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-24 17:38:52:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-24 17:38:52:initSignal:21
+2017-01-24 17:38:52:endSignal:28
+2017-01-24 17:38:52:seqSignal:15
+2017-01-24 17:39:17:Backtrace BEGIN:
+2017-01-24 17:39:17:#0  0x00000000004032d0 in L_dgemm_185__par_region0_2_0 () at dgemm.c:211
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe550 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-01-24 17:39:17:206	                        BB_arr(j,k) =  B_arr(kg,jg);
+207	
+208	                for(ii = 0; ii < order; ii+=block) {
+209	
+210	                    for (kg=kk,k=0; kg<MIN(kk+block,order); k++,kg++)
+211	                        for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+212	                            AA_arr(i,k) = A_arr(ig,kg);
+213	
+214	                    for (jg=jj,j=0; jg<MIN(jj+block,order); j++,jg++)
+215	                        for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+
+2017-01-24 17:39:17:Backtrace END
+2017-01-24 17:39:28:Type: The type is a pointer.
+2017-01-24 17:39:28:Type sizeof: 8
+2017-01-24 17:39:28:Fliping a bit of the value pointed by a pointer
+2017-01-24 17:39:28:Type: A floating point type.
+2017-01-24 17:39:28:Type sizeof: 8
+2017-01-24 17:39:28:Mem contents(hex):0x920x9b0x070xc10x730xeb0xc20xc6
+2017-01-24 17:39:28:base address to flip value: 0x61a6c0
+2017-01-24 17:39:28:address max offset: 8
+2017-01-24 17:39:28:Memory content before bitflip:0x920x9b0x070xc10x730xeb0xc20xc6
+2017-01-24 17:39:28:Memory content after  bitflip:0x920x9b0x060xc10x730xeb0xc20xc6
+2017-01-24 17:39:28:Mem contents(hex):0x920x9b0x060xc10x730xeb0xc20xc6
+2017-01-24 17:39:28:frame name: L_dgemm_185__par_region0_2_0
+2017-01-24 17:39:28:symbol name: CC
+2017-01-24 17:39:28:symbol filename: dgemm.c
+2017-01-24 17:39:28:symbol line: 187
+2017-01-24 17:39:28:value: 0x61a6c0
+2017-01-24 17:39:28:value address: 0x7fffffffdf78
+2017-01-24 17:39:28:Type: The type is a pointer.
+2017-01-24 17:39:28:Type sizeof: 8
+2017-01-24 17:39:28:Fault Injection Successful after 36.134665966s

@@ -1,0 +1,82 @@
+2017-02-22 05:50:18:Starting flip_value script
+2017-02-22 05:50:18:Initialization strings:
+2017-02-22 05:50:19:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-22 05:50:19:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 05:50:19:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 05:50:19:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-22 05:50:19:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-22 05:50:19:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-02-22 05:50:19:initSignal:0
+2017-02-22 05:50:19:endSignal:2
+2017-02-22 05:50:19:seqSignal:30
+2017-02-22 05:50:19:Backtrace BEGIN:
+2017-02-22 05:50:19:#0  __GI___waitpid (pid=29741, stat_loc=stat_loc@entry=0x7fffffffe528, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405bb2 in start_iteration () at ../include/log_helper.c:311
+#4  0x0000000000402c5b in main (argc=9, argv=0x7fffffffec08) at lud_check.c:122
+
+2017-02-22 05:50:19:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-02-22 05:50:19:Backtrace END
+2017-02-22 05:50:19:Type: The type is an integer type.
+2017-02-22 05:50:19:Type sizeof: 8
+2017-02-22 05:50:19:Mem contents(hex):0xcc0x6b0xad0x580x000x000x000x00
+2017-02-22 05:50:19:Fault Mode: Zero bit-flip
+2017-02-22 05:50:19:base address to flip value: 0x7fffffffe728
+2017-02-22 05:50:19:address max offset: 8
+2017-02-22 05:50:19:Memory content before bitflip:0xcc0x6b0xad0x580x000x000x000x00
+2017-02-22 05:50:19:Backtrace BEGIN:
+2017-02-22 05:50:20:#0  __GI___waitpid (pid=29741, stat_loc=stat_loc@entry=0x7fffffffe528, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405bb2 in start_iteration () at ../include/log_helper.c:311
+#4  0x0000000000402c5b in main (argc=9, argv=0x7fffffffec08) at lud_check.c:122
+
+2017-02-22 05:50:20:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-02-22 05:50:20:Backtrace END
+2017-02-22 05:50:20:Type: The type is an integer type.
+2017-02-22 05:50:20:Type sizeof: 4
+2017-02-22 05:50:20:Mem contents(hex):0xff0xff0xff0xff
+2017-02-22 05:50:20:Fault Mode: One bit-flip
+2017-02-22 05:50:20:base address to flip value: 0x7fffffffe954
+2017-02-22 05:50:20:address max offset: 4
+2017-02-22 05:50:20:Memory content before bitflip:0xff0xff0xff0xff
+2017-02-22 05:50:20:Backtrace BEGIN:
+2017-02-22 05:50:20:#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff74312d0 in ?? () at pthread_create.c:237 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libpthread.so.0
+#2  0x00007ffe607c9d00 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-02-22 05:50:20:76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+2017-02-22 05:50:20:Backtrace END
+2017-02-22 05:50:22:Type: The type is an array.
+2017-02-22 05:50:22:Type sizeof: 12
+2017-02-22 05:50:22:Fliping array at pos: 2
+2017-02-22 05:50:22:Type: The type is an integer type.
+2017-02-22 05:50:22:Type sizeof: 4
+2017-02-22 05:50:22:Mem contents(hex):0x080x030x000x00
+2017-02-22 05:50:22:Fault Mode: Single bit-flip
+2017-02-22 05:50:22:base address to flip value: 0x7ffff743c378 
+2017-02-22 05:50:22:address max offset: 4
+2017-02-22 05:50:22:Memory content before bitflip:0x080x030x000x00
+2017-02-22 05:50:22:Memory content after  bitflip:0x480x030x000x00
+2017-02-22 05:50:22:Mem contents(hex):0x480x030x000x00
+2017-02-22 05:50:22:frame name: __pthread_create_2_1
+2017-02-22 05:50:22:symbol name: _thread_db_pthread_cancelhandling
+2017-02-22 05:50:22:symbol filename: ../nptl_db/structs.def
+2017-02-22 05:50:22:symbol line: 31
+2017-02-22 05:50:22:value: {32, 1, 840}
+2017-02-22 05:50:22:value address: 0x7ffff743c370 <_thread_db_pthread_cancelhandling>
+2017-02-22 05:50:22:Type: The type is an array.
+2017-02-22 05:50:22:Type sizeof: 12
+2017-02-22 05:50:22:Field name: None
+2017-02-22 05:50:22:Field Type:
+2017-02-22 05:50:22:Type: A range type, that is, an integer type with bounds.
+2017-02-22 05:50:22:Type sizeof: 8
+2017-02-22 05:50:22:Type range: (0L, 2L)
+2017-02-22 05:50:22:Fault Injection Successful after 3.38254904747s
+2017-02-22 05:50:41:event type: exit
+2017-02-22 05:50:41:exit code: 1

@@ -1,0 +1,63 @@
+2017-01-10 02:08:11:Starting flip_value script
+2017-01-10 02:08:11:Initialization strings:
+2017-01-10 02:08:11:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-10 02:08:11:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-10 02:08:11:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-10 02:08:11:(4) file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-01-10 02:08:11:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-01-10 02:08:11:(6) set args 16394 10 228 /micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10 /micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10
+2017-01-10 02:08:11:initSignal:0
+2017-01-10 02:08:11:endSignal:4
+2017-01-10 02:08:11:seqSignal:30
+2017-01-10 02:08:12:Trying Fault Injection
+2017-01-10 02:08:12:Inferior PID: 17506
+2017-01-10 02:08:12:Inferior is valid: True
+2017-01-10 02:08:12:Inferior #threads: 1
+2017-01-10 02:08:12:Backtrace BEGIN:
+2017-01-10 02:08:12:#0  __GI___waitpid (pid=17513, stat_loc=stat_loc@entry=0x7fffffffe208, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff6d9d41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x00000000004036ad in update_timestamp () at ../include/log_helper.cpp:107
+#3  0x0000000000403a8d in start_log_file (benchmark_name=0x7fffffffe818 "openmpNW", test_info=0x7fffffffe750 "max_rows:16394 max_cols:16394 penalty:10 omp_num_threads:228") at ../include/log_helper.cpp:196
+#4  0x0000000000402a6c in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:296
+#5  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-01-10 02:08:12:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-01-10 02:08:12:Backtrace END
+2017-01-10 02:08:12:Thread name: None
+2017-01-10 02:08:12:Thread num: 1
+2017-01-10 02:08:12:Thread ptid: (17506, 17506, 0)
+2017-01-10 02:08:12:bitFlip function
+2017-01-10 02:08:12:Type: The type is an array.
+2017-01-10 02:08:12:Type sizeof: 31
+2017-01-10 02:08:12:Fliping array at pos: 6
+2017-01-10 02:08:12:bitFlip function
+2017-01-10 02:08:12:Type: The type is an integer type.
+2017-01-10 02:08:12:Type sizeof: 1
+2017-01-10 02:08:12:Mem contents(hex):0x61
+2017-01-10 02:08:12:base address to flip value: 0x606a01  
+2017-01-10 02:08:12:address max offset: 1
+2017-01-10 02:08:12:Memory content before bitflip:0x61
+2017-01-10 02:08:12:Memory content after  bitflip:0x65
+2017-01-10 02:08:12:Mem contents(hex):0x65
+2017-01-10 02:08:12:frame name: update_timestamp
+2017-01-10 02:08:12:symbol name: config_file
+2017-01-10 02:08:12:symbol filename: ../include/log_helper.cpp
+2017-01-10 02:08:12:symbol line: 44
+2017-01-10 02:08:12:value: "/etc/rediation-benchmarks.conf"
+2017-01-10 02:08:12:value address: 0x6069fb <config_file>
+2017-01-10 02:08:12:Type: The type is an array.
+2017-01-10 02:08:12:Type sizeof: 31
+2017-01-10 02:08:12:Field name: None
+2017-01-10 02:08:12:Field Type:
+2017-01-10 02:08:12:Type: A range type, that is, an integer type with bounds.
+2017-01-10 02:08:12:Type sizeof: 1
+2017-01-10 02:08:12:Type range: (0L, 30L)
+2017-01-10 02:08:12:Fault Injection Successful after 1.62909388542s
+2017-01-10 02:08:20:Fault Already Injected
+2017-01-10 02:08:26:Fault Already Injected
+2017-01-10 02:08:27:Fault Already Injected
+2017-01-10 02:08:27:Fault Already Injected
+2017-01-10 02:08:28:Fault Already Injected
+2017-01-10 02:09:05:event type: exit
+2017-01-10 02:09:05:exit code: 0

@@ -1,0 +1,68 @@
+[INFO -- 2017-03-06 00:04:38]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 00:04:38]
+Initialization strings:
+[INFO -- 2017-03-06 00:04:38]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-06 00:04:38]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 00:04:38]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 00:04:38]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 00:04:38]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 00:04:38]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-06 00:04:38]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-06 00:04:38]
+initSignal:5
+[INFO -- 2017-03-06 00:04:38]
+endSignal:10
+[INFO -- 2017-03-06 00:04:38]
+seqSignal:20
+[INFO -- 2017-03-06 00:04:38]
+faultMode:0
+[EXCEPTION -- 2017-03-06 00:04:51]
+gdbException: Cannot access memory at address 0x2
+[INFO -- 2017-03-06 00:04:57]
+Backtrace BEGIN:
+#0  0x000000000053cdd8 in KDTree_CreateTree (t=0x7f9d50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:235
+#1  0x000000000053d3f4 in KDTree_QueryCircleIntersect_Double (t=0x7f9d50, result_num=0x7fffffffe5dc, result_indicies=0x181ae10, circ_radius=24, ncells=264192, x=0x7ffe881cb010, dx=0x7ffe481bf010, y=0x7ffe081be010, dy=0x7ffdc81b0010) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:329
+#2  0x00000000005080fe in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1535
+#3  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+230	         }
+231	         assert(cut_direction >= 0);
+232	         /* Do a median sort of the elements under the parent node. The sort key
+233	            is the center point of the element bounding boxes along the selected
+234	            cutting direction. */
+235	         mid = (min + max) /2;
+236	         median_sort(t, (unsigned int)cut_direction, mid - min, max - min + 1, &(idx[min]));
+237	         /* Give the parent a reference to its two children */
+238	         t->tree_link[parent] = next_node;
+239	         /* Add the "left" child to the tree and the stack */
+
+Backtrace END
+Memory content before bitflip:0x470xa50x030x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffe3a4
+address max offset: 4
+Memory content after  bitflip:0x470xa10x030x00
+frame name: KDTree_CreateTree
+symbol name: min
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c
+symbol line: 180
+value: 237895
+value address: 0x7fffffffe3a4
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-06 00:04:57]
+Fault Injection Successful after 19.0260369778s
+[INFO -- 2017-03-06 00:05:01]
+event type: exit
+[EXCEPTION -- 2017-03-06 00:05:01]
+exit code: no exit code available

@@ -1,0 +1,61 @@
+[INFO -- 2017-03-06 18:09:51]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 18:09:51]
+Initialization strings:
+[INFO -- 2017-03-06 18:09:51]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-06 18:09:51]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 18:09:51]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 18:09:51]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-06 18:09:51]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-06 18:09:51]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-06 18:09:51]
+initSignal:0
+[INFO -- 2017-03-06 18:09:51]
+endSignal:3
+[INFO -- 2017-03-06 18:09:51]
+seqSignal:30
+[INFO -- 2017-03-06 18:09:51]
+faultMode:1
+[INFO -- 2017-03-06 18:09:52]
+Backtrace BEGIN:
+#0  0x0000000000402546 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:176
+
+171	        exit(1);
+172	    }
+173	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+174	        fv_cpu[i].v = 0;
+175	        fv_cpu[i].x = 0;
+176	        fv_cpu[i].y = 0;
+177	        fv_cpu[i].z = 0;
+178	
+179	        fread(&(fv_cpu_GOLD[i].v), 1, sizeof(double), file);
+180	        fread(&(fv_cpu_GOLD[i].x), 1, sizeof(double), file);
+
+Backtrace END
+Memory content before bitflip:0x070x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe820
+address max offset: 4
+Memory content after  bitflip:0x070x000x500x00
+frame name: main
+symbol name: argc
+symbol filename: main_check.c
+symbol line: 43
+value: 5242887
+value address: 0x7fffffffe820
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-06 18:09:52]
+Fault Injection Successful after 1.93326401711s
+[INFO -- 2017-03-06 18:10:08]
+event type: exit
+[INFO -- 2017-03-06 18:10:08]
+exit code: 0

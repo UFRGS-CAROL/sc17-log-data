@@ -1,0 +1,87 @@
+2016-10-26 03:18:37:Initialization strings:
+2016-10-26 03:18:38:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-26 03:18:38:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-26 03:18:38:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-26 03:18:38:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-26 03:18:38:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-26 03:18:38:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-26 03:18:38:Trying Fault Injection
+2016-10-26 03:18:38:Inferior PID: 19752
+2016-10-26 03:18:38:Inferior is valid: True
+2016-10-26 03:18:38:Inferior #threads: 1
+2016-10-26 03:18:38:Backtrace BEGIN:
+2016-10-26 03:18:38:#0  0x00007ffff7dddbc0 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#1  0x0000000000000007 in ?? ()
+#2  0x00007fffffffedf0 in ?? ()
+#3  0x00007fffffffee1e in ?? ()
+#4  0x00007fffffffee22 in ?? ()
+#5  0x00007fffffffee25 in ?? ()
+#6  0x00007fffffffee62 in ?? ()
+#7  0x00007fffffffee9e in ?? ()
+#8  0x00007fffffffeed8 in ?? ()
+#9  0x0000000000000000 in ?? ()
+
+2016-10-26 03:18:38:50	    char * input_charges;
+51	    char * output_gold;
+52	
+53	    int i, j, k, l, m, n;
+54	
+55	    par_str par_cpu;
+56	    dim_str dim_cpu;
+57	    box_str* box_cpu;
+58	    FOUR_VECTOR* rv_cpu;
+59	    fp* qv_cpu;
+
+2016-10-26 03:18:38:Backtrace END
+2016-10-26 03:18:38:Error(threadFlip): No Threads with symbols
+2016-10-26 03:18:38:Fault Injection Failed after 0.275194883347s
+2016-10-26 03:18:38:Trying Fault Injection
+2016-10-26 03:18:38:Inferior PID: 19752
+2016-10-26 03:18:38:Inferior is valid: True
+2016-10-26 03:18:38:Inferior #threads: 1
+2016-10-26 03:18:38:Backtrace BEGIN:
+2016-10-26 03:18:38:#0  0x0000000000401f4b in main (argc=7, argv=0x7fffffffec08) at main_check.c:121
+
+2016-10-26 03:18:38:116	                            if((((i+l)>=0 && (j+m)>=0 && (k+n)>=0)==true && ((i+l)<dim_cpu.boxes1d_arg && (j+m)<dim_cpu.boxes1d_arg && (k+n)<dim_cpu.boxes1d_arg)==true) && (l==0 && m==0 && n==0)==false) {
+117	
+118	                                box_cpu[nh].nei[box_cpu[nh].nn].x = (k+n);
+119	                                box_cpu[nh].nei[box_cpu[nh].nn].y = (j+m);
+120	                                box_cpu[nh].nei[box_cpu[nh].nn].z = (i+l);
+121	                                box_cpu[nh].nei[box_cpu[nh].nn].number = (box_cpu[nh].nei[box_cpu[nh].nn].z * dim_cpu.boxes1d_arg * dim_cpu.boxes1d_arg) + (box_cpu[nh].nei[box_cpu[nh].nn].y * dim_cpu.boxes1d_arg) + box_cpu[nh].nei[box_cpu[nh].nn].x;
+122	                                box_cpu[nh].nei[box_cpu[nh].nn].offset = box_cpu[nh].nei[box_cpu[nh].nn].number * NUMBER_PAR_PER_BOX;
+123	
+124	                                box_cpu[nh].nn = box_cpu[nh].nn + 1;
+125	
+
+2016-10-26 03:18:38:Backtrace END
+2016-10-26 03:18:38:Thread name: None
+2016-10-26 03:18:38:Thread num: 1
+2016-10-26 03:18:38:Thread ptid: (19752, 19752, 0)
+2016-10-26 03:18:38:bitFlip function
+2016-10-26 03:18:38:Type: The type is an integer type.
+2016-10-26 03:18:38:Type sizeof: 4
+2016-10-26 03:18:38:Mem contents(hex):0x000x000x000x00
+2016-10-26 03:18:38:base address to flip value: 0x7fffffffe774
+2016-10-26 03:18:38:address max offset: 4
+2016-10-26 03:18:38:Memory content before bitflip:0x000x000x000x00
+2016-10-26 03:18:38:Memory content after  bitflip:0x000x000x040x00
+2016-10-26 03:18:38:Mem contents(hex):0x000x000x040x00
+2016-10-26 03:18:38:frame name: main
+2016-10-26 03:18:38:symbol name: l
+2016-10-26 03:18:38:symbol filename: main_check.c
+2016-10-26 03:18:38:symbol line: 53
+2016-10-26 03:18:38:value: 262144
+2016-10-26 03:18:38:value address: 0x7fffffffe774
+2016-10-26 03:18:38:Type: The type is an integer type.
+2016-10-26 03:18:38:Type sizeof: 4
+2016-10-26 03:18:38:Fault Injection Successful after 0.610346078873s
+2016-10-26 03:18:38:Fault Already Injected
+2016-10-26 03:18:42:Fault Already Injected
+2016-10-26 03:18:42:Fault Already Injected
+2016-10-26 03:18:44:Fault Already Injected
+2016-10-26 03:18:45:Fault Already Injected
+2016-10-26 03:18:46:Fault Already Injected
+2016-10-26 03:18:46:Fault Already Injected
+2016-10-26 03:18:47:Fault Already Injected
+2016-10-26 03:18:49:event type: exit
+2016-10-26 03:18:49:exit code: 0

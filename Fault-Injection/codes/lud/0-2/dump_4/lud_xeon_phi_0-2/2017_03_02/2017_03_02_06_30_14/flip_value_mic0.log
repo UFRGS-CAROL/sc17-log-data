@@ -1,0 +1,48 @@
+2017-03-02 06:29:49:Starting flip_value script
+2017-03-02 06:29:49:Initialization strings:
+2017-03-02 06:29:50:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 06:29:50:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 06:29:50:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 06:29:50:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-03-02 06:29:50:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-03-02 06:29:50:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-03-02 06:29:50:initSignal:0
+2017-03-02 06:29:50:endSignal:2
+2017-03-02 06:29:50:seqSignal:30
+2017-03-02 06:29:50:Backtrace BEGIN:
+2017-03-02 06:29:50:#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff74312d0 in ?? () at pthread_create.c:237 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libpthread.so.0
+#2  0x00007ffe62ff1800 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-02 06:29:50:76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+2017-03-02 06:29:50:Backtrace END
+2017-03-02 06:29:52:Type: The type is an array.
+2017-03-02 06:29:52:Type sizeof: 12
+2017-03-02 06:29:52:Fliping array at pos: 1
+2017-03-02 06:29:52:Type: The type is an integer type.
+2017-03-02 06:29:52:Type sizeof: 4
+2017-03-02 06:29:52:Mem contents(hex):0x010x000x000x00
+2017-03-02 06:29:52:Fault Mode: Double bit-flip
+2017-03-02 06:29:52:base address to flip value: 0x7ffff743c3a4 
+2017-03-02 06:29:52:address max offset: 4
+2017-03-02 06:29:52:Memory content before bitflip:0x010x000x000x00
+2017-03-02 06:29:52:Memory content after  bitflip:0x010x000x500x00
+2017-03-02 06:29:52:Mem contents(hex):0x010x000x500x00
+2017-03-02 06:29:52:frame name: __pthread_create_2_1
+2017-03-02 06:29:52:symbol name: _thread_db_pthread_tid
+2017-03-02 06:29:52:symbol filename: ../nptl_db/structs.def
+2017-03-02 06:29:52:symbol line: 28
+2017-03-02 06:29:52:value: {32, 5242881, 720}
+2017-03-02 06:29:52:value address: 0x7ffff743c3a0 <_thread_db_pthread_tid>
+2017-03-02 06:29:52:Type: The type is an array.
+2017-03-02 06:29:52:Type sizeof: 12
+2017-03-02 06:29:52:Field name: None
+2017-03-02 06:29:52:Field Type:
+2017-03-02 06:29:52:Type: A range type, that is, an integer type with bounds.
+2017-03-02 06:29:52:Type sizeof: 8
+2017-03-02 06:29:52:Type range: (0L, 2L)
+2017-03-02 06:29:52:Fault Injection Successful after 2.42512392998s
+2017-03-02 06:30:08:event type: exit
+2017-03-02 06:30:08:exit code: 1

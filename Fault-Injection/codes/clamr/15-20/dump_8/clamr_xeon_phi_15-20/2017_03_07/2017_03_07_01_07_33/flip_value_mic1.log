@@ -1,0 +1,63 @@
+[INFO -- 2017-03-07 01:05:00]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-07 01:05:00]
+Initialization strings:
+[INFO -- 2017-03-07 01:05:00]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-07 01:05:00]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 01:05:00]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 01:05:00]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 01:05:00]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 01:05:00]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-07 01:05:00]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-07 01:05:00]
+initSignal:15
+[INFO -- 2017-03-07 01:05:00]
+endSignal:20
+[INFO -- 2017-03-07 01:05:00]
+seqSignal:20
+[INFO -- 2017-03-07 01:05:00]
+faultMode:2
+[INFO -- 2017-03-07 01:05:24]
+Backtrace BEGIN:
+#0  0x00007ffff6b67484 in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1673
+#1  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#2  0x000000000054b8e1 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:476
+#3  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#4  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+1668	in vfprintf.c
+
+Backtrace END
+Fliping array at pos: 26
+Memory content before bitflip:0x4e0x310x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff6c38ce8 
+address max offset: 4
+Memory content after  bitflip:0xed0x280x4d0xd9
+frame name: _IO_vfprintf_internal
+symbol name: step3b_jumps
+symbol filename: vfprintf.c
+symbol line: 1345
+value: {0 <repeats 11 times>, 11515, 0, 0, 7466, 7747, 14505, 15251, 15266, 12292, 14748, 15690, 13002, 13086, 14646, 15439, -649254675, 0, 0, 0}
+value address: 0x7ffff6c38c80 <step3b_jumps>
+Type: The type is an array.
+Type sizeof: 120
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 29L)
+
+[INFO -- 2017-03-07 01:05:24]
+Fault Injection Successful after 24.4467029572s
+[INFO -- 2017-03-07 01:05:58]
+event type: exit
+[INFO -- 2017-03-07 01:05:58]
+exit code: 0

@@ -1,0 +1,62 @@
+[INFO -- 2017-03-26 11:21:38]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 11:21:38]
+Initialization strings:
+[INFO -- 2017-03-26 11:21:38]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 11:21:38]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 11:21:38]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 11:21:38]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 11:21:38]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 11:21:38]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 11:21:38]
+initSignal:0
+[INFO -- 2017-03-26 11:21:38]
+endSignal:3
+[INFO -- 2017-03-26 11:21:38]
+seqSignal:30
+[INFO -- 2017-03-26 11:21:38]
+faultMode:2
+[INFO -- 2017-03-26 11:21:39]
+Backtrace BEGIN:
+#0  0x0000000000402624 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:181
+
+176	        fv_cpu[i].y = 0;
+177	        fv_cpu[i].z = 0;
+178	
+179	        fread(&(fv_cpu_GOLD[i].v), 1, sizeof(double), file);
+180	        fread(&(fv_cpu_GOLD[i].x), 1, sizeof(double), file);
+181	        fread(&(fv_cpu_GOLD[i].y), 1, sizeof(double), file);
+182	        fread(&(fv_cpu_GOLD[i].z), 1, sizeof(double), file);
+183	    }
+184	
+185	    fclose(file);
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x9a0x990x990x990x990x990xe90x3f
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff5dcf010
+address max offset: 8
+Memory content after  bitflip:0x3c0x770x800xfb0x9e0xb80x870x69
+frame name: main
+symbol name: qv_cpu
+symbol filename: main_check.c
+symbol line: 59
+value: 0x7ffff5dcf010
+value address: 0x7fffffffe9a0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-26 11:21:39]
+Fault Injection Successful after 1.67613601685s
+[INFO -- 2017-03-26 11:21:59]
+event type: exit
+[INFO -- 2017-03-26 11:21:59]
+exit code: 1

@@ -1,0 +1,55 @@
+2017-02-27 23:15:51:Starting flip_value script
+2017-02-27 23:15:51:Initialization strings:
+2017-02-27 23:15:51:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-27 23:15:51:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 23:15:51:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 23:15:51:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-27 23:15:51:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-27 23:15:51:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-27 23:15:51:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-27 23:15:51:initSignal:15
+2017-02-27 23:15:51:endSignal:20
+2017-02-27 23:15:51:seqSignal:20
+2017-02-27 23:16:06:Backtrace BEGIN:
+2017-02-27 23:16:06:#0  0x00007ffff6be63ed in open64 () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6b93025 in __GI__IO_file_open (fp=fp@entry=0x1920e80, filename=<optimized out>, posix_mode=<optimized out>, prot=prot@entry=438, read_write=4, is32not64=is32not64@entry=1) at fileops.c:220
+#2  0x00007ffff6b93130 in _IO_new_file_fopen (fp=fp@entry=0x1920e80, filename=filename@entry=0x7fffffffe3f4 "/micNfs/gdb-fault-injection/injector/bin/clamr/graphics_output/outline00000.lin", mode=<optimized out>, mode@entry=0x57472c "w", is32not64=is32not64@entry=1) at fileops.c:327
+#3  0x00007ffff6b884d2 in __fopen_internal (filename=0x7fffffffe3f4 "/micNfs/gdb-fault-injection/injector/bin/clamr/graphics_output/outline00000.lin", mode=0x57472c "w", is32=1) at iofopen.c:86
+#4  0x000000000054b18d in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:458
+#5  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#6  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-27 23:16:06:76	in ../sysdeps/unix/syscall-template.S
+
+2017-02-27 23:16:06:Backtrace END
+2017-02-27 23:16:12:Type: The type is a structure.
+2017-02-27 23:16:12:Type sizeof: 16
+2017-02-27 23:16:12:Fliping value of field: tv_sec
+2017-02-27 23:16:12:Type: The type is an integer type.
+2017-02-27 23:16:12:Type sizeof: 8
+2017-02-27 23:16:12:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-27 23:16:12:Fault Mode: Single bit-flip
+2017-02-27 23:16:12:base address to flip value: 0x7d06e8 
+2017-02-27 23:16:12:address max offset: 8
+2017-02-27 23:16:12:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-27 23:16:12:Memory content after  bitflip:0x000x000x000x000x000x000x000x20
+2017-02-27 23:16:12:Mem contents(hex):0x000x000x000x000x000x000x000x20
+2017-02-27 23:16:12:frame name: main
+2017-02-27 23:16:12:symbol name: tstart_partmeas
+2017-02-27 23:16:12:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-02-27 23:16:12:symbol line: 168
+2017-02-27 23:16:12:value: {tv_sec = 2305843009213693952, tv_usec = 0}
+2017-02-27 23:16:12:value address: 0x7d06e8 <tstart_partmeas>
+2017-02-27 23:16:12:Type: The type is a structure.
+2017-02-27 23:16:12:Type sizeof: 16
+2017-02-27 23:16:12:Field name: tv_sec
+2017-02-27 23:16:12:Field Type:
+2017-02-27 23:16:12:Type: The type is an integer type.
+2017-02-27 23:16:12:Type sizeof: 8
+2017-02-27 23:16:12:Field name: tv_usec
+2017-02-27 23:16:12:Field Type:
+2017-02-27 23:16:12:Type: The type is an integer type.
+2017-02-27 23:16:12:Type sizeof: 8
+2017-02-27 23:16:12:Fault Injection Successful after 21.3217430115s
+2017-02-27 23:16:53:event type: exit
+2017-02-27 23:16:53:exit code: 0

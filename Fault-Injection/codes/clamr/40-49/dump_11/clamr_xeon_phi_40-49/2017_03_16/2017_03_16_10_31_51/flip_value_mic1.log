@@ -1,0 +1,73 @@
+[INFO -- 2017-03-16 10:30:39]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-16 10:30:39]
+Initialization strings:
+[INFO -- 2017-03-16 10:30:39]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-16 10:30:39]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-16 10:30:39]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-16 10:30:39]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-16 10:30:39]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-16 10:30:39]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-16 10:30:39]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-16 10:30:39]
+initSignal:40
+[INFO -- 2017-03-16 10:30:39]
+endSignal:49
+[INFO -- 2017-03-16 10:30:39]
+seqSignal:20
+[INFO -- 2017-03-16 10:30:39]
+faultMode:1
+[INFO -- 2017-03-16 10:31:32]
+Backtrace BEGIN:
+#0  0x0000000000449a10 in std::vector<int, std::allocator<int> >::operator[] (this=0x7fffffffe698, __n=81396) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x00000000005361c8 in Mesh::partition_cells (this=0x7f9a50, numpe=0, z_order=..., method=ORIGINAL_ORDER) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:370
+#2  0x00000000004461e3 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:477
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+Backtrace END
+Fliping value of field: tv_usec
+Memory content before bitflip:0xc60x110x0c0x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe040
+address max offset: 8
+Memory content after  bitflip:0xc60x110x0c0x000x000x000x000xa0
+frame name: Mesh::partition_cells
+symbol name: tstart_cpu
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp
+symbol line: 334
+value: {tv_sec = 1489674427, tv_usec = -6917529027640290874}
+value address: 0x7fffffffe038
+Type: The type is a structure.
+Type sizeof: 16
+Field name: tv_sec
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: tv_usec
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-16 10:31:32]
+Fault Injection Successful after 53.9068570137s
+[INFO -- 2017-03-16 10:31:42]
+event type: exit
+[INFO -- 2017-03-16 10:31:42]
+exit code: 0

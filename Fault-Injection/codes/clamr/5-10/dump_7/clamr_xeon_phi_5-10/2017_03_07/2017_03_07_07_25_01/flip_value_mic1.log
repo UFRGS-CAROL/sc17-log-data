@@ -1,0 +1,64 @@
+[INFO -- 2017-03-07 07:21:52]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-07 07:21:52]
+Initialization strings:
+[INFO -- 2017-03-07 07:21:53]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-07 07:21:53]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 07:21:53]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 07:21:53]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 07:21:53]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 07:21:53]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-07 07:21:53]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-07 07:21:53]
+initSignal:5
+[INFO -- 2017-03-07 07:21:53]
+endSignal:10
+[INFO -- 2017-03-07 07:21:53]
+seqSignal:20
+[INFO -- 2017-03-07 07:21:53]
+faultMode:0
+[INFO -- 2017-03-07 07:22:07]
+Backtrace BEGIN:
+#0  hsfc2d (coord=0x7fffffffdfb8, nkey=2, key=0x7ffcc82c7f0c) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfc.c:118
+#1  0x000000000053a65d in hsfc2sort (N=264192, X=0x7ffd881b0010, Y=0x7ffd481a2010, ibase=0, Info=0x7ffd0809f010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:138
+#2  0x0000000000536b19 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#3  0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+113	
+114	    if ( shift == MaxBits ) { /* Word boundary */
+115	      key[ which - 1 ] |= c ;
+116	    }
+117	    else {
+118	      key[ which ] |= c << shift ;
+119	    }
+120	
+121	    /* Determine the recursive quadrant */
+122	
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7ffd0809f010
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x10
+frame name: hsfc2sort
+symbol name: Info
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c
+symbol line: 107
+value: 0x7ffd0809f010
+value address: 0x7fffffffdfe8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-07 07:22:07]
+Fault Injection Successful after 14.5227110386s

@@ -1,0 +1,74 @@
+[INFO -- 2017-03-13 06:16:43]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-13 06:16:43]
+Initialization strings:
+[INFO -- 2017-03-13 06:16:43]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-13 06:16:43]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-13 06:16:43]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-13 06:16:44]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-13 06:16:44]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-13 06:16:44]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-13 06:16:44]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-13 06:16:44]
+initSignal:25
+[INFO -- 2017-03-13 06:16:44]
+endSignal:30
+[INFO -- 2017-03-13 06:16:44]
+seqSignal:20
+[INFO -- 2017-03-13 06:16:44]
+faultMode:3
+[INFO -- 2017-03-13 06:17:15]
+Backtrace BEGIN:
+#0  std::vector<int, std::allocator<int> >::operator[] (this=0x7fffffffe3b0, __n=153539) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x000000000051f46e in Mesh::rezone_all (this=0x7fae50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2587
+#2  0x0000000000471447 in State::rezone_all (this=0x7fb9e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#3  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#4  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+Backtrace END
+Fliping value of field: std::_Vector_base<int, std::allocator<int> >
+Fliping value of field: _M_impl
+Fliping value of field: _M_finish
+Fliping a bit of the pointer
+Memory content before bitflip:0x000xab0x8f0xf60xff0x7f0x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffdf60
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: Mesh::rezone_all
+symbol name: add_count
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+symbol line: 2905
+value: {<std::_Vector_base<int, std::allocator<int> >> = {_M_impl = {<std::allocator<int>> = {<__gnu_cxx::new_allocator<int>> = {<No data fields>}, <No data fields>}, _M_start = 0x7ffff68f7900, _M_finish = 0x0, _M_end_of_storage = 0x7ffff78dd912}}, <No data fields>}
+value address: 0x7fffffffdf58
+Type: The type is a structure.
+Type sizeof: 24
+Field name: std::_Vector_base<int, std::allocator<int> >
+Field Type: The type is a structure.
+Field Type sizeof: 24
+
+[INFO -- 2017-03-13 06:17:15]
+Fault Injection Successful after 31.9719920158s
+[INFO -- 2017-03-13 06:17:41]
+event type: exit
+[INFO -- 2017-03-13 06:17:41]
+exit code: 0

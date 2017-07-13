@@ -1,0 +1,56 @@
+[INFO -- 2017-03-27 01:48:02]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 01:48:02]
+Initialization strings:
+[INFO -- 2017-03-27 01:48:03]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 01:48:03]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 01:48:03]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 01:48:03]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 01:48:03]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 01:48:03]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 01:48:03]
+initSignal:0
+[INFO -- 2017-03-27 01:48:03]
+endSignal:3
+[INFO -- 2017-03-27 01:48:03]
+seqSignal:30
+[INFO -- 2017-03-27 01:48:03]
+faultMode:3
+[INFO -- 2017-03-27 01:48:04]
+Backtrace BEGIN:
+#0  _IO_acquire_lock_fct (p=<synthetic pointer>) at libioP.h:892
+#1  __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:41
+#2  0x00000000004025ad in main (argc=7, argv=0x7fffffffebc8) at main_check.c:179
+
+887	in libioP.h
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: z
+Memory content before bitflip:0x9a0x990x990x990x990x990xd90x3f
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffff6063028
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: main
+symbol name: rv_cpu
+symbol filename: main_check.c
+symbol line: 58
+value: 0x7ffff6063010
+value address: 0x7fffffffe940
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-27 01:48:04]
+Fault Injection Successful after 1.47204899788s
+[INFO -- 2017-03-27 01:48:22]
+event type: exit
+[INFO -- 2017-03-27 01:48:22]
+exit code: 1

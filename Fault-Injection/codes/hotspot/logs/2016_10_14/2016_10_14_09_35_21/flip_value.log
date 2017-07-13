@@ -1,0 +1,52 @@
+2016-10-14 09:35:00:Initialization strings:
+2016-10-14 09:35:01:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-14 09:35:01:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-14 09:35:01:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-14 09:35:01:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-14 09:35:01:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-14 09:35:01:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-14 09:35:01:Trying Fault Injection
+2016-10-14 09:35:01:Backtrace BEGIN:
+2016-10-14 09:35:01:#0  __libc_system (line=0x7fffffffe480 "echo 1476452777 > /micNfs/carol/logs/timestamp.txt") at ../sysdeps/posix/system.c:179
+#1  0x0000000000405ccc in update_timestamp () at ../../include/log_helper.c:107
+#2  start_log_file (benchmark_name=0x7fffffffe480 "echo 1476452777 > /micNfs/carol/logs/timestamp.txt", test_info=0x407576 "") at ../../include/log_helper.c:196
+#3  0x0000000000401681 in main (argc=-7040, argv=0x407576) at hotspot_check.c:254
+
+2016-10-14 09:35:01:174	in ../sysdeps/posix/system.c
+
+2016-10-14 09:35:01:Backtrace END
+2016-10-14 09:35:01:Type: The type is an array.
+2016-10-14 09:35:01:Type sizeof: 10
+2016-10-14 09:35:01:Fliping array at pos: 1
+2016-10-14 09:35:01:Type: The type is an integer type.
+2016-10-14 09:35:01:Type sizeof: 1
+2016-10-14 09:35:01:Mem contents(hex):0x13
+2016-10-14 09:35:01:base address to flip value: 0x7fffffffe549 
+2016-10-14 09:35:01:address max offset: 1
+2016-10-14 09:35:01:Memory content before bitflip:0x13
+2016-10-14 09:35:01:Memory content after  bitflip:0x93
+2016-10-14 09:35:01:Mem contents(hex):0x93
+2016-10-14 09:35:01:frame name: start_log_file
+2016-10-14 09:35:01:symbol name: month
+2016-10-14 09:35:01:symbol filename: ../../include/log_helper.c
+2016-10-14 09:35:01:symbol line: 200
+2016-10-14 09:35:01:value: "\210\223\016\367\377\177\000\000\020\260"
+2016-10-14 09:35:01:value address: 0x7fffffffe548
+2016-10-14 09:35:01:Type: The type is an array.
+2016-10-14 09:35:01:Type sizeof: 10
+2016-10-14 09:35:01:Field name: None
+2016-10-14 09:35:01:Field Type:
+2016-10-14 09:35:01:Type: A range type, that is, an integer type with bounds.
+2016-10-14 09:35:01:Type sizeof: 1
+2016-10-14 09:35:01:Type range: (0L, 9L)
+2016-10-14 09:35:01:Fault Injection Successful after 0.713530063629s
+2016-10-14 09:35:02:Fault Already Injected
+2016-10-14 09:35:05:Fault Already Injected
+2016-10-14 09:35:07:Fault Already Injected
+2016-10-14 09:35:07:Fault Already Injected
+2016-10-14 09:35:09:Fault Already Injected
+2016-10-14 09:35:09:Fault Already Injected
+2016-10-14 09:35:13:Fault Already Injected
+2016-10-14 09:35:14:Fault Already Injected
+2016-10-14 09:35:15:event type: exit
+2016-10-14 09:35:15:exit code: 0

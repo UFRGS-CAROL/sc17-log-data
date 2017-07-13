@@ -1,0 +1,88 @@
+2017-03-01 12:42:47:Starting flip_value script
+2017-03-01 12:42:47:Initialization strings:
+2017-03-01 12:42:47:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 12:42:47:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 12:42:47:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 12:42:47:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 12:42:47:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 12:42:47:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 12:42:47:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 12:42:47:initSignal:10
+2017-03-01 12:42:47:endSignal:15
+2017-03-01 12:42:47:seqSignal:20
+2017-03-01 12:42:59:Backtrace BEGIN:
+2017-03-01 12:42:59:#0  0x0000000000509f25 in Mesh::kdtree_setup (this=0x7f9a50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2367
+#1  0x0000000000507f0a in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1529
+#2  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-03-01 12:42:59:2362	   TBounds box;
+2363	   for (uint ic=0; ic<ncells; ic++) {
+2364	     box.min.x = x[ic];
+2365	     box.max.x = x[ic]+dx[ic];
+2366	     box.min.y = y[ic];
+2367	     box.max.y = y[ic]+dy[ic];
+2368	     KDTree_AddElement(&tree, &box);
+2369	   }
+2370	}
+2371	
+
+2017-03-01 12:42:59:Backtrace END
+2017-03-01 12:43:05:Type: The type is a pointer.
+2017-03-01 12:43:05:Type sizeof: 8
+2017-03-01 12:43:05:Fliping a bit of the value pointed by a pointer
+2017-03-01 12:43:05:Type: The type is a pointer.
+2017-03-01 12:43:05:Type sizeof: 8
+2017-03-01 12:43:05:Fliping a bit of the pointer
+2017-03-01 12:43:05:Mem contents(hex):0x600xee0xff0xff0xff0x7f0x000x00
+2017-03-01 12:43:05:Fault Mode: Random bit-flip
+2017-03-01 12:43:05:base address to flip value: 0x7fffffffec58
+2017-03-01 12:43:05:address max offset: 8
+2017-03-01 12:43:05:Memory content before bitflip:0x600xee0xff0xff0xff0x7f0x000x00
+2017-03-01 12:43:05:Backtrace BEGIN:
+2017-03-01 12:43:06:#0  0x0000000000509f25 in Mesh::kdtree_setup (this=0x7f9a50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2367
+#1  0x0000000000507f0a in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1529
+#2  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-03-01 12:43:06:2362	   TBounds box;
+2363	   for (uint ic=0; ic<ncells; ic++) {
+2364	     box.min.x = x[ic];
+2365	     box.max.x = x[ic]+dx[ic];
+2366	     box.min.y = y[ic];
+2367	     box.max.y = y[ic]+dy[ic];
+2368	     KDTree_AddElement(&tree, &box);
+2369	   }
+2370	}
+2371	
+
+2017-03-01 12:43:06:Backtrace END
+2017-03-01 12:43:12:Type: The type is an integer type.
+2017-03-01 12:43:12:Type sizeof: 4
+2017-03-01 12:43:12:Mem contents(hex):0x670x000x000x00
+2017-03-01 12:43:12:Fault Mode: One bit-flip
+2017-03-01 12:43:12:base address to flip value: 0x572f94 
+2017-03-01 12:43:12:address max offset: 4
+2017-03-01 12:43:12:Memory content before bitflip:0x670x000x000x00
+2017-03-01 12:43:12:Backtrace BEGIN:
+2017-03-01 12:43:13:#0  0x0000000000509f25 in Mesh::kdtree_setup (this=0x7f9a50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2367
+#1  0x0000000000507f0a in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1529
+#2  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-03-01 12:43:13:2362	   TBounds box;
+2363	   for (uint ic=0; ic<ncells; ic++) {
+2364	     box.min.x = x[ic];
+2365	     box.max.x = x[ic]+dx[ic];
+2366	     box.min.y = y[ic];
+2367	     box.max.y = y[ic]+dy[ic];
+2368	     KDTree_AddElement(&tree, &box);
+2369	   }
+2370	}
+2371	
+
+2017-03-01 12:43:13:Backtrace END
+2017-03-01 12:43:19:Type: A boolean type.
+2017-03-01 12:43:19:Type sizeof: 1
+2017-03-01 12:43:19:Mem contents(hex):0x01
+2017-03-01 12:43:19:Fault Mode: Random bit-flip
+2017-03-01 12:43:19:base address to flip value: 0x7d0abd 
+2017-03-01 12:43:19:address max offset: 1
+2017-03-01 12:43:19:Memory content before bitflip:0x01

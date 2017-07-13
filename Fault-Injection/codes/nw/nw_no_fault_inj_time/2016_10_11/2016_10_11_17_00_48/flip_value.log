@@ -1,0 +1,47 @@
+2016-10-11 17:00:31:Initialization strings:
+2016-10-11 17:00:31:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-11 17:00:31:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-11 17:00:31:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-11 17:00:31:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-11 17:00:31:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-11 17:00:31:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-11 17:00:32:Trying Fault Injection
+2016-10-11 17:00:32:Inferior PID: 120271
+2016-10-11 17:00:32:Inferior is valid: True
+2016-10-11 17:00:32:Inferior #threads: 1
+2016-10-11 17:00:32:Backtrace BEGIN:
+2016-10-11 17:00:32:#0  __GI___xstat (vers=<optimized out>, name=0x60a480 <full_log_file_name> "/micNfs/carol/logs/2016_10_11_21_01_07_openmpNW_carolxeon1-mic0.log", buf=0x7fffffffe740) at ../sysdeps/unix/sysv/linux/wordsize-64/xstat.c:35
+#1  0x00000000004068fd in stat (__path=<optimized out>, __statbuf=<optimized out>) at /usr/linux-k1om-4.7/linux-k1om/usr/include/sys/stat.h:454
+#2  start_log_file (benchmark_name=0x60a480 <full_log_file_name> "/micNfs/carol/logs/2016_10_11_21_01_07_openmpNW_carolxeon1-mic0.log", test_info=0x7fffffffe740 "2016_10_11_21_01_07_openmpNW_carolxeon1-mic0.log") at ../../include/log_helper.c:254
+#3  0x00000000004014df in runTest (argc=<optimized out>, argv=<optimized out>) at needle_check.cpp:294
+#4  main (argc=6333568, argv=0x7fffffffe740) at needle_check.cpp:114
+
+2016-10-11 17:00:32:30	in ../sysdeps/unix/sysv/linux/wordsize-64/xstat.c
+
+2016-10-11 17:00:32:Backtrace END
+2016-10-11 17:00:32:Thread name: None
+2016-10-11 17:00:32:Thread num: 1
+2016-10-11 17:00:32:Thread ptid: (120271, 120271, 0)
+2016-10-11 17:00:32:bitFlip function
+2016-10-11 17:00:32:Type: A floating point type.
+2016-10-11 17:00:32:Type sizeof: 8
+2016-10-11 17:00:32:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-10-11 17:00:32:base address to flip value: 0x60a5d0 
+2016-10-11 17:00:32:address max offset: 8
+2016-10-11 17:00:32:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-10-11 17:00:32:Memory content after  bitflip:0x000x000x000x200x000x000x000x00
+2016-10-11 17:00:32:Mem contents(hex):0x000x000x000x200x000x000x000x00
+2016-10-11 17:00:32:frame name: stat
+2016-10-11 17:00:32:symbol name: kernel_time_acc
+2016-10-11 17:00:32:symbol filename: ../../include/log_helper.c
+2016-10-11 17:00:32:symbol line: 63
+2016-10-11 17:00:32:value: 2.6524947387065904e-315
+2016-10-11 17:00:32:value address: 0x60a5d0 <kernel_time_acc>
+2016-10-11 17:00:32:Type: A floating point type.
+2016-10-11 17:00:32:Type sizeof: 8
+2016-10-11 17:00:32:Fault Injection Successful after 1.49892401695s
+2016-10-11 17:00:35:Fault Already Injected
+2016-10-11 17:00:38:Fault Already Injected
+2016-10-11 17:00:38:Fault Already Injected
+2016-10-11 17:00:41:event type: exit
+2016-10-11 17:00:41:exit code: 0

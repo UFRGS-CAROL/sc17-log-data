@@ -1,0 +1,50 @@
+2016-10-28 16:19:53:Initialization strings:
+2016-10-28 16:19:53:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-28 16:19:53:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-28 16:19:53:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-28 16:19:53:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-28 16:19:53:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-28 16:19:53:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-28 16:19:54:Trying Fault Injection
+2016-10-28 16:19:54:Inferior PID: 105385
+2016-10-28 16:19:54:Inferior is valid: True
+2016-10-28 16:19:54:Inferior #threads: 1
+2016-10-28 16:19:54:Backtrace BEGIN:
+2016-10-28 16:19:54:#0  0x0000000000401ed4 in main (argc=7, argv=0x7fffffffec08) at main_check.c:121
+
+2016-10-28 16:19:54:116	                            if((((i+l)>=0 && (j+m)>=0 && (k+n)>=0)==true && ((i+l)<dim_cpu.boxes1d_arg && (j+m)<dim_cpu.boxes1d_arg && (k+n)<dim_cpu.boxes1d_arg)==true) && (l==0 && m==0 && n==0)==false) {
+117	
+118	                                box_cpu[nh].nei[box_cpu[nh].nn].x = (k+n);
+119	                                box_cpu[nh].nei[box_cpu[nh].nn].y = (j+m);
+120	                                box_cpu[nh].nei[box_cpu[nh].nn].z = (i+l);
+121	                                box_cpu[nh].nei[box_cpu[nh].nn].number = (box_cpu[nh].nei[box_cpu[nh].nn].z * dim_cpu.boxes1d_arg * dim_cpu.boxes1d_arg) + (box_cpu[nh].nei[box_cpu[nh].nn].y * dim_cpu.boxes1d_arg) + box_cpu[nh].nei[box_cpu[nh].nn].x;
+122	                                box_cpu[nh].nei[box_cpu[nh].nn].offset = box_cpu[nh].nei[box_cpu[nh].nn].number * NUMBER_PAR_PER_BOX;
+123	
+124	                                box_cpu[nh].nn = box_cpu[nh].nn + 1;
+125	
+
+2016-10-28 16:19:54:Backtrace END
+2016-10-28 16:19:54:Thread name: None
+2016-10-28 16:19:54:Thread num: 1
+2016-10-28 16:19:54:Thread ptid: (105385, 105385, 0)
+2016-10-28 16:19:54:bitFlip function
+2016-10-28 16:19:54:Type: The type is a pointer.
+2016-10-28 16:19:54:Type sizeof: 8
+2016-10-28 16:19:54:Fliping a bit of the pointer
+2016-10-28 16:19:54:Mem contents(hex):0x250xee0xff0xff0xff0x7f0x000x00
+2016-10-28 16:19:54:base address to flip value: 0x7fffffffe8c8
+2016-10-28 16:19:54:address max offset: 8
+2016-10-28 16:19:54:Memory content before bitflip:0x250xee0xff0xff0xff0x7f0x000x00
+2016-10-28 16:19:54:Memory content after  bitflip:0x250xee0x7f0xff0xff0x7f0x000x00
+2016-10-28 16:19:54:Mem contents(hex):0x250xee0x7f0xff0xff0x7f0x000x00
+2016-10-28 16:19:54:frame name: main
+2016-10-28 16:19:54:symbol name: input_distance
+2016-10-28 16:19:54:symbol filename: main_check.c
+2016-10-28 16:19:54:symbol line: 49
+2016-10-28 16:19:54:value: 0x7fffffffee25 "/micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15"
+2016-10-28 16:19:54:value address: 0x7fffffffe8c8
+2016-10-28 16:19:54:Type: The type is a pointer.
+2016-10-28 16:19:54:Type sizeof: 8
+2016-10-28 16:19:54:Fault Injection Successful after 1.31710195541s
+2016-10-28 16:19:54:event type: exit
+2016-10-28 16:19:54:exit code: 1

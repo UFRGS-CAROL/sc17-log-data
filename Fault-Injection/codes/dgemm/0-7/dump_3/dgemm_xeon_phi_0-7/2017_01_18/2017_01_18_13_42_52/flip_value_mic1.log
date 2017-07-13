@@ -1,0 +1,48 @@
+2017-01-18 13:41:58:Starting flip_value script
+2017-01-18 13:41:58:Initialization strings:
+2017-01-18 13:41:58:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-18 13:41:58:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-18 13:41:58:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-18 13:41:58:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-18 13:41:58:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-18 13:41:58:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-18 13:41:58:initSignal:0
+2017-01-18 13:41:58:endSignal:7
+2017-01-18 13:41:58:seqSignal:15
+2017-01-18 13:41:59:Backtrace BEGIN:
+2017-01-18 13:41:59:#0  0x00007ffff71505d6 in __GI_memcpy (dstpp=dstpp@entry=0x7ffff5299188, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x6071c0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x6071c0) at iofread.c:42
+#3  0x0000000000403bc3 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:249
+#4  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+2017-01-18 13:41:59:54	in ../string/memcpy.c
+
+2017-01-18 13:41:59:Backtrace END
+2017-01-18 13:41:59:Type: The type is an array.
+2017-01-18 13:41:59:Type sizeof: 200
+2017-01-18 13:41:59:Fliping array at pos: 185
+2017-01-18 13:41:59:Type: The type is an integer type.
+2017-01-18 13:41:59:Type sizeof: 1
+2017-01-18 13:41:59:Mem contents(hex):0x4c
+2017-01-18 13:41:59:base address to flip value: 0x7fffffffe8a1 
+2017-01-18 13:41:59:address max offset: 1
+2017-01-18 13:41:59:Memory content before bitflip:0x4c
+2017-01-18 13:41:59:Memory content after  bitflip:0x5c
+2017-01-18 13:41:59:Mem contents(hex):0x5c
+2017-01-18 13:41:59:frame name: main
+2017-01-18 13:41:59:symbol name: test_info
+2017-01-18 13:41:59:symbol filename: dgemm.c
+2017-01-18 13:41:59:symbol line: 341
+2017-01-18 13:41:59:value: "0\206\377\367\377\177\000\000\b\000\000\000\000\000\000\000\034\327\354\366\000\000\000\000.(\274<", '\000' <repeats 12 times>, "h\350\377\377\377\177\000\000\001\000\000\000\000\000\000\000p\351\377\377\377\177\000\000\370\234\377\367\377\177\000\000\000\000\000\000\000\000\000\000\230\351\377\377\377\177\000\000\000\215\377\367\377\177\000\000\314h\336\367\377\177\000\000\a\000\000\000\000\000\000\000\000\215\377\367\377\177\000\000\001", '\000' <repeats 15 times>, "\001\000\000\000\000\000\000\000,]\336\367\377\177\000\000\070L\r\367\377\177\000\000\001\b\000\000\000\000\000\000HJ\r\367\377\177\000\000\240\231\377\367\377\177\000\000\070\\\r\367\377\177\000\000\020`\336\367\377\177\000"
+2017-01-18 13:41:59:value address: 0x7fffffffe7e8
+2017-01-18 13:41:59:Type: The type is an array.
+2017-01-18 13:41:59:Type sizeof: 200
+2017-01-18 13:41:59:Field name: None
+2017-01-18 13:41:59:Field Type:
+2017-01-18 13:41:59:Type: A range type, that is, an integer type with bounds.
+2017-01-18 13:41:59:Type sizeof: 1
+2017-01-18 13:41:59:Type range: (0L, 199L)
+2017-01-18 13:41:59:Fault Injection Successful after 1.73643088341s
+2017-01-18 13:42:38:event type: exit
+2017-01-18 13:42:38:exit code: 0

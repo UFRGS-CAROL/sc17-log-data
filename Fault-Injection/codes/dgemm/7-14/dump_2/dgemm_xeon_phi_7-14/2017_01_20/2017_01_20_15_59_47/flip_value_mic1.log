@@ -1,0 +1,40 @@
+2017-01-20 15:58:44:Starting flip_value script
+2017-01-20 15:58:44:Initialization strings:
+2017-01-20 15:58:44:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-20 15:58:44:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-20 15:58:44:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-20 15:58:44:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-20 15:58:44:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-20 15:58:44:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-20 15:58:44:initSignal:7
+2017-01-20 15:58:44:endSignal:14
+2017-01-20 15:58:44:seqSignal:15
+2017-01-20 15:58:53:Backtrace BEGIN:
+2017-01-20 15:58:53:#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff7430125 in create_thread (pd=pd@entry=0x7ffcb9fc7b00, attr=attr@entry=0x7fffffffdfd8, stopped_start=<optimized out>, stopped_start@entry=false, stackaddr=<optimized out>, thread_ran=0x7fffffffdd77) at ../sysdeps/unix/sysv/linux/createthread.c:102
+#2  0x00007ffff7431adf in __pthread_create_2_1 (newthread=<optimized out>, attr=<optimized out>, start_routine=<optimized out>, arg=<optimized out>) at pthread_create.c:664
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-01-20 15:58:53:76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+2017-01-20 15:58:53:Backtrace END
+2017-01-20 15:58:57:Type: The type is an integer type.
+2017-01-20 15:58:57:Type sizeof: 4
+2017-01-20 15:58:57:Mem contents(hex):0xca0x000x000x00
+2017-01-20 15:58:57:base address to flip value: 0x7ffff7642268 
+2017-01-20 15:58:57:address max offset: 4
+2017-01-20 15:58:57:Memory content before bitflip:0xca0x000x000x00
+2017-01-20 15:58:57:Memory content after  bitflip:0xce0x000x000x00
+2017-01-20 15:58:57:Mem contents(hex):0xce0x000x000x00
+2017-01-20 15:58:57:frame name: __pthread_create_2_1
+2017-01-20 15:58:57:symbol name: __nptl_nthreads
+2017-01-20 15:58:57:symbol filename: pthread_create.c
+2017-01-20 15:58:57:symbol line: 50
+2017-01-20 15:58:57:value: 206
+2017-01-20 15:58:57:value address: 0x7ffff7642268 <__nptl_nthreads>
+2017-01-20 15:58:57:Type: The type is an integer type.
+2017-01-20 15:58:57:Type sizeof: 4
+2017-01-20 15:58:57:Fault Injection Successful after 13.1234080791s
+2017-01-20 15:59:40:event type: exit
+2017-01-20 15:59:40:exit code: 0

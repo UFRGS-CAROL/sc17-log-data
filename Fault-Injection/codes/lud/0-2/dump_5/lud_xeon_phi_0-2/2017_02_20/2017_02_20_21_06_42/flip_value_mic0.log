@@ -1,0 +1,59 @@
+2017-02-20 21:06:20:Starting flip_value script
+2017-02-20 21:06:20:Initialization strings:
+2017-02-20 21:06:20:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-20 21:06:20:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 21:06:20:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 21:06:20:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-20 21:06:20:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-20 21:06:20:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-02-20 21:06:20:initSignal:0
+2017-02-20 21:06:20:endSignal:2
+2017-02-20 21:06:20:seqSignal:30
+2017-02-20 21:06:21:Backtrace BEGIN:
+2017-02-20 21:06:21:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142911 in __GI__IO_file_xsgetn (fp=0x60c010, data=<optimized out>, n=16777216) at fileops.c:1422
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=16777216, count=1, fp=0x60c010) at iofread.c:42
+#3  0x0000000000402b5a in main (argc=9, argv=0x7fffffffec08) at lud_check.c:105
+
+2017-02-20 21:06:21:76	in ../sysdeps/unix/syscall-template.S
+
+2017-02-20 21:06:21:Backtrace END
+2017-02-20 21:06:21:Type: The type is a structure.
+2017-02-20 21:06:21:Type sizeof: 168
+2017-02-20 21:06:21:Fliping value of field: __dummy
+2017-02-20 21:06:21:Type: The type is an integer type.
+2017-02-20 21:06:21:Type sizeof: 8
+2017-02-20 21:06:21:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-20 21:06:21:Fault Mode: One bit-flip
+2017-02-20 21:06:21:base address to flip value: 0x7ffff7423540 
+2017-02-20 21:06:21:address max offset: 8
+2017-02-20 21:06:21:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-20 21:06:21:Backtrace BEGIN:
+2017-02-20 21:06:21:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142911 in __GI__IO_file_xsgetn (fp=0x60c010, data=<optimized out>, n=16777216) at fileops.c:1422
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=16777216, count=1, fp=0x60c010) at iofread.c:42
+#3  0x0000000000402b5a in main (argc=9, argv=0x7fffffffec08) at lud_check.c:105
+
+2017-02-20 21:06:21:76	in ../sysdeps/unix/syscall-template.S
+
+2017-02-20 21:06:21:Backtrace END
+2017-02-20 21:06:21:Type: The type is an integer type.
+2017-02-20 21:06:21:Type sizeof: 4
+2017-02-20 21:06:21:Mem contents(hex):0x000x000x000x00
+2017-02-20 21:06:21:Fault Mode: Single bit-flip
+2017-02-20 21:06:21:base address to flip value: 0x60bac8 
+2017-02-20 21:06:21:address max offset: 4
+2017-02-20 21:06:21:Memory content before bitflip:0x000x000x000x00
+2017-02-20 21:06:21:Memory content after  bitflip:0x200x000x000x00
+2017-02-20 21:06:21:Mem contents(hex):0x200x000x000x00
+2017-02-20 21:06:21:frame name: main
+2017-02-20 21:06:21:symbol name: do_verify
+2017-02-20 21:06:21:symbol filename: lud_check.c
+2017-02-20 21:06:21:symbol line: 29
+2017-02-20 21:06:21:value: 32
+2017-02-20 21:06:21:value address: 0x60bac8 <do_verify>
+2017-02-20 21:06:21:Type: The type is an integer type.
+2017-02-20 21:06:21:Type sizeof: 4
+2017-02-20 21:06:21:Fault Injection Successful after 1.29080700874s
+2017-02-20 21:06:35:event type: exit
+2017-02-20 21:06:35:exit code: 0

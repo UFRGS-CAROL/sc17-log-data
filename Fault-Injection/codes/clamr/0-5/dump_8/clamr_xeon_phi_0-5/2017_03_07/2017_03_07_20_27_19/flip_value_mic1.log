@@ -1,0 +1,57 @@
+[INFO -- 2017-03-07 20:24:15]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-07 20:24:15]
+Initialization strings:
+[INFO -- 2017-03-07 20:24:16]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-07 20:24:16]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 20:24:16]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 20:24:16]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 20:24:16]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 20:24:16]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-07 20:24:16]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-07 20:24:16]
+initSignal:0
+[INFO -- 2017-03-07 20:24:16]
+endSignal:5
+[INFO -- 2017-03-07 20:24:16]
+seqSignal:20
+[INFO -- 2017-03-07 20:24:16]
+faultMode:3
+[INFO -- 2017-03-07 20:24:19]
+Backtrace BEGIN:
+#0  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffe318) at allocatestack.c:548
+#1  __pthread_create_2_1 (newthread=0x7fffffffe310, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7ffff40f0100) at pthread_create.c:524
+#2  0x00007ffff790d323 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+543	in allocatestack.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffff7096418 
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: allocate_stack
+symbol name: __pthread_debug
+symbol filename: pthread_create.c
+symbol line: 41
+value: 0
+value address: 0x7ffff7096418 <__pthread_debug>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-07 20:24:19]
+Fault Injection Successful after 3.14997792244s
+[INFO -- 2017-03-07 20:25:37]
+event type: exit
+[INFO -- 2017-03-07 20:25:37]
+exit code: 0

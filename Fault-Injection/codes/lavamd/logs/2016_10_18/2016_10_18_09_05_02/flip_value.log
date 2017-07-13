@@ -1,0 +1,65 @@
+2016-10-18 09:04:43:Initialization strings:
+2016-10-18 09:04:44:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-18 09:04:44:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-18 09:04:44:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-18 09:04:44:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-18 09:04:44:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-18 09:04:44:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-18 09:04:45:Trying Fault Injection
+2016-10-18 09:04:45:Inferior PID: 24765
+2016-10-18 09:04:45:Inferior is valid: True
+2016-10-18 09:04:45:Inferior #threads: 1
+2016-10-18 09:04:45:Backtrace BEGIN:
+2016-10-18 09:04:45:#0  0x00007ffff7196630 in __write_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff714272f in _IO_new_file_write (f=0x60ecf0, data=0x7ffff4835000, n=80) at fileops.c:1251
+#2  0x00007ffff7141d73 in new_do_write (fp=0x60ecf0, data=0x7ffff4835000 "#HEADER box:15 spaceElem:337500 cores:228\n#BEGIN Y:2016 M:10 D:18 Time:13:31:49\n", to_do=to_do@entry=80) at fileops.c:506
+#3  0x00007ffff7143561 in _IO_new_do_write (fp=<optimized out>, data=<optimized out>, to_do=80) at fileops.c:482
+#4  0x00007ffff7141c78 in _IO_new_file_sync (fp=0x60ecf0) at fileops.c:862
+#5  0x00007ffff7137fa4 in __GI__IO_fflush (fp=0x60ecf0) at iofflush.c:41
+#6  0x0000000000407097 in start_log_file (benchmark_name=0x408cc0 "openmpLavaMD", test_info=0x7fffffffe688 "box:15 spaceElem:337500 cores:228") at ../../include/log_helper.c:273
+#7  0x0000000000402707 in main (argc=7, argv=0x7fffffffec08) at main_check.c:190
+
+2016-10-18 09:04:45:76	in ../sysdeps/unix/syscall-template.S
+
+2016-10-18 09:04:45:Backtrace END
+2016-10-18 09:04:45:Thread name: None
+2016-10-18 09:04:45:Thread num: 1
+2016-10-18 09:04:45:Thread ptid: (24765, 24765, 0)
+2016-10-18 09:04:45:bitFlip function
+2016-10-18 09:04:45:Type: The type is an array.
+2016-10-18 09:04:45:Type sizeof: 100
+2016-10-18 09:04:45:Fliping array at pos: 68
+2016-10-18 09:04:45:bitFlip function
+2016-10-18 09:04:45:Type: The type is an integer type.
+2016-10-18 09:04:45:Type sizeof: 1
+2016-10-18 09:04:45:Mem contents(hex):0xff
+2016-10-18 09:04:45:base address to flip value: 0x7fffffffe6cc 
+2016-10-18 09:04:45:address max offset: 1
+2016-10-18 09:04:45:Memory content before bitflip:0xff
+2016-10-18 09:04:45:Memory content after  bitflip:0xfb
+2016-10-18 09:04:45:Mem contents(hex):0xfb
+2016-10-18 09:04:45:frame name: main
+2016-10-18 09:04:45:symbol name: test_info
+2016-10-18 09:04:45:symbol filename: main_check.c
+2016-10-18 09:04:45:symbol line: 188
+2016-10-18 09:04:45:value: "box:15 spaceElem:337500 cores:228\000\377\367\377\177\000\000\070L\r\367\377\177\000\000\020`\336\367\377\177\000\000p\b\000\000\000\000\000\000\330\027\016\367\373\177\000\000\240\231\377\367\377\177\000\000h\347\377\377\377\177\000\000d\347\377\377\377\177\000\000[\362\001"
+2016-10-18 09:04:45:value address: 0x7fffffffe688
+2016-10-18 09:04:45:Type: The type is an array.
+2016-10-18 09:04:45:Type sizeof: 100
+2016-10-18 09:04:45:Field name: None
+2016-10-18 09:04:45:Field Type:
+2016-10-18 09:04:45:Type: A range type, that is, an integer type with bounds.
+2016-10-18 09:04:45:Type sizeof: 1
+2016-10-18 09:04:45:Type range: (0L, 99L)
+2016-10-18 09:04:45:Fault Injection Successful after 1.7500538826s
+2016-10-18 09:04:46:Fault Already Injected
+2016-10-18 09:04:48:Fault Already Injected
+2016-10-18 09:04:49:Fault Already Injected
+2016-10-18 09:04:49:Fault Already Injected
+2016-10-18 09:04:49:Fault Already Injected
+2016-10-18 09:04:51:Fault Already Injected
+2016-10-18 09:04:52:Fault Already Injected
+2016-10-18 09:04:52:Fault Already Injected
+2016-10-18 09:04:52:Fault Already Injected
+2016-10-18 09:04:55:event type: exit
+2016-10-18 09:04:55:exit code: 0

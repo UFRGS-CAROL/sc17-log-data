@@ -1,0 +1,101 @@
+2017-03-02 11:45:21:Starting flip_value script
+2017-03-02 11:45:21:Initialization strings:
+2017-03-02 11:45:21:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 11:45:21:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 11:45:21:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 11:45:22:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 11:45:22:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 11:45:22:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-02 11:45:22:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-02 11:45:22:initSignal:35
+2017-03-02 11:45:22:endSignal:40
+2017-03-02 11:45:22:seqSignal:20
+2017-03-02 11:46:01:Backtrace BEGIN:
+2017-03-02 11:46:01:#0  0x00000000004785a0 in U_halfstep (deltaT=0.0003299614977327434, U_i=7, U_n=7, F_i=0, F_n=0, r_i=1, r_n=1, A_i=1, A_n=1, V_i=1, V_n=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:200
+#1  0x0000000000453117 in State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1388
+#2  0x00007ffff790ba1f in ?? ()
+#3  0x00007fffffffdac0 in ?? ()
+#4  0x00007fffffffdab8 in ?? ()
+#5  0x00007fffffffdad0 in ?? ()
+#6  0x00007fffffffdad8 in ?? ()
+#7  0x00007fffffffda38 in ?? ()
+#8  0x00007fffffffda70 in ?? ()
+#9  0x00007fffffffda68 in ?? ()
+#10 0x00007fffffffdba8 in ?? ()
+#11 0x00007fffffffdbc8 in ?? ()
+#12 0x00007fffffffdbe8 in ?? ()
+#13 0x00007fffffffda30 in ?? ()
+#14 0x00000000000000e4 in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+2017-03-02 11:46:01:195	        real_t    V_i,        // Cell's            volume
+196	        real_t    V_n) {      // Cell's neighbor's volume
+197	
+198	   return (( r_i*U_n + r_n*U_i ) / ( r_i + r_n )) 
+199	          - HALF*deltaT*(( F_n*A_n*min(ONE, A_i/A_n) - F_i*A_i*min(ONE, A_n/A_i) )
+200	                    / ( V_n*min(HALF, V_i/V_n) + V_i*min(HALF, V_n/V_i) ));
+201	
+202	}
+203	
+204	inline real_t U_fullstep(
+
+2017-03-02 11:46:01:Backtrace END
+2017-03-02 11:47:17:Type: The type is a pointer.
+2017-03-02 11:47:17:Type sizeof: 8
+2017-03-02 11:47:17:Fliping a bit of the pointer
+2017-03-02 11:47:17:Mem contents(hex):0x000x6b0x8f0xf60xff0x7f0x000x00
+2017-03-02 11:47:17:Fault Mode: Zero bit-flip
+2017-03-02 11:47:17:base address to flip value: 0x7fffffffcc18
+2017-03-02 11:47:17:address max offset: 8
+2017-03-02 11:47:17:Memory content before bitflip:0x000x6b0x8f0xf60xff0x7f0x000x00
+2017-03-02 11:47:17:Backtrace BEGIN:
+2017-03-02 11:47:17:#0  0x00000000004785a0 in U_halfstep (deltaT=0.0003299614977327434, U_i=7, U_n=7, F_i=0, F_n=0, r_i=1, r_n=1, A_i=1, A_n=1, V_i=1, V_n=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:200
+#1  0x0000000000453117 in State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1388
+#2  0x00007ffff790ba1f in ?? ()
+#3  0x00007fffffffdac0 in ?? ()
+#4  0x00007fffffffdab8 in ?? ()
+#5  0x00007fffffffdad0 in ?? ()
+#6  0x00007fffffffdad8 in ?? ()
+#7  0x00007fffffffda38 in ?? ()
+#8  0x00007fffffffda70 in ?? ()
+#9  0x00007fffffffda68 in ?? ()
+#10 0x00007fffffffdba8 in ?? ()
+#11 0x00007fffffffdbc8 in ?? ()
+#12 0x00007fffffffdbe8 in ?? ()
+#13 0x00007fffffffda30 in ?? ()
+#14 0x00000000000000e4 in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+2017-03-02 11:47:17:195	        real_t    V_i,        // Cell's            volume
+196	        real_t    V_n) {      // Cell's neighbor's volume
+197	
+198	   return (( r_i*U_n + r_n*U_i ) / ( r_i + r_n )) 
+199	          - HALF*deltaT*(( F_n*A_n*min(ONE, A_i/A_n) - F_i*A_i*min(ONE, A_n/A_i) )
+200	                    / ( V_n*min(HALF, V_i/V_n) + V_i*min(HALF, V_n/V_i) ));
+201	
+202	}
+203	
+204	inline real_t U_fullstep(
+
+2017-03-02 11:47:17:Backtrace END
+2017-03-02 11:47:21:Type: The type is a pointer.
+2017-03-02 11:47:21:Type sizeof: 8
+2017-03-02 11:47:21:Fliping a bit of the pointer
+2017-03-02 11:47:21:Mem contents(hex):0xe00xa50x7f0x000x000x000x000x00
+2017-03-02 11:47:21:Fault Mode: Double bit-flip
+2017-03-02 11:47:21:base address to flip value: 0x7fffffffda30
+2017-03-02 11:47:21:address max offset: 8
+2017-03-02 11:47:21:Memory content before bitflip:0xe00xa50x7f0x000x000x000x000x00
+2017-03-02 11:47:21:Memory content after  bitflip:0xe00xa50x7f0x000x000x000x000x88
+2017-03-02 11:47:21:Mem contents(hex):0xe00xa50x7f0x000x000x000x000x88
+2017-03-02 11:47:21:frame name: State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37
+2017-03-02 11:47:21:symbol name: this
+2017-03-02 11:47:21:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+2017-03-02 11:47:21:symbol line: 1210
+2017-03-02 11:47:21:value: 0x7fa5e0
+2017-03-02 11:47:21:value address: 0x7fffffffda30
+2017-03-02 11:47:21:Type: The type is a pointer.
+2017-03-02 11:47:21:Type sizeof: 8
+2017-03-02 11:47:21:Fault Injection Successful after 119.619052887s
+2017-03-02 11:47:21:event type: exit
+2017-03-02 11:47:21:exit code: no exit code available

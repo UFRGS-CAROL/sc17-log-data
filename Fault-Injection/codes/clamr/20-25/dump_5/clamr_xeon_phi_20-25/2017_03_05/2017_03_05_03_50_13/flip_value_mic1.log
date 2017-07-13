@@ -1,0 +1,128 @@
+[INFO -- 2017-03-05 03:47:58]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-05 03:47:58]
+Initialization strings:
+[INFO -- 2017-03-05 03:47:58]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-05 03:47:58]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 03:47:58]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 03:47:59]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 03:47:59]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 03:47:59]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-05 03:47:59]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-05 03:47:59]
+initSignal:20
+[INFO -- 2017-03-05 03:47:59]
+endSignal:25
+[INFO -- 2017-03-05 03:47:59]
+seqSignal:20
+[INFO -- 2017-03-05 03:47:59]
+faultMode:1
+[INFO -- 2017-03-05 03:48:24]
+Backtrace BEGIN:
+#0  0x00007ffff6be664d in write () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6b9272f in _IO_new_file_write (f=0x1920e80, data=0x7fff082dd000, n=1048576) at fileops.c:1251
+#2  0x00007ffff6b91d73 in new_do_write (fp=0x1920e80, data=0x7fff082dd000 "23,60\n322,62,323,62\n322,62,322,60\n323,62,323,60\n322,59,323,59\n322,60,323,60\n322,60,322,59\n323,60,323,59\n323,59,325,59\n323,60,325,60\n323,60,323,59\n325,60,325,59\n323,57,325,57\n323,59,325,59\n323,59,323,5"..., to_do=to_do@entry=1048576) at fileops.c:506
+#3  0x00007ffff6b93561 in _IO_new_do_write (fp=<optimized out>, data=<optimized out>, to_do=1048576) at fileops.c:482
+#4  0x00007ffff6b92c40 in _IO_new_file_xsputn (f=0x1920e80, data=0x7fffffffe0dd, n=3) at fileops.c:1319
+#5  0x00007ffff6b677b3 in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1641
+#6  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#7  0x000000000054b93d in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:477
+#8  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#9  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping value of field: __overflow
+Fliping a bit of the pointer
+Memory content before bitflip:0xf00x370xb90xf60xff0x7f0x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7ffff6e73558 
+address max offset: 8
+Memory content after  bitflip:0x500x370xb90xf60xff0x7f0x000x00
+frame name: _IO_new_file_write
+symbol name: _IO_file_jumps_maybe_mmap
+symbol filename: fileops.c
+symbol line: 1574
+value: {__dummy = 0, __dummy2 = 0, __finish = 0x7ffff6b92f30 <_IO_new_file_finish>, __overflow = 0x7ffff6b93750 <_IO_new_file_underflow+480>, __underflow = 0x7ffff6b92670 <_IO_file_underflow_maybe_mmap>, __uflow = 0x7ffff6b94590 <__GI__IO_default_uflow>, __pbackfail = 0x7ffff6b95450 <__GI__IO_default_pbackfail>, __xsputn = 0x7ffff6b92ba0 <_IO_new_file_xsputn>, __xsgetn = 0x7ffff6b92690 <_IO_file_xsgetn_maybe_mmap>, __seekoff = 0x7ffff6b91bc0 <_IO_file_seekoff_maybe_mmap>, __seekpos = 0x7ffff6b947f0 <_IO_default_seekpos>, __setbuf = 0x7ffff6b91ce0 <_IO_file_setbuf_mmap>, __sync = 0x7ffff6b91bf0 <_IO_new_file_sync>, __doallocate = 0x7ffff6b87990 <__GI__IO_file_doallocate>, __read = 0x7ffff6b92b80 <__GI__IO_file_read>, __write = 0x7ffff6b926e0 <_IO_new_file_write>, __seek = 0x7ffff6b924a0 <__GI__IO_file_seek>, __close = 0x7ffff6b91ca0 <__GI__IO_file_close>, __stat = 0x7ffff6b926d0 <__GI__IO_file_stat>, __showmanyc = 0x7ffff6b955b0 <_IO_default_showmanyc>, __imbue = 0x7ffff6b955c0 <_IO_default_imbue>}
+value address: 0x7ffff6e73540 <_IO_file_jumps_maybe_mmap>
+Type: The type is a structure.
+Type sizeof: 168
+Field name: __dummy
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: __dummy2
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: __finish
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __overflow
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __underflow
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __uflow
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __pbackfail
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __xsputn
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __xsgetn
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __seekoff
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __seekpos
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __setbuf
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __sync
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __doallocate
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __read
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __write
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __seek
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __close
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __stat
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __showmanyc
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __imbue
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-05 03:48:24]
+Fault Injection Successful after 25.679694891s
+[INFO -- 2017-03-05 03:49:19]
+event type: exit
+[INFO -- 2017-03-05 03:49:19]
+exit code: 0

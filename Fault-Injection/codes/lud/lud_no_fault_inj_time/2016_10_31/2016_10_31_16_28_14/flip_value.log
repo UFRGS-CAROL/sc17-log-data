@@ -1,0 +1,53 @@
+2016-10-31 16:27:57:Initialization strings:
+2016-10-31 16:27:57:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-31 16:27:57:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 16:27:57:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 16:27:57:(4) file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-31 16:27:57:(5) set remote exec-file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-31 16:27:57:(6) set args -s 8192 -n 228 -i /micNfs/gdb-fault-injection-lud/bin/input_8192_th_228 -g /micNfs/gdb-fault-injection-lud/bin/gold_8192_th_228
+2016-10-31 16:27:59:Trying Fault Injection
+2016-10-31 16:27:59:Inferior PID: 76597
+2016-10-31 16:27:59:Inferior is valid: True
+2016-10-31 16:27:59:Inferior #threads: 1
+2016-10-31 16:27:59:Backtrace BEGIN:
+2016-10-31 16:27:59:#0  __GI___waitpid (pid=76605, stat_loc=stat_loc@entry=0x7fffffffe728, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x00000000004065db in update_timestamp () at ../../include/log_helper.c:108
+#3  start_iteration () at ../../include/log_helper.c:312
+#4  0x0000000000402c69 in main (argc=76605, argv=0x7fffffffe728) at lud_check.c:121
+
+2016-10-31 16:27:59:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-31 16:27:59:Backtrace END
+2016-10-31 16:27:59:Thread name: None
+2016-10-31 16:27:59:Thread num: 1
+2016-10-31 16:27:59:Thread ptid: (76597, 76597, 0)
+2016-10-31 16:27:59:bitFlip function
+2016-10-31 16:27:59:Type: The type is an integer type.
+2016-10-31 16:27:59:Type sizeof: 8
+2016-10-31 16:27:59:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-10-31 16:27:59:base address to flip value: 0x614508 
+2016-10-31 16:27:59:address max offset: 8
+2016-10-31 16:27:59:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-10-31 16:27:59:Memory content after  bitflip:0x000x000x000x010x000x000x000x00
+2016-10-31 16:27:59:Mem contents(hex):0x000x000x000x010x000x000x000x00
+2016-10-31 16:27:59:frame name: start_iteration
+2016-10-31 16:27:59:symbol name: iteration_number
+2016-10-31 16:27:59:symbol filename: ../../include/log_helper.c
+2016-10-31 16:27:59:symbol line: 62
+2016-10-31 16:27:59:value: 16777216
+2016-10-31 16:27:59:value address: 0x614508 <iteration_number>
+2016-10-31 16:27:59:Type: The type is an integer type.
+2016-10-31 16:27:59:Type sizeof: 8
+2016-10-31 16:27:59:Fault Injection Successful after 2.12703800201s
+2016-10-31 16:28:00:Fault Already Injected
+2016-10-31 16:28:01:Fault Already Injected
+2016-10-31 16:28:02:Fault Already Injected
+2016-10-31 16:28:03:Fault Already Injected
+2016-10-31 16:28:03:Fault Already Injected
+2016-10-31 16:28:05:Fault Already Injected
+2016-10-31 16:28:05:Fault Already Injected
+2016-10-31 16:28:05:Fault Already Injected
+2016-10-31 16:28:05:Fault Already Injected
+2016-10-31 16:28:08:event type: exit
+2016-10-31 16:28:08:exit code: 0

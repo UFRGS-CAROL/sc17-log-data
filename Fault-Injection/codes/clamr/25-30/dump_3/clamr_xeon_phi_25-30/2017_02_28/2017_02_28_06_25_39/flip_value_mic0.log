@@ -1,0 +1,103 @@
+2017-02-28 06:23:06:Starting flip_value script
+2017-02-28 06:23:06:Initialization strings:
+2017-02-28 06:23:06:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 06:23:06:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 06:23:06:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 06:23:06:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 06:23:06:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 06:23:06:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 06:23:06:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 06:23:06:initSignal:25
+2017-02-28 06:23:06:endSignal:30
+2017-02-28 06:23:06:seqSignal:20
+2017-02-28 06:23:33:Backtrace BEGIN:
+2017-02-28 06:23:33:#0  0x0000000000449a20 in std::vector<int, std::allocator<int> >::operator[] (this=0x7fffffffe698, __n=144643) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x00000000005361c8 in Mesh::partition_cells (this=0x7fae50, numpe=0, z_order=..., method=ORIGINAL_ORDER) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:370
+#2  0x00000000004461e3 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:477
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 06:23:33:775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+2017-02-28 06:23:33:Backtrace END
+2017-02-28 06:23:43:Type: The type is an array.
+2017-02-28 06:23:43:Type sizeof: 25
+2017-02-28 06:23:43:Fliping array at pos: 4
+2017-02-28 06:23:43:Type: The type is an integer type.
+2017-02-28 06:23:43:Type sizeof: 1
+2017-02-28 06:23:43:Mem contents(hex):0x6c
+2017-02-28 06:23:43:Fault Mode: Random bit-flip
+2017-02-28 06:23:43:base address to flip value: 0x7ce560  
+2017-02-28 06:23:43:address max offset: 1
+2017-02-28 06:23:43:Memory content before bitflip:0x6c
+2017-02-28 06:23:43:Backtrace BEGIN:
+2017-02-28 06:23:43:#0  0x0000000000449a20 in std::vector<int, std::allocator<int> >::operator[] (this=0x7fffffffe698, __n=144643) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x00000000005361c8 in Mesh::partition_cells (this=0x7fae50, numpe=0, z_order=..., method=ORIGINAL_ORDER) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:370
+#2  0x00000000004461e3 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:477
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 06:23:43:775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+2017-02-28 06:23:43:Backtrace END
+2017-02-28 06:23:52:Type: The type is an integer type.
+2017-02-28 06:23:52:Type sizeof: 4
+2017-02-28 06:23:52:Mem contents(hex):0x020x000x000x00
+2017-02-28 06:23:52:Fault Mode: Random bit-flip
+2017-02-28 06:23:52:base address to flip value: 0x7d076c 
+2017-02-28 06:23:52:address max offset: 4
+2017-02-28 06:23:52:Memory content before bitflip:0x020x000x000x00
+2017-02-28 06:23:53:Backtrace BEGIN:
+2017-02-28 06:23:53:#0  0x0000000000449a20 in std::vector<int, std::allocator<int> >::operator[] (this=0x7fffffffe698, __n=144643) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x00000000005361c8 in Mesh::partition_cells (this=0x7fae50, numpe=0, z_order=..., method=ORIGINAL_ORDER) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:370
+#2  0x00000000004461e3 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:477
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 06:23:53:775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+2017-02-28 06:23:53:Backtrace END
+2017-02-28 06:24:02:Type: A floating point type.
+2017-02-28 06:24:02:Type sizeof: 8
+2017-02-28 06:24:02:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-28 06:24:02:Fault Mode: Single bit-flip
+2017-02-28 06:24:02:base address to flip value: 0x7d0ac0 
+2017-02-28 06:24:02:address max offset: 8
+2017-02-28 06:24:02:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-28 06:24:02:Memory content after  bitflip:0x000x000x080x000x000x000x000x00
+2017-02-28 06:24:02:Mem contents(hex):0x000x000x080x000x000x000x000x00
+2017-02-28 06:24:02:frame name: Mesh::partition_cells
+2017-02-28 06:24:02:symbol name: meas_sum_average
+2017-02-28 06:24:02:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp
+2017-02-28 06:24:02:symbol line: 82
+2017-02-28 06:24:02:value: 2.5903268932681547e-318
+2017-02-28 06:24:02:value address: 0x7d0ac0 <meas_sum_average>
+2017-02-28 06:24:02:Type: A floating point type.
+2017-02-28 06:24:02:Type sizeof: 8
+2017-02-28 06:24:02:Fault Injection Successful after 56.563270092s
+2017-02-28 06:24:25:event type: exit
+2017-02-28 06:24:25:exit code: 0

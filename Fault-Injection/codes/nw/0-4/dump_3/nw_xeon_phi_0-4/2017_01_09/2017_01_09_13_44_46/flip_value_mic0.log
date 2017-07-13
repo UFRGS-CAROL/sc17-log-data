@@ -1,0 +1,74 @@
+2017-01-09 13:43:53:Starting flip_value script
+2017-01-09 13:43:53:Initialization strings:
+2017-01-09 13:43:54:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-09 13:43:54:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-09 13:43:54:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-09 13:43:54:(4) file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-01-09 13:43:54:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-01-09 13:43:54:(6) set args 16394 10 228 /micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10 /micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10
+2017-01-09 13:43:54:initSignal:0
+2017-01-09 13:43:54:endSignal:4
+2017-01-09 13:43:54:seqSignal:30
+2017-01-09 13:44:03:Trying Fault Injection
+2017-01-09 13:44:03:Inferior PID: 126596
+2017-01-09 13:44:03:Inferior is valid: True
+2017-01-09 13:44:03:Inferior #threads: 1
+2017-01-09 13:44:03:Backtrace BEGIN:
+2017-01-09 13:44:03:#0  0x00007ffff6e245d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6dd0911 in __GI__IO_file_xsgetn (fp=0x619900, data=<optimized out>, n=1075184100) at fileops.c:1422
+#2  0x00007ffff6dc6929 in __GI__IO_fread (buf=<optimized out>, size=1075184100, count=1, fp=0x619900) at iofread.c:42
+#3  0x00000000004014c3 in ReadArrayFromFile (input_itemsets=0x7fff76699010, gold_itemsets=0x7fff36538010, max_rows=16395, filenameinput=0x7fffffffee44 "/micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10", filenamegold=0x7fffffffee8a "/micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10") at needle_check.cpp:49
+#4  0x0000000000402bbc in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:319
+#5  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-01-09 13:44:03:76	in ../sysdeps/unix/syscall-template.S
+
+2017-01-09 13:44:03:Backtrace END
+2017-01-09 13:44:03:Thread name: None
+2017-01-09 13:44:03:Thread num: 1
+2017-01-09 13:44:03:Thread ptid: (126596, 126596, 0)
+2017-01-09 13:44:03:bitFlip function
+2017-01-09 13:44:03:Type: The type is an integer type.
+2017-01-09 13:44:03:Type sizeof: 4
+2017-01-09 13:44:03:Mem contents(hex):0xe40x000x000x00
+2017-01-09 13:44:03:base address to flip value: 0x7fffffffe938
+2017-01-09 13:44:03:address max offset: 4
+2017-01-09 13:44:03:Memory content before bitflip:0xe40x000x000x00
+2017-01-09 13:44:03:Memory content after  bitflip:0xe00x000x000x00
+2017-01-09 13:44:03:Mem contents(hex):0xe00x000x000x00
+2017-01-09 13:44:03:frame name: runTest
+2017-01-09 13:44:03:symbol name: omp_num_threads
+2017-01-09 13:44:03:symbol filename: needle_check.cpp
+2017-01-09 13:44:03:symbol line: 270
+2017-01-09 13:44:03:value: 224
+2017-01-09 13:44:03:value address: 0x7fffffffe938
+2017-01-09 13:44:03:Type: The type is an integer type.
+2017-01-09 13:44:03:Type sizeof: 4
+2017-01-09 13:44:03:Fault Injection Successful after 9.53670597076s
+2017-01-09 13:44:06:Fault Already Injected
+2017-01-09 13:44:06:Fault Already Injected
+2017-01-09 13:44:06:Fault Already Injected
+2017-01-09 13:44:06:Fault Already Injected
+2017-01-09 13:44:07:Fault Already Injected
+2017-01-09 13:44:07:Fault Already Injected
+2017-01-09 13:44:07:Fault Already Injected
+2017-01-09 13:44:07:Fault Already Injected
+2017-01-09 13:44:07:Fault Already Injected
+2017-01-09 13:44:07:Fault Already Injected
+2017-01-09 13:44:08:Fault Already Injected
+2017-01-09 13:44:08:Fault Already Injected
+2017-01-09 13:44:08:Fault Already Injected
+2017-01-09 13:44:08:Fault Already Injected
+2017-01-09 13:44:08:Fault Already Injected
+2017-01-09 13:44:08:Fault Already Injected
+2017-01-09 13:44:08:Fault Already Injected
+2017-01-09 13:44:08:Fault Already Injected
+2017-01-09 13:44:08:Fault Already Injected
+2017-01-09 13:44:09:Fault Already Injected
+2017-01-09 13:44:09:Fault Already Injected
+2017-01-09 13:44:09:Fault Already Injected
+2017-01-09 13:44:09:Fault Already Injected
+2017-01-09 13:44:10:Fault Already Injected
+2017-01-09 13:44:10:Fault Already Injected
+2017-01-09 13:44:40:event type: exit
+2017-01-09 13:44:40:exit code: 0

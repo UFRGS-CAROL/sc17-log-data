@@ -1,0 +1,71 @@
+2016-10-21 08:50:07:Initialization strings:
+2016-10-21 08:50:07:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-21 08:50:07:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-21 08:50:07:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-21 08:50:07:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-21 08:50:07:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-21 08:50:07:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-21 08:50:07:Trying Fault Injection
+2016-10-21 08:50:07:Backtrace BEGIN:
+2016-10-21 08:50:07:#0  0x00007ffff7dddbc0 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#1  0x0000000000000008 in ?? ()
+#2  0x00007fffffffede9 in ?? ()
+#3  0x00007fffffffee1f in ?? ()
+#4  0x00007fffffffee24 in ?? ()
+#5  0x00007fffffffee29 in ?? ()
+#6  0x00007fffffffee2e in ?? ()
+#7  0x00007fffffffee32 in ?? ()
+#8  0x00007fffffffee64 in ?? ()
+#9  0x00007fffffffee97 in ?? ()
+#10 0x0000000000000000 in ?? ()
+
+2016-10-21 08:50:07:220	    fprintf(stderr, "\t<no. of threads>   - number of threads\n");
+221	    fprintf(stderr, "\t<temp_file>  - name of the file containing the initial temperature values of each cell\n");
+222	    fprintf(stderr, "\t<power_file> - name of the file containing the dissipated power values of each cell\n");
+223	    fprintf(stderr, "\t<output_file> - name of the output file\n");
+224	    exit(1);
+225	}
+226	
+227	int main(int argc, char **argv)
+228	{
+229	    int grid_rows, grid_cols, sim_time, i;
+
+2016-10-21 08:50:07:Backtrace END
+2016-10-21 08:50:07:Fault Injection Failed after 0.467725992203s
+2016-10-21 08:50:10:Trying Fault Injection
+2016-10-21 08:50:10:Backtrace BEGIN:
+2016-10-21 08:50:10:#0  0x00007ffff7128c3e in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2334
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "324.055133\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=1, argv=0x43800000) at hotspot_check.c:264
+
+2016-10-21 08:50:10:2329	in vfscanf.c
+
+2016-10-21 08:50:10:Backtrace END
+2016-10-21 08:50:10:Type: The type is a pointer.
+2016-10-21 08:50:10:Type sizeof: 8
+2016-10-21 08:50:10:Fliping a bit of the pointer
+2016-10-21 08:50:10:Mem contents(hex):0x970xee0xff0xff0xff0x7f0x000x00
+2016-10-21 08:50:10:base address to flip value: 0x7fffffffe608
+2016-10-21 08:50:10:address max offset: 8
+2016-10-21 08:50:10:Memory content before bitflip:0x970xee0xff0xff0xff0x7f0x000x00
+2016-10-21 08:50:10:Memory content after  bitflip:0x970xee0xff0xff0xfd0x7f0x000x00
+2016-10-21 08:50:10:Mem contents(hex):0x970xee0xff0xff0xfd0x7f0x000x00
+2016-10-21 08:50:10:frame name: main
+2016-10-21 08:50:10:symbol name: final_result
+2016-10-21 08:50:10:symbol filename: hotspot_check.c
+2016-10-21 08:50:10:symbol line: 230
+2016-10-21 08:50:10:value: 0x7fffffffee97
+2016-10-21 08:50:10:value address: 0x7fffffffe608
+2016-10-21 08:50:10:Type: The type is a pointer.
+2016-10-21 08:50:10:Type sizeof: 8
+2016-10-21 08:50:10:Fault Injection Successful after 3.1940369606s
+2016-10-21 08:50:11:Fault Already Injected
+2016-10-21 08:50:12:Fault Already Injected
+2016-10-21 08:50:14:Fault Already Injected
+2016-10-21 08:50:15:Fault Already Injected
+2016-10-21 08:50:15:Fault Already Injected
+2016-10-21 08:50:15:Fault Already Injected
+2016-10-21 08:50:15:event type: exit
+2016-10-21 08:50:15:exit code: 1

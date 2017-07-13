@@ -1,0 +1,61 @@
+[INFO -- 2017-02-26 18:54:58]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 18:54:58]
+Initialization strings:
+[INFO -- 2017-02-26 18:54:59]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-26 18:54:59]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 18:54:59]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 18:54:59]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 18:54:59]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 18:54:59]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 18:54:59]
+initSignal:3
+[INFO -- 2017-02-26 18:54:59]
+endSignal:6
+[INFO -- 2017-02-26 18:54:59]
+seqSignal:15
+[INFO -- 2017-02-26 18:54:59]
+faultMode:1
+[INFO -- 2017-02-26 18:55:03]
+Backtrace BEGIN:
+#0  _pthread_cleanup_push_defer (buffer=0x7fffffffe2c0, routine=0x7ffff7135e30 <__funlockfile>, arg=0x7fffffffe440) at cleanup_defer_compat.c:37
+#1  0x00007ffff71249c6 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:340
+#2  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "323.566564\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000404598 in read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:207
+#5  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+32	in cleanup_defer_compat.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: __names
+Fliping array at pos: 5
+Fliping a bit of the pointer
+Memory content before bitflip:0xd80x010x1f0xf70xff0x7f0x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7ffff7425448 
+address max offset: 8
+Memory content after  bitflip:0xd80x010x1f0xf70xff0xf70x000x00
+frame name: _IO_vfscanf_internal
+symbol name: loc
+symbol filename: vfscanf.c
+symbol line: 218
+value: 0x7ffff74253a0 <_nl_global_locale>
+value address: 0x7fffffffe208
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-26 18:55:03]
+Fault Injection Successful after 4.12239289284s
+[INFO -- 2017-02-26 18:55:13]
+event type: exit
+[EXCEPTION -- 2017-02-26 18:55:13]
+exit code: no exit code available

@@ -1,0 +1,57 @@
+[INFO -- 2017-03-27 00:36:01]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 00:36:01]
+Initialization strings:
+[INFO -- 2017-03-27 00:36:01]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 00:36:01]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 00:36:01]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 00:36:01]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 00:36:01]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 00:36:01]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 00:36:01]
+initSignal:0
+[INFO -- 2017-03-27 00:36:01]
+endSignal:3
+[INFO -- 2017-03-27 00:36:01]
+seqSignal:30
+[INFO -- 2017-03-27 00:36:01]
+faultMode:2
+[INFO -- 2017-03-27 00:36:02]
+Backtrace BEGIN:
+#0  0x0000000000401d11 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:116
+
+111	
+112	                    for(m=-1; m<2; m++) {
+113	
+114	                        for(n=-1; n<2; n++) {
+115	
+116	                            if((((i+l)>=0 && (j+m)>=0 && (k+n)>=0)==true && ((i+l)<dim_cpu.boxes1d_arg && (j+m)<dim_cpu.boxes1d_arg && (k+n)<dim_cpu.boxes1d_arg)==true) && (l==0 && m==0 && n==0)==false) {
+117	
+118	                                box_cpu[nh].nei[box_cpu[nh].nn].x = (k+n);
+119	                                box_cpu[nh].nei[box_cpu[nh].nn].y = (j+m);
+120	                                box_cpu[nh].nei[box_cpu[nh].nn].z = (i+l);
+
+Backtrace END
+Memory content before bitflip:0x040x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe72c
+address max offset: 4
+Memory content after  bitflip:0xce0xbf0x100x02
+frame name: main
+symbol name: j
+symbol filename: main_check.c
+symbol line: 53
+value: 34652110
+value address: 0x7fffffffe72c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-27 00:36:02]
+Fault Injection Successful after 1.38311195374s

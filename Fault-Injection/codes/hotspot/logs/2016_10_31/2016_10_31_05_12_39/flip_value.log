@@ -1,0 +1,39 @@
+2016-10-31 05:12:30:Initialization strings:
+2016-10-31 05:12:30:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-31 05:12:30:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 05:12:30:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 05:12:30:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-31 05:12:30:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-31 05:12:30:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-31 05:12:32:Trying Fault Injection
+2016-10-31 05:12:32:Backtrace BEGIN:
+2016-10-31 05:12:32:#0  0x00007ffff7124d78 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:609
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "324.682797\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=-7168, argv=0x33) at hotspot_check.c:264
+
+2016-10-31 05:12:32:604	in vfscanf.c
+
+2016-10-31 05:12:32:Backtrace END
+2016-10-31 05:12:32:Type: The type is a pointer.
+2016-10-31 05:12:32:Type sizeof: 8
+2016-10-31 05:12:32:Fliping a bit of the pointer
+2016-10-31 05:12:32:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-10-31 05:12:32:base address to flip value: 0x7fffffffe1a8
+2016-10-31 05:12:32:address max offset: 8
+2016-10-31 05:12:32:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-10-31 05:12:32:Memory content after  bitflip:0x000x000x010x000x000x000x000x00
+2016-10-31 05:12:32:Mem contents(hex):0x000x000x010x000x000x000x000x00
+2016-10-31 05:12:32:frame name: _IO_vfscanf_internal
+2016-10-31 05:12:32:symbol name: strptr
+2016-10-31 05:12:32:symbol filename: vfscanf.c
+2016-10-31 05:12:32:symbol line: 257
+2016-10-31 05:12:32:value: 0x0
+2016-10-31 05:12:32:value address: 0x7fffffffe1a8
+2016-10-31 05:12:32:Type: The type is a pointer.
+2016-10-31 05:12:32:Type sizeof: 8
+2016-10-31 05:12:32:Fault Injection Successful after 2.53266000748s
+2016-10-31 05:12:32:Fault Already Injected
+2016-10-31 05:12:32:event type: exit
+2016-10-31 05:12:32:exit code: no exit code available

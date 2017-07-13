@@ -1,0 +1,70 @@
+[INFO -- 2017-03-12 11:04:38]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-12 11:04:38]
+Initialization strings:
+[INFO -- 2017-03-12 11:04:38]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-12 11:04:38]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-12 11:04:38]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-12 11:04:38]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-12 11:04:38]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-12 11:04:38]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-12 11:04:38]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-12 11:04:38]
+initSignal:40
+[INFO -- 2017-03-12 11:04:38]
+endSignal:49
+[INFO -- 2017-03-12 11:04:38]
+seqSignal:20
+[INFO -- 2017-03-12 11:04:38]
+faultMode:1
+[EXCEPTION -- 2017-03-12 11:05:24]
+gdbException: Cannot access memory at address 0x130
+[INFO -- 2017-03-12 11:05:28]
+Backtrace BEGIN:
+#0  Mesh::is_right_boundary (this=0x0, ic=-158369536) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.h:430
+#1  0x000000000044e4e7 in State::L__ZN5State25apply_boundary_conditionsEv_702__par_loop0_2_30 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:711
+#2  0x00007ffff790ba1f in ?? ()
+#3  0x00007fffffffe118 in ?? ()
+#4  0x00007fffffffe0e8 in ?? ()
+#5  0x0000000000000000 in ?? ()
+
+425	 *******************************************************************/
+426	   int  is_lower_boundary(int *iv, int *lev_begin, int ic)    { return (iv[ic] < lev_begin[level[ic]]); }
+427	   int  is_upper_boundary(int *iv, int *lev_end,   int ic)    { return (iv[ic] > lev_end[level[ic]]); }
+428	
+429	   int  is_left_boundary(int ic)    { return (i[ic] < lev_ibegin[level[ic]]); }
+430	   int  is_right_boundary(int ic)   { return (i[ic] > lev_iend[  level[ic]]); }
+431	   int  is_bottom_boundary(int ic)  { return (j[ic] < lev_jbegin[level[ic]]); }
+432	   int  is_top_boundary(int ic)     { return (j[ic] > lev_jend[  level[ic]]); }
+433	   int  is_front_boundary(int ic)   { return (k[ic] < lev_kbegin[level[ic]]); }
+434	   int  is_back_boundary(int ic)    { return (k[ic] > lev_kend[  level[ic]]); }
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7d07a0 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x110x000x000x000x00
+frame name: Mesh::is_right_boundary
+symbol name: reference_time
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 3275
+value: 1.4091378299378761e-315
+value address: 0x7d07a0 <reference_time>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-12 11:05:28]
+Fault Injection Successful after 50.9901258945s
+[INFO -- 2017-03-12 11:05:43]
+event type: exit
+[INFO -- 2017-03-12 11:05:43]
+exit code: 0

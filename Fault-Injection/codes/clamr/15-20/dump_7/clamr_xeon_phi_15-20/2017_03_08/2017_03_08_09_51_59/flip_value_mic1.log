@@ -1,0 +1,65 @@
+[INFO -- 2017-03-08 09:50:29]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-08 09:50:29]
+Initialization strings:
+[INFO -- 2017-03-08 09:50:29]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-08 09:50:29]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 09:50:29]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 09:50:29]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 09:50:29]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 09:50:29]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-08 09:50:29]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-08 09:50:29]
+initSignal:15
+[INFO -- 2017-03-08 09:50:29]
+endSignal:20
+[INFO -- 2017-03-08 09:50:29]
+seqSignal:20
+[INFO -- 2017-03-08 09:50:29]
+faultMode:3
+[INFO -- 2017-03-08 09:50:50]
+Backtrace BEGIN:
+#0  0x0000000000471641 in State::mass_sum (this=0x7fa5e0, enhanced_precision_sum=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:2988
+#1  0x000000000044532f in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:292
+
+2983	      local.correction = 0.0;
+2984	      int ic;
+2985	      for (ic = 0; ic < (int)ncells; ic++) {
+2986	         if (celltype[ic] == REAL_CELL) {
+2987	            //  Exclude boundary cells.
+2988	            corrected_next_term= H[ic]*mesh->lev_deltax[level[ic]]*mesh->lev_deltay[level[ic]] + local.correction;
+2989	            new_sum            = local.sum + local.correction;
+2990	            local.correction   = corrected_next_term - (new_sum - local.sum);
+2991	            local.sum          = new_sum;
+2992	         }
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7d0728 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: main
+symbol name: restart_file
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 152
+value: 0x0
+value address: 0x7d0728 <restart_file>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-08 09:50:50]
+Fault Injection Successful after 21.3684461117s
+[INFO -- 2017-03-08 09:51:28]
+event type: exit
+[INFO -- 2017-03-08 09:51:28]
+exit code: 0

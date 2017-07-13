@@ -1,0 +1,90 @@
+2016-10-18 01:09:24:Initialization strings:
+2016-10-18 01:09:24:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-18 01:09:24:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-18 01:09:24:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-18 01:09:24:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-18 01:09:24:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-18 01:09:24:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-18 01:09:25:Trying Fault Injection
+2016-10-18 01:09:25:Inferior PID: 228922
+2016-10-18 01:09:25:Inferior is valid: True
+2016-10-18 01:09:25:Inferior #threads: 1
+2016-10-18 01:09:25:Backtrace BEGIN:
+2016-10-18 01:09:25:#0  0x0000000000401f1c in main (argc=7, argv=0x7fffffffec08) at main_check.c:121
+
+2016-10-18 01:09:25:116	                            if((((i+l)>=0 && (j+m)>=0 && (k+n)>=0)==true && ((i+l)<dim_cpu.boxes1d_arg && (j+m)<dim_cpu.boxes1d_arg && (k+n)<dim_cpu.boxes1d_arg)==true) && (l==0 && m==0 && n==0)==false) {
+117	
+118	                                box_cpu[nh].nei[box_cpu[nh].nn].x = (k+n);
+119	                                box_cpu[nh].nei[box_cpu[nh].nn].y = (j+m);
+120	                                box_cpu[nh].nei[box_cpu[nh].nn].z = (i+l);
+121	                                box_cpu[nh].nei[box_cpu[nh].nn].number = (box_cpu[nh].nei[box_cpu[nh].nn].z * dim_cpu.boxes1d_arg * dim_cpu.boxes1d_arg) + (box_cpu[nh].nei[box_cpu[nh].nn].y * dim_cpu.boxes1d_arg) + box_cpu[nh].nei[box_cpu[nh].nn].x;
+122	                                box_cpu[nh].nei[box_cpu[nh].nn].offset = box_cpu[nh].nei[box_cpu[nh].nn].number * NUMBER_PAR_PER_BOX;
+123	
+124	                                box_cpu[nh].nn = box_cpu[nh].nn + 1;
+125	
+
+2016-10-18 01:09:25:Backtrace END
+2016-10-18 01:09:25:Thread name: None
+2016-10-18 01:09:25:Thread num: 1
+2016-10-18 01:09:25:Thread ptid: (228922, 228922, 0)
+2016-10-18 01:09:25:bitFlip function
+2016-10-18 01:09:25:Type: The type is a structure.
+2016-10-18 01:09:25:Type sizeof: 56
+2016-10-18 01:09:25:Fliping value of field: space_mem
+2016-10-18 01:09:25:bitFlip function
+2016-10-18 01:09:25:Type: The type is an integer type.
+2016-10-18 01:09:25:Type sizeof: 8
+2016-10-18 01:09:25:Mem contents(hex):0x800xcb0xa40x000x000x000x000x00
+2016-10-18 01:09:25:base address to flip value: 0x7fffffffe8b8
+2016-10-18 01:09:25:address max offset: 8
+2016-10-18 01:09:25:Memory content before bitflip:0x800xcb0xa40x000x000x000x000x00
+2016-10-18 01:09:25:Memory content after  bitflip:0x800xcb0xa40x000x000x000x040x00
+2016-10-18 01:09:25:Mem contents(hex):0x800xcb0xa40x000x000x000x040x00
+2016-10-18 01:09:25:frame name: main
+2016-10-18 01:09:25:symbol name: dim_cpu
+2016-10-18 01:09:25:symbol filename: main_check.c
+2016-10-18 01:09:25:symbol line: 56
+2016-10-18 01:09:25:value: {cur_arg = -134247168, arch_arg = 32767, cores_arg = 228, boxes1d_arg = 15, number_boxes = 3375, box_mem = 2214000, space_elem = 337500, space_mem = 1125899917642624, space_mem2 = 2700000}
+2016-10-18 01:09:25:value address: 0x7fffffffe890
+2016-10-18 01:09:25:Type: The type is a structure.
+2016-10-18 01:09:25:Type sizeof: 56
+2016-10-18 01:09:25:Field name: cur_arg
+2016-10-18 01:09:25:Field Type:
+2016-10-18 01:09:25:Type: The type is an integer type.
+2016-10-18 01:09:25:Type sizeof: 4
+2016-10-18 01:09:25:Field name: arch_arg
+2016-10-18 01:09:25:Field Type:
+2016-10-18 01:09:25:Type: The type is an integer type.
+2016-10-18 01:09:25:Type sizeof: 4
+2016-10-18 01:09:25:Field name: cores_arg
+2016-10-18 01:09:25:Field Type:
+2016-10-18 01:09:25:Type: The type is an integer type.
+2016-10-18 01:09:25:Type sizeof: 4
+2016-10-18 01:09:25:Field name: boxes1d_arg
+2016-10-18 01:09:25:Field Type:
+2016-10-18 01:09:25:Type: The type is an integer type.
+2016-10-18 01:09:25:Type sizeof: 4
+2016-10-18 01:09:25:Field name: number_boxes
+2016-10-18 01:09:25:Field Type:
+2016-10-18 01:09:25:Type: The type is an integer type.
+2016-10-18 01:09:25:Type sizeof: 8
+2016-10-18 01:09:25:Field name: box_mem
+2016-10-18 01:09:25:Field Type:
+2016-10-18 01:09:25:Type: The type is an integer type.
+2016-10-18 01:09:25:Type sizeof: 8
+2016-10-18 01:09:25:Field name: space_elem
+2016-10-18 01:09:25:Field Type:
+2016-10-18 01:09:25:Type: The type is an integer type.
+2016-10-18 01:09:25:Type sizeof: 8
+2016-10-18 01:09:25:Field name: space_mem
+2016-10-18 01:09:25:Field Type:
+2016-10-18 01:09:25:Type: The type is an integer type.
+2016-10-18 01:09:25:Type sizeof: 8
+2016-10-18 01:09:25:Field name: space_mem2
+2016-10-18 01:09:25:Field Type:
+2016-10-18 01:09:25:Type: The type is an integer type.
+2016-10-18 01:09:25:Type sizeof: 8
+2016-10-18 01:09:25:Fault Injection Successful after 1.31058597565s
+2016-10-18 01:09:25:Fault Already Injected
+2016-10-18 01:09:25:event type: exit
+2016-10-18 01:09:25:exit code: no exit code available

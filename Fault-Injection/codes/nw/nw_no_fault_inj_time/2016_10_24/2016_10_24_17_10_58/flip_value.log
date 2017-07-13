@@ -1,0 +1,50 @@
+2016-10-24 17:10:39:Initialization strings:
+2016-10-24 17:10:39:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-24 17:10:39:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 17:10:39:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 17:10:39:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-24 17:10:39:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-24 17:10:39:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-24 17:10:40:Trying Fault Injection
+2016-10-24 17:10:40:Inferior PID: 83319
+2016-10-24 17:10:40:Inferior is valid: True
+2016-10-24 17:10:40:Inferior #threads: 1
+2016-10-24 17:10:40:Backtrace BEGIN:
+2016-10-24 17:10:40:#0  __GI___waitpid (pid=83326, stat_loc=stat_loc@entry=0x7fffffffe5e8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff6d9d41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x000000000040648c in update_timestamp () at ../../include/log_helper.c:108
+#3  start_log_file (benchmark_name=0x1457e <error: Cannot access memory at address 0x1457e>, test_info=0x7fffffffe5e8 "") at ../../include/log_helper.c:197
+#4  0x00000000004014df in runTest (argc=<optimized out>, argv=<optimized out>) at needle_check.cpp:294
+#5  main (argc=83326, argv=0x7fffffffe5e8) at needle_check.cpp:114
+
+2016-10-24 17:10:40:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-24 17:10:40:Backtrace END
+2016-10-24 17:10:40:Thread name: None
+2016-10-24 17:10:40:Thread num: 1
+2016-10-24 17:10:40:Thread ptid: (83319, 83319, 0)
+2016-10-24 17:10:40:bitFlip function
+2016-10-24 17:10:40:Type: The type is an integer type.
+2016-10-24 17:10:40:Type sizeof: 4
+2016-10-24 17:10:40:Mem contents(hex):0x000x000x000x00
+2016-10-24 17:10:40:base address to flip value: 0x7fffffffeab8
+2016-10-24 17:10:40:address max offset: 4
+2016-10-24 17:10:40:Memory content before bitflip:0x000x000x000x00
+2016-10-24 17:10:40:Memory content after  bitflip:0x000x100x000x00
+2016-10-24 17:10:40:Mem contents(hex):0x000x100x000x00
+2016-10-24 17:10:40:frame name: runTest
+2016-10-24 17:10:40:symbol name: host_errors
+2016-10-24 17:10:40:symbol filename: needle_check.cpp
+2016-10-24 17:10:40:symbol line: 358
+2016-10-24 17:10:40:value: 4096
+2016-10-24 17:10:40:value address: 0x7fffffffeab8
+2016-10-24 17:10:40:Type: The type is an integer type.
+2016-10-24 17:10:40:Type sizeof: 4
+2016-10-24 17:10:40:Fault Injection Successful after 1.61318707466s
+2016-10-24 17:10:43:Fault Already Injected
+2016-10-24 17:10:46:Fault Already Injected
+2016-10-24 17:10:46:Fault Already Injected
+2016-10-24 17:10:50:Fault Already Injected
+2016-10-24 17:10:51:Fault Already Injected
+2016-10-24 17:10:51:event type: exit
+2016-10-24 17:10:51:exit code: 0

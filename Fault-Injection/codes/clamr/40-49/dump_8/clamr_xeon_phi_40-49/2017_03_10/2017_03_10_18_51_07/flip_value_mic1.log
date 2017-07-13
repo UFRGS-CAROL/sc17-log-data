@@ -1,0 +1,71 @@
+[INFO -- 2017-03-10 18:49:55]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-10 18:49:55]
+Initialization strings:
+[INFO -- 2017-03-10 18:49:55]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-10 18:49:55]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 18:49:55]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 18:49:55]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-10 18:49:55]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-10 18:49:55]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-10 18:49:55]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-10 18:49:55]
+initSignal:40
+[INFO -- 2017-03-10 18:49:55]
+endSignal:49
+[INFO -- 2017-03-10 18:49:55]
+seqSignal:20
+[INFO -- 2017-03-10 18:49:55]
+faultMode:0
+[INFO -- 2017-03-10 18:50:53]
+Backtrace BEGIN:
+#0  0x0000000000520a46 in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3211
+#1  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+3206	
+3207	         if (mpot[ic] == 0){
+3208	            if (nlft_old[ic] < (int)ncells && nlft_old[ic] >= 0){
+3209	               nlft[nc] = (mpot[nlft_old[ic]] == 0) ? index[nlft_old[ic]] : -1;
+3210	            }
+3211	            if (nrht_old[ic] < (int)ncells && nrht_old[ic] >= 0){
+3212	               nrht[nc] = (mpot[nrht_old[ic]] == 0) ? index[nrht_old[ic]] : -1;
+3213	            }
+3214	            if (nbot_old[ic] < (int)ncells && nbot_old[ic] >= 0){
+3215	               nbot[nc] = (mpot[nbot_old[ic]] == 0) ? index[nbot_old[ic]] : -1;
+
+Backtrace END
+Fliping array at pos: 2
+Memory content before bitflip:0x74
+Fault Mode: Single bit-flip
+base address to flip value: 0x7ce55e  
+address max offset: 1
+Memory content after  bitflip:0x70
+frame name: main
+symbol name: total_sim_time_log
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 180
+value: "topal_execution_time.log"
+value address: 0x7ce55c <total_sim_time_log>
+Type: The type is an array.
+Type sizeof: 25
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 24L)
+
+[INFO -- 2017-03-10 18:50:53]
+Fault Injection Successful after 58.2834239006s
+[INFO -- 2017-03-10 18:50:57]
+event type: exit
+[INFO -- 2017-03-10 18:50:57]
+exit code: 0

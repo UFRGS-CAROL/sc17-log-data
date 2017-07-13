@@ -1,0 +1,59 @@
+[INFO -- 2017-02-27 06:01:44]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 06:01:44]
+Initialization strings:
+[INFO -- 2017-02-27 06:01:45]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-27 06:01:45]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 06:01:45]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 06:01:45]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 06:01:45]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 06:01:45]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-27 06:01:45]
+initSignal:0
+[INFO -- 2017-02-27 06:01:45]
+endSignal:2
+[INFO -- 2017-02-27 06:01:45]
+seqSignal:30
+[INFO -- 2017-02-27 06:01:45]
+faultMode:1
+[INFO -- 2017-02-27 06:01:45]
+Backtrace BEGIN:
+#0  0x00007ffff71d5faa in determine_info (symbolp=<optimized out>, mapp=<optimized out>, info=0x7fffffffe6e0, match=0x7ffff7ff99a0, addr=140737338717216) at dl-addr.c:64
+#1  __GI__dl_addr (address=address@entry=0x7ffff714b420 <ptmalloc_init>, info=info@entry=0x7fffffffe6e0, mapp=mapp@entry=0x7fffffffe6d8, symbolp=symbolp@entry=0x0) at dl-addr.c:137
+#2  0x00007ffff714b1e6 in ptmalloc_init () at arena.c:370
+#3  0x00007ffff714b46e in ptmalloc_init () at hooks.c:29
+#4  malloc_hook_ini (sz=552, caller=<optimized out>) at hooks.c:31
+#5  0x00007ffff713847b in __fopen_internal (filename=0x7fffffffee51 "/micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228", mode=0x407548 "rb", is32=1) at iofopen.c:69
+#6  0x0000000000402a34 in main (argc=9, argv=0x7fffffffec08) at lud_check.c:94
+
+59	in dl-addr.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe680
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x090x00
+frame name: determine_info
+symbol name: symbolp
+symbol filename: dl-addr.c
+symbol line: 125
+value: 0x0
+value address: 0x7fffffffe680
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-27 06:01:45]
+Fault Injection Successful after 0.563797950745s
+[INFO -- 2017-02-27 06:01:45]
+event type: exit
+[EXCEPTION -- 2017-02-27 06:01:45]
+exit code: no exit code available

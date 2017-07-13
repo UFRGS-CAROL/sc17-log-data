@@ -1,0 +1,61 @@
+[INFO -- 2017-02-27 10:43:05]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 10:43:05]
+Initialization strings:
+[INFO -- 2017-02-27 10:43:05]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-27 10:43:05]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 10:43:05]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 10:43:05]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 10:43:05]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 10:43:05]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-27 10:43:05]
+initSignal:12
+[INFO -- 2017-02-27 10:43:05]
+endSignal:15
+[INFO -- 2017-02-27 10:43:05]
+seqSignal:15
+[INFO -- 2017-02-27 10:43:05]
+faultMode:3
+[INFO -- 2017-02-27 10:43:19]
+Backtrace BEGIN:
+#0  0x00007ffff719f097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff74321df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffdf98) at allocatestack.c:640
+#2  __pthread_create_2_1 (newthread=0x7fffffffdf90, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffee1f5600) at pthread_create.c:524
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping array at pos: 2
+Memory content before bitflip:0x3c0x060x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffff743c368 
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: allocate_stack
+symbol name: _thread_db_pthread_schedpolicy
+symbol filename: ../nptl_db/structs.def
+symbol line: 32
+value: {32, 1, 0}
+value address: 0x7ffff743c360 <_thread_db_pthread_schedpolicy>
+Type: The type is an array.
+Type sizeof: 12
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 2L)
+
+[INFO -- 2017-02-27 10:43:19]
+Fault Injection Successful after 14.7469251156s
+[INFO -- 2017-02-27 10:43:32]
+event type: exit
+[INFO -- 2017-02-27 10:43:32]
+exit code: 0

@@ -1,0 +1,90 @@
+2016-10-20 10:50:33:Initialization strings:
+2016-10-20 10:50:34:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-20 10:50:34:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-20 10:50:34:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-20 10:50:34:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-20 10:50:34:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-20 10:50:34:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-20 10:50:35:Trying Fault Injection
+2016-10-20 10:50:35:Inferior PID: 35040
+2016-10-20 10:50:35:Inferior is valid: True
+2016-10-20 10:50:35:Inferior #threads: 23
+2016-10-20 10:50:35:Backtrace BEGIN:
+2016-10-20 10:50:35:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff4933d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff4933df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff4933d14 in ?? ()
+#8  0x00007ffff4933de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+2016-10-20 10:50:35:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2016-10-20 10:50:35:Backtrace END
+2016-10-20 10:50:36:Error(threadFlip): No Threads with symbols
+2016-10-20 10:50:36:Fault Injection Failed after 2.09310102463s
+2016-10-20 10:50:36:Trying Fault Injection
+2016-10-20 10:50:36:Inferior PID: 35040
+2016-10-20 10:50:36:Inferior is valid: True
+2016-10-20 10:50:36:Inferior #threads: 23
+2016-10-20 10:50:36:Backtrace BEGIN:
+2016-10-20 10:50:36:#0  0x00007ffff7930c40 in ?? ()
+#1  0x00007ffff788c60a in ?? ()
+#2  0x00000000000000a8 in ?? ()
+#3  0x00007ffff6ebff40 in ?? ()
+#4  0x0000000000000016 in ?? ()
+#5  0x00007ffff78d7001 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2016-10-20 10:50:36:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2016-10-20 10:50:36:Backtrace END
+2016-10-20 10:50:36:Error(threadFlip): No Threads with symbols
+2016-10-20 10:50:36:Fault Injection Failed after 2.53505206108s
+2016-10-20 10:50:36:Trying Fault Injection
+2016-10-20 10:50:36:Inferior PID: 35040
+2016-10-20 10:50:36:Inferior is valid: True
+2016-10-20 10:50:36:Inferior #threads: 180
+2016-10-20 10:50:36:Backtrace BEGIN:
+2016-10-20 10:50:36:#0  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffdd58) at allocatestack.c:548
+#1  __pthread_create_2_1 (newthread=0x7fffffffdd50, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffa8351600) at pthread_create.c:524
+#2  0x00007ffff790d323 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2016-10-20 10:50:36:543	in allocatestack.c
+
+2016-10-20 10:50:36:Backtrace END
+2016-10-20 10:50:39:Thread name: None
+2016-10-20 10:50:39:Thread num: 1
+2016-10-20 10:50:39:Thread ptid: (35040, 35040, 0)
+2016-10-20 10:50:39:bitFlip function
+2016-10-20 10:50:39:Type: The type is an integer type.
+2016-10-20 10:50:39:Type sizeof: 4
+2016-10-20 10:50:39:Mem contents(hex):0x000x020x000x00
+2016-10-20 10:50:39:base address to flip value: 0x7ffff743c238 
+2016-10-20 10:50:39:address max offset: 4
+2016-10-20 10:50:39:Memory content before bitflip:0x000x020x000x00
+2016-10-20 10:50:39:Memory content after  bitflip:0x000x020x000x01
+2016-10-20 10:50:39:Mem contents(hex):0x000x020x000x01
+2016-10-20 10:50:39:frame name: __pthread_create_2_1
+2016-10-20 10:50:39:symbol name: _thread_db_sizeof_pthread_key_data_level2
+2016-10-20 10:50:39:symbol filename: ../nptl_db/structs.def
+2016-10-20 10:50:39:symbol line: 69
+2016-10-20 10:50:39:value: 16777728
+2016-10-20 10:50:39:value address: 0x7ffff743c238 <_thread_db_sizeof_pthread_key_data_level2>
+2016-10-20 10:50:39:Type: The type is an integer type.
+2016-10-20 10:50:39:Type sizeof: 4
+2016-10-20 10:50:39:Fault Injection Successful after 5.16611003876s
+2016-10-20 10:50:40:Fault Already Injected
+2016-10-20 10:50:40:Fault Already Injected
+2016-10-20 10:50:42:Fault Already Injected
+2016-10-20 10:50:43:Fault Already Injected
+2016-10-20 10:50:44:Fault Already Injected
+2016-10-20 10:50:44:Fault Already Injected
+2016-10-20 10:50:48:event type: exit
+2016-10-20 10:50:48:exit code: 0

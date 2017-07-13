@@ -1,0 +1,75 @@
+2017-02-22 03:24:54:Starting flip_value script
+2017-02-22 03:24:54:Initialization strings:
+2017-02-22 03:24:54:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-22 03:24:54:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 03:24:54:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 03:24:54:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-22 03:24:54:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-22 03:24:54:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-22 03:24:54:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-22 03:24:54:initSignal:0
+2017-02-22 03:24:54:endSignal:5
+2017-02-22 03:24:54:seqSignal:20
+2017-02-22 03:24:56:Backtrace BEGIN:
+2017-02-22 03:24:56:#0  0x0000000000529bc7 in Mesh::calc_centerminmax (this=0x7fae50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2514
+#1  0x0000000000536367 in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:384
+#2  0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#3  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-22 03:24:56:2509	   xcentermin=+1.0e30, ycentermin=+1.0e30, zcentermin=+1.0e30;
+2510	   xcentermax=-1.0e30, ycentermax=-1.0e30, zcentermax=-1.0e30;
+2511	   real_t xmid, ymid, zmid;
+2512	
+2513	   for (uint ic=0; ic<ncells; ic++){
+2514	      xmid = x[ic]+0.5*dx[ic];
+2515	      if (xmid < xcentermin) xcentermin = xmid;
+2516	      if (xmid > xcentermax) xcentermax = xmid;
+2517	   }
+2518	   for (uint ic=0; ic<ncells; ic++){
+
+2017-02-22 03:24:56:Backtrace END
+2017-02-22 03:25:00:Type: A boolean type.
+2017-02-22 03:25:00:Type sizeof: 1
+2017-02-22 03:25:00:Mem contents(hex):0x00
+2017-02-22 03:25:00:Fault Mode: Random bit-flip
+2017-02-22 03:25:00:base address to flip value: 0x7d0abe 
+2017-02-22 03:25:00:address max offset: 1
+2017-02-22 03:25:00:Memory content before bitflip:0x00
+2017-02-22 03:25:00:Backtrace BEGIN:
+2017-02-22 03:25:00:#0  0x0000000000529bc7 in Mesh::calc_centerminmax (this=0x7fae50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2514
+#1  0x0000000000536367 in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:384
+#2  0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#3  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-22 03:25:00:2509	   xcentermin=+1.0e30, ycentermin=+1.0e30, zcentermin=+1.0e30;
+2510	   xcentermax=-1.0e30, ycentermax=-1.0e30, zcentermax=-1.0e30;
+2511	   real_t xmid, ymid, zmid;
+2512	
+2513	   for (uint ic=0; ic<ncells; ic++){
+2514	      xmid = x[ic]+0.5*dx[ic];
+2515	      if (xmid < xcentermin) xcentermin = xmid;
+2516	      if (xmid > xcentermax) xcentermax = xmid;
+2517	   }
+2518	   for (uint ic=0; ic<ncells; ic++){
+
+2017-02-22 03:25:00:Backtrace END
+2017-02-22 03:25:04:Type: A floating point type.
+2017-02-22 03:25:04:Type sizeof: 8
+2017-02-22 03:25:04:Mem contents(hex):0x500xec0xff0xff0xff0x7f0x000x00
+2017-02-22 03:25:04:Fault Mode: Double bit-flip
+2017-02-22 03:25:04:base address to flip value: 0x7fffffffe010
+2017-02-22 03:25:04:address max offset: 8
+2017-02-22 03:25:04:Memory content before bitflip:0x500xec0xff0xff0xff0x7f0x000x00
+2017-02-22 03:25:04:Memory content after  bitflip:0x500xec0xff0xff0xff0x7f0x000x82
+2017-02-22 03:25:04:Mem contents(hex):0x500xec0xff0xff0xff0x7f0x000x82
+2017-02-22 03:25:04:frame name: Mesh::calc_centerminmax
+2017-02-22 03:25:04:symbol name: ymid
+2017-02-22 03:25:04:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+2017-02-22 03:25:04:symbol line: 2511
+2017-02-22 03:25:04:value: -4.9276319056916483e-299
+2017-02-22 03:25:04:value address: 0x7fffffffe010
+2017-02-22 03:25:04:Type: A floating point type.
+2017-02-22 03:25:04:Type sizeof: 8
+2017-02-22 03:25:04:Fault Injection Successful after 10.3697240353s
+2017-02-22 03:25:52:event type: exit
+2017-02-22 03:25:52:exit code: 0

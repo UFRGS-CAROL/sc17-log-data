@@ -1,0 +1,54 @@
+2016-11-01 17:10:28:Initialization strings:
+2016-11-01 17:10:29:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-11-01 17:10:29:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 17:10:29:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 17:10:29:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-01 17:10:29:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-01 17:10:29:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-11-01 17:10:29:Trying Fault Injection
+2016-11-01 17:10:29:Backtrace BEGIN:
+2016-11-01 17:10:29:#0  __GI___waitpid (pid=188178, stat_loc=stat_loc@entry=0x7fffffffe268, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000405ccc in update_timestamp () at ../../include/log_helper.c:107
+#3  start_log_file (benchmark_name=0x2df12 <error: Cannot access memory at address 0x2df12>, test_info=0x7fffffffe268 "") at ../../include/log_helper.c:196
+#4  0x0000000000401681 in main (argc=188178, argv=0x7fffffffe268) at hotspot_check.c:254
+
+2016-11-01 17:10:29:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-11-01 17:10:29:Backtrace END
+2016-11-01 17:10:29:Type: The type is an array.
+2016-11-01 17:10:29:Type sizeof: 31
+2016-11-01 17:10:29:Fliping array at pos: 1
+2016-11-01 17:10:29:Type: The type is an integer type.
+2016-11-01 17:10:29:Type sizeof: 1
+2016-11-01 17:10:29:Mem contents(hex):0x65
+2016-11-01 17:10:29:base address to flip value: 0x608bbc  
+2016-11-01 17:10:29:address max offset: 1
+2016-11-01 17:10:29:Memory content before bitflip:0x65
+2016-11-01 17:10:29:Memory content after  bitflip:0x6d
+2016-11-01 17:10:29:Mem contents(hex):0x6d
+2016-11-01 17:10:29:frame name: start_log_file
+2016-11-01 17:10:29:symbol name: config_file
+2016-11-01 17:10:29:symbol filename: ../../include/log_helper.c
+2016-11-01 17:10:29:symbol line: 44
+2016-11-01 17:10:29:value: "/mtc/radiation-benchmarks.conf"
+2016-11-01 17:10:29:value address: 0x608bbb <config_file>
+2016-11-01 17:10:29:Type: The type is an array.
+2016-11-01 17:10:29:Type sizeof: 31
+2016-11-01 17:10:29:Field name: None
+2016-11-01 17:10:29:Field Type:
+2016-11-01 17:10:29:Type: A range type, that is, an integer type with bounds.
+2016-11-01 17:10:29:Type sizeof: 1
+2016-11-01 17:10:29:Type range: (0L, 30L)
+2016-11-01 17:10:29:Fault Injection Successful after 0.793061971664s
+2016-11-01 17:10:31:Fault Already Injected
+2016-11-01 17:10:33:Fault Already Injected
+2016-11-01 17:10:37:Fault Already Injected
+2016-11-01 17:10:39:Fault Already Injected
+2016-11-01 17:10:40:Fault Already Injected
+2016-11-01 17:10:40:Fault Already Injected
+2016-11-01 17:10:42:Fault Already Injected
+2016-11-01 17:10:44:Fault Already Injected
+2016-11-01 17:10:44:Fault Already Injected
+2016-11-01 17:10:44:event type: exit
+2016-11-01 17:10:44:exit code: 0

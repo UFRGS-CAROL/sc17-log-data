@@ -1,0 +1,92 @@
+2017-01-25 07:05:56:Starting flip_value script
+2017-01-25 07:05:56:Initialization strings:
+2017-01-25 07:05:56:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 07:05:56:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 07:05:56:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 07:05:56:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 07:05:56:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 07:05:56:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 07:05:56:initSignal:2
+2017-01-25 07:05:56:endSignal:4
+2017-01-25 07:05:56:seqSignal:30
+2017-01-25 07:05:59:Trying Fault Injection
+2017-01-25 07:05:59:Inferior PID: 215778
+2017-01-25 07:05:59:Inferior is valid: True
+2017-01-25 07:05:59:Inferior #threads: 229
+2017-01-25 07:05:59:Backtrace BEGIN:
+2017-01-25 07:05:59:#0  0x0000000000403966 in lud_diagonal_omp (a=0x7ffff5ecc010, size=2048, offset=272) at lud_omp.c:28
+#1  0x0000000000403af9 in lud_omp (a=0x7ffff5ecc010, size=2048) at lud_omp.c:62
+#2  0x0000000000402c78 in main (argc=9, argv=0x7fffffffec08) at lud_check.c:124
+
+2017-01-25 07:05:59:23	            }
+24	        }
+25	   
+26	        float temp = 1.f/AA(i,i);
+27	        for (j = i+1; j < BS; j++) {
+28	            for (k = 0; k < i ; k++) {
+29	                AA(j,i) = AA(j,i) - AA(j,k) * AA(k,i);
+30	            }
+31	            AA(j,i) = AA(j,i)*temp;
+32	        }
+
+2017-01-25 07:05:59:Backtrace END
+2017-01-25 07:06:02:Thread name: None
+2017-01-25 07:06:02:Thread num: 1
+2017-01-25 07:06:02:Thread ptid: (215778, 215778, 0)
+2017-01-25 07:06:02:bitFlip function
+2017-01-25 07:06:02:Type: The type is an integer type.
+2017-01-25 07:06:02:Type sizeof: 4
+2017-01-25 07:06:02:Mem contents(hex):0xe40x000x000x00
+2017-01-25 07:06:02:base address to flip value: 0x60b670 
+2017-01-25 07:06:02:address max offset: 4
+2017-01-25 07:06:02:Memory content before bitflip:0xe40x000x000x00
+2017-01-25 07:06:02:Memory content after  bitflip:0xec0x000x000x00
+2017-01-25 07:06:02:Mem contents(hex):0xec0x000x000x00
+2017-01-25 07:06:02:frame name: main
+2017-01-25 07:06:02:symbol name: omp_num_threads
+2017-01-25 07:06:02:symbol filename: lud_check.c
+2017-01-25 07:06:02:symbol line: 30
+2017-01-25 07:06:02:value: 236
+2017-01-25 07:06:02:value address: 0x60b670 <omp_num_threads>
+2017-01-25 07:06:02:Type: The type is an integer type.
+2017-01-25 07:06:02:Type sizeof: 4
+2017-01-25 07:06:02:Fault Injection Successful after 6.99677205086s
+2017-01-25 07:06:03:Fault Already Injected
+2017-01-25 07:06:03:Fault Already Injected
+2017-01-25 07:06:03:Fault Already Injected
+2017-01-25 07:06:03:Fault Already Injected
+2017-01-25 07:06:04:Fault Already Injected
+2017-01-25 07:06:04:Fault Already Injected
+2017-01-25 07:06:05:Fault Already Injected
+2017-01-25 07:06:05:Fault Already Injected
+2017-01-25 07:06:05:Fault Already Injected
+2017-01-25 07:06:06:Fault Already Injected
+2017-01-25 07:06:06:Fault Already Injected
+2017-01-25 07:06:07:Fault Already Injected
+2017-01-25 07:06:07:Fault Already Injected
+2017-01-25 07:06:07:Fault Already Injected
+2017-01-25 07:06:08:Fault Already Injected
+2017-01-25 07:06:08:Fault Already Injected
+2017-01-25 07:06:08:Fault Already Injected
+2017-01-25 07:06:08:Fault Already Injected
+2017-01-25 07:06:09:Fault Already Injected
+2017-01-25 07:06:09:Fault Already Injected
+2017-01-25 07:06:09:Fault Already Injected
+2017-01-25 07:06:09:Fault Already Injected
+2017-01-25 07:06:10:Fault Already Injected
+2017-01-25 07:06:10:Fault Already Injected
+2017-01-25 07:06:11:Fault Already Injected
+2017-01-25 07:06:11:Fault Already Injected
+2017-01-25 07:06:11:Fault Already Injected
+2017-01-25 07:06:11:Fault Already Injected
+2017-01-25 07:06:12:Fault Already Injected
+2017-01-25 07:06:12:Fault Already Injected
+2017-01-25 07:06:12:Fault Already Injected
+2017-01-25 07:06:12:Fault Already Injected
+2017-01-25 07:06:13:Fault Already Injected
+2017-01-25 07:06:13:Fault Already Injected
+2017-01-25 07:06:13:Fault Already Injected
+2017-01-25 07:06:13:Fault Already Injected
+2017-01-25 07:06:13:Fault Already Injected
+2017-01-25 07:06:14:event type: exit
+2017-01-25 07:06:14:exit code: 0

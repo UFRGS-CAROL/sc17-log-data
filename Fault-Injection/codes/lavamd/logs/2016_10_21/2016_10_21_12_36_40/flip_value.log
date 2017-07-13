@@ -1,0 +1,56 @@
+2016-10-21 12:35:49:Initialization strings:
+2016-10-21 12:35:50:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-21 12:35:50:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-21 12:35:50:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-21 12:35:50:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-21 12:35:50:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-21 12:35:50:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-21 12:35:50:Trying Fault Injection
+2016-10-21 12:35:50:Inferior PID: 184127
+2016-10-21 12:35:50:Inferior is valid: True
+2016-10-21 12:35:50:Inferior #threads: 1
+2016-10-21 12:35:50:Backtrace BEGIN:
+2016-10-21 12:35:50:#0  0x000000000040236d in main (argc=7, argv=0x7fffffffec08) at main_check.c:162
+
+2016-10-21 12:35:50:157	        printf( "The file 'input_charges' was not opened\n" );
+158	        exit(1);
+159	    }
+160	
+161	    qv_cpu = (fp*)malloc(dim_cpu.space_mem2);
+162	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+163	        fread(&(qv_cpu[i]), 1, sizeof(double), file);
+164	    }
+165	    fclose(file);
+166	
+
+2016-10-21 12:35:50:Backtrace END
+2016-10-21 12:35:50:Thread name: None
+2016-10-21 12:35:50:Thread num: 1
+2016-10-21 12:35:50:Thread ptid: (184127, 184127, 0)
+2016-10-21 12:35:50:bitFlip function
+2016-10-21 12:35:50:Type: The type is a pointer.
+2016-10-21 12:35:50:Type sizeof: 8
+2016-10-21 12:35:50:Fliping a bit of the pointer
+2016-10-21 12:35:51:Mem contents(hex):0x100x300x060xf60xff0x7f0x000x00
+2016-10-21 12:35:51:base address to flip value: 0x7fffffffe980
+2016-10-21 12:35:51:address max offset: 8
+2016-10-21 12:35:51:Memory content before bitflip:0x100x300x060xf60xff0x7f0x000x00
+2016-10-21 12:35:51:Memory content after  bitflip:0x100x300x0e0xf60xff0x7f0x000x00
+2016-10-21 12:35:51:Mem contents(hex):0x100x300x0e0xf60xff0x7f0x000x00
+2016-10-21 12:35:51:frame name: main
+2016-10-21 12:35:51:symbol name: rv_cpu
+2016-10-21 12:35:51:symbol filename: main_check.c
+2016-10-21 12:35:51:symbol line: 58
+2016-10-21 12:35:51:value: 0x7ffff6063010
+2016-10-21 12:35:51:value address: 0x7fffffffe980
+2016-10-21 12:35:51:Type: The type is a pointer.
+2016-10-21 12:35:51:Type sizeof: 8
+2016-10-21 12:35:51:Fault Injection Successful after 1.02509188652s
+2016-10-21 12:35:52:Fault Already Injected
+2016-10-21 12:35:53:Fault Already Injected
+2016-10-21 12:35:55:Fault Already Injected
+2016-10-21 12:35:55:Fault Already Injected
+2016-10-21 12:35:55:Fault Already Injected
+2016-10-21 12:35:56:Fault Already Injected
+2016-10-21 12:35:57:Fault Already Injected
+2016-10-21 12:35:59:Fault Already Injected

@@ -1,0 +1,46 @@
+2017-03-01 07:37:36:Starting flip_value script
+2017-03-01 07:37:36:Initialization strings:
+2017-03-01 07:37:36:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-01 07:37:36:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 07:37:36:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 07:37:36:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-01 07:37:36:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-01 07:37:36:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-03-01 07:37:36:initSignal:7
+2017-03-01 07:37:36:endSignal:14
+2017-03-01 07:37:36:seqSignal:15
+2017-03-01 07:37:44:Backtrace BEGIN:
+2017-03-01 07:37:44:#0  0x000000000040440b in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:367
+
+2017-03-01 07:37:44:362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+371	        kernel_start = timing_get_time();
+
+2017-03-01 07:37:44:Backtrace END
+2017-03-01 07:37:44:Type: The type is an integer type.
+2017-03-01 07:37:44:Type sizeof: 4
+2017-03-01 07:37:44:Mem contents(hex):0x000x0c0x0f0xf7
+2017-03-01 07:37:44:Fault Mode: Single bit-flip
+2017-03-01 07:37:44:base address to flip value: 0x7fffffffead8
+2017-03-01 07:37:44:address max offset: 4
+2017-03-01 07:37:44:Memory content before bitflip:0x000x0c0x0f0xf7
+2017-03-01 07:37:44:Memory content after  bitflip:0x000x0c0x0d0xf7
+2017-03-01 07:37:44:Mem contents(hex):0x000x0c0x0d0xf7
+2017-03-01 07:37:44:frame name: main
+2017-03-01 07:37:44:symbol name: errors
+2017-03-01 07:37:44:symbol filename: dgemm.c
+2017-03-01 07:37:44:symbol line: 388
+2017-03-01 07:37:44:value: -150139904
+2017-03-01 07:37:44:value address: 0x7fffffffead8
+2017-03-01 07:37:44:Type: The type is an integer type.
+2017-03-01 07:37:44:Type sizeof: 4
+2017-03-01 07:37:44:Fault Injection Successful after 8.78002405167s
+2017-03-01 07:38:40:event type: exit
+2017-03-01 07:38:40:exit code: 0

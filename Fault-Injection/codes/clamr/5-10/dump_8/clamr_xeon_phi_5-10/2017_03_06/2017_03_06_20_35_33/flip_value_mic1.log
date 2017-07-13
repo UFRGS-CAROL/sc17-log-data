@@ -1,0 +1,72 @@
+[INFO -- 2017-03-06 20:34:20]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 20:34:20]
+Initialization strings:
+[INFO -- 2017-03-06 20:34:21]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-06 20:34:21]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 20:34:21]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 20:34:21]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 20:34:21]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 20:34:21]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-06 20:34:21]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-06 20:34:21]
+initSignal:5
+[INFO -- 2017-03-06 20:34:21]
+endSignal:10
+[INFO -- 2017-03-06 20:34:21]
+seqSignal:20
+[INFO -- 2017-03-06 20:34:21]
+faultMode:1
+[INFO -- 2017-03-06 20:34:35]
+Backtrace BEGIN:
+#0  0x000000000053cfea in KDTree_CreateTree (t=0x7fb150) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:252
+#1  0x000000000053d3f4 in KDTree_QueryCircleIntersect_Double (t=0x7fb150, result_num=0x7fffffffe5dc, result_indicies=0x181c210, circ_radius=24, ncells=264192, x=0x7ffe881cb010, dx=0x7ffe481bf010, y=0x7ffe081be010, dy=0x7ffdc81b0010) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:329
+#2  0x00000000005080fe in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1535
+#3  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+247	         }
+248	         next_node++;
+249	         /* Add the "right" child to the tree and the stack */
+250	         stack[stack_ptr++] = next_node;  /* Node Number in the Tree */
+251	         stack[stack_ptr++] = mid + 1;    /* Element Span Minimum */
+252	         stack[stack_ptr++] = max;        /* Element Span Maximum */
+253	         Bounds_Infinite(&(t->tree_safety_boxes[next_node]));
+254	         for (i = min + 1; (int)i <= max; i++) {
+255	            Bounds_AddBounds(&(t->tree_safety_boxes[next_node]),
+256	                             &(t->elements[idx[i]]));
+
+Backtrace END
+Fliping array at pos: 11
+Fliping a bit of the pointer
+Memory content before bitflip:0xa40x200x570x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7cee78 
+address max offset: 8
+Memory content after  bitflip:0xa40x200x570x000x000x300x000x00
+frame name: Mesh::init
+symbol name: mesh_timer_descriptor
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+symbol line: 149
+value: {0x571f98 "mesh_timer_count_BCs", 0x571fb0 "mesh_timer_calc_neighbors", 0x571fcc "mesh_timer_hash_setup", 0x571fe4 "mesh_timer_hash_query", 0x571ffc "mesh_timer_find_boundary", 0x572018 "mesh_timer_push_setup", 0x572030 "mesh_timer_push_boundary", 0x57204c "mesh_timer_local_list", 0x572064 "mesh_timer_layer1", 0x572078 "mesh_timer_layer2", 0x57208c "mesh_timer_layer_list", 0x3000005720a4 <error: Cannot access memory at address 0x3000005720a4>, 0x5720c0 "mesh_timer_fill_mesh_ghost", 0x5720dc "mesh_timer_fill_neigh_ghost", 0x5720f8 "mesh_timer_set_corner_neigh", 0x572114 "mesh_timer_neigh_adjust", 0x57212c "mesh_timer_setup_comm", 0x572144 "mesh_timer_kdtree_setup", 0x57215c "mesh_timer_kdtree_query", 0x572174 "mesh_timer_refine_smooth", 0x572190 "mesh_timer_rezone_all", 0x5721a8 "mesh_timer_partition", 0x5721c0 "mesh_timer_calc_spatial_coordinates", 0x5721e4 "mesh_timer_load_balance"}
+value address: 0x7cee20 <mesh_timer_descriptor>
+Type: The type is an array.
+Type sizeof: 192
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 23L)
+
+[INFO -- 2017-03-06 20:34:35]
+Fault Injection Successful after 14.8901920319s
+[INFO -- 2017-03-06 20:35:18]
+event type: exit
+[INFO -- 2017-03-06 20:35:18]
+exit code: 0

@@ -1,0 +1,64 @@
+[INFO -- 2017-02-26 22:17:37]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 22:17:37]
+Initialization strings:
+[INFO -- 2017-02-26 22:17:37]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-26 22:17:37]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 22:17:37]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 22:17:37]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 22:17:37]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 22:17:37]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 22:17:37]
+initSignal:9
+[INFO -- 2017-02-26 22:17:37]
+endSignal:12
+[INFO -- 2017-02-26 22:17:37]
+seqSignal:15
+[INFO -- 2017-02-26 22:17:37]
+faultMode:1
+[INFO -- 2017-02-26 22:17:47]
+Backtrace BEGIN:
+#0  str_to_mpn (str=0x7fffffffe052 "9.378540", str@entry=0x7fffffffe050 "329.378540", digcnt=2, digcnt@entry=3, n=n@entry=0x7fffffffdf70, nsize=nsize@entry=0x7fffffffdf58, exponent=exponent@entry=0x7fffffffdf60, decimal_len=decimal_len@entry=1, thousands=0x0, decimal=<optimized out>) at strtod_l.c:414
+#1  0x00007ffff7109af9 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe050 "329.378540", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1198
+#2  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe050 "329.378540", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0) at strtod.c:54
+#3  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2332
+#4  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "329.378540\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#5  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#6  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#7  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+409	in strtod_l.c
+
+Backtrace END
+Fliping array at pos: 4
+Memory content before bitflip:0x880x300x200x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffdfe0
+address max offset: 8
+Memory content after  bitflip:0x880x300x200x000x000x000x000x88
+frame name: __GI_____strtof_l_internal
+symbol name: den
+symbol filename: strtod_l.c
+symbol line: 509
+value: {17592186044416000000, 0, 0, 2113536, 9799832789160308872, 2109728, 8192, 140733193388032, 0, 140737343950950}
+value address: 0x7fffffffdfc0
+Type: The type is an array.
+Type sizeof: 80
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 9L)
+
+[INFO -- 2017-02-26 22:17:47]
+Fault Injection Successful after 10.3196239471s
+[INFO -- 2017-02-26 22:18:02]
+event type: exit
+[INFO -- 2017-02-26 22:18:02]
+exit code: 0

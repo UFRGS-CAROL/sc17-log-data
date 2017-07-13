@@ -1,0 +1,61 @@
+[INFO -- 2017-02-26 01:53:10]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 01:53:10]
+Initialization strings:
+[INFO -- 2017-02-26 01:53:10]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-26 01:53:10]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 01:53:10]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 01:53:10]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 01:53:10]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 01:53:10]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-26 01:53:10]
+initSignal:4
+[INFO -- 2017-02-26 01:53:10]
+endSignal:8
+[INFO -- 2017-02-26 01:53:10]
+seqSignal:30
+[INFO -- 2017-02-26 01:53:10]
+faultMode:0
+[INFO -- 2017-02-26 01:53:20]
+Backtrace BEGIN:
+#0  __GI___waitpid (pid=38052, stat_loc=stat_loc@entry=0x7fffffffe4d8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:40
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405f16 in log_error_count (kernel_errors=0) at ../include/log_helper.c:369
+#4  0x0000000000402def in main (argc=9, argv=0x7fffffffec08) at lud_check.c:149
+
+35	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+Backtrace END
+Fliping array at pos: 3
+Memory content before bitflip:0x64
+Fault Mode: Single bit-flip
+base address to flip value: 0x60ba57  
+address max offset: 1
+Memory content after  bitflip:0x6c
+frame name: update_timestamp
+symbol name: logdir_key
+symbol filename: ../include/log_helper.c
+symbol line: 43
+value: "loglir"
+value address: 0x60ba54 <logdir_key>
+Type: The type is an array.
+Type sizeof: 7
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 6L)
+
+[INFO -- 2017-02-26 01:53:20]
+Fault Injection Successful after 10.5665419102s
+[INFO -- 2017-02-26 01:53:25]
+event type: exit
+[INFO -- 2017-02-26 01:53:25]
+exit code: 0

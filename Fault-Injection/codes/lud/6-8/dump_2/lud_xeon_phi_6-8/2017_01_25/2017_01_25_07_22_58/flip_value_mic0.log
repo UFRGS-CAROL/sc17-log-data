@@ -1,0 +1,65 @@
+2017-01-25 07:22:24:Starting flip_value script
+2017-01-25 07:22:24:Initialization strings:
+2017-01-25 07:22:24:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 07:22:24:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 07:22:24:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 07:22:24:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 07:22:24:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 07:22:24:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 07:22:24:initSignal:6
+2017-01-25 07:22:24:endSignal:8
+2017-01-25 07:22:24:seqSignal:30
+2017-01-25 07:22:31:Trying Fault Injection
+2017-01-25 07:22:31:Inferior PID: 1528
+2017-01-25 07:22:31:Inferior is valid: True
+2017-01-25 07:22:31:Inferior #threads: 229
+2017-01-25 07:22:31:Backtrace BEGIN:
+2017-01-25 07:22:31:#0  do_system (line=0x7fffffffe630 "echo 1485346621 > /micNfs/carol/logs/timestamp.txt") at ../sysdeps/posix/system.c:116
+#1  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#2  0x0000000000405f16 in log_error_count (kernel_errors=0) at ../include/log_helper.c:369
+#3  0x0000000000402def in main (argc=9, argv=0x7fffffffec08) at lud_check.c:149
+
+2017-01-25 07:22:31:111	in ../sysdeps/posix/system.c
+
+2017-01-25 07:22:31:Backtrace END
+2017-01-25 07:22:34:Thread name: None
+2017-01-25 07:22:34:Thread num: 1
+2017-01-25 07:22:34:Thread ptid: (1528, 1528, 0)
+2017-01-25 07:22:34:bitFlip function
+2017-01-25 07:22:34:Type: The type is an array.
+2017-01-25 07:22:34:Type sizeof: 128
+2017-01-25 07:22:34:Fliping array at pos: 0
+2017-01-25 07:22:34:bitFlip function
+2017-01-25 07:22:34:Type: The type is a structure.
+2017-01-25 07:22:34:Type sizeof: 32
+2017-01-25 07:22:34:Fliping value of field: flag
+2017-01-25 07:22:34:bitFlip function
+2017-01-25 07:22:34:Type: The type is a pointer.
+2017-01-25 07:22:34:Type sizeof: 8
+2017-01-25 07:22:34:Fliping a bit of the pointer
+2017-01-25 07:22:34:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-01-25 07:22:34:base address to flip value: 0x60b510 
+2017-01-25 07:22:34:address max offset: 8
+2017-01-25 07:22:34:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-01-25 07:22:34:Memory content after  bitflip:0x100x000x000x000x000x000x000x00
+2017-01-25 07:22:34:Mem contents(hex):0x100x000x000x000x000x000x000x00
+2017-01-25 07:22:34:frame name: main
+2017-01-25 07:22:34:symbol name: long_options
+2017-01-25 07:22:34:symbol filename: lud_check.c
+2017-01-25 07:22:34:symbol line: 32
+2017-01-25 07:22:34:value: {{name = 0x4074dc "input", has_arg = 1, flag = 0x10, val = 105}, {name = 0x4074e4 "gold", has_arg = 1, flag = 0x0, val = 103}, {name = 0x4074ec "size", has_arg = 1, flag = 0x0, val = 115}, {name = 0x0, has_arg = 0, flag = 0x0, val = 0}}
+2017-01-25 07:22:34:value address: 0x60b500 <long_options>
+2017-01-25 07:22:34:Type: The type is an array.
+2017-01-25 07:22:34:Type sizeof: 128
+2017-01-25 07:22:34:Field name: None
+2017-01-25 07:22:34:Field Type:
+2017-01-25 07:22:34:Type: A range type, that is, an integer type with bounds.
+2017-01-25 07:22:34:Type sizeof: 1
+2017-01-25 07:22:34:Type range: (0L, 3L)
+2017-01-25 07:22:34:Fault Injection Successful after 10.7331209183s
+2017-01-25 07:22:34:Fault Already Injected
+2017-01-25 07:22:34:Fault Already Injected
+2017-01-25 07:22:35:Fault Already Injected
+2017-01-25 07:22:35:Fault Already Injected
+2017-01-25 07:22:35:event type: exit
+2017-01-25 07:22:35:exit code: 0

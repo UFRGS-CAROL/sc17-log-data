@@ -1,0 +1,48 @@
+2016-10-29 00:21:34:Initialization strings:
+2016-10-29 00:21:34:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-29 00:21:34:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-29 00:21:34:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-29 00:21:34:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-29 00:21:34:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-29 00:21:34:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-29 00:21:35:Trying Fault Injection
+2016-10-29 00:21:35:Backtrace BEGIN:
+2016-10-29 00:21:35:#0  determine_info (symbolp=<optimized out>, mapp=<optimized out>, info=0x7fffffffe560, match=0x7ffff7ff99a0, addr=140737338717216) at dl-addr.c:71
+#1  __GI__dl_addr (address=address@entry=0x7ffff714b420 <ptmalloc_init>, info=info@entry=0x7fffffffe560, mapp=mapp@entry=0x7fffffffe558, symbolp=symbolp@entry=0x0) at dl-addr.c:137
+#2  0x00007ffff714b1e6 in ptmalloc_init () at arena.c:370
+#3  0x00007ffff714b46e in ptmalloc_init () at hooks.c:29
+#4  malloc_hook_ini (sz=4194304, caller=<optimized out>) at hooks.c:31
+#5  0x00007ffff714acaa in __libc_calloc (n=<optimized out>, elem_size=<optimized out>) at malloc.c:3179
+#6  0x00000000004015e2 in main (argc=-150128992, argv=0x0) at hotspot_check.c:244
+
+2016-10-29 00:21:35:66	in dl-addr.c
+
+2016-10-29 00:21:35:Backtrace END
+2016-10-29 00:21:35:Type: The type is an integer type.
+2016-10-29 00:21:35:Type sizeof: 4
+2016-10-29 00:21:35:Mem contents(hex):0xd70x570x000x00
+2016-10-29 00:21:35:base address to flip value: 0x7ffff7423c18
+2016-10-29 00:21:35:address max offset: 4
+2016-10-29 00:21:35:Memory content before bitflip:0xd70x570x000x00
+2016-10-29 00:21:35:Memory content after  bitflip:0xf70x570x000x00
+2016-10-29 00:21:35:Mem contents(hex):0xf70x570x000x00
+2016-10-29 00:21:35:frame name: determine_info
+2016-10-29 00:21:35:symbol name: strtabsize
+2016-10-29 00:21:35:symbol filename: dl-addr.c
+2016-10-29 00:21:35:symbol line: 42
+2016-10-29 00:21:35:value: 22519
+2016-10-29 00:21:35:value address: 0x7ffff7423c18
+2016-10-29 00:21:35:Type: The type is an integer type.
+2016-10-29 00:21:35:Type sizeof: 4
+2016-10-29 00:21:35:Fault Injection Successful after 1.46051692963s
+2016-10-29 00:21:36:Fault Already Injected
+2016-10-29 00:21:36:Fault Already Injected
+2016-10-29 00:21:39:Fault Already Injected
+2016-10-29 00:21:41:Fault Already Injected
+2016-10-29 00:21:44:Fault Already Injected
+2016-10-29 00:21:46:Fault Already Injected
+2016-10-29 00:21:47:Fault Already Injected
+2016-10-29 00:21:47:Fault Already Injected
+2016-10-29 00:21:48:Fault Already Injected
+2016-10-29 00:21:49:event type: exit
+2016-10-29 00:21:49:exit code: 0

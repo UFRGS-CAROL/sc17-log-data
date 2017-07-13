@@ -1,0 +1,92 @@
+2017-03-01 14:25:39:Starting flip_value script
+2017-03-01 14:25:39:Initialization strings:
+2017-03-01 14:25:39:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 14:25:39:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 14:25:39:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 14:25:40:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 14:25:40:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 14:25:40:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 14:25:40:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 14:25:40:initSignal:20
+2017-03-01 14:25:40:endSignal:25
+2017-03-01 14:25:40:seqSignal:20
+2017-03-01 14:26:02:Backtrace BEGIN:
+2017-03-01 14:26:02:#0  __GI_memset (dstpp=0x3f76bd0, c=0, len=6485048) at ../string/memset.c:63
+#1  0x0000000000552f8a in genvector_p (inum=4227136, elsize=4, file=0x5742c0 "/micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c", line=135) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/genmalloc/genmalloc.c:87
+#2  0x000000000054571b in compact_hash_init (ncells=265488, isize=2056, jsize=2056, report_level=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c:135
+#3  0x0000000000513572 in Mesh::calc_neighbors (this=0x7fae50, ncells=265488) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3626
+#4  0x0000000000445e6e in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:434
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-01 14:26:02:58	in ../string/memset.c
+
+2017-03-01 14:26:02:Backtrace END
+2017-03-01 14:26:06:Type: The type is an integer type.
+2017-03-01 14:26:06:Type sizeof: 4
+2017-03-01 14:26:06:Mem contents(hex):0x000x000x000x00
+2017-03-01 14:26:06:Fault Mode: Random bit-flip
+2017-03-01 14:26:06:base address to flip value: 0x7d0ba8 
+2017-03-01 14:26:06:address max offset: 4
+2017-03-01 14:26:06:Memory content before bitflip:0x000x000x000x00
+2017-03-01 14:26:06:Backtrace BEGIN:
+2017-03-01 14:26:06:#0  __GI_memset (dstpp=0x3f76bd0, c=0, len=6485048) at ../string/memset.c:63
+#1  0x0000000000552f8a in genvector_p (inum=4227136, elsize=4, file=0x5742c0 "/micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c", line=135) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/genmalloc/genmalloc.c:87
+#2  0x000000000054571b in compact_hash_init (ncells=265488, isize=2056, jsize=2056, report_level=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c:135
+#3  0x0000000000513572 in Mesh::calc_neighbors (this=0x7fae50, ncells=265488) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3626
+#4  0x0000000000445e6e in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:434
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-01 14:26:06:58	in ../string/memset.c
+
+2017-03-01 14:26:06:Backtrace END
+2017-03-01 14:26:10:Type: The type is an integer type.
+2017-03-01 14:26:10:Type sizeof: 4
+2017-03-01 14:26:10:Mem contents(hex):0x400x800x400x00
+2017-03-01 14:26:10:Fault Mode: Random bit-flip
+2017-03-01 14:26:10:base address to flip value: 0x7fffffffdcf0
+2017-03-01 14:26:10:address max offset: 4
+2017-03-01 14:26:10:Memory content before bitflip:0x400x800x400x00
+2017-03-01 14:26:10:Backtrace BEGIN:
+2017-03-01 14:26:10:#0  __GI_memset (dstpp=0x3f76bd0, c=0, len=6485048) at ../string/memset.c:63
+#1  0x0000000000552f8a in genvector_p (inum=4227136, elsize=4, file=0x5742c0 "/micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c", line=135) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/genmalloc/genmalloc.c:87
+#2  0x000000000054571b in compact_hash_init (ncells=265488, isize=2056, jsize=2056, report_level=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c:135
+#3  0x0000000000513572 in Mesh::calc_neighbors (this=0x7fae50, ncells=265488) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3626
+#4  0x0000000000445e6e in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:434
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-01 14:26:10:58	in ../string/memset.c
+
+2017-03-01 14:26:10:Backtrace END
+2017-03-01 14:26:17:Type: The type is an integer type.
+2017-03-01 14:26:17:Type sizeof: 4
+2017-03-01 14:26:17:Mem contents(hex):0x000x000x000x00
+2017-03-01 14:26:17:Fault Mode: Random bit-flip
+2017-03-01 14:26:17:base address to flip value: 0x7d0ab4 
+2017-03-01 14:26:17:address max offset: 4
+2017-03-01 14:26:17:Memory content before bitflip:0x000x000x000x00
+2017-03-01 14:26:17:Backtrace BEGIN:
+2017-03-01 14:26:17:#0  __GI_memset (dstpp=0x3f76bd0, c=0, len=6485048) at ../string/memset.c:63
+#1  0x0000000000552f8a in genvector_p (inum=4227136, elsize=4, file=0x5742c0 "/micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c", line=135) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/genmalloc/genmalloc.c:87
+#2  0x000000000054571b in compact_hash_init (ncells=265488, isize=2056, jsize=2056, report_level=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c:135
+#3  0x0000000000513572 in Mesh::calc_neighbors (this=0x7fae50, ncells=265488) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3626
+#4  0x0000000000445e6e in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:434
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-01 14:26:17:58	in ../string/memset.c
+
+2017-03-01 14:26:17:Backtrace END
+2017-03-01 14:26:24:Type: The type is a pointer.
+2017-03-01 14:26:24:Type sizeof: 8
+2017-03-01 14:26:24:Fliping a bit of the value pointed by a pointer
+2017-03-01 14:26:24:Type: The type is a structure.
+2017-03-01 14:26:24:Type sizeof: 2272
+2017-03-01 14:26:24:Fliping value of field: imax
+2017-03-01 14:26:24:Type: The type is an integer type.
+2017-03-01 14:26:24:Type sizeof: 4
+2017-03-01 14:26:24:Mem contents(hex):0x010x020x000x00
+2017-03-01 14:26:24:Fault Mode: Random bit-flip
+2017-03-01 14:26:24:base address to flip value: 0x7fb2b0
+2017-03-01 14:26:24:address max offset: 4
+2017-03-01 14:26:24:Memory content before bitflip:0x010x020x000x00
+2017-03-01 14:26:51:event type: exit
+2017-03-01 14:26:51:exit code: 0

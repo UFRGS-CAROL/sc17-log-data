@@ -1,0 +1,55 @@
+[INFO -- 2017-03-28 03:48:47]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-28 03:48:47]
+Initialization strings:
+[INFO -- 2017-03-28 03:48:47]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-28 03:48:47]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 03:48:47]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 03:48:47]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 03:48:47]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 03:48:47]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-28 03:48:47]
+initSignal:0
+[INFO -- 2017-03-28 03:48:47]
+endSignal:3
+[INFO -- 2017-03-28 03:48:47]
+seqSignal:30
+[INFO -- 2017-03-28 03:48:47]
+faultMode:2
+[INFO -- 2017-03-28 03:48:48]
+Backtrace BEGIN:
+#0  0x00007ffff7138940 in _IO_acquire_lock_fct (p=<synthetic pointer>) at libioP.h:892
+#1  __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:41
+#2  0x00000000004025ad in main (argc=7, argv=0x7fffffffebc8) at main_check.c:179
+
+887	in libioP.h
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x100x300x060xf60xff0x7f0x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe940
+address max offset: 8
+Memory content after  bitflip:0x5d0x3b0x8f0x8d0xb60xbc0xba0xdb
+frame name: main
+symbol name: rv_cpu
+symbol filename: main_check.c
+symbol line: 58
+value: 0x7ffff6063010
+value address: 0x7fffffffe940
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-28 03:48:48]
+Fault Injection Successful after 1.57735395432s
+[INFO -- 2017-03-28 03:48:56]
+event type: exit
+[EXCEPTION -- 2017-03-28 03:48:56]
+exit code: no exit code available

@@ -1,0 +1,210 @@
+2017-02-28 02:24:13:Starting flip_value script
+2017-02-28 02:24:13:Initialization strings:
+2017-02-28 02:24:13:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 02:24:13:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 02:24:13:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 02:24:13:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-28 02:24:13:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-28 02:24:13:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-02-28 02:24:13:initSignal:0
+2017-02-28 02:24:13:endSignal:2
+2017-02-28 02:24:13:seqSignal:30
+2017-02-28 02:24:14:Backtrace BEGIN:
+2017-02-28 02:24:14:#0  0x00007ffff71963d0 in __open_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7143025 in __GI__IO_file_open (fp=fp@entry=0x60c010, filename=<optimized out>, posix_mode=<optimized out>, prot=prot@entry=438, read_write=8, is32not64=is32not64@entry=1) at fileops.c:220
+#2  0x00007ffff7143130 in _IO_new_file_fopen (fp=fp@entry=0x60c010, filename=filename@entry=0x7fffffffee51 "/micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228", mode=<optimized out>, mode@entry=0x407548 "rb", is32not64=is32not64@entry=1) at fileops.c:327
+#3  0x00007ffff71384d2 in __fopen_internal (filename=0x7fffffffee51 "/micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228", mode=0x407548 "rb", is32=1) at iofopen.c:86
+#4  0x0000000000402a34 in main (argc=9, argv=0x7fffffffec08) at lud_check.c:94
+
+2017-02-28 02:24:14:76	in ../sysdeps/unix/syscall-template.S
+
+2017-02-28 02:24:14:Backtrace END
+2017-02-28 02:24:14:Type: The type is a structure.
+2017-02-28 02:24:14:Type sizeof: 168
+2017-02-28 02:24:14:Fliping value of field: __sync
+2017-02-28 02:24:14:Type: The type is a pointer.
+2017-02-28 02:24:14:Type sizeof: 8
+2017-02-28 02:24:14:Fliping a bit of the value pointed by a pointer
+2017-02-28 02:24:14:Type: The type is a function.
+2017-02-28 02:24:14:Type sizeof: 1
+2017-02-28 02:24:14:Mem contents(hex):0x53
+2017-02-28 02:24:14:Fault Mode: Zero bit-flip
+2017-02-28 02:24:14:base address to flip value: 0x7ffff7141bf0 
+2017-02-28 02:24:14:address max offset: 1
+2017-02-28 02:24:14:Memory content before bitflip:0x53
+2017-02-28 02:24:14:Backtrace BEGIN:
+2017-02-28 02:24:14:#0  0x00007ffff719f097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff74321df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:640
+#2  __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffed120100) at pthread_create.c:524
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-02-28 02:24:14:76	in ../sysdeps/unix/syscall-template.S
+
+2017-02-28 02:24:14:Backtrace END
+2017-02-28 02:24:16:Type: The type is an array.
+2017-02-28 02:24:16:Type sizeof: 12
+2017-02-28 02:24:16:Fliping array at pos: 0
+2017-02-28 02:24:16:Type: The type is an integer type.
+2017-02-28 02:24:16:Type sizeof: 4
+2017-02-28 02:24:16:Mem contents(hex):0x800x000x000x00
+2017-02-28 02:24:16:Fault Mode: Random bit-flip
+2017-02-28 02:24:16:base address to flip value: 0x7ffff743c290 
+2017-02-28 02:24:16:address max offset: 4
+2017-02-28 02:24:16:Memory content before bitflip:0x800x000x000x00
+2017-02-28 02:24:16:Backtrace BEGIN:
+2017-02-28 02:24:16:#0  malloc (n=15) at dl-minimal.c:93
+#1  <function called from gdb>
+#2  0x00007ffff719f097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#3  0x00007ffff74321df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:640
+#4  __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffed120100) at pthread_create.c:524
+#5  0x00007ffff790d323 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-02-28 02:24:16:88	in dl-minimal.c
+
+2017-02-28 02:24:16:Backtrace END
+2017-02-28 02:24:17:Type: The type is a pointer.
+2017-02-28 02:24:17:Type sizeof: 8
+2017-02-28 02:24:17:Backtrace BEGIN:
+2017-02-28 02:24:17:#0  malloc (n=15) at dl-minimal.c:93
+#1  <function called from gdb>
+#2  malloc (n=15) at dl-minimal.c:93
+#3  <function called from gdb>
+#4  0x00007ffff719f097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#5  0x00007ffff74321df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:640
+#6  __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffed120100) at pthread_create.c:524
+#7  0x00007ffff790d323 in ?? ()
+#8  0x0000000000000000 in ?? ()
+
+2017-02-28 02:24:17:88	in dl-minimal.c
+
+2017-02-28 02:24:17:Backtrace END
+2017-02-28 02:24:18:Type: The type is an array.
+2017-02-28 02:24:18:Type sizeof: 16
+2017-02-28 02:24:18:Fliping array at pos: 15
+2017-02-28 02:24:18:Type: The type is an integer type.
+2017-02-28 02:24:18:Type sizeof: 1
+2017-02-28 02:24:18:Mem contents(hex):0x66
+2017-02-28 02:24:18:Fault Mode: Random bit-flip
+2017-02-28 02:24:18:base address to flip value: 0x7ffff7df660f  
+2017-02-28 02:24:18:address max offset: 1
+2017-02-28 02:24:18:Memory content before bitflip:0x66
+2017-02-28 02:24:19:Backtrace BEGIN:
+2017-02-28 02:24:19:#0  malloc (n=15) at dl-minimal.c:93
+#1  <function called from gdb>
+#2  malloc (n=15) at dl-minimal.c:93
+#3  <function called from gdb>
+#4  malloc (n=15) at dl-minimal.c:93
+#5  <function called from gdb>
+#6  0x00007ffff719f097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#7  0x00007ffff74321df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:640
+#8  __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffed120100) at pthread_create.c:524
+#9  0x00007ffff790d323 in ?? ()
+#10 0x0000000000000000 in ?? ()
+
+2017-02-28 02:24:19:88	in dl-minimal.c
+
+2017-02-28 02:24:19:Backtrace END
+2017-02-28 02:24:20:Type: The type is a pointer.
+2017-02-28 02:24:20:Type sizeof: 8
+2017-02-28 02:24:20:Backtrace BEGIN:
+2017-02-28 02:24:20:#0  malloc (n=15) at dl-minimal.c:93
+#1  <function called from gdb>
+#2  malloc (n=15) at dl-minimal.c:93
+#3  <function called from gdb>
+#4  malloc (n=15) at dl-minimal.c:93
+#5  <function called from gdb>
+#6  malloc (n=15) at dl-minimal.c:93
+#7  <function called from gdb>
+#8  malloc (n=15) at dl-minimal.c:93
+#9  <function called from gdb>
+#10 0x00007ffff719f097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#11 0x00007ffff74321df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:640
+#12 __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffed120100) at pthread_create.c:524
+#13 0x00007ffff790d323 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2017-02-28 02:24:20:88	in dl-minimal.c
+
+2017-02-28 02:24:20:Backtrace END
+2017-02-28 02:24:21:Type: The type is a pointer.
+2017-02-28 02:24:21:Type sizeof: 8
+2017-02-28 02:24:21:Backtrace BEGIN:
+2017-02-28 02:24:22:#0  malloc (n=15) at dl-minimal.c:93
+#1  <function called from gdb>
+#2  malloc (n=15) at dl-minimal.c:93
+#3  <function called from gdb>
+#4  malloc (n=15) at dl-minimal.c:93
+#5  <function called from gdb>
+#6  malloc (n=15) at dl-minimal.c:93
+#7  <function called from gdb>
+#8  malloc (n=15) at dl-minimal.c:93
+#9  <function called from gdb>
+#10 malloc (n=15) at dl-minimal.c:93
+#11 <function called from gdb>
+#12 0x00007ffff719f097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#13 0x00007ffff74321df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:640
+#14 __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffed120100) at pthread_create.c:524
+#15 0x00007ffff790d323 in ?? ()
+#16 0x0000000000000000 in ?? ()
+
+2017-02-28 02:24:22:88	in dl-minimal.c
+
+2017-02-28 02:24:22:Backtrace END
+2017-02-28 02:24:23:Type: The type is a pointer.
+2017-02-28 02:24:23:Type sizeof: 8
+2017-02-28 02:24:23:Backtrace BEGIN:
+2017-02-28 02:24:23:#0  malloc (n=15) at dl-minimal.c:93
+#1  <function called from gdb>
+#2  malloc (n=15) at dl-minimal.c:93
+#3  <function called from gdb>
+#4  malloc (n=15) at dl-minimal.c:93
+#5  <function called from gdb>
+#6  malloc (n=15) at dl-minimal.c:93
+#7  <function called from gdb>
+#8  malloc (n=15) at dl-minimal.c:93
+#9  <function called from gdb>
+#10 malloc (n=15) at dl-minimal.c:93
+#11 <function called from gdb>
+#12 malloc (n=15) at dl-minimal.c:93
+#13 <function called from gdb>
+#14 malloc (n=15) at dl-minimal.c:93
+#15 <function called from gdb>
+#16 0x00007ffff719f097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#17 0x00007ffff74321df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:640
+#18 __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffed120100) at pthread_create.c:524
+#19 0x00007ffff790d323 in ?? ()
+#20 0x0000000000000000 in ?? ()
+
+2017-02-28 02:24:23:88	in dl-minimal.c
+
+2017-02-28 02:24:23:Backtrace END
+2017-02-28 02:24:24:Type: The type is an array.
+2017-02-28 02:24:24:Type sizeof: 16
+2017-02-28 02:24:24:Fliping array at pos: 15
+2017-02-28 02:24:24:Type: The type is an integer type.
+2017-02-28 02:24:24:Type sizeof: 1
+2017-02-28 02:24:24:Mem contents(hex):0x66
+2017-02-28 02:24:24:Fault Mode: Single bit-flip
+2017-02-28 02:24:24:base address to flip value: 0x7ffff7df660f  
+2017-02-28 02:24:24:address max offset: 1
+2017-02-28 02:24:24:Memory content before bitflip:0x66
+2017-02-28 02:24:24:Memory content after  bitflip:0x64
+2017-02-28 02:24:24:Mem contents(hex):0x64
+2017-02-28 02:24:24:frame name: malloc
+2017-02-28 02:24:24:symbol name: __GI__itoa_lower_digits
+2017-02-28 02:24:24:symbol filename: dl-minimal.c
+2017-02-28 02:24:24:symbol line: 381
+2017-02-28 02:24:24:value: "0123456789abcded"
+2017-02-28 02:24:24:value address: 0x7ffff7df6600 <_itoa_lower_digits>
+2017-02-28 02:24:24:Type: The type is an array.
+2017-02-28 02:24:24:Type sizeof: 16
+2017-02-28 02:24:24:Field name: None
+2017-02-28 02:24:24:Field Type:
+2017-02-28 02:24:24:Type: A range type, that is, an integer type with bounds.
+2017-02-28 02:24:24:Type sizeof: 8
+2017-02-28 02:24:24:Type range: (0L, 15L)
+2017-02-28 02:24:24:Fault Injection Successful after 11.9626860619s
+2017-02-28 02:24:33:event type: exit
+2017-02-28 02:24:33:exit code: 0

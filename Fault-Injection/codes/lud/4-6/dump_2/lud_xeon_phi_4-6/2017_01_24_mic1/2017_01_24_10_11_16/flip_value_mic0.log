@@ -1,0 +1,127 @@
+2017-01-24 10:10:47:Starting flip_value script
+2017-01-24 10:10:47:Initialization strings:
+2017-01-24 10:10:48:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-24 10:10:48:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 10:10:48:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 10:10:48:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 10:10:48:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 10:10:48:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-24 10:10:48:initSignal:4
+2017-01-24 10:10:48:endSignal:6
+2017-01-24 10:10:48:seqSignal:30
+2017-01-24 10:10:53:Trying Fault Injection
+2017-01-24 10:10:53:Inferior PID: 37347
+2017-01-24 10:10:53:Inferior is valid: True
+2017-01-24 10:10:53:Inferior #threads: 229
+2017-01-24 10:10:53:Backtrace BEGIN:
+2017-01-24 10:10:53:#0  0x0000000000404c70 in L_lud_omp_123__par_loop2_2_5 () at lud_omp.c:148
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-01-24 10:10:53:143	            for (i = 0; i < BS; i++)
+144	            {
+145	                for (k=0; k < BS; k++) {
+146	#pragma omp simd 
+147	                    for (j = 0; j < BS; j++) {
+148	                        sum[j] += temp_left[BS*i + k] * temp_top[BS*k + j];
+149	                    }
+150	                }
+151	#pragma omp simd 
+152	                for (j = 0; j < BS; j++) {
+
+2017-01-24 10:10:53:Backtrace END
+2017-01-24 10:11:01:Thread name: None
+2017-01-24 10:11:01:Thread num: 43
+2017-01-24 10:11:01:Thread ptid: (37347, 37393, 0)
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:Error Exception(frameFlip): invalid frame
+2017-01-24 10:11:01:bitFlip function
+2017-01-24 10:11:01:Type: The type is an array.
+2017-01-24 10:11:01:Type sizeof: 1024
+2017-01-24 10:11:01:Fliping array at pos: 72
+2017-01-24 10:11:01:bitFlip function
+2017-01-24 10:11:01:Type: A floating point type.
+2017-01-24 10:11:01:Type sizeof: 4
+2017-01-24 10:11:01:Mem contents(hex):0x1f0x3b0xf60x3e
+2017-01-24 10:11:01:base address to flip value: 0x7fffffffd1a0
+2017-01-24 10:11:01:address max offset: 4
+2017-01-24 10:11:01:Memory content before bitflip:0x1f0x3b0xf60x3e
+2017-01-24 10:11:01:Memory content after  bitflip:0x1f0x3b0xf60xbe
+2017-01-24 10:11:01:Mem contents(hex):0x1f0x3b0xf60xbe
+2017-01-24 10:11:01:frame name: L_lud_omp_123__par_loop2_2_5
+2017-01-24 10:11:01:symbol name: temp_left
+2017-01-24 10:11:01:symbol filename: lud_omp.c
+2017-01-24 10:11:01:symbol line: 129
+2017-01-24 10:11:01:value: {0.479080677, 0.479487181, 0.479939133, 0.480455548, 0.480909705, 0.481383473, 0.481944859, 0.482371449, 0.482845545, 0.483316094, 0.483813137, 0.48439613, 0.484757513, 0.48526448, 0.48576501, 0.486322075, 0.47863096, 0.478993028, 0.479434043, 0.48001492, 0.480466157, 0.480875611, 0.48148191, 0.481870651, 0.482337743, 0.482893616, 0.483317167, 0.483867347, 0.484275043, 0.484766692, 0.485322773, 0.485773891, 0.478091776, 0.478518933, 0.478946, 0.47950846, 0.480004907, 0.480391264, 0.481012225, 0.481398165, 0.481852651, 0.482380539, 0.482861489, 0.483325869, 0.483846247, 0.484299093, 0.484881282, 0.485262245, 0.477651, 0.47802335, 0.478476614, 0.479070902, 0.479425281, 0.480005145, 0.480460674, 0.480900347, 0.481396675, 0.481885344, 0.482398003, 0.482904822, 0.483322024, 0.483804643, 0.484294355, 0.484857261, 0.477167755, 0.477574646, 0.47799173, 0.478557169, 0.479023516, 0.479498774, 0.479986906, 0.480407, -0.480919808, 0.481465101, 0.481863648, 0.482410342, 0.482828349, 0.483348578, 0.483810335, 0.484350115, 0.476687461, 0.477093905, 0.477494746, 0.478061259, 0.478530765, 0.478988469, 0.479526907, 0.479947954, 0.480454892, 0.480956882, 0.481408715, 0.481916964, 0.482378334, 0.482827663, 0.483348697, 0.483865321, 0.476227313, 0.476672113, 0.477028519, 0.477584809, 0.478057772, 0.478495359, 0.479049772, 0.479489654, 0.479858339, 0.480526954, 0.480950803, 0.481417269, 0.481910378, 0.482301891, 0.482935548, 0.483337253, 0.475714207, 0.476124972, 0.47657758, 0.477127135, 0.477600813, 0.478033543, 0.478535324, 0.478989571, 0.479413897, 0.480006784, 0.480495512, 0.480974227, 0.481378317, 0.481876045, 0.482378453, 0.482882291, 0.475279421, 0.475650966, 0.476039767, 0.47669813, 0.477106929, 0.477527738, 0.478078872, 0.478551418, 0.478942245, 0.479517192, 0.480005503, 0.480438352, 0.480923831, 0.481410325, 0.48191905, 0.482364684, 0.474772274, 0.47523433, 0.47557652, 0.476150215, 0.476613432, 0.47711587, 0.477583647, 0.478042036, 0.478513122, 0.479012311, 0.479540527, 0.479943484, 0.480452895, 0.480901688, 0.481446981, 0.481921673, 0.474244267, 0.474769235, 0.475167543, 0.475637883, 0.476162434, 0.476626098, 0.477108002, 0.477584481, 0.478001207, 0.478539854, 0.479015499, 0.479525059, 0.479989827, 0.480415434, 0.480958492, 0.481476396, 0.473824382, 0.47417295, 0.474728614, 0.475197345, 0.475641549, 0.476141006, 0.476649314, 0.477179885, 0.477493405, 0.478022307, 0.478560925, 0.479033202, 0.479497641, 0.479929954, 0.480493903, 0.480934203, 0.473280698, 0.473862201, 0.474145323, 0.474722296, 0.475228757, 0.475594342, 0.47618711, 0.476628721...}
+2017-01-24 10:11:01:value address: 0x7fffffffd080
+2017-01-24 10:11:01:Type: The type is an array.
+2017-01-24 10:11:01:Type sizeof: 1024
+2017-01-24 10:11:01:Field name: None
+2017-01-24 10:11:01:Field Type:
+2017-01-24 10:11:01:Type: A range type, that is, an integer type with bounds.
+2017-01-24 10:11:01:Type sizeof: 1
+2017-01-24 10:11:01:Type range: (0L, 255L)
+2017-01-24 10:11:01:Fault Injection Successful after 13.2132511139s
+2017-01-24 10:11:01:Fault Already Injected
+2017-01-24 10:11:01:Fault Already Injected
+2017-01-24 10:11:01:Fault Already Injected
+2017-01-24 10:11:01:Fault Already Injected
+2017-01-24 10:11:02:Fault Already Injected
+2017-01-24 10:11:02:Fault Already Injected
+2017-01-24 10:11:02:Fault Already Injected
+2017-01-24 10:11:02:Fault Already Injected
+2017-01-24 10:11:02:Fault Already Injected
+2017-01-24 10:11:03:Fault Already Injected
+2017-01-24 10:11:03:Fault Already Injected
+2017-01-24 10:11:03:Fault Already Injected
+2017-01-24 10:11:03:Fault Already Injected
+2017-01-24 10:11:04:Fault Already Injected
+2017-01-24 10:11:04:Fault Already Injected
+2017-01-24 10:11:04:Fault Already Injected
+2017-01-24 10:11:04:Fault Already Injected
+2017-01-24 10:11:05:Fault Already Injected
+2017-01-24 10:11:05:Fault Already Injected
+2017-01-24 10:11:05:Fault Already Injected
+2017-01-24 10:11:05:Fault Already Injected
+2017-01-24 10:11:06:Fault Already Injected
+2017-01-24 10:11:06:Fault Already Injected
+2017-01-24 10:11:06:Fault Already Injected
+2017-01-24 10:11:06:Fault Already Injected
+2017-01-24 10:11:07:Fault Already Injected
+2017-01-24 10:11:07:Fault Already Injected
+2017-01-24 10:11:09:event type: exit
+2017-01-24 10:11:09:exit code: 1

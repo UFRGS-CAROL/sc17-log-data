@@ -1,0 +1,54 @@
+2016-10-29 02:15:47:Initialization strings:
+2016-10-29 02:15:47:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-29 02:15:47:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-29 02:15:47:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-29 02:15:47:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-29 02:15:47:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-29 02:15:47:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-29 02:15:48:Trying Fault Injection
+2016-10-29 02:15:48:Inferior PID: 183549
+2016-10-29 02:15:48:Inferior is valid: True
+2016-10-29 02:15:48:Inferior #threads: 1
+2016-10-29 02:15:48:Backtrace BEGIN:
+2016-10-29 02:15:48:#0  0x0000000000401600 in fread@plt ()
+#1  0x0000000000402245 in main (argc=7, argv=0x7fffffffec08) at main_check.c:150
+
+2016-10-29 02:15:48:50	    char * input_charges;
+51	    char * output_gold;
+52	
+53	    int i, j, k, l, m, n;
+54	
+55	    par_str par_cpu;
+56	    dim_str dim_cpu;
+57	    box_str* box_cpu;
+58	    FOUR_VECTOR* rv_cpu;
+59	    fp* qv_cpu;
+
+2016-10-29 02:15:48:Backtrace END
+2016-10-29 02:15:48:Thread name: None
+2016-10-29 02:15:48:Thread num: 1
+2016-10-29 02:15:48:Thread ptid: (183549, 183549, 0)
+2016-10-29 02:15:48:bitFlip function
+2016-10-29 02:15:48:Type: The type is a pointer.
+2016-10-29 02:15:48:Type sizeof: 8
+2016-10-29 02:15:48:Fliping a bit of the value pointed by a pointer
+2016-10-29 02:15:48:bitFlip function
+2016-10-29 02:15:48:Type: A floating point type.
+2016-10-29 02:15:48:Type sizeof: 8
+2016-10-29 02:15:48:Mem contents(hex):0x5f0x0d0x400x000x000x000x000x00
+2016-10-29 02:15:48:base address to flip value: 0x7ffff7ff86a0
+2016-10-29 02:15:48:address max offset: 8
+2016-10-29 02:15:48:Memory content before bitflip:0x5f0x0d0x400x000x000x000x000x00
+2016-10-29 02:15:48:Memory content after  bitflip:0x7f0x0d0x400x000x000x000x000x00
+2016-10-29 02:15:48:Mem contents(hex):0x7f0x0d0x400x000x000x000x000x00
+2016-10-29 02:15:48:frame name: main
+2016-10-29 02:15:48:symbol name: qv_cpu
+2016-10-29 02:15:48:symbol filename: main_check.c
+2016-10-29 02:15:48:symbol line: 59
+2016-10-29 02:15:48:value: 0x7ffff7ff86a0
+2016-10-29 02:15:48:value address: 0x7fffffffe9e0
+2016-10-29 02:15:48:Type: The type is a pointer.
+2016-10-29 02:15:48:Type sizeof: 8
+2016-10-29 02:15:48:Fault Injection Successful after 1.22904896736s
+2016-10-29 02:15:48:event type: exit
+2016-10-29 02:15:48:exit code: 127

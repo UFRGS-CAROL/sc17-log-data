@@ -1,0 +1,58 @@
+[INFO -- 2017-03-23 14:13:22]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-23 14:13:22]
+Initialization strings:
+[INFO -- 2017-03-23 14:13:23]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-23 14:13:23]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-23 14:13:23]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-23 14:13:23]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-23 14:13:23]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-23 14:13:23]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-23 14:13:23]
+initSignal:3
+[INFO -- 2017-03-23 14:13:23]
+endSignal:6
+[INFO -- 2017-03-23 14:13:23]
+seqSignal:30
+[INFO -- 2017-03-23 14:13:23]
+faultMode:2
+[INFO -- 2017-03-23 14:13:27]
+Backtrace BEGIN:
+#0  __GI___waitpid (pid=220715, stat_loc=stat_loc@entry=0x7fffffffe198, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000406619 in update_timestamp () at ../include/log_helper.c:107
+#3  0x000000000040721e in start_iteration () at ../include/log_helper.c:311
+#4  0x0000000000402875 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:236
+
+26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: _mode
+Memory content before bitflip:0x780x4c0x420xf7
+Fault Mode: Random bit-flip
+base address to flip value: 0x60e280
+address max offset: 4
+Memory content after  bitflip:0x080xae0xc40x45
+frame name: main
+symbol name: file
+symbol filename: main_check.c
+symbol line: 139
+value: 0x60e1c0
+value address: 0x7fffffffe910
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-23 14:13:27]
+Fault Injection Successful after 4.68472099304s
+[INFO -- 2017-03-23 14:13:27]
+event type: exit
+[EXCEPTION -- 2017-03-23 14:13:27]
+exit code: no exit code available

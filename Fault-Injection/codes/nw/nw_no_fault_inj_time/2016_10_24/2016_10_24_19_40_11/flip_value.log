@@ -1,0 +1,83 @@
+2016-10-24 19:39:58:Initialization strings:
+2016-10-24 19:39:58:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-24 19:39:58:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 19:39:58:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 19:39:58:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-24 19:39:58:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-24 19:39:58:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-24 19:39:58:Trying Fault Injection
+2016-10-24 19:39:58:Inferior PID: 178273
+2016-10-24 19:39:58:Inferior is valid: True
+2016-10-24 19:39:58:Inferior #threads: 1
+2016-10-24 19:39:58:Backtrace BEGIN:
+2016-10-24 19:39:58:#0  0x00007ffff7de60b8 in do_lookup_x (undef_name=undef_name@entry=0x7ffff751201e "_ZSt15__once_callable", new_hash=new_hash@entry=217972189, old_hash=old_hash@entry=0x7fffffffe860, ref=0x7ffff74f2838, result=result@entry=0x7fffffffe870, scope=<optimized out>, i=<optimized out>, version=0x7ffff7ff7138, flags=1, skip=0x0, type_class=1, undef_map=0x7ffff7ff9000) at dl-lookup.c:448
+#1  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x7ffff751201e "_ZSt15__once_callable", undef_map=undef_map@entry=0x7ffff7ff9000, ref=ref@entry=0x7fffffffe9c0, symbol_scope=symbol_scope@entry=0x7ffff7ff9358, version=0x7ffff7ff7138, type_class=1, flags=1, skip_map=0x0) at dl-lookup.c:775
+#2  0x00007ffff7de854f in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=<optimized out>, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff7569b00, map=0x7ffff7ff9000) at ../sysdeps/x86_64/dl-machine.h:277
+#3  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ff9000) at do-rel.h:137
+#4  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#5  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#6  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec30, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#7  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec30) at rtld.c:308
+#8  _dl_start (arg=0x7fffffffec30) at rtld.c:414
+#9  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#10 0x0000000000000006 in ?? ()
+#11 0x00007fffffffee22 in ?? ()
+#12 0x00007fffffffee52 in ?? ()
+#13 0x00007fffffffee58 in ?? ()
+#14 0x00007fffffffee5b in ?? ()
+#15 0x00007fffffffee5f in ?? ()
+#16 0x00007fffffffee9c in ?? ()
+#17 0x0000000000000000 in ?? ()
+
+2016-10-24 19:39:58:443	in dl-lookup.c
+
+2016-10-24 19:39:58:Backtrace END
+2016-10-24 19:39:58:Thread name: None
+2016-10-24 19:39:58:Thread num: 1
+2016-10-24 19:39:58:Thread ptid: (178273, 178273, 0)
+2016-10-24 19:39:58:bitFlip function
+2016-10-24 19:39:58:Type: The type is a pointer.
+2016-10-24 19:39:58:Type sizeof: 8
+2016-10-24 19:39:58:Error gdbException(frameFlip): Attempt to dereference a generic pointer.
+2016-10-24 19:39:58:Fault Injection Failed after 0.739800930023s
+2016-10-24 19:40:01:Trying Fault Injection
+2016-10-24 19:40:01:Inferior PID: 178273
+2016-10-24 19:40:01:Inferior is valid: True
+2016-10-24 19:40:01:Inferior #threads: 1
+2016-10-24 19:40:01:Backtrace BEGIN:
+2016-10-24 19:40:01:#0  0x00007ffff6e245d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6dd0911 in __GI__IO_file_xsgetn (fp=0x61d900, data=<optimized out>, n=1073872900) at fileops.c:1422
+#2  0x00007ffff6dc6929 in __GI__IO_fread (buf=<optimized out>, size=1073872900, count=1, fp=0x61d900) at iofread.c:42
+#3  0x00000000004015e1 in ReadArrayFromFile (input_itemsets=<optimized out>, gold_itemsets=<optimized out>, max_rows=<optimized out>, filenameinput=<optimized out>, filenamegold=<optimized out>) at needle_check.cpp:49
+#4  runTest (argc=<optimized out>, argv=<optimized out>) at needle_check.cpp:317
+#5  main (argc=3, argv=0x7fff76919010) at needle_check.cpp:114
+
+2016-10-24 19:40:01:76	in ../sysdeps/unix/syscall-template.S
+
+2016-10-24 19:40:01:Backtrace END
+2016-10-24 19:40:01:Thread name: None
+2016-10-24 19:40:01:Thread num: 1
+2016-10-24 19:40:01:Thread ptid: (178273, 178273, 0)
+2016-10-24 19:40:01:bitFlip function
+2016-10-24 19:40:01:Type: The type is a pointer.
+2016-10-24 19:40:01:Type sizeof: 8
+2016-10-24 19:40:01:Fliping a bit of the pointer
+2016-10-24 19:40:01:Mem contents(hex):0x100x900x910x760xff0x7f0x000x00
+2016-10-24 19:40:01:base address to flip value: 0x7fffffffea70
+2016-10-24 19:40:01:address max offset: 8
+2016-10-24 19:40:01:Memory content before bitflip:0x100x900x910x760xff0x7f0x000x00
+2016-10-24 19:40:01:Memory content after  bitflip:0x100x900x910x760xfd0x7f0x000x00
+2016-10-24 19:40:01:Mem contents(hex):0x100x900x910x760xfd0x7f0x000x00
+2016-10-24 19:40:01:frame name: ReadArrayFromFile
+2016-10-24 19:40:01:symbol name: input_itemsets
+2016-10-24 19:40:01:symbol filename: needle_check.cpp
+2016-10-24 19:40:01:symbol line: 266
+2016-10-24 19:40:01:value: 0x7fff76919010
+2016-10-24 19:40:01:value address: 0x7fffffffea70
+2016-10-24 19:40:01:Type: The type is a pointer.
+2016-10-24 19:40:01:Type sizeof: 8
+2016-10-24 19:40:01:Fault Injection Successful after 3.49898600578s
+2016-10-24 19:40:04:Fault Already Injected
+2016-10-24 19:40:04:Fault Already Injected
+2016-10-24 19:40:04:event type: exit
+2016-10-24 19:40:04:exit code: no exit code available

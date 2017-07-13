@@ -1,0 +1,149 @@
+2017-01-24 22:07:06:Starting flip_value script
+2017-01-24 22:07:06:Initialization strings:
+2017-01-24 22:07:06:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-24 22:07:06:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 22:07:06:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 22:07:06:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 22:07:06:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 22:07:06:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-24 22:07:06:initSignal:0
+2017-01-24 22:07:06:endSignal:2
+2017-01-24 22:07:06:seqSignal:30
+2017-01-24 22:07:07:Trying Fault Injection
+2017-01-24 22:07:07:Inferior PID: 66956
+2017-01-24 22:07:07:Inferior is valid: True
+2017-01-24 22:07:07:Inferior #threads: 1
+2017-01-24 22:07:07:Backtrace BEGIN:
+2017-01-24 22:07:07:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000009 in ?? ()
+#7  0x00007fffffffee08 in ?? ()
+#8  0x00007fffffffee3f in ?? ()
+#9  0x00007fffffffee42 in ?? ()
+#10 0x00007fffffffee47 in ?? ()
+#11 0x00007fffffffee4a in ?? ()
+#12 0x00007fffffffee4e in ?? ()
+#13 0x00007fffffffee51 in ?? ()
+#14 0x00007fffffffee90 in ?? ()
+#15 0x00007fffffffee93 in ?? ()
+#16 0x0000000000000000 in ?? ()
+
+2017-01-24 22:07:07:69	in dl-debug.c
+
+2017-01-24 22:07:07:Backtrace END
+2017-01-24 22:07:07:Thread name: None
+2017-01-24 22:07:07:Thread num: 1
+2017-01-24 22:07:07:Thread ptid: (66956, 66956, 0)
+2017-01-24 22:07:07:bitFlip function
+2017-01-24 22:07:07:Type: The type is a pointer.
+2017-01-24 22:07:07:Type sizeof: 8
+2017-01-24 22:07:07:Error gdbException(frameFlip): Attempt to dereference a generic pointer.
+2017-01-24 22:07:07:Fault Injection Failed after 1.47288608551s
+2017-01-24 22:07:07:Trying Fault Injection
+2017-01-24 22:07:07:Inferior PID: 66956
+2017-01-24 22:07:07:Inferior is valid: True
+2017-01-24 22:07:07:Inferior #threads: 1
+2017-01-24 22:07:07:Backtrace BEGIN:
+2017-01-24 22:07:07:#0  __GI___waitpid (pid=66973, stat_loc=stat_loc@entry=0x7fffffffe528, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405bb2 in start_iteration () at ../include/log_helper.c:311
+#4  0x0000000000402c5b in main (argc=9, argv=0x7fffffffec08) at lud_check.c:122
+
+2017-01-24 22:07:07:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-01-24 22:07:07:Backtrace END
+2017-01-24 22:07:07:Thread name: None
+2017-01-24 22:07:07:Thread num: 1
+2017-01-24 22:07:07:Thread ptid: (66956, 66956, 0)
+2017-01-24 22:07:07:bitFlip function
+2017-01-24 22:07:07:Type: The type is a structure.
+2017-01-24 22:07:07:Type sizeof: 32
+2017-01-24 22:07:07:Fliping value of field: begin
+2017-01-24 22:07:07:bitFlip function
+2017-01-24 22:07:07:Type: The type is a structure.
+2017-01-24 22:07:07:Type sizeof: 16
+2017-01-24 22:07:07:Fliping value of field: tv_usec
+2017-01-24 22:07:07:bitFlip function
+2017-01-24 22:07:07:Type: The type is an integer type.
+2017-01-24 22:07:07:Type sizeof: 8
+2017-01-24 22:07:07:Mem contents(hex):0x0c0x000x000x000x000x000x000x00
+2017-01-24 22:07:07:base address to flip value: 0x7fffffffe788
+2017-01-24 22:07:07:address max offset: 8
+2017-01-24 22:07:07:Memory content before bitflip:0x0c0x000x000x000x000x000x000x00
+2017-01-24 22:07:07:Memory content after  bitflip:0x0c0x000x800x000x000x000x000x00
+2017-01-24 22:07:07:Mem contents(hex):0x0c0x000x800x000x000x000x000x00
+2017-01-24 22:07:07:frame name: main
+2017-01-24 22:07:07:symbol name: sw
+2017-01-24 22:07:07:symbol filename: lud_check.c
+2017-01-24 22:07:07:symbol line: 52
+2017-01-24 22:07:07:value: {begin = {tv_sec = 140737351897888, tv_usec = 8388620}, end = {tv_sec = 140737351897828, tv_usec = 140737354127832}}
+2017-01-24 22:07:07:value address: 0x7fffffffe780
+2017-01-24 22:07:07:Type: The type is a structure.
+2017-01-24 22:07:07:Type sizeof: 32
+2017-01-24 22:07:07:Field name: begin
+2017-01-24 22:07:07:Field Type:
+2017-01-24 22:07:07:Type: The type is a structure.
+2017-01-24 22:07:07:Type sizeof: 16
+2017-01-24 22:07:07:Field name: end
+2017-01-24 22:07:07:Field Type:
+2017-01-24 22:07:07:Type: The type is a structure.
+2017-01-24 22:07:07:Type sizeof: 16
+2017-01-24 22:07:07:Fault Injection Successful after 1.80354309082s
+2017-01-24 22:07:07:Fault Already Injected
+2017-01-24 22:07:08:Fault Already Injected
+2017-01-24 22:07:08:Fault Already Injected
+2017-01-24 22:07:08:Fault Already Injected
+2017-01-24 22:07:08:Fault Already Injected
+2017-01-24 22:07:08:Fault Already Injected
+2017-01-24 22:07:09:Fault Already Injected
+2017-01-24 22:07:09:Fault Already Injected
+2017-01-24 22:07:10:Fault Already Injected
+2017-01-24 22:07:10:Fault Already Injected
+2017-01-24 22:07:11:Fault Already Injected
+2017-01-24 22:07:11:Fault Already Injected
+2017-01-24 22:07:11:Fault Already Injected
+2017-01-24 22:07:12:Fault Already Injected
+2017-01-24 22:07:12:Fault Already Injected
+2017-01-24 22:07:12:Fault Already Injected
+2017-01-24 22:07:12:Fault Already Injected
+2017-01-24 22:07:13:Fault Already Injected
+2017-01-24 22:07:13:Fault Already Injected
+2017-01-24 22:07:13:Fault Already Injected
+2017-01-24 22:07:13:Fault Already Injected
+2017-01-24 22:07:14:Fault Already Injected
+2017-01-24 22:07:14:Fault Already Injected
+2017-01-24 22:07:14:Fault Already Injected
+2017-01-24 22:07:15:Fault Already Injected
+2017-01-24 22:07:15:Fault Already Injected
+2017-01-24 22:07:15:Fault Already Injected
+2017-01-24 22:07:16:Fault Already Injected
+2017-01-24 22:07:16:Fault Already Injected
+2017-01-24 22:07:16:Fault Already Injected
+2017-01-24 22:07:17:Fault Already Injected
+2017-01-24 22:07:17:Fault Already Injected
+2017-01-24 22:07:18:Fault Already Injected
+2017-01-24 22:07:18:Fault Already Injected
+2017-01-24 22:07:18:Fault Already Injected
+2017-01-24 22:07:18:Fault Already Injected
+2017-01-24 22:07:19:Fault Already Injected
+2017-01-24 22:07:19:Fault Already Injected
+2017-01-24 22:07:19:Fault Already Injected
+2017-01-24 22:07:19:Fault Already Injected
+2017-01-24 22:07:20:Fault Already Injected
+2017-01-24 22:07:20:Fault Already Injected
+2017-01-24 22:07:20:Fault Already Injected
+2017-01-24 22:07:21:Fault Already Injected
+2017-01-24 22:07:21:Fault Already Injected
+2017-01-24 22:07:21:Fault Already Injected
+2017-01-24 22:07:21:Fault Already Injected
+2017-01-24 22:07:22:Fault Already Injected
+2017-01-24 22:07:22:Fault Already Injected
+2017-01-24 22:07:22:Fault Already Injected
+2017-01-24 22:07:22:Fault Already Injected
+2017-01-24 22:07:22:event type: exit
+2017-01-24 22:07:22:exit code: 0

@@ -1,0 +1,51 @@
+2017-02-27 22:12:16:Starting flip_value script
+2017-02-27 22:12:16:Initialization strings:
+2017-02-27 22:12:16:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-27 22:12:16:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 22:12:16:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 22:12:17:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-27 22:12:17:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-27 22:12:17:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-27 22:12:17:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-27 22:12:17:initSignal:25
+2017-02-27 22:12:17:endSignal:30
+2017-02-27 22:12:17:seqSignal:20
+2017-02-27 22:12:46:Backtrace BEGIN:
+2017-02-27 22:12:46:#0  0x00000000004710ef in State::L__ZN5State21calc_refine_potentialERSt6vectorIiSaIiEERiS4__2618__par_loop0_2_39 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:2703
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe290 in ?? ()
+#3  0x00007fffffffe298 in ?? ()
+#4  0x00007fffffffe230 in ?? ()
+#5  0x00007fffffffe228 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-02-27 22:12:46:2698	      duminus1 = Hic-Hb;
+2699	      //duminus2 = Vic-Vb;
+2700	      duhalf1 = Ht-Hic;
+2701	      //duhalf2 = Vt-Vic;
+2702	
+2703	      qpot = max(fabs(duminus1/Hic), fabs(duhalf1/Hic));
+2704	      if (qpot > qmax) qmax = qpot;
+2705	
+2706	      mpot[ic]=0;
+2707	      if (qmax > REFINE_GRADIENT && level[ic] < mesh->levmx) {
+
+2017-02-27 22:12:46:Backtrace END
+2017-02-27 22:12:53:Type: The type is an integer type.
+2017-02-27 22:12:53:Type sizeof: 4
+2017-02-27 22:12:53:Mem contents(hex):0x000x000x000x00
+2017-02-27 22:12:53:Fault Mode: Single bit-flip
+2017-02-27 22:12:53:base address to flip value: 0x7fffffffdbc4
+2017-02-27 22:12:53:address max offset: 4
+2017-02-27 22:12:53:Memory content before bitflip:0x000x000x000x00
+2017-02-27 22:12:53:Memory content after  bitflip:0x000x000x400x00
+2017-02-27 22:12:53:Mem contents(hex):0x000x000x400x00
+2017-02-27 22:12:53:frame name: State::L__ZN5State21calc_refine_potentialERSt6vectorIiSaIiEERiS4__2618__par_loop0_2_39
+2017-02-27 22:12:53:symbol name: nrt
+2017-02-27 22:12:53:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+2017-02-27 22:12:53:symbol line: 2644
+2017-02-27 22:12:53:value: 4194304
+2017-02-27 22:12:53:value address: 0x7fffffffdbc4
+2017-02-27 22:12:53:Type: The type is an integer type.
+2017-02-27 22:12:53:Type sizeof: 4
+2017-02-27 22:12:53:Fault Injection Successful after 36.8155670166s

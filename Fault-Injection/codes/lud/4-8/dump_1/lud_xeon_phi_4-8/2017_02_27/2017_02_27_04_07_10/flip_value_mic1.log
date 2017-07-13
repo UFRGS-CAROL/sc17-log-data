@@ -1,0 +1,63 @@
+[INFO -- 2017-02-27 04:06:37]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 04:06:37]
+Initialization strings:
+[INFO -- 2017-02-27 04:06:38]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-27 04:06:38]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 04:06:38]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 04:06:38]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 04:06:38]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 04:06:38]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-27 04:06:38]
+initSignal:4
+[INFO -- 2017-02-27 04:06:38]
+endSignal:8
+[INFO -- 2017-02-27 04:06:38]
+seqSignal:30
+[INFO -- 2017-02-27 04:06:38]
+faultMode:3
+[INFO -- 2017-02-27 04:06:46]
+Backtrace BEGIN:
+#0  0x00000000004038a2 in lud_diagonal_omp (a=0x7ffff5ecc010, size=2048, offset=816) at lud_omp.c:29
+#1  0x0000000000403af9 in lud_omp (a=0x7ffff5ecc010, size=2048) at lud_omp.c:62
+#2  0x0000000000402c78 in main (argc=9, argv=0x7fffffffec08) at lud_check.c:124
+
+24	        }
+25	   
+26	        float temp = 1.f/AA(i,i);
+27	        for (j = i+1; j < BS; j++) {
+28	            for (k = 0; k < i ; k++) {
+29	                AA(j,i) = AA(j,i) - AA(j,k) * AA(k,i);
+30	            }
+31	            AA(j,i) = AA(j,i)*temp;
+32	        }
+33	    }
+
+Backtrace END
+Memory content before bitflip:0x000x080x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffd858
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: lud_diagonal_omp
+symbol name: size
+symbol filename: lud_omp.c
+symbol line: 15
+value: 0
+value address: 0x7fffffffd858
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-02-27 04:06:46]
+Fault Injection Successful after 8.78642106056s
+[INFO -- 2017-02-27 04:07:03]
+event type: exit
+[INFO -- 2017-02-27 04:07:03]
+exit code: 1

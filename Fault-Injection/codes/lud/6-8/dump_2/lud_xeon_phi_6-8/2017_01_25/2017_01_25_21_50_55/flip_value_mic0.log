@@ -1,0 +1,112 @@
+2017-01-25 21:50:15:Starting flip_value script
+2017-01-25 21:50:15:Initialization strings:
+2017-01-25 21:50:15:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 21:50:15:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 21:50:15:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 21:50:15:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 21:50:15:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 21:50:15:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 21:50:15:initSignal:6
+2017-01-25 21:50:15:endSignal:8
+2017-01-25 21:50:15:seqSignal:30
+2017-01-25 21:50:22:Trying Fault Injection
+2017-01-25 21:50:22:Inferior PID: 41050
+2017-01-25 21:50:22:Inferior is valid: True
+2017-01-25 21:50:22:Inferior #threads: 229
+2017-01-25 21:50:22:Backtrace BEGIN:
+2017-01-25 21:50:22:#0  0x000000000040316b in L_main_130__par_loop0_2_0 () at lud_check.c:133
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x0000000000000000 in ?? ()
+
+2017-01-25 21:50:22:128	
+129	    int i, host_errors = 0;
+130	#pragma omp parallel for reduction(+:host_errors)
+131		for ( i = 0; i < matrix_dim; i++) {
+132			int j;
+133			for ( j = 0; j < matrix_dim; j++) {
+134	                	if ((fabs((m[i + matrix_dim * j] - gold[i + matrix_dim * j]) / m[i + matrix_dim * j]) > 0.0000000001) || (fabs((m[i + matrix_dim * j] - gold[i + matrix_dim * j]) / gold[i + matrix_dim * j]) > 0.0000000001)) {
+135				//if (m[i + matrix_dim * j] != gold[i + matrix_dim * j]) {
+136					char error_detail[200];
+137					sprintf(error_detail," p: [%d, %d], r: %1.16e, e: %1.16e", i, j, m[i + matrix_dim * j], gold[i + matrix_dim * j]);
+
+2017-01-25 21:50:22:Backtrace END
+2017-01-25 21:50:30:Thread name: None
+2017-01-25 21:50:30:Thread num: 106
+2017-01-25 21:50:30:Thread ptid: (41050, 41159, 0)
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:Error Exception(frameFlip): invalid frame
+2017-01-25 21:50:30:bitFlip function
+2017-01-25 21:50:30:Type: The type is an array.
+2017-01-25 21:50:30:Type sizeof: 200
+2017-01-25 21:50:30:Fliping array at pos: 155
+2017-01-25 21:50:30:bitFlip function
+2017-01-25 21:50:30:Type: The type is an integer type.
+2017-01-25 21:50:30:Type sizeof: 1
+2017-01-25 21:50:30:Mem contents(hex):0x00
+2017-01-25 21:50:30:base address to flip value: 0x7fffffffe0eb 
+2017-01-25 21:50:30:address max offset: 1
+2017-01-25 21:50:30:Memory content before bitflip:0x00
+2017-01-25 21:50:30:Memory content after  bitflip:0x02
+2017-01-25 21:50:30:Mem contents(hex):0x02
+2017-01-25 21:50:30:frame name: L_main_130__par_loop0_2_0
+2017-01-25 21:50:30:symbol name: error_detail
+2017-01-25 21:50:30:symbol filename: lud_check.c
+2017-01-25 21:50:30:symbol line: 136
+2017-01-25 21:50:30:value: "iz@\000\000\000\000\000@\346\377\377\377\177\000\000X\346\377\377\377\177\000\000\060\332a", '\000' <repeats 13 times>, "\037E\021\367\377\177\000\000\064\063\r\367\377\177\000\000\240\231\377\367\377\177\000\000\330\341\377\377\377\177\000\000\020`\336\367\000\000\000\000<\002\000\000\000\000\000\000\000\000\000\000\377\377\377\377\240\231\377\367\377\177\000\000\000\000\000\000\377\177\000\000\000\000\000\000\000\000\000\000\032H\002\000\000\000\000\000\001\000\000\000\000\000\000\000 \000\000\000\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\002\377\177\000\000\000\000\000\000\000\000\000\000\005\000\000\000\000\000\000\000\370\213\377\367\377\177\000\000\001", '\000' <repeats 11 times>, "\377\177\000"
+2017-01-25 21:50:30:value address: 0x7fffffffe050
+2017-01-25 21:50:30:Type: The type is an array.
+2017-01-25 21:50:30:Type sizeof: 200
+2017-01-25 21:50:30:Field name: None
+2017-01-25 21:50:30:Field Type:
+2017-01-25 21:50:30:Type: A range type, that is, an integer type with bounds.
+2017-01-25 21:50:30:Type sizeof: 1
+2017-01-25 21:50:30:Type range: (0L, 199L)
+2017-01-25 21:50:30:Fault Injection Successful after 15.3823680878s
+2017-01-25 21:50:30:Fault Already Injected
+2017-01-25 21:50:30:Fault Already Injected
+2017-01-25 21:50:30:Fault Already Injected
+2017-01-25 21:50:31:Fault Already Injected
+2017-01-25 21:50:31:Fault Already Injected
+2017-01-25 21:50:31:Fault Already Injected
+2017-01-25 21:50:31:Fault Already Injected
+2017-01-25 21:50:31:Fault Already Injected
+2017-01-25 21:50:31:event type: exit
+2017-01-25 21:50:31:exit code: 0

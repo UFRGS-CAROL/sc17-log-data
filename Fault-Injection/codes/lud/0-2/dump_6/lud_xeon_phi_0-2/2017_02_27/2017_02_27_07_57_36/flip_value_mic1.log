@@ -1,0 +1,55 @@
+[INFO -- 2017-02-27 07:57:06]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 07:57:06]
+Initialization strings:
+[INFO -- 2017-02-27 07:57:07]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-27 07:57:07]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 07:57:07]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 07:57:07]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 07:57:07]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 07:57:07]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-27 07:57:07]
+initSignal:0
+[INFO -- 2017-02-27 07:57:07]
+endSignal:2
+[INFO -- 2017-02-27 07:57:07]
+seqSignal:30
+[INFO -- 2017-02-27 07:57:07]
+faultMode:2
+[INFO -- 2017-02-27 07:57:08]
+Backtrace BEGIN:
+#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff74312d0 in ?? () at pthread_create.c:237 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libpthread.so.0
+#2  0x00007fff223f1300 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+Backtrace END
+Memory content before bitflip:0x000x020x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff743c238 
+address max offset: 4
+Memory content after  bitflip:0xe20x670x8f0xc0
+frame name: __pthread_create_2_1
+symbol name: _thread_db_sizeof_pthread_key_data_level2
+symbol filename: ../nptl_db/structs.def
+symbol line: 69
+value: 3230623714
+value address: 0x7ffff743c238 <_thread_db_sizeof_pthread_key_data_level2>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-02-27 07:57:08]
+Fault Injection Successful after 1.82377004623s
+[INFO -- 2017-02-27 07:57:30]
+event type: exit
+[INFO -- 2017-02-27 07:57:30]
+exit code: 1

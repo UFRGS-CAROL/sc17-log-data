@@ -1,0 +1,47 @@
+2017-02-27 19:29:00:Starting flip_value script
+2017-02-27 19:29:00:Initialization strings:
+2017-02-27 19:29:01:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-27 19:29:01:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 19:29:01:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 19:29:01:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-27 19:29:01:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-27 19:29:01:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-02-27 19:29:01:initSignal:0
+2017-02-27 19:29:01:endSignal:3
+2017-02-27 19:29:01:seqSignal:30
+2017-02-27 19:29:01:Backtrace BEGIN:
+2017-02-27 19:29:01:#0  0x0000000000401f48 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:121
+
+2017-02-27 19:29:01:116	                            if((((i+l)>=0 && (j+m)>=0 && (k+n)>=0)==true && ((i+l)<dim_cpu.boxes1d_arg && (j+m)<dim_cpu.boxes1d_arg && (k+n)<dim_cpu.boxes1d_arg)==true) && (l==0 && m==0 && n==0)==false) {
+117	
+118	                                box_cpu[nh].nei[box_cpu[nh].nn].x = (k+n);
+119	                                box_cpu[nh].nei[box_cpu[nh].nn].y = (j+m);
+120	                                box_cpu[nh].nei[box_cpu[nh].nn].z = (i+l);
+121	                                box_cpu[nh].nei[box_cpu[nh].nn].number = (box_cpu[nh].nei[box_cpu[nh].nn].z * dim_cpu.boxes1d_arg * dim_cpu.boxes1d_arg) + (box_cpu[nh].nei[box_cpu[nh].nn].y * dim_cpu.boxes1d_arg) + box_cpu[nh].nei[box_cpu[nh].nn].x;
+122	                                box_cpu[nh].nei[box_cpu[nh].nn].offset = box_cpu[nh].nei[box_cpu[nh].nn].number * NUMBER_PAR_PER_BOX;
+123	
+124	                                box_cpu[nh].nn = box_cpu[nh].nn + 1;
+125	
+
+2017-02-27 19:29:01:Backtrace END
+2017-02-27 19:29:01:Type: The type is a pointer.
+2017-02-27 19:29:01:Type sizeof: 8
+2017-02-27 19:29:01:Fliping a bit of the pointer
+2017-02-27 19:29:01:Mem contents(hex):0xa00x860xff0xf70xff0x7f0x000x00
+2017-02-27 19:29:01:Fault Mode: Single bit-flip
+2017-02-27 19:29:01:base address to flip value: 0x7fffffffe9b8
+2017-02-27 19:29:01:address max offset: 8
+2017-02-27 19:29:01:Memory content before bitflip:0xa00x860xff0xf70xff0x7f0x000x00
+2017-02-27 19:29:01:Memory content after  bitflip:0xa00x860xff0xf70xff0x7f0x040x00
+2017-02-27 19:29:01:Mem contents(hex):0xa00x860xff0xf70xff0x7f0x040x00
+2017-02-27 19:29:01:frame name: main
+2017-02-27 19:29:01:symbol name: fv_cpu
+2017-02-27 19:29:01:symbol filename: main_check.c
+2017-02-27 19:29:01:symbol line: 60
+2017-02-27 19:29:01:value: 0x7ffff7ff86a0
+2017-02-27 19:29:01:value address: 0x7fffffffe9b8
+2017-02-27 19:29:01:Type: The type is a pointer.
+2017-02-27 19:29:01:Type sizeof: 8
+2017-02-27 19:29:01:Fault Injection Successful after 0.656555891037s
+2017-02-27 19:29:19:event type: exit
+2017-02-27 19:29:19:exit code: 0

@@ -1,0 +1,62 @@
+[INFO -- 2017-03-17 11:47:26]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-17 11:47:26]
+Initialization strings:
+[INFO -- 2017-03-17 11:47:26]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-17 11:47:26]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-17 11:47:26]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-17 11:47:26]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-17 11:47:26]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-17 11:47:26]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-03-17 11:47:26]
+initSignal:6
+[INFO -- 2017-03-17 11:47:26]
+endSignal:8
+[INFO -- 2017-03-17 11:47:26]
+seqSignal:30
+[INFO -- 2017-03-17 11:47:26]
+faultMode:3
+[INFO -- 2017-03-17 11:47:36]
+Backtrace BEGIN:
+#0  0x00007ffff71963ed in open64 () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7143025 in __GI__IO_file_open (fp=fp@entry=0x61da30, filename=<optimized out>, posix_mode=<optimized out>, prot=prot@entry=438, read_write=4100, is32not64=is32not64@entry=1) at fileops.c:220
+#2  0x00007ffff7143130 in _IO_new_file_fopen (fp=fp@entry=0x61da30, filename=filename@entry=0x60bbe0 <full_log_file_name> "/micNfs/carol/logs/2017_03_17_15_43_13_openmpLUD_mic0-mic0.ece.neu.edu.log", mode=<optimized out>, mode@entry=0x407840 "a", is32not64=is32not64@entry=1) at fileops.c:327
+#3  0x00007ffff71384d2 in __fopen_internal (filename=0x60bbe0 <full_log_file_name> "/micNfs/carol/logs/2017_03_17_15_43_13_openmpLUD_mic0-mic0.ece.neu.edu.log", mode=0x407840 "a", is32=1) at iofopen.c:86
+#4  0x0000000000405aa2 in end_log_file () at ../include/log_helper.c:288
+#5  0x0000000000402dff in main (argc=9, argv=0x7fffffffec08) at lud_check.c:155
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping array at pos: 9
+Memory content before bitflip:0x69
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffff71f6e49  
+address max offset: 1
+Memory content after  bitflip:0x00
+frame name: _IO_new_file_fopen
+symbol name: __PRETTY_FUNCTION__
+symbol filename: fileops.c
+symbol line: 0
+value: "_IO_new_f\000le_fopen"
+value address: 0x7ffff71f6e40 <__PRETTY_FUNCTION__.11205>
+Type: The type is an array.
+Type sizeof: 19
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 18L)
+
+[INFO -- 2017-03-17 11:47:36]
+Fault Injection Successful after 10.9453389645s
+[INFO -- 2017-03-17 11:47:38]
+event type: exit
+[INFO -- 2017-03-17 11:47:38]
+exit code: 0

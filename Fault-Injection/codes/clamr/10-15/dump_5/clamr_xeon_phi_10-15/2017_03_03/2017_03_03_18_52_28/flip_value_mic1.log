@@ -1,0 +1,66 @@
+[INFO -- 2017-03-03 18:49:29]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-03 18:49:29]
+Initialization strings:
+[INFO -- 2017-03-03 18:49:29]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-03 18:49:29]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 18:49:29]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 18:49:29]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 18:49:29]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 18:49:29]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-03 18:49:29]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-03 18:49:29]
+initSignal:10
+[INFO -- 2017-03-03 18:49:29]
+endSignal:15
+[INFO -- 2017-03-03 18:49:29]
+seqSignal:20
+[INFO -- 2017-03-03 18:49:29]
+faultMode:3
+[INFO -- 2017-03-03 18:49:44]
+Backtrace BEGIN:
+#0  0x0000000000449a09 in std::vector<int, std::allocator<int> >::operator[] (this=0x8, __n=1) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x0000000000538cb9 in Mesh::calc_distribution (this=0x7f9a50, numpe=16) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:744
+#2  0x0000000000445283 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:281
+
+775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0xe90xae0x540x000x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ce548 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: main
+symbol name: set_graphics_cell_coordinates
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 116
+value: 0x54aee9 <set_graphics_cell_coordinates_double>
+value address: 0x7ce548 <set_graphics_cell_coordinates>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-03 18:49:44]
+Fault Injection Successful after 15.6779389381s
+[INFO -- 2017-03-03 18:49:53]
+event type: exit
+[EXCEPTION -- 2017-03-03 18:49:53]
+exit code: no exit code available

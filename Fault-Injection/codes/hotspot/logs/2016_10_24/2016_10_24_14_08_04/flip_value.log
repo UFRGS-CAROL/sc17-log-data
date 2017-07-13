@@ -1,0 +1,44 @@
+2016-10-24 14:07:52:Initialization strings:
+2016-10-24 14:07:52:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-24 14:07:52:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 14:07:52:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 14:07:52:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-24 14:07:52:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-24 14:07:52:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-24 14:07:54:Trying Fault Injection
+2016-10-24 14:07:54:Backtrace BEGIN:
+2016-10-24 14:07:54:#0  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#1  main (argc=-7552, argv=0x0) at hotspot_check.c:264
+
+2016-10-24 14:07:54:201	        if (fgets(str, STR_SIZE, fp) == NULL) {
+202	            fatal("fgets error");
+203	        }
+204	        if (feof(fp))
+205	            fatal("not enough lines in file");
+206	        if ((sscanf(str, "%f", &val) != 1) )
+207	            fatal("invalid file format");
+208	        vect[i] = val;
+209	    }
+210	
+
+2016-10-24 14:07:54:Backtrace END
+2016-10-24 14:07:54:Type: The type is an integer type.
+2016-10-24 14:07:54:Type sizeof: 4
+2016-10-24 14:07:54:Mem contents(hex):0x640xee0xff0xff
+2016-10-24 14:07:54:base address to flip value: 0x7fffffffe610
+2016-10-24 14:07:54:address max offset: 4
+2016-10-24 14:07:54:Memory content before bitflip:0x640xee0xff0xff
+2016-10-24 14:07:54:Memory content after  bitflip:0x600xee0xff0xff
+2016-10-24 14:07:54:Mem contents(hex):0x600xee0xff0xff
+2016-10-24 14:07:54:frame name: read_input
+2016-10-24 14:07:54:symbol name: errors
+2016-10-24 14:07:54:symbol filename: hotspot_check.c
+2016-10-24 14:07:54:symbol line: 281
+2016-10-24 14:07:54:value: -4512
+2016-10-24 14:07:54:value address: 0x7fffffffe610
+2016-10-24 14:07:54:Type: The type is an integer type.
+2016-10-24 14:07:54:Type sizeof: 4
+2016-10-24 14:07:54:Fault Injection Successful after 2.45582890511s
+2016-10-24 14:07:55:Fault Already Injected
+2016-10-24 14:07:57:event type: exit
+2016-10-24 14:07:57:exit code: 1

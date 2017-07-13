@@ -1,0 +1,71 @@
+2017-01-24 04:21:34:Starting flip_value script
+2017-01-24 04:21:34:Initialization strings:
+2017-01-24 04:21:34:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-24 04:21:34:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 04:21:34:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 04:21:34:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-24 04:21:34:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-24 04:21:34:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-24 04:21:34:initSignal:0
+2017-01-24 04:21:34:endSignal:7
+2017-01-24 04:21:34:seqSignal:15
+2017-01-24 04:21:34:Backtrace BEGIN:
+2017-01-24 04:21:34:#0  0x00007ffff7dddbc0 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#1  0x0000000000000008 in ?? ()
+#2  0x00007fffffffedb9 in ?? ()
+#3  0x00007fffffffedf4 in ?? ()
+#4  0x00007fffffffedf8 in ?? ()
+#5  0x00007fffffffedfd in ?? ()
+#6  0x00007fffffffee00 in ?? ()
+#7  0x00007fffffffee3c in ?? ()
+#8  0x00007fffffffee78 in ?? ()
+#9  0x00007fffffffeecb in ?? ()
+#10 0x0000000000000000 in ?? ()
+
+2017-01-24 04:21:34:270	
+271	int main(int argc, char **argv) {
+272	
+273	#ifdef TIMING
+274	    setup_start = timing_get_time();
+275	#endif
+276	
+277	    int     i, j;
+278	    int     nthread_input;        /* thread parameters                              */
+279	    static
+
+2017-01-24 04:21:34:Backtrace END
+2017-01-24 04:21:35:Backtrace BEGIN:
+2017-01-24 04:21:35:#0  0x0000000000403bd6 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:250
+#1  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+2017-01-24 04:21:35:245	        exit(1);
+246	    }
+247	
+248	    for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+249	            fread(&A[(i)+(order)*(j)], 1, sizeof(double), file);
+250	            fread(&B[(i)+(order)*(j)], 1, sizeof(double), file2);
+251	        }
+252	    fclose(file);
+253	    fclose(file2);
+254	}
+
+2017-01-24 04:21:35:Backtrace END
+2017-01-24 04:21:35:Type: The type is an integer type.
+2017-01-24 04:21:35:Type sizeof: 4
+2017-01-24 04:21:35:Mem contents(hex):0x080x000x000x00
+2017-01-24 04:21:35:base address to flip value: 0x7fffffffe940
+2017-01-24 04:21:35:address max offset: 4
+2017-01-24 04:21:35:Memory content before bitflip:0x080x000x000x00
+2017-01-24 04:21:35:Memory content after  bitflip:0x080x000x000x02
+2017-01-24 04:21:35:Mem contents(hex):0x080x000x000x02
+2017-01-24 04:21:35:frame name: main
+2017-01-24 04:21:35:symbol name: j
+2017-01-24 04:21:35:symbol filename: dgemm.c
+2017-01-24 04:21:35:symbol line: 277
+2017-01-24 04:21:35:value: 33554440
+2017-01-24 04:21:35:value address: 0x7fffffffe940
+2017-01-24 04:21:35:Type: The type is an integer type.
+2017-01-24 04:21:35:Type sizeof: 4
+2017-01-24 04:21:35:Fault Injection Successful after 1.22560596466s
+2017-01-24 04:22:13:event type: exit
+2017-01-24 04:22:13:exit code: 0

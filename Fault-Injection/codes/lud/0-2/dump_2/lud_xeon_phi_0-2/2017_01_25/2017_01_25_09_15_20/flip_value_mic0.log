@@ -1,0 +1,85 @@
+2017-01-25 09:14:39:Starting flip_value script
+2017-01-25 09:14:39:Initialization strings:
+2017-01-25 09:14:39:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 09:14:39:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 09:14:39:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 09:14:39:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 09:14:39:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 09:14:39:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 09:14:39:initSignal:0
+2017-01-25 09:14:39:endSignal:2
+2017-01-25 09:14:39:seqSignal:30
+2017-01-25 09:14:40:Trying Fault Injection
+2017-01-25 09:14:40:Inferior PID: 125267
+2017-01-25 09:14:40:Inferior is valid: True
+2017-01-25 09:14:40:Inferior #threads: 1
+2017-01-25 09:14:40:Backtrace BEGIN:
+2017-01-25 09:14:40:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000009 in ?? ()
+#7  0x00007fffffffee08 in ?? ()
+#8  0x00007fffffffee3f in ?? ()
+#9  0x00007fffffffee42 in ?? ()
+#10 0x00007fffffffee47 in ?? ()
+#11 0x00007fffffffee4a in ?? ()
+#12 0x00007fffffffee4e in ?? ()
+#13 0x00007fffffffee51 in ?? ()
+#14 0x00007fffffffee90 in ?? ()
+#15 0x00007fffffffee93 in ?? ()
+#16 0x0000000000000000 in ?? ()
+
+2017-01-25 09:14:40:69	in dl-debug.c
+
+2017-01-25 09:14:40:Backtrace END
+2017-01-25 09:14:40:Thread name: None
+2017-01-25 09:14:40:Thread num: 1
+2017-01-25 09:14:40:Thread ptid: (125267, 125267, 0)
+2017-01-25 09:14:40:bitFlip function
+2017-01-25 09:14:40:Type: The type is a structure.
+2017-01-25 09:14:40:Type sizeof: 40
+2017-01-25 09:14:40:Fliping value of field: r_state
+2017-01-25 09:14:40:bitFlip function
+2017-01-25 09:14:40:Type: The type is an enum.
+2017-01-25 09:14:40:Type sizeof: 4
+2017-01-25 09:14:40:Mem contents(hex):0x000x000x000x00
+2017-01-25 09:14:40:base address to flip value: 0x7ffff7ffe158 
+2017-01-25 09:14:40:address max offset: 4
+2017-01-25 09:14:40:Memory content before bitflip:0x000x000x000x00
+2017-01-25 09:14:40:Memory content after  bitflip:0x000x000x000x01
+2017-01-25 09:14:40:Mem contents(hex):0x000x000x000x01
+2017-01-25 09:14:40:frame name: __GI__dl_debug_state
+2017-01-25 09:14:40:symbol name: _r_debug
+2017-01-25 09:14:40:symbol filename: dl-debug.c
+2017-01-25 09:14:40:symbol line: 37
+2017-01-25 09:14:40:value: {r_version = 1, r_map = 0x7ffff7ffe168, r_brk = 140737351959488, r_state = (unknown: 16777216), r_ldbase = 140737351897088}
+2017-01-25 09:14:40:value address: 0x7ffff7ffe140 <_r_debug>
+2017-01-25 09:14:40:Type: The type is a structure.
+2017-01-25 09:14:40:Type sizeof: 40
+2017-01-25 09:14:40:Field name: r_version
+2017-01-25 09:14:40:Field Type:
+2017-01-25 09:14:40:Type: The type is an integer type.
+2017-01-25 09:14:40:Type sizeof: 4
+2017-01-25 09:14:40:Field name: r_map
+2017-01-25 09:14:40:Field Type:
+2017-01-25 09:14:40:Type: The type is a pointer.
+2017-01-25 09:14:40:Type sizeof: 8
+2017-01-25 09:14:40:Field name: r_brk
+2017-01-25 09:14:40:Field Type:
+2017-01-25 09:14:40:Type: The type is an integer type.
+2017-01-25 09:14:40:Type sizeof: 8
+2017-01-25 09:14:40:Field name: r_state
+2017-01-25 09:14:40:Field Type:
+2017-01-25 09:14:40:Type: The type is an enum.
+2017-01-25 09:14:40:Type sizeof: 4
+2017-01-25 09:14:40:Field name: r_ldbase
+2017-01-25 09:14:40:Field Type:
+2017-01-25 09:14:40:Type: The type is an integer type.
+2017-01-25 09:14:40:Type sizeof: 8
+2017-01-25 09:14:40:Fault Injection Successful after 1.21953392029s
+2017-01-25 09:14:40:Fault Already Injected
+2017-01-25 09:14:40:event type: exit
+2017-01-25 09:14:40:exit code: 127

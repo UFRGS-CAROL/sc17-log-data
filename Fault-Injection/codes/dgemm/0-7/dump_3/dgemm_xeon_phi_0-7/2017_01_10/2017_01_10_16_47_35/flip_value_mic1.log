@@ -1,0 +1,47 @@
+2017-01-10 16:44:29:Starting flip_value script
+2017-01-10 16:44:29:Initialization strings:
+2017-01-10 16:44:29:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-10 16:44:29:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-10 16:44:29:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-10 16:44:29:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-10 16:44:29:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-10 16:44:29:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-10 16:44:29:initSignal:0
+2017-01-10 16:44:29:endSignal:7
+2017-01-10 16:44:29:seqSignal:15
+2017-01-10 16:44:35:Backtrace BEGIN:
+2017-01-10 16:44:35:#0  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffdfd8) at allocatestack.c:548
+#1  __pthread_create_2_1 (newthread=0x7fffffffdfd0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffbf3b4100) at pthread_create.c:524
+#2  0x00007ffff790d323 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-01-10 16:44:35:543	in allocatestack.c
+
+2017-01-10 16:44:35:Backtrace END
+2017-01-10 16:44:36:Type: The type is an array.
+2017-01-10 16:44:36:Type sizeof: 12
+2017-01-10 16:44:36:Fliping array at pos: 0
+2017-01-10 16:44:36:Type: The type is an integer type.
+2017-01-10 16:44:36:Type sizeof: 4
+2017-01-10 16:44:36:Mem contents(hex):0x400x000x000x00
+2017-01-10 16:44:36:base address to flip value: 0x7ffff743c280 
+2017-01-10 16:44:36:address max offset: 4
+2017-01-10 16:44:36:Memory content before bitflip:0x400x000x000x00
+2017-01-10 16:44:36:Memory content after  bitflip:0x400x000x000x01
+2017-01-10 16:44:36:Mem contents(hex):0x400x000x000x01
+2017-01-10 16:44:36:frame name: __pthread_create_2_1
+2017-01-10 16:44:36:symbol name: _thread_db_link_map_l_tls_modid
+2017-01-10 16:44:36:symbol filename: ../nptl_db/structs.def
+2017-01-10 16:44:36:symbol line: 72
+2017-01-10 16:44:36:value: {16777280, 1, 1096}
+2017-01-10 16:44:36:value address: 0x7ffff743c280 <_thread_db_link_map_l_tls_modid>
+2017-01-10 16:44:36:Type: The type is an array.
+2017-01-10 16:44:36:Type sizeof: 12
+2017-01-10 16:44:36:Field name: None
+2017-01-10 16:44:36:Field Type:
+2017-01-10 16:44:36:Type: A range type, that is, an integer type with bounds.
+2017-01-10 16:44:36:Type sizeof: 8
+2017-01-10 16:44:36:Type range: (0L, 2L)
+2017-01-10 16:44:36:Fault Injection Successful after 7.85491108894s
+2017-01-10 16:45:11:event type: exit
+2017-01-10 16:45:11:exit code: 0

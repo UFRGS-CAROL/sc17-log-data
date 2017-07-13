@@ -1,0 +1,124 @@
+2017-03-02 11:22:03:Starting flip_value script
+2017-03-02 11:22:03:Initialization strings:
+2017-03-02 11:22:04:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-02 11:22:04:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 11:22:04:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 11:22:04:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-02 11:22:04:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-02 11:22:04:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-03-02 11:22:04:initSignal:0
+2017-03-02 11:22:04:endSignal:3
+2017-03-02 11:22:04:seqSignal:30
+2017-03-02 11:22:04:Backtrace BEGIN:
+2017-03-02 11:22:04:#0  0x00007ffff7930c40 in ?? ()
+#1  0x00007ffff788c60a in ?? ()
+#2  0x0000000000000000 in ?? ()
+
+2017-03-02 11:22:04:50	    char * input_charges;
+51	    char * output_gold;
+52	
+53	    int i, j, k, l, m, n;
+54	
+55	    par_str par_cpu;
+56	    dim_str dim_cpu;
+57	    box_str* box_cpu;
+58	    FOUR_VECTOR* rv_cpu;
+59	    fp* qv_cpu;
+
+2017-03-02 11:22:04:Backtrace END
+2017-03-02 11:22:05:Backtrace BEGIN:
+2017-03-02 11:22:05:#0  0x00007ffff71505e2 in __GI_memcpy (dstpp=dstpp@entry=0x7ffff6976600, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:62
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#3  0x0000000000402245 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:150
+
+2017-03-02 11:22:05:57	in ../string/memcpy.c
+
+2017-03-02 11:22:05:Backtrace END
+2017-03-02 11:22:05:Type: The type is an integer type.
+2017-03-02 11:22:05:Type sizeof: 4
+2017-03-02 11:22:05:Mem contents(hex):0x2f0x0d0x000x00
+2017-03-02 11:22:05:Fault Mode: Zero bit-flip
+2017-03-02 11:22:05:base address to flip value: 0x7fffffffe71c
+2017-03-02 11:22:05:address max offset: 4
+2017-03-02 11:22:05:Memory content before bitflip:0x2f0x0d0x000x00
+2017-03-02 11:22:05:Backtrace BEGIN:
+2017-03-02 11:22:05:#0  0x00007ffff71505d0 in __GI_memcpy (dstpp=dstpp@entry=0x7ffff4d4ec10, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#3  0x00000000004025ad in main (argc=7, argv=0x7fffffffebc8) at main_check.c:179
+
+2017-03-02 11:22:05:54	in ../string/memcpy.c
+
+2017-03-02 11:22:05:Backtrace END
+2017-03-02 11:22:05:Type: The type is a structure.
+2017-03-02 11:22:05:Type sizeof: 168
+2017-03-02 11:22:05:Fliping value of field: __underflow
+2017-03-02 11:22:05:Type: The type is a pointer.
+2017-03-02 11:22:05:Type sizeof: 8
+2017-03-02 11:22:05:Fliping a bit of the pointer
+2017-03-02 11:22:05:Mem contents(hex):0x700x350x140xf70xff0x7f0x000x00
+2017-03-02 11:22:05:Fault Mode: Random bit-flip
+2017-03-02 11:22:05:base address to flip value: 0x7ffff74236e0 
+2017-03-02 11:22:05:address max offset: 8
+2017-03-02 11:22:05:Memory content before bitflip:0x700x350x140xf70xff0x7f0x000x00
+2017-03-02 11:22:05:Backtrace BEGIN:
+2017-03-02 11:22:05:#0  main (argc=7, argv=0x7fffffffebc8) at main_check.c:208
+
+2017-03-02 11:22:05:203	
+204		for(i=0; i<dim_cpu.space_elem; i=i+1) {
+205	            fv_cpu[i].v = 0;
+206	            fv_cpu[i].x = 0;
+207	            fv_cpu[i].y = 0;
+208	            fv_cpu[i].z = 0;
+209		}
+210	
+211	#ifdef ERR_INJ
+212		if(loop == 2){
+
+2017-03-02 11:22:05:Backtrace END
+2017-03-02 11:22:05:Type: The type is an integer type.
+2017-03-02 11:22:05:Type sizeof: 4
+2017-03-02 11:22:05:Mem contents(hex):0x000x0c0x0f0xf7
+2017-03-02 11:22:05:Fault Mode: Random bit-flip
+2017-03-02 11:22:05:base address to flip value: 0x7fffffffeae8
+2017-03-02 11:22:05:address max offset: 4
+2017-03-02 11:22:05:Memory content before bitflip:0x000x0c0x0f0xf7
+2017-03-02 11:22:06:Backtrace BEGIN:
+2017-03-02 11:22:06:#0  0x00007ffff719f03a in mmap64 () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7431e2c in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffdd18) at allocatestack.c:504
+#2  __pthread_create_2_1 (newthread=0x7fffffffdd10, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fff64374100) at pthread_create.c:524
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-03-02 11:22:06:76	in ../sysdeps/unix/syscall-template.S
+
+2017-03-02 11:22:06:Backtrace END
+2017-03-02 11:22:09:Type: The type is an array.
+2017-03-02 11:22:09:Type sizeof: 12
+2017-03-02 11:22:09:Fliping array at pos: 1
+2017-03-02 11:22:09:Type: The type is an integer type.
+2017-03-02 11:22:09:Type sizeof: 4
+2017-03-02 11:22:09:Mem contents(hex):0x010x000x000x00
+2017-03-02 11:22:09:Fault Mode: Double bit-flip
+2017-03-02 11:22:09:base address to flip value: 0x7ffff743c374 
+2017-03-02 11:22:09:address max offset: 4
+2017-03-02 11:22:09:Memory content before bitflip:0x010x000x000x00
+2017-03-02 11:22:09:Memory content after  bitflip:0x010x000x110x00
+2017-03-02 11:22:09:Mem contents(hex):0x010x000x110x00
+2017-03-02 11:22:09:frame name: __pthread_create_2_1
+2017-03-02 11:22:09:symbol name: _thread_db_pthread_cancelhandling
+2017-03-02 11:22:09:symbol filename: ../nptl_db/structs.def
+2017-03-02 11:22:09:symbol line: 31
+2017-03-02 11:22:09:value: {32, 1114113, 776}
+2017-03-02 11:22:09:value address: 0x7ffff743c370 <_thread_db_pthread_cancelhandling>
+2017-03-02 11:22:09:Type: The type is an array.
+2017-03-02 11:22:09:Type sizeof: 12
+2017-03-02 11:22:09:Field name: None
+2017-03-02 11:22:09:Field Type:
+2017-03-02 11:22:09:Type: A range type, that is, an integer type with bounds.
+2017-03-02 11:22:09:Type sizeof: 8
+2017-03-02 11:22:09:Type range: (0L, 2L)
+2017-03-02 11:22:09:Fault Injection Successful after 5.539675951s
+2017-03-02 11:22:24:event type: exit
+2017-03-02 11:22:24:exit code: 0

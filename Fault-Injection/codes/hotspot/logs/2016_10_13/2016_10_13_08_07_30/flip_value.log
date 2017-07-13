@@ -1,0 +1,73 @@
+2016-10-13 08:07:10:Initialization strings:
+2016-10-13 08:07:10:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-13 08:07:10:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-13 08:07:10:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-13 08:07:10:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-13 08:07:10:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-13 08:07:10:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-13 08:07:12:Trying Fault Injection
+2016-10-13 08:07:12:Backtrace BEGIN:
+2016-10-13 08:07:12:#0  _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:589
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "324.153906\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=-7680, argv=0xfffffffffff3bea6) at hotspot_check.c:264
+
+2016-10-13 08:07:12:584	in vfscanf.c
+
+2016-10-13 08:07:12:Backtrace END
+2016-10-13 08:07:13:Type: The type is an array.
+2016-10-13 08:07:13:Type sizeof: 24
+2016-10-13 08:07:13:Fliping array at pos: 0
+2016-10-13 08:07:13:Type: The type is a structure.
+2016-10-13 08:07:13:Type sizeof: 24
+2016-10-13 08:07:13:Fliping value of field: overflow_arg_area
+2016-10-13 08:07:13:Type: The type is a pointer.
+2016-10-13 08:07:13:Type sizeof: 8
+2016-10-13 08:07:13:Fault Injection Failed after 3.02244305611s
+2016-10-13 08:07:13:Trying Fault Injection
+2016-10-13 08:07:13:Backtrace BEGIN:
+2016-10-13 08:07:13:#0  _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:1848
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "324.283694\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=-7168, argv=0x1) at hotspot_check.c:264
+
+2016-10-13 08:07:13:1843	in vfscanf.c
+
+2016-10-13 08:07:13:Backtrace END
+2016-10-13 08:07:13:Type: The type is an array.
+2016-10-13 08:07:13:Type sizeof: 100
+2016-10-13 08:07:13:Fliping array at pos: 27
+2016-10-13 08:07:13:Type: The type is an integer type.
+2016-10-13 08:07:13:Type sizeof: 1
+2016-10-13 08:07:13:Mem contents(hex):0x31
+2016-10-13 08:07:13:base address to flip value: 0x7fffffffe731 
+2016-10-13 08:07:13:address max offset: 1
+2016-10-13 08:07:13:Memory content before bitflip:0x31
+2016-10-13 08:07:13:Memory content after  bitflip:0xb1
+2016-10-13 08:07:13:Mem contents(hex):0xb1
+2016-10-13 08:07:13:frame name: main
+2016-10-13 08:07:13:symbol name: test_info
+2016-10-13 08:07:13:symbol filename: hotspot_check.c
+2016-10-13 08:07:13:symbol line: 252
+2016-10-13 08:07:13:value: "simIter:2000 gridSize:1024x\261\060\062\064\000\000\000\250\350\377\377", '\000' <repeats 28 times>, ",]\336\367\377\177\000\000 \323\335\367\377\177\000\000\f\000\000\000\000\000\000\000\344\322\335\367\377\177\000\000\330", <incomplete sequence \331>
+2016-10-13 08:07:13:value address: 0x7fffffffe716
+2016-10-13 08:07:13:Type: The type is an array.
+2016-10-13 08:07:13:Type sizeof: 100
+2016-10-13 08:07:13:Field name: None
+2016-10-13 08:07:13:Field Type:
+2016-10-13 08:07:13:Type: A range type, that is, an integer type with bounds.
+2016-10-13 08:07:13:Type sizeof: 1
+2016-10-13 08:07:13:Type range: (0L, 99L)
+2016-10-13 08:07:13:Fault Injection Successful after 3.52223801613s
+2016-10-13 08:07:18:Fault Already Injected
+2016-10-13 08:07:18:Fault Already Injected
+2016-10-13 08:07:18:Fault Already Injected
+2016-10-13 08:07:19:Fault Already Injected
+2016-10-13 08:07:19:Fault Already Injected
+2016-10-13 08:07:20:Fault Already Injected
+2016-10-13 08:07:23:Fault Already Injected
+2016-10-13 08:07:23:Fault Already Injected
+2016-10-13 08:07:25:event type: exit
+2016-10-13 08:07:25:exit code: 0

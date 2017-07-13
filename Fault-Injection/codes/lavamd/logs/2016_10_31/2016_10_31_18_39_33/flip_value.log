@@ -1,0 +1,58 @@
+2016-10-31 18:39:16:Initialization strings:
+2016-10-31 18:39:16:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-31 18:39:16:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 18:39:16:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 18:39:16:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-31 18:39:16:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-31 18:39:16:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-31 18:39:17:Trying Fault Injection
+2016-10-31 18:39:17:Inferior PID: 142128
+2016-10-31 18:39:17:Inferior is valid: True
+2016-10-31 18:39:17:Inferior #threads: 1
+2016-10-31 18:39:17:Backtrace BEGIN:
+2016-10-31 18:39:17:#0  0x000000000040236d in main (argc=7, argv=0x7fffffffec08) at main_check.c:162
+
+2016-10-31 18:39:17:157	        printf( "The file 'input_charges' was not opened\n" );
+158	        exit(1);
+159	    }
+160	
+161	    qv_cpu = (fp*)malloc(dim_cpu.space_mem2);
+162	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+163	        fread(&(qv_cpu[i]), 1, sizeof(double), file);
+164	    }
+165	    fclose(file);
+166	
+
+2016-10-31 18:39:17:Backtrace END
+2016-10-31 18:39:17:Thread name: None
+2016-10-31 18:39:17:Thread num: 1
+2016-10-31 18:39:17:Thread ptid: (142128, 142128, 0)
+2016-10-31 18:39:17:bitFlip function
+2016-10-31 18:39:17:Type: The type is an integer type.
+2016-10-31 18:39:17:Type sizeof: 4
+2016-10-31 18:39:17:Mem contents(hex):0x2f0x0d0x000x00
+2016-10-31 18:39:17:base address to flip value: 0x7fffffffe75c
+2016-10-31 18:39:17:address max offset: 4
+2016-10-31 18:39:17:Memory content before bitflip:0x2f0x0d0x000x00
+2016-10-31 18:39:17:Memory content after  bitflip:0x6f0x0d0x000x00
+2016-10-31 18:39:17:Mem contents(hex):0x6f0x0d0x000x00
+2016-10-31 18:39:17:frame name: main
+2016-10-31 18:39:17:symbol name: nh
+2016-10-31 18:39:17:symbol filename: main_check.c
+2016-10-31 18:39:17:symbol line: 62
+2016-10-31 18:39:17:value: 3439
+2016-10-31 18:39:17:value address: 0x7fffffffe75c
+2016-10-31 18:39:17:Type: The type is an integer type.
+2016-10-31 18:39:17:Type sizeof: 4
+2016-10-31 18:39:17:Fault Injection Successful after 1.75419592857s
+2016-10-31 18:39:18:Fault Already Injected
+2016-10-31 18:39:21:Fault Already Injected
+2016-10-31 18:39:21:Fault Already Injected
+2016-10-31 18:39:21:Fault Already Injected
+2016-10-31 18:39:22:Fault Already Injected
+2016-10-31 18:39:23:Fault Already Injected
+2016-10-31 18:39:23:Fault Already Injected
+2016-10-31 18:39:26:Fault Already Injected
+2016-10-31 18:39:26:Fault Already Injected
+2016-10-31 18:39:27:event type: exit
+2016-10-31 18:39:27:exit code: 0

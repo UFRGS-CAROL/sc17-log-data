@@ -1,0 +1,58 @@
+[INFO -- 2017-03-28 20:24:02]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-28 20:24:02]
+Initialization strings:
+[INFO -- 2017-03-28 20:24:02]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-28 20:24:02]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 20:24:02]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 20:24:02]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 20:24:02]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 20:24:02]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-28 20:24:02]
+initSignal:0
+[INFO -- 2017-03-28 20:24:02]
+endSignal:3
+[INFO -- 2017-03-28 20:24:02]
+seqSignal:30
+[INFO -- 2017-03-28 20:24:02]
+faultMode:0
+[EXCEPTION -- 2017-03-28 20:24:03]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-03-28 20:24:03]
+Backtrace BEGIN:
+#0  0x00007ffff7142865 in __GI__IO_file_xsgetn (fp=0x60e1c0, data=0x7ffff6169690, n=8) at fileops.c:1348
+#1  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#2  0x00000000004021c3 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:148
+
+1343	in fileops.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: x
+Memory content before bitflip:0x9a0x990x990x990x990x990xc90x3f
+Fault Mode: Single bit-flip
+base address to flip value: 0x7ffff6063018
+address max offset: 8
+Memory content after  bitflip:0x9a0x990x990x990x990x9d0xc90x3f
+frame name: main
+symbol name: rv_cpu
+symbol filename: main_check.c
+symbol line: 58
+value: 0x7ffff6063010
+value address: 0x7fffffffe940
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-28 20:24:03]
+Fault Injection Successful after 1.58343911171s
+[INFO -- 2017-03-28 20:24:23]
+event type: exit
+[INFO -- 2017-03-28 20:24:23]
+exit code: 1

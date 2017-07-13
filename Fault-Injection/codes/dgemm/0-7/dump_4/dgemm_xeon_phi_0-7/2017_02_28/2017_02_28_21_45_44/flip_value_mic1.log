@@ -1,0 +1,158 @@
+2017-02-28 21:42:31:Starting flip_value script
+2017-02-28 21:42:31:Initialization strings:
+2017-02-28 21:42:31:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 21:42:31:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 21:42:31:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 21:42:31:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-02-28 21:42:31:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-02-28 21:42:31:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-02-28 21:42:31:initSignal:0
+2017-02-28 21:42:31:endSignal:7
+2017-02-28 21:42:31:seqSignal:15
+2017-02-28 21:42:32:Backtrace BEGIN:
+2017-02-28 21:42:33:#0  0x00007ffff7dddbc0 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#1  0x0000000000000008 in ?? ()
+#2  0x00007fffffffedb9 in ?? ()
+#3  0x00007fffffffedf4 in ?? ()
+#4  0x00007fffffffedf8 in ?? ()
+#5  0x00007fffffffedfd in ?? ()
+#6  0x00007fffffffee00 in ?? ()
+#7  0x00007fffffffee3c in ?? ()
+#8  0x00007fffffffee78 in ?? ()
+#9  0x00007fffffffeecb in ?? ()
+#10 0x0000000000000000 in ?? ()
+
+2017-02-28 21:42:33:270	
+271	int main(int argc, char **argv) {
+272	
+273	#ifdef TIMING
+274	    setup_start = timing_get_time();
+275	#endif
+276	
+277	    int     i, j;
+278	    int     nthread_input;        /* thread parameters                              */
+279	    static
+
+2017-02-28 21:42:33:Backtrace END
+2017-02-28 21:42:33:Backtrace BEGIN:
+2017-02-28 21:42:33:#0  0x00007ffff7dddbc0 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#1  0x0000000000000008 in ?? ()
+#2  0x00007fffffffedb9 in ?? ()
+#3  0x00007fffffffedf4 in ?? ()
+#4  0x00007fffffffedf8 in ?? ()
+#5  0x00007fffffffedfd in ?? ()
+#6  0x00007fffffffee00 in ?? ()
+#7  0x00007fffffffee3c in ?? ()
+#8  0x00007fffffffee78 in ?? ()
+#9  0x00007fffffffeecb in ?? ()
+#10 0x0000000000000000 in ?? ()
+
+2017-02-28 21:42:33:280	    double  *A, *B, *C, *gold;  /* input (A,B) and output (C) matrices            */
+281	    long    order;                /* number of rows and columns of matrices         */
+282	    int     block;                /* tile size of matrices                          */
+283	    char *inputA, *inputB, *fileGold;
+284	    int iterations = 100000;
+285	
+286	    printf("OpenMP Dense matrix-matrix multiplication\n");
+287	
+288	    if (argc != 8) {
+289	        printf("Usage: %s <# threads> <matrix order> <tile size> <matrix A> <matrix B> <GOLD> <iterations>\n",*argv);
+
+2017-02-28 21:42:33:Backtrace END
+2017-02-28 21:42:33:Backtrace BEGIN:
+2017-02-28 21:42:34:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7ddfe9b in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1462
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebb0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebb0) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffebb0) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000008 in ?? ()
+#7  0x00007fffffffedb9 in ?? ()
+#8  0x00007fffffffedf4 in ?? ()
+#9  0x00007fffffffedf8 in ?? ()
+#10 0x00007fffffffedfd in ?? ()
+#11 0x00007fffffffee00 in ?? ()
+#12 0x00007fffffffee3c in ?? ()
+#13 0x00007fffffffee78 in ?? ()
+#14 0x00007fffffffeecb in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+2017-02-28 21:42:34:69	in dl-debug.c
+
+2017-02-28 21:42:34:Backtrace END
+2017-02-28 21:42:34:Type: The type is an integer type.
+2017-02-28 21:42:34:Type sizeof: 4
+2017-02-28 21:42:34:Mem contents(hex):0x000x000x000x00
+2017-02-28 21:42:34:Fault Mode: Zero bit-flip
+2017-02-28 21:42:34:base address to flip value: 0x7ffff7ffce48 
+2017-02-28 21:42:34:address max offset: 4
+2017-02-28 21:42:34:Memory content before bitflip:0x000x000x000x00
+2017-02-28 21:42:34:Backtrace BEGIN:
+2017-02-28 21:42:34:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7ddfe9b in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1462
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebb0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebb0) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffebb0) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000008 in ?? ()
+#7  0x00007fffffffedb9 in ?? ()
+#8  0x00007fffffffedf4 in ?? ()
+#9  0x00007fffffffedf8 in ?? ()
+#10 0x00007fffffffedfd in ?? ()
+#11 0x00007fffffffee00 in ?? ()
+#12 0x00007fffffffee3c in ?? ()
+#13 0x00007fffffffee78 in ?? ()
+#14 0x00007fffffffeecb in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+2017-02-28 21:42:34:69	in dl-debug.c
+
+2017-02-28 21:42:34:Backtrace END
+2017-02-28 21:42:34:Type: The type is an integer type.
+2017-02-28 21:42:34:Type sizeof: 4
+2017-02-28 21:42:34:Mem contents(hex):0x000x000x000x00
+2017-02-28 21:42:34:Fault Mode: One bit-flip
+2017-02-28 21:42:34:base address to flip value: 0x7ffff7ffe0b8 
+2017-02-28 21:42:34:address max offset: 4
+2017-02-28 21:42:34:Memory content before bitflip:0x000x000x000x00
+2017-02-28 21:42:34:Backtrace BEGIN:
+2017-02-28 21:42:34:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7ddfe9b in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1462
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebb0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebb0) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffebb0) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000008 in ?? ()
+#7  0x00007fffffffedb9 in ?? ()
+#8  0x00007fffffffedf4 in ?? ()
+#9  0x00007fffffffedf8 in ?? ()
+#10 0x00007fffffffedfd in ?? ()
+#11 0x00007fffffffee00 in ?? ()
+#12 0x00007fffffffee3c in ?? ()
+#13 0x00007fffffffee78 in ?? ()
+#14 0x00007fffffffeecb in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+2017-02-28 21:42:34:69	in dl-debug.c
+
+2017-02-28 21:42:34:Backtrace END
+2017-02-28 21:42:35:Type: The type is an integer type.
+2017-02-28 21:42:35:Type sizeof: 4
+2017-02-28 21:42:35:Mem contents(hex):0x000x000x000x00
+2017-02-28 21:42:35:Fault Mode: Single bit-flip
+2017-02-28 21:42:35:base address to flip value: 0x7ffff7ffce48 
+2017-02-28 21:42:35:address max offset: 4
+2017-02-28 21:42:35:Memory content before bitflip:0x000x000x000x00
+2017-02-28 21:42:35:Memory content after  bitflip:0x000x000x000x01
+2017-02-28 21:42:35:Mem contents(hex):0x000x000x000x01
+2017-02-28 21:42:35:frame name: _dl_sysdep_start
+2017-02-28 21:42:35:symbol name: __libc_enable_secure
+2017-02-28 21:42:35:symbol filename: ../elf/dl-sysdep.c
+2017-02-28 21:42:35:symbol line: 57
+2017-02-28 21:42:35:value: 16777216
+2017-02-28 21:42:35:value address: 0x7ffff7ffce48 <__libc_enable_secure>
+2017-02-28 21:42:35:Type: The type is an integer type.
+2017-02-28 21:42:35:Type sizeof: 4
+2017-02-28 21:42:35:Fault Injection Successful after 4.05725193024s
+2017-02-28 21:43:20:event type: exit
+2017-02-28 21:43:20:exit code: 0

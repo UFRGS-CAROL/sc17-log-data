@@ -1,0 +1,57 @@
+[INFO -- 2017-03-26 01:32:23]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 01:32:23]
+Initialization strings:
+[INFO -- 2017-03-26 01:32:23]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 01:32:23]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 01:32:23]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 01:32:23]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 01:32:23]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 01:32:23]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 01:32:23]
+initSignal:0
+[INFO -- 2017-03-26 01:32:23]
+endSignal:3
+[INFO -- 2017-03-26 01:32:23]
+seqSignal:30
+[INFO -- 2017-03-26 01:32:23]
+faultMode:1
+[INFO -- 2017-03-26 01:32:24]
+Backtrace BEGIN:
+#0  0x00007ffff71505d6 in __GI_memcpy (dstpp=dstpp@entry=0x7ffff682dd10, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#3  0x00000000004021c3 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:148
+
+54	in ../string/memcpy.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: x
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7ffff6ab0010
+address max offset: 4
+Memory content after  bitflip:0x000x000x120x00
+frame name: main
+symbol name: box_cpu
+symbol filename: main_check.c
+symbol line: 57
+value: 0x7ffff6ab0010
+value address: 0x7fffffffe8b0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-26 01:32:24]
+Fault Injection Successful after 1.20816802979s
+[INFO -- 2017-03-26 01:32:43]
+event type: exit
+[INFO -- 2017-03-26 01:32:43]
+exit code: 0

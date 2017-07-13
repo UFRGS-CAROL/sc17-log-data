@@ -1,0 +1,80 @@
+2017-03-01 01:45:31:Starting flip_value script
+2017-03-01 01:45:31:Initialization strings:
+2017-03-01 01:45:32:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-01 01:45:32:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 01:45:32:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 01:45:32:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 01:45:32:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 01:45:32:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-03-01 01:45:32:initSignal:0
+2017-03-01 01:45:32:endSignal:3
+2017-03-01 01:45:32:seqSignal:30
+2017-03-01 01:45:33:Backtrace BEGIN:
+2017-03-01 01:45:33:#0  0x00007ffff71505d0 in __GI_memcpy (dstpp=dstpp@entry=0x7ffff4bf6310, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#3  0x00000000004025ad in main (argc=7, argv=0x7fffffffebc8) at main_check.c:179
+
+2017-03-01 01:45:33:54	in ../string/memcpy.c
+
+2017-03-01 01:45:33:Backtrace END
+2017-03-01 01:45:33:Type: The type is a pointer.
+2017-03-01 01:45:33:Type sizeof: 8
+2017-03-01 01:45:33:Fliping a bit of the pointer
+2017-03-01 01:45:33:Mem contents(hex):0x410xee0xff0xff0xff0x7f0x000x00
+2017-03-01 01:45:33:Fault Mode: Zero bit-flip
+2017-03-01 01:45:33:base address to flip value: 0x7fffffffe890
+2017-03-01 01:45:33:address max offset: 8
+2017-03-01 01:45:33:Memory content before bitflip:0x410xee0xff0xff0xff0x7f0x000x00
+2017-03-01 01:45:33:Backtrace BEGIN:
+2017-03-01 01:45:33:#0  0x00007ffff71505dc in __GI_memcpy (dstpp=dstpp@entry=0x7ffff4c3eea8, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#3  0x0000000000402670 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:182
+
+2017-03-01 01:45:33:54	in ../string/memcpy.c
+
+2017-03-01 01:45:33:Backtrace END
+2017-03-01 01:45:33:Type: The type is an integer type.
+2017-03-01 01:45:33:Type sizeof: 4
+2017-03-01 01:45:33:Mem contents(hex):0x020x000x000x00
+2017-03-01 01:45:33:Fault Mode: Zero bit-flip
+2017-03-01 01:45:33:base address to flip value: 0x7fffffffe738
+2017-03-01 01:45:33:address max offset: 4
+2017-03-01 01:45:33:Memory content before bitflip:0x020x000x000x00
+2017-03-01 01:45:33:Backtrace BEGIN:
+2017-03-01 01:45:33:#0  0x00007ffff71505dc in __GI_memcpy (dstpp=dstpp@entry=0x7ffff5083bf8, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#3  0x00000000004025ee in main (argc=7, argv=0x7fffffffebc8) at main_check.c:180
+
+2017-03-01 01:45:33:54	in ../string/memcpy.c
+
+2017-03-01 01:45:33:Backtrace END
+2017-03-01 01:45:33:Type: The type is a pointer.
+2017-03-01 01:45:33:Type sizeof: 8
+2017-03-01 01:45:33:Fliping a bit of the value pointed by a pointer
+2017-03-01 01:45:33:Type: The type is a structure.
+2017-03-01 01:45:33:Type sizeof: 216
+2017-03-01 01:45:33:Fliping value of field: _lock
+2017-03-01 01:45:33:Type: The type is a pointer.
+2017-03-01 01:45:33:Type sizeof: 8
+2017-03-01 01:45:33:Fliping a bit of the pointer
+2017-03-01 01:45:33:Mem contents(hex):0xa00xe20x600x000x000x000x000x00
+2017-03-01 01:45:33:Fault Mode: Single bit-flip
+2017-03-01 01:45:33:base address to flip value: 0x60e248
+2017-03-01 01:45:33:address max offset: 8
+2017-03-01 01:45:33:Memory content before bitflip:0xa00xe20x600x000x000x000x000x00
+2017-03-01 01:45:33:Memory content after  bitflip:0xa00xe60x600x000x000x000x000x00
+2017-03-01 01:45:33:Mem contents(hex):0xa00xe60x600x000x000x000x000x00
+2017-03-01 01:45:33:frame name: main
+2017-03-01 01:45:33:symbol name: file
+2017-03-01 01:45:33:symbol filename: main_check.c
+2017-03-01 01:45:33:symbol line: 139
+2017-03-01 01:45:33:value: 0x60e1c0
+2017-03-01 01:45:33:value address: 0x7fffffffe910
+2017-03-01 01:45:33:Type: The type is a pointer.
+2017-03-01 01:45:33:Type sizeof: 8
+2017-03-01 01:45:33:Fault Injection Successful after 1.63813710213s
+2017-03-01 01:45:48:event type: exit
+2017-03-01 01:45:48:exit code: 0

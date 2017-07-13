@@ -1,0 +1,68 @@
+[INFO -- 2017-03-23 22:44:30]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-23 22:44:30]
+Initialization strings:
+[INFO -- 2017-03-23 22:44:30]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-23 22:44:30]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-23 22:44:30]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-23 22:44:30]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-23 22:44:30]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-23 22:44:30]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-03-23 22:44:30]
+initSignal:6
+[INFO -- 2017-03-23 22:44:30]
+endSignal:8
+[INFO -- 2017-03-23 22:44:30]
+seqSignal:30
+[INFO -- 2017-03-23 22:44:30]
+faultMode:2
+[INFO -- 2017-03-23 22:44:40]
+Backtrace BEGIN:
+#0  0x000000000040456e in L_lud_omp_69__par_loop0_2_4 () at lud_omp.c:108
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+103	            j_global = offset;
+104	            i_global += BS * (chunk_idx + 1);
+105	            for (i = 0; i < BS; i++) {
+106	                for (j = 0; j < BS; j++) {
+107	                    sum = 0.f;
+108	                    for (k=0; k < j; k++) {
+109	                        sum += BB((i_global+i),(j_global+k)) * temp[BS*k + j];
+110	                    }
+111	                    i_here = i_global + i;
+112	                    j_here = j_global + j;
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x200x41
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff5ecc010
+address max offset: 4
+Memory content after  bitflip:0x4f0x0c0x5d0x50
+frame name: L_lud_omp_69__par_loop0_2_4
+symbol name: a
+symbol filename: lud_omp.c
+symbol line: 69
+value: 0x7ffff5ecc010
+value address: 0x7fffffffd9c0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-23 22:44:40]
+Fault Injection Successful after 10.575854063s
+[INFO -- 2017-03-23 22:44:47]
+event type: exit
+[INFO -- 2017-03-23 22:44:47]
+exit code: 0

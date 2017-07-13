@@ -1,0 +1,65 @@
+2016-10-26 20:51:41:Initialization strings:
+2016-10-26 20:51:42:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-26 20:51:42:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-26 20:51:42:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-26 20:51:42:(4) file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-26 20:51:42:(5) set remote exec-file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-26 20:51:42:(6) set args -s 8192 -n 228 -i /micNfs/gdb-fault-injection-lud/bin/input_8192_th_228 -g /micNfs/gdb-fault-injection-lud/bin/gold_8192_th_228
+2016-10-26 20:51:43:Trying Fault Injection
+2016-10-26 20:51:43:Inferior PID: 114032
+2016-10-26 20:51:43:Inferior is valid: True
+2016-10-26 20:51:43:Inferior #threads: 1
+2016-10-26 20:51:43:Backtrace BEGIN:
+2016-10-26 20:51:43:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142911 in __GI__IO_file_xsgetn (fp=0x615010, data=<optimized out>, n=268435456) at fileops.c:1422
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=268435456, count=1, fp=0x615010) at iofread.c:42
+#3  0x0000000000402c07 in main (argc=3, argv=0x7fffe6ecc010) at lud_check.c:104
+
+2016-10-26 20:51:43:76	in ../sysdeps/unix/syscall-template.S
+
+2016-10-26 20:51:43:Backtrace END
+2016-10-26 20:51:43:Thread name: None
+2016-10-26 20:51:43:Thread num: 1
+2016-10-26 20:51:43:Thread ptid: (114032, 114032, 0)
+2016-10-26 20:51:43:bitFlip function
+2016-10-26 20:51:43:Type: The type is an array.
+2016-10-26 20:51:43:Type sizeof: 128
+2016-10-26 20:51:43:Fliping array at pos: 0
+2016-10-26 20:51:43:bitFlip function
+2016-10-26 20:51:43:Type: The type is a structure.
+2016-10-26 20:51:43:Type sizeof: 32
+2016-10-26 20:51:43:Fliping value of field: name
+2016-10-26 20:51:43:bitFlip function
+2016-10-26 20:51:43:Type: The type is a pointer.
+2016-10-26 20:51:43:Type sizeof: 8
+2016-10-26 20:51:43:Fliping a bit of the pointer
+2016-10-26 20:51:43:Mem contents(hex):0x600xe00x400x000x000x000x000x00
+2016-10-26 20:51:43:base address to flip value: 0x6134e0 
+2016-10-26 20:51:43:address max offset: 8
+2016-10-26 20:51:43:Memory content before bitflip:0x600xe00x400x000x000x000x000x00
+2016-10-26 20:51:43:Memory content after  bitflip:0x600xe00x400x000x000x000x800x00
+2016-10-26 20:51:43:Mem contents(hex):0x600xe00x400x000x000x000x800x00
+2016-10-26 20:51:43:frame name: main
+2016-10-26 20:51:43:symbol name: long_options
+2016-10-26 20:51:43:symbol filename: lud_check.c
+2016-10-26 20:51:43:symbol line: 31
+2016-10-26 20:51:43:value: {{name = 0x8000000040e060 <error: Cannot access memory at address 0x8000000040e060>, has_arg = 1, flag = 0x0, val = 105}, {name = 0x40e068 "gold", has_arg = 1, flag = 0x0, val = 103}, {name = 0x40e070 "size", has_arg = 1, flag = 0x0, val = 115}, {name = 0x0, has_arg = 0, flag = 0x0, val = 0}}
+2016-10-26 20:51:43:value address: 0x6134e0 <long_options>
+2016-10-26 20:51:43:Type: The type is an array.
+2016-10-26 20:51:43:Type sizeof: 128
+2016-10-26 20:51:43:Field name: None
+2016-10-26 20:51:43:Field Type:
+2016-10-26 20:51:43:Type: A range type, that is, an integer type with bounds.
+2016-10-26 20:51:43:Type sizeof: 1
+2016-10-26 20:51:43:Type range: (0L, 3L)
+2016-10-26 20:51:43:Fault Injection Successful after 1.15830898285s
+2016-10-26 20:51:43:Fault Already Injected
+2016-10-26 20:51:43:Fault Already Injected
+2016-10-26 20:51:44:Fault Already Injected
+2016-10-26 20:51:45:Fault Already Injected
+2016-10-26 20:51:47:Fault Already Injected
+2016-10-26 20:51:48:Fault Already Injected
+2016-10-26 20:51:49:Fault Already Injected
+2016-10-26 20:51:50:Fault Already Injected
+2016-10-26 20:51:52:event type: exit
+2016-10-26 20:51:52:exit code: 0

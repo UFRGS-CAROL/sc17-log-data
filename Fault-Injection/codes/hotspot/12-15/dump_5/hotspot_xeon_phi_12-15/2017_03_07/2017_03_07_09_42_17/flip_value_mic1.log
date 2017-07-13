@@ -1,0 +1,143 @@
+[INFO -- 2017-03-07 09:41:40]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-07 09:41:40]
+Initialization strings:
+[INFO -- 2017-03-07 09:41:40]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-07 09:41:40]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 09:41:40]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 09:41:40]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-03-07 09:41:40]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-03-07 09:41:40]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-03-07 09:41:40]
+initSignal:12
+[INFO -- 2017-03-07 09:41:40]
+endSignal:15
+[INFO -- 2017-03-07 09:41:40]
+seqSignal:15
+[INFO -- 2017-03-07 09:41:40]
+faultMode:1
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-07 09:42:01]
+pythonException: invalid frame
+[INFO -- 2017-03-07 09:42:01]
+Backtrace BEGIN:
+#0  L_single_iteration_60__par_loop0_2_0 () at hotspot_check.c:74
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe590 in ?? ()
+#3  0x00007fffffffe598 in ?? ()
+#4  0x00007fffffffe5a0 in ?? ()
+#5  0x00007fffffffe5a8 in ?? ()
+#6  0x00007fffffffe580 in ?? ()
+#7  0x00007fffffffe588 in ?? ()
+#8  0x00007fffffffe4d0 in ?? ()
+#9  0x00007fffffffe4d4 in ?? ()
+#10 0x0101010000000000 in ?? ()
+#11 0x00007ffff5ea6b00 in ?? ()
+#12 0x0000000000000000 in ?? ()
+
+69	        if ( r_start == 0 || c_start == 0 || r_end == row || c_end == col )
+70	        {
+71	            for ( r = r_start; r < r_start + BLOCK_SIZE_R; ++r ) {
+72	                for ( c = c_start; c < c_start + BLOCK_SIZE_C; ++c ) {
+73	                    /* Corner 1 */
+74	                    if ( (r == 0) && (c == 0) ) {
+75	                        delta = (Cap_1) * (power[0] +
+76	                                           (temp[1] - temp[0]) * Rx_1 +
+77	                                           (temp[col] - temp[0]) * Ry_1 +
+78	                                           (amb_temp - temp[0]) * Rz_1);
+
+Backtrace END
+Memory content before bitflip:0x6f0x120x030x3a
+Fault Mode: Double bit-flip
+base address to flip value: 0x4074f4 
+address max offset: 4
+Memory content after  bitflip:0x6f0x120x030x7e
+frame name: L_single_iteration_60__par_loop0_2_0
+symbol name: t_chip
+symbol filename: hotspot_check.c
+symbol line: 33
+value: 4.3556145e+37
+value address: 0x4074f4 <t_chip>
+Type: A floating point type.
+Type sizeof: 4
+
+[INFO -- 2017-03-07 09:42:01]
+Fault Injection Successful after 21.4859089851s
+[INFO -- 2017-03-07 09:42:11]
+event type: exit
+[INFO -- 2017-03-07 09:42:11]
+exit code: 0

@@ -1,0 +1,61 @@
+[INFO -- 2017-03-26 17:34:50]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 17:34:50]
+Initialization strings:
+[INFO -- 2017-03-26 17:34:50]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 17:34:50]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 17:34:50]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 17:34:50]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 17:34:50]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 17:34:50]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 17:34:50]
+initSignal:0
+[INFO -- 2017-03-26 17:34:50]
+endSignal:3
+[INFO -- 2017-03-26 17:34:50]
+seqSignal:30
+[INFO -- 2017-03-26 17:34:50]
+faultMode:0
+[INFO -- 2017-03-26 17:34:52]
+Backtrace BEGIN:
+#0  __GI___waitpid (pid=6461, stat_loc=stat_loc@entry=0x7fffffffdea8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000406619 in update_timestamp () at ../include/log_helper.c:107
+#3  0x00000000004069fe in start_log_file (benchmark_name=0x408cc0 "openmpLavaMD", test_info=0x7fffffffe648 "box:15 spaceElem:337500 cores:228") at ../include/log_helper.c:196
+#4  0x0000000000402707 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:190
+
+26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+Backtrace END
+Fliping array at pos: 3
+Memory content before bitflip:0x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x60ce63  
+address max offset: 1
+Memory content after  bitflip:0x40
+frame name: update_timestamp
+symbol name: log_file_name
+symbol filename: ../include/log_helper.c
+symbol line: 52
+value: "\000\000\000@", '\000' <repeats 195 times>
+value address: 0x60ce60 <log_file_name>
+Type: The type is an array.
+Type sizeof: 200
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 199L)
+
+[INFO -- 2017-03-26 17:34:52]
+Fault Injection Successful after 2.4642701149s
+[INFO -- 2017-03-26 17:35:09]
+event type: exit
+[INFO -- 2017-03-26 17:35:09]
+exit code: 0

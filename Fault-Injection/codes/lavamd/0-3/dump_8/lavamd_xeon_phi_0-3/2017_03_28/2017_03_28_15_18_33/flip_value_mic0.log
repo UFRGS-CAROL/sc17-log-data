@@ -1,0 +1,55 @@
+[INFO -- 2017-03-28 15:18:10]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-28 15:18:10]
+Initialization strings:
+[INFO -- 2017-03-28 15:18:11]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-28 15:18:11]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 15:18:11]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 15:18:11]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 15:18:11]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 15:18:11]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-28 15:18:11]
+initSignal:0
+[INFO -- 2017-03-28 15:18:11]
+endSignal:3
+[INFO -- 2017-03-28 15:18:11]
+seqSignal:30
+[INFO -- 2017-03-28 15:18:11]
+faultMode:3
+[INFO -- 2017-03-28 15:18:11]
+Backtrace BEGIN:
+#0  0x00007ffff71389b2 in __GI__IO_fread (buf=<optimized out>, size=<optimized out>, count=8, fp=<optimized out>) at iofread.c:45
+#1  0x00000000004021c3 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:148
+
+40	in iofread.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: y
+Memory content before bitflip:0xe40x0b0x400x000x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffff7ff86b0
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: main
+symbol name: fv_cpu
+symbol filename: main_check.c
+symbol line: 60
+value: 0x7ffff7ff86a0
+value address: 0x7fffffffe9b8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-28 15:18:11]
+Fault Injection Successful after 0.750170946121s
+[INFO -- 2017-03-28 15:18:26]
+event type: exit
+[INFO -- 2017-03-28 15:18:26]
+exit code: 0

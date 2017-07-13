@@ -1,0 +1,59 @@
+[INFO -- 2017-03-09 16:24:20]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-09 16:24:20]
+Initialization strings:
+[INFO -- 2017-03-09 16:24:20]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-09 16:24:20]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-09 16:24:20]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-09 16:24:20]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-09 16:24:20]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-09 16:24:20]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-09 16:24:20]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-09 16:24:20]
+initSignal:40
+[INFO -- 2017-03-09 16:24:20]
+endSignal:49
+[INFO -- 2017-03-09 16:24:20]
+seqSignal:20
+[INFO -- 2017-03-09 16:24:20]
+faultMode:1
+[INFO -- 2017-03-09 16:25:11]
+Backtrace BEGIN:
+#0  _IO_new_file_xsputn (f=0x1922280, data=0x7fffffffe0de, n=2) at fileops.c:1302
+#1  0x00007ffff6b677b3 in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1641
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b98d in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:478
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+1297	in fileops.c
+
+Backtrace END
+Memory content before bitflip:0x000x800x800xc3
+Fault Mode: Double bit-flip
+base address to flip value: 0x7d0bc4 
+address max offset: 4
+Memory content after  bitflip:0x000x800xc10xc3
+frame name: DrawSquaresToFile
+symbol name: graphics_ymin
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c
+symbol line: 188
+value: -387
+value address: 0x7d0bc4 <graphics_ymin>
+Type: A floating point type.
+Type sizeof: 4
+
+[INFO -- 2017-03-09 16:25:11]
+Fault Injection Successful after 51.8544130325s
+[INFO -- 2017-03-09 16:26:04]
+event type: exit
+[INFO -- 2017-03-09 16:26:04]
+exit code: 0

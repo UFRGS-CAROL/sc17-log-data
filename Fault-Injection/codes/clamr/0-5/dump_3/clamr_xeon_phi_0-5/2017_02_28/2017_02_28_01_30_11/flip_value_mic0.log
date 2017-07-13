@@ -1,0 +1,80 @@
+2017-02-28 01:26:03:Starting flip_value script
+2017-02-28 01:26:03:Initialization strings:
+2017-02-28 01:26:04:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-28 01:26:04:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 01:26:04:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 01:26:04:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 01:26:04:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 01:26:04:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 01:26:04:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 01:26:04:initSignal:0
+2017-02-28 01:26:04:endSignal:5
+2017-02-28 01:26:04:seqSignal:20
+2017-02-28 01:26:04:Backtrace BEGIN:
+2017-02-28 01:26:04:#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff6e80125 in create_thread (pd=pd@entry=0x7fff91bf5780, attr=attr@entry=0x7fffffffe318, stopped_start=<optimized out>, stopped_start@entry=false, stackaddr=<optimized out>, thread_ran=0x7fffffffe0b7) at ../sysdeps/unix/sysv/linux/createthread.c:102
+#2  0x00007ffff6e81adf in __pthread_create_2_1 (newthread=<optimized out>, attr=<optimized out>, start_routine=<optimized out>, arg=<optimized out>) at pthread_create.c:664
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-02-28 01:26:04:76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+2017-02-28 01:26:04:Backtrace END
+2017-02-28 01:26:05:Type: The type is an array.
+2017-02-28 01:26:05:Type sizeof: 12
+2017-02-28 01:26:05:Fliping array at pos: 1
+2017-02-28 01:26:05:Type: The type is an integer type.
+2017-02-28 01:26:05:Type sizeof: 4
+2017-02-28 01:26:05:Mem contents(hex):0x010x000x000x00
+2017-02-28 01:26:05:Fault Mode: Random bit-flip
+2017-02-28 01:26:05:base address to flip value: 0x7ffff6e8c384 
+2017-02-28 01:26:05:address max offset: 4
+2017-02-28 01:26:05:Memory content before bitflip:0x010x000x000x00
+2017-02-28 01:26:05:Backtrace BEGIN:
+2017-02-28 01:26:05:#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff6e80125 in create_thread (pd=pd@entry=0x7fff91bf5780, attr=attr@entry=0x7fffffffe318, stopped_start=<optimized out>, stopped_start@entry=false, stackaddr=<optimized out>, thread_ran=0x7fffffffe0b7) at ../sysdeps/unix/sysv/linux/createthread.c:102
+#2  0x00007ffff6e81adf in __pthread_create_2_1 (newthread=<optimized out>, attr=<optimized out>, start_routine=<optimized out>, arg=<optimized out>) at pthread_create.c:664
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-02-28 01:26:05:76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+2017-02-28 01:26:05:Backtrace END
+2017-02-28 01:26:06:Type: The type is a structure.
+2017-02-28 01:26:06:Type sizeof: 16
+2017-02-28 01:26:06:Fliping value of field: prev
+2017-02-28 01:26:06:Type: The type is a pointer.
+2017-02-28 01:26:06:Type sizeof: 8
+2017-02-28 01:26:06:Fliping a bit of the value pointed by a pointer
+2017-02-28 01:26:06:Type: The type is a structure.
+2017-02-28 01:26:06:Type sizeof: 16
+2017-02-28 01:26:06:Fliping value of field: next
+2017-02-28 01:26:06:Type: The type is a pointer.
+2017-02-28 01:26:06:Type sizeof: 8
+2017-02-28 01:26:06:Fliping a bit of the pointer
+2017-02-28 01:26:06:Mem contents(hex):0xf00x620x090xf70xff0x7f0x000x00
+2017-02-28 01:26:06:Fault Mode: Double bit-flip
+2017-02-28 01:26:06:base address to flip value: 0x7ffff7ff4a00
+2017-02-28 01:26:06:address max offset: 8
+2017-02-28 01:26:06:Memory content before bitflip:0xf00x620x090xf70xff0x7f0x000x00
+2017-02-28 01:26:06:Memory content after  bitflip:0xf00xf20x090xf70xff0x7f0x000x00
+2017-02-28 01:26:06:Mem contents(hex):0xf00xf20x090xf70xff0x7f0x000x00
+2017-02-28 01:26:06:frame name: create_thread
+2017-02-28 01:26:06:symbol name: __GI___stack_user
+2017-02-28 01:26:06:symbol filename: allocatestack.c
+2017-02-28 01:26:06:symbol line: 124
+2017-02-28 01:26:06:value: {next = 0x7ffff7ff4a00, prev = 0x7ffff7ff4a00}
+2017-02-28 01:26:06:value address: 0x7ffff70962f0 <__stack_user>
+2017-02-28 01:26:06:Type: The type is a structure.
+2017-02-28 01:26:06:Type sizeof: 16
+2017-02-28 01:26:06:Field name: next
+2017-02-28 01:26:06:Field Type:
+2017-02-28 01:26:06:Type: The type is a pointer.
+2017-02-28 01:26:06:Type sizeof: 8
+2017-02-28 01:26:06:Field name: prev
+2017-02-28 01:26:06:Field Type:
+2017-02-28 01:26:06:Type: The type is a pointer.
+2017-02-28 01:26:06:Type sizeof: 8
+2017-02-28 01:26:06:Fault Injection Successful after 2.17442893982s
+2017-02-28 01:26:58:event type: exit
+2017-02-28 01:26:58:exit code: 0

@@ -1,0 +1,61 @@
+[INFO -- 2017-03-27 02:00:13]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 02:00:13]
+Initialization strings:
+[INFO -- 2017-03-27 02:00:13]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 02:00:13]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 02:00:13]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 02:00:13]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 02:00:13]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 02:00:13]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 02:00:13]
+initSignal:0
+[INFO -- 2017-03-27 02:00:13]
+endSignal:3
+[INFO -- 2017-03-27 02:00:13]
+seqSignal:30
+[INFO -- 2017-03-27 02:00:13]
+faultMode:2
+[INFO -- 2017-03-27 02:00:15]
+Backtrace BEGIN:
+#0  0x000000000040264a in main (argc=7, argv=0x7fffffffebc8) at main_check.c:182
+
+177	        fv_cpu[i].z = 0;
+178	
+179	        fread(&(fv_cpu_GOLD[i].v), 1, sizeof(double), file);
+180	        fread(&(fv_cpu_GOLD[i].x), 1, sizeof(double), file);
+181	        fread(&(fv_cpu_GOLD[i].y), 1, sizeof(double), file);
+182	        fread(&(fv_cpu_GOLD[i].z), 1, sizeof(double), file);
+183	    }
+184	
+185	    fclose(file);
+186	
+
+Backtrace END
+Fliping value of field: alpha
+Memory content before bitflip:0x000x000x000x000x000x000xe00x3f
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe8a0
+address max offset: 8
+Memory content after  bitflip:0x790xe20x520xc50xe90xc40x920xbc
+frame name: main
+symbol name: par_cpu
+symbol filename: main_check.c
+symbol line: 55
+value: {alpha = -6.5118716180647794e-17}
+value address: 0x7fffffffe8a0
+Type: The type is a structure.
+Type sizeof: 8
+Field name: alpha
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-27 02:00:15]
+Fault Injection Successful after 2.13380908966s

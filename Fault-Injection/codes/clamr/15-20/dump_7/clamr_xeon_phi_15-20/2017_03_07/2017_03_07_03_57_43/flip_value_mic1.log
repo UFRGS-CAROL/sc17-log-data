@@ -1,0 +1,71 @@
+[INFO -- 2017-03-07 03:55:46]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-07 03:55:46]
+Initialization strings:
+[INFO -- 2017-03-07 03:55:47]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-07 03:55:47]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 03:55:47]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 03:55:47]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 03:55:47]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 03:55:47]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-07 03:55:47]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-07 03:55:47]
+initSignal:15
+[INFO -- 2017-03-07 03:55:47]
+endSignal:20
+[INFO -- 2017-03-07 03:55:47]
+seqSignal:20
+[INFO -- 2017-03-07 03:55:47]
+faultMode:3
+[INFO -- 2017-03-07 03:56:12]
+Backtrace BEGIN:
+#0  0x0000000000557460 in MallocPlus::memory_reorder_all (this=0x7f9a58, iorder=0x7fff0c0d4010) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/MallocPlus/MallocPlus.cpp:575
+#1  0x0000000000536d47 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:508
+#2  0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#3  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+570	      } else {
+571	         float *ptr;
+572	         float *malloc_mem_ptr = (float *)memory_item_old->mem_ptr;
+573	         float *tmp = (float *)malloc(memory_item_old->mem_nelem[0]*memory_item_old->mem_elsize);
+574	         for (uint ic = 0; ic < memory_item_old->mem_nelem[0]; ic++){
+575	            tmp[ic] = malloc_mem_ptr[iorder[ic]];
+576	         }
+577	         memory_replace(malloc_mem_ptr, tmp);
+578	         SWAP_PTR(malloc_mem_ptr, tmp, ptr);
+579	         free(tmp);
+
+Backtrace END
+Fliping value of field: _M_node
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7d0c78 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: MallocPlus::memory_reorder_all
+symbol name: it_end
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/MallocPlus/MallocPlus.cpp
+symbol line: 94
+value: {_M_node = 0x0}
+value address: 0x7d0c78 <it_end>
+Type: The type is a structure.
+Type sizeof: 8
+Field name: _M_node
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-07 03:56:12]
+Fault Injection Successful after 25.8531448841s
+[INFO -- 2017-03-07 03:57:30]
+event type: exit
+[INFO -- 2017-03-07 03:57:30]
+exit code: 0

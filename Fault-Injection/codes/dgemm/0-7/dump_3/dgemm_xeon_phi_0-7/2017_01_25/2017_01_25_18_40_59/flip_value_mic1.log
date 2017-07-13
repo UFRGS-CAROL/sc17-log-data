@@ -1,0 +1,65 @@
+2017-01-25 18:37:44:Starting flip_value script
+2017-01-25 18:37:44:Initialization strings:
+2017-01-25 18:37:44:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-25 18:37:44:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 18:37:44:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 18:37:44:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-25 18:37:44:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-25 18:37:44:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-25 18:37:44:initSignal:0
+2017-01-25 18:37:44:endSignal:7
+2017-01-25 18:37:44:seqSignal:15
+2017-01-25 18:37:45:Backtrace BEGIN:
+2017-01-25 18:37:45:#0  0x00007ffff78f1cc6 in ?? ()
+#1  0x00007ffff71050b1 in msort_with_tmp (p=p@entry=0x7fffffffe598, b=b@entry=0x6074c8, n=n@entry=16) at msort.c:124
+#2  0x00007ffff7105011 in msort_with_tmp (n=16, b=<optimized out>, p=<optimized out>) at msort.c:45
+#3  msort_with_tmp (p=p@entry=0x7fffffffe598, b=b@entry=0x6074c8, n=n@entry=33) at msort.c:53
+#4  0x00007ffff7105027 in msort_with_tmp (n=33, b=0x6074c8, p=<optimized out>) at msort.c:45
+#5  msort_with_tmp (p=p@entry=0x7fffffffe598, b=0x6073c8, n=n@entry=65) at msort.c:54
+#6  0x00007ffff71053da in msort_with_tmp (n=6321096, b=<optimized out>, p=0x7fffffffe598) at msort.c:45
+#7  __GI___qsort_r (b=0x7ffff7b6f280, n=65, s=40, cmp=<optimized out>, arg=<optimized out>) at msort.c:254
+#8  0x00007ffff78f457f in ?? ()
+#9  0x0000003000000000 in ?? ()
+#10 0x00007fffffffe640 in ?? ()
+#11 0x00007fffffffead0 in ?? ()
+#12 0x0000000000000000 in ?? ()
+
+2017-01-25 18:37:45:270	
+271	int main(int argc, char **argv) {
+272	
+273	#ifdef TIMING
+274	    setup_start = timing_get_time();
+275	#endif
+276	
+277	    int     i, j;
+278	    int     nthread_input;        /* thread parameters                              */
+279	    static
+
+2017-01-25 18:37:45:Backtrace END
+2017-01-25 18:37:45:Type: The type is a pointer.
+2017-01-25 18:37:45:Type sizeof: 8
+2017-01-25 18:37:45:Backtrace BEGIN:
+2017-01-25 18:37:45:#0  0x00007ffff71388eb in __GI__IO_fread (buf=0x7ffff501d308, size=1, count=8, fp=0x6071c0) at iofread.c:41
+#1  0x0000000000403bc3 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:249
+#2  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+2017-01-25 18:37:45:36	in iofread.c
+
+2017-01-25 18:37:45:Backtrace END
+2017-01-25 18:37:45:Type: The type is an integer type.
+2017-01-25 18:37:45:Type sizeof: 4
+2017-01-25 18:37:45:Mem contents(hex):0x080x000x000x00
+2017-01-25 18:37:45:base address to flip value: 0x7fffffffe940
+2017-01-25 18:37:45:address max offset: 4
+2017-01-25 18:37:45:Memory content before bitflip:0x080x000x000x00
+2017-01-25 18:37:45:Memory content after  bitflip:0x080x800x000x00
+2017-01-25 18:37:45:Mem contents(hex):0x080x800x000x00
+2017-01-25 18:37:45:frame name: main
+2017-01-25 18:37:45:symbol name: j
+2017-01-25 18:37:45:symbol filename: dgemm.c
+2017-01-25 18:37:45:symbol line: 277
+2017-01-25 18:37:45:value: 32776
+2017-01-25 18:37:45:value address: 0x7fffffffe940
+2017-01-25 18:37:45:Type: The type is an integer type.
+2017-01-25 18:37:45:Type sizeof: 4
+2017-01-25 18:37:45:Fault Injection Successful after 1.55591201782s

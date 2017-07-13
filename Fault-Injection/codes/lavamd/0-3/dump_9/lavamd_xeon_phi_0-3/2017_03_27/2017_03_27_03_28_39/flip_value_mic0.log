@@ -1,0 +1,62 @@
+[INFO -- 2017-03-27 03:27:48]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 03:27:48]
+Initialization strings:
+[INFO -- 2017-03-27 03:27:48]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 03:27:48]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 03:27:48]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 03:27:48]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 03:27:48]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 03:27:48]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 03:27:48]
+initSignal:0
+[INFO -- 2017-03-27 03:27:48]
+endSignal:3
+[INFO -- 2017-03-27 03:27:48]
+seqSignal:30
+[INFO -- 2017-03-27 03:27:48]
+faultMode:2
+[INFO -- 2017-03-27 03:27:49]
+Backtrace BEGIN:
+#0  main (argc=7, argv=0x7fffffffebc8) at main_check.c:116
+
+111	
+112	                    for(m=-1; m<2; m++) {
+113	
+114	                        for(n=-1; n<2; n++) {
+115	
+116	                            if((((i+l)>=0 && (j+m)>=0 && (k+n)>=0)==true && ((i+l)<dim_cpu.boxes1d_arg && (j+m)<dim_cpu.boxes1d_arg && (k+n)<dim_cpu.boxes1d_arg)==true) && (l==0 && m==0 && n==0)==false) {
+117	
+118	                                box_cpu[nh].nei[box_cpu[nh].nn].x = (k+n);
+119	                                box_cpu[nh].nei[box_cpu[nh].nn].y = (j+m);
+120	                                box_cpu[nh].nei[box_cpu[nh].nn].z = (i+l);
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x300xea0xff0xff0xff0x7f0x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe940
+address max offset: 8
+Memory content after  bitflip:0xf20x660x240x270x1b0xb10xff0xbe
+frame name: main
+symbol name: rv_cpu
+symbol filename: main_check.c
+symbol line: 58
+value: 0x7fffffffea30
+value address: 0x7fffffffe940
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-27 03:27:49]
+Fault Injection Successful after 1.28140497208s
+[INFO -- 2017-03-27 03:28:04]
+event type: exit
+[INFO -- 2017-03-27 03:28:04]
+exit code: 0

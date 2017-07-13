@@ -1,0 +1,73 @@
+[INFO -- 2017-03-27 14:39:39]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 14:39:39]
+Initialization strings:
+[INFO -- 2017-03-27 14:39:39]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 14:39:39]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 14:39:39]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 14:39:39]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 14:39:39]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 14:39:39]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 14:39:39]
+initSignal:0
+[INFO -- 2017-03-27 14:39:39]
+endSignal:3
+[INFO -- 2017-03-27 14:39:39]
+seqSignal:30
+[INFO -- 2017-03-27 14:39:39]
+faultMode:3
+[INFO -- 2017-03-27 14:39:40]
+Backtrace BEGIN:
+#0  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ffab28) at do-rel.h:112
+#1  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#2  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#3  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebc0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#4  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebc0) at rtld.c:308
+#5  _dl_start (arg=0x7fffffffebc0) at rtld.c:414
+#6  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#7  0x0000000000000007 in ?? ()
+#8  0x00007fffffffedb7 in ?? ()
+#9  0x00007fffffffedf4 in ?? ()
+#10 0x00007fffffffedf8 in ?? ()
+#11 0x00007fffffffedfb in ?? ()
+#12 0x00007fffffffee41 in ?? ()
+#13 0x00007fffffffee86 in ?? ()
+#14 0x00007fffffffeec9 in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+107	in do-rel.h
+
+Backtrace END
+Fliping array at pos: 0
+Fliping value of field: start
+Memory content before bitflip:0x380x940x860xf70xff0x7f0x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe960
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: elf_dynamic_do_Rela
+symbol name: ranges
+symbol filename: dl-reloc.c
+symbol line: 264
+value: {{start = 0, size = 47808, nrelative = 1782, lazy = 0}, {start = 0, size = 0, nrelative = 0, lazy = 0}}
+value address: 0x7fffffffe960
+Type: The type is an array.
+Type sizeof: 64
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 1L)
+
+[INFO -- 2017-03-27 14:39:40]
+Fault Injection Successful after 1.16796803474s
+[INFO -- 2017-03-27 14:39:57]
+event type: exit
+[INFO -- 2017-03-27 14:39:57]
+exit code: 0

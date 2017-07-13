@@ -1,0 +1,139 @@
+2016-10-16 23:37:02:Initialization strings:
+2016-10-16 23:37:02:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-16 23:37:02:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-16 23:37:02:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-16 23:37:02:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-16 23:37:02:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-16 23:37:02:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-16 23:37:05:Trying Fault Injection
+2016-10-16 23:37:05:Inferior PID: 107035
+2016-10-16 23:37:05:Inferior is valid: True
+2016-10-16 23:37:05:Inferior #threads: 1
+2016-10-16 23:37:05:Backtrace BEGIN:
+2016-10-16 23:37:05:#0  0x00007ffff6e245d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6dd0911 in __GI__IO_file_xsgetn (fp=0x61d900, data=<optimized out>, n=1073872900) at fileops.c:1422
+#2  0x00007ffff6dc6929 in __GI__IO_fread (buf=<optimized out>, size=1073872900, count=1, fp=0x61d900) at iofread.c:42
+#3  0x00000000004015e1 in ReadArrayFromFile (input_itemsets=<optimized out>, gold_itemsets=<optimized out>, max_rows=<optimized out>, filenameinput=<optimized out>, filenamegold=<optimized out>) at needle_check.cpp:49
+#4  runTest (argc=<optimized out>, argv=<optimized out>) at needle_check.cpp:317
+#5  main (argc=3, argv=0x7fff76919010) at needle_check.cpp:114
+
+2016-10-16 23:37:05:76	in ../sysdeps/unix/syscall-template.S
+
+2016-10-16 23:37:05:Backtrace END
+2016-10-16 23:37:05:Thread name: None
+2016-10-16 23:37:05:Thread num: 1
+2016-10-16 23:37:05:Thread ptid: (107035, 107035, 0)
+2016-10-16 23:37:05:bitFlip function
+2016-10-16 23:37:05:Type: The type is a structure.
+2016-10-16 23:37:05:Type sizeof: 168
+2016-10-16 23:37:05:Fliping value of field: __seek
+2016-10-16 23:37:05:bitFlip function
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Fliping a bit of the value pointed by a pointer
+2016-10-16 23:37:05:bitFlip function
+2016-10-16 23:37:05:Type: The type is a function.
+2016-10-16 23:37:05:Type sizeof: 1
+2016-10-16 23:37:05:Mem contents(hex):0x8b
+2016-10-16 23:37:05:base address to flip value: 0x7ffff6dd04a0 
+2016-10-16 23:37:05:address max offset: 1
+2016-10-16 23:37:05:Memory content before bitflip:0x8b
+2016-10-16 23:37:05:Memory content after  bitflip:0x8a
+2016-10-16 23:37:05:Mem contents(hex):0x8a
+2016-10-16 23:37:05:frame name: __GI__IO_file_xsgetn
+2016-10-16 23:37:05:symbol name: _IO_file_jumps_mmap
+2016-10-16 23:37:05:symbol filename: fileops.c
+2016-10-16 23:37:05:symbol line: 1550
+2016-10-16 23:37:05:value: {__dummy = 0, __dummy2 = 0, __finish = 0x7ffff6dd0f30 <_IO_new_file_finish>, __overflow = 0x7ffff6dd17f0 <_IO_new_file_overflow>, __underflow = 0x7ffff6dd0b20 <_IO_file_underflow_mmap>, __uflow = 0x7ffff6dd2590 <__GI__IO_default_uflow>, __pbackfail = 0x7ffff6dd3450 <__GI__IO_default_pbackfail>, __xsputn = 0x7ffff6dd0ba0 <_IO_new_file_xsputn>, __xsgetn = 0x7ffff6dd0770 <_IO_file_xsgetn_mmap>, __seekoff = 0x7ffff6dd0a40 <_IO_file_seekoff_mmap>, __seekpos = 0x7ffff6dd27f0 <_IO_default_seekpos>, __setbuf = 0x7ffff6dcfce0 <_IO_file_setbuf_mmap>, __sync = 0x7ffff6dd04b0 <_IO_file_sync_mmap>, __doallocate = 0x7ffff6dc5990 <__GI__IO_file_doallocate>, __read = 0x7ffff6dd0b80 <__GI__IO_file_read>, __write = 0x7ffff6dd06e0 <_IO_new_file_write>, __seek = 0x7ffff6dd04a0 <__GI__IO_file_seek>, __close = 0x7ffff6dd0290 <_IO_file_close_mmap>, __stat = 0x7ffff6dd06d0 <__GI__IO_file_stat>, __showmanyc = 0x7ffff6dd35b0 <_IO_default_showmanyc>, __imbue = 0x7ffff6dd35c0 <_IO_default_imbue>}
+2016-10-16 23:37:05:value address: 0x7ffff70b1600 <_IO_file_jumps_mmap>
+2016-10-16 23:37:05:Type: The type is a structure.
+2016-10-16 23:37:05:Type sizeof: 168
+2016-10-16 23:37:05:Field name: __dummy
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is an integer type.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __dummy2
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is an integer type.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __finish
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __overflow
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __underflow
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __uflow
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __pbackfail
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __xsputn
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __xsgetn
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __seekoff
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __seekpos
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __setbuf
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __sync
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __doallocate
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __read
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __write
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __seek
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __close
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __stat
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __showmanyc
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Field name: __imbue
+2016-10-16 23:37:05:Field Type:
+2016-10-16 23:37:05:Type: The type is a pointer.
+2016-10-16 23:37:05:Type sizeof: 8
+2016-10-16 23:37:05:Fault Injection Successful after 3.73753499985s
+2016-10-16 23:37:08:Fault Already Injected
+2016-10-16 23:37:08:Fault Already Injected
+2016-10-16 23:37:11:event type: exit
+2016-10-16 23:37:11:exit code: 0

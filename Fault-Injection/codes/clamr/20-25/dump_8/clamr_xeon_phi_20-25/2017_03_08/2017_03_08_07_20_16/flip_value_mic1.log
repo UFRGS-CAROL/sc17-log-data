@@ -1,0 +1,59 @@
+[INFO -- 2017-03-08 07:17:26]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-08 07:17:26]
+Initialization strings:
+[INFO -- 2017-03-08 07:17:26]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-08 07:17:26]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 07:17:26]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 07:17:26]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 07:17:26]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 07:17:26]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-08 07:17:26]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-08 07:17:26]
+initSignal:20
+[INFO -- 2017-03-08 07:17:26]
+endSignal:25
+[INFO -- 2017-03-08 07:17:26]
+seqSignal:20
+[INFO -- 2017-03-08 07:17:26]
+faultMode:1
+[INFO -- 2017-03-08 07:17:53]
+Backtrace BEGIN:
+#0  0x00007ffff6b641b0 in _itoa_word (value=14, value@entry=143, buflim=0x7fffffffe0df "3\360ED", buflim@entry=0x7fffffffe0e0 "\360ED", base=base@entry=10, upper_case=<optimized out>) at _itoa.c:179
+#1  0x00007ffff6b6781a in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1641
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b9dd in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:479
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+174	in _itoa.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7cfd44 
+address max offset: 4
+Memory content after  bitflip:0x000x030x000x00
+frame name: write_graphics_info
+symbol name: spatial_type
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c
+symbol line: 195
+value: 768
+value address: 0x7cfd44 <spatial_type>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-08 07:17:53]
+Fault Injection Successful after 27.1757860184s
+[INFO -- 2017-03-08 07:18:23]
+event type: exit
+[INFO -- 2017-03-08 07:18:23]
+exit code: 0

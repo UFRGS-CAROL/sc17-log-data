@@ -1,0 +1,47 @@
+2016-10-28 14:24:12:Initialization strings:
+2016-10-28 14:24:12:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-28 14:24:12:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-28 14:24:12:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-28 14:24:12:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-28 14:24:12:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-28 14:24:12:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-28 14:24:13:Trying Fault Injection
+2016-10-28 14:24:13:Backtrace BEGIN:
+2016-10-28 14:24:13:#0  0x00007ffff714f799 in __memchr (s=s@entry=0x7ffff7f29ff2, c_in=c_in@entry=10, n=251, n@entry=255) at ../string/memchr.c:67
+#1  0x00007ffff7139361 in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe77a "324.930534\n", n=255, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:94
+#2  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe77a "324.930534\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#3  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe77a "324.930534\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#4  0x0000000000401712 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:201
+#5  main (argc=-135094282, argv=0xa) at hotspot_check.c:264
+
+2016-10-28 14:24:13:62	in ../string/memchr.c
+
+2016-10-28 14:24:13:Backtrace END
+2016-10-28 14:24:13:Type: A floating point type.
+2016-10-28 14:24:13:Type sizeof: 4
+2016-10-28 14:24:13:Mem contents(hex):0x6f0x120x030x3a
+2016-10-28 14:24:13:base address to flip value: 0x407398 
+2016-10-28 14:24:13:address max offset: 4
+2016-10-28 14:24:13:Memory content before bitflip:0x6f0x120x030x3a
+2016-10-28 14:24:13:Memory content after  bitflip:0x6f0x120x070x3a
+2016-10-28 14:24:13:Mem contents(hex):0x6f0x120x070x3a
+2016-10-28 14:24:13:frame name: main
+2016-10-28 14:24:13:symbol name: t_chip
+2016-10-28 14:24:13:symbol filename: hotspot_check.c
+2016-10-28 14:24:13:symbol line: 32
+2016-10-28 14:24:13:value: 0.000515258813
+2016-10-28 14:24:13:value address: 0x407398 <t_chip>
+2016-10-28 14:24:13:Type: A floating point type.
+2016-10-28 14:24:13:Type sizeof: 4
+2016-10-28 14:24:13:Fault Injection Successful after 1.5322599411s
+2016-10-28 14:24:14:Fault Already Injected
+2016-10-28 14:24:15:Fault Already Injected
+2016-10-28 14:24:15:Fault Already Injected
+2016-10-28 14:24:15:Fault Already Injected
+2016-10-28 14:24:16:Fault Already Injected
+2016-10-28 14:24:16:Fault Already Injected
+2016-10-28 14:24:20:Fault Already Injected
+2016-10-28 14:24:21:Fault Already Injected
+2016-10-28 14:24:22:Fault Already Injected
+2016-10-28 14:24:27:event type: exit
+2016-10-28 14:24:27:exit code: 0

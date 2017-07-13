@@ -1,0 +1,55 @@
+[INFO -- 2017-03-05 18:22:32]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-05 18:22:32]
+Initialization strings:
+[INFO -- 2017-03-05 18:22:32]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-05 18:22:32]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 18:22:32]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 18:22:32]
+(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-05 18:22:32]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-05 18:22:32]
+(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+[INFO -- 2017-03-05 18:22:32]
+initSignal:0
+[INFO -- 2017-03-05 18:22:32]
+endSignal:7
+[INFO -- 2017-03-05 18:22:32]
+seqSignal:15
+[INFO -- 2017-03-05 18:22:32]
+faultMode:2
+[INFO -- 2017-03-05 18:22:33]
+Backtrace BEGIN:
+#0  __GI__IO_fread (buf=0x7ffff53a9548, size=1, count=8, fp=0x6071c0) at iofread.c:35
+#1  0x0000000000403bc3 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:249
+#2  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+30	in iofread.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x160x6f0x6a0x790xe90x420x500xc3
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff2ccb040
+address max offset: 8
+Memory content after  bitflip:0x9b0x9d0x300x9c0x0a0x7d0xae0x44
+frame name: read_input
+symbol name: B
+symbol filename: dgemm.c
+symbol line: 235
+value: 0x7ffff2ccb040
+value address: 0x7fffffffe6a0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-05 18:22:33]
+Fault Injection Successful after 1.74563598633s
+[INFO -- 2017-03-05 18:23:23]
+event type: exit
+[INFO -- 2017-03-05 18:23:23]
+exit code: 1

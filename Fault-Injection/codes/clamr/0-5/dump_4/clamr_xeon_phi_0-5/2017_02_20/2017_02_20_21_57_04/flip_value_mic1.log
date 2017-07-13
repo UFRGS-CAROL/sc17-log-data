@@ -1,0 +1,161 @@
+2017-02-20 21:52:57:Starting flip_value script
+2017-02-20 21:52:57:Initialization strings:
+2017-02-20 21:52:57:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-20 21:52:57:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 21:52:57:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 21:52:57:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-20 21:52:57:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-20 21:52:57:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-20 21:52:57:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-20 21:52:57:initSignal:0
+2017-02-20 21:52:57:endSignal:5
+2017-02-20 21:52:57:seqSignal:20
+2017-02-20 21:52:58:Backtrace BEGIN:
+2017-02-20 21:52:59:#0  0x0000000000449a10 in std::vector<int, std::allocator<int> >::operator[] (this=0x7fb198, __n=199215) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x0000000000538cb9 in Mesh::calc_distribution (this=0x7fae50, numpe=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:744
+#2  0x000000000053612d in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:359
+#3  0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-20 21:52:59:775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+2017-02-20 21:52:59:Backtrace END
+2017-02-20 21:53:02:Type: The type is a pointer.
+2017-02-20 21:53:02:Type sizeof: 8
+2017-02-20 21:53:02:Fliping a bit of the pointer
+2017-02-20 21:53:02:Mem contents(hex):0x600x8a0x7f0x000x000x000x000x00
+2017-02-20 21:53:02:Fault Mode: Random bit-flip
+2017-02-20 21:53:02:base address to flip value: 0x7d0668 
+2017-02-20 21:53:02:address max offset: 8
+2017-02-20 21:53:02:Memory content before bitflip:0x600x8a0x7f0x000x000x000x000x00
+2017-02-20 21:53:03:Backtrace BEGIN:
+2017-02-20 21:53:03:#0  0x0000000000449a10 in std::vector<int, std::allocator<int> >::operator[] (this=0x7fb198, __n=199215) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x0000000000538cb9 in Mesh::calc_distribution (this=0x7fae50, numpe=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:744
+#2  0x000000000053612d in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:359
+#3  0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-20 21:53:03:775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+2017-02-20 21:53:03:Backtrace END
+2017-02-20 21:53:06:Type: The type is an integer type.
+2017-02-20 21:53:06:Type sizeof: 4
+2017-02-20 21:53:06:Mem contents(hex):0x010x000x000x00
+2017-02-20 21:53:06:Fault Mode: One bit-flip
+2017-02-20 21:53:06:base address to flip value: 0x7fffffffe0e8
+2017-02-20 21:53:06:address max offset: 4
+2017-02-20 21:53:06:Memory content before bitflip:0x010x000x000x00
+2017-02-20 21:53:06:Backtrace BEGIN:
+2017-02-20 21:53:06:#0  0x0000000000449a10 in std::vector<int, std::allocator<int> >::operator[] (this=0x7fb198, __n=199215) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x0000000000538cb9 in Mesh::calc_distribution (this=0x7fae50, numpe=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:744
+#2  0x000000000053612d in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:359
+#3  0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-20 21:53:06:775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+2017-02-20 21:53:06:Backtrace END
+2017-02-20 21:53:10:Type: The type is an integer type.
+2017-02-20 21:53:10:Type sizeof: 8
+2017-02-20 21:53:10:Mem contents(hex):0x6d0x4d0x390xf70xff0x7f0x000x00
+2017-02-20 21:53:10:Fault Mode: Zero bit-flip
+2017-02-20 21:53:10:base address to flip value: 0x7fffffffea88
+2017-02-20 21:53:10:address max offset: 8
+2017-02-20 21:53:10:Memory content before bitflip:0x6d0x4d0x390xf70xff0x7f0x000x00
+2017-02-20 21:53:10:Backtrace BEGIN:
+2017-02-20 21:53:10:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd0cd8 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+2017-02-20 21:53:10:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-02-20 21:53:10:Backtrace END
+2017-02-20 21:53:13:Type: The type is an integer type.
+2017-02-20 21:53:13:Type sizeof: 4
+2017-02-20 21:53:13:Mem contents(hex):0x650x000x000x00
+2017-02-20 21:53:13:Fault Mode: Zero bit-flip
+2017-02-20 21:53:13:base address to flip value: 0x56a094 
+2017-02-20 21:53:13:address max offset: 4
+2017-02-20 21:53:13:Memory content before bitflip:0x650x000x000x00
+2017-02-20 21:53:13:Backtrace BEGIN:
+2017-02-20 21:53:13:#0  0x0000000000449a10 in std::vector<int, std::allocator<int> >::operator[] (this=0x7fb198, __n=199215) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x0000000000538cb9 in Mesh::calc_distribution (this=0x7fae50, numpe=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:744
+#2  0x000000000053612d in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:359
+#3  0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-20 21:53:13:775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+2017-02-20 21:53:13:Backtrace END
+2017-02-20 21:53:17:Type: A reference type.
+2017-02-20 21:53:17:Type sizeof: 8
+2017-02-20 21:53:17:Fliping a bit of the value pointed by a reference
+2017-02-20 21:53:17:Type: The type is a structure.
+2017-02-20 21:53:17:Type sizeof: 24
+2017-02-20 21:53:17:Fliping value of field: std::_Vector_base<int, std::allocator<int> >
+2017-02-20 21:53:17:Type: The type is a structure.
+2017-02-20 21:53:17:Type sizeof: 24
+2017-02-20 21:53:17:Fliping value of field: _M_impl
+2017-02-20 21:53:17:Type: The type is a structure.
+2017-02-20 21:53:17:Type sizeof: 24
+2017-02-20 21:53:17:Fliping value of field: _M_start
+2017-02-20 21:53:17:Type: The type is a pointer.
+2017-02-20 21:53:17:Type sizeof: 8
+2017-02-20 21:53:17:Fliping a bit of the pointer
+2017-02-20 21:53:17:Mem contents(hex):0x100x400x0d0x080xff0x7f0x000x00
+2017-02-20 21:53:17:Fault Mode: Single bit-flip
+2017-02-20 21:53:17:base address to flip value: 0x7fb358
+2017-02-20 21:53:17:address max offset: 8
+2017-02-20 21:53:17:Memory content before bitflip:0x100x400x0d0x080xff0x7f0x000x00
+2017-02-20 21:53:17:Memory content after  bitflip:0x100x400x8d0x080xff0x7f0x000x00
+2017-02-20 21:53:17:Mem contents(hex):0x100x400x8d0x080xff0x7f0x000x00
+2017-02-20 21:53:17:frame name: Mesh::partition_cells
+2017-02-20 21:53:17:symbol name: z_order
+2017-02-20 21:53:17:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp
+2017-02-20 21:53:17:symbol line: 320
+2017-02-20 21:53:17:value: @0x7fb358
+2017-02-20 21:53:17:value address: 0x7fb358
+2017-02-20 21:53:17:Type: A reference type.
+2017-02-20 21:53:17:Type sizeof: 8
+2017-02-20 21:53:17:Fault Injection Successful after 20.2331879139s
+2017-02-20 21:54:05:event type: exit
+2017-02-20 21:54:05:exit code: no exit code available

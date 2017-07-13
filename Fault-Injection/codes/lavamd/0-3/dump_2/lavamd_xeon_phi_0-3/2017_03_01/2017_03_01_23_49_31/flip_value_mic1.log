@@ -1,0 +1,44 @@
+2017-03-01 23:48:41:Starting flip_value script
+2017-03-01 23:48:41:Initialization strings:
+2017-03-01 23:48:41:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-01 23:48:41:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 23:48:41:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 23:48:41:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 23:48:41:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 23:48:41:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-03-01 23:48:41:initSignal:0
+2017-03-01 23:48:41:endSignal:3
+2017-03-01 23:48:41:seqSignal:30
+2017-03-01 23:48:42:Backtrace BEGIN:
+2017-03-01 23:48:42:#0  0x000000000040265f in main (argc=7, argv=0x7fffffffebc8) at main_check.c:182
+
+2017-03-01 23:48:42:177	        fv_cpu[i].z = 0;
+178	
+179	        fread(&(fv_cpu_GOLD[i].v), 1, sizeof(double), file);
+180	        fread(&(fv_cpu_GOLD[i].x), 1, sizeof(double), file);
+181	        fread(&(fv_cpu_GOLD[i].y), 1, sizeof(double), file);
+182	        fread(&(fv_cpu_GOLD[i].z), 1, sizeof(double), file);
+183	    }
+184	
+185	    fclose(file);
+186	
+
+2017-03-01 23:48:42:Backtrace END
+2017-03-01 23:48:42:Type: The type is an integer type.
+2017-03-01 23:48:42:Type sizeof: 4
+2017-03-01 23:48:42:Mem contents(hex):0xc30xde0x000x00
+2017-03-01 23:48:42:Fault Mode: Single bit-flip
+2017-03-01 23:48:42:base address to flip value: 0x7fffffffe720
+2017-03-01 23:48:42:address max offset: 4
+2017-03-01 23:48:42:Memory content before bitflip:0xc30xde0x000x00
+2017-03-01 23:48:42:Memory content after  bitflip:0xc30xfe0x000x00
+2017-03-01 23:48:42:Mem contents(hex):0xc30xfe0x000x00
+2017-03-01 23:48:42:frame name: main
+2017-03-01 23:48:42:symbol name: i
+2017-03-01 23:48:42:symbol filename: main_check.c
+2017-03-01 23:48:42:symbol line: 53
+2017-03-01 23:48:42:value: 65219
+2017-03-01 23:48:42:value address: 0x7fffffffe720
+2017-03-01 23:48:42:Type: The type is an integer type.
+2017-03-01 23:48:42:Type sizeof: 4
+2017-03-01 23:48:42:Fault Injection Successful after 1.4812951088s

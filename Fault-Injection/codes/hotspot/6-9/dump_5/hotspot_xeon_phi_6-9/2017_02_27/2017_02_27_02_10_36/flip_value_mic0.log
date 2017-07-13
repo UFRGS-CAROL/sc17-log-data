@@ -1,0 +1,59 @@
+[INFO -- 2017-02-27 02:10:04]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 02:10:04]
+Initialization strings:
+[INFO -- 2017-02-27 02:10:04]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-27 02:10:04]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 02:10:04]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 02:10:04]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 02:10:04]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 02:10:04]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-27 02:10:04]
+initSignal:6
+[INFO -- 2017-02-27 02:10:04]
+endSignal:9
+[INFO -- 2017-02-27 02:10:04]
+seqSignal:15
+[INFO -- 2017-02-27 02:10:04]
+faultMode:0
+[INFO -- 2017-02-27 02:10:11]
+Backtrace BEGIN:
+#0  0x00007ffff713f5ab in _IO_feof (fp=0x609b40) at feof.c:37
+#1  0x000000000040455e in read_input (vect=0x7ffff66cb010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee43 "/micNfs/gdb-fault-injection/injector/data/hotspot/power_1024") at hotspot_check.c:205
+#2  0x0000000000404ad7 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:266
+
+32	in feof.c
+
+Backtrace END
+Fliping array at pos: 170
+Memory content before bitflip:0x0e
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffe6ea 
+address max offset: 1
+Memory content after  bitflip:0x8e
+frame name: read_input
+symbol name: str
+symbol filename: hotspot_check.c
+symbol line: 194
+value: "0.000008\n\000\n\000\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\240\211`\000\000\000\000\000\023\000\000\000\000\000\000\000\023\000\000\000\000\000\000\000\240\211`", '\000' <repeats 13 times>, "\060\000\000\000\060\000\000\000\240\347\377\377\377\177\000\000\340\346\377\377\377\177\000\000\377\017\000\000\000\000\000\000\210\023\216\367\377\177\000\000\350\003\000\000\000\000\000\000\350\003\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000"...
+value address: 0x7fffffffe640
+Type: The type is an array.
+Type sizeof: 256
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 255L)
+
+[INFO -- 2017-02-27 02:10:11]
+Fault Injection Successful after 7.40350294113s
+[INFO -- 2017-02-27 02:10:29]
+event type: exit
+[INFO -- 2017-02-27 02:10:29]
+exit code: 0

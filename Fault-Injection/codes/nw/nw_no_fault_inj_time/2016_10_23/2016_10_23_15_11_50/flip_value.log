@@ -1,0 +1,62 @@
+2016-10-23 15:11:31:Initialization strings:
+2016-10-23 15:11:31:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-23 15:11:31:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-23 15:11:31:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-23 15:11:31:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-23 15:11:31:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-23 15:11:31:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-23 15:11:31:Trying Fault Injection
+2016-10-23 15:11:31:Inferior PID: 170484
+2016-10-23 15:11:31:Inferior is valid: True
+2016-10-23 15:11:31:Inferior #threads: 1
+2016-10-23 15:11:31:Backtrace BEGIN:
+2016-10-23 15:11:31:#0  do_lookup_x (undef_name=undef_name@entry=0x7ffff7514c52 "_ZNSt7codecvtIcc11__mbstate_tEC1EPim", new_hash=new_hash@entry=2980473640, old_hash=old_hash@entry=0x7fffffffe860, ref=0x7ffff74fd500, result=result@entry=0x7fffffffe870, scope=<optimized out>, i=1, version=0x7ffff7ff7030, flags=1, skip=0x0, type_class=1, undef_map=0x7ffff7ff9000) at dl-lookup.c:381
+#1  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x7ffff7514c52 "_ZNSt7codecvtIcc11__mbstate_tEC1EPim", undef_map=undef_map@entry=0x7ffff7ff9000, ref=ref@entry=0x7fffffffe9c0, symbol_scope=symbol_scope@entry=0x7ffff7ff9358, version=0x7ffff7ff7030, type_class=1, flags=1, skip_map=0x0) at dl-lookup.c:775
+#2  0x00007ffff7de854f in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=<optimized out>, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff756d268, map=0x7ffff7ff9000) at ../sysdeps/x86_64/dl-machine.h:277
+#3  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ff9000) at do-rel.h:137
+#4  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#5  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#6  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec30, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#7  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec30) at rtld.c:308
+#8  _dl_start (arg=0x7fffffffec30) at rtld.c:414
+#9  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#10 0x0000000000000006 in ?? ()
+#11 0x00007fffffffee22 in ?? ()
+#12 0x00007fffffffee52 in ?? ()
+#13 0x00007fffffffee58 in ?? ()
+#14 0x00007fffffffee5b in ?? ()
+#15 0x00007fffffffee5f in ?? ()
+#16 0x00007fffffffee9c in ?? ()
+#17 0x0000000000000000 in ?? ()
+
+2016-10-23 15:11:31:376	in dl-lookup.c
+
+2016-10-23 15:11:31:Backtrace END
+2016-10-23 15:11:31:Thread name: None
+2016-10-23 15:11:31:Thread num: 1
+2016-10-23 15:11:31:Thread ptid: (170484, 170484, 0)
+2016-10-23 15:11:31:bitFlip function
+2016-10-23 15:11:31:Type: The type is an integer type.
+2016-10-23 15:11:31:Type sizeof: 4
+2016-10-23 15:11:31:Mem contents(hex):0x060x000x000x00
+2016-10-23 15:11:31:base address to flip value: 0x7ffff7ffcca8 
+2016-10-23 15:11:31:address max offset: 4
+2016-10-23 15:11:31:Memory content before bitflip:0x060x000x000x00
+2016-10-23 15:11:31:Memory content after  bitflip:0x0e0x000x000x00
+2016-10-23 15:11:31:Mem contents(hex):0x0e0x000x000x00
+2016-10-23 15:11:31:frame name: _dl_start_final
+2016-10-23 15:11:31:symbol name: _dl_argc
+2016-10-23 15:11:31:symbol filename: rtld.c
+2016-10-23 15:11:31:symbol line: 82
+2016-10-23 15:11:31:value: 14
+2016-10-23 15:11:31:value address: 0x7ffff7ffcca8 <_dl_argc>
+2016-10-23 15:11:31:Type: The type is an integer type.
+2016-10-23 15:11:31:Type sizeof: 4
+2016-10-23 15:11:31:Fault Injection Successful after 0.803811073303s
+2016-10-23 15:11:35:Fault Already Injected
+2016-10-23 15:11:38:Fault Already Injected
+2016-10-23 15:11:40:Fault Already Injected
+2016-10-23 15:11:40:Fault Already Injected
+2016-10-23 15:11:41:Fault Already Injected
+2016-10-23 15:11:43:event type: exit
+2016-10-23 15:11:43:exit code: 0

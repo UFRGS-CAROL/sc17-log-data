@@ -1,0 +1,53 @@
+2016-10-22 14:30:28:Initialization strings:
+2016-10-22 14:30:28:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-22 14:30:28:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-22 14:30:28:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-22 14:30:28:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-22 14:30:28:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-22 14:30:28:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-22 14:30:29:Trying Fault Injection
+2016-10-22 14:30:29:Inferior PID: 74737
+2016-10-22 14:30:29:Inferior is valid: True
+2016-10-22 14:30:29:Inferior #threads: 1
+2016-10-22 14:30:29:Backtrace BEGIN:
+2016-10-22 14:30:29:#0  __GI___waitpid (pid=74744, stat_loc=stat_loc@entry=0x7fffffffe5e8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff6d9d41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x000000000040648c in update_timestamp () at ../../include/log_helper.c:108
+#3  start_log_file (benchmark_name=0x123f8 <error: Cannot access memory at address 0x123f8>, test_info=0x7fffffffe5e8 "") at ../../include/log_helper.c:197
+#4  0x00000000004014df in runTest (argc=<optimized out>, argv=<optimized out>) at needle_check.cpp:294
+#5  main (argc=74744, argv=0x7fffffffe5e8) at needle_check.cpp:114
+
+2016-10-22 14:30:29:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-22 14:30:29:Backtrace END
+2016-10-22 14:30:29:Thread name: None
+2016-10-22 14:30:29:Thread num: 1
+2016-10-22 14:30:29:Thread ptid: (74737, 74737, 0)
+2016-10-22 14:30:29:bitFlip function
+2016-10-22 14:30:29:Type: The type is an integer type.
+2016-10-22 14:30:29:Type sizeof: 4
+2016-10-22 14:30:29:Mem contents(hex):0xf80x230x010x00
+2016-10-22 14:30:29:base address to flip value: 0x7fffffffe5c4
+2016-10-22 14:30:29:address max offset: 4
+2016-10-22 14:30:29:Memory content before bitflip:0xf80x230x010x00
+2016-10-22 14:30:29:Memory content after  bitflip:0xf80x630x010x00
+2016-10-22 14:30:29:Mem contents(hex):0xf80x630x010x00
+2016-10-22 14:30:29:frame name: do_system
+2016-10-22 14:30:29:symbol name: pid
+2016-10-22 14:30:29:symbol filename: ../sysdeps/posix/system.c
+2016-10-22 14:30:29:symbol line: 57
+2016-10-22 14:30:29:value: 91128
+2016-10-22 14:30:29:value address: 0x7fffffffe5c4
+2016-10-22 14:30:29:Type: The type is an integer type.
+2016-10-22 14:30:29:Type sizeof: 4
+2016-10-22 14:30:29:Fault Injection Successful after 1.50491809845s
+2016-10-22 14:30:38:Fault Already Injected
+2016-10-22 14:30:39:Fault Already Injected
+2016-10-22 14:30:42:Fault Already Injected
+2016-10-22 14:30:42:Fault Already Injected
+2016-10-22 14:30:43:Fault Already Injected
+2016-10-22 14:30:43:Fault Already Injected
+2016-10-22 14:30:43:Fault Already Injected
+2016-10-22 14:30:45:Fault Already Injected
+2016-10-22 14:30:45:event type: exit
+2016-10-22 14:30:45:exit code: 0

@@ -1,0 +1,57 @@
+[INFO -- 2017-02-26 09:51:35]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 09:51:35]
+Initialization strings:
+[INFO -- 2017-02-26 09:51:35]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-26 09:51:35]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 09:51:35]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 09:51:35]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 09:51:35]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 09:51:35]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 09:51:35]
+initSignal:12
+[INFO -- 2017-02-26 09:51:35]
+endSignal:15
+[INFO -- 2017-02-26 09:51:35]
+seqSignal:15
+[INFO -- 2017-02-26 09:51:35]
+faultMode:3
+[INFO -- 2017-02-26 09:51:48]
+Backtrace BEGIN:
+#0  __GI__IO_setb (f=f@entry=0x7fffffffe440, b=b@entry=0x7fffffffe640 "323.351685\n", eb=eb@entry=0x7fffffffe64b "", a=a@entry=0) at genops.c:399
+#1  0x00007ffff7145ae3 in _IO_str_init_static_internal (sf=sf@entry=0x7fffffffe440, ptr=ptr@entry=0x7fffffffe640 "323.351685\n", size=size@entry=0, pstart=pstart@entry=0x0) at strops.c:49
+#2  0x00007ffff71365d5 in __GI___isoc99_vsscanf (string=0x7fffffffe640 "323.351685\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:41
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#5  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+394	in genops.c
+
+Backtrace END
+Memory content before bitflip:0x6f0x120x830x3c
+Fault Mode: Zero bit-flip
+base address to flip value: 0x4074fc 
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: main
+symbol name: chip_width
+symbol filename: hotspot_check.c
+symbol line: 35
+value: 0
+value address: 0x4074fc <chip_width>
+Type: A floating point type.
+Type sizeof: 4
+
+[INFO -- 2017-02-26 09:51:48]
+Fault Injection Successful after 13.2958230972s
+[INFO -- 2017-02-26 09:52:01]
+event type: exit
+[INFO -- 2017-02-26 09:52:01]
+exit code: 0

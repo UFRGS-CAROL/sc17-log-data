@@ -1,0 +1,86 @@
+2016-10-15 06:45:15:Initialization strings:
+2016-10-15 06:45:15:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-15 06:45:15:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-15 06:45:15:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-15 06:45:15:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-15 06:45:15:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-15 06:45:15:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-15 06:45:16:Trying Fault Injection
+2016-10-15 06:45:16:Inferior PID: 159197
+2016-10-15 06:45:16:Inferior is valid: True
+2016-10-15 06:45:16:Inferior #threads: 1
+2016-10-15 06:45:16:Backtrace BEGIN:
+2016-10-15 06:45:16:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000007 in ?? ()
+#7  0x00007fffffffedf0 in ?? ()
+#8  0x00007fffffffee1e in ?? ()
+#9  0x00007fffffffee22 in ?? ()
+#10 0x00007fffffffee25 in ?? ()
+#11 0x00007fffffffee62 in ?? ()
+#12 0x00007fffffffee9e in ?? ()
+#13 0x00007fffffffeed8 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2016-10-15 06:45:16:69	in dl-debug.c
+
+2016-10-15 06:45:16:Backtrace END
+2016-10-15 06:45:16:Thread name: None
+2016-10-15 06:45:16:Thread num: 1
+2016-10-15 06:45:16:Thread ptid: (159197, 159197, 0)
+2016-10-15 06:45:16:bitFlip function
+2016-10-15 06:45:16:Type: The type is a pointer.
+2016-10-15 06:45:16:Type sizeof: 8
+2016-10-15 06:45:16:Error gdbException(frameFlip): Attempt to dereference a generic pointer.
+2016-10-15 06:45:16:Fault Injection Failed after 1.468998909s
+2016-10-15 06:45:17:Trying Fault Injection
+2016-10-15 06:45:17:Inferior PID: 159197
+2016-10-15 06:45:17:Inferior is valid: True
+2016-10-15 06:45:17:Inferior #threads: 1
+2016-10-15 06:45:17:Backtrace BEGIN:
+2016-10-15 06:45:17:#0  0x00007ffff7138914 in __GI__IO_fread (buf=0x7ffff4f58f10, size=1, count=8, fp=0x60e1c0) at iofread.c:41
+#1  0x00000000004025ad in main (argc=7, argv=0x7fffffffec08) at main_check.c:179
+
+2016-10-15 06:45:17:36	in iofread.c
+
+2016-10-15 06:45:17:Backtrace END
+2016-10-15 06:45:17:Thread name: None
+2016-10-15 06:45:17:Thread num: 1
+2016-10-15 06:45:17:Thread ptid: (159197, 159197, 0)
+2016-10-15 06:45:17:bitFlip function
+2016-10-15 06:45:17:Type: The type is a structure.
+2016-10-15 06:45:17:Type sizeof: 8
+2016-10-15 06:45:17:Fliping value of field: alpha
+2016-10-15 06:45:17:bitFlip function
+2016-10-15 06:45:17:Type: A floating point type.
+2016-10-15 06:45:17:Type sizeof: 8
+2016-10-15 06:45:17:Mem contents(hex):0x000x000x000x000x000x000xe00x3f
+2016-10-15 06:45:17:base address to flip value: 0x7fffffffe8e0
+2016-10-15 06:45:17:address max offset: 8
+2016-10-15 06:45:17:Memory content before bitflip:0x000x000x000x000x000x000xe00x3f
+2016-10-15 06:45:17:Memory content after  bitflip:0x000x000x000x000x000x010xe00x3f
+2016-10-15 06:45:17:Mem contents(hex):0x000x000x000x000x000x010xe00x3f
+2016-10-15 06:45:17:frame name: main
+2016-10-15 06:45:17:symbol name: par_cpu
+2016-10-15 06:45:17:symbol filename: main_check.c
+2016-10-15 06:45:17:symbol line: 55
+2016-10-15 06:45:17:value: {alpha = 0.5001220703125}
+2016-10-15 06:45:17:value address: 0x7fffffffe8e0
+2016-10-15 06:45:17:Type: The type is a structure.
+2016-10-15 06:45:17:Type sizeof: 8
+2016-10-15 06:45:17:Field name: alpha
+2016-10-15 06:45:17:Field Type:
+2016-10-15 06:45:17:Type: A floating point type.
+2016-10-15 06:45:17:Type sizeof: 8
+2016-10-15 06:45:17:Fault Injection Successful after 2.31835007668s
+2016-10-15 06:45:19:Fault Already Injected
+2016-10-15 06:45:22:Fault Already Injected
+2016-10-15 06:45:22:Fault Already Injected
+2016-10-15 06:45:23:Fault Already Injected
+2016-10-15 06:45:23:Fault Already Injected
+2016-10-15 06:45:25:Fault Already Injected
+2016-10-15 06:45:25:Fault Already Injected

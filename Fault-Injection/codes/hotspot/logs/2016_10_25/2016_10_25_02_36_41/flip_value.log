@@ -1,0 +1,82 @@
+2016-10-25 02:36:19:Initialization strings:
+2016-10-25 02:36:19:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-25 02:36:19:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-25 02:36:19:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-25 02:36:19:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-25 02:36:19:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-25 02:36:19:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-25 02:36:20:Trying Fault Injection
+2016-10-25 02:36:20:Backtrace BEGIN:
+2016-10-25 02:36:20:#0  0x00007ffff787ac80 in ?? ()
+#1  0x00007ffff793329d in ?? ()
+#2  0x00007fffffffec30 in ?? ()
+#3  0x00007ffff7ffab28 in ?? ()
+#4  0x0000000000000008 in ?? ()
+#5  0x00007ffff7874f0b in ?? ()
+#6  0x00007fffffffec30 in ?? ()
+#7  0x00007ffff7debb98 in call_init (l=0x7ffff7b669f8, argc=-5296, argc@entry=8, argv=argv@entry=0x7fffffffebe8, env=env@entry=0x7fffffffec30) at dl-init.c:58
+#8  0x00007ffff7debd37 in call_init (env=0x7fffffffec30, argv=0x7fffffffebe8, argc=8, l=<optimized out>) at dl-init.c:126
+#9  _dl_init (main_map=0x7ffff7ffe168, argc=8, argv=0x7fffffffebe8, env=0x7fffffffec30) at dl-init.c:120
+#10 0x00007ffff7dddbfa in _dl_start_user () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#11 0x0000000000000008 in ?? ()
+#12 0x00007fffffffede9 in ?? ()
+#13 0x00007fffffffee1f in ?? ()
+#14 0x00007fffffffee24 in ?? ()
+#15 0x00007fffffffee29 in ?? ()
+#16 0x00007fffffffee2e in ?? ()
+#17 0x00007fffffffee32 in ?? ()
+#18 0x00007fffffffee64 in ?? ()
+#19 0x00007fffffffee97 in ?? ()
+#20 0x0000000000000000 in ?? ()
+
+2016-10-25 02:36:20:220	    fprintf(stderr, "\t<no. of threads>   - number of threads\n");
+221	    fprintf(stderr, "\t<temp_file>  - name of the file containing the initial temperature values of each cell\n");
+222	    fprintf(stderr, "\t<power_file> - name of the file containing the dissipated power values of each cell\n");
+223	    fprintf(stderr, "\t<output_file> - name of the output file\n");
+224	    exit(1);
+225	}
+226	
+227	int main(int argc, char **argv)
+228	{
+229	    int grid_rows, grid_cols, sim_time, i;
+
+2016-10-25 02:36:20:Backtrace END
+2016-10-25 02:36:20:Fault Injection Failed after 1.22920298576s
+2016-10-25 02:36:24:Trying Fault Injection
+2016-10-25 02:36:24:Backtrace BEGIN:
+2016-10-25 02:36:24:#0  _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:609
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe87a "0.000033\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401808 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=-7168, argv=0x30) at hotspot_check.c:265
+
+2016-10-25 02:36:24:604	in vfscanf.c
+
+2016-10-25 02:36:24:Backtrace END
+2016-10-25 02:36:24:Type: A floating point type.
+2016-10-25 02:36:24:Type sizeof: 4
+2016-10-25 02:36:24:Mem contents(hex):0x6f0x120x830x3c
+2016-10-25 02:36:24:base address to flip value: 0x4073a0 
+2016-10-25 02:36:24:address max offset: 4
+2016-10-25 02:36:24:Memory content before bitflip:0x6f0x120x830x3c
+2016-10-25 02:36:24:Memory content after  bitflip:0x6f0x120x930x3c
+2016-10-25 02:36:24:Mem contents(hex):0x6f0x120x930x3c
+2016-10-25 02:36:24:frame name: main
+2016-10-25 02:36:24:symbol name: chip_width
+2016-10-25 02:36:24:symbol filename: hotspot_check.c
+2016-10-25 02:36:24:symbol line: 34
+2016-10-25 02:36:24:value: 0.0179531258
+2016-10-25 02:36:24:value address: 0x4073a0 <chip_width>
+2016-10-25 02:36:24:Type: A floating point type.
+2016-10-25 02:36:24:Type sizeof: 4
+2016-10-25 02:36:24:Fault Injection Successful after 5.7420630455s
+2016-10-25 02:36:24:Fault Already Injected
+2016-10-25 02:36:25:Fault Already Injected
+2016-10-25 02:36:27:Fault Already Injected
+2016-10-25 02:36:29:Fault Already Injected
+2016-10-25 02:36:31:Fault Already Injected
+2016-10-25 02:36:33:Fault Already Injected
+2016-10-25 02:36:33:Fault Already Injected
+2016-10-25 02:36:33:Fault Already Injected
+2016-10-25 02:36:35:event type: exit
+2016-10-25 02:36:35:exit code: 0

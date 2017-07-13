@@ -1,0 +1,53 @@
+2017-02-21 21:45:13:Starting flip_value script
+2017-02-21 21:45:13:Initialization strings:
+2017-02-21 21:45:13:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-21 21:45:13:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 21:45:13:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 21:45:13:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-21 21:45:13:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-21 21:45:13:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-21 21:45:13:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-21 21:45:13:initSignal:20
+2017-02-21 21:45:13:endSignal:25
+2017-02-21 21:45:13:seqSignal:20
+2017-02-21 21:45:33:Backtrace BEGIN:
+2017-02-21 21:45:33:#0  0x00007ffff6ba05d6 in __GI_memcpy (dstpp=<optimized out>, srcpp=srcpp@entry=0x7fffffffe0dd, len=<optimized out>, len@entry=3) at ../string/memcpy.c:59
+#1  0x00007ffff6b9ff79 in __GI___mempcpy (dest=<optimized out>, src=src@entry=0x7fffffffe0dd, len=len@entry=3) at ../string/mempcpy.c:35
+#2  0x00007ffff6b92c04 in _IO_new_file_xsputn (f=0x1920e80, data=0x7fffffffe0dd, n=3) at fileops.c:1307
+#3  0x00007ffff6b677b3 in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1641
+#4  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#5  0x000000000054b93d in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:477
+#6  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#7  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-21 21:45:33:54	in ../string/memcpy.c
+
+2017-02-21 21:45:33:Backtrace END
+2017-02-21 21:45:38:Type: The type is an array.
+2017-02-21 21:45:38:Type sizeof: 120
+2017-02-21 21:45:38:Fliping array at pos: 8
+2017-02-21 21:45:38:Type: The type is an integer type.
+2017-02-21 21:45:38:Type sizeof: 4
+2017-02-21 21:45:38:Mem contents(hex):0x000x000x000x00
+2017-02-21 21:45:38:Fault Mode: Single bit-flip
+2017-02-21 21:45:38:base address to flip value: 0x7ffff6c38da0 
+2017-02-21 21:45:38:address max offset: 4
+2017-02-21 21:45:38:Memory content before bitflip:0x000x000x000x00
+2017-02-21 21:45:38:Memory content after  bitflip:0x000x080x000x00
+2017-02-21 21:45:38:Mem contents(hex):0x000x080x000x00
+2017-02-21 21:45:38:frame name: _IO_vfprintf_internal
+2017-02-21 21:45:38:symbol name: step3a_jumps
+2017-02-21 21:45:38:symbol filename: vfprintf.c
+2017-02-21 21:45:38:symbol line: 1345
+2017-02-21 21:45:38:value: {0, 0, 0, 0, 0, 0, 0, 0, 2048, 0, 11329, 0, 0, 0, 7466, 7747, 14505, 15251, 15266, 0, 0, 0, 0, 13086, 0, 0, 0, 0, 0, 0}
+2017-02-21 21:45:38:value address: 0x7ffff6c38d80 <step3a_jumps>
+2017-02-21 21:45:38:Type: The type is an array.
+2017-02-21 21:45:38:Type sizeof: 120
+2017-02-21 21:45:38:Field name: None
+2017-02-21 21:45:38:Field Type:
+2017-02-21 21:45:38:Type: A range type, that is, an integer type with bounds.
+2017-02-21 21:45:38:Type sizeof: 8
+2017-02-21 21:45:38:Type range: (0L, 29L)
+2017-02-21 21:45:38:Fault Injection Successful after 25.9892590046s
+2017-02-21 21:46:16:event type: exit
+2017-02-21 21:46:16:exit code: 0

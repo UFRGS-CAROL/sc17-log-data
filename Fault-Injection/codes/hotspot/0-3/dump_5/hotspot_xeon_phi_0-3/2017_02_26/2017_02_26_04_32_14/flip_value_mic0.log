@@ -1,0 +1,59 @@
+[INFO -- 2017-02-26 04:31:33]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 04:31:33]
+Initialization strings:
+[INFO -- 2017-02-26 04:31:34]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-26 04:31:34]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 04:31:34]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 04:31:34]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 04:31:34]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 04:31:34]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 04:31:34]
+initSignal:0
+[INFO -- 2017-02-26 04:31:34]
+endSignal:3
+[INFO -- 2017-02-26 04:31:34]
+seqSignal:15
+[INFO -- 2017-02-26 04:31:34]
+faultMode:0
+[INFO -- 2017-02-26 04:31:35]
+Backtrace BEGIN:
+#0  __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe050 "343.514654", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0, loc=<optimized out>) at strtod_l.c:855
+#1  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe050 "343.514654", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0) at strtod.c:54
+#2  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2332
+#3  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "343.514654\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#4  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#5  0x0000000000404598 in read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:207
+#6  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+850	in strtod_l.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x070xee0xff0xff0xff0x7f0x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffe770
+address max offset: 8
+Memory content after  bitflip:0x070xef0xff0xff0xff0x7f0x000x00
+frame name: read_input
+symbol name: file
+symbol filename: hotspot_check.c
+symbol line: 190
+value: 0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024"
+value address: 0x7fffffffe770
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-26 04:31:35]
+Fault Injection Successful after 1.39545893669s
+[INFO -- 2017-02-26 04:31:59]
+event type: exit
+[INFO -- 2017-02-26 04:31:59]
+exit code: 0

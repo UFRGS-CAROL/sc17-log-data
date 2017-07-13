@@ -1,0 +1,59 @@
+[INFO -- 2017-03-27 22:47:33]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 22:47:33]
+Initialization strings:
+[INFO -- 2017-03-27 22:47:34]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 22:47:34]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 22:47:34]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 22:47:34]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 22:47:34]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 22:47:34]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 22:47:34]
+initSignal:0
+[INFO -- 2017-03-27 22:47:34]
+endSignal:3
+[INFO -- 2017-03-27 22:47:34]
+seqSignal:30
+[INFO -- 2017-03-27 22:47:34]
+faultMode:3
+[INFO -- 2017-03-27 22:47:35]
+Backtrace BEGIN:
+#0  __GI___xstat (vers=<optimized out>, name=0x60cf40 <full_log_file_name> "/micNfs/carol/logs/2017_03_28_02_43_37_openmpLavaMD_mic0-mic0.ece.neu.edu.log", buf=0x7fffffffe318) at ../sysdeps/unix/sysv/linux/wordsize-64/xstat.c:35
+#1  0x0000000000406f13 in start_log_file (benchmark_name=0x408cc0 "openmpLavaMD", test_info=0x7fffffffe648 "box:15 spaceElem:337500 cores:228") at ../include/log_helper.c:253
+#2  0x0000000000402707 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:190
+
+30	in ../sysdeps/unix/sysv/linux/wordsize-64/xstat.c
+
+Backtrace END
+Fliping array at pos: 165
+Memory content before bitflip:0x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x60cfe5  
+address max offset: 1
+Memory content after  bitflip:0x00
+frame name: start_log_file
+symbol name: full_log_file_name
+symbol filename: ../include/log_helper.c
+symbol line: 53
+value: "/micNfs/carol/logs/2017_03_28_02_43_37_openmpLavaMD_mic0-mic0.ece.neu.edu.log", '\000' <repeats 222 times>
+value address: 0x60cf40 <full_log_file_name>
+Type: The type is an array.
+Type sizeof: 300
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 299L)
+
+[INFO -- 2017-03-27 22:47:35]
+Fault Injection Successful after 1.60374999046s
+[INFO -- 2017-03-27 22:47:52]
+event type: exit
+[INFO -- 2017-03-27 22:47:52]
+exit code: 0

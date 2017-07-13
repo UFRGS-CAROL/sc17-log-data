@@ -1,0 +1,45 @@
+2017-03-02 10:13:58:Starting flip_value script
+2017-03-02 10:13:58:Initialization strings:
+2017-03-02 10:13:59:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-02 10:13:59:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 10:13:59:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 10:13:59:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-02 10:13:59:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-02 10:13:59:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-03-02 10:13:59:initSignal:0
+2017-03-02 10:13:59:endSignal:3
+2017-03-02 10:13:59:seqSignal:30
+2017-03-02 10:14:00:Backtrace BEGIN:
+2017-03-02 10:14:00:#0  0x00007ffff7138956 in _IO_acquire_lock_fct (p=<synthetic pointer>) at libioP.h:892
+#1  __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:41
+#2  0x0000000000402670 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:182
+
+2017-03-02 10:14:00:887	in libioP.h
+
+2017-03-02 10:14:00:Backtrace END
+2017-03-02 10:14:00:Type: The type is a pointer.
+2017-03-02 10:14:00:Type sizeof: 8
+2017-03-02 10:14:00:Fliping a bit of the value pointed by a pointer
+2017-03-02 10:14:00:Type: The type is a structure.
+2017-03-02 10:14:00:Type sizeof: 32
+2017-03-02 10:14:00:Fliping value of field: y
+2017-03-02 10:14:00:Type: A floating point type.
+2017-03-02 10:14:00:Type sizeof: 8
+2017-03-02 10:14:00:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-03-02 10:14:00:Fault Mode: Double bit-flip
+2017-03-02 10:14:00:base address to flip value: 0x7ffff5382020
+2017-03-02 10:14:00:address max offset: 8
+2017-03-02 10:14:00:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-03-02 10:14:00:Memory content after  bitflip:0x420x000x000x000x000x000x000x00
+2017-03-02 10:14:00:Mem contents(hex):0x420x000x000x000x000x000x000x00
+2017-03-02 10:14:00:frame name: main
+2017-03-02 10:14:00:symbol name: fv_cpu
+2017-03-02 10:14:00:symbol filename: main_check.c
+2017-03-02 10:14:00:symbol line: 60
+2017-03-02 10:14:00:value: 0x7ffff5382010
+2017-03-02 10:14:00:value address: 0x7fffffffe9b8
+2017-03-02 10:14:00:Type: The type is a pointer.
+2017-03-02 10:14:00:Type sizeof: 8
+2017-03-02 10:14:00:Fault Injection Successful after 1.4125649929s
+2017-03-02 10:14:14:event type: exit
+2017-03-02 10:14:14:exit code: 0

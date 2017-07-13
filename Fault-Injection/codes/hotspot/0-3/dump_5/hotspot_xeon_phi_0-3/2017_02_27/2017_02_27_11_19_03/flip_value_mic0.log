@@ -1,0 +1,61 @@
+[INFO -- 2017-02-27 11:18:22]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 11:18:22]
+Initialization strings:
+[INFO -- 2017-02-27 11:18:22]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-27 11:18:22]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 11:18:22]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 11:18:22]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 11:18:22]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 11:18:22]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-27 11:18:22]
+initSignal:0
+[INFO -- 2017-02-27 11:18:22]
+endSignal:3
+[INFO -- 2017-02-27 11:18:22]
+seqSignal:15
+[INFO -- 2017-02-27 11:18:22]
+faultMode:2
+[INFO -- 2017-02-27 11:18:23]
+Backtrace BEGIN:
+#0  __GI___waitpid (pid=156082, stat_loc=stat_loc@entry=0x7fffffffe258, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000405b29 in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405f0e in start_log_file (benchmark_name=0x407478 "openMPHotspot", test_info=0x7fffffffe7a0 "simIter:1000 gridSize:1024x1024") at ../include/log_helper.c:196
+#4  0x0000000000404a17 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:255
+
+26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+Backtrace END
+Fliping array at pos: 14
+Memory content before bitflip:0xff
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe593 
+address max offset: 1
+Memory content after  bitflip:0x77
+frame name: start_log_file
+symbol name: host
+symbol filename: ../include/log_helper.c
+symbol line: 214
+value: "\177\000\000\277\347\377\377\377\177\000\000\003\350\377w\377\177\000\000\240\347\377\377\377\177\000\000\003\350\377\377\377\177\000"
+value address: 0x7fffffffe585
+Type: The type is an array.
+Type sizeof: 35
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 34L)
+
+[INFO -- 2017-02-27 11:18:23]
+Fault Injection Successful after 1.5776219368s
+[INFO -- 2017-02-27 11:18:48]
+event type: exit
+[INFO -- 2017-02-27 11:18:48]
+exit code: 0

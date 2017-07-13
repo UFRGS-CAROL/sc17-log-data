@@ -1,0 +1,68 @@
+[INFO -- 2017-03-13 22:01:56]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-13 22:01:56]
+Initialization strings:
+[INFO -- 2017-03-13 22:01:56]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-13 22:01:56]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-13 22:01:56]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-13 22:01:56]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-13 22:01:56]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-13 22:01:56]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-13 22:01:56]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-13 22:01:56]
+initSignal:40
+[INFO -- 2017-03-13 22:01:56]
+endSignal:49
+[INFO -- 2017-03-13 22:01:56]
+seqSignal:20
+[INFO -- 2017-03-13 22:01:56]
+faultMode:1
+[INFO -- 2017-03-13 22:02:49]
+Backtrace BEGIN:
+#0  0x0000000000551ac8 in Transform (buf=0x7fffffffe318, in=0x7fffffffe000) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:1285
+#1  0x0000000000550aaf in MD5Update (mdContext=0x7fffffffe308, inBuf=0x7fffffffe2a8 "\b\343\377\377\377\177", inLen=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:1177
+#2  0x000000000054eab8 in check_md5 (graph_num=1, ncycle=100, simTime=0.043339572768126222) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:878
+#3  0x000000000054db32 in write_graphics_info (graph_num=1, ncycle=100, simTime=0.043339572768126222, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:754
+#4  0x0000000000446e91 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:579
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+1280	    HH ( d, a, b, c, in[ 8], S32, 2272392833); /* 34 */
+1281	    HH ( c, d, a, b, in[11], S33, 1839030562); /* 35 */
+1282	    HH ( b, c, d, a, in[14], S34, 4259657740); /* 36 */
+1283	    HH ( a, b, c, d, in[ 1], S31, 2763975236); /* 37 */
+1284	    HH ( d, a, b, c, in[ 4], S32, 1272893353); /* 38 */
+1285	    HH ( c, d, a, b, in[ 7], S33, 4139469664); /* 39 */
+1286	    HH ( b, c, d, a, in[10], S34, 3200236656); /* 40 */
+1287	    HH ( a, b, c, d, in[13], S31,  681279174); /* 41 */
+1288	    HH ( d, a, b, c, in[ 0], S32, 3936430074); /* 42 */
+1289	    HH ( c, d, a, b, in[ 3], S33, 3572445317); /* 43 */
+
+Backtrace END
+Memory content before bitflip:0x190xe70x180xe70x180xe70xf80x3f
+Fault Mode: Double bit-flip
+base address to flip value: 0x7d0bb0 
+address max offset: 8
+Memory content after  bitflip:0x190xe70x180xe70x180xe70xf80x2e
+frame name: write_graphics_info
+symbol name: xconversion
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c
+symbol line: 175
+value: 2.0510112730020473e-82
+value address: 0x7d0bb0 <xconversion>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-13 22:02:49]
+Fault Injection Successful after 53.8281989098s
+[INFO -- 2017-03-13 22:02:59]
+event type: exit
+[INFO -- 2017-03-13 22:02:59]
+exit code: 0

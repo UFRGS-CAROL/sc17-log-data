@@ -1,0 +1,64 @@
+[INFO -- 2017-03-10 21:42:38]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-10 21:42:38]
+Initialization strings:
+[INFO -- 2017-03-10 21:42:38]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-10 21:42:38]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 21:42:38]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 21:42:38]
+(4) file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+[INFO -- 2017-03-10 21:42:38]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+[INFO -- 2017-03-10 21:42:38]
+(6) set args 16394 10 228 /micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10 /micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10
+[INFO -- 2017-03-10 21:42:38]
+initSignal:8
+[INFO -- 2017-03-10 21:42:38]
+endSignal:12
+[INFO -- 2017-03-10 21:42:38]
+seqSignal:30
+[INFO -- 2017-03-10 21:42:38]
+faultMode:3
+[INFO -- 2017-03-10 21:42:46]
+Backtrace BEGIN:
+#0  0x0000000000402c27 in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:330
+#1  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+325	    //}
+326	
+327	
+328	    for (int i = 1 ; i < max_cols; i++){
+329	        for (int j = 1 ; j < max_rows; j++){
+330	            referrence[i*max_cols+j] = blosum62[input_itemsets[i*max_cols]][input_itemsets[j]];
+331	        }
+332	    }
+333	
+334	    for( int i = 1; i< max_rows ; i++)
+
+Backtrace END
+Fliping array at pos: 20
+Fliping array at pos: 4
+Memory content before bitflip:0xfd0xff0xff0xff
+Fault Mode: Zero bit-flip
+base address to flip value: 0x606590 
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: main
+symbol name: blosum62
+symbol filename: needle_check.cpp
+symbol line: 80
+value: {{4, -1, -2, -2, 0, -1, -1, 0, -2, -1, -1, -1, -1, -2, -1, 1, 0, -3, -2, 0, -2, -1, 0, -4}, {-1, 5, 0, -2, -3, 1, 0, -2, 0, -3, -2, 2, -1, -3, -2, -1, -1, -3, -2, -3, -1, 0, -1, -4}, {-2, 0, 6, 1, -3, 0, 0, 0, 1, -3, -3, 0, -2, -3, -2, 1, 0, -4, -2, -3, 3, 0, -1, -4}, {-2, -2, 1, 6, -3, 0, 2, -1, -1, -3, -4, -1, -3, -3, -1, 0, -1, -4, -3, -3, 4, 1, -1, -4}, {0, -3, -3, -3, 9, -3, -4, -3, -3, -1, -1, -3, -1, -2, -3, -1, -1, -2, -2, -1, -3, -3, -2, -4}, {-1, 1, 0, 0, -3, 5, 2, -2, 0, -3, -2, 1, 0, -3, -1, 0, -1, -2, -1, -2, 0, 3, -1, -4}, {-1, 0, 0, 2, -4, 2, 5, -2, 0, -3, -3, 1, -2, -3, -1, 0, -1, -3, -2, -2, 1, 4, -1, -4}, {0, -2, 0, -1, -3, -2, -2, 6, -2, -4, -4, -2, -3, -3, -2, 0, -2, -2, -3, -3, -1, -2, -1, -4}, {-2, 0, 1, -1, -3, 0, 0, -2, 8, -3, -3, -1, -2, -1, -2, -1, -2, -2, 2, -3, 0, 0, -1, -4}, {-1, -3, -3, -3, -1, -3, -3, -4, -3, 4, 2, -3, 1, 0, -3, -2, -1, -3, -1, 3, -3, -3, -1, -4}, {-1, -2, -3, -4, -1, -2, -3, -4, -3, 2, 4, -2, 2, 0, -3, -2, -1, -2, -1, 1, -4, -3, -1, -4}, {-1, 2, 0, -1, -3, 1, 1, -2, -1, -3, -2, 5, -1, -3, -1, 0, -1, -3, -2, -2, 0, 1, -1, -4}, {-1, -1, -2, -3, -1, 0, -2, -3, -2, 1, 2, -1, 5, 0, -2, -1, -1, -1, -1, 1, -3, -1, -1, -4}, {-2, -3, -3, -3, -2, -3, -3, -3, -1, 0, 0, -3, 0, 6, -4, -2, -2, 1, 3, -1, -3, -3, -1, -4}, {-1, -2, -2, -1, -3, -1, -1, -2, -2, -3, -3, -1, -2, -4, 7, -1, -1, -4, -3, -2, -2, -1, -2, -4}, {1, -1, 1, 0, -1, 0, 0, 0, -1, -2, -2, 0, -1, -2, -1, 4, 1, -3, -2, -2, 0, 0, 0, -4}, {0, -1, 0, -1, -1, -1, -1, -2, -2, -1, -1, -1, -1, -2, -1, 1, 5, -2, -2, 0, -1, -1, 0, -4}, {-3, -3, -4, -4, -2, -2, -3, -2, -2, -3, -2, -3, -1, 1, -4, -3, -2, 11, 2, -3, -4, -3, -2, -4}, {-2, -2, -2, -3, -2, -1, -2, -3, 2, -1, -1, -2, -1, 3, -3, -2, -2, 2, 7, -1, -3, -2, -1, -4}, {0, -3, -3, -3, -1, -2, -2, -3, -3, 3, 1, -2, 1, -1, -2, -2, 0, -3, -1, 4, -3, -2, -1, -4}, {-2, -1, 3, 4, 0, 0, 1, -1, 0, -3, -4, 0, -3, -3, -2, 0, -1, -4, -3, -3, 4, 1, -1, -4}, {-1, 0, 0, 1, -3, 3, 4, -2, 0, -3, -3, 1, -1, -3, -1, 0, -1, -3, -2, -2, 1, 4, -1, -4}, {0, -1, -1, -1, -2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2, 0, 0, -2, -1, -1, -1, -1, -1, -4}, {-4 <repeats 23 times>, 1}}
+value address: 0x605e00 <blosum62>
+Type: The type is an array.
+Type sizeof: 2304
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 23L)
+
+[INFO -- 2017-03-10 21:42:46]
+Fault Injection Successful after 8.87341094017s

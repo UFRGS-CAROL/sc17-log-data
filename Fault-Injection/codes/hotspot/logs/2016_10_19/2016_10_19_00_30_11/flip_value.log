@@ -1,0 +1,66 @@
+2016-10-19 00:29:58:Initialization strings:
+2016-10-19 00:29:58:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-19 00:29:58:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-19 00:29:58:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-19 00:29:58:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-19 00:29:58:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-19 00:29:58:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-19 00:30:05:Trying Fault Injection
+2016-10-19 00:30:05:Backtrace BEGIN:
+2016-10-19 00:30:05:#0  __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe010 "0.000008", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1440
+#1  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe010 "0.000008", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0) at strtod.c:54
+#2  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2332
+#3  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe87a "0.000008\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#4  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#5  0x0000000000401808 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#6  main (argc=-8312, argv=0xfffffffff71e74d8) at hotspot_check.c:265
+
+2016-10-19 00:30:05:1435	in strtod_l.c
+
+2016-10-19 00:30:05:Backtrace END
+2016-10-19 00:30:05:Type: The type is an array.
+2016-10-19 00:30:05:Type sizeof: 24
+2016-10-19 00:30:05:Fliping array at pos: 0
+2016-10-19 00:30:05:Type: The type is a structure.
+2016-10-19 00:30:05:Type sizeof: 24
+2016-10-19 00:30:05:Fliping value of field: reg_save_area
+2016-10-19 00:30:05:Type: The type is a pointer.
+2016-10-19 00:30:05:Type sizeof: 8
+2016-10-19 00:30:05:Fault Injection Failed after 7.58508300781s
+2016-10-19 00:30:05:Trying Fault Injection
+2016-10-19 00:30:05:Backtrace BEGIN:
+2016-10-19 00:30:05:#0  0x00007ffff71505dc in __GI_memcpy (dstpp=dstpp@entry=0x7fffffffdf80, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff7108cde in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe010 "0.000008", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1425
+#2  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe010 "0.000008", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0) at strtod.c:54
+#3  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2332
+#4  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe87a "0.000008\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#5  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#6  0x0000000000401808 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#7  main (argc=-8319, argv=0xfffffffff71e74d8) at hotspot_check.c:265
+
+2016-10-19 00:30:05:54	in ../string/memcpy.c
+
+2016-10-19 00:30:05:Backtrace END
+2016-10-19 00:30:05:Type: The type is a pointer.
+2016-10-19 00:30:05:Type sizeof: 8
+2016-10-19 00:30:05:Fliping a bit of the value pointed by a pointer
+2016-10-19 00:30:05:Type: The type is an integer type.
+2016-10-19 00:30:05:Type sizeof: 1
+2016-10-19 00:30:05:Mem contents(hex):0x38
+2016-10-19 00:30:05:base address to flip value: 0x7fffffffe017 
+2016-10-19 00:30:05:address max offset: 1
+2016-10-19 00:30:05:Memory content before bitflip:0x38
+2016-10-19 00:30:05:Memory content after  bitflip:0x28
+2016-10-19 00:30:06:Mem contents(hex):0x28
+2016-10-19 00:30:06:frame name: __GI_____strtof_l_internal
+2016-10-19 00:30:06:symbol name: startp
+2016-10-19 00:30:06:symbol filename: strtod_l.c
+2016-10-19 00:30:06:symbol line: 519
+2016-10-19 00:30:06:value: 0x7fffffffe017 "("
+2016-10-19 00:30:06:value address: 0x7fffffffdef8
+2016-10-19 00:30:06:Type: The type is a pointer.
+2016-10-19 00:30:06:Type sizeof: 8
+2016-10-19 00:30:06:Fault Injection Successful after 8.00347495079s
+2016-10-19 00:30:06:Fault Already Injected
+2016-10-19 00:30:06:event type: exit
+2016-10-19 00:30:06:exit code: no exit code available

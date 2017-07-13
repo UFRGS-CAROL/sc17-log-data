@@ -1,0 +1,163 @@
+2017-03-01 23:50:48:Starting flip_value script
+2017-03-01 23:50:48:Initialization strings:
+2017-03-01 23:50:48:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-01 23:50:48:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 23:50:48:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 23:50:48:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 23:50:48:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 23:50:48:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-03-01 23:50:48:initSignal:0
+2017-03-01 23:50:48:endSignal:3
+2017-03-01 23:50:48:seqSignal:30
+2017-03-01 23:50:49:Backtrace BEGIN:
+2017-03-01 23:50:49:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff71436c0 in _IO_new_file_underflow (fp=0x60e1c0) at fileops.c:580
+#2  0x00007ffff71429e8 in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1402
+#3  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#4  0x00000000004021c3 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:148
+
+2017-03-01 23:50:49:76	in ../sysdeps/unix/syscall-template.S
+
+2017-03-01 23:50:49:Backtrace END
+2017-03-01 23:50:49:Type: The type is an integer type.
+2017-03-01 23:50:49:Type sizeof: 4
+2017-03-01 23:50:49:Mem contents(hex):0x900xd50xdd0xf7
+2017-03-01 23:50:49:Fault Mode: Random bit-flip
+2017-03-01 23:50:49:base address to flip value: 0x7fffffffe778
+2017-03-01 23:50:49:address max offset: 4
+2017-03-01 23:50:49:Memory content before bitflip:0x900xd50xdd0xf7
+2017-03-01 23:50:50:Backtrace BEGIN:
+2017-03-01 23:50:50:#0  0x00007ffff7142959 in __GI__IO_file_xsgetn (fp=<optimized out>, data=<optimized out>, n=<optimized out>) at fileops.c:1441
+#1  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#2  0x00000000004025ee in main (argc=7, argv=0x7fffffffebc8) at main_check.c:180
+
+2017-03-01 23:50:50:1436	in fileops.c
+
+2017-03-01 23:50:50:Backtrace END
+2017-03-01 23:50:50:Type: The type is a structure.
+2017-03-01 23:50:50:Type sizeof: 168
+2017-03-01 23:50:50:Fliping value of field: __xsputn
+2017-03-01 23:50:50:Type: The type is a pointer.
+2017-03-01 23:50:50:Type sizeof: 8
+2017-03-01 23:50:50:Fliping a bit of the value pointed by a pointer
+2017-03-01 23:50:50:Type: The type is a function.
+2017-03-01 23:50:50:Type sizeof: 1
+2017-03-01 23:50:50:Mem contents(hex):0x31
+2017-03-01 23:50:50:Fault Mode: One bit-flip
+2017-03-01 23:50:50:base address to flip value: 0x7ffff7142ba0 
+2017-03-01 23:50:50:address max offset: 1
+2017-03-01 23:50:50:Memory content before bitflip:0x31
+2017-03-01 23:50:50:Backtrace BEGIN:
+2017-03-01 23:50:50:#0  0x00007ffff7142959 in __GI__IO_file_xsgetn (fp=<optimized out>, data=<optimized out>, n=<optimized out>) at fileops.c:1441
+#1  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#2  0x00000000004025ee in main (argc=7, argv=0x7fffffffebc8) at main_check.c:180
+
+2017-03-01 23:50:50:1436	in fileops.c
+
+2017-03-01 23:50:50:Backtrace END
+2017-03-01 23:50:50:Type: The type is an integer type.
+2017-03-01 23:50:50:Type sizeof: 4
+2017-03-01 23:50:50:Mem contents(hex):0x020x000x000x00
+2017-03-01 23:50:50:Fault Mode: Zero bit-flip
+2017-03-01 23:50:50:base address to flip value: 0x7fffffffe73c
+2017-03-01 23:50:50:address max offset: 4
+2017-03-01 23:50:50:Memory content before bitflip:0x020x000x000x00
+2017-03-01 23:50:50:Backtrace BEGIN:
+2017-03-01 23:50:50:#0  __GI__IO_sgetn (fp=0x60e1c0, data=0x7ffff4f8f260, n=8) at genops.c:495
+#1  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#2  0x000000000040262f in main (argc=7, argv=0x7fffffffebc8) at main_check.c:181
+
+2017-03-01 23:50:50:490	in genops.c
+
+2017-03-01 23:50:50:Backtrace END
+2017-03-01 23:50:50:Type: The type is a pointer.
+2017-03-01 23:50:50:Type sizeof: 8
+2017-03-01 23:50:50:Fliping a bit of the pointer
+2017-03-01 23:50:50:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-03-01 23:50:50:Fault Mode: Zero bit-flip
+2017-03-01 23:50:50:base address to flip value: 0x7ffff74266c0 
+2017-03-01 23:50:50:address max offset: 8
+2017-03-01 23:50:51:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-03-01 23:50:51:Backtrace BEGIN:
+2017-03-01 23:50:51:#0  __GI__IO_sgetn (fp=0x60e1c0, data=0x7ffff4f8f260, n=8) at genops.c:495
+#1  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#2  0x000000000040262f in main (argc=7, argv=0x7fffffffebc8) at main_check.c:181
+
+2017-03-01 23:50:51:490	in genops.c
+
+2017-03-01 23:50:51:Backtrace END
+2017-03-01 23:50:51:Type: The type is a pointer.
+2017-03-01 23:50:51:Type sizeof: 8
+2017-03-01 23:50:51:Backtrace BEGIN:
+2017-03-01 23:50:51:#0  syscall () at ../sysdeps/unix/sysv/linux/x86_64/syscall.S:38
+#1  0x00007ffff7916c8d in ?? ()
+#2  0x0000000000000040 in ?? ()
+#3  0x0000000000001ab0 in ?? ()
+#4  0x000000000000003f in ?? ()
+#5  0x0000000000000000 in ?? ()
+
+2017-03-01 23:50:51:33	in ../sysdeps/unix/sysv/linux/x86_64/syscall.S
+
+2017-03-01 23:50:51:Backtrace END
+2017-03-01 23:50:51:Backtrace BEGIN:
+2017-03-01 23:50:51:#0  syscall () at ../sysdeps/unix/sysv/linux/x86_64/syscall.S:38
+#1  0x00007ffff7916c8d in ?? ()
+#2  0x0000000000000040 in ?? ()
+#3  0x0000000000001ab0 in ?? ()
+#4  0x000000000000003f in ?? ()
+#5  0x0000000000000000 in ?? ()
+
+2017-03-01 23:50:51:33	in ../sysdeps/unix/sysv/linux/x86_64/syscall.S
+
+2017-03-01 23:50:51:Backtrace END
+2017-03-01 23:50:51:Backtrace BEGIN:
+2017-03-01 23:50:51:#0  syscall () at ../sysdeps/unix/sysv/linux/x86_64/syscall.S:38
+#1  0x00007ffff7916c8d in ?? ()
+#2  0x0000000000000040 in ?? ()
+#3  0x0000000000001ab0 in ?? ()
+#4  0x000000000000003f in ?? ()
+#5  0x0000000000000000 in ?? ()
+
+2017-03-01 23:50:51:33	in ../sysdeps/unix/sysv/linux/x86_64/syscall.S
+
+2017-03-01 23:50:51:Backtrace END
+2017-03-01 23:50:52:Backtrace BEGIN:
+2017-03-01 23:50:52:#0  0x000000000040624f in L_kernel_cpu_48__par_loop0_2_1 () at kernel/kernel_cpu.c:95
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe270 in ?? ()
+#3  0x00007fffffffe2b8 in ?? ()
+#4  0x00007fffffffe3c0 in ?? ()
+#5  0x0000000000000000 in ?? ()
+
+2017-03-01 23:50:52:90	                    fxij=fs*d.x;
+91	                    fyij=fs*d.y;
+92	                    fzij=fs*d.z;
+93	
+94	                    // forces
+95	                    fA[i].v +=  qB[j]*vij;
+96	                    fA[i].x +=  qB[j]*fxij;
+97	                    fA[i].y +=  qB[j]*fyij;
+98	                    fA[i].z +=  qB[j]*fzij;
+99	
+
+2017-03-01 23:50:52:Backtrace END
+2017-03-01 23:51:15:Backtrace BEGIN:
+2017-03-01 23:51:15:#0  0x000000000040624f in L_kernel_cpu_48__par_loop0_2_1 () at kernel/kernel_cpu.c:95
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe270 in ?? ()
+#3  0x00007fffffffe2b8 in ?? ()
+#4  0x00007fffffffe3c0 in ?? ()
+#5  0x0000000000000000 in ?? ()
+
+2017-03-01 23:51:15:90	                    fxij=fs*d.x;
+91	                    fyij=fs*d.y;
+92	                    fzij=fs*d.z;
+93	
+94	                    // forces
+95	                    fA[i].v +=  qB[j]*vij;
+96	                    fA[i].x +=  qB[j]*fxij;
+97	                    fA[i].y +=  qB[j]*fyij;
+98	                    fA[i].z +=  qB[j]*fzij;
+99	
+
+2017-03-01 23:51:15:Backtrace END

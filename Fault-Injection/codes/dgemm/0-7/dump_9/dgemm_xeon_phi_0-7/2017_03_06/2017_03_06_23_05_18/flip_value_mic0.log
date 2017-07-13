@@ -1,0 +1,59 @@
+[INFO -- 2017-03-06 23:03:22]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 23:03:22]
+Initialization strings:
+[INFO -- 2017-03-06 23:03:22]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-06 23:03:22]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 23:03:22]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 23:03:22]
+(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-06 23:03:22]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-06 23:03:22]
+(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+[INFO -- 2017-03-06 23:03:22]
+initSignal:0
+[INFO -- 2017-03-06 23:03:22]
+endSignal:7
+[INFO -- 2017-03-06 23:03:22]
+seqSignal:15
+[INFO -- 2017-03-06 23:03:22]
+faultMode:2
+[INFO -- 2017-03-06 23:03:24]
+Backtrace BEGIN:
+#0  0x00007ffff71505d6 in __GI_memcpy (dstpp=dstpp@entry=0x7ffff5789d28, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x6071c0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x6071c0) at iofread.c:42
+#3  0x0000000000403bc3 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:249
+#4  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+54	in ../string/memcpy.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: __pad3
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x607498
+address max offset: 8
+Memory content after  bitflip:0x160x610xa50x6d0x4e0x490xf70xc6
+frame name: read_input
+symbol name: file2
+symbol filename: dgemm.c
+symbol line: 236
+value: 0x6073f0
+value address: 0x7fffffffe6e8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-06 23:03:24]
+Fault Injection Successful after 2.39612698555s
+[INFO -- 2017-03-06 23:04:03]
+event type: exit
+[INFO -- 2017-03-06 23:04:03]
+exit code: 0

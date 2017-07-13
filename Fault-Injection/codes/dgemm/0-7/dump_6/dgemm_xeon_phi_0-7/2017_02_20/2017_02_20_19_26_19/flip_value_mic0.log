@@ -1,0 +1,89 @@
+2017-02-20 19:25:25:Starting flip_value script
+2017-02-20 19:25:25:Initialization strings:
+2017-02-20 19:25:25:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-20 19:25:25:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 19:25:25:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 19:25:25:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-02-20 19:25:25:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-02-20 19:25:25:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-02-20 19:25:25:initSignal:0
+2017-02-20 19:25:25:endSignal:7
+2017-02-20 19:25:25:seqSignal:15
+2017-02-20 19:25:30:Backtrace BEGIN:
+2017-02-20 19:25:30:#0  0x0000000000404432 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:366
+
+2017-02-20 19:25:30:361	                sleep(100);
+362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+
+2017-02-20 19:25:30:Backtrace END
+2017-02-20 19:25:30:Type: The type is a pointer.
+2017-02-20 19:25:30:Type sizeof: 8
+2017-02-20 19:25:30:Fliping a bit of the pointer
+2017-02-20 19:25:31:Mem contents(hex):0x400xc00xcc0xf40xff0x7f0x000x00
+2017-02-20 19:25:31:Fault Mode: Random bit-flip
+2017-02-20 19:25:31:base address to flip value: 0x606b48 
+2017-02-20 19:25:31:address max offset: 8
+2017-02-20 19:25:31:Memory content before bitflip:0x400xc00xcc0xf40xff0x7f0x000x00
+2017-02-20 19:25:31:Backtrace BEGIN:
+2017-02-20 19:25:31:#0  0x000000000040440b in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:367
+
+2017-02-20 19:25:31:362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+371	        kernel_start = timing_get_time();
+
+2017-02-20 19:25:31:Backtrace END
+2017-02-20 19:25:31:Type: The type is a pointer.
+2017-02-20 19:25:31:Type sizeof: 8
+2017-02-20 19:25:31:Fliping a bit of the value pointed by a pointer
+2017-02-20 19:25:31:Type: The type is an integer type.
+2017-02-20 19:25:31:Type sizeof: 1
+2017-02-20 19:25:31:Mem contents(hex):0x2f
+2017-02-20 19:25:31:Fault Mode: Random bit-flip
+2017-02-20 19:25:31:base address to flip value: 0x7fffffffee3c 
+2017-02-20 19:25:31:address max offset: 1
+2017-02-20 19:25:31:Memory content before bitflip:0x2f
+2017-02-20 19:25:31:Backtrace BEGIN:
+2017-02-20 19:25:31:#0  __GI___waitpid (pid=211231, stat_loc=stat_loc@entry=0x7fffffffe4c8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x00000000004015a5 in update_timestamp () at ../include/log_helper.c:107
+#3  0x00000000004021aa in start_iteration () at ../include/log_helper.c:311
+#4  0x0000000000404446 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:374
+
+2017-02-20 19:25:31:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-02-20 19:25:31:Backtrace END
+2017-02-20 19:25:31:Type: A floating point type.
+2017-02-20 19:25:31:Type sizeof: 8
+2017-02-20 19:25:31:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-20 19:25:31:Fault Mode: Single bit-flip
+2017-02-20 19:25:31:base address to flip value: 0x606b10 
+2017-02-20 19:25:31:address max offset: 8
+2017-02-20 19:25:31:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-20 19:25:31:Memory content after  bitflip:0x000x000x000x000x000x000x020x00
+2017-02-20 19:25:31:Mem contents(hex):0x000x000x000x000x000x000x020x00
+2017-02-20 19:25:31:frame name: start_iteration
+2017-02-20 19:25:31:symbol name: kernel_time_acc
+2017-02-20 19:25:31:symbol filename: ../include/log_helper.c
+2017-02-20 19:25:31:symbol line: 62
+2017-02-20 19:25:31:value: 2.7813423231340017e-309
+2017-02-20 19:25:31:value address: 0x606b10 <kernel_time_acc>
+2017-02-20 19:25:31:Type: A floating point type.
+2017-02-20 19:25:31:Type sizeof: 8
+2017-02-20 19:25:31:Fault Injection Successful after 6.5997569561s
+2017-02-20 19:26:11:event type: exit
+2017-02-20 19:26:11:exit code: 0

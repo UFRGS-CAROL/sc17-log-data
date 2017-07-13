@@ -1,0 +1,43 @@
+2017-02-28 16:41:15:Starting flip_value script
+2017-02-28 16:41:15:Initialization strings:
+2017-02-28 16:41:16:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 16:41:16:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 16:41:16:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 16:41:16:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 16:41:16:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 16:41:16:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 16:41:16:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 16:41:16:initSignal:40
+2017-02-28 16:41:16:endSignal:49
+2017-02-28 16:41:16:seqSignal:20
+2017-02-28 16:41:59:Backtrace BEGIN:
+2017-02-28 16:41:59:#0  __GI_memset (dstpp=0x3e83070, c=0, len=16908552) at ../string/memset.c:59
+#1  0x0000000000552f8a in genvector_p (inum=4227136, elsize=4, file=0x5742c0 "/micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c", line=135) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/genmalloc/genmalloc.c:87
+#2  0x000000000054571b in compact_hash_init (ncells=266196, isize=2056, jsize=2056, report_level=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c:135
+#3  0x0000000000513572 in Mesh::calc_neighbors (this=0x7fae50, ncells=266196) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3626
+#4  0x0000000000445e6e in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:434
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 16:41:59:54	in ../string/memset.c
+
+2017-02-28 16:41:59:Backtrace END
+2017-02-28 16:42:03:Type: The type is an integer type.
+2017-02-28 16:42:03:Type sizeof: 4
+2017-02-28 16:42:03:Mem contents(hex):0x060x000x000x00
+2017-02-28 16:42:03:Fault Mode: Single bit-flip
+2017-02-28 16:42:03:base address to flip value: 0x572f98 
+2017-02-28 16:42:03:address max offset: 4
+2017-02-28 16:42:03:Memory content before bitflip:0x060x000x000x00
+2017-02-28 16:42:03:Memory content after  bitflip:0x060x000x200x00
+2017-02-28 16:42:03:Mem contents(hex):0x060x000x200x00
+2017-02-28 16:42:03:frame name: Mesh::calc_neighbors
+2017-02-28 16:42:03:symbol name: num_int_vals
+2017-02-28 16:42:03:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+2017-02-28 16:42:03:symbol line: 9547
+2017-02-28 16:42:03:value: 2097158
+2017-02-28 16:42:03:value address: 0x572f98 <num_int_vals>
+2017-02-28 16:42:03:Type: The type is an integer type.
+2017-02-28 16:42:03:Type sizeof: 4
+2017-02-28 16:42:03:Fault Injection Successful after 47.3808310032s
+2017-02-28 16:42:16:event type: exit
+2017-02-28 16:42:16:exit code: 0

@@ -1,0 +1,68 @@
+[INFO -- 2017-03-24 05:50:59]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-24 05:50:59]
+Initialization strings:
+[INFO -- 2017-03-24 05:50:59]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-24 05:50:59]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-24 05:50:59]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-24 05:50:59]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-24 05:50:59]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-24 05:50:59]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-24 05:50:59]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-24 05:50:59]
+initSignal:35
+[INFO -- 2017-03-24 05:50:59]
+endSignal:40
+[INFO -- 2017-03-24 05:50:59]
+seqSignal:20
+[INFO -- 2017-03-24 05:50:59]
+faultMode:3
+[INFO -- 2017-03-24 05:51:42]
+Backtrace BEGIN:
+#0  0x00000000004790ff in Mesh::is_left_boundary (this=0x7f9a50, ic=540) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.h:429
+#1  0x000000000044e384 in State::L__ZN5State25apply_boundary_conditionsEv_702__par_loop0_2_30 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:705
+#2  0x00007ffff790ba1f in ?? ()
+#3  0x00007fffffffe118 in ?? ()
+#4  0x00007fffffffe0e8 in ?? ()
+#5  0x0000000000000000 in ?? ()
+
+424	 * Boundary cell tests
+425	 *******************************************************************/
+426	   int  is_lower_boundary(int *iv, int *lev_begin, int ic)    { return (iv[ic] < lev_begin[level[ic]]); }
+427	   int  is_upper_boundary(int *iv, int *lev_end,   int ic)    { return (iv[ic] > lev_end[level[ic]]); }
+428	
+429	   int  is_left_boundary(int ic)    { return (i[ic] < lev_ibegin[level[ic]]); }
+430	   int  is_right_boundary(int ic)   { return (i[ic] > lev_iend[  level[ic]]); }
+431	   int  is_bottom_boundary(int ic)  { return (j[ic] < lev_jbegin[level[ic]]); }
+432	   int  is_top_boundary(int ic)     { return (j[ic] > lev_jend[  level[ic]]); }
+433	   int  is_front_boundary(int ic)   { return (k[ic] < lev_kbegin[level[ic]]); }
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7d07a8 
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: Mesh::is_left_boundary
+symbol name: save_ncells
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 162
+value: 0
+value address: 0x7d07a8 <save_ncells>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-24 05:51:42]
+Fault Injection Successful after 43.9261701107s
+[INFO -- 2017-03-24 05:51:59]
+event type: exit
+[INFO -- 2017-03-24 05:51:59]
+exit code: 0

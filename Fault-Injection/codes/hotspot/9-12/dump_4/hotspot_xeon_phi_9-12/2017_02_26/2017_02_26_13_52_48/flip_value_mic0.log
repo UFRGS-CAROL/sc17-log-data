@@ -1,0 +1,70 @@
+[INFO -- 2017-02-26 13:52:15]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 13:52:15]
+Initialization strings:
+[INFO -- 2017-02-26 13:52:15]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-26 13:52:15]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 13:52:15]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 13:52:15]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 13:52:15]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 13:52:15]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 13:52:15]
+initSignal:9
+[INFO -- 2017-02-26 13:52:15]
+endSignal:12
+[INFO -- 2017-02-26 13:52:15]
+seqSignal:15
+[INFO -- 2017-02-26 13:52:15]
+faultMode:2
+[EXCEPTION -- 2017-02-26 13:52:25]
+pythonException: invalid literal for int() with base 16: '0x7ffff7fb5000 ...'
+[INFO -- 2017-02-26 13:52:25]
+Backtrace BEGIN:
+#0  0x00007ffff714e403 in __GI_strlen (str=str@entry=0x7ffff71f07dc <dot> ".") at ../string/strlen.c:40
+#1  0x00007ffff71083f0 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe050 "324.834290", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0, loc=0x7ffff74253a0 <_nl_global_locale>) at strtod_l.c:586
+#2  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe050 "324.834290", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0) at strtod.c:54
+#3  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2332
+#4  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "324.834290\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#5  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#6  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#7  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+35	in ../string/strlen.c
+
+Backtrace END
+Fliping value of field: _sbf
+Fliping value of field: _f
+Fliping value of field: _cur_column
+Memory content before bitflip:0x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe4c0
+address max offset: 2
+Memory content after  bitflip:0xf20x83
+frame name: __GI___isoc99_vsscanf
+symbol name: sf
+symbol filename: isoc99_vsscanf.c
+symbol line: 35
+value: {_sbf = {_f = {_flags = -72515583, _IO_read_ptr = 0x7fffffffe64a "\n", _IO_read_end = 0x7fffffffe64b "", _IO_read_base = 0x7fffffffe640 "324.834290\n", _IO_write_base = 0x7fffffffe640 "324.834290\n", _IO_write_ptr = 0x7fffffffe640 "324.834290\n", _IO_write_end = 0x7fffffffe640 "324.834290\n", _IO_buf_base = 0x7fffffffe640 "324.834290\n", _IO_buf_end = 0x7fffffffe64b "", _IO_save_base = 0x0, _IO_backup_base = 0x0, _IO_save_end = 0x0, _markers = 0x0, _chain = 0x0, _fileno = 4196954, _flags2 = 16, _old_offset = 262144, _cur_column = 33778, _vtable_offset = 96 '`', _shortbuf = "", _lock = 0x0, _offset = 16, _codecvt = 0xd9fd61f, _wide_data = 0xffffffffffffffff, _freeres_list = 0x0, _freeres_buf = 0x3e8, _freeres_size = 0, _mode = -1, _unused2 = "\000\000\000\000\000\000\004\000\000\000\000\000\000X\000\000\000\000\000"}, vtable = 0x7ffff7423780 <_IO_str_jumps>}, _s = {_allocate_buffer = 0x0, _free_buffer = 0x5841cf24}}
+value address: 0x7fffffffe440
+Type: The type is a structure.
+Type sizeof: 240
+Field name: _sbf
+Field Type: The type is a structure.
+Field Type sizeof: 224
+Field name: _s
+Field Type: The type is a structure.
+Field Type sizeof: 16
+
+[INFO -- 2017-02-26 13:52:25]
+Fault Injection Successful after 10.7456579208s
+[INFO -- 2017-02-26 13:52:40]
+event type: exit
+[INFO -- 2017-02-26 13:52:40]
+exit code: 0

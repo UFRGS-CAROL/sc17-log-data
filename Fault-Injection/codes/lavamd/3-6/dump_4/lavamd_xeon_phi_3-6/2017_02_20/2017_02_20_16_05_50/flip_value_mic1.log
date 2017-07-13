@@ -1,0 +1,52 @@
+2017-02-20 16:04:59:Starting flip_value script
+2017-02-20 16:04:59:Initialization strings:
+2017-02-20 16:05:00:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-20 16:05:00:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 16:05:00:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 16:05:00:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-20 16:05:00:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-20 16:05:00:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-02-20 16:05:00:initSignal:3
+2017-02-20 16:05:00:endSignal:6
+2017-02-20 16:05:00:seqSignal:30
+2017-02-20 16:05:04:Backtrace BEGIN:
+2017-02-20 16:05:04:#0  0x0000000000401600 in fread@plt ()
+#1  0x000000000040262f in main (argc=7, argv=0x7fffffffebc8) at main_check.c:181
+
+2017-02-20 16:05:04:50	    char * input_charges;
+51	    char * output_gold;
+52	
+53	    int i, j, k, l, m, n;
+54	
+55	    par_str par_cpu;
+56	    dim_str dim_cpu;
+57	    box_str* box_cpu;
+58	    FOUR_VECTOR* rv_cpu;
+59	    fp* qv_cpu;
+
+2017-02-20 16:05:04:Backtrace END
+2017-02-20 16:05:04:Type: The type is a structure.
+2017-02-20 16:05:04:Type sizeof: 8
+2017-02-20 16:05:04:Fliping value of field: alpha
+2017-02-20 16:05:04:Type: A floating point type.
+2017-02-20 16:05:04:Type sizeof: 8
+2017-02-20 16:05:05:Mem contents(hex):0x000x000x000x000x000x000xe00x3f
+2017-02-20 16:05:05:Fault Mode: Double bit-flip
+2017-02-20 16:05:05:base address to flip value: 0x7fffffffe8a0
+2017-02-20 16:05:05:address max offset: 8
+2017-02-20 16:05:05:Memory content before bitflip:0x000x000x000x000x000x000xe00x3f
+2017-02-20 16:05:05:Memory content after  bitflip:0x000x000x000x000x000x000xe00x17
+2017-02-20 16:05:05:Mem contents(hex):0x000x000x000x000x000x000xe00x17
+2017-02-20 16:05:05:frame name: main
+2017-02-20 16:05:05:symbol name: par_cpu
+2017-02-20 16:05:05:symbol filename: main_check.c
+2017-02-20 16:05:05:symbol line: 55
+2017-02-20 16:05:05:value: {alpha = 1.0959046745042015e-193}
+2017-02-20 16:05:05:value address: 0x7fffffffe8a0
+2017-02-20 16:05:05:Type: The type is a structure.
+2017-02-20 16:05:05:Type sizeof: 8
+2017-02-20 16:05:05:Field name: alpha
+2017-02-20 16:05:05:Field Type:
+2017-02-20 16:05:05:Type: A floating point type.
+2017-02-20 16:05:05:Type sizeof: 8
+2017-02-20 16:05:05:Fault Injection Successful after 5.0630440712s

@@ -1,0 +1,47 @@
+2016-10-29 02:03:45:Initialization strings:
+2016-10-29 02:03:45:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-29 02:03:45:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-29 02:03:45:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-29 02:03:45:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-29 02:03:45:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-29 02:03:45:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-29 02:03:46:Trying Fault Injection
+2016-10-29 02:03:46:Backtrace BEGIN:
+2016-10-29 02:03:46:#0  _dl_fixup (l=<optimized out>, reloc_arg=<optimized out>) at ../elf/dl-runtime.c:148
+#1  0x00007ffff7df1859 in _dl_runtime_resolve () at ../sysdeps/x86_64/dl-trampoline.S:89
+#2  0x00007ffff7165945 in tzset_internal (always=<optimized out>, explicit=explicit@entry=1) at tzset.c:443
+#3  0x00007ffff7165cab in __tz_convert (timer=0x7fffffffe570, use_localtime=0, tp=0x7ffff7429460 <_tmbuf>) at tzset.c:632
+#4  0x0000000000405d39 in start_log_file (benchmark_name=0x1 <error: Cannot access memory at address 0x1>, test_info=0x0) at ../../include/log_helper.c:204
+#5  0x0000000000401681 in main (argc=1, argv=0x0) at hotspot_check.c:254
+
+2016-10-29 02:03:46:143	in ../elf/dl-runtime.c
+
+2016-10-29 02:03:46:Backtrace END
+2016-10-29 02:03:46:Type: The type is an integer type.
+2016-10-29 02:03:46:Type sizeof: 4
+2016-10-29 02:03:46:Mem contents(hex):0x010x000x000x00
+2016-10-29 02:03:46:base address to flip value: 0x7ffff7426a0c 
+2016-10-29 02:03:46:address max offset: 4
+2016-10-29 02:03:46:Memory content before bitflip:0x010x000x000x00
+2016-10-29 02:03:46:Memory content after  bitflip:0x010x000x040x00
+2016-10-29 02:03:46:Mem contents(hex):0x010x000x040x00
+2016-10-29 02:03:46:frame name: tzset_internal
+2016-10-29 02:03:46:symbol name: is_initialized
+2016-10-29 02:03:46:symbol filename: tzset.c
+2016-10-29 02:03:46:symbol line: 405
+2016-10-29 02:03:46:value: 262145
+2016-10-29 02:03:46:value address: 0x7ffff7426a0c <is_initialized>
+2016-10-29 02:03:46:Type: The type is an integer type.
+2016-10-29 02:03:46:Type sizeof: 4
+2016-10-29 02:03:46:Fault Injection Successful after 1.37735795975s
+2016-10-29 02:03:48:Fault Already Injected
+2016-10-29 02:03:49:Fault Already Injected
+2016-10-29 02:03:49:Fault Already Injected
+2016-10-29 02:03:51:Fault Already Injected
+2016-10-29 02:03:54:Fault Already Injected
+2016-10-29 02:03:56:Fault Already Injected
+2016-10-29 02:03:56:Fault Already Injected
+2016-10-29 02:04:00:Fault Already Injected
+2016-10-29 02:04:00:Fault Already Injected
+2016-10-29 02:04:01:event type: exit
+2016-10-29 02:04:01:exit code: 0

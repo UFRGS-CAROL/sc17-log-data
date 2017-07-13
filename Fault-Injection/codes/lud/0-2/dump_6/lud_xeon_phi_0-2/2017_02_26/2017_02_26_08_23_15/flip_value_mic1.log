@@ -1,0 +1,75 @@
+[INFO -- 2017-02-26 08:22:48]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 08:22:48]
+Initialization strings:
+[INFO -- 2017-02-26 08:22:48]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-26 08:22:48]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 08:22:48]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 08:22:48]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 08:22:48]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 08:22:48]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-26 08:22:48]
+initSignal:0
+[INFO -- 2017-02-26 08:22:48]
+endSignal:2
+[INFO -- 2017-02-26 08:22:48]
+seqSignal:30
+[INFO -- 2017-02-26 08:22:48]
+faultMode:1
+[INFO -- 2017-02-26 08:22:49]
+Backtrace BEGIN:
+#0  0x00007ffff7df4247 in open64 () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7de23e8 in open_verify (name=0x3 <error: Cannot access memory at address 0x3>, name@entry=0x7fffffffe1d0 "/usr/lib64/tls/libiomp5.so", fbp=fbp@entry=0x7fffffffe3c8, loader=loader@entry=0x7ffff7ffe168, whatcode=whatcode@entry=64, mode=mode@entry=0, found_other_class=found_other_class@entry=0x7fffffffe3b7, free_name=false) at dl-load.c:1537
+#2  0x00007ffff7de2afc in open_path (name=name@entry=0x400ba5 "libiomp5.so", namelen=namelen@entry=12, mode=mode@entry=0, sps=sps@entry=0x7ffff7ffcdf0 <rtld_search_dirs>, realname=realname@entry=0x7fffffffe3b8, fbp=fbp@entry=0x7fffffffe3c8, loader=0x7ffff7ffe168, whatcode=64, found_other_class=0x7fffffffe3b7) at dl-load.c:1806
+#3  0x00007ffff7de574f in _dl_map_object (loader=0x7ffff7ffe168, name=0x400ba5 "libiomp5.so", type=1, trace_mode=0, mode=0, nsid=<optimized out>) at dl-load.c:2109
+#4  0x00007ffff7de964f in openaux (a=a@entry=0x7fffffffe9b8) at dl-deps.c:63
+#5  0x00007ffff7deba83 in _dl_catch_error (objname=objname@entry=0x7fffffffe9b0, errstring=errstring@entry=0x7fffffffe9a8, mallocedp=mallocedp@entry=0x7fffffffe9a7, operate=operate@entry=0x7ffff7de9620 <openaux>, args=args@entry=0x7fffffffe9b8) at dl-error.c:187
+#6  0x00007ffff7de98a9 in _dl_map_object_deps (map=map@entry=0x7ffff7ffe168, preloads=<optimized out>, npreloads=npreloads@entry=0, trace_mode=trace_mode@entry=0, open_mode=open_mode@entry=0) at dl-deps.c:254
+#7  0x00007ffff7ddff28 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1612
+#8  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#9  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#10 _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#11 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#12 0x0000000000000009 in ?? ()
+#13 0x00007fffffffee08 in ?? ()
+#14 0x00007fffffffee3f in ?? ()
+#15 0x00007fffffffee42 in ?? ()
+#16 0x00007fffffffee47 in ?? ()
+#17 0x00007fffffffee4a in ?? ()
+#18 0x00007fffffffee4e in ?? ()
+#19 0x00007fffffffee51 in ?? ()
+#20 0x00007fffffffee90 in ?? ()
+#21 0x00007fffffffee93 in ?? ()
+#22 0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x6e0xae0xde0xf70xff0x7f0x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe908
+address max offset: 8
+Memory content after  bitflip:0x7a0xae0xde0xf70xff0x7f0x000x00
+frame name: _dl_map_object_deps
+symbol name: needed_space
+symbol filename: dl-deps.c
+symbol line: 188
+value: 0x7ffff7deae6e <_dl_important_hwcaps+1646>
+value address: 0x7fffffffe908
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-26 08:22:49]
+Fault Injection Successful after 1.77009010315s
+[INFO -- 2017-02-26 08:23:08]
+event type: exit
+[INFO -- 2017-02-26 08:23:08]
+exit code: 0

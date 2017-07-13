@@ -1,0 +1,56 @@
+[INFO -- 2017-03-27 22:27:14]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 22:27:14]
+Initialization strings:
+[INFO -- 2017-03-27 22:27:15]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 22:27:15]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 22:27:15]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 22:27:15]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 22:27:15]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 22:27:15]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 22:27:15]
+initSignal:0
+[INFO -- 2017-03-27 22:27:15]
+endSignal:3
+[INFO -- 2017-03-27 22:27:15]
+seqSignal:30
+[INFO -- 2017-03-27 22:27:15]
+faultMode:1
+[INFO -- 2017-03-27 22:27:16]
+Backtrace BEGIN:
+#0  0x00007ffff7142890 in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1368
+#1  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#2  0x0000000000402204 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:149
+
+1363	in fileops.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: x
+Memory content before bitflip:0xcd0xcc0xcc0xcc0xcc0xcc0xec0x3f
+Fault Mode: Double bit-flip
+base address to flip value: 0x7ffff6063018
+address max offset: 8
+Memory content after  bitflip:0xcd0xcc0xcc0x4e0xcc0xcc0xec0x3f
+frame name: main
+symbol name: rv_cpu
+symbol filename: main_check.c
+symbol line: 58
+value: 0x7ffff6063010
+value address: 0x7fffffffe940
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-27 22:27:16]
+Fault Injection Successful after 1.06817603111s
+[INFO -- 2017-03-27 22:27:34]
+event type: exit
+[INFO -- 2017-03-27 22:27:34]
+exit code: 1

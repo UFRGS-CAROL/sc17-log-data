@@ -1,0 +1,56 @@
+[INFO -- 2017-03-26 16:39:28]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 16:39:28]
+Initialization strings:
+[INFO -- 2017-03-26 16:39:28]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 16:39:28]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 16:39:28]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 16:39:28]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 16:39:28]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 16:39:28]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 16:39:28]
+initSignal:0
+[INFO -- 2017-03-26 16:39:28]
+endSignal:3
+[INFO -- 2017-03-26 16:39:28]
+seqSignal:30
+[INFO -- 2017-03-26 16:39:28]
+faultMode:3
+[INFO -- 2017-03-26 16:39:29]
+Backtrace BEGIN:
+#0  0x00007ffff71505d6 in __GI_memcpy (dstpp=dstpp@entry=0x7ffff69ce4c8, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#3  0x0000000000402286 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:151
+
+54	in ../string/memcpy.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0xfb0xed0xff0xff0xff0x7f0x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe888
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: main
+symbol name: input_distance
+symbol filename: main_check.c
+symbol line: 49
+value: 0x7fffffffedfb "/micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15"
+value address: 0x7fffffffe888
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-26 16:39:29]
+Fault Injection Successful after 1.66281604767s
+[INFO -- 2017-03-26 16:39:44]
+event type: exit
+[INFO -- 2017-03-26 16:39:44]
+exit code: 0

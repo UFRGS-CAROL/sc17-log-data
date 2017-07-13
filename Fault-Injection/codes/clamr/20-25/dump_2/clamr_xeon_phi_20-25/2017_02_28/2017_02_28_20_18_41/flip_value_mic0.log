@@ -1,0 +1,99 @@
+2017-02-28 20:15:50:Starting flip_value script
+2017-02-28 20:15:50:Initialization strings:
+2017-02-28 20:15:50:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 20:15:50:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 20:15:50:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 20:15:51:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 20:15:51:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 20:15:51:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 20:15:51:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 20:15:51:initSignal:20
+2017-02-28 20:15:51:endSignal:25
+2017-02-28 20:15:51:seqSignal:20
+2017-02-28 20:16:15:Backtrace BEGIN:
+2017-02-28 20:16:15:#0  0x0000000000478cf8 in w_corrector (deltaT=0.00044890442109439798, dr=1, U_eigen=8.2825116963394638, grad_half=0, grad_minus=0, grad_plus=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:229
+#1  0x000000000045c49d in State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1576
+#2  0x00007ffff790ba1f in ?? ()
+#3  0x00007fffffffdac0 in ?? ()
+#4  0x00007fffffffdab8 in ?? ()
+#5  0x00007fffffffdad0 in ?? ()
+#6  0x00007fffffffdad8 in ?? ()
+#7  0x00007fffffffda38 in ?? ()
+#8  0x00007fffffffda70 in ?? ()
+#9  0x00007fffffffda68 in ?? ()
+#10 0x00007fffffffdba8 in ?? ()
+#11 0x00007fffffffdbc8 in ?? ()
+#12 0x00007fffffffdbe8 in ?? ()
+#13 0x00007fffffffda30 in ?? ()
+#14 0x00000000000000e4 in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+2017-02-28 20:16:15:224	        real_t    grad_plus) {  // Upwind gradient
+225	
+226	   real_t nu     = HALF * U_eigen * deltaT / dr;
+227	   nu          = nu * (ONE - nu);
+228	
+229	   real_t rdenom = ONE / max(SQR(grad_half), EPSILON);
+230	   real_t rplus  = (grad_plus  * grad_half) * rdenom;
+231	   real_t rminus = (grad_minus * grad_half) * rdenom;
+232	
+233	   return HALF*nu*(ONE- max(MIN3(ONE, rplus, rminus), ZERO));
+
+2017-02-28 20:16:15:Backtrace END
+2017-02-28 20:16:43:Type: A floating point type.
+2017-02-28 20:16:43:Type sizeof: 8
+2017-02-28 20:16:43:Mem contents(hex):0x9e0x930xd40x570xd50x660x5e0x3f
+2017-02-28 20:16:43:Fault Mode: Zero bit-flip
+2017-02-28 20:16:43:base address to flip value: 0x7fffffffca70
+2017-02-28 20:16:43:address max offset: 8
+2017-02-28 20:16:43:Memory content before bitflip:0x9e0x930xd40x570xd50x660x5e0x3f
+2017-02-28 20:16:43:Backtrace BEGIN:
+2017-02-28 20:16:43:#0  0x0000000000478cf8 in w_corrector (deltaT=0.00044890442109439798, dr=1, U_eigen=8.2825116963394638, grad_half=0, grad_minus=0, grad_plus=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:229
+#1  0x000000000045c49d in State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1576
+#2  0x00007ffff790ba1f in ?? ()
+#3  0x00007fffffffdac0 in ?? ()
+#4  0x00007fffffffdab8 in ?? ()
+#5  0x00007fffffffdad0 in ?? ()
+#6  0x00007fffffffdad8 in ?? ()
+#7  0x00007fffffffda38 in ?? ()
+#8  0x00007fffffffda70 in ?? ()
+#9  0x00007fffffffda68 in ?? ()
+#10 0x00007fffffffdba8 in ?? ()
+#11 0x00007fffffffdbc8 in ?? ()
+#12 0x00007fffffffdbe8 in ?? ()
+#13 0x00007fffffffda30 in ?? ()
+#14 0x00000000000000e4 in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+2017-02-28 20:16:43:224	        real_t    grad_plus) {  // Upwind gradient
+225	
+226	   real_t nu     = HALF * U_eigen * deltaT / dr;
+227	   nu          = nu * (ONE - nu);
+228	
+229	   real_t rdenom = ONE / max(SQR(grad_half), EPSILON);
+230	   real_t rplus  = (grad_plus  * grad_half) * rdenom;
+231	   real_t rminus = (grad_minus * grad_half) * rdenom;
+232	
+233	   return HALF*nu*(ONE- max(MIN3(ONE, rplus, rminus), ZERO));
+
+2017-02-28 20:16:43:Backtrace END
+2017-02-28 20:16:47:Type: A floating point type.
+2017-02-28 20:16:47:Type sizeof: 8
+2017-02-28 20:16:47:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-28 20:16:47:Fault Mode: Single bit-flip
+2017-02-28 20:16:47:base address to flip value: 0x7fffffffced8
+2017-02-28 20:16:47:address max offset: 8
+2017-02-28 20:16:47:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-28 20:16:47:Memory content after  bitflip:0x000x800x000x000x000x000x000x00
+2017-02-28 20:16:47:Mem contents(hex):0x000x800x000x000x000x000x000x00
+2017-02-28 20:16:47:frame name: State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37
+2017-02-28 20:16:47:symbol name: Vxplus
+2017-02-28 20:16:47:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+2017-02-28 20:16:47:symbol line: 1399
+2017-02-28 20:16:47:value: 1.6189543082925967e-319
+2017-02-28 20:16:47:value address: 0x7fffffffced8
+2017-02-28 20:16:47:Type: A floating point type.
+2017-02-28 20:16:47:Type sizeof: 8
+2017-02-28 20:16:47:Fault Injection Successful after 56.7740390301s
+2017-02-28 20:17:16:event type: exit
+2017-02-28 20:17:16:exit code: 0

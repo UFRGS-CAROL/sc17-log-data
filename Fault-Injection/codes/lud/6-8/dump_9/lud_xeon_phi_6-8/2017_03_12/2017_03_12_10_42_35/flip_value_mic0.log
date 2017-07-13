@@ -1,0 +1,66 @@
+[INFO -- 2017-03-12 10:41:53]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-12 10:41:53]
+Initialization strings:
+[INFO -- 2017-03-12 10:41:54]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-12 10:41:54]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-12 10:41:54]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-12 10:41:54]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-12 10:41:54]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-12 10:41:54]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-03-12 10:41:54]
+initSignal:6
+[INFO -- 2017-03-12 10:41:54]
+endSignal:8
+[INFO -- 2017-03-12 10:41:54]
+seqSignal:30
+[INFO -- 2017-03-12 10:41:54]
+faultMode:2
+[EXCEPTION -- 2017-03-12 10:42:05]
+pythonException: invalid frame
+[INFO -- 2017-03-12 10:42:05]
+Backtrace BEGIN:
+#0  0x00000000004031c6 in L_main_130__par_loop0_2_0 () at lud_check.c:134
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x0000000000000000 in ?? ()
+
+129	    int i, host_errors = 0;
+130	#pragma omp parallel for reduction(+:host_errors)
+131		for ( i = 0; i < matrix_dim; i++) {
+132			int j;
+133			for ( j = 0; j < matrix_dim; j++) {
+134	                	if ((fabs((m[i + matrix_dim * j] - gold[i + matrix_dim * j]) / m[i + matrix_dim * j]) > 0.0000000001) || (fabs((m[i + matrix_dim * j] - gold[i + matrix_dim * j]) / gold[i + matrix_dim * j]) > 0.0000000001)) {
+135				//if (m[i + matrix_dim * j] != gold[i + matrix_dim * j]) {
+136					char error_detail[200];
+137					sprintf(error_detail," p: [%d, %d], r: %1.16e, e: %1.16e", i, j, m[i + matrix_dim * j], gold[i + matrix_dim * j]);
+138					host_errors++;
+
+Backtrace END
+Memory content before bitflip:0x690x7a0x400x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe050
+address max offset: 4
+Memory content after  bitflip:0xea0x060x4f0x5a
+frame name: L_main_130__par_loop0_2_0
+symbol name: ret
+symbol filename: lud_check.c
+symbol line: 48
+value: (unknown: 1515128554)
+value address: 0x7fffffffe050
+Type: The type is an enum.
+Type sizeof: 4
+Field name: RET_SUCCESS
+
+[INFO -- 2017-03-12 10:42:05]
+Fault Injection Successful after 11.5295910835s
+[INFO -- 2017-03-12 10:42:06]
+event type: exit
+[INFO -- 2017-03-12 10:42:06]
+exit code: 0

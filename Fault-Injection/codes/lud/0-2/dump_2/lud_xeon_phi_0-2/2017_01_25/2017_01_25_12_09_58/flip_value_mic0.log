@@ -1,0 +1,107 @@
+2017-01-25 12:09:17:Starting flip_value script
+2017-01-25 12:09:17:Initialization strings:
+2017-01-25 12:09:18:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 12:09:18:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 12:09:18:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 12:09:18:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 12:09:18:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 12:09:18:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 12:09:18:initSignal:0
+2017-01-25 12:09:18:endSignal:2
+2017-01-25 12:09:18:seqSignal:30
+2017-01-25 12:09:18:Trying Fault Injection
+2017-01-25 12:09:18:Inferior PID: 85669
+2017-01-25 12:09:18:Inferior is valid: True
+2017-01-25 12:09:18:Inferior #threads: 123
+2017-01-25 12:09:18:Backtrace BEGIN:
+2017-01-25 12:09:18:#0  0x00007ffff719f097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff74321df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:640
+#2  __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffa01e5600) at pthread_create.c:524
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-01-25 12:09:18:76	in ../sysdeps/unix/syscall-template.S
+
+2017-01-25 12:09:18:Backtrace END
+2017-01-25 12:09:21:Trying Fault Injection
+2017-01-25 12:09:21:Inferior PID: 85669
+2017-01-25 12:09:21:Inferior is valid: True
+2017-01-25 12:09:21:Inferior #threads: 123
+2017-01-25 12:09:21:Backtrace BEGIN:
+2017-01-25 12:09:21:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd2d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff7fd2df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff7fd2d14 in ?? ()
+#8  0x00007ffff7fd2de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+2017-01-25 12:09:21:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-01-25 12:09:21:Backtrace END
+2017-01-25 12:09:23:Thread name: None
+2017-01-25 12:09:23:Thread num: 1
+2017-01-25 12:09:23:Thread ptid: (85669, 85669, 0)
+2017-01-25 12:09:23:bitFlip function
+2017-01-25 12:09:23:Type: The type is an array.
+2017-01-25 12:09:23:Type sizeof: 12
+2017-01-25 12:09:23:Fliping array at pos: 0
+2017-01-25 12:09:23:bitFlip function
+2017-01-25 12:09:23:Type: The type is an integer type.
+2017-01-25 12:09:23:Type sizeof: 4
+2017-01-25 12:09:23:Mem contents(hex):0x400x000x000x00
+2017-01-25 12:09:23:base address to flip value: 0x7ffff743c260 
+2017-01-25 12:09:23:address max offset: 4
+2017-01-25 12:09:23:Memory content before bitflip:0x400x000x000x00
+2017-01-25 12:09:23:Memory content after  bitflip:0x400x040x000x00
+2017-01-25 12:09:23:Mem contents(hex):0x400x040x000x00
+2017-01-25 12:09:23:frame name: __pthread_create_2_1
+2017-01-25 12:09:23:symbol name: _thread_db_pthread_key_struct_seq
+2017-01-25 12:09:23:symbol filename: ../nptl_db/structs.def
+2017-01-25 12:09:23:symbol line: 63
+2017-01-25 12:09:23:value: {1088, 1, 0}
+2017-01-25 12:09:23:value address: 0x7ffff743c260 <_thread_db_pthread_key_struct_seq>
+2017-01-25 12:09:23:Type: The type is an array.
+2017-01-25 12:09:23:Type sizeof: 12
+2017-01-25 12:09:23:Field name: None
+2017-01-25 12:09:23:Field Type:
+2017-01-25 12:09:23:Type: A range type, that is, an integer type with bounds.
+2017-01-25 12:09:23:Type sizeof: 8
+2017-01-25 12:09:23:Type range: (0L, 2L)
+2017-01-25 12:09:23:Fault Injection Successful after 5.65803289413s
+2017-01-25 12:09:23:Fault Already Injected
+2017-01-25 12:09:23:Thread name: None
+2017-01-25 12:09:23:Thread num: 1
+2017-01-25 12:09:23:Thread ptid: (85669, 85669, 0)
+2017-01-25 12:09:23:bitFlip function
+2017-01-25 12:09:23:Type: The type is an array.
+2017-01-25 12:09:23:Type sizeof: 21
+2017-01-25 12:09:23:Fliping array at pos: 14
+2017-01-25 12:09:23:bitFlip function
+2017-01-25 12:09:23:Type: The type is an integer type.
+2017-01-25 12:09:23:Type sizeof: 1
+2017-01-25 12:09:23:Mem contents(hex):0x74
+2017-01-25 12:09:23:base address to flip value: 0x7ffff743c20e  
+2017-01-25 12:09:23:address max offset: 1
+2017-01-25 12:09:23:Memory content before bitflip:0x74
+2017-01-25 12:09:23:Memory content after  bitflip:0x54
+2017-01-25 12:09:23:Mem contents(hex):0x54
+2017-01-25 12:09:23:frame name: allocate_stack
+2017-01-25 12:09:23:symbol name: __PRETTY_FUNCTION__
+2017-01-25 12:09:23:symbol filename: pthread_create.c
+2017-01-25 12:09:23:symbol line: 0
+2017-01-25 12:09:23:value: "__pthread_creaTe_2_1"
+2017-01-25 12:09:23:value address: 0x7ffff743c200 <__PRETTY_FUNCTION__.11616>
+2017-01-25 12:09:23:Type: The type is an array.
+2017-01-25 12:09:23:Type sizeof: 21
+2017-01-25 12:09:23:Field name: None
+2017-01-25 12:09:23:Field Type:
+2017-01-25 12:09:23:Type: A range type, that is, an integer type with bounds.
+2017-01-25 12:09:23:Type sizeof: 8
+2017-01-25 12:09:23:Type range: (0L, 20L)
+2017-01-25 12:09:23:Fault Injection Successful after 5.95115590096s

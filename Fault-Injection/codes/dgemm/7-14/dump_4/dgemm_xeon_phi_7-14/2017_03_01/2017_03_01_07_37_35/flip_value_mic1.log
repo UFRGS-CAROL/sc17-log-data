@@ -1,0 +1,67 @@
+2017-03-01 07:31:32:Starting flip_value script
+2017-03-01 07:31:32:Initialization strings:
+2017-03-01 07:31:32:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-01 07:31:32:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 07:31:32:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 07:31:32:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-01 07:31:32:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-01 07:31:32:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-03-01 07:31:32:initSignal:7
+2017-03-01 07:31:32:endSignal:14
+2017-03-01 07:31:32:seqSignal:15
+2017-03-01 07:31:41:Backtrace BEGIN:
+2017-03-01 07:31:41:#0  0x000000000040440b in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:367
+
+2017-03-01 07:31:41:362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+371	        kernel_start = timing_get_time();
+
+2017-03-01 07:31:41:Backtrace END
+2017-03-01 07:31:41:Type: The type is a pointer.
+2017-03-01 07:31:41:Type sizeof: 8
+2017-03-01 07:31:41:Fliping a bit of the pointer
+2017-03-01 07:31:41:Mem contents(hex):0x000xee0xff0xff0xff0x7f0x000x00
+2017-03-01 07:31:41:Fault Mode: Random bit-flip
+2017-03-01 07:31:41:base address to flip value: 0x7fffffffe9f8
+2017-03-01 07:31:41:address max offset: 8
+2017-03-01 07:31:41:Memory content before bitflip:0x000xee0xff0xff0xff0x7f0x000x00
+2017-03-01 07:31:42:Backtrace BEGIN:
+2017-03-01 07:31:42:#0  0x000000000040440b in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:367
+
+2017-03-01 07:31:42:362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+371	        kernel_start = timing_get_time();
+
+2017-03-01 07:31:42:Backtrace END
+2017-03-01 07:31:42:Type: The type is an integer type.
+2017-03-01 07:31:42:Type sizeof: 4
+2017-03-01 07:31:42:Mem contents(hex):0x010x000x000x00
+2017-03-01 07:31:42:Fault Mode: Single bit-flip
+2017-03-01 07:31:42:base address to flip value: 0x7fffffffe8d8
+2017-03-01 07:31:42:address max offset: 4
+2017-03-01 07:31:42:Memory content before bitflip:0x010x000x000x00
+2017-03-01 07:31:42:Memory content after  bitflip:0x010x000x020x00
+2017-03-01 07:31:42:Mem contents(hex):0x010x000x020x00
+2017-03-01 07:31:42:frame name: main
+2017-03-01 07:31:42:symbol name: iterations
+2017-03-01 07:31:42:symbol filename: dgemm.c
+2017-03-01 07:31:42:symbol line: 284
+2017-03-01 07:31:42:value: 131073
+2017-03-01 07:31:42:value address: 0x7fffffffe8d8
+2017-03-01 07:31:42:Type: The type is an integer type.
+2017-03-01 07:31:42:Type sizeof: 4
+2017-03-01 07:31:42:Fault Injection Successful after 10.5032300949s

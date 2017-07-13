@@ -1,0 +1,46 @@
+2017-01-13 13:38:43:Starting flip_value script
+2017-01-13 13:38:43:Initialization strings:
+2017-01-13 13:38:43:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-13 13:38:43:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-13 13:38:43:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-13 13:38:43:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-13 13:38:43:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-13 13:38:43:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-13 13:38:43:initSignal:0
+2017-01-13 13:38:43:endSignal:7
+2017-01-13 13:38:43:seqSignal:15
+2017-01-13 13:38:47:Backtrace BEGIN:
+2017-01-13 13:38:47:#0  0x0000000000403cdf in read_gold (gold=0x7fffeecc9040, fileGold=0x7fffffffee78 "/micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks", order=2048) at dgemm.c:265
+#1  0x00000000004041e3 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:329
+
+2017-01-13 13:38:47:260	    if( (file = fopen(fileGold, "rb" )) == 0 ) {
+261	        printf( "The gold file was not opened\n" );
+262	        exit(1);
+263	    }
+264	
+265	    for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+266	            fread(&gold[(i)+(order)*(j)], 1, sizeof(double), file);
+267	        }
+268	    fclose(file);
+269	}
+
+2017-01-13 13:38:47:Backtrace END
+2017-01-13 13:38:47:Type: The type is an integer type.
+2017-01-13 13:38:47:Type sizeof: 4
+2017-01-13 13:38:47:Mem contents(hex):0xff0x7f0x000x00
+2017-01-13 13:38:47:base address to flip value: 0x7fffffffe93c
+2017-01-13 13:38:47:address max offset: 4
+2017-01-13 13:38:47:Memory content before bitflip:0xff0x7f0x000x00
+2017-01-13 13:38:47:Memory content after  bitflip:0xff0x770x000x00
+2017-01-13 13:38:47:Mem contents(hex):0xff0x770x000x00
+2017-01-13 13:38:47:frame name: main
+2017-01-13 13:38:47:symbol name: loop
+2017-01-13 13:38:47:symbol filename: dgemm.c
+2017-01-13 13:38:47:symbol line: 348
+2017-01-13 13:38:47:value: 30719
+2017-01-13 13:38:47:value address: 0x7fffffffe93c
+2017-01-13 13:38:47:Type: The type is an integer type.
+2017-01-13 13:38:47:Type sizeof: 4
+2017-01-13 13:38:47:Fault Injection Successful after 4.62733793259s
+2017-01-13 13:39:24:event type: exit
+2017-01-13 13:39:24:exit code: 0

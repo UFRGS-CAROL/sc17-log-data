@@ -1,0 +1,75 @@
+2016-10-17 23:16:49:Initialization strings:
+2016-10-17 23:16:49:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-17 23:16:49:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-17 23:16:49:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-17 23:16:49:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-17 23:16:49:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-17 23:16:49:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-17 23:16:50:Trying Fault Injection
+2016-10-17 23:16:50:Inferior PID: 170754
+2016-10-17 23:16:50:Inferior is valid: True
+2016-10-17 23:16:50:Inferior #threads: 1
+2016-10-17 23:16:50:Backtrace BEGIN:
+2016-10-17 23:16:50:#0  0x00007ffff7de5e89 in do_lookup_x (undef_name=undef_name@entry=0x7ffff70e5546 "error_message_count", new_hash=new_hash@entry=2892175419, old_hash=old_hash@entry=0x7fffffffe830, ref=0x7ffff70dc9f0, result=result@entry=0x7fffffffe840, scope=<optimized out>, i=4, version=0x7ffff7ff8c70, flags=1, skip=0x0, type_class=0, undef_map=0x7ffff7ff99a0) at dl-lookup.c:402
+#1  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x7ffff70e5546 "error_message_count", undef_map=undef_map@entry=0x7ffff7ff99a0, ref=ref@entry=0x7fffffffe990, symbol_scope=symbol_scope@entry=0x7ffff7ff9cf8, version=0x7ffff7ff8c70, type_class=0, flags=1, skip_map=0x0) at dl-lookup.c:775
+#2  0x00007ffff7de854f in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=<optimized out>, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff70ef6f8, map=0x7ffff7ff99a0) at ../sysdeps/x86_64/dl-machine.h:277
+#3  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ff99a0) at do-rel.h:137
+#4  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#5  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#6  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#7  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#8  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#9  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#10 0x0000000000000007 in ?? ()
+#11 0x00007fffffffedf0 in ?? ()
+#12 0x00007fffffffee1e in ?? ()
+#13 0x00007fffffffee22 in ?? ()
+#14 0x00007fffffffee25 in ?? ()
+#15 0x00007fffffffee62 in ?? ()
+#16 0x00007fffffffee9e in ?? ()
+#17 0x00007fffffffeed8 in ?? ()
+#18 0x0000000000000000 in ?? ()
+
+2016-10-17 23:16:50:397	in dl-lookup.c
+
+2016-10-17 23:16:50:Backtrace END
+2016-10-17 23:16:50:Thread name: None
+2016-10-17 23:16:50:Thread num: 1
+2016-10-17 23:16:50:Thread ptid: (170754, 170754, 0)
+2016-10-17 23:16:50:bitFlip function
+2016-10-17 23:16:50:Type: The type is a pointer.
+2016-10-17 23:16:50:Type sizeof: 8
+2016-10-17 23:16:50:Fliping a bit of the value pointed by a pointer
+2016-10-17 23:16:50:bitFlip function
+2016-10-17 23:16:50:Type: The type is a structure.
+2016-10-17 23:16:50:Type sizeof: 1136
+2016-10-17 23:16:50:Fliping value of field: l_entry
+2016-10-17 23:16:50:bitFlip function
+2016-10-17 23:16:50:Type: The type is an integer type.
+2016-10-17 23:16:50:Type sizeof: 8
+2016-10-17 23:16:50:Mem contents(hex):0x200x0d0x0f0xf70xff0x7f0x000x00
+2016-10-17 23:16:50:base address to flip value: 0x7ffff7ff9c48
+2016-10-17 23:16:50:address max offset: 8
+2016-10-17 23:16:50:Memory content before bitflip:0x200x0d0x0f0xf70xff0x7f0x000x00
+2016-10-17 23:16:50:Memory content after  bitflip:0x200x0d0x0f0xf70x7f0x7f0x000x00
+2016-10-17 23:16:50:Mem contents(hex):0x200x0d0x0f0xf70x7f0x7f0x000x00
+2016-10-17 23:16:50:frame name: do_lookup_x
+2016-10-17 23:16:50:symbol name: undef_map
+2016-10-17 23:16:50:symbol filename: dl-lookup.c
+2016-10-17 23:16:50:symbol line: 354
+2016-10-17 23:16:50:value: 0x7ffff7ff99a0
+2016-10-17 23:16:50:value address: 0x7fffffffe7d8
+2016-10-17 23:16:50:Type: The type is a pointer.
+2016-10-17 23:16:50:Type sizeof: 8
+2016-10-17 23:16:50:Fault Injection Successful after 1.25921106339s
+2016-10-17 23:16:51:Fault Already Injected
+2016-10-17 23:16:54:Fault Already Injected
+2016-10-17 23:16:54:Fault Already Injected
+2016-10-17 23:16:54:Fault Already Injected
+2016-10-17 23:16:55:Fault Already Injected
+2016-10-17 23:16:57:Fault Already Injected
+2016-10-17 23:16:57:Fault Already Injected
+2016-10-17 23:16:58:Fault Already Injected
+2016-10-17 23:16:59:Fault Already Injected
+2016-10-17 23:17:00:event type: exit
+2016-10-17 23:17:00:exit code: 0

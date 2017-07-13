@@ -1,0 +1,62 @@
+[INFO -- 2017-03-27 02:40:10]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 02:40:10]
+Initialization strings:
+[INFO -- 2017-03-27 02:40:11]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-27 02:40:11]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 02:40:11]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 02:40:11]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-27 02:40:11]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-27 02:40:11]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-27 02:40:11]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-27 02:40:11]
+initSignal:30
+[INFO -- 2017-03-27 02:40:11]
+endSignal:35
+[INFO -- 2017-03-27 02:40:11]
+seqSignal:20
+[INFO -- 2017-03-27 02:40:11]
+faultMode:3
+[INFO -- 2017-03-27 02:40:48]
+Backtrace BEGIN:
+#0  L_compact_hash_init_137__par_loop0_2_0 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c:140
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007ffff68f7900 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+135	      hash = (int *)genvector(hashtablesize,sizeof(int));
+136	#ifdef _OPENMP
+137	#pragma omp parallel for
+138	#endif
+139	      for (uint ii = 0; ii<hashtablesize; ii++){
+140	         hash[ii] = -1;
+141	      }
+142	
+143	      read_hash  = read_hash_perfect;
+144	      write_hash = write_hash_perfect;
+
+Backtrace END
+Memory content before bitflip:0x100x000x000x000x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7cfd28 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: L_compact_hash_init_137__par_loop0_2_0
+symbol name: hash_header_size
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c
+symbol line: 29
+value: 0
+value address: 0x7cfd28 <hash_header_size>
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2017-03-27 02:40:48]
+Fault Injection Successful after 37.7791779041s

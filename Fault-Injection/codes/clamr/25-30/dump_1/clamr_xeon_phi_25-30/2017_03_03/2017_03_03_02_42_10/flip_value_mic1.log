@@ -1,0 +1,64 @@
+[INFO -- 2017-03-03 02:36:02]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-03 02:36:02]
+Initialization strings:
+[INFO -- 2017-03-03 02:36:03]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-03 02:36:03]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 02:36:03]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 02:36:03]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 02:36:03]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 02:36:03]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-03 02:36:03]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-03 02:36:03]
+initSignal:25
+[INFO -- 2017-03-03 02:36:03]
+endSignal:30
+[INFO -- 2017-03-03 02:36:03]
+seqSignal:20
+[INFO -- 2017-03-03 02:36:03]
+faultMode:3
+[INFO -- 2017-03-03 02:36:33]
+Backtrace BEGIN:
+#0  0x00007ffff7ffb967 in gettimeofday ()
+#1  0x000000000055238c in cpu_timer_start (tstart_cpu=0x7fffffffdd48) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/timer/timer.c:70
+#2  0x000000000051efbe in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2550
+#3  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#4  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+171	static double H_sum_initial = 0.0;
+172	static double cpu_time_graphics = 0.0;
+173	static double cpu_time_calcs    = 0.0;
+174	static double cpu_time_partmeas = 0.0;
+175	//static double cpu_time_check    = 0.0;
+176	
+177	static int     ncycle  = 0;
+178	static double  simTime = 0.0;
+179	static double  deltaT = 0.0;
+180	char total_sim_time_log[] = {"total_execution_time.log"};
+
+Backtrace END
+Memory content before bitflip:0x180x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffdcd8
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: Mesh::rezone_all
+symbol name: icount
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+symbol line: 2547
+value: 0
+value address: 0x7fffffffdcd8
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-03 02:36:33]
+Fault Injection Successful after 30.6398420334s

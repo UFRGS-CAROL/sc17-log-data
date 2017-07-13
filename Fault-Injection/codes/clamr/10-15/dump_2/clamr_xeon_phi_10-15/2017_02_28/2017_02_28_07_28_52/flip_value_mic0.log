@@ -1,0 +1,48 @@
+2017-02-28 07:27:57:Starting flip_value script
+2017-02-28 07:27:57:Initialization strings:
+2017-02-28 07:27:58:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 07:27:58:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 07:27:58:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 07:27:58:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 07:27:58:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 07:27:58:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 07:27:58:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 07:27:58:initSignal:10
+2017-02-28 07:27:58:endSignal:15
+2017-02-28 07:27:58:seqSignal:20
+2017-02-28 07:28:08:Backtrace BEGIN:
+2017-02-28 07:28:08:#0  0x000000000053cb73 in KDTree_CreateTree (t=0x7f9d50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:212
+#1  0x000000000053d3f4 in KDTree_QueryCircleIntersect_Double (t=0x7f9d50, result_num=0x7fffffffe5dc, result_indicies=0x181ae10, circ_radius=24, ncells=264192, x=0x7fff0c0d6010, dx=0x7ffecc1ce010, y=0x7ffe8c1cc010, dy=0x7ffe4c1bf010) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:329
+#2  0x00000000005080fe in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1535
+#3  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-28 07:28:08:207	      Bounds_Copy(&(t->extent), &(t->tree_safety_boxes[0]));
+208	      next_node++;
+209	      /* Construct k-D tree by setting up each pair of child nodes */
+210	      while (stack_ptr) {
+211	         /* Pop the top entry off the stack */
+212	         max = stack[--stack_ptr];
+213	         min = stack[--stack_ptr];
+214	         parent = stack[--stack_ptr];
+215	         /* If the current node should be a leaf node, make it one */
+216	         if ((max - min) == 0) {
+
+2017-02-28 07:28:08:Backtrace END
+2017-02-28 07:28:15:Type: A boolean type.
+2017-02-28 07:28:15:Type sizeof: 1
+2017-02-28 07:28:15:Mem contents(hex):0x00
+2017-02-28 07:28:15:Fault Mode: Double bit-flip
+2017-02-28 07:28:15:base address to flip value: 0x7d0abc 
+2017-02-28 07:28:15:address max offset: 1
+2017-02-28 07:28:15:Memory content before bitflip:0x00
+2017-02-28 07:28:15:Memory content after  bitflip:0xa0
+2017-02-28 07:28:15:Mem contents(hex):0xa0
+2017-02-28 07:28:15:frame name: Mesh::init
+2017-02-28 07:28:15:symbol name: dynamic_load_balance_on
+2017-02-28 07:28:15:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+2017-02-28 07:28:15:symbol line: 142
+2017-02-28 07:28:15:value: 160
+2017-02-28 07:28:15:value address: 0x7d0abc <dynamic_load_balance_on>
+2017-02-28 07:28:15:Type: A boolean type.
+2017-02-28 07:28:15:Type sizeof: 1
+2017-02-28 07:28:15:Fault Injection Successful after 17.5905148983s

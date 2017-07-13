@@ -1,0 +1,45 @@
+2017-01-20 14:22:00:Starting flip_value script
+2017-01-20 14:22:00:Initialization strings:
+2017-01-20 14:22:00:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-20 14:22:00:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-20 14:22:00:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-20 14:22:00:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-20 14:22:00:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-20 14:22:00:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-20 14:22:00:initSignal:7
+2017-01-20 14:22:00:endSignal:14
+2017-01-20 14:22:00:seqSignal:15
+2017-01-20 14:22:08:Backtrace BEGIN:
+2017-01-20 14:22:08:#0  0x000000000040440b in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:367
+
+2017-01-20 14:22:08:362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+371	        kernel_start = timing_get_time();
+
+2017-01-20 14:22:08:Backtrace END
+2017-01-20 14:22:08:Type: The type is an integer type.
+2017-01-20 14:22:08:Type sizeof: 4
+2017-01-20 14:22:08:Mem contents(hex):0x000x000x000x00
+2017-01-20 14:22:08:base address to flip value: 0x7fffffffe93c
+2017-01-20 14:22:08:address max offset: 4
+2017-01-20 14:22:08:Memory content before bitflip:0x000x000x000x00
+2017-01-20 14:22:08:Memory content after  bitflip:0x400x000x000x00
+2017-01-20 14:22:08:Mem contents(hex):0x400x000x000x00
+2017-01-20 14:22:08:frame name: main
+2017-01-20 14:22:08:symbol name: loop
+2017-01-20 14:22:08:symbol filename: dgemm.c
+2017-01-20 14:22:08:symbol line: 348
+2017-01-20 14:22:08:value: 64
+2017-01-20 14:22:08:value address: 0x7fffffffe93c
+2017-01-20 14:22:08:Type: The type is an integer type.
+2017-01-20 14:22:08:Type sizeof: 4
+2017-01-20 14:22:08:Fault Injection Successful after 8.08658790588s
+2017-01-20 14:22:56:event type: exit
+2017-01-20 14:22:56:exit code: 0

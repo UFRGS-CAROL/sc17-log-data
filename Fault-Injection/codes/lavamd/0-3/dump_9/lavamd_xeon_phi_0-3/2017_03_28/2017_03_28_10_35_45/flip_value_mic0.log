@@ -1,0 +1,61 @@
+[INFO -- 2017-03-28 10:35:20]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-28 10:35:20]
+Initialization strings:
+[INFO -- 2017-03-28 10:35:20]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-28 10:35:20]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 10:35:20]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 10:35:20]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 10:35:20]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 10:35:20]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-28 10:35:20]
+initSignal:0
+[INFO -- 2017-03-28 10:35:20]
+endSignal:3
+[INFO -- 2017-03-28 10:35:20]
+seqSignal:30
+[INFO -- 2017-03-28 10:35:20]
+faultMode:3
+[INFO -- 2017-03-28 10:35:25]
+Backtrace BEGIN:
+#0  0x00007ffff719f03a in mmap64 () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7431e2c in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffdd18) at allocatestack.c:504
+#2  __pthread_create_2_1 (newthread=0x7fffffffdd10, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fff643d2b00) at pthread_create.c:524
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping array at pos: 2
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffff743c2b8 
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: __pthread_create_2_1
+symbol name: _thread_db___nptl_initial_report_events
+symbol filename: ../nptl_db/structs.def
+symbol line: 59
+value: {8, 1, 0}
+value address: 0x7ffff743c2b0 <_thread_db___nptl_initial_report_events>
+Type: The type is an array.
+Type sizeof: 12
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 2L)
+
+[INFO -- 2017-03-28 10:35:25]
+Fault Injection Successful after 5.50552797318s
+[INFO -- 2017-03-28 10:35:39]
+event type: exit
+[INFO -- 2017-03-28 10:35:39]
+exit code: 0

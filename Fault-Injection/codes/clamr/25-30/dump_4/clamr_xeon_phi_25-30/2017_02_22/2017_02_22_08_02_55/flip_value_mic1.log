@@ -1,0 +1,127 @@
+2017-02-22 08:01:33:Starting flip_value script
+2017-02-22 08:01:33:Initialization strings:
+2017-02-22 08:01:34:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-22 08:01:34:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 08:01:34:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 08:01:34:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-22 08:01:34:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-22 08:01:34:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-22 08:01:34:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-22 08:01:34:initSignal:25
+2017-02-22 08:01:34:endSignal:30
+2017-02-22 08:01:34:seqSignal:20
+2017-02-22 08:02:01:Backtrace BEGIN:
+2017-02-22 08:02:01:#0  0x000000000044a639 in std::__copy_move<false, true, std::random_access_iterator_tag>::__copy_m<int> (__first=0x1516b40, __last=0x161a1c0, __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:382
+#1  0x000000000044aeea in std::__copy_move_a<false, int const*, int*> (__first=0x1516b40, __last=0x161a1c0, __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:399
+#2  0x000000000044ae68 in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int*> (__first=..., __last=..., __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:436
+#3  0x000000000044ade8 in std::copy<__gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int*> (__first=..., __last=..., __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:468
+#4  0x0000000000448b4a in std::__uninitialized_copy<true>::__uninit_copy<__gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int*> (__first=..., __last=..., __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:93
+#5  0x000000000044ad9e in std::uninitialized_copy<__gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int*> (__first=..., __last=..., __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:123
+#6  0x000000000044ad62 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int*, int> (__first=..., __last=..., __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:281
+#7  0x0000000000449769 in std::vector<int, std::allocator<int> >::vector (this=0x7fffffffe3b0, __x=...) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:322
+#8  0x0000000000471406 in State::rezone_all (this=0x7fa5e0, icount=0, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#9  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#10 0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-22 08:02:01:377		  static_assert( is_copy_assignable<_Tp>::value,
+378		                 "type is not assignable" );
+379	#endif
+380		  const ptrdiff_t _Num = __last - __first;
+381		  if (_Num)
+382		    __builtin_memmove(__result, __first, sizeof(_Tp) * _Num);
+383		  return __result + _Num;
+384		}
+385	    };
+386	
+
+2017-02-22 08:02:01:Backtrace END
+2017-02-22 08:02:06:Type: A boolean type.
+2017-02-22 08:02:06:Type sizeof: 1
+2017-02-22 08:02:06:Mem contents(hex):0x00
+2017-02-22 08:02:06:Fault Mode: Zero bit-flip
+2017-02-22 08:02:06:base address to flip value: 0x7d0781 
+2017-02-22 08:02:06:address max offset: 1
+2017-02-22 08:02:06:Memory content before bitflip:0x00
+2017-02-22 08:02:06:Backtrace BEGIN:
+2017-02-22 08:02:06:#0  0x000000000044a639 in std::__copy_move<false, true, std::random_access_iterator_tag>::__copy_m<int> (__first=0x1516b40, __last=0x161a1c0, __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:382
+#1  0x000000000044aeea in std::__copy_move_a<false, int const*, int*> (__first=0x1516b40, __last=0x161a1c0, __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:399
+#2  0x000000000044ae68 in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int*> (__first=..., __last=..., __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:436
+#3  0x000000000044ade8 in std::copy<__gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int*> (__first=..., __last=..., __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:468
+#4  0x0000000000448b4a in std::__uninitialized_copy<true>::__uninit_copy<__gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int*> (__first=..., __last=..., __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:93
+#5  0x000000000044ad9e in std::uninitialized_copy<__gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int*> (__first=..., __last=..., __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:123
+#6  0x000000000044ad62 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int*, int> (__first=..., __last=..., __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:281
+#7  0x0000000000449769 in std::vector<int, std::allocator<int> >::vector (this=0x7fffffffe3b0, __x=...) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:322
+#8  0x0000000000471406 in State::rezone_all (this=0x7fa5e0, icount=0, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#9  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#10 0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-22 08:02:06:377		  static_assert( is_copy_assignable<_Tp>::value,
+378		                 "type is not assignable" );
+379	#endif
+380		  const ptrdiff_t _Num = __last - __first;
+381		  if (_Num)
+382		    __builtin_memmove(__result, __first, sizeof(_Tp) * _Num);
+383		  return __result + _Num;
+384		}
+385	    };
+386	
+
+2017-02-22 08:02:06:Backtrace END
+2017-02-22 08:02:10:Type: The type is an integer type.
+2017-02-22 08:02:10:Type sizeof: 4
+2017-02-22 08:02:10:Mem contents(hex):0x640x000x000x00
+2017-02-22 08:02:10:Fault Mode: Zero bit-flip
+2017-02-22 08:02:10:base address to flip value: 0x7d06d0 
+2017-02-22 08:02:10:address max offset: 4
+2017-02-22 08:02:10:Memory content before bitflip:0x640x000x000x00
+2017-02-22 08:02:10:Backtrace BEGIN:
+2017-02-22 08:02:10:#0  0x000000000044a639 in std::__copy_move<false, true, std::random_access_iterator_tag>::__copy_m<int> (__first=0x1516b40, __last=0x161a1c0, __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:382
+#1  0x000000000044aeea in std::__copy_move_a<false, int const*, int*> (__first=0x1516b40, __last=0x161a1c0, __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:399
+#2  0x000000000044ae68 in std::__copy_move_a2<false, __gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int*> (__first=..., __last=..., __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:436
+#3  0x000000000044ade8 in std::copy<__gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int*> (__first=..., __last=..., __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:468
+#4  0x0000000000448b4a in std::__uninitialized_copy<true>::__uninit_copy<__gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int*> (__first=..., __last=..., __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:93
+#5  0x000000000044ad9e in std::uninitialized_copy<__gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int*> (__first=..., __last=..., __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:123
+#6  0x000000000044ad62 in std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int*, int> (__first=..., __last=..., __result=0x171b8a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:281
+#7  0x0000000000449769 in std::vector<int, std::allocator<int> >::vector (this=0x7fffffffe3b0, __x=...) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:322
+#8  0x0000000000471406 in State::rezone_all (this=0x7fa5e0, icount=0, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#9  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#10 0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-22 08:02:10:377		  static_assert( is_copy_assignable<_Tp>::value,
+378		                 "type is not assignable" );
+379	#endif
+380		  const ptrdiff_t _Num = __last - __first;
+381		  if (_Num)
+382		    __builtin_memmove(__result, __first, sizeof(_Tp) * _Num);
+383		  return __result + _Num;
+384		}
+385	    };
+386	
+
+2017-02-22 08:02:10:Backtrace END
+2017-02-22 08:02:20:Type: The type is a pointer.
+2017-02-22 08:02:20:Type sizeof: 8
+2017-02-22 08:02:20:Fliping a bit of the value pointed by a pointer
+2017-02-22 08:02:20:Type: The type is a structure.
+2017-02-22 08:02:20:Type sizeof: 12
+2017-02-22 08:02:20:Fliping value of field: checkpoint_counter
+2017-02-22 08:02:20:Type: The type is an integer type.
+2017-02-22 08:02:20:Type sizeof: 4
+2017-02-22 08:02:20:Mem contents(hex):0x000x000x000x00
+2017-02-22 08:02:20:Fault Mode: Single bit-flip
+2017-02-22 08:02:20:base address to flip value: 0x7f7668
+2017-02-22 08:02:20:address max offset: 4
+2017-02-22 08:02:20:Memory content before bitflip:0x000x000x000x00
+2017-02-22 08:02:20:Memory content after  bitflip:0x020x000x000x00
+2017-02-22 08:02:20:Mem contents(hex):0x020x000x000x00
+2017-02-22 08:02:20:frame name: main
+2017-02-22 08:02:20:symbol name: crux
+2017-02-22 08:02:20:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-02-22 08:02:20:symbol line: 160
+2017-02-22 08:02:20:value: 0x7f7660
+2017-02-22 08:02:20:value address: 0x7d0668 <crux>
+2017-02-22 08:02:20:Type: The type is a pointer.
+2017-02-22 08:02:20:Type sizeof: 8
+2017-02-22 08:02:20:Fault Injection Successful after 46.6627299786s
+2017-02-22 08:02:47:event type: exit
+2017-02-22 08:02:47:exit code: 0

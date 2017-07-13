@@ -1,0 +1,75 @@
+2017-02-28 15:27:44:Starting flip_value script
+2017-02-28 15:27:44:Initialization strings:
+2017-02-28 15:27:44:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 15:27:44:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 15:27:44:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 15:27:44:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 15:27:44:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 15:27:44:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 15:27:44:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 15:27:44:initSignal:20
+2017-02-28 15:27:44:endSignal:25
+2017-02-28 15:27:44:seqSignal:20
+2017-02-28 15:28:06:Backtrace BEGIN:
+2017-02-28 15:28:06:#0  0x0000000000449a27 in std::vector<int, std::allocator<int> >::operator[] (this=0x7fffffffe698, __n=22239) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x00000000005361c8 in Mesh::partition_cells (this=0x7fae50, numpe=0, z_order=..., method=ORIGINAL_ORDER) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:370
+#2  0x00000000004461e3 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:477
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 15:28:06:775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+2017-02-28 15:28:06:Backtrace END
+2017-02-28 15:28:10:Type: The type is an integer type.
+2017-02-28 15:28:10:Type sizeof: 4
+2017-02-28 15:28:10:Mem contents(hex):0x050x000x000x00
+2017-02-28 15:28:10:Fault Mode: One bit-flip
+2017-02-28 15:28:10:base address to flip value: 0x56a09c 
+2017-02-28 15:28:10:address max offset: 4
+2017-02-28 15:28:10:Memory content before bitflip:0x050x000x000x00
+2017-02-28 15:28:10:Backtrace BEGIN:
+2017-02-28 15:28:10:#0  0x0000000000449a27 in std::vector<int, std::allocator<int> >::operator[] (this=0x7fffffffe698, __n=22239) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x00000000005361c8 in Mesh::partition_cells (this=0x7fae50, numpe=0, z_order=..., method=ORIGINAL_ORDER) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:370
+#2  0x00000000004461e3 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:477
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 15:28:10:775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+2017-02-28 15:28:10:Backtrace END
+2017-02-28 15:28:20:Type: The type is an integer type.
+2017-02-28 15:28:20:Type sizeof: 4
+2017-02-28 15:28:20:Mem contents(hex):0x640x000x000x00
+2017-02-28 15:28:20:Fault Mode: Single bit-flip
+2017-02-28 15:28:20:base address to flip value: 0x7d0764 
+2017-02-28 15:28:20:address max offset: 4
+2017-02-28 15:28:20:Memory content before bitflip:0x640x000x000x00
+2017-02-28 15:28:20:Memory content after  bitflip:0xe40x000x000x00
+2017-02-28 15:28:20:Mem contents(hex):0xe40x000x000x00
+2017-02-28 15:28:20:frame name: std::vector<int, std::allocator<int> >::operator[]
+2017-02-28 15:28:20:symbol name: graphic_outputInterval
+2017-02-28 15:28:20:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-02-28 15:28:20:symbol line: 143
+2017-02-28 15:28:20:value: 228
+2017-02-28 15:28:20:value address: 0x7d0764 <graphic_outputInterval>
+2017-02-28 15:28:20:Type: The type is an integer type.
+2017-02-28 15:28:20:Type sizeof: 4
+2017-02-28 15:28:20:Fault Injection Successful after 36.5995850563s
+2017-02-28 15:28:47:event type: exit
+2017-02-28 15:28:47:exit code: 0

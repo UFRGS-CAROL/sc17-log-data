@@ -1,0 +1,66 @@
+[INFO -- 2017-03-18 18:55:31]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-18 18:55:31]
+Initialization strings:
+[INFO -- 2017-03-18 18:55:31]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-18 18:55:31]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-18 18:55:31]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-18 18:55:31]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-18 18:55:31]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-18 18:55:31]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-18 18:55:31]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-18 18:55:31]
+initSignal:35
+[INFO -- 2017-03-18 18:55:31]
+endSignal:40
+[INFO -- 2017-03-18 18:55:31]
+seqSignal:20
+[INFO -- 2017-03-18 18:55:31]
+faultMode:2
+[INFO -- 2017-03-18 18:56:12]
+Backtrace BEGIN:
+#0  0x0000000000545bc2 in L_compact_hash_init_137__par_loop0_2_0 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c:140
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007ffff68f7900 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+135	      hash = (int *)genvector(hashtablesize,sizeof(int));
+136	#ifdef _OPENMP
+137	#pragma omp parallel for
+138	#endif
+139	      for (uint ii = 0; ii<hashtablesize; ii++){
+140	         hash[ii] = -1;
+141	      }
+142	
+143	      read_hash  = read_hash_perfect;
+144	      write_hash = write_hash_perfect;
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7d0b74 
+address max offset: 4
+Memory content after  bitflip:0x470x890xb30xc0
+frame name: L_compact_hash_init_137__par_loop0_2_0
+symbol name: write_hash_collisions
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c
+symbol line: 17
+value: 3232991559
+value address: 0x7d0b74 <write_hash_collisions>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-18 18:56:12]
+Fault Injection Successful after 41.6198120117s
+[INFO -- 2017-03-18 18:56:31]
+event type: exit
+[INFO -- 2017-03-18 18:56:31]
+exit code: 0

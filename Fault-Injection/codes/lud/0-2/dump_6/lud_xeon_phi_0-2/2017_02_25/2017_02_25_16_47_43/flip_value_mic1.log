@@ -1,0 +1,67 @@
+[INFO -- 2017-02-25 16:47:11]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 16:47:11]
+Initialization strings:
+[INFO -- 2017-02-25 16:47:11]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-25 16:47:11]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 16:47:11]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 16:47:11]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 16:47:11]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 16:47:11]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-25 16:47:11]
+initSignal:0
+[INFO -- 2017-02-25 16:47:11]
+endSignal:2
+[INFO -- 2017-02-25 16:47:11]
+seqSignal:30
+[INFO -- 2017-02-25 16:47:11]
+faultMode:3
+[INFO -- 2017-02-25 16:47:15]
+Backtrace BEGIN:
+#0  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:548
+#1  __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffa0272b00) at pthread_create.c:524
+#2  0x00007ffff790d323 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+543	in allocatestack.c
+
+Backtrace END
+Fliping value of field: prev
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: prev
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: next
+Fliping a bit of the pointer
+Memory content before bitflip:0x800x220x640xf70xff0x7f0x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffff7642280 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: allocate_stack
+symbol name: stack_cache
+symbol filename: allocatestack.c
+symbol line: 112
+value: {next = 0x0, prev = 0x7ffff7642280 <stack_cache>}
+value address: 0x7ffff7642280 <stack_cache>
+Type: The type is a structure.
+Type sizeof: 16
+Field name: next
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: prev
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2017-02-25 16:47:15]
+Fault Injection Successful after 4.31589508057s
+[INFO -- 2017-02-25 16:47:15]
+event type: exit
+[EXCEPTION -- 2017-02-25 16:47:15]
+exit code: no exit code available

@@ -1,0 +1,58 @@
+2016-10-21 16:45:39:Initialization strings:
+2016-10-21 16:45:39:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-21 16:45:39:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-21 16:45:39:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-21 16:45:39:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-21 16:45:39:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-21 16:45:39:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-21 16:45:40:Trying Fault Injection
+2016-10-21 16:45:40:Backtrace BEGIN:
+2016-10-21 16:45:40:#0  0x00007ffff71263e6 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:1864
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "325.412717\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=-7168, argv=0x33) at hotspot_check.c:264
+
+2016-10-21 16:45:40:1859	in vfscanf.c
+
+2016-10-21 16:45:40:Backtrace END
+2016-10-21 16:45:40:Type: The type is a structure.
+2016-10-21 16:45:40:Type sizeof: 32
+2016-10-21 16:45:40:Fliping value of field: __arg
+2016-10-21 16:45:40:Type: The type is a pointer.
+2016-10-21 16:45:40:Type sizeof: 8
+2016-10-21 16:45:40:Fault Injection Failed after 1.52107095718s
+2016-10-21 16:45:44:Trying Fault Injection
+2016-10-21 16:45:44:Backtrace BEGIN:
+2016-10-21 16:45:44:#0  __GI___isoc99_vsscanf (string=0x7fffffffe77a "323.246125\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#1  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#2  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#3  main (argc=-7168, argv=0x407198) at hotspot_check.c:264
+
+2016-10-21 16:45:44:38	in isoc99_vsscanf.c
+
+2016-10-21 16:45:44:Backtrace END
+2016-10-21 16:45:44:Type: The type is a pointer.
+2016-10-21 16:45:44:Type sizeof: 8
+2016-10-21 16:45:44:Fliping a bit of the pointer
+2016-10-21 16:45:44:Mem contents(hex):0x970xee0xff0xff0xff0x7f0x000x00
+2016-10-21 16:45:44:base address to flip value: 0x7fffffffe608
+2016-10-21 16:45:44:address max offset: 8
+2016-10-21 16:45:44:Memory content before bitflip:0x970xee0xff0xff0xff0x7f0x000x00
+2016-10-21 16:45:44:Memory content after  bitflip:0x970xee0xff0xff0xff0x770x000x00
+2016-10-21 16:45:44:Mem contents(hex):0x970xee0xff0xff0xff0x770x000x00
+2016-10-21 16:45:44:frame name: read_input
+2016-10-21 16:45:44:symbol name: final_result
+2016-10-21 16:45:44:symbol filename: hotspot_check.c
+2016-10-21 16:45:44:symbol line: 230
+2016-10-21 16:45:44:value: 0x7fffffffee97
+2016-10-21 16:45:44:value address: 0x7fffffffe608
+2016-10-21 16:45:44:Type: The type is a pointer.
+2016-10-21 16:45:44:Type sizeof: 8
+2016-10-21 16:45:44:Fault Injection Successful after 5.19593811035s
+2016-10-21 16:45:45:Fault Already Injected
+2016-10-21 16:45:47:Fault Already Injected
+2016-10-21 16:45:47:Fault Already Injected
+2016-10-21 16:45:47:Fault Already Injected
+2016-10-21 16:45:48:event type: exit
+2016-10-21 16:45:48:exit code: 1

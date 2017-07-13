@@ -1,0 +1,60 @@
+2016-10-15 16:01:50:Initialization strings:
+2016-10-15 16:01:50:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-15 16:01:50:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-15 16:01:50:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-15 16:01:50:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-15 16:01:50:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-15 16:01:50:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-15 16:01:51:Trying Fault Injection
+2016-10-15 16:01:51:Inferior PID: 229953
+2016-10-15 16:01:51:Inferior is valid: True
+2016-10-15 16:01:51:Inferior #threads: 1
+2016-10-15 16:01:51:Backtrace BEGIN:
+2016-10-15 16:01:51:#0  0x00007ffff7de84c0 in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=0x30e098, version=0x7ffff7ff8e48, sym=0x7ffff785f9d8, reloc=0x7ffff7874508, map=0x7ffff7ffab28) at ../sysdeps/x86_64/dl-machine.h:277
+#1  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ffab28) at do-rel.h:137
+#2  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#3  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#4  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec30, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#5  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec30) at rtld.c:308
+#6  _dl_start (arg=0x7fffffffec30) at rtld.c:414
+#7  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#8  0x0000000000000006 in ?? ()
+#9  0x00007fffffffee22 in ?? ()
+#10 0x00007fffffffee52 in ?? ()
+#11 0x00007fffffffee58 in ?? ()
+#12 0x00007fffffffee5b in ?? ()
+#13 0x00007fffffffee5f in ?? ()
+#14 0x00007fffffffee9c in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+2016-10-15 16:01:51:272	in ../sysdeps/x86_64/dl-machine.h
+
+2016-10-15 16:01:51:Backtrace END
+2016-10-15 16:01:51:Thread name: None
+2016-10-15 16:01:51:Thread num: 1
+2016-10-15 16:01:51:Thread ptid: (229953, 229953, 0)
+2016-10-15 16:01:51:bitFlip function
+2016-10-15 16:01:51:Type: The type is an integer type.
+2016-10-15 16:01:51:Type sizeof: 4
+2016-10-15 16:01:51:Mem contents(hex):0x000x000x000x00
+2016-10-15 16:01:51:base address to flip value: 0x7ffff7ffcbe0 
+2016-10-15 16:01:51:address max offset: 4
+2016-10-15 16:01:51:Memory content before bitflip:0x000x000x000x00
+2016-10-15 16:01:51:Memory content after  bitflip:0x040x000x000x00
+2016-10-15 16:01:51:Mem contents(hex):0x040x000x000x00
+2016-10-15 16:01:51:frame name: _dl_start
+2016-10-15 16:01:51:symbol name: any_debug
+2016-10-15 16:01:51:symbol filename: rtld.c
+2016-10-15 16:01:51:symbol line: 2204
+2016-10-15 16:01:51:value: 4
+2016-10-15 16:01:51:value address: 0x7ffff7ffcbe0 <any_debug>
+2016-10-15 16:01:51:Type: The type is an integer type.
+2016-10-15 16:01:51:Type sizeof: 4
+2016-10-15 16:01:51:Fault Injection Successful after 1.23229002953s
+2016-10-15 16:01:51:Fault Already Injected
+2016-10-15 16:01:56:Fault Already Injected
+2016-10-15 16:01:56:Fault Already Injected
+2016-10-15 16:01:59:Fault Already Injected
+2016-10-15 16:02:00:Fault Already Injected
+2016-10-15 16:02:01:event type: exit
+2016-10-15 16:02:01:exit code: 0

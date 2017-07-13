@@ -1,0 +1,60 @@
+2016-10-24 15:08:54:Initialization strings:
+2016-10-24 15:08:54:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-24 15:08:54:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 15:08:54:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 15:08:54:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-24 15:08:54:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-24 15:08:54:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-24 15:08:56:Trying Fault Injection
+2016-10-24 15:08:56:Backtrace BEGIN:
+2016-10-24 15:08:56:#0  0x0000000000401738 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#1  main (argc=-6278, argv=0x407198) at hotspot_check.c:264
+
+2016-10-24 15:08:56:201	        if (fgets(str, STR_SIZE, fp) == NULL) {
+202	            fatal("fgets error");
+203	        }
+204	        if (feof(fp))
+205	            fatal("not enough lines in file");
+206	        if ((sscanf(str, "%f", &val) != 1) )
+207	            fatal("invalid file format");
+208	        vect[i] = val;
+209	    }
+210	
+
+2016-10-24 15:08:56:Backtrace END
+2016-10-24 15:08:56:Type: The type is an array.
+2016-10-24 15:08:56:Type sizeof: 256
+2016-10-24 15:08:56:Fliping array at pos: 227
+2016-10-24 15:08:56:Type: The type is an integer type.
+2016-10-24 15:08:56:Type sizeof: 1
+2016-10-24 15:08:56:Mem contents(hex):0x7f
+2016-10-24 15:08:56:base address to flip value: 0x7fffffffe85d 
+2016-10-24 15:08:56:address max offset: 1
+2016-10-24 15:08:56:Memory content before bitflip:0x7f
+2016-10-24 15:08:56:Memory content after  bitflip:0x6f
+2016-10-24 15:08:56:Mem contents(hex):0x6f
+2016-10-24 15:08:56:frame name: read_input
+2016-10-24 15:08:56:symbol name: str
+2016-10-24 15:08:56:symbol filename: hotspot_check.c
+2016-10-24 15:08:56:symbol line: 193
+2016-10-24 15:08:56:value: "334.013047\n\000\000\000\020`\336\367\377\177\000\000\f\000\000\000\000\000\000\000\220\325\335\367\377\177\000\000\330\331\377\367\377\177\000\000\070\350\377\377\377\177\000\000\064\350\377\377\377\177\000\000\251\245B\000\000\000\000\000\070L\r\367\377\177\000\000H/\016\367\377\177\000\000U\251\245B\000\000\000\000\310L\r\367\377\177\000\000\070\350\377\377\377\177\000\000\245\226\n\001\000\000\000\000\025\000\000\000\000\000\000\000\020\351\377\377\377\177\000\000\220\325\335\367\377\177\000\000\064\350\377\377\377\177\000\000\000\351\377\377\377\177\000\000\060\206\377\367\377\177\000\000\b\000\000\000\000\000\000\000\034\327\354\366\000\000\000\000.(\274<", '\000' <repeats 12 times>, "\230\350"...
+2016-10-24 15:08:56:value address: 0x7fffffffe77a
+2016-10-24 15:08:56:Type: The type is an array.
+2016-10-24 15:08:56:Type sizeof: 256
+2016-10-24 15:08:56:Field name: None
+2016-10-24 15:08:56:Field Type:
+2016-10-24 15:08:56:Type: A range type, that is, an integer type with bounds.
+2016-10-24 15:08:56:Type sizeof: 1
+2016-10-24 15:08:56:Type range: (0L, 255L)
+2016-10-24 15:08:56:Fault Injection Successful after 2.10261297226s
+2016-10-24 15:08:56:Fault Already Injected
+2016-10-24 15:08:56:Fault Already Injected
+2016-10-24 15:08:57:Fault Already Injected
+2016-10-24 15:08:59:Fault Already Injected
+2016-10-24 15:09:04:Fault Already Injected
+2016-10-24 15:09:05:Fault Already Injected
+2016-10-24 15:09:06:Fault Already Injected
+2016-10-24 15:09:09:Fault Already Injected
+2016-10-24 15:09:09:Fault Already Injected
+2016-10-24 15:09:09:event type: exit
+2016-10-24 15:09:09:exit code: 0

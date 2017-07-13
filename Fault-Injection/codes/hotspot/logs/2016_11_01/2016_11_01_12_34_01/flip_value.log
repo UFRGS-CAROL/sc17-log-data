@@ -1,0 +1,51 @@
+2016-11-01 12:33:40:Initialization strings:
+2016-11-01 12:33:41:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-11-01 12:33:41:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 12:33:41:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 12:33:41:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-01 12:33:41:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-01 12:33:41:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-11-01 12:33:42:Trying Fault Injection
+2016-11-01 12:33:42:Backtrace BEGIN:
+2016-11-01 12:33:42:#0  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#1  main (argc=-7552, argv=0x0) at hotspot_check.c:264
+
+2016-11-01 12:33:42:201	        if (fgets(str, STR_SIZE, fp) == NULL) {
+202	            fatal("fgets error");
+203	        }
+204	        if (feof(fp))
+205	            fatal("not enough lines in file");
+206	        if ((sscanf(str, "%f", &val) != 1) )
+207	            fatal("invalid file format");
+208	        vect[i] = val;
+209	    }
+210	
+
+2016-11-01 12:33:42:Backtrace END
+2016-11-01 12:33:42:Type: A floating point type.
+2016-11-01 12:33:42:Type sizeof: 4
+2016-11-01 12:33:42:Mem contents(hex):0x6f0x120x030x3a
+2016-11-01 12:33:42:base address to flip value: 0x407398 
+2016-11-01 12:33:42:address max offset: 4
+2016-11-01 12:33:42:Memory content before bitflip:0x6f0x120x030x3a
+2016-11-01 12:33:42:Memory content after  bitflip:0x6f0x120x0b0x3a
+2016-11-01 12:33:42:Mem contents(hex):0x6f0x120x0b0x3a
+2016-11-01 12:33:42:frame name: main
+2016-11-01 12:33:42:symbol name: t_chip
+2016-11-01 12:33:42:symbol filename: hotspot_check.c
+2016-11-01 12:33:42:symbol line: 32
+2016-11-01 12:33:42:value: 0.000530517602
+2016-11-01 12:33:42:value address: 0x407398 <t_chip>
+2016-11-01 12:33:42:Type: A floating point type.
+2016-11-01 12:33:42:Type sizeof: 4
+2016-11-01 12:33:42:Fault Injection Successful after 1.44040608406s
+2016-11-01 12:33:43:Fault Already Injected
+2016-11-01 12:33:43:Fault Already Injected
+2016-11-01 12:33:48:Fault Already Injected
+2016-11-01 12:33:48:Fault Already Injected
+2016-11-01 12:33:48:Fault Already Injected
+2016-11-01 12:33:49:Fault Already Injected
+2016-11-01 12:33:52:Fault Already Injected
+2016-11-01 12:33:52:Fault Already Injected
+2016-11-01 12:33:55:event type: exit
+2016-11-01 12:33:55:exit code: 0

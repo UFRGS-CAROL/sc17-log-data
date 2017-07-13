@@ -1,0 +1,70 @@
+2016-11-01 08:05:06:Initialization strings:
+2016-11-01 08:05:07:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-11-01 08:05:07:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 08:05:07:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 08:05:07:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-01 08:05:07:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-01 08:05:07:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-11-01 08:05:07:Trying Fault Injection
+2016-11-01 08:05:07:Backtrace BEGIN:
+2016-11-01 08:05:07:#0  dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1467
+#1  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebe0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#2  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebe0) at rtld.c:308
+#3  _dl_start (arg=0x7fffffffebe0) at rtld.c:414
+#4  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#5  0x0000000000000008 in ?? ()
+#6  0x00007fffffffede9 in ?? ()
+#7  0x00007fffffffee1f in ?? ()
+#8  0x00007fffffffee24 in ?? ()
+#9  0x00007fffffffee29 in ?? ()
+#10 0x00007fffffffee2e in ?? ()
+#11 0x00007fffffffee32 in ?? ()
+#12 0x00007fffffffee64 in ?? ()
+#13 0x00007fffffffee97 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2016-11-01 08:05:07:1462	in rtld.c
+
+2016-11-01 08:05:07:Backtrace END
+2016-11-01 08:05:07:Type: The type is a pointer.
+2016-11-01 08:05:07:Type sizeof: 8
+2016-11-01 08:05:07:Fault Injection Failed after 0.482428073883s
+2016-11-01 08:05:09:Trying Fault Injection
+2016-11-01 08:05:09:Backtrace BEGIN:
+2016-11-01 08:05:09:#0  0x00007ffff7151eeb in __GI___rawmemchr (s=s@entry=0x7fffffffe77a, c_in=c_in@entry=0) at ../string/rawmemchr.c:163
+#1  0x00007ffff7145ad0 in _IO_str_init_static_internal (sf=sf@entry=0x7fffffffe400, ptr=ptr@entry=0x7fffffffe77a "324.164179\n", size=size@entry=0, pstart=pstart@entry=0x0) at strops.c:44
+#2  0x00007ffff71365d5 in __GI___isoc99_vsscanf (string=0x7fffffffe77a "324.164179\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:41
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#5  main (argc=-6272, argv=0x7efeff0938363033) at hotspot_check.c:264
+
+2016-11-01 08:05:09:158	in ../string/rawmemchr.c
+
+2016-11-01 08:05:09:Backtrace END
+2016-11-01 08:05:09:Type: A floating point type.
+2016-11-01 08:05:09:Type sizeof: 4
+2016-11-01 08:05:09:Mem contents(hex):0x6f0x120x830x3c
+2016-11-01 08:05:09:base address to flip value: 0x4073a0 
+2016-11-01 08:05:09:address max offset: 4
+2016-11-01 08:05:09:Memory content before bitflip:0x6f0x120x830x3c
+2016-11-01 08:05:09:Memory content after  bitflip:0x6f0x1a0x830x3c
+2016-11-01 08:05:09:Mem contents(hex):0x6f0x1a0x830x3c
+2016-11-01 08:05:09:frame name: main
+2016-11-01 08:05:09:symbol name: chip_width
+2016-11-01 08:05:09:symbol filename: hotspot_check.c
+2016-11-01 08:05:09:symbol line: 34
+2016-11-01 08:05:09:value: 0.0160038155
+2016-11-01 08:05:09:value address: 0x4073a0 <chip_width>
+2016-11-01 08:05:09:Type: A floating point type.
+2016-11-01 08:05:09:Type sizeof: 4
+2016-11-01 08:05:09:Fault Injection Successful after 2.72235298157s
+2016-11-01 08:05:09:Fault Already Injected
+2016-11-01 08:05:10:Fault Already Injected
+2016-11-01 08:05:13:Fault Already Injected
+2016-11-01 08:05:14:Fault Already Injected
+2016-11-01 08:05:15:Fault Already Injected
+2016-11-01 08:05:17:Fault Already Injected
+2016-11-01 08:05:17:Fault Already Injected
+2016-11-01 08:05:18:Fault Already Injected
+2016-11-01 08:05:22:event type: exit
+2016-11-01 08:05:22:exit code: 0

@@ -1,0 +1,61 @@
+[INFO -- 2017-03-26 23:54:21]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 23:54:21]
+Initialization strings:
+[INFO -- 2017-03-26 23:54:21]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 23:54:21]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 23:54:21]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 23:54:21]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 23:54:21]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 23:54:21]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 23:54:21]
+initSignal:0
+[INFO -- 2017-03-26 23:54:21]
+endSignal:3
+[INFO -- 2017-03-26 23:54:21]
+seqSignal:30
+[INFO -- 2017-03-26 23:54:21]
+faultMode:1
+[INFO -- 2017-03-26 23:54:21]
+Backtrace BEGIN:
+#0  0x0000000000401c88 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:110
+
+105	                box_cpu[nh].number = nh;
+106	                box_cpu[nh].offset = nh * NUMBER_PAR_PER_BOX;
+107	
+108	                box_cpu[nh].nn = 0;
+109	
+110	                for(l=-1; l<2; l++) {
+111	
+112	                    for(m=-1; m<2; m++) {
+113	
+114	                        for(n=-1; n<2; n++) {
+
+Backtrace END
+Fliping value of field: alpha
+Memory content before bitflip:0x000x000x000x000x000x000xe00x3f
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe8a0
+address max offset: 8
+Memory content after  bitflip:0x000x000x420x000x000x000xe00x3f
+frame name: main
+symbol name: par_cpu
+symbol filename: main_check.c
+symbol line: 55
+value: {alpha = 0.5000000004802132}
+value address: 0x7fffffffe8a0
+Type: The type is a structure.
+Type sizeof: 8
+Field name: alpha
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-26 23:54:21]
+Fault Injection Successful after 0.989587068558s

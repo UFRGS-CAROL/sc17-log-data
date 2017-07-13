@@ -1,0 +1,70 @@
+[INFO -- 2017-03-27 17:10:28]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 17:10:28]
+Initialization strings:
+[INFO -- 2017-03-27 17:10:28]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 17:10:28]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 17:10:28]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 17:10:28]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 17:10:28]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 17:10:28]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 17:10:28]
+initSignal:0
+[INFO -- 2017-03-27 17:10:28]
+endSignal:3
+[INFO -- 2017-03-27 17:10:28]
+seqSignal:30
+[INFO -- 2017-03-27 17:10:28]
+faultMode:0
+[EXCEPTION -- 2017-03-27 17:10:29]
+pythonException: invalid frame
+[INFO -- 2017-03-27 17:10:29]
+Backtrace BEGIN:
+#0  0x00007ffff7918d57 in ?? ()
+#1  0x00007ffff71156cb in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=<optimized out>) at vfprintf.c:2039
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+50	    char * input_charges;
+51	    char * output_gold;
+52	
+53	    int i, j, k, l, m, n;
+54	
+55	    par_str par_cpu;
+56	    dim_str dim_cpu;
+57	    box_str* box_cpu;
+58	    FOUR_VECTOR* rv_cpu;
+59	    fp* qv_cpu;
+
+Backtrace END
+Fliping array at pos: 10
+Memory content before bitflip:0xb20xfc0xff0xff
+Fault Mode: Single bit-flip
+base address to flip value: 0x7ffff71e8c28 
+address max offset: 4
+Memory content after  bitflip:0xb20xdc0xff0xff
+frame name: _IO_vfprintf_internal
+symbol name: step4_jumps
+symbol filename: vfprintf.c
+symbol line: 1914
+value: {-846, -846, -846, -846, -846, -846, -846, -846, -846, -846, -9038, -846, -846, -846, 5840, 4694, 5932, 3535, 3621, -1124, 6078, 3971, 32, 3444, 4784, -279, 4895, -846, -846, -846}
+value address: 0x7ffff71e8c00 <step4_jumps>
+Type: The type is an array.
+Type sizeof: 120
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 29L)
+
+[INFO -- 2017-03-27 17:10:29]
+Fault Injection Successful after 1.92964100838s
+[INFO -- 2017-03-27 17:10:45]
+event type: exit
+[INFO -- 2017-03-27 17:10:45]
+exit code: 0

@@ -1,0 +1,72 @@
+2016-10-31 16:53:32:Initialization strings:
+2016-10-31 16:53:32:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-31 16:53:32:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 16:53:32:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 16:53:32:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-31 16:53:32:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-31 16:53:32:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-31 16:53:32:Trying Fault Injection
+2016-10-31 16:53:32:Backtrace BEGIN:
+2016-10-31 16:53:32:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebe0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebe0) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffebe0) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000008 in ?? ()
+#7  0x00007fffffffede9 in ?? ()
+#8  0x00007fffffffee1f in ?? ()
+#9  0x00007fffffffee24 in ?? ()
+#10 0x00007fffffffee29 in ?? ()
+#11 0x00007fffffffee2e in ?? ()
+#12 0x00007fffffffee32 in ?? ()
+#13 0x00007fffffffee64 in ?? ()
+#14 0x00007fffffffee97 in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+2016-10-31 16:53:32:69	in dl-debug.c
+
+2016-10-31 16:53:32:Backtrace END
+2016-10-31 16:53:32:Type: The type is a pointer.
+2016-10-31 16:53:32:Type sizeof: 8
+2016-10-31 16:53:32:Fault Injection Failed after 0.964401006699s
+2016-10-31 16:53:34:Trying Fault Injection
+2016-10-31 16:53:34:Backtrace BEGIN:
+2016-10-31 16:53:34:#0  0x00007ffff7108690 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe010 "324.205399", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0, loc=<optimized out>) at strtod_l.c:877
+#1  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe010 "324.205399", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0) at strtod.c:54
+#2  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2332
+#3  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "324.205399\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#4  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#5  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#6  main (argc=0, argv=0x7ffff7420e2e <_nl_C_LC_MONETARY+302>) at hotspot_check.c:264
+
+2016-10-31 16:53:34:872	in strtod_l.c
+
+2016-10-31 16:53:34:Backtrace END
+2016-10-31 16:53:34:Type: A boolean type.
+2016-10-31 16:53:34:Type sizeof: 1
+2016-10-31 16:53:34:Mem contents(hex):0xf0
+2016-10-31 16:53:34:base address to flip value: 0x7fffffffe1c0
+2016-10-31 16:53:34:address max offset: 1
+2016-10-31 16:53:34:Memory content before bitflip:0xf0
+2016-10-31 16:53:34:Memory content after  bitflip:0xe0
+2016-10-31 16:53:34:Mem contents(hex):0xe0
+2016-10-31 16:53:34:frame name: _IO_vfscanf_internal
+2016-10-31 16:53:34:symbol name: use_malloc
+2016-10-31 16:53:34:symbol filename: vfscanf.c
+2016-10-31 16:53:34:symbol line: 268
+2016-10-31 16:53:34:value: 224
+2016-10-31 16:53:34:value address: 0x7fffffffe1c0
+2016-10-31 16:53:34:Type: A boolean type.
+2016-10-31 16:53:34:Type sizeof: 1
+2016-10-31 16:53:34:Fault Injection Successful after 2.679240942s
+2016-10-31 16:53:35:Fault Already Injected
+2016-10-31 16:53:35:Fault Already Injected
+2016-10-31 16:53:36:Fault Already Injected
+2016-10-31 16:53:37:Fault Already Injected
+2016-10-31 16:53:41:Fault Already Injected
+2016-10-31 16:53:43:Fault Already Injected
+2016-10-31 16:53:43:Fault Already Injected
+2016-10-31 16:53:46:Fault Already Injected
+2016-10-31 16:53:47:event type: exit
+2016-10-31 16:53:47:exit code: 0

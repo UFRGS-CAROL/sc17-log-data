@@ -1,0 +1,77 @@
+2017-01-24 11:22:18:Starting flip_value script
+2017-01-24 11:22:18:Initialization strings:
+2017-01-24 11:22:18:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-24 11:22:18:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 11:22:18:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 11:22:18:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 11:22:18:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 11:22:18:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-24 11:22:18:initSignal:6
+2017-01-24 11:22:18:endSignal:8
+2017-01-24 11:22:18:seqSignal:30
+2017-01-24 11:22:25:Trying Fault Injection
+2017-01-24 11:22:25:Inferior PID: 44495
+2017-01-24 11:22:25:Inferior is valid: True
+2017-01-24 11:22:25:Inferior #threads: 167
+2017-01-24 11:22:25:Backtrace BEGIN:
+2017-01-24 11:22:25:#0  pthread_join (threadid=140737300436864, thread_return=0x7fffffffe980) at pthread_join.c:90
+#1  0x00007ffff790e946 in ?? ()
+#2  0x00007ffff4ebfe00 in ?? ()
+#3  0x00007ffff4ec3fd8 in ?? ()
+#4  0x00007ffff4ea2b00 in ?? ()
+#5  0x00007ffff78de555 in ?? ()
+#6  0x00007ffff4ea2df0 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000000 in ?? ()
+
+2017-01-24 11:22:25:85	in pthread_join.c
+
+2017-01-24 11:22:25:Backtrace END
+2017-01-24 11:22:28:Thread name: None
+2017-01-24 11:22:28:Thread num: 21
+2017-01-24 11:22:28:Thread ptid: (44495, 44524, 0)
+2017-01-24 11:22:28:Error Exception(frameFlip): invalid frame
+2017-01-24 11:22:28:bitFlip function
+2017-01-24 11:22:28:Type: The type is a structure.
+2017-01-24 11:22:28:Type sizeof: 32
+2017-01-24 11:22:28:Fliping value of field: __prev
+2017-01-24 11:22:28:bitFlip function
+2017-01-24 11:22:28:Type: The type is a pointer.
+2017-01-24 11:22:28:Type sizeof: 8
+2017-01-24 11:22:28:Fliping a bit of the pointer
+2017-01-24 11:22:28:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-01-24 11:22:28:base address to flip value: 0x7fffffffe938
+2017-01-24 11:22:28:address max offset: 8
+2017-01-24 11:22:28:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-01-24 11:22:28:Memory content after  bitflip:0x000x000x000x000x100x000x000x00
+2017-01-24 11:22:28:Mem contents(hex):0x000x000x000x000x100x000x000x00
+2017-01-24 11:22:28:frame name: pthread_join
+2017-01-24 11:22:28:symbol name: _buffer
+2017-01-24 11:22:28:symbol filename: pthread_join.c
+2017-01-24 11:22:28:symbol line: 62
+2017-01-24 11:22:28:value: {__routine = 0x7ffff7432480 <cleanup>, __arg = 0x7ffff4cc9da8, __canceltype = -138954096, __prev = 0x1000000000}
+2017-01-24 11:22:28:value address: 0x7fffffffe920
+2017-01-24 11:22:28:Type: The type is a structure.
+2017-01-24 11:22:28:Type sizeof: 32
+2017-01-24 11:22:28:Field name: __routine
+2017-01-24 11:22:28:Field Type:
+2017-01-24 11:22:28:Type: The type is a pointer.
+2017-01-24 11:22:28:Type sizeof: 8
+2017-01-24 11:22:28:Field name: __arg
+2017-01-24 11:22:28:Field Type:
+2017-01-24 11:22:28:Type: The type is a pointer.
+2017-01-24 11:22:28:Type sizeof: 8
+2017-01-24 11:22:28:Field name: __canceltype
+2017-01-24 11:22:28:Field Type:
+2017-01-24 11:22:28:Type: The type is an integer type.
+2017-01-24 11:22:28:Type sizeof: 4
+2017-01-24 11:22:28:Field name: __prev
+2017-01-24 11:22:28:Field Type:
+2017-01-24 11:22:28:Type: The type is a pointer.
+2017-01-24 11:22:28:Type sizeof: 8
+2017-01-24 11:22:28:Fault Injection Successful after 10.5169079304s
+2017-01-24 11:22:28:Fault Already Injected
+2017-01-24 11:22:28:Fault Already Injected
+2017-01-24 11:22:28:Fault Already Injected
+2017-01-24 11:22:28:event type: exit
+2017-01-24 11:22:28:exit code: 0

@@ -1,0 +1,154 @@
+2017-01-09 12:41:21:Starting flip_value script
+2017-01-09 12:41:21:Initialization strings:
+2017-01-09 12:41:21:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-09 12:41:21:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-09 12:41:21:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-09 12:41:22:(4) file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-01-09 12:41:22:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-01-09 12:41:22:(6) set args 16394 10 228 /micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10 /micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10
+2017-01-09 12:41:22:initSignal:12
+2017-01-09 12:41:22:endSignal:17
+2017-01-09 12:41:22:seqSignal:30
+2017-01-09 12:41:36:Trying Fault Injection
+2017-01-09 12:41:36:Inferior PID: 121373
+2017-01-09 12:41:36:Inferior is valid: True
+2017-01-09 12:41:36:Inferior #threads: 1
+2017-01-09 12:41:36:Backtrace BEGIN:
+2017-01-09 12:41:36:#0  0x0000000000402c5a in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:330
+#1  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-01-09 12:41:36:325	    //}
+326	
+327	
+328	    for (int i = 1 ; i < max_cols; i++){
+329	        for (int j = 1 ; j < max_rows; j++){
+330	            referrence[i*max_cols+j] = blosum62[input_itemsets[i*max_cols]][input_itemsets[j]];
+331	        }
+332	    }
+333	
+334	    for( int i = 1; i< max_rows ; i++)
+
+2017-01-09 12:41:36:Backtrace END
+2017-01-09 12:41:36:Thread name: None
+2017-01-09 12:41:36:Thread num: 1
+2017-01-09 12:41:36:Thread ptid: (121373, 121373, 0)
+2017-01-09 12:41:36:bitFlip function
+2017-01-09 12:41:36:Type: The type is an array.
+2017-01-09 12:41:36:Type sizeof: 2304
+2017-01-09 12:41:36:Fliping array at pos: 19
+2017-01-09 12:41:36:bitFlip function
+2017-01-09 12:41:36:Type: The type is an array.
+2017-01-09 12:41:36:Type sizeof: 96
+2017-01-09 12:41:36:Fliping array at pos: 19
+2017-01-09 12:41:36:bitFlip function
+2017-01-09 12:41:36:Type: The type is an integer type.
+2017-01-09 12:41:36:Type sizeof: 4
+2017-01-09 12:41:36:Mem contents(hex):0x040x000x000x00
+2017-01-09 12:41:36:base address to flip value: 0x60656c 
+2017-01-09 12:41:36:address max offset: 4
+2017-01-09 12:41:36:Memory content before bitflip:0x040x000x000x00
+2017-01-09 12:41:36:Memory content after  bitflip:0x040x000x000x40
+2017-01-09 12:41:36:Mem contents(hex):0x040x000x000x40
+2017-01-09 12:41:36:frame name: main
+2017-01-09 12:41:36:symbol name: blosum62
+2017-01-09 12:41:36:symbol filename: needle_check.cpp
+2017-01-09 12:41:36:symbol line: 80
+2017-01-09 12:41:36:value: {{4, -1, -2, -2, 0, -1, -1, 0, -2, -1, -1, -1, -1, -2, -1, 1, 0, -3, -2, 0, -2, -1, 0, -4}, {-1, 5, 0, -2, -3, 1, 0, -2, 0, -3, -2, 2, -1, -3, -2, -1, -1, -3, -2, -3, -1, 0, -1, -4}, {-2, 0, 6, 1, -3, 0, 0, 0, 1, -3, -3, 0, -2, -3, -2, 1, 0, -4, -2, -3, 3, 0, -1, -4}, {-2, -2, 1, 6, -3, 0, 2, -1, -1, -3, -4, -1, -3, -3, -1, 0, -1, -4, -3, -3, 4, 1, -1, -4}, {0, -3, -3, -3, 9, -3, -4, -3, -3, -1, -1, -3, -1, -2, -3, -1, -1, -2, -2, -1, -3, -3, -2, -4}, {-1, 1, 0, 0, -3, 5, 2, -2, 0, -3, -2, 1, 0, -3, -1, 0, -1, -2, -1, -2, 0, 3, -1, -4}, {-1, 0, 0, 2, -4, 2, 5, -2, 0, -3, -3, 1, -2, -3, -1, 0, -1, -3, -2, -2, 1, 4, -1, -4}, {0, -2, 0, -1, -3, -2, -2, 6, -2, -4, -4, -2, -3, -3, -2, 0, -2, -2, -3, -3, -1, -2, -1, -4}, {-2, 0, 1, -1, -3, 0, 0, -2, 8, -3, -3, -1, -2, -1, -2, -1, -2, -2, 2, -3, 0, 0, -1, -4}, {-1, -3, -3, -3, -1, -3, -3, -4, -3, 4, 2, -3, 1, 0, -3, -2, -1, -3, -1, 3, -3, -3, -1, -4}, {-1, -2, -3, -4, -1, -2, -3, -4, -3, 2, 4, -2, 2, 0, -3, -2, -1, -2, -1, 1, -4, -3, -1, -4}, {-1, 2, 0, -1, -3, 1, 1, -2, -1, -3, -2, 5, -1, -3, -1, 0, -1, -3, -2, -2, 0, 1, -1, -4}, {-1, -1, -2, -3, -1, 0, -2, -3, -2, 1, 2, -1, 5, 0, -2, -1, -1, -1, -1, 1, -3, -1, -1, -4}, {-2, -3, -3, -3, -2, -3, -3, -3, -1, 0, 0, -3, 0, 6, -4, -2, -2, 1, 3, -1, -3, -3, -1, -4}, {-1, -2, -2, -1, -3, -1, -1, -2, -2, -3, -3, -1, -2, -4, 7, -1, -1, -4, -3, -2, -2, -1, -2, -4}, {1, -1, 1, 0, -1, 0, 0, 0, -1, -2, -2, 0, -1, -2, -1, 4, 1, -3, -2, -2, 0, 0, 0, -4}, {0, -1, 0, -1, -1, -1, -1, -2, -2, -1, -1, -1, -1, -2, -1, 1, 5, -2, -2, 0, -1, -1, 0, -4}, {-3, -3, -4, -4, -2, -2, -3, -2, -2, -3, -2, -3, -1, 1, -4, -3, -2, 11, 2, -3, -4, -3, -2, -4}, {-2, -2, -2, -3, -2, -1, -2, -3, 2, -1, -1, -2, -1, 3, -3, -2, -2, 2, 7, -1, -3, -2, -1, -4}, {0, -3, -3, -3, -1, -2, -2, -3, -3, 3, 1, -2, 1, -1, -2, -2, 0, -3, -1, 1073741828, -3, -2, -1, -4}, {-2, -1, 3, 4, -3, 0, 1, -1, 0, -3, -4, 0, -3, -3, -2, 0, -1, -4, -3, -3, 4, 1, -1, -4}, {-1, 0, 0, 1, -3, 3, 4, -2, 0, -3, -3, 1, -1, -3, -1, 0, -1, -3, -2, -2, 1, 4, -1, -4}, {0, -1, -1, -1, -2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2, 0, 0, -2, -1, -1, -1, -1, -1, -4}, {-4 <repeats 23 times>, 1}}
+2017-01-09 12:41:36:value address: 0x605e00 <blosum62>
+2017-01-09 12:41:36:Type: The type is an array.
+2017-01-09 12:41:36:Type sizeof: 2304
+2017-01-09 12:41:36:Field name: None
+2017-01-09 12:41:36:Field Type:
+2017-01-09 12:41:36:Type: A range type, that is, an integer type with bounds.
+2017-01-09 12:41:36:Type sizeof: 1
+2017-01-09 12:41:36:Type range: (0L, 23L)
+2017-01-09 12:41:36:Fault Injection Successful after 14.3457028866s
+2017-01-09 12:41:36:Fault Already Injected
+2017-01-09 12:41:37:Fault Already Injected
+2017-01-09 12:41:37:Fault Already Injected
+2017-01-09 12:41:37:Fault Already Injected
+2017-01-09 12:41:37:Fault Already Injected
+2017-01-09 12:41:38:Fault Already Injected
+2017-01-09 12:41:38:Fault Already Injected
+2017-01-09 12:41:38:Fault Already Injected
+2017-01-09 12:41:38:Fault Already Injected
+2017-01-09 12:41:38:Fault Already Injected
+2017-01-09 12:41:38:Fault Already Injected
+2017-01-09 12:41:38:Fault Already Injected
+2017-01-09 12:41:39:Fault Already Injected
+2017-01-09 12:41:39:Fault Already Injected
+2017-01-09 12:41:39:Fault Already Injected
+2017-01-09 12:41:39:Fault Already Injected
+2017-01-09 12:41:39:Fault Already Injected
+2017-01-09 12:41:39:Fault Already Injected
+2017-01-09 12:41:39:Fault Already Injected
+2017-01-09 12:41:40:Fault Already Injected
+2017-01-09 12:41:40:Fault Already Injected
+2017-01-09 12:41:40:Fault Already Injected
+2017-01-09 12:41:40:Fault Already Injected
+2017-01-09 12:41:40:Fault Already Injected
+2017-01-09 12:41:40:Fault Already Injected
+2017-01-09 12:41:41:Fault Already Injected
+2017-01-09 12:41:41:Fault Already Injected
+2017-01-09 12:41:41:Fault Already Injected
+2017-01-09 12:41:41:Fault Already Injected
+2017-01-09 12:41:41:Fault Already Injected
+2017-01-09 12:41:41:Fault Already Injected
+2017-01-09 12:41:41:Fault Already Injected
+2017-01-09 12:41:41:Fault Already Injected
+2017-01-09 12:41:41:Fault Already Injected
+2017-01-09 12:41:42:Fault Already Injected
+2017-01-09 12:41:42:Fault Already Injected
+2017-01-09 12:41:42:Fault Already Injected
+2017-01-09 12:41:42:Fault Already Injected
+2017-01-09 12:41:42:Fault Already Injected
+2017-01-09 12:41:42:Fault Already Injected
+2017-01-09 12:41:43:Fault Already Injected
+2017-01-09 12:41:43:Fault Already Injected
+2017-01-09 12:41:43:Fault Already Injected
+2017-01-09 12:41:43:Fault Already Injected
+2017-01-09 12:41:43:Fault Already Injected
+2017-01-09 12:41:43:Fault Already Injected
+2017-01-09 12:41:43:Fault Already Injected
+2017-01-09 12:41:44:Fault Already Injected
+2017-01-09 12:41:44:Fault Already Injected
+2017-01-09 12:41:44:Fault Already Injected
+2017-01-09 12:41:44:Fault Already Injected
+2017-01-09 12:41:44:Fault Already Injected
+2017-01-09 12:41:44:Fault Already Injected
+2017-01-09 12:41:44:Fault Already Injected
+2017-01-09 12:41:44:Fault Already Injected
+2017-01-09 12:41:45:Fault Already Injected
+2017-01-09 12:41:45:Fault Already Injected
+2017-01-09 12:41:45:Fault Already Injected
+2017-01-09 12:41:45:Fault Already Injected
+2017-01-09 12:41:45:Fault Already Injected
+2017-01-09 12:41:45:Fault Already Injected
+2017-01-09 12:41:46:Fault Already Injected
+2017-01-09 12:41:46:Fault Already Injected
+2017-01-09 12:41:46:Fault Already Injected
+2017-01-09 12:41:46:Fault Already Injected
+2017-01-09 12:41:46:Fault Already Injected
+2017-01-09 12:41:46:Fault Already Injected
+2017-01-09 12:41:46:Fault Already Injected
+2017-01-09 12:41:46:Fault Already Injected
+2017-01-09 12:41:46:Fault Already Injected
+2017-01-09 12:41:47:Fault Already Injected
+2017-01-09 12:41:47:Fault Already Injected
+2017-01-09 12:41:47:Fault Already Injected
+2017-01-09 12:41:47:Fault Already Injected
+2017-01-09 12:41:47:Fault Already Injected
+2017-01-09 12:41:47:Fault Already Injected
+2017-01-09 12:41:48:Fault Already Injected
+2017-01-09 12:41:48:Fault Already Injected
+2017-01-09 12:41:48:Fault Already Injected
+2017-01-09 12:41:48:Fault Already Injected
+2017-01-09 12:41:48:Fault Already Injected
+2017-01-09 12:41:48:Fault Already Injected
+2017-01-09 12:41:49:Fault Already Injected
+2017-01-09 12:41:49:Fault Already Injected
+2017-01-09 12:41:49:Fault Already Injected
+2017-01-09 12:41:49:Fault Already Injected
+2017-01-09 12:41:49:Fault Already Injected
+2017-01-09 12:41:50:Fault Already Injected
+2017-01-09 12:41:50:Fault Already Injected

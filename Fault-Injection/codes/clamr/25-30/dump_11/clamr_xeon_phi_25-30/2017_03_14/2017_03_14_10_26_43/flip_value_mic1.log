@@ -1,0 +1,64 @@
+[INFO -- 2017-03-14 10:23:52]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-14 10:23:52]
+Initialization strings:
+[INFO -- 2017-03-14 10:23:53]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-14 10:23:53]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-14 10:23:53]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-14 10:23:53]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-14 10:23:53]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-14 10:23:53]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-14 10:23:53]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-14 10:23:53]
+initSignal:25
+[INFO -- 2017-03-14 10:23:53]
+endSignal:30
+[INFO -- 2017-03-14 10:23:53]
+seqSignal:20
+[INFO -- 2017-03-14 10:23:53]
+faultMode:3
+[INFO -- 2017-03-14 10:24:23]
+Backtrace BEGIN:
+#0  0x000000000044e4c3 in State::L__ZN5State25apply_boundary_conditionsEv_702__par_loop0_2_30 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:709
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd8f8 in ?? ()
+#3  0x00007fffffffd8c8 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+704	   for (uint ic=0; ic<ncells; ic++) {
+705	      if (mesh->is_left_boundary(ic)) {
+706	         int nr = nrht[ic];
+707	         H[ic] =  H[nr];
+708	         U[ic] = -U[nr];
+709	         V[ic] =  V[nr];
+710	      }
+711	      if (mesh->is_right_boundary(ic))  {
+712	         int nl = nlft[ic];
+713	         H[ic] =  H[nl];
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000xfe0x900xf6
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffd670
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: State::L__ZN5State25apply_boundary_conditionsEv_702__par_loop0_2_30
+symbol name: nbot
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 697
+value: 0x7fffffffd670
+value address: 0x7fffffffd408
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-14 10:24:23]
+Fault Injection Successful after 30.7558350563s

@@ -1,0 +1,79 @@
+[INFO -- 2017-03-18 09:11:08]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-18 09:11:08]
+Initialization strings:
+[INFO -- 2017-03-18 09:11:08]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-18 09:11:08]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-18 09:11:08]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-18 09:11:08]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-18 09:11:08]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-18 09:11:08]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-18 09:11:08]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-18 09:11:08]
+initSignal:25
+[INFO -- 2017-03-18 09:11:08]
+endSignal:30
+[INFO -- 2017-03-18 09:11:08]
+seqSignal:20
+[INFO -- 2017-03-18 09:11:08]
+faultMode:2
+[INFO -- 2017-03-18 09:11:38]
+Backtrace BEGIN:
+#0  0x000000000044a558 in std::_Rb_tree_node<std::pair<char const* const, malloc_plus_memory_entry*> >::_M_valptr (this=0x1c2b1a0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_tree.h:143
+#1  0x000000000052b501 in std::_Rb_tree<char const*, std::pair<char const* const, malloc_plus_memory_entry*>, std::_Select1st<std::pair<char const* const, malloc_plus_memory_entry*> >, cmp_str, std::allocator<std::pair<char const* const, malloc_plus_memory_entry*> > >::_M_construct_node (this=0x7f9a58, __node=0x1c2b1a0, __x=...) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_tree.h:503
+#2  0x000000000052b59e in std::_Rb_tree<char const*, std::pair<char const* const, malloc_plus_memory_entry*>, std::_Select1st<std::pair<char const* const, malloc_plus_memory_entry*> >, cmp_str, std::allocator<std::pair<char const* const, malloc_plus_memory_entry*> > >::_M_create_node (this=0x7f9a58, __x=...) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_tree.h:515
+#3  0x000000000052bb42 in std::_Rb_tree<char const*, std::pair<char const* const, malloc_plus_memory_entry*>, std::_Select1st<std::pair<char const* const, malloc_plus_memory_entry*> >, cmp_str, std::allocator<std::pair<char const* const, malloc_plus_memory_entry*> > >::_Alloc_node::operator()<std::pair<char const* const, malloc_plus_memory_entry*> > (this=0x7fffffffd7c0, __arg=...) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_tree.h:460
+#4  0x0000000000558f96 in std::_Rb_tree<char const*, std::pair<char const* const, malloc_plus_memory_entry*>, std::_Select1st<std::pair<char const* const, malloc_plus_memory_entry*> >, cmp_str, std::allocator<std::pair<char const* const, malloc_plus_memory_entry*> > >::_M_insert_<std::_Rb_tree<char const*, std::pair<char const* const, malloc_plus_memory_entry*>, std::_Select1st<std::pair<char const* const, malloc_plus_memory_entry*> >, cmp_str, std::allocator<std::pair<char const* const, malloc_plus_memory_entry*> > >::_Alloc_node> (this=0x7f9a58, __x=0x0, __p=0x1c2b320, __v=..., __node_gen=...) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_tree.h:1519
+#5  0x0000000000558d01 in std::_Rb_tree<char const*, std::pair<char const* const, malloc_plus_memory_entry*>, std::_Select1st<std::pair<char const* const, malloc_plus_memory_entry*> >, cmp_str, std::allocator<std::pair<char const* const, malloc_plus_memory_entry*> > >::_M_insert_unique (this=0x7f9a58, __v=...) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_tree.h:1879
+#6  0x000000000055911b in std::map<char const*, malloc_plus_memory_entry*, cmp_str, std::allocator<std::pair<char const* const, malloc_plus_memory_entry*> > >::insert (this=0x7f9a58, __x=...) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_map.h:610
+#7  0x000000000055502c in MallocPlus::memory_swap (this=0x7f9a58, malloc_mem_ptr_old=0x7f9fb0, malloc_mem_ptr_new=0x7fffffffe0d8) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/MallocPlus/MallocPlus.cpp:974
+#8  0x0000000000520876 in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3202
+#9  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#10 0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#11 0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+138	#if __cplusplus < 201103L
+139	      _Val _M_value_field;
+140	
+141	      _Val*
+142	      _M_valptr()
+143	      { return std::__addressof(_M_value_field); }
+144	
+145	      const _Val*
+146	      _M_valptr() const
+147	      { return std::__addressof(_M_value_field); }
+
+Backtrace END
+Fliping value of field: _M_node
+Fliping a bit of the pointer
+Memory content before bitflip:0xf00xdf0xff0xff0xff0x7f0x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7d0c70 
+address max offset: 8
+Memory content after  bitflip:0x040x120x840xd20xdd0x980xaa0xd1
+frame name: std::map<char const*, malloc_plus_memory_entry*, cmp_str, std::allocator<std::pair<char const* const, malloc_plus_memory_entry*> > >::insert
+symbol name: it_save
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/MallocPlus/MallocPlus.cpp
+symbol line: 94
+value: {_M_node = 0xd1aa98ddd2841204}
+value address: 0x7d0c70 <it_save>
+Type: The type is a structure.
+Type sizeof: 8
+Field name: _M_node
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-18 09:11:38]
+Fault Injection Successful after 30.7964410782s
+[INFO -- 2017-03-18 09:12:11]
+event type: exit
+[INFO -- 2017-03-18 09:12:11]
+exit code: 0

@@ -1,0 +1,63 @@
+[INFO -- 2017-02-26 12:55:48]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 12:55:48]
+Initialization strings:
+[INFO -- 2017-02-26 12:55:48]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-26 12:55:48]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 12:55:48]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 12:55:48]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 12:55:48]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 12:55:48]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 12:55:48]
+initSignal:3
+[INFO -- 2017-02-26 12:55:48]
+endSignal:6
+[INFO -- 2017-02-26 12:55:48]
+seqSignal:15
+[INFO -- 2017-02-26 12:55:48]
+faultMode:3
+[INFO -- 2017-02-26 12:55:51]
+Backtrace BEGIN:
+#0  read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:209
+#1  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+204	        }
+205	        if (feof(fp))
+206	            fatal("not enough lines in file");
+207	        if ((sscanf(str, "%f", &val) != 1) )
+208	            fatal("invalid file format");
+209	        vect[i] = val;
+210	    }
+211	
+212	    fclose(fp);
+213	}
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffff62ca010
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: main
+symbol name: result
+symbol filename: hotspot_check.c
+symbol line: 231
+value: 0x7ffff62ca010
+value address: 0x7fffffffe9e0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-26 12:55:51]
+Fault Injection Successful after 3.76264309883s
+[INFO -- 2017-02-26 12:56:13]
+event type: exit
+[INFO -- 2017-02-26 12:56:13]
+exit code: 0

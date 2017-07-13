@@ -1,0 +1,63 @@
+[INFO -- 2017-02-26 07:49:32]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 07:49:32]
+Initialization strings:
+[INFO -- 2017-02-26 07:49:33]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-26 07:49:33]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 07:49:33]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 07:49:33]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 07:49:33]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 07:49:33]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 07:49:33]
+initSignal:6
+[INFO -- 2017-02-26 07:49:33]
+endSignal:9
+[INFO -- 2017-02-26 07:49:33]
+seqSignal:15
+[INFO -- 2017-02-26 07:49:33]
+faultMode:0
+[EXCEPTION -- 2017-02-26 07:49:40]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-02-26 07:49:40]
+Backtrace BEGIN:
+#0  __mpn_mul_1 () at ../sysdeps/x86_64/mul_1.S:32
+#1  0x00007ffff7112b70 in __mpn_mul (prodp=prodp@entry=0x7fffffffdf70, up=0x7ffff71e5468 <__tens+40>, usize=1, vp=vp@entry=0x7fffffffdfc0, vsize=vsize@entry=1) at mul.c:90
+#2  0x00007ffff7108d1e in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe050 "0.000008", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1430
+#3  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe050 "0.000008", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0) at strtod.c:54
+#4  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2332
+#5  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "0.000008\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#6  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#7  0x0000000000404598 in read_input (vect=0x7ffff66cb010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee43 "/micNfs/gdb-fault-injection/injector/data/hotspot/power_1024") at hotspot_check.c:207
+#8  0x0000000000404ad7 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:266
+
+27	in ../sysdeps/x86_64/mul_1.S
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x800x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffdf70
+address max offset: 8
+Memory content after  bitflip:0x010x000x000x000x000x800x000x00
+frame name: __mpn_mul
+symbol name: prodp
+symbol filename: mul.c
+symbol line: 46
+value: 0x7fffffffdf70
+value address: 0x7fffffffdeb0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-26 07:49:40]
+Fault Injection Successful after 7.90507388115s
+[INFO -- 2017-02-26 07:49:58]
+event type: exit
+[INFO -- 2017-02-26 07:49:58]
+exit code: 0

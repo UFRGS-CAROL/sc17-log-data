@@ -1,0 +1,66 @@
+2016-10-24 13:13:50:Initialization strings:
+2016-10-24 13:13:51:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-24 13:13:51:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 13:13:51:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 13:13:51:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-24 13:13:51:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-24 13:13:51:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-24 13:13:56:Trying Fault Injection
+2016-10-24 13:13:56:Backtrace BEGIN:
+2016-10-24 13:13:56:#0  0x00007ffff7124a34 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:473
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe87a "0.000008\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401808 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=-7680, argv=0x0) at hotspot_check.c:265
+
+2016-10-24 13:13:56:468	in vfscanf.c
+
+2016-10-24 13:13:56:Backtrace END
+2016-10-24 13:13:56:Type: The type is an array.
+2016-10-24 13:13:56:Type sizeof: 24
+2016-10-24 13:13:56:Fliping array at pos: 0
+2016-10-24 13:13:56:Type: The type is a structure.
+2016-10-24 13:13:56:Type sizeof: 24
+2016-10-24 13:13:56:Fliping value of field: reg_save_area
+2016-10-24 13:13:56:Type: The type is a pointer.
+2016-10-24 13:13:56:Type sizeof: 8
+2016-10-24 13:13:56:Fault Injection Failed after 5.19694304466s
+2016-10-24 13:13:56:Trying Fault Injection
+2016-10-24 13:13:56:Backtrace BEGIN:
+2016-10-24 13:13:56:#0  0x00007ffff71505e6 in __GI_memcpy (dstpp=dstpp@entry=0x7fffffffe87a, srcpp=srcpp@entry=0x7ffff7f41366, len=<optimized out>, len@entry=9) at ../string/memcpy.c:62
+#1  0x00007ffff713940b in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe87a "0.000163\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:105
+#2  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe87a "0.000163\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#3  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe87a "0.000163\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#4  0x00000000004017d6 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:201
+#5  main (argc=-6013, argv=0xfffffffff7f42aec) at hotspot_check.c:265
+
+2016-10-24 13:13:56:57	in ../string/memcpy.c
+
+2016-10-24 13:13:56:Backtrace END
+2016-10-24 13:13:56:Type: The type is an integer type.
+2016-10-24 13:13:56:Type sizeof: 4
+2016-10-24 13:13:56:Mem contents(hex):0x640xee0xff0xff
+2016-10-24 13:13:56:base address to flip value: 0x7fffffffe610
+2016-10-24 13:13:56:address max offset: 4
+2016-10-24 13:13:56:Memory content before bitflip:0x640xee0xff0xff
+2016-10-24 13:13:56:Memory content after  bitflip:0x640xef0xff0xff
+2016-10-24 13:13:56:Mem contents(hex):0x640xef0xff0xff
+2016-10-24 13:13:56:frame name: main
+2016-10-24 13:13:56:symbol name: errors
+2016-10-24 13:13:56:symbol filename: hotspot_check.c
+2016-10-24 13:13:56:symbol line: 281
+2016-10-24 13:13:56:value: -4252
+2016-10-24 13:13:56:value address: 0x7fffffffe610
+2016-10-24 13:13:56:Type: The type is an integer type.
+2016-10-24 13:13:56:Type sizeof: 4
+2016-10-24 13:13:56:Fault Injection Successful after 5.90635299683s
+2016-10-24 13:13:57:Fault Already Injected
+2016-10-24 13:13:59:Fault Already Injected
+2016-10-24 13:14:00:Fault Already Injected
+2016-10-24 13:14:02:Fault Already Injected
+2016-10-24 13:14:02:Fault Already Injected
+2016-10-24 13:14:02:Fault Already Injected
+2016-10-24 13:14:04:Fault Already Injected
+2016-10-24 13:14:06:Fault Already Injected
+2016-10-24 13:14:06:event type: exit
+2016-10-24 13:14:06:exit code: 0

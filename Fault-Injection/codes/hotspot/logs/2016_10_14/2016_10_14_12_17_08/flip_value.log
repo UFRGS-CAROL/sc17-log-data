@@ -1,0 +1,68 @@
+2016-10-14 12:16:46:Initialization strings:
+2016-10-14 12:16:46:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-14 12:16:46:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-14 12:16:46:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-14 12:16:46:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-14 12:16:46:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-14 12:16:46:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-14 12:16:47:Trying Fault Injection
+2016-10-14 12:16:47:Backtrace BEGIN:
+2016-10-14 12:16:47:#0  str_to_mpn (str=0x7fffffffe012 "1.627644", str@entry=0x7fffffffe010 "331.627644", digcnt=1, digcnt@entry=3, n=n@entry=0x7fffffffdf30, nsize=nsize@entry=0x7fffffffdf18, exponent=exponent@entry=0x7fffffffdf20, decimal_len=decimal_len@entry=1, thousands=0x0, decimal=<optimized out>) at strtod_l.c:369
+#1  0x00007ffff7109af9 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe010 "331.627644", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1198
+#2  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe010 "331.627644", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0) at strtod.c:54
+#3  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2332
+#4  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "331.627644\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#5  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#6  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#7  main (argc=-8176, argv=0x3) at hotspot_check.c:264
+
+2016-10-14 12:16:47:364	in strtod_l.c
+
+2016-10-14 12:16:47:Backtrace END
+2016-10-14 12:16:47:Type: The type is an array.
+2016-10-14 12:16:47:Type sizeof: 24
+2016-10-14 12:16:47:Fliping array at pos: 0
+2016-10-14 12:16:47:Type: The type is a structure.
+2016-10-14 12:16:47:Type sizeof: 24
+2016-10-14 12:16:47:Fliping value of field: overflow_arg_area
+2016-10-14 12:16:47:Type: The type is a pointer.
+2016-10-14 12:16:47:Type sizeof: 8
+2016-10-14 12:16:47:Fault Injection Failed after 1.38640093803s
+2016-10-14 12:16:48:Trying Fault Injection
+2016-10-14 12:16:48:Backtrace BEGIN:
+2016-10-14 12:16:48:#0  __memchr (s=s@entry=0x7ffff7fce7f3, c_in=c_in@entry=10, n=<optimized out>, n@entry=255) at ../string/memchr.c:151
+#1  0x00007ffff7139361 in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe77a "324.604304\n", n=255, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:94
+#2  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe77a "324.604304\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#3  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe77a "324.604304\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#4  0x0000000000401712 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:201
+#5  main (argc=-134420238, argv=0xa) at hotspot_check.c:264
+
+2016-10-14 12:16:48:146	in ../string/memchr.c
+
+2016-10-14 12:16:48:Backtrace END
+2016-10-14 12:16:48:Type: A floating point type.
+2016-10-14 12:16:48:Type sizeof: 4
+2016-10-14 12:16:48:Mem contents(hex):0x6f0x120x830x3c
+2016-10-14 12:16:48:base address to flip value: 0x40739c 
+2016-10-14 12:16:48:address max offset: 4
+2016-10-14 12:16:48:Memory content before bitflip:0x6f0x120x830x3c
+2016-10-14 12:16:48:Memory content after  bitflip:0x6f0x100x830x3c
+2016-10-14 12:16:48:Mem contents(hex):0x6f0x100x830x3c
+2016-10-14 12:16:48:frame name: main
+2016-10-14 12:16:48:symbol name: chip_height
+2016-10-14 12:16:48:symbol filename: hotspot_check.c
+2016-10-14 12:16:48:symbol line: 33
+2016-10-14 12:16:48:value: 0.0159990471
+2016-10-14 12:16:48:value address: 0x40739c <chip_height>
+2016-10-14 12:16:48:Type: A floating point type.
+2016-10-14 12:16:48:Type sizeof: 4
+2016-10-14 12:16:48:Fault Injection Successful after 2.17075896263s
+2016-10-14 12:16:51:Fault Already Injected
+2016-10-14 12:16:52:Fault Already Injected
+2016-10-14 12:16:53:Fault Already Injected
+2016-10-14 12:16:54:Fault Already Injected
+2016-10-14 12:16:57:Fault Already Injected
+2016-10-14 12:16:57:Fault Already Injected
+2016-10-14 12:17:01:Fault Already Injected
+2016-10-14 12:17:02:event type: exit
+2016-10-14 12:17:02:exit code: 0

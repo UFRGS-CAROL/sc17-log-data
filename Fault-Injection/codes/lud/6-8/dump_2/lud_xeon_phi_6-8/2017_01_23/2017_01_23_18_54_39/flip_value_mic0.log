@@ -1,0 +1,56 @@
+2017-01-23 18:54:21:Starting flip_value script
+2017-01-23 18:54:21:Initialization strings:
+2017-01-23 18:54:21:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-23 18:54:21:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-23 18:54:21:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-23 18:54:21:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-23 18:54:21:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-23 18:54:21:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-23 18:54:21:initSignal:6
+2017-01-23 18:54:21:endSignal:8
+2017-01-23 18:54:21:seqSignal:30
+2017-01-23 18:54:28:Trying Fault Injection
+2017-01-23 18:54:28:Inferior PID: 104059
+2017-01-23 18:54:28:Inferior is valid: True
+2017-01-23 18:54:28:Inferior #threads: 229
+2017-01-23 18:54:28:Backtrace BEGIN:
+2017-01-23 18:54:28:#0  __GI___waitpid (pid=104301, stat_loc=stat_loc@entry=0x7fffffffe4d8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:40
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405f16 in log_error_count (kernel_errors=0) at ../include/log_helper.c:369
+#4  0x0000000000402def in main (argc=9, argv=0x7fffffffec08) at lud_check.c:149
+
+2017-01-23 18:54:28:35	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-01-23 18:54:28:Backtrace END
+2017-01-23 18:54:32:Thread name: None
+2017-01-23 18:54:32:Thread num: 1
+2017-01-23 18:54:32:Thread ptid: (104059, 104059, 0)
+2017-01-23 18:54:32:bitFlip function
+2017-01-23 18:54:32:Type: A floating point type.
+2017-01-23 18:54:32:Type sizeof: 8
+2017-01-23 18:54:32:Mem contents(hex):0xf60x970xdd0x930x870xc50x180x40
+2017-01-23 18:54:32:base address to flip value: 0x60bd38 
+2017-01-23 18:54:32:address max offset: 8
+2017-01-23 18:54:32:Memory content before bitflip:0xf60x970xdd0x930x870xc50x180x40
+2017-01-23 18:54:32:Memory content after  bitflip:0xfe0x970xdd0x930x870xc50x180x40
+2017-01-23 18:54:32:Mem contents(hex):0xfe0x970xdd0x930x870xc50x180x40
+2017-01-23 18:54:32:frame name: log_error_count
+2017-01-23 18:54:32:symbol name: kernel_time
+2017-01-23 18:54:32:symbol filename: ../include/log_helper.c
+2017-01-23 18:54:32:symbol line: 63
+2017-01-23 18:54:32:value: 6.192900000000007
+2017-01-23 18:54:32:value address: 0x60bd38 <kernel_time>
+2017-01-23 18:54:32:Type: A floating point type.
+2017-01-23 18:54:32:Type sizeof: 8
+2017-01-23 18:54:32:Fault Injection Successful after 11.0502619743s
+2017-01-23 18:54:32:Fault Already Injected
+2017-01-23 18:54:32:Fault Already Injected
+2017-01-23 18:54:32:Fault Already Injected
+2017-01-23 18:54:32:Fault Already Injected
+2017-01-23 18:54:32:Fault Already Injected
+2017-01-23 18:54:32:Fault Already Injected
+2017-01-23 18:54:33:Fault Already Injected
+2017-01-23 18:54:33:Fault Already Injected
+2017-01-23 18:54:33:event type: exit
+2017-01-23 18:54:33:exit code: 0

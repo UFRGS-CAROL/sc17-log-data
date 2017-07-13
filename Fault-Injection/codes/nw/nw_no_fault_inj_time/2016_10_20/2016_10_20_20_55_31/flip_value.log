@@ -1,0 +1,71 @@
+2016-10-20 20:55:13:Initialization strings:
+2016-10-20 20:55:14:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-20 20:55:14:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-20 20:55:14:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-20 20:55:14:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-20 20:55:14:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-20 20:55:14:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-20 20:55:14:Trying Fault Injection
+2016-10-20 20:55:14:Inferior PID: 133971
+2016-10-20 20:55:14:Inferior is valid: True
+2016-10-20 20:55:14:Inferior #threads: 1
+2016-10-20 20:55:14:Backtrace BEGIN:
+2016-10-20 20:55:14:#0  __GI___waitpid (pid=133978, stat_loc=stat_loc@entry=0x7fffffffe5e8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff6d9d41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x000000000040648c in update_timestamp () at ../../include/log_helper.c:108
+#3  start_log_file (benchmark_name=0x20b5a <error: Cannot access memory at address 0x20b5a>, test_info=0x7fffffffe5e8 "") at ../../include/log_helper.c:197
+#4  0x00000000004014df in runTest (argc=<optimized out>, argv=<optimized out>) at needle_check.cpp:294
+#5  main (argc=133978, argv=0x7fffffffe5e8) at needle_check.cpp:114
+
+2016-10-20 20:55:14:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-20 20:55:14:Backtrace END
+2016-10-20 20:55:14:Thread name: None
+2016-10-20 20:55:14:Thread num: 1
+2016-10-20 20:55:14:Thread ptid: (133971, 133971, 0)
+2016-10-20 20:55:14:bitFlip function
+2016-10-20 20:55:14:Type: The type is a structure.
+2016-10-20 20:55:14:Type sizeof: 32
+2016-10-20 20:55:14:Fliping value of field: __prev
+2016-10-20 20:55:14:bitFlip function
+2016-10-20 20:55:14:Type: The type is a pointer.
+2016-10-20 20:55:14:Type sizeof: 8
+2016-10-20 20:55:14:Fliping a bit of the pointer
+2016-10-20 20:55:14:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-10-20 20:55:14:base address to flip value: 0x7fffffffe5e0
+2016-10-20 20:55:14:address max offset: 8
+2016-10-20 20:55:14:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-10-20 20:55:14:Memory content after  bitflip:0x000x000x040x000x000x000x000x00
+2016-10-20 20:55:14:Mem contents(hex):0x000x000x040x000x000x000x000x00
+2016-10-20 20:55:14:frame name: do_system
+2016-10-20 20:55:14:symbol name: _buffer
+2016-10-20 20:55:14:symbol filename: ../sysdeps/posix/system.c
+2016-10-20 20:55:14:symbol line: 112
+2016-10-20 20:55:14:value: {__routine = 0x7ffff6d9d720 <cancel_handler>, __arg = 0x7fffffffe5c4, __canceltype = 0, __prev = 0x40000}
+2016-10-20 20:55:14:value address: 0x7fffffffe5c8
+2016-10-20 20:55:14:Type: The type is a structure.
+2016-10-20 20:55:14:Type sizeof: 32
+2016-10-20 20:55:14:Field name: __routine
+2016-10-20 20:55:14:Field Type:
+2016-10-20 20:55:14:Type: The type is a pointer.
+2016-10-20 20:55:14:Type sizeof: 8
+2016-10-20 20:55:14:Field name: __arg
+2016-10-20 20:55:14:Field Type:
+2016-10-20 20:55:14:Type: The type is a pointer.
+2016-10-20 20:55:14:Type sizeof: 8
+2016-10-20 20:55:14:Field name: __canceltype
+2016-10-20 20:55:14:Field Type:
+2016-10-20 20:55:14:Type: The type is an integer type.
+2016-10-20 20:55:14:Type sizeof: 4
+2016-10-20 20:55:14:Field name: __prev
+2016-10-20 20:55:14:Field Type:
+2016-10-20 20:55:14:Type: The type is a pointer.
+2016-10-20 20:55:14:Type sizeof: 8
+2016-10-20 20:55:14:Fault Injection Successful after 0.814846038818s
+2016-10-20 20:55:17:Fault Already Injected
+2016-10-20 20:55:19:Fault Already Injected
+2016-10-20 20:55:20:Fault Already Injected
+2016-10-20 20:55:22:Fault Already Injected
+2016-10-20 20:55:24:Fault Already Injected
+2016-10-20 20:55:24:event type: exit
+2016-10-20 20:55:24:exit code: 0

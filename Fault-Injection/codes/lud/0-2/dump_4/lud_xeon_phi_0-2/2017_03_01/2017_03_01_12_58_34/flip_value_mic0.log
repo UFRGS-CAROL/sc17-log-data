@@ -1,0 +1,104 @@
+2017-03-01 12:57:53:Starting flip_value script
+2017-03-01 12:57:53:Initialization strings:
+2017-03-01 12:57:54:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 12:57:54:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 12:57:54:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 12:57:54:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-03-01 12:57:54:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-03-01 12:57:54:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-03-01 12:57:54:initSignal:0
+2017-03-01 12:57:54:endSignal:2
+2017-03-01 12:57:54:seqSignal:30
+2017-03-01 12:57:54:Backtrace BEGIN:
+2017-03-01 12:57:54:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000009 in ?? ()
+#7  0x00007fffffffee08 in ?? ()
+#8  0x00007fffffffee3f in ?? ()
+#9  0x00007fffffffee42 in ?? ()
+#10 0x00007fffffffee47 in ?? ()
+#11 0x00007fffffffee4a in ?? ()
+#12 0x00007fffffffee4e in ?? ()
+#13 0x00007fffffffee51 in ?? ()
+#14 0x00007fffffffee90 in ?? ()
+#15 0x00007fffffffee93 in ?? ()
+#16 0x0000000000000000 in ?? ()
+
+2017-03-01 12:57:54:69	in dl-debug.c
+
+2017-03-01 12:57:54:Backtrace END
+2017-03-01 12:57:54:Type: The type is a pointer.
+2017-03-01 12:57:54:Type sizeof: 8
+2017-03-01 12:57:54:Fliping a bit of the value pointed by a pointer
+2017-03-01 12:57:54:Type: The type is a pointer.
+2017-03-01 12:57:54:Type sizeof: 8
+2017-03-01 12:57:54:Fliping a bit of the pointer
+2017-03-01 12:57:54:Mem contents(hex):0x080xee0xff0xff0xff0x7f0x000x00
+2017-03-01 12:57:54:Fault Mode: Zero bit-flip
+2017-03-01 12:57:54:base address to flip value: 0x7fffffffec08
+2017-03-01 12:57:54:address max offset: 8
+2017-03-01 12:57:54:Memory content before bitflip:0x080xee0xff0xff0xff0x7f0x000x00
+2017-03-01 12:57:55:Backtrace BEGIN:
+2017-03-01 12:57:55:#0  syscall () at ../sysdeps/unix/sysv/linux/x86_64/syscall.S:38
+#1  0x00007ffff7916c8d in ?? ()
+#2  0x0000000000000040 in ?? ()
+#3  0x0000000000001ab0 in ?? ()
+#4  0x000000000000003f in ?? ()
+#5  0x0000000000000000 in ?? ()
+
+2017-03-01 12:57:55:33	in ../sysdeps/unix/sysv/linux/x86_64/syscall.S
+
+2017-03-01 12:57:55:Backtrace END
+2017-03-01 12:57:55:Backtrace BEGIN:
+2017-03-01 12:57:55:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd2d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff7fd2df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff7fd2d14 in ?? ()
+#8  0x00007ffff7fd2de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+2017-03-01 12:57:55:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-03-01 12:57:55:Backtrace END
+2017-03-01 12:57:55:Type: The type is a structure.
+2017-03-01 12:57:55:Type sizeof: 16
+2017-03-01 12:57:55:Fliping value of field: next
+2017-03-01 12:57:55:Type: The type is a pointer.
+2017-03-01 12:57:55:Type sizeof: 8
+2017-03-01 12:57:55:Fliping a bit of the pointer
+2017-03-01 12:57:55:Mem contents(hex):0xc00x690xff0xf70xff0x7f0x000x00
+2017-03-01 12:57:55:Fault Mode: Single bit-flip
+2017-03-01 12:57:55:base address to flip value: 0x7ffff76462f0 
+2017-03-01 12:57:55:address max offset: 8
+2017-03-01 12:57:55:Memory content before bitflip:0xc00x690xff0xf70xff0x7f0x000x00
+2017-03-01 12:57:55:Memory content after  bitflip:0x800x690xff0xf70xff0x7f0x000x00
+2017-03-01 12:57:55:Mem contents(hex):0x800x690xff0xf70xff0x7f0x000x00
+2017-03-01 12:57:55:frame name: __pthread_create_2_1
+2017-03-01 12:57:55:symbol name: __GI___stack_user
+2017-03-01 12:57:55:symbol filename: allocatestack.c
+2017-03-01 12:57:55:symbol line: 124
+2017-03-01 12:57:55:value: {next = 0x7ffff7ff6980, prev = 0x7ffff7ff69c0}
+2017-03-01 12:57:55:value address: 0x7ffff76462f0 <__stack_user>
+2017-03-01 12:57:55:Type: The type is a structure.
+2017-03-01 12:57:55:Type sizeof: 16
+2017-03-01 12:57:55:Field name: next
+2017-03-01 12:57:55:Field Type:
+2017-03-01 12:57:55:Type: The type is a pointer.
+2017-03-01 12:57:55:Type sizeof: 8
+2017-03-01 12:57:55:Field name: prev
+2017-03-01 12:57:55:Field Type:
+2017-03-01 12:57:55:Type: The type is a pointer.
+2017-03-01 12:57:55:Type sizeof: 8
+2017-03-01 12:57:55:Fault Injection Successful after 1.72953701019s
+2017-03-01 12:58:18:event type: exit
+2017-03-01 12:58:18:exit code: 1

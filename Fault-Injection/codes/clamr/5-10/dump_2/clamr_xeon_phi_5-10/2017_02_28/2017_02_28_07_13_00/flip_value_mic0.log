@@ -1,0 +1,101 @@
+2017-02-28 07:11:29:Starting flip_value script
+2017-02-28 07:11:29:Initialization strings:
+2017-02-28 07:11:29:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 07:11:29:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 07:11:29:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 07:11:29:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 07:11:29:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 07:11:29:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 07:11:29:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 07:11:29:initSignal:5
+2017-02-28 07:11:29:endSignal:10
+2017-02-28 07:11:29:seqSignal:20
+2017-02-28 07:11:35:Backtrace BEGIN:
+2017-02-28 07:11:36:#0  0x000000000053b34a in hsfc2d (coord=0x7fffffffdfb8, nkey=2, key=0x7ffd4c20a774) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfc.c:109
+#1  0x000000000053a65d in hsfc2sort (N=264192, X=0x7ffe0c1bf010, Y=0x7ffdcc1b0010, ibase=0, Info=0x7ffd8c0ae010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:138
+#2  0x0000000000536b19 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#3  0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-28 07:11:36:104	    const unsigned c = gray_inv[ reflect ^ (
+105	      ( ( ( coord[0] >> s ) & 01 ) << order[0] ) |
+106	      ( ( ( coord[1] >> s ) & 01 ) << order[1] ) ) ];
+107	     
+108	    const unsigned off   = 2 * i ;                   /* Bit offset */
+109	    const unsigned which = off / MaxBits ;           /* Which word to update */
+110	    const unsigned shift = MaxBits - off % MaxBits ; /* Which bits to update */
+111	
+112	    /* Set the two bits */
+113	
+
+2017-02-28 07:11:36:Backtrace END
+2017-02-28 07:11:42:Type: A floating point type.
+2017-02-28 07:11:42:Type sizeof: 8
+2017-02-28 07:11:42:Mem contents(hex):0x000x000xe00xff0xff0xff0xef0x41
+2017-02-28 07:11:42:Fault Mode: One bit-flip
+2017-02-28 07:11:42:base address to flip value: 0x7fffffffdff8
+2017-02-28 07:11:42:address max offset: 8
+2017-02-28 07:11:42:Memory content before bitflip:0x000x000xe00xff0xff0xff0xef0x41
+2017-02-28 07:11:42:Backtrace BEGIN:
+2017-02-28 07:11:42:#0  0x000000000053b34a in hsfc2d (coord=0x7fffffffdfb8, nkey=2, key=0x7ffd4c20a774) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfc.c:109
+#1  0x000000000053a65d in hsfc2sort (N=264192, X=0x7ffe0c1bf010, Y=0x7ffdcc1b0010, ibase=0, Info=0x7ffd8c0ae010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:138
+#2  0x0000000000536b19 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#3  0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-28 07:11:42:104	    const unsigned c = gray_inv[ reflect ^ (
+105	      ( ( ( coord[0] >> s ) & 01 ) << order[0] ) |
+106	      ( ( ( coord[1] >> s ) & 01 ) << order[1] ) ) ];
+107	     
+108	    const unsigned off   = 2 * i ;                   /* Bit offset */
+109	    const unsigned which = off / MaxBits ;           /* Which word to update */
+110	    const unsigned shift = MaxBits - off % MaxBits ; /* Which bits to update */
+111	
+112	    /* Set the two bits */
+113	
+
+2017-02-28 07:11:42:Backtrace END
+2017-02-28 07:11:49:Type: A floating point type.
+2017-02-28 07:11:49:Type sizeof: 8
+2017-02-28 07:11:49:Mem contents(hex):0x000xff0x010xfc0x070xf00x5f0x3f
+2017-02-28 07:11:49:Fault Mode: One bit-flip
+2017-02-28 07:11:49:base address to flip value: 0x7fffffffe1d8
+2017-02-28 07:11:49:address max offset: 8
+2017-02-28 07:11:49:Memory content before bitflip:0x000xff0x010xfc0x070xf00x5f0x3f
+2017-02-28 07:11:49:Backtrace BEGIN:
+2017-02-28 07:11:49:#0  0x000000000053b34a in hsfc2d (coord=0x7fffffffdfb8, nkey=2, key=0x7ffd4c20a774) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfc.c:109
+#1  0x000000000053a65d in hsfc2sort (N=264192, X=0x7ffe0c1bf010, Y=0x7ffdcc1b0010, ibase=0, Info=0x7ffd8c0ae010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:138
+#2  0x0000000000536b19 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#3  0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-28 07:11:49:104	    const unsigned c = gray_inv[ reflect ^ (
+105	      ( ( ( coord[0] >> s ) & 01 ) << order[0] ) |
+106	      ( ( ( coord[1] >> s ) & 01 ) << order[1] ) ) ];
+107	     
+108	    const unsigned off   = 2 * i ;                   /* Bit offset */
+109	    const unsigned which = off / MaxBits ;           /* Which word to update */
+110	    const unsigned shift = MaxBits - off % MaxBits ; /* Which bits to update */
+111	
+112	    /* Set the two bits */
+113	
+
+2017-02-28 07:11:49:Backtrace END
+2017-02-28 07:11:55:Type: A floating point type.
+2017-02-28 07:11:55:Type sizeof: 8
+2017-02-28 07:11:55:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-28 07:11:55:Fault Mode: Double bit-flip
+2017-02-28 07:11:55:base address to flip value: 0x7d0688 
+2017-02-28 07:11:55:address max offset: 8
+2017-02-28 07:11:55:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-28 07:11:55:Memory content after  bitflip:0x000x050x000x000x000x000x000x00
+2017-02-28 07:11:55:Mem contents(hex):0x000x050x000x000x000x000x000x00
+2017-02-28 07:11:55:frame name: main
+2017-02-28 07:11:55:symbol name: H_sum_initial
+2017-02-28 07:11:55:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-02-28 07:11:55:symbol line: 171
+2017-02-28 07:11:55:value: 6.3240402667679558e-321
+2017-02-28 07:11:55:value address: 0x7d0688 <H_sum_initial>
+2017-02-28 07:11:55:Type: A floating point type.
+2017-02-28 07:11:55:Type sizeof: 8
+2017-02-28 07:11:55:Fault Injection Successful after 26.3305120468s

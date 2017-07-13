@@ -1,0 +1,122 @@
+2017-01-25 13:31:49:Starting flip_value script
+2017-01-25 13:31:49:Initialization strings:
+2017-01-25 13:31:50:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 13:31:50:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 13:31:50:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 13:31:50:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 13:31:50:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 13:31:50:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 13:31:50:initSignal:4
+2017-01-25 13:31:50:endSignal:6
+2017-01-25 13:31:50:seqSignal:30
+2017-01-25 13:31:54:Trying Fault Injection
+2017-01-25 13:31:54:Inferior PID: 104659
+2017-01-25 13:31:54:Inferior is valid: True
+2017-01-25 13:31:54:Inferior #threads: 229
+2017-01-25 13:31:54:Backtrace BEGIN:
+2017-01-25 13:31:54:#0  0x0000000000404cba in L_lud_omp_123__par_loop2_2_5 () at lud_omp.c:148
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-01-25 13:31:54:143	            for (i = 0; i < BS; i++)
+144	            {
+145	                for (k=0; k < BS; k++) {
+146	#pragma omp simd 
+147	                    for (j = 0; j < BS; j++) {
+148	                        sum[j] += temp_left[BS*i + k] * temp_top[BS*k + j];
+149	                    }
+150	                }
+151	#pragma omp simd 
+152	                for (j = 0; j < BS; j++) {
+
+2017-01-25 13:31:54:Backtrace END
+2017-01-25 13:31:59:Thread name: None
+2017-01-25 13:31:59:Thread num: 26
+2017-01-25 13:31:59:Thread ptid: (104659, 104688, 0)
+2017-01-25 13:31:59:Error Exception(frameFlip): invalid frame
+2017-01-25 13:31:59:Error Exception(frameFlip): invalid frame
+2017-01-25 13:31:59:bitFlip function
+2017-01-25 13:31:59:Type: The type is an array.
+2017-01-25 13:31:59:Type sizeof: 64
+2017-01-25 13:31:59:Fliping array at pos: 15
+2017-01-25 13:31:59:bitFlip function
+2017-01-25 13:31:59:Type: A floating point type.
+2017-01-25 13:31:59:Type sizeof: 4
+2017-01-25 13:31:59:Mem contents(hex):0x780xe60xbd0x3c
+2017-01-25 13:31:59:base address to flip value: 0x7fffffffc87c
+2017-01-25 13:31:59:address max offset: 4
+2017-01-25 13:31:59:Memory content before bitflip:0x780xe60xbd0x3c
+2017-01-25 13:31:59:Memory content after  bitflip:0x780xe60x9d0x3c
+2017-01-25 13:31:59:Mem contents(hex):0x780xe60x9d0x3c
+2017-01-25 13:31:59:frame name: L_lud_omp_123__par_loop2_2_5
+2017-01-25 13:31:59:symbol name: sum
+2017-01-25 13:31:59:symbol filename: lud_omp.c
+2017-01-25 13:31:59:symbol line: 130
+2017-01-25 13:31:59:value: {0.0259107463, 0.0258849412, 0.0258591156, 0.0234613512, 0.0234374981, 0.0234140977, 0.0233909208, 0.0233673677, 0.0233441871, 0.0233208928, 0.0232974626, 0.0232741218, 0.0232508983, 0.0232276116, 0.0232042633, 0.0192749351}
+2017-01-25 13:31:59:value address: 0x7fffffffc840
+2017-01-25 13:31:59:Type: The type is an array.
+2017-01-25 13:31:59:Type sizeof: 64
+2017-01-25 13:31:59:Field name: None
+2017-01-25 13:31:59:Field Type:
+2017-01-25 13:31:59:Type: A range type, that is, an integer type with bounds.
+2017-01-25 13:31:59:Type sizeof: 1
+2017-01-25 13:31:59:Type range: (0L, 15L)
+2017-01-25 13:31:59:Fault Injection Successful after 9.86944890022s
+2017-01-25 13:32:00:Fault Already Injected
+2017-01-25 13:32:00:Fault Already Injected
+2017-01-25 13:32:00:Fault Already Injected
+2017-01-25 13:32:00:Fault Already Injected
+2017-01-25 13:32:00:Fault Already Injected
+2017-01-25 13:32:00:Fault Already Injected
+2017-01-25 13:32:00:Fault Already Injected
+2017-01-25 13:32:01:Fault Already Injected
+2017-01-25 13:32:01:Fault Already Injected
+2017-01-25 13:32:01:Fault Already Injected
+2017-01-25 13:32:01:Fault Already Injected
+2017-01-25 13:32:01:Fault Already Injected
+2017-01-25 13:32:01:Fault Already Injected
+2017-01-25 13:32:02:Fault Already Injected
+2017-01-25 13:32:02:Fault Already Injected
+2017-01-25 13:32:02:Fault Already Injected
+2017-01-25 13:32:02:Fault Already Injected
+2017-01-25 13:32:02:Fault Already Injected
+2017-01-25 13:32:02:Fault Already Injected
+2017-01-25 13:32:02:Fault Already Injected
+2017-01-25 13:32:02:Fault Already Injected
+2017-01-25 13:32:03:Fault Already Injected
+2017-01-25 13:32:03:Fault Already Injected
+2017-01-25 13:32:03:Fault Already Injected
+2017-01-25 13:32:03:Fault Already Injected
+2017-01-25 13:32:03:Fault Already Injected
+2017-01-25 13:32:03:Fault Already Injected
+2017-01-25 13:32:04:Fault Already Injected
+2017-01-25 13:32:04:Fault Already Injected
+2017-01-25 13:32:04:Fault Already Injected
+2017-01-25 13:32:04:Fault Already Injected
+2017-01-25 13:32:04:Fault Already Injected
+2017-01-25 13:32:04:Fault Already Injected
+2017-01-25 13:32:04:Fault Already Injected
+2017-01-25 13:32:05:Fault Already Injected
+2017-01-25 13:32:05:Fault Already Injected
+2017-01-25 13:32:05:Fault Already Injected
+2017-01-25 13:32:05:Fault Already Injected
+2017-01-25 13:32:05:Fault Already Injected
+2017-01-25 13:32:05:Fault Already Injected
+2017-01-25 13:32:05:Fault Already Injected
+2017-01-25 13:32:06:Fault Already Injected
+2017-01-25 13:32:06:Fault Already Injected
+2017-01-25 13:32:06:Fault Already Injected
+2017-01-25 13:32:06:Fault Already Injected
+2017-01-25 13:32:06:Fault Already Injected
+2017-01-25 13:32:06:Fault Already Injected
+2017-01-25 13:32:06:Fault Already Injected
+2017-01-25 13:32:07:Fault Already Injected
+2017-01-25 13:32:07:Fault Already Injected
+2017-01-25 13:32:07:Fault Already Injected
+2017-01-25 13:32:07:Fault Already Injected
+2017-01-25 13:32:12:event type: exit
+2017-01-25 13:32:12:exit code: 1

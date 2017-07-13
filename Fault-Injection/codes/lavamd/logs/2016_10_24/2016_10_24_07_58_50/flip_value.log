@@ -1,0 +1,64 @@
+2016-10-24 07:58:33:Initialization strings:
+2016-10-24 07:58:33:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-24 07:58:33:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 07:58:33:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 07:58:33:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-24 07:58:33:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-24 07:58:33:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-24 07:58:34:Trying Fault Injection
+2016-10-24 07:58:34:Inferior PID: 25288
+2016-10-24 07:58:34:Inferior is valid: True
+2016-10-24 07:58:34:Inferior #threads: 1
+2016-10-24 07:58:34:Backtrace BEGIN:
+2016-10-24 07:58:34:#0  0x00000000004023aa in main (argc=7, argv=0x7fffffffec08) at main_check.c:163
+
+2016-10-24 07:58:34:158	        exit(1);
+159	    }
+160	
+161	    qv_cpu = (fp*)malloc(dim_cpu.space_mem2);
+162	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+163	        fread(&(qv_cpu[i]), 1, sizeof(double), file);
+164	    }
+165	    fclose(file);
+166	
+167	    fv_cpu = (FOUR_VECTOR*)malloc(dim_cpu.space_mem);
+
+2016-10-24 07:58:34:Backtrace END
+2016-10-24 07:58:34:Thread name: None
+2016-10-24 07:58:34:Thread num: 1
+2016-10-24 07:58:34:Thread ptid: (25288, 25288, 0)
+2016-10-24 07:58:34:bitFlip function
+2016-10-24 07:58:34:Type: The type is a structure.
+2016-10-24 07:58:34:Type sizeof: 8
+2016-10-24 07:58:34:Fliping value of field: alpha
+2016-10-24 07:58:34:bitFlip function
+2016-10-24 07:58:34:Type: A floating point type.
+2016-10-24 07:58:34:Type sizeof: 8
+2016-10-24 07:58:34:Mem contents(hex):0x000x000x000x000x000x000xe00x3f
+2016-10-24 07:58:34:base address to flip value: 0x7fffffffe8e0
+2016-10-24 07:58:34:address max offset: 8
+2016-10-24 07:58:34:Memory content before bitflip:0x000x000x000x000x000x000xe00x3f
+2016-10-24 07:58:34:Memory content after  bitflip:0x080x000x000x000x000x000xe00x3f
+2016-10-24 07:58:34:Mem contents(hex):0x080x000x000x000x000x000xe00x3f
+2016-10-24 07:58:34:frame name: main
+2016-10-24 07:58:34:symbol name: par_cpu
+2016-10-24 07:58:34:symbol filename: main_check.c
+2016-10-24 07:58:34:symbol line: 55
+2016-10-24 07:58:34:value: {alpha = 0.50000000000000089}
+2016-10-24 07:58:34:value address: 0x7fffffffe8e0
+2016-10-24 07:58:34:Type: The type is a structure.
+2016-10-24 07:58:34:Type sizeof: 8
+2016-10-24 07:58:34:Field name: alpha
+2016-10-24 07:58:34:Field Type:
+2016-10-24 07:58:34:Type: A floating point type.
+2016-10-24 07:58:34:Type sizeof: 8
+2016-10-24 07:58:34:Fault Injection Successful after 1.38464307785s
+2016-10-24 07:58:35:Fault Already Injected
+2016-10-24 07:58:38:Fault Already Injected
+2016-10-24 07:58:38:Fault Already Injected
+2016-10-24 07:58:38:Fault Already Injected
+2016-10-24 07:58:39:Fault Already Injected
+2016-10-24 07:58:39:Fault Already Injected
+2016-10-24 07:58:40:Fault Already Injected
+2016-10-24 07:58:44:event type: exit
+2016-10-24 07:58:44:exit code: 0

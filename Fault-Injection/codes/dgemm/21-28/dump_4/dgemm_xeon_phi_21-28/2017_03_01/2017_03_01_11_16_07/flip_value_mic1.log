@@ -1,0 +1,74 @@
+2017-03-01 11:13:36:Starting flip_value script
+2017-03-01 11:13:36:Initialization strings:
+2017-03-01 11:13:36:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-01 11:13:36:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 11:13:36:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 11:13:36:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-01 11:13:36:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-01 11:13:36:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-03-01 11:13:36:initSignal:21
+2017-03-01 11:13:36:endSignal:28
+2017-03-01 11:13:36:seqSignal:15
+2017-03-01 11:14:00:Backtrace BEGIN:
+2017-03-01 11:14:00:#0  0x000000000040371b in L_dgemm_185__par_region0_2_0 () at dgemm.c:221
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe550 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-01 11:14:00:216	                            CC_arr(i,j) = 0.0;
+217	
+218	                    for (kg=kk,k=0; kg<MIN(kk+block,order); k++,kg++)
+219	                        for (jg=jj,j=0; jg<MIN(jj+block,order); j++,jg++)
+220	                            for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+221	                                CC_arr(i,j) += AA_arr(i,k)*BB_arr(j,k);
+222	
+223	                    for (jg=jj,j=0; jg<MIN(jj+block,order); j++,jg++)
+224	                        for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+225	                            C_arr(ig,jg) += CC_arr(i,j);
+
+2017-03-01 11:14:00:Backtrace END
+2017-03-01 11:14:10:Type: The type is an integer type.
+2017-03-01 11:14:10:Type sizeof: 4
+2017-03-01 11:14:10:Mem contents(hex):0x000x000x000x00
+2017-03-01 11:14:10:Fault Mode: Random bit-flip
+2017-03-01 11:14:10:base address to flip value: 0x7fffffffde90
+2017-03-01 11:14:10:address max offset: 4
+2017-03-01 11:14:10:Memory content before bitflip:0x000x000x000x00
+2017-03-01 11:14:10:Backtrace BEGIN:
+2017-03-01 11:14:10:#0  0x000000000040371b in L_dgemm_185__par_region0_2_0 () at dgemm.c:221
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe550 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-01 11:14:10:216	                            CC_arr(i,j) = 0.0;
+217	
+218	                    for (kg=kk,k=0; kg<MIN(kk+block,order); k++,kg++)
+219	                        for (jg=jj,j=0; jg<MIN(jj+block,order); j++,jg++)
+220	                            for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+221	                                CC_arr(i,j) += AA_arr(i,k)*BB_arr(j,k);
+222	
+223	                    for (jg=jj,j=0; jg<MIN(jj+block,order); j++,jg++)
+224	                        for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+225	                            C_arr(ig,jg) += CC_arr(i,j);
+
+2017-03-01 11:14:10:Backtrace END
+2017-03-01 11:14:20:Type: The type is an integer type.
+2017-03-01 11:14:20:Type sizeof: 8
+2017-03-01 11:14:20:Mem contents(hex):0x000x080x000x000x000x000x000x00
+2017-03-01 11:14:20:Fault Mode: Double bit-flip
+2017-03-01 11:14:20:base address to flip value: 0x7fffffffe558
+2017-03-01 11:14:20:address max offset: 8
+2017-03-01 11:14:20:Memory content before bitflip:0x000x080x000x000x000x000x000x00
+2017-03-01 11:14:20:Memory content after  bitflip:0x000x400x000x000x000x000x000x00
+2017-03-01 11:14:20:Mem contents(hex):0x000x400x000x000x000x000x000x00
+2017-03-01 11:14:20:frame name: L_dgemm_185__par_region0_2_0
+2017-03-01 11:14:20:symbol name: order
+2017-03-01 11:14:20:symbol filename: dgemm.c
+2017-03-01 11:14:20:symbol line: 185
+2017-03-01 11:14:20:value: 16384
+2017-03-01 11:14:20:value address: 0x7fffffffe558
+2017-03-01 11:14:20:Type: The type is an integer type.
+2017-03-01 11:14:20:Type sizeof: 8
+2017-03-01 11:14:20:Fault Injection Successful after 44.3770298958s
+2017-03-01 11:14:34:event type: exit
+2017-03-01 11:14:34:exit code: 0

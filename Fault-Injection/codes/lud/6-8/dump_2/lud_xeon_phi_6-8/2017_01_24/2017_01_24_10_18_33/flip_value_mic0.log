@@ -1,0 +1,84 @@
+2017-01-24 10:18:14:Starting flip_value script
+2017-01-24 10:18:14:Initialization strings:
+2017-01-24 10:18:14:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-24 10:18:14:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 10:18:14:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 10:18:14:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 10:18:14:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 10:18:14:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-24 10:18:14:initSignal:6
+2017-01-24 10:18:14:endSignal:8
+2017-01-24 10:18:14:seqSignal:30
+2017-01-24 10:18:21:Trying Fault Injection
+2017-01-24 10:18:21:Inferior PID: 205250
+2017-01-24 10:18:21:Inferior is valid: True
+2017-01-24 10:18:21:Inferior #threads: 229
+2017-01-24 10:18:21:Backtrace BEGIN:
+2017-01-24 10:18:21:#0  do_system (line=0x7fffffffe650 "echo 1485270770 > /micNfs/carol/logs/timestamp.txt") at ../sysdeps/posix/system.c:116
+#1  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#2  0x0000000000405bee in end_iteration () at ../include/log_helper.c:336
+#3  0x0000000000402c82 in main (argc=9, argv=0x7fffffffec08) at lud_check.c:126
+
+2017-01-24 10:18:21:111	in ../sysdeps/posix/system.c
+
+2017-01-24 10:18:21:Backtrace END
+2017-01-24 10:18:24:Thread name: None
+2017-01-24 10:18:24:Thread num: 1
+2017-01-24 10:18:24:Thread ptid: (205250, 205250, 0)
+2017-01-24 10:18:24:bitFlip function
+2017-01-24 10:18:24:Type: The type is a structure.
+2017-01-24 10:18:24:Type sizeof: 152
+2017-01-24 10:18:24:Fliping value of field: sa_mask
+2017-01-24 10:18:24:bitFlip function
+2017-01-24 10:18:24:Type: The type is a structure.
+2017-01-24 10:18:24:Type sizeof: 128
+2017-01-24 10:18:24:Fliping value of field: __val
+2017-01-24 10:18:24:bitFlip function
+2017-01-24 10:18:24:Type: The type is an array.
+2017-01-24 10:18:24:Type sizeof: 128
+2017-01-24 10:18:24:Fliping array at pos: 7
+2017-01-24 10:18:24:bitFlip function
+2017-01-24 10:18:24:Type: The type is an integer type.
+2017-01-24 10:18:24:Type sizeof: 8
+2017-01-24 10:18:24:Mem contents(hex):0xff0xff0xff0xff0xff0xff0xff0xff
+2017-01-24 10:18:24:base address to flip value: 0x7ffff7426480 
+2017-01-24 10:18:24:address max offset: 8
+2017-01-24 10:18:24:Memory content before bitflip:0xff0xff0xff0xff0xff0xff0xff0xff
+2017-01-24 10:18:24:Memory content after  bitflip:0xdf0xff0xff0xff0xff0xff0xff0xff
+2017-01-24 10:18:24:Mem contents(hex):0xdf0xff0xff0xff0xff0xff0xff0xff
+2017-01-24 10:18:24:frame name: do_system
+2017-01-24 10:18:24:symbol name: quit
+2017-01-24 10:18:24:symbol filename: ../sysdeps/posix/system.c
+2017-01-24 10:18:24:symbol line: 34
+2017-01-24 10:18:24:value: {__sigaction_handler = {sa_handler = 0x0, sa_sigaction = 0x0}, sa_mask = {__val = {0, 140737415839745, 140737488348852, 140737488348852, 140737488348852, 140737488348852, 140737488348862, 18446744073709551583, 140737488348852, 18446744073709551615, 0, 0, 0, 0, 0, 4294960712}}, sa_flags = 67108864, sa_restorer = 0x7ffff7103610 <__restore_rt>}
+2017-01-24 10:18:24:value address: 0x7ffff7426440 <quit>
+2017-01-24 10:18:24:Type: The type is a structure.
+2017-01-24 10:18:24:Type sizeof: 152
+2017-01-24 10:18:24:Field name: __sigaction_handler
+2017-01-24 10:18:24:Field Type:
+2017-01-24 10:18:24:Type: The type is a union.
+2017-01-24 10:18:24:Type sizeof: 8
+2017-01-24 10:18:24:Field name: sa_mask
+2017-01-24 10:18:24:Field Type:
+2017-01-24 10:18:24:Type: The type is a structure.
+2017-01-24 10:18:24:Type sizeof: 128
+2017-01-24 10:18:24:Field name: sa_flags
+2017-01-24 10:18:24:Field Type:
+2017-01-24 10:18:24:Type: The type is an integer type.
+2017-01-24 10:18:24:Type sizeof: 4
+2017-01-24 10:18:24:Field name: sa_restorer
+2017-01-24 10:18:24:Field Type:
+2017-01-24 10:18:24:Type: The type is a pointer.
+2017-01-24 10:18:24:Type sizeof: 8
+2017-01-24 10:18:24:Fault Injection Successful after 10.9640591145s
+2017-01-24 10:18:25:Fault Already Injected
+2017-01-24 10:18:25:Fault Already Injected
+2017-01-24 10:18:25:Fault Already Injected
+2017-01-24 10:18:25:Fault Already Injected
+2017-01-24 10:18:26:Fault Already Injected
+2017-01-24 10:18:26:Fault Already Injected
+2017-01-24 10:18:26:Fault Already Injected
+2017-01-24 10:18:26:Fault Already Injected
+2017-01-24 10:18:26:Fault Already Injected
+2017-01-24 10:18:26:event type: exit
+2017-01-24 10:18:26:exit code: 0

@@ -1,0 +1,116 @@
+2017-02-28 14:33:21:Starting flip_value script
+2017-02-28 14:33:21:Initialization strings:
+2017-02-28 14:33:21:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 14:33:21:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 14:33:21:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 14:33:21:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 14:33:21:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 14:33:21:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-02-28 14:33:21:initSignal:9
+2017-02-28 14:33:21:endSignal:12
+2017-02-28 14:33:21:seqSignal:15
+2017-02-28 14:33:31:Backtrace BEGIN:
+2017-02-28 14:33:31:#0  0x00007ffff7124ce5 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:603
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "333.034576\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#4  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-02-28 14:33:31:598	in vfscanf.c
+
+2017-02-28 14:33:31:Backtrace END
+2017-02-28 14:33:31:Type: The type is a structure.
+2017-02-28 14:33:31:Type sizeof: 240
+2017-02-28 14:33:31:Fliping value of field: _s
+2017-02-28 14:33:31:Type: The type is a structure.
+2017-02-28 14:33:31:Type sizeof: 16
+2017-02-28 14:33:31:Fliping value of field: _allocate_buffer
+2017-02-28 14:33:31:Type: The type is a pointer.
+2017-02-28 14:33:31:Type sizeof: 8
+2017-02-28 14:33:31:Fliping a bit of the pointer
+2017-02-28 14:33:31:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-28 14:33:31:Fault Mode: One bit-flip
+2017-02-28 14:33:31:base address to flip value: 0x7fffffffe520
+2017-02-28 14:33:31:address max offset: 8
+2017-02-28 14:33:31:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-28 14:33:31:Backtrace BEGIN:
+2017-02-28 14:33:31:#0  0x00007ffff7151edd in __GI___rawmemchr (s=s@entry=0x7fffffffe640, c_in=c_in@entry=0) at ../string/rawmemchr.c:148
+#1  0x00007ffff7145ad0 in _IO_str_init_static_internal (sf=sf@entry=0x7fffffffe440, ptr=ptr@entry=0x7fffffffe640 "324.739136\n", size=size@entry=0, pstart=pstart@entry=0x0) at strops.c:44
+#2  0x00007ffff71365d5 in __GI___isoc99_vsscanf (string=0x7fffffffe640 "324.739136\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:41
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#5  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-02-28 14:33:31:143	in ../string/rawmemchr.c
+
+2017-02-28 14:33:31:Backtrace END
+2017-02-28 14:33:31:Type: The type is a pointer.
+2017-02-28 14:33:31:Type sizeof: 8
+2017-02-28 14:33:31:Fliping a bit of the pointer
+2017-02-28 14:33:31:Mem contents(hex):0xb80xeb0xff0xff0xff0x7f0x000x00
+2017-02-28 14:33:31:Fault Mode: One bit-flip
+2017-02-28 14:33:31:base address to flip value: 0x7fffffffe998
+2017-02-28 14:33:31:address max offset: 8
+2017-02-28 14:33:31:Memory content before bitflip:0xb80xeb0xff0xff0xff0x7f0x000x00
+2017-02-28 14:33:31:Backtrace BEGIN:
+2017-02-28 14:33:32:#0  str_to_mpn (str=0x7fffffffe053 ".273651", str@entry=0x7fffffffe050 "331.273651", digcnt=<optimized out>, digcnt@entry=3, n=n@entry=0x7fffffffdf70, nsize=nsize@entry=0x7fffffffdf58, exponent=exponent@entry=0x7fffffffdf60, decimal_len=decimal_len@entry=1, thousands=0x0, decimal=<optimized out>) at strtod_l.c:425
+#1  0x00007ffff7109af9 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe050 "331.273651", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1198
+#2  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe050 "331.273651", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0) at strtod.c:54
+#3  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2332
+#4  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "331.273651\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#5  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#6  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#7  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-02-28 14:33:32:420	in strtod_l.c
+
+2017-02-28 14:33:32:Backtrace END
+2017-02-28 14:33:32:Type: The type is an array.
+2017-02-28 14:33:32:Type sizeof: 80
+2017-02-28 14:33:32:Fliping array at pos: 7
+2017-02-28 14:33:32:Type: The type is an integer type.
+2017-02-28 14:33:32:Type sizeof: 8
+2017-02-28 14:33:32:Mem contents(hex):0x000x000x000x000xff0x7f0x000x00
+2017-02-28 14:33:32:Fault Mode: Random bit-flip
+2017-02-28 14:33:32:base address to flip value: 0x7fffffffdff8
+2017-02-28 14:33:32:address max offset: 8
+2017-02-28 14:33:32:Memory content before bitflip:0x000x000x000x000xff0x7f0x000x00
+2017-02-28 14:33:32:Backtrace BEGIN:
+2017-02-28 14:33:32:#0  str_to_mpn (str=0x7fffffffe053 ".273651", str@entry=0x7fffffffe050 "331.273651", digcnt=<optimized out>, digcnt@entry=3, n=n@entry=0x7fffffffdf70, nsize=nsize@entry=0x7fffffffdf58, exponent=exponent@entry=0x7fffffffdf60, decimal_len=decimal_len@entry=1, thousands=0x0, decimal=<optimized out>) at strtod_l.c:425
+#1  0x00007ffff7109af9 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe050 "331.273651", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1198
+#2  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe050 "331.273651", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0) at strtod.c:54
+#3  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2332
+#4  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "331.273651\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#5  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#6  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#7  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-02-28 14:33:32:420	in strtod_l.c
+
+2017-02-28 14:33:32:Backtrace END
+2017-02-28 14:33:32:Type: The type is an array.
+2017-02-28 14:33:32:Type sizeof: 24
+2017-02-28 14:33:32:Fliping array at pos: 0
+2017-02-28 14:33:32:Type: The type is a structure.
+2017-02-28 14:33:32:Type sizeof: 24
+2017-02-28 14:33:32:Fliping value of field: fp_offset
+2017-02-28 14:33:32:Type: The type is an integer type.
+2017-02-28 14:33:32:Type sizeof: 4
+2017-02-28 14:33:32:Mem contents(hex):0x300x000x000x00
+2017-02-28 14:33:32:Fault Mode: Double bit-flip
+2017-02-28 14:33:32:base address to flip value: 0x7fffffffe56c
+2017-02-28 14:33:32:address max offset: 4
+2017-02-28 14:33:32:Memory content before bitflip:0x300x000x000x00
+2017-02-28 14:33:32:Memory content after  bitflip:0x300x410x000x00
+2017-02-28 14:33:32:Mem contents(hex):0x300x410x000x00
+2017-02-28 14:33:32:frame name: __isoc99_sscanf
+2017-02-28 14:33:32:symbol name: arg
+2017-02-28 14:33:32:symbol filename: isoc99_sscanf.c
+2017-02-28 14:33:32:symbol line: 27
+2017-02-28 14:33:32:value: {{gp_offset = 16, fp_offset = 16688, overflow_arg_area = 0x7fffffffe640, reg_save_area = 0x7fffffffe580}}
+2017-02-28 14:33:32:value address: 0x7fffffffe568
+2017-02-28 14:33:32:Type: The type is an array.
+2017-02-28 14:33:32:Type sizeof: 24
+2017-02-28 14:33:32:Fault Injection Successful after 11.5971400738s
+2017-02-28 14:33:47:event type: exit
+2017-02-28 14:33:47:exit code: 0

@@ -1,0 +1,67 @@
+2016-10-31 06:31:41:Initialization strings:
+2016-10-31 06:31:42:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-31 06:31:42:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 06:31:42:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 06:31:42:(4) file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-31 06:31:42:(5) set remote exec-file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-31 06:31:42:(6) set args -s 8192 -n 228 -i /micNfs/gdb-fault-injection-lud/bin/input_8192_th_228 -g /micNfs/gdb-fault-injection-lud/bin/gold_8192_th_228
+2016-10-31 06:31:43:Trying Fault Injection
+2016-10-31 06:31:43:Inferior PID: 232080
+2016-10-31 06:31:43:Inferior is valid: True
+2016-10-31 06:31:43:Inferior #threads: 1
+2016-10-31 06:31:43:Backtrace BEGIN:
+2016-10-31 06:31:43:#0  syscall () at ../sysdeps/unix/sysv/linux/x86_64/syscall.S:38
+#1  0x00007ffff7916c8d in ?? ()
+#2  0x0000000000000040 in ?? ()
+#3  0x00000000000018f0 in ?? ()
+#4  0x000000000000003f in ?? ()
+#5  0x0000000000000000 in ?? ()
+
+2016-10-31 06:31:43:33	in ../sysdeps/unix/sysv/linux/x86_64/syscall.S
+
+2016-10-31 06:31:43:Backtrace END
+2016-10-31 06:31:43:Error(threadFlip): No Threads with symbols
+2016-10-31 06:31:43:Fault Injection Failed after 1.79776000977s
+2016-10-31 06:31:44:Trying Fault Injection
+2016-10-31 06:31:44:Inferior PID: 232080
+2016-10-31 06:31:44:Inferior is valid: True
+2016-10-31 06:31:44:Inferior #threads: 202
+2016-10-31 06:31:44:Backtrace BEGIN:
+2016-10-31 06:31:44:#0  0x00007ffff719f03a in mmap64 () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7431e2c in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffded8) at allocatestack.c:504
+#2  __pthread_create_2_1 (newthread=0x7fffffffded0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fff20248100) at pthread_create.c:524
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2016-10-31 06:31:44:76	in ../sysdeps/unix/syscall-template.S
+
+2016-10-31 06:31:44:Backtrace END
+2016-10-31 06:31:46:Thread name: None
+2016-10-31 06:31:46:Thread num: 1
+2016-10-31 06:31:46:Thread ptid: (232080, 232080, 0)
+2016-10-31 06:31:46:bitFlip function
+2016-10-31 06:31:46:Type: The type is an integer type.
+2016-10-31 06:31:46:Type sizeof: 8
+2016-10-31 06:31:46:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-10-31 06:31:46:base address to flip value: 0x7ffff7646300 
+2016-10-31 06:31:46:address max offset: 8
+2016-10-31 06:31:46:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-10-31 06:31:46:Memory content after  bitflip:0x000x000x000x000x000x000x000x02
+2016-10-31 06:31:46:Mem contents(hex):0x000x000x000x000x000x000x000x02
+2016-10-31 06:31:46:frame name: allocate_stack
+2016-10-31 06:31:46:symbol name: in_flight_stack
+2016-10-31 06:31:46:symbol filename: allocatestack.c
+2016-10-31 06:31:46:symbol line: 120
+2016-10-31 06:31:46:value: 144115188075855872
+2016-10-31 06:31:46:value address: 0x7ffff7646300 <in_flight_stack>
+2016-10-31 06:31:46:Type: The type is an integer type.
+2016-10-31 06:31:46:Type sizeof: 8
+2016-10-31 06:31:46:Fault Injection Successful after 4.8618350029s
+2016-10-31 06:31:47:Fault Already Injected
+2016-10-31 06:31:47:Fault Already Injected
+2016-10-31 06:31:47:Fault Already Injected
+2016-10-31 06:31:49:Fault Already Injected
+2016-10-31 06:31:49:Fault Already Injected
+2016-10-31 06:31:50:Fault Already Injected
+2016-10-31 06:31:54:event type: exit
+2016-10-31 06:31:54:exit code: 0

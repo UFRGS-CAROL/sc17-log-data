@@ -1,0 +1,49 @@
+2016-10-27 16:01:53:Initialization strings:
+2016-10-27 16:01:53:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-27 16:01:53:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-27 16:01:53:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-27 16:01:53:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-27 16:01:53:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-27 16:01:53:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-27 16:01:54:Trying Fault Injection
+2016-10-27 16:01:54:Backtrace BEGIN:
+2016-10-27 16:01:54:#0  get_rounding_mode () at ../sysdeps/generic/get-rounding-mode.h:95
+#1  round_and_return (retval=retval@entry=0x7fffffffdf28, exponent=8, negative=negative@entry=0, round_limb=round_limb@entry=17472442391968434228, round_bit=48, more_bits=1) at strtod_l.c:212
+#2  0x00007ffff7109845 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe010 "331.947183", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1762
+#3  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe010 "331.947183", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0) at strtod.c:54
+#4  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2332
+#5  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "331.947183\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#6  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#7  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#8  main (argc=-8408, argv=0x8) at hotspot_check.c:264
+
+2016-10-27 16:01:54:90	in ../sysdeps/generic/get-rounding-mode.h
+
+2016-10-27 16:01:54:Backtrace END
+2016-10-27 16:01:55:Type: The type is an integer type.
+2016-10-27 16:01:55:Type sizeof: 2
+2016-10-27 16:01:55:Mem contents(hex):0x7f0x03
+2016-10-27 16:01:55:base address to flip value: 0x7fffffffde7c
+2016-10-27 16:01:55:address max offset: 2
+2016-10-27 16:01:55:Memory content before bitflip:0x7f0x03
+2016-10-27 16:01:55:Memory content after  bitflip:0x7f0x23
+2016-10-27 16:01:55:Mem contents(hex):0x7f0x23
+2016-10-27 16:01:55:frame name: get_rounding_mode
+2016-10-27 16:01:55:symbol name: fc
+2016-10-27 16:01:55:symbol filename: ../sysdeps/generic/get-rounding-mode.h
+2016-10-27 16:01:55:symbol line: 78
+2016-10-27 16:01:55:value: 9087
+2016-10-27 16:01:55:value address: 0x7fffffffde7c
+2016-10-27 16:01:55:Type: The type is an integer type.
+2016-10-27 16:01:55:Type sizeof: 2
+2016-10-27 16:01:55:Fault Injection Successful after 2.04795098305s
+2016-10-27 16:01:56:Fault Already Injected
+2016-10-27 16:01:59:Fault Already Injected
+2016-10-27 16:01:59:Fault Already Injected
+2016-10-27 16:02:00:Fault Already Injected
+2016-10-27 16:02:01:Fault Already Injected
+2016-10-27 16:02:01:Fault Already Injected
+2016-10-27 16:02:05:Fault Already Injected
+2016-10-27 16:02:06:Fault Already Injected
+2016-10-27 16:02:08:event type: exit
+2016-10-27 16:02:08:exit code: 0

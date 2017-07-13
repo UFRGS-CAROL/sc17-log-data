@@ -1,0 +1,63 @@
+[INFO -- 2017-02-25 14:05:59]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 14:05:59]
+Initialization strings:
+[INFO -- 2017-02-25 14:06:00]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-25 14:06:00]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 14:06:00]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 14:06:00]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 14:06:00]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 14:06:00]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-25 14:06:00]
+initSignal:4
+[INFO -- 2017-02-25 14:06:00]
+endSignal:8
+[INFO -- 2017-02-25 14:06:00]
+seqSignal:30
+[INFO -- 2017-02-25 14:06:00]
+faultMode:2
+[INFO -- 2017-02-25 14:06:09]
+Backtrace BEGIN:
+#0  0x00000000004036a7 in lud_diagonal_omp (a=0x7ffff5ecc010, size=2048, offset=1200) at lud_omp.c:22
+#1  0x0000000000403af9 in lud_omp (a=0x7ffff5ecc010, size=2048) at lud_omp.c:62
+#2  0x0000000000402c78 in main (argc=9, argv=0x7fffffffec08) at lud_check.c:124
+
+17	    int i, j, k;
+18	    for (i = 0; i < BS; i++) {
+19	
+20	        for (j = i; j < BS; j++) {
+21	            for (k = 0; k < i ; k++) {
+22	                AA(i,j) = AA(i,j) - AA(i,k) * AA(k,j);
+23	            }
+24	        }
+25	   
+26	        float temp = 1.f/AA(i,i);
+
+Backtrace END
+Memory content before bitflip:0x680xe10xff0xf7
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe9b0
+address max offset: 4
+Memory content after  bitflip:0x700x9b0x5f0x4c
+frame name: main
+symbol name: host_errors
+symbol filename: lud_check.c
+symbol line: 129
+value: 1281334128
+value address: 0x7fffffffe9b0
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-02-25 14:06:09]
+Fault Injection Successful after 9.40566396713s
+[INFO -- 2017-02-25 14:06:14]
+event type: exit
+[INFO -- 2017-02-25 14:06:14]
+exit code: 0

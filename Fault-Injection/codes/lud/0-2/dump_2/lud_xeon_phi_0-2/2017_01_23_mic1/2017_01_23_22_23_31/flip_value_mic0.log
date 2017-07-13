@@ -1,0 +1,134 @@
+2017-01-23 22:23:13:Starting flip_value script
+2017-01-23 22:23:13:Initialization strings:
+2017-01-23 22:23:13:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-23 22:23:13:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-23 22:23:13:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-23 22:23:13:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-23 22:23:13:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-23 22:23:13:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-23 22:23:13:initSignal:0
+2017-01-23 22:23:13:endSignal:2
+2017-01-23 22:23:13:seqSignal:30
+2017-01-23 22:23:14:Trying Fault Injection
+2017-01-23 22:23:14:Inferior PID: 143061
+2017-01-23 22:23:14:Inferior is valid: True
+2017-01-23 22:23:14:Inferior #threads: 1
+2017-01-23 22:23:14:Backtrace BEGIN:
+2017-01-23 22:23:14:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000009 in ?? ()
+#7  0x00007fffffffee08 in ?? ()
+#8  0x00007fffffffee3f in ?? ()
+#9  0x00007fffffffee42 in ?? ()
+#10 0x00007fffffffee47 in ?? ()
+#11 0x00007fffffffee4a in ?? ()
+#12 0x00007fffffffee4e in ?? ()
+#13 0x00007fffffffee51 in ?? ()
+#14 0x00007fffffffee90 in ?? ()
+#15 0x00007fffffffee93 in ?? ()
+#16 0x0000000000000000 in ?? ()
+
+2017-01-23 22:23:14:69	in dl-debug.c
+
+2017-01-23 22:23:14:Backtrace END
+2017-01-23 22:23:14:Thread name: None
+2017-01-23 22:23:14:Thread num: 1
+2017-01-23 22:23:14:Thread ptid: (143061, 143061, 0)
+2017-01-23 22:23:14:bitFlip function
+2017-01-23 22:23:14:Type: The type is a pointer.
+2017-01-23 22:23:14:Type sizeof: 8
+2017-01-23 22:23:14:Error gdbException(frameFlip): Attempt to dereference a generic pointer.
+2017-01-23 22:23:14:Fault Injection Failed after 1.58504700661s
+2017-01-23 22:23:14:Trying Fault Injection
+2017-01-23 22:23:14:Inferior PID: 143061
+2017-01-23 22:23:14:Inferior is valid: True
+2017-01-23 22:23:14:Inferior #threads: 3
+2017-01-23 22:23:14:Backtrace BEGIN:
+2017-01-23 22:23:14:#0  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:548
+#1  __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7ffff4ea1600) at pthread_create.c:524
+#2  0x00007ffff790d323 in ?? ()
+#3  0x00007fffffffd270 in ?? ()
+#4  0x00007ffff788c196 in ?? ()
+#5  0x00000000000000f4 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x00007fff00000004 in ?? ()
+#8  0x0000000000000008 in ?? ()
+#9  0x0000000000000000 in ?? ()
+
+2017-01-23 22:23:14:543	in allocatestack.c
+
+2017-01-23 22:23:14:Backtrace END
+2017-01-23 22:23:15:Thread name: None
+2017-01-23 22:23:15:Thread num: 1
+2017-01-23 22:23:15:Thread ptid: (143061, 143061, 0)
+2017-01-23 22:23:15:bitFlip function
+2017-01-23 22:23:15:Type: The type is an array.
+2017-01-23 22:23:15:Type sizeof: 12
+2017-01-23 22:23:15:Fliping array at pos: 2
+2017-01-23 22:23:15:bitFlip function
+2017-01-23 22:23:15:Type: The type is an integer type.
+2017-01-23 22:23:15:Type sizeof: 4
+2017-01-23 22:23:15:Mem contents(hex):0x000x000x000x00
+2017-01-23 22:23:15:base address to flip value: 0x7ffff743c278 
+2017-01-23 22:23:15:address max offset: 4
+2017-01-23 22:23:15:Memory content before bitflip:0x000x000x000x00
+2017-01-23 22:23:15:Memory content after  bitflip:0x000x010x000x00
+2017-01-23 22:23:15:Mem contents(hex):0x000x010x000x00
+2017-01-23 22:23:15:frame name: __pthread_create_2_1
+2017-01-23 22:23:15:symbol name: _thread_db_dtv_dtv
+2017-01-23 22:23:15:symbol filename: ../nptl_db/structs.def
+2017-01-23 22:23:15:symbol line: 74
+2017-01-23 22:23:15:value: {128, 134217727, 256}
+2017-01-23 22:23:15:value address: 0x7ffff743c270 <_thread_db_dtv_dtv>
+2017-01-23 22:23:15:Type: The type is an array.
+2017-01-23 22:23:15:Type sizeof: 12
+2017-01-23 22:23:15:Field name: None
+2017-01-23 22:23:15:Field Type:
+2017-01-23 22:23:15:Type: A range type, that is, an integer type with bounds.
+2017-01-23 22:23:15:Type sizeof: 8
+2017-01-23 22:23:15:Type range: (0L, 2L)
+2017-01-23 22:23:15:Fault Injection Successful after 2.17685389519s
+2017-01-23 22:23:15:Fault Already Injected
+2017-01-23 22:23:15:Fault Already Injected
+2017-01-23 22:23:15:Fault Already Injected
+2017-01-23 22:23:15:Fault Already Injected
+2017-01-23 22:23:15:Fault Already Injected
+2017-01-23 22:23:16:Fault Already Injected
+2017-01-23 22:23:16:Fault Already Injected
+2017-01-23 22:23:16:Fault Already Injected
+2017-01-23 22:23:17:Fault Already Injected
+2017-01-23 22:23:17:Fault Already Injected
+2017-01-23 22:23:17:Fault Already Injected
+2017-01-23 22:23:18:Fault Already Injected
+2017-01-23 22:23:18:Fault Already Injected
+2017-01-23 22:23:18:Fault Already Injected
+2017-01-23 22:23:19:Fault Already Injected
+2017-01-23 22:23:19:Fault Already Injected
+2017-01-23 22:23:20:Fault Already Injected
+2017-01-23 22:23:20:Fault Already Injected
+2017-01-23 22:23:20:Fault Already Injected
+2017-01-23 22:23:20:Fault Already Injected
+2017-01-23 22:23:21:Fault Already Injected
+2017-01-23 22:23:21:Fault Already Injected
+2017-01-23 22:23:21:Fault Already Injected
+2017-01-23 22:23:22:Fault Already Injected
+2017-01-23 22:23:22:Fault Already Injected
+2017-01-23 22:23:22:Fault Already Injected
+2017-01-23 22:23:23:Fault Already Injected
+2017-01-23 22:23:23:Fault Already Injected
+2017-01-23 22:23:23:Fault Already Injected
+2017-01-23 22:23:23:Fault Already Injected
+2017-01-23 22:23:23:Fault Already Injected
+2017-01-23 22:23:24:Fault Already Injected
+2017-01-23 22:23:24:Fault Already Injected
+2017-01-23 22:23:24:Fault Already Injected
+2017-01-23 22:23:24:Fault Already Injected
+2017-01-23 22:23:25:Fault Already Injected
+2017-01-23 22:23:25:Fault Already Injected
+2017-01-23 22:23:25:Fault Already Injected
+2017-01-23 22:23:25:event type: exit
+2017-01-23 22:23:25:exit code: 0

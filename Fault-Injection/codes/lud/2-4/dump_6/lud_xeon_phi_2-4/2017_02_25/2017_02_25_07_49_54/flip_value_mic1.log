@@ -1,0 +1,79 @@
+[INFO -- 2017-02-25 07:49:28]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 07:49:28]
+Initialization strings:
+[INFO -- 2017-02-25 07:49:28]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-25 07:49:28]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 07:49:28]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 07:49:28]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 07:49:28]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 07:49:28]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-25 07:49:28]
+initSignal:2
+[INFO -- 2017-02-25 07:49:28]
+endSignal:4
+[INFO -- 2017-02-25 07:49:28]
+seqSignal:30
+[INFO -- 2017-02-25 07:49:28]
+faultMode:3
+[EXCEPTION -- 2017-02-25 07:49:39]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-25 07:49:39]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-25 07:49:39]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-25 07:49:39]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-25 07:49:39]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-25 07:49:39]
+pythonException: invalid frame
+[INFO -- 2017-02-25 07:49:39]
+Backtrace BEGIN:
+#0  0x0000000000404b69 in L_lud_omp_123__par_loop2_2_5 () at lud_omp.c:139
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+134	
+135	            for (i = 0; i < BS; i++) {
+136	#pragma omp simd
+137	                for (j =0; j < BS; j++){
+138	                    temp_top[i*BS + j]  = a[size*(i + offset) + j + j_global ];
+139	                    temp_left[i*BS + j] = a[size*(i + i_global) + offset + j];
+140	                }
+141	            }
+142	
+143	            for (i = 0; i < BS; i++)
+
+Backtrace END
+Memory content before bitflip:0x0a0x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffc6a0
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: L_lud_omp_123__par_loop2_2_5
+symbol name: i
+symbol filename: lud_omp.c
+symbol line: 127
+value: 0
+value address: 0x7fffffffc6a0
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-02-25 07:49:39]
+Fault Injection Successful after 11.3850469589s
+[INFO -- 2017-02-25 07:49:48]
+event type: exit
+[INFO -- 2017-02-25 07:49:48]
+exit code: 0

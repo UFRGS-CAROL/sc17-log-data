@@ -1,0 +1,118 @@
+2017-01-25 10:40:34:Starting flip_value script
+2017-01-25 10:40:34:Initialization strings:
+2017-01-25 10:40:34:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 10:40:34:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 10:40:34:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 10:40:34:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 10:40:34:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 10:40:34:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 10:40:34:initSignal:0
+2017-01-25 10:40:34:endSignal:2
+2017-01-25 10:40:34:seqSignal:30
+2017-01-25 10:40:36:Trying Fault Injection
+2017-01-25 10:40:36:Inferior PID: 220951
+2017-01-25 10:40:36:Inferior is valid: True
+2017-01-25 10:40:37:Inferior #threads: 229
+2017-01-25 10:40:37:Backtrace BEGIN:
+2017-01-25 10:40:37:#0  0x00007ffff78a9843 in ?? ()
+#1  0x3e126e463e124538 in ?? ()
+#2  0x3e12b9c43e129009 in ?? ()
+#3  0x00007ffff7f01600 in ?? ()
+#4  0x0000000000000020 in ?? ()
+#5  0x3e1395bc00000020 in ?? ()
+#6  0x3e13e68700000000 in ?? ()
+#7  0x3e11b4ea00000003 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000040 in ?? ()
+#10 0x3e128cc500000010 in ?? ()
+#11 0x0000000000000010 in ?? ()
+#12 0x3e1327163e12fe71 in ?? ()
+#13 0x3e13744e3e134a49 in ?? ()
+#14 0x00007ffff4ea6b00 in ?? ()
+#15 0x00007ffff4ea3900 in ?? ()
+#16 0x00007fff00000001 in ?? ()
+#17 0x00007fff00000005 in ?? ()
+#18 0x00007ffff4ec7c80 in ?? ()
+#19 0x00007ffff4ea3900 in ?? ()
+#20 0x0000000000000005 in ?? ()
+#21 0x00007ffff4eab040 in ?? ()
+#22 0x0000000000000000 in ?? ()
+
+2017-01-25 10:40:37:32	static struct option long_options[] = {
+33	  /* name, has_arg, flag, val */
+34	  {"input", 1, NULL, 'i'},
+35	  {"gold", 1, NULL, 'g'},
+36	  {"size", 1, NULL, 's'},
+37	  {0,0,0,0}
+38	};
+39	
+40	extern void
+41	lud_omp(float *m, int matrix_dim);
+
+2017-01-25 10:40:37:Backtrace END
+2017-01-25 10:40:40:Error(threadFlip): No Threads with symbols
+2017-01-25 10:40:40:Fault Injection Failed after 6.49532008171s
+2017-01-25 10:40:40:Trying Fault Injection
+2017-01-25 10:40:40:Inferior PID: 220951
+2017-01-25 10:40:40:Inferior is valid: True
+2017-01-25 10:40:40:Inferior #threads: 229
+2017-01-25 10:40:40:Backtrace BEGIN:
+2017-01-25 10:40:41:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd2d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff7fd2df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff7fd2d14 in ?? ()
+#8  0x00007ffff7fd2de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+2017-01-25 10:40:41:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-01-25 10:40:41:Backtrace END
+2017-01-25 10:40:46:Thread name: None
+2017-01-25 10:40:46:Thread num: 13
+2017-01-25 10:40:46:Thread ptid: (220951, 220967, 0)
+2017-01-25 10:40:46:Error Exception(frameFlip): invalid frame
+2017-01-25 10:40:46:Error Exception(frameFlip): invalid frame
+2017-01-25 10:40:46:bitFlip function
+2017-01-25 10:40:46:Type: The type is an integer type.
+2017-01-25 10:40:46:Type sizeof: 4
+2017-01-25 10:40:46:Mem contents(hex):0xa00x070x000x00
+2017-01-25 10:40:46:base address to flip value: 0x7fffffffc698
+2017-01-25 10:40:46:address max offset: 4
+2017-01-25 10:40:46:Memory content before bitflip:0xa00x070x000x00
+2017-01-25 10:40:46:Memory content after  bitflip:0xa00x070x000x20
+2017-01-25 10:40:46:Mem contents(hex):0xa00x070x000x20
+2017-01-25 10:40:46:frame name: L_lud_omp_123__par_loop2_2_5
+2017-01-25 10:40:46:symbol name: i_global
+2017-01-25 10:40:46:symbol filename: lud_omp.c
+2017-01-25 10:40:46:symbol line: 127
+2017-01-25 10:40:46:value: 536872864
+2017-01-25 10:40:46:value address: 0x7fffffffc698
+2017-01-25 10:40:46:Type: The type is an integer type.
+2017-01-25 10:40:46:Type sizeof: 4
+2017-01-25 10:40:46:Fault Injection Successful after 12.1579239368s
+2017-01-25 10:40:46:Fault Already Injected
+2017-01-25 10:40:46:Fault Already Injected
+2017-01-25 10:40:46:Fault Already Injected
+2017-01-25 10:40:47:Fault Already Injected
+2017-01-25 10:40:47:Fault Already Injected
+2017-01-25 10:40:48:Fault Already Injected
+2017-01-25 10:40:48:Fault Already Injected
+2017-01-25 10:40:48:Fault Already Injected
+2017-01-25 10:40:49:Fault Already Injected
+2017-01-25 10:40:49:Fault Already Injected
+2017-01-25 10:40:49:Fault Already Injected
+2017-01-25 10:40:49:Fault Already Injected
+2017-01-25 10:40:50:Fault Already Injected
+2017-01-25 10:40:50:Fault Already Injected
+2017-01-25 10:40:51:Fault Already Injected
+2017-01-25 10:40:51:Fault Already Injected
+2017-01-25 10:40:51:Fault Already Injected
+2017-01-25 10:40:52:Fault Already Injected
+2017-01-25 10:40:54:event type: exit
+2017-01-25 10:40:54:exit code: 0

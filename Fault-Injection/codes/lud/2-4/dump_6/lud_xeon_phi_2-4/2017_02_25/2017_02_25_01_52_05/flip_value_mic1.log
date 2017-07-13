@@ -1,0 +1,64 @@
+[INFO -- 2017-02-25 01:51:32]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 01:51:32]
+Initialization strings:
+[INFO -- 2017-02-25 01:51:32]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-25 01:51:32]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 01:51:32]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 01:51:32]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 01:51:32]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 01:51:32]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-25 01:51:32]
+initSignal:2
+[INFO -- 2017-02-25 01:51:32]
+endSignal:4
+[INFO -- 2017-02-25 01:51:32]
+seqSignal:30
+[INFO -- 2017-02-25 01:51:32]
+faultMode:2
+[INFO -- 2017-02-25 01:51:39]
+Backtrace BEGIN:
+#0  0x00000000004038b7 in lud_diagonal_omp (a=0x7ffff5ecc010, size=2048, offset=336) at lud_omp.c:29
+#1  0x0000000000403af9 in lud_omp (a=0x7ffff5ecc010, size=2048) at lud_omp.c:62
+#2  0x0000000000402c78 in main (argc=9, argv=0x7fffffffec08) at lud_check.c:124
+
+24	        }
+25	   
+26	        float temp = 1.f/AA(i,i);
+27	        for (j = i+1; j < BS; j++) {
+28	            for (k = 0; k < i ; k++) {
+29	                AA(j,i) = AA(j,i) - AA(j,k) * AA(k,i);
+30	            }
+31	            AA(j,i) = AA(j,i)*temp;
+32	        }
+33	    }
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x930xee0xff0xff0xff0x7f0x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffea30
+address max offset: 8
+Memory content after  bitflip:0x780x3a0x2a0xd60x050x1b0x1f0x72
+frame name: main
+symbol name: gold_file
+symbol filename: lud_check.c
+symbol line: 50
+value: 0x7fffffffee93 "/micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228"
+value address: 0x7fffffffea30
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-25 01:51:39]
+Fault Injection Successful after 7.28605508804s
+[INFO -- 2017-02-25 01:51:50]
+event type: exit
+[INFO -- 2017-02-25 01:51:50]
+exit code: 0

@@ -1,0 +1,67 @@
+[INFO -- 2017-03-12 08:54:08]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-12 08:54:08]
+Initialization strings:
+[INFO -- 2017-03-12 08:54:08]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-12 08:54:08]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-12 08:54:08]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-12 08:54:08]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-12 08:54:08]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-12 08:54:08]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-12 08:54:08]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-12 08:54:08]
+initSignal:40
+[INFO -- 2017-03-12 08:54:08]
+endSignal:49
+[INFO -- 2017-03-12 08:54:08]
+seqSignal:20
+[INFO -- 2017-03-12 08:54:08]
+faultMode:1
+[INFO -- 2017-03-12 08:54:54]
+Backtrace BEGIN:
+#0  0x0000000000443ef0 in fprintf@plt ()
+#1  0x000000000054b9dd in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:479
+#2  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#3  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+171	static double H_sum_initial = 0.0;
+172	static double cpu_time_graphics = 0.0;
+173	static double cpu_time_calcs    = 0.0;
+174	static double cpu_time_partmeas = 0.0;
+175	//static double cpu_time_check    = 0.0;
+176	
+177	static int     ncycle  = 0;
+178	static double  simTime = 0.0;
+179	static double  deltaT = 0.0;
+180	char total_sim_time_log[] = {"total_execution_time.log"};
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7d0be0 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x280x000x000x00
+frame name: write_graphics_info
+symbol name: data_float
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c
+symbol line: 203
+value: 0x0
+value address: 0x7d0be0 <data_float>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-12 08:54:54]
+Fault Injection Successful after 46.3287789822s
+[INFO -- 2017-03-12 08:55:28]
+event type: exit
+[INFO -- 2017-03-12 08:55:28]
+exit code: 0

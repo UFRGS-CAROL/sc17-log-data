@@ -1,0 +1,55 @@
+[INFO -- 2017-03-08 00:12:50]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-08 00:12:50]
+Initialization strings:
+[INFO -- 2017-03-08 00:12:51]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-08 00:12:51]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 00:12:51]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 00:12:51]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-03-08 00:12:51]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-03-08 00:12:51]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-03-08 00:12:51]
+initSignal:12
+[INFO -- 2017-03-08 00:12:51]
+endSignal:15
+[INFO -- 2017-03-08 00:12:51]
+seqSignal:15
+[INFO -- 2017-03-08 00:12:51]
+faultMode:1
+[INFO -- 2017-03-08 00:13:05]
+Backtrace BEGIN:
+#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff74312d0 in ?? () at pthread_create.c:237 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libpthread.so.0
+#2  0x00007fff9bbfe280 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7ffff7646300 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x220x00
+frame name: allocate_stack
+symbol name: in_flight_stack
+symbol filename: allocatestack.c
+symbol line: 120
+value: 9570149208162304
+value address: 0x7ffff7646300 <in_flight_stack>
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2017-03-08 00:13:05]
+Fault Injection Successful after 14.0376310349s
+[INFO -- 2017-03-08 00:13:18]
+event type: exit
+[INFO -- 2017-03-08 00:13:18]
+exit code: 0

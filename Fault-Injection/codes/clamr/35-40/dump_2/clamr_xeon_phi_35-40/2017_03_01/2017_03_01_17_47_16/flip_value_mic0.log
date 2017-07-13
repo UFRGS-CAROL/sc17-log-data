@@ -1,0 +1,51 @@
+2017-03-01 17:44:52:Starting flip_value script
+2017-03-01 17:44:52:Initialization strings:
+2017-03-01 17:44:52:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 17:44:52:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 17:44:52:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 17:44:52:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 17:44:52:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 17:44:52:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 17:44:52:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 17:44:52:initSignal:35
+2017-03-01 17:44:52:endSignal:40
+2017-03-01 17:44:52:seqSignal:20
+2017-03-01 17:45:28:Backtrace BEGIN:
+2017-03-01 17:45:28:#0  0x0000000000449a27 in std::vector<int, std::allocator<int> >::operator[] (this=0x7fffffffe3b0, __n=257334) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x000000000051f4ab in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2588
+#2  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#3  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#4  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-01 17:45:28:775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+2017-03-01 17:45:28:Backtrace END
+2017-03-01 17:45:32:Type: The type is an integer type.
+2017-03-01 17:45:32:Type sizeof: 4
+2017-03-01 17:45:32:Mem contents(hex):0x010x000x000x00
+2017-03-01 17:45:32:Fault Mode: Double bit-flip
+2017-03-01 17:45:32:base address to flip value: 0x7d06dc 
+2017-03-01 17:45:32:address max offset: 4
+2017-03-01 17:45:32:Memory content before bitflip:0x010x000x000x00
+2017-03-01 17:45:32:Memory content after  bitflip:0x010x000x220x00
+2017-03-01 17:45:32:Mem contents(hex):0x010x000x220x00
+2017-03-01 17:45:32:frame name: std::vector<int, std::allocator<int> >::operator[]
+2017-03-01 17:45:32:symbol name: view_mode
+2017-03-01 17:45:32:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-03-01 17:45:32:symbol line: 112
+2017-03-01 17:45:32:value: 2228225
+2017-03-01 17:45:32:value address: 0x7d06dc <view_mode>
+2017-03-01 17:45:32:Type: The type is an integer type.
+2017-03-01 17:45:32:Type sizeof: 4
+2017-03-01 17:45:32:Fault Injection Successful after 40.6182129383s
+2017-03-01 17:45:52:event type: exit
+2017-03-01 17:45:52:exit code: 0

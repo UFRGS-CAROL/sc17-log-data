@@ -1,0 +1,57 @@
+[INFO -- 2017-03-06 10:39:31]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 10:39:31]
+Initialization strings:
+[INFO -- 2017-03-06 10:39:32]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-06 10:39:32]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 10:39:32]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 10:39:32]
+(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-06 10:39:32]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-06 10:39:32]
+(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+[INFO -- 2017-03-06 10:39:32]
+initSignal:0
+[INFO -- 2017-03-06 10:39:32]
+endSignal:7
+[INFO -- 2017-03-06 10:39:32]
+seqSignal:15
+[INFO -- 2017-03-06 10:39:32]
+faultMode:3
+[INFO -- 2017-03-06 10:39:35]
+Backtrace BEGIN:
+#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff71436c0 in _IO_new_file_underflow (fp=0x6071c0) at fileops.c:580
+#2  0x00007ffff71429e8 in __GI__IO_file_xsgetn (fp=0x6071c0, data=<optimized out>, n=8) at fileops.c:1402
+#3  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x6071c0) at iofread.c:42
+#4  0x0000000000403d42 in read_gold (gold=0x7fffeecc9040, fileGold=0x7fffffffee78 "/micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks", order=2048) at dgemm.c:266
+#5  0x00000000004041e3 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:329
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Memory content before bitflip:0x080x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe940
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: main
+symbol name: j
+symbol filename: dgemm.c
+symbol line: 277
+value: 0
+value address: 0x7fffffffe940
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-06 10:39:35]
+Fault Injection Successful after 3.58384203911s
+[INFO -- 2017-03-06 10:40:26]
+event type: exit
+[INFO -- 2017-03-06 10:40:26]
+exit code: 0

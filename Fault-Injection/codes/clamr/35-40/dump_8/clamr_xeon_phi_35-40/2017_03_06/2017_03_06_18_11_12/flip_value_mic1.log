@@ -1,0 +1,63 @@
+[INFO -- 2017-03-06 18:09:51]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 18:09:51]
+Initialization strings:
+[INFO -- 2017-03-06 18:09:51]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-06 18:09:51]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 18:09:51]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 18:09:51]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 18:09:51]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 18:09:51]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-06 18:09:51]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-06 18:09:51]
+initSignal:35
+[INFO -- 2017-03-06 18:09:51]
+endSignal:40
+[INFO -- 2017-03-06 18:09:51]
+seqSignal:20
+[INFO -- 2017-03-06 18:09:51]
+faultMode:0
+[INFO -- 2017-03-06 18:10:32]
+Backtrace BEGIN:
+#0  0x0000000000520754 in Mesh::rezone_all (this=0x7fae50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3194
+#1  0x0000000000471447 in State::rezone_all (this=0x7fb9e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+3189	      int *nbot_old     = (int *)mesh_memory.memory_malloc(new_ncells, sizeof(int), "nbot_old",  flags);
+3190	      int *ntop_old     = (int *)mesh_memory.memory_malloc(new_ncells, sizeof(int), "ntop_old",  flags);
+3191	
+3192	      for (int ic = 0; ic < new_ncells; ic++){
+3193	         nlft_old[ic] = -1;
+3194	         nrht_old[ic] = -1;
+3195	         nbot_old[ic] = -1;
+3196	         ntop_old[ic] = -1;
+3197	      }
+3198	
+
+Backtrace END
+Fliping a bit of the reference
+Memory content before bitflip:0x080x4d0xe70xf60xff0x7f0x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fb9e0
+address max offset: 8
+Memory content after  bitflip:0x080x4d0xe70xf60xbf0x7f0x000x00
+frame name: Mesh::rezone_all
+symbol name: state_memory
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+symbol line: 2547
+value: @0x7fb9e0
+value address: 0x7fb9e0
+Type: A reference type.
+Type sizeof: 8
+
+[INFO -- 2017-03-06 18:10:32]
+Fault Injection Successful after 41.3268630505s

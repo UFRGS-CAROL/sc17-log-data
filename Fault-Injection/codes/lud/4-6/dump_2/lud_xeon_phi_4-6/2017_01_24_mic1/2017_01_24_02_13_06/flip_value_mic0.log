@@ -1,0 +1,67 @@
+2017-01-24 02:12:25:Starting flip_value script
+2017-01-24 02:12:25:Initialization strings:
+2017-01-24 02:12:25:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-24 02:12:25:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 02:12:25:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 02:12:25:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 02:12:25:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 02:12:25:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-24 02:12:25:initSignal:4
+2017-01-24 02:12:25:endSignal:6
+2017-01-24 02:12:25:seqSignal:30
+2017-01-24 02:12:31:Trying Fault Injection
+2017-01-24 02:12:31:Inferior PID: 180428
+2017-01-24 02:12:31:Inferior is valid: True
+2017-01-24 02:12:31:Inferior #threads: 229
+2017-01-24 02:12:31:Backtrace BEGIN:
+2017-01-24 02:12:31:#0  0x00000000004038a5 in lud_diagonal_omp (a=0x7ffff5ecc010, size=2048, offset=1456) at lud_omp.c:29
+#1  0x0000000000403af9 in lud_omp (a=0x7ffff5ecc010, size=2048) at lud_omp.c:62
+#2  0x0000000000402c78 in main (argc=9, argv=0x7fffffffec08) at lud_check.c:124
+
+2017-01-24 02:12:31:24	        }
+25	   
+26	        float temp = 1.f/AA(i,i);
+27	        for (j = i+1; j < BS; j++) {
+28	            for (k = 0; k < i ; k++) {
+29	                AA(j,i) = AA(j,i) - AA(j,k) * AA(k,i);
+30	            }
+31	            AA(j,i) = AA(j,i)*temp;
+32	        }
+33	    }
+
+2017-01-24 02:12:31:Backtrace END
+2017-01-24 02:12:34:Thread name: None
+2017-01-24 02:12:34:Thread num: 1
+2017-01-24 02:12:34:Thread ptid: (180428, 180428, 0)
+2017-01-24 02:12:34:bitFlip function
+2017-01-24 02:12:34:Type: The type is an integer type.
+2017-01-24 02:12:34:Type sizeof: 4
+2017-01-24 02:12:34:Mem contents(hex):0xe40x000x000x00
+2017-01-24 02:12:34:base address to flip value: 0x60b670 
+2017-01-24 02:12:34:address max offset: 4
+2017-01-24 02:12:34:Memory content before bitflip:0xe40x000x000x00
+2017-01-24 02:12:34:Memory content after  bitflip:0xe50x000x000x00
+2017-01-24 02:12:34:Mem contents(hex):0xe50x000x000x00
+2017-01-24 02:12:34:frame name: main
+2017-01-24 02:12:34:symbol name: omp_num_threads
+2017-01-24 02:12:34:symbol filename: lud_check.c
+2017-01-24 02:12:34:symbol line: 30
+2017-01-24 02:12:34:value: 229
+2017-01-24 02:12:34:value address: 0x60b670 <omp_num_threads>
+2017-01-24 02:12:34:Type: The type is an integer type.
+2017-01-24 02:12:34:Type sizeof: 4
+2017-01-24 02:12:34:Fault Injection Successful after 9.86195111275s
+2017-01-24 02:12:35:Fault Already Injected
+2017-01-24 02:12:35:Fault Already Injected
+2017-01-24 02:12:35:Fault Already Injected
+2017-01-24 02:12:35:Fault Already Injected
+2017-01-24 02:12:36:Fault Already Injected
+2017-01-24 02:12:36:Fault Already Injected
+2017-01-24 02:12:36:Fault Already Injected
+2017-01-24 02:12:36:Fault Already Injected
+2017-01-24 02:12:36:Fault Already Injected
+2017-01-24 02:12:37:Fault Already Injected
+2017-01-24 02:12:37:Fault Already Injected
+2017-01-24 02:12:37:Fault Already Injected
+2017-01-24 02:12:37:event type: exit
+2017-01-24 02:12:37:exit code: 0

@@ -1,0 +1,75 @@
+[INFO -- 2017-03-11 03:47:24]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-11 03:47:24]
+Initialization strings:
+[INFO -- 2017-03-11 03:47:25]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-11 03:47:25]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-11 03:47:25]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-11 03:47:25]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-11 03:47:25]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-11 03:47:25]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-11 03:47:25]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-11 03:47:25]
+initSignal:35
+[INFO -- 2017-03-11 03:47:25]
+endSignal:40
+[INFO -- 2017-03-11 03:47:25]
+seqSignal:20
+[INFO -- 2017-03-11 03:47:25]
+faultMode:0
+[EXCEPTION -- 2017-03-11 03:48:07]
+pythonException: invalid frame
+[INFO -- 2017-03-11 03:48:07]
+Backtrace BEGIN:
+#0  0x000000000044e429 in State::L__ZN5State25apply_boundary_conditionsEv_702__par_loop0_2_30 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:708
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe118 in ?? ()
+#3  0x00007fffffffe0e8 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+703	#endif
+704	   for (uint ic=0; ic<ncells; ic++) {
+705	      if (mesh->is_left_boundary(ic)) {
+706	         int nr = nrht[ic];
+707	         H[ic] =  H[nr];
+708	         U[ic] = -U[nr];
+709	         V[ic] =  V[nr];
+710	      }
+711	      if (mesh->is_right_boundary(ic))  {
+712	         int nl = nlft[ic];
+
+Backtrace END
+Fliping array at pos: 1
+Fliping a bit of the pointer
+Memory content before bitflip:0x080xa60x560x000x000x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7ceaa8 
+address max offset: 8
+Memory content after  bitflip:0x080xa60xd60x000x000x000x000x00
+frame name: State::L__ZN5State25apply_boundary_conditionsEv_702__par_loop0_2_30
+symbol name: state_timer_descriptor
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 135
+value: {0x56a5f0 "state_timer_apply_BCs", 0xd6a608 "\211\226\001", 0x56a624 "state_timer_finite_difference", 0x56a644 "state_timer_refine_potential", 0x56a664 "state_timer_calc_mpot", 0x56a67c "state_timer_rezone_all", 0x56a694 "state_timer_mass_sum", 0x56a6ac "state_timer_read", 0x56a6c0 "state_timer_write"}
+value address: 0x7ceaa0 <state_timer_descriptor>
+Type: The type is an array.
+Type sizeof: 72
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 8L)
+
+[INFO -- 2017-03-11 03:48:07]
+Fault Injection Successful after 42.9335079193s
+[INFO -- 2017-03-11 03:48:28]
+event type: exit
+[INFO -- 2017-03-11 03:48:28]
+exit code: 0

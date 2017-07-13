@@ -1,0 +1,47 @@
+2017-01-16 22:08:04:Starting flip_value script
+2017-01-16 22:08:04:Initialization strings:
+2017-01-16 22:08:05:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-16 22:08:05:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-16 22:08:05:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-16 22:08:05:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-16 22:08:05:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-16 22:08:05:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-16 22:08:05:initSignal:0
+2017-01-16 22:08:05:endSignal:7
+2017-01-16 22:08:05:seqSignal:15
+2017-01-16 22:08:08:Backtrace BEGIN:
+2017-01-16 22:08:08:#0  0x0000000000403cd1 in read_gold (gold=0x7fffeecc9040, fileGold=0x7fffffffee78 "/micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks", order=2048) at dgemm.c:265
+#1  0x00000000004041e3 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:329
+
+2017-01-16 22:08:08:260	    if( (file = fopen(fileGold, "rb" )) == 0 ) {
+261	        printf( "The gold file was not opened\n" );
+262	        exit(1);
+263	    }
+264	
+265	    for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+266	            fread(&gold[(i)+(order)*(j)], 1, sizeof(double), file);
+267	        }
+268	    fclose(file);
+269	}
+
+2017-01-16 22:08:08:Backtrace END
+2017-01-16 22:08:08:Type: The type is a pointer.
+2017-01-16 22:08:08:Type sizeof: 8
+2017-01-16 22:08:08:Fliping a bit of the pointer
+2017-01-16 22:08:08:Mem contents(hex):0x3c0xee0xff0xff0xff0x7f0x000x00
+2017-01-16 22:08:08:base address to flip value: 0x7fffffffea08
+2017-01-16 22:08:08:address max offset: 8
+2017-01-16 22:08:08:Memory content before bitflip:0x3c0xee0xff0xff0xff0x7f0x000x00
+2017-01-16 22:08:08:Memory content after  bitflip:0x3c0xee0xff0xff0xff0x7f0x200x00
+2017-01-16 22:08:08:Mem contents(hex):0x3c0xee0xff0xff0xff0x7f0x200x00
+2017-01-16 22:08:08:frame name: main
+2017-01-16 22:08:08:symbol name: inputB
+2017-01-16 22:08:08:symbol filename: dgemm.c
+2017-01-16 22:08:08:symbol line: 283
+2017-01-16 22:08:08:value: 0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192"
+2017-01-16 22:08:08:value address: 0x7fffffffea08
+2017-01-16 22:08:08:Type: The type is a pointer.
+2017-01-16 22:08:08:Type sizeof: 8
+2017-01-16 22:08:08:Fault Injection Successful after 3.28142404556s
+2017-01-16 22:08:52:event type: exit
+2017-01-16 22:08:52:exit code: 0

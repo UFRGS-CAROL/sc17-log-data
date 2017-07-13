@@ -1,0 +1,53 @@
+2016-10-14 10:30:40:Initialization strings:
+2016-10-14 10:30:40:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-14 10:30:40:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-14 10:30:40:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-14 10:30:40:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-14 10:30:40:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-14 10:30:40:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-14 10:30:41:Trying Fault Injection
+2016-10-14 10:30:41:Backtrace BEGIN:
+2016-10-14 10:30:41:#0  read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:208
+#1  main (argc=-6278, argv=0x0) at hotspot_check.c:264
+
+2016-10-14 10:30:41:203	        }
+204	        if (feof(fp))
+205	            fatal("not enough lines in file");
+206	        if ((sscanf(str, "%f", &val) != 1) )
+207	            fatal("invalid file format");
+208	        vect[i] = val;
+209	    }
+210	
+211	    fclose(fp);
+212	}
+
+2016-10-14 10:30:41:Backtrace END
+2016-10-14 10:30:41:Type: The type is a pointer.
+2016-10-14 10:30:41:Type sizeof: 8
+2016-10-14 10:30:41:Fliping a bit of the pointer
+2016-10-14 10:30:41:Mem contents(hex):0x970xee0xff0xff0xff0x7f0x000x00
+2016-10-14 10:30:41:base address to flip value: 0x7fffffffe608
+2016-10-14 10:30:41:address max offset: 8
+2016-10-14 10:30:41:Memory content before bitflip:0x970xee0xff0xff0xff0x7f0x000x00
+2016-10-14 10:30:41:Memory content after  bitflip:0x970xee0xff0xff0xff0x6f0x000x00
+2016-10-14 10:30:41:Mem contents(hex):0x970xee0xff0xff0xff0x6f0x000x00
+2016-10-14 10:30:41:frame name: read_input
+2016-10-14 10:30:41:symbol name: final_result
+2016-10-14 10:30:41:symbol filename: hotspot_check.c
+2016-10-14 10:30:41:symbol line: 230
+2016-10-14 10:30:41:value: 0x7fffffffee97
+2016-10-14 10:30:41:value address: 0x7fffffffe608
+2016-10-14 10:30:41:Type: The type is a pointer.
+2016-10-14 10:30:41:Type sizeof: 8
+2016-10-14 10:30:41:Fault Injection Successful after 1.31003403664s
+2016-10-14 10:30:42:Fault Already Injected
+2016-10-14 10:30:43:Fault Already Injected
+2016-10-14 10:30:43:Fault Already Injected
+2016-10-14 10:30:44:Fault Already Injected
+2016-10-14 10:30:46:Fault Already Injected
+2016-10-14 10:30:47:Fault Already Injected
+2016-10-14 10:30:47:Fault Already Injected
+2016-10-14 10:30:47:Fault Already Injected
+2016-10-14 10:30:48:Fault Already Injected
+2016-10-14 10:30:49:event type: exit
+2016-10-14 10:30:49:exit code: 1

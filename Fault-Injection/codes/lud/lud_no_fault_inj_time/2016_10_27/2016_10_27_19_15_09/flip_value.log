@@ -1,0 +1,61 @@
+2016-10-27 19:14:52:Initialization strings:
+2016-10-27 19:14:52:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-27 19:14:52:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-27 19:14:52:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-27 19:14:52:(4) file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-27 19:14:52:(5) set remote exec-file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-27 19:14:52:(6) set args -s 8192 -n 228 -i /micNfs/gdb-fault-injection-lud/bin/input_8192_th_228 -g /micNfs/gdb-fault-injection-lud/bin/gold_8192_th_228
+2016-10-27 19:14:54:Trying Fault Injection
+2016-10-27 19:14:54:Inferior PID: 127401
+2016-10-27 19:14:54:Inferior is valid: True
+2016-10-27 19:14:54:Inferior #threads: 1
+2016-10-27 19:14:54:Backtrace BEGIN:
+2016-10-27 19:14:54:#0  0x00007ffff71963d0 in __open_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7143025 in __GI__IO_file_open (fp=fp@entry=0x615b40, filename=<optimized out>, posix_mode=<optimized out>, prot=prot@entry=438, read_write=4100, is32not64=is32not64@entry=1) at fileops.c:220
+#2  0x00007ffff7143130 in _IO_new_file_fopen (fp=fp@entry=0x615b40, filename=filename@entry=0x6143c0 <full_log_file_name> "/micNfs/carol/logs/2016_10_28_00_19_23_openmpLUD_carolxeon1-mic0.log", mode=<optimized out>, mode@entry=0x40e55c "a", is32not64=is32not64@entry=1) at fileops.c:327
+#3  0x00007ffff71384d2 in __fopen_internal (filename=0x6143c0 <full_log_file_name> "/micNfs/carol/logs/2016_10_28_00_19_23_openmpLUD_carolxeon1-mic0.log", mode=0x40e55c "a", is32=1) at iofopen.c:86
+#4  0x0000000000406320 in start_log_file (benchmark_name=0x6143c0 <full_log_file_name> "/micNfs/carol/logs/2016_10_28_00_19_23_openmpLUD_carolxeon1-mic0.log", test_info=0x441 <error: Cannot access memory at address 0x441>) at ../../include/log_helper.c:261
+#5  0x0000000000402c62 in main (argc=6374336, argv=0x441) at lud_check.c:117
+
+2016-10-27 19:14:54:76	in ../sysdeps/unix/syscall-template.S
+
+2016-10-27 19:14:54:Backtrace END
+2016-10-27 19:14:54:Thread name: None
+2016-10-27 19:14:54:Thread num: 1
+2016-10-27 19:14:54:Thread ptid: (127401, 127401, 0)
+2016-10-27 19:14:54:bitFlip function
+2016-10-27 19:14:54:Type: The type is an array.
+2016-10-27 19:14:54:Type sizeof: 10
+2016-10-27 19:14:54:Fliping array at pos: 1
+2016-10-27 19:14:54:bitFlip function
+2016-10-27 19:14:54:Type: The type is an integer type.
+2016-10-27 19:14:54:Type sizeof: 1
+2016-10-27 19:14:54:Mem contents(hex):0x30
+2016-10-27 19:14:54:base address to flip value: 0x7fffffffe8d3 
+2016-10-27 19:14:54:address max offset: 1
+2016-10-27 19:14:54:Memory content before bitflip:0x30
+2016-10-27 19:14:54:Memory content after  bitflip:0x34
+2016-10-27 19:14:54:Mem contents(hex):0x34
+2016-10-27 19:14:54:frame name: start_log_file
+2016-10-27 19:14:54:symbol name: hour
+2016-10-27 19:14:54:symbol filename: ../../include/log_helper.c
+2016-10-27 19:14:54:symbol line: 201
+2016-10-27 19:14:54:value: "04\000\000\000\000\000 \000"
+2016-10-27 19:14:54:value address: 0x7fffffffe8d2
+2016-10-27 19:14:54:Type: The type is an array.
+2016-10-27 19:14:54:Type sizeof: 10
+2016-10-27 19:14:54:Field name: None
+2016-10-27 19:14:54:Field Type:
+2016-10-27 19:14:54:Type: A range type, that is, an integer type with bounds.
+2016-10-27 19:14:54:Type sizeof: 1
+2016-10-27 19:14:54:Type range: (0L, 9L)
+2016-10-27 19:14:54:Fault Injection Successful after 2.13630509377s
+2016-10-27 19:14:55:Fault Already Injected
+2016-10-27 19:14:56:Fault Already Injected
+2016-10-27 19:14:57:Fault Already Injected
+2016-10-27 19:14:59:Fault Already Injected
+2016-10-27 19:14:59:Fault Already Injected
+2016-10-27 19:15:00:Fault Already Injected
+2016-10-27 19:15:00:Fault Already Injected
+2016-10-27 19:15:03:event type: exit
+2016-10-27 19:15:03:exit code: 0

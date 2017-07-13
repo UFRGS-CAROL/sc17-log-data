@@ -1,0 +1,54 @@
+[INFO -- 2017-03-04 01:37:21]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-04 01:37:21]
+Initialization strings:
+[INFO -- 2017-03-04 01:37:21]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-04 01:37:21]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-04 01:37:21]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-04 01:37:21]
+(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-04 01:37:21]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-04 01:37:21]
+(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+[INFO -- 2017-03-04 01:37:21]
+initSignal:0
+[INFO -- 2017-03-04 01:37:21]
+endSignal:7
+[INFO -- 2017-03-04 01:37:21]
+seqSignal:15
+[INFO -- 2017-03-04 01:37:21]
+faultMode:2
+[INFO -- 2017-03-04 01:37:23]
+Backtrace BEGIN:
+#0  0x00007ffff7138914 in __GI__IO_fread (buf=0x7ffff3aa2a70, size=1, count=8, fp=0x6073f0) at iofread.c:41
+#1  0x0000000000403c08 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:250
+#2  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+36	in iofread.c
+
+Backtrace END
+Memory content before bitflip:0x460x070x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe68c
+address max offset: 4
+Memory content after  bitflip:0x150x7d0xf50x5a
+frame name: read_input
+symbol name: i
+symbol filename: dgemm.c
+symbol line: 237
+value: 1526037781
+value address: 0x7fffffffe68c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-04 01:37:23]
+Fault Injection Successful after 2.42458796501s
+[INFO -- 2017-03-04 01:39:17]
+event type: exit
+[INFO -- 2017-03-04 01:39:17]
+exit code: 1

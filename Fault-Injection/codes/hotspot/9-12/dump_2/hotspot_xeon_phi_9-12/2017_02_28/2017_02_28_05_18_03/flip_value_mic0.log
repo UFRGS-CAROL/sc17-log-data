@@ -1,0 +1,47 @@
+2017-02-28 05:17:31:Starting flip_value script
+2017-02-28 05:17:31:Initialization strings:
+2017-02-28 05:17:32:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 05:17:32:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 05:17:32:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 05:17:32:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 05:17:32:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 05:17:32:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-02-28 05:17:32:initSignal:9
+2017-02-28 05:17:32:endSignal:12
+2017-02-28 05:17:32:seqSignal:15
+2017-02-28 05:17:41:Backtrace BEGIN:
+2017-02-28 05:17:41:#0  0x00000000004045d7 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:209
+#1  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-02-28 05:17:41:204	        }
+205	        if (feof(fp))
+206	            fatal("not enough lines in file");
+207	        if ((sscanf(str, "%f", &val) != 1) )
+208	            fatal("invalid file format");
+209	        vect[i] = val;
+210	    }
+211	
+212	    fclose(fp);
+213	}
+
+2017-02-28 05:17:41:Backtrace END
+2017-02-28 05:17:41:Type: The type is an integer type.
+2017-02-28 05:17:41:Type sizeof: 4
+2017-02-28 05:17:41:Mem contents(hex):0xe80x030x000x00
+2017-02-28 05:17:41:Fault Mode: Single bit-flip
+2017-02-28 05:17:41:base address to flip value: 0x7fffffffe8f4
+2017-02-28 05:17:41:address max offset: 4
+2017-02-28 05:17:41:Memory content before bitflip:0xe80x030x000x00
+2017-02-28 05:17:41:Memory content after  bitflip:0xa80x030x000x00
+2017-02-28 05:17:41:Mem contents(hex):0xa80x030x000x00
+2017-02-28 05:17:41:frame name: main
+2017-02-28 05:17:41:symbol name: sim_time
+2017-02-28 05:17:41:symbol filename: hotspot_check.c
+2017-02-28 05:17:41:symbol line: 230
+2017-02-28 05:17:41:value: 936
+2017-02-28 05:17:41:value address: 0x7fffffffe8f4
+2017-02-28 05:17:41:Type: The type is an integer type.
+2017-02-28 05:17:41:Type sizeof: 4
+2017-02-28 05:17:41:Fault Injection Successful after 9.83108592033s
+2017-02-28 05:17:56:event type: exit
+2017-02-28 05:17:56:exit code: 1

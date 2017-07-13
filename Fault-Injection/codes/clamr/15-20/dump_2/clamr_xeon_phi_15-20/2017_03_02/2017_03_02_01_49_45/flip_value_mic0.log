@@ -1,0 +1,77 @@
+2017-03-02 01:48:23:Starting flip_value script
+2017-03-02 01:48:23:Initialization strings:
+2017-03-02 01:48:24:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 01:48:24:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 01:48:24:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 01:48:24:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 01:48:24:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 01:48:24:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-02 01:48:24:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-02 01:48:24:initSignal:15
+2017-03-02 01:48:24:endSignal:20
+2017-03-02 01:48:24:seqSignal:20
+2017-03-02 01:48:41:Backtrace BEGIN:
+2017-03-02 01:48:41:#0  0x000000000054b7f2 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:475
+#1  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#2  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-03-02 01:48:41:470	                    fprintf(fp,"%d,%d,%d,%d,%d\n",xloc,yloc,xwid,ywid,color);
+471	
+472	                    xloc1 = (int)((x_double[i]-graphics_xmin)*xconversion);
+473	                    xloc2 = (int)((x_double[i]+dx_double[i]-graphics_xmin)*xconversion);
+474	                    yloc1 = (int)((graphics_ymax-y_double[i])*yconversion);
+475	                    yloc2 = (int)((graphics_ymax-(y_double[i]+dy_double[i]))*yconversion);
+476	                    fprintf(fp2,"%d,%d,%d,%d\n",xloc1,yloc2,xloc2,yloc2);
+477	                    fprintf(fp2,"%d,%d,%d,%d\n",xloc1,yloc1,xloc2,yloc1);
+478	                    fprintf(fp2,"%d,%d,%d,%d\n",xloc1,yloc1,xloc1,yloc2);
+479	                    fprintf(fp2,"%d,%d,%d,%d\n",xloc2,yloc1,xloc2,yloc2);
+
+2017-03-02 01:48:41:Backtrace END
+2017-03-02 01:48:47:Type: A floating point type.
+2017-03-02 01:48:47:Type sizeof: 4
+2017-03-02 01:48:47:Mem contents(hex):0x000x800x800xc3
+2017-03-02 01:48:47:Fault Mode: Zero bit-flip
+2017-03-02 01:48:47:base address to flip value: 0x7d0bc4 
+2017-03-02 01:48:47:address max offset: 4
+2017-03-02 01:48:47:Memory content before bitflip:0x000x800x800xc3
+2017-03-02 01:48:47:Backtrace BEGIN:
+2017-03-02 01:48:47:#0  0x000000000054b7f2 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:475
+#1  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#2  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-03-02 01:48:47:470	                    fprintf(fp,"%d,%d,%d,%d,%d\n",xloc,yloc,xwid,ywid,color);
+471	
+472	                    xloc1 = (int)((x_double[i]-graphics_xmin)*xconversion);
+473	                    xloc2 = (int)((x_double[i]+dx_double[i]-graphics_xmin)*xconversion);
+474	                    yloc1 = (int)((graphics_ymax-y_double[i])*yconversion);
+475	                    yloc2 = (int)((graphics_ymax-(y_double[i]+dy_double[i]))*yconversion);
+476	                    fprintf(fp2,"%d,%d,%d,%d\n",xloc1,yloc2,xloc2,yloc2);
+477	                    fprintf(fp2,"%d,%d,%d,%d\n",xloc1,yloc1,xloc2,yloc1);
+478	                    fprintf(fp2,"%d,%d,%d,%d\n",xloc1,yloc1,xloc1,yloc2);
+479	                    fprintf(fp2,"%d,%d,%d,%d\n",xloc2,yloc1,xloc2,yloc2);
+
+2017-03-02 01:48:47:Backtrace END
+2017-03-02 01:48:52:Type: The type is a pointer.
+2017-03-02 01:48:52:Type sizeof: 8
+2017-03-02 01:48:52:Fliping a bit of the value pointed by a pointer
+2017-03-02 01:48:52:Type: The type is a pointer.
+2017-03-02 01:48:52:Type sizeof: 8
+2017-03-02 01:48:52:Fliping a bit of the pointer
+2017-03-02 01:48:52:Mem contents(hex):0x600xee0xff0xff0xff0x7f0x000x00
+2017-03-02 01:48:52:Fault Mode: Double bit-flip
+2017-03-02 01:48:52:base address to flip value: 0x7fffffffec58
+2017-03-02 01:48:52:address max offset: 8
+2017-03-02 01:48:52:Memory content before bitflip:0x600xee0xff0xff0xff0x7f0x000x00
+2017-03-02 01:48:52:Memory content after  bitflip:0x600xee0xe70xff0xff0x7f0x000x00
+2017-03-02 01:48:52:Mem contents(hex):0x600xee0xe70xff0xff0x7f0x000x00
+2017-03-02 01:48:52:frame name: main
+2017-03-02 01:48:52:symbol name: argv
+2017-03-02 01:48:52:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-03-02 01:48:52:symbol line: 183
+2017-03-02 01:48:52:value: 0x7fffffffec58
+2017-03-02 01:48:52:value address: 0x7fffffffe998
+2017-03-02 01:48:52:Type: The type is a pointer.
+2017-03-02 01:48:52:Type sizeof: 8
+2017-03-02 01:48:52:Fault Injection Successful after 28.9788548946s
+2017-03-02 01:49:27:event type: exit
+2017-03-02 01:49:27:exit code: 0

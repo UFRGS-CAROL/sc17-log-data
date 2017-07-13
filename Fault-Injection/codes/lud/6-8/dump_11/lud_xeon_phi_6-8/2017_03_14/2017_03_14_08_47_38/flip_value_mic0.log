@@ -1,0 +1,56 @@
+[INFO -- 2017-03-14 08:47:19]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-14 08:47:19]
+Initialization strings:
+[INFO -- 2017-03-14 08:47:19]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-14 08:47:19]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-14 08:47:19]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-14 08:47:19]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-14 08:47:19]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-14 08:47:19]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-03-14 08:47:19]
+initSignal:6
+[INFO -- 2017-03-14 08:47:19]
+endSignal:8
+[INFO -- 2017-03-14 08:47:19]
+seqSignal:30
+[INFO -- 2017-03-14 08:47:19]
+faultMode:3
+[INFO -- 2017-03-14 08:47:30]
+Backtrace BEGIN:
+#0  0x00007ffff7196b70 in __close_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142ee0 in _IO_new_file_close_it (fp=fp@entry=0x61da30) at fileops.c:171
+#2  0x00007ffff7137c17 in _IO_new_fclose (fp=0x61da30) at iofclose.c:59
+#3  0x0000000000405edf in end_iteration () at ../include/log_helper.c:356
+#4  0x0000000000402c82 in main (argc=9, argv=0x7fffffffec08) at lud_check.c:126
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Memory content before bitflip:0xe40x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x60b670 
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: main
+symbol name: omp_num_threads
+symbol filename: lud_check.c
+symbol line: 30
+value: 0
+value address: 0x60b670 <omp_num_threads>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-14 08:47:30]
+Fault Injection Successful after 11.1550149918s
+[INFO -- 2017-03-14 08:47:32]
+event type: exit
+[INFO -- 2017-03-14 08:47:32]
+exit code: 0

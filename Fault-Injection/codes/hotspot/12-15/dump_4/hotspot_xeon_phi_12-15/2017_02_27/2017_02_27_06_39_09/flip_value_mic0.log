@@ -1,0 +1,54 @@
+[INFO -- 2017-02-27 06:38:37]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 06:38:37]
+Initialization strings:
+[INFO -- 2017-02-27 06:38:37]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-27 06:38:37]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 06:38:37]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 06:38:37]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 06:38:37]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 06:38:37]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-27 06:38:37]
+initSignal:12
+[INFO -- 2017-02-27 06:38:37]
+endSignal:15
+[INFO -- 2017-02-27 06:38:37]
+seqSignal:15
+[INFO -- 2017-02-27 06:38:37]
+faultMode:0
+[INFO -- 2017-02-27 06:38:50]
+Backtrace BEGIN:
+#0  0x00007ffff71364e8 in __isoc99_sscanf (s=0x7fffffffe640 "323.120026\n", format=0x4071c8 "%f") at isoc99_sscanf.c:26
+#1  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#2  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+21	in isoc99_sscanf.c
+
+Backtrace END
+Memory content before bitflip:0xff0x7f0x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffe934
+address max offset: 4
+Memory content after  bitflip:0xff0x7f0x000x40
+frame name: main
+symbol name: i
+symbol filename: hotspot_check.c
+symbol line: 230
+value: 1073774591
+value address: 0x7fffffffe934
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-02-27 06:38:50]
+Fault Injection Successful after 13.4341189861s
+[INFO -- 2017-02-27 06:39:03]
+event type: exit
+[INFO -- 2017-02-27 06:39:03]
+exit code: 0

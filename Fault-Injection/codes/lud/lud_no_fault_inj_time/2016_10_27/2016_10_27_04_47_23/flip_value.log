@@ -1,0 +1,77 @@
+2016-10-27 04:47:04:Initialization strings:
+2016-10-27 04:47:04:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-27 04:47:04:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-27 04:47:04:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-27 04:47:04:(4) file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-27 04:47:04:(5) set remote exec-file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-27 04:47:04:(6) set args -s 8192 -n 228 -i /micNfs/gdb-fault-injection-lud/bin/input_8192_th_228 -g /micNfs/gdb-fault-injection-lud/bin/gold_8192_th_228
+2016-10-27 04:47:06:Trying Fault Injection
+2016-10-27 04:47:06:Inferior PID: 137372
+2016-10-27 04:47:06:Inferior is valid: True
+2016-10-27 04:47:06:Inferior #threads: 135
+2016-10-27 04:47:06:Backtrace BEGIN:
+2016-10-27 04:47:06:#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff74312d0 in ?? () at pthread_create.c:237 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libpthread.so.0
+#2  0x00007ffda3bf9980 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2016-10-27 04:47:06:76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+2016-10-27 04:47:06:Backtrace END
+2016-10-27 04:47:07:Thread name: None
+2016-10-27 04:47:07:Thread num: 1
+2016-10-27 04:47:07:Thread ptid: (137372, 137372, 0)
+2016-10-27 04:47:07:bitFlip function
+2016-10-27 04:47:07:Type: The type is a pointer.
+2016-10-27 04:47:07:Type sizeof: 8
+2016-10-27 04:47:07:Error gdbException(frameFlip): Attempt to dereference a generic pointer.
+2016-10-27 04:47:07:Fault Injection Failed after 3.99710893631s
+2016-10-27 04:47:08:Trying Fault Injection
+2016-10-27 04:47:08:Inferior PID: 137372
+2016-10-27 04:47:08:Inferior is valid: True
+2016-10-27 04:47:08:Inferior #threads: 135
+2016-10-27 04:47:08:Backtrace BEGIN:
+2016-10-27 04:47:08:#0  0x00007ffff719f097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff74321df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffded8) at allocatestack.c:640
+#2  __pthread_create_2_1 (newthread=0x7fffffffded0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fff60169600) at pthread_create.c:524
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2016-10-27 04:47:08:88	in dl-minimal.c
+
+2016-10-27 04:47:08:Backtrace END
+2016-10-27 04:47:09:Thread name: None
+2016-10-27 04:47:09:Thread num: 1
+2016-10-27 04:47:09:Thread ptid: (137372, 137372, 0)
+2016-10-27 04:47:09:bitFlip function
+2016-10-27 04:47:09:Type: The type is an array.
+2016-10-27 04:47:09:Type sizeof: 12
+2016-10-27 04:47:09:Fliping array at pos: 2
+2016-10-27 04:47:09:bitFlip function
+2016-10-27 04:47:09:Type: The type is an integer type.
+2016-10-27 04:47:09:Type sizeof: 4
+2016-10-27 04:47:09:Mem contents(hex):0x000x000x000x00
+2016-10-27 04:47:09:base address to flip value: 0x7ffff743c278 
+2016-10-27 04:47:09:address max offset: 4
+2016-10-27 04:47:09:Memory content before bitflip:0x000x000x000x00
+2016-10-27 04:47:09:Memory content after  bitflip:0x000x000x080x00
+2016-10-27 04:47:09:Mem contents(hex):0x000x000x080x00
+2016-10-27 04:47:09:frame name: __pthread_create_2_1
+2016-10-27 04:47:09:symbol name: _thread_db_dtv_dtv
+2016-10-27 04:47:09:symbol filename: ../nptl_db/structs.def
+2016-10-27 04:47:09:symbol line: 74
+2016-10-27 04:47:09:value: {128, 134217727, 524288}
+2016-10-27 04:47:09:value address: 0x7ffff743c270 <_thread_db_dtv_dtv>
+2016-10-27 04:47:09:Type: The type is an array.
+2016-10-27 04:47:09:Type sizeof: 12
+2016-10-27 04:47:09:Field name: None
+2016-10-27 04:47:09:Field Type:
+2016-10-27 04:47:09:Type: A range type, that is, an integer type with bounds.
+2016-10-27 04:47:09:Type sizeof: 8
+2016-10-27 04:47:09:Type range: (0L, 2L)
+2016-10-27 04:47:09:Fault Injection Successful after 5.86514306068s
+2016-10-27 04:47:09:Fault Already Injected
+2016-10-27 04:47:12:Fault Already Injected
+2016-10-27 04:47:12:Fault Already Injected
+2016-10-27 04:47:16:event type: exit
+2016-10-27 04:47:16:exit code: 0

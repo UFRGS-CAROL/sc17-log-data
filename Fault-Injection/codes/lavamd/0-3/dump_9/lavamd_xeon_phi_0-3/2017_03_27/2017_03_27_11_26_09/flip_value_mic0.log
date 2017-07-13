@@ -1,0 +1,76 @@
+[INFO -- 2017-03-27 11:25:44]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 11:25:44]
+Initialization strings:
+[INFO -- 2017-03-27 11:25:44]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 11:25:44]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 11:25:44]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 11:25:44]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 11:25:44]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 11:25:44]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 11:25:44]
+initSignal:0
+[INFO -- 2017-03-27 11:25:44]
+endSignal:3
+[INFO -- 2017-03-27 11:25:44]
+seqSignal:30
+[INFO -- 2017-03-27 11:25:44]
+faultMode:1
+[INFO -- 2017-03-27 11:25:45]
+Backtrace BEGIN:
+#0  do_lookup_x (undef_name=undef_name@entry=0x7ffff7ddd6dc "free", new_hash=new_hash@entry=2090266759, old_hash=old_hash@entry=0x7fffffffe7f0, ref=0x7ffff7ddd380, result=result@entry=0x7fffffffe800, scope=<optimized out>, i=<optimized out>, version=0x7ffff7ff8e08, flags=1, skip=0x0, type_class=1, undef_map=0x7ffff7ffd9d8 <_rtld_global+2456>) at dl-lookup.c:446
+#1  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x7ffff7ddd6dc "free", undef_map=undef_map@entry=0x7ffff7ffd9d8 <_rtld_global+2456>, ref=ref@entry=0x7fffffffe950, symbol_scope=symbol_scope@entry=0x7ffff7ffe4c0, version=0x7ffff7ff8e08, type_class=1, flags=1, skip_map=0x0) at dl-lookup.c:775
+#2  0x00007ffff7de854f in elf_machine_rela (skip_ifunc=0, reloc_addr_arg=<optimized out>, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff7ddd940, map=0x7ffff7ffd9d8 <_rtld_global+2456>) at ../sysdeps/x86_64/dl-machine.h:277
+#3  elf_dynamic_do_Rela (skip_ifunc=0, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ffd9d8 <_rtld_global+2456>) at do-rel.h:137
+#4  _dl_relocate_object (scope=<optimized out>, reloc_mode=reloc_mode@entry=0, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#5  0x00007ffff7de0808 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2133
+#6  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebc0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#7  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebc0) at rtld.c:308
+#8  _dl_start (arg=0x7fffffffebc0) at rtld.c:414
+#9  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#10 0x0000000000000007 in ?? ()
+#11 0x00007fffffffedb7 in ?? ()
+#12 0x00007fffffffedf4 in ?? ()
+#13 0x00007fffffffedf8 in ?? ()
+#14 0x00007fffffffedfb in ?? ()
+#15 0x00007fffffffee41 in ?? ()
+#16 0x00007fffffffee86 in ?? ()
+#17 0x00007fffffffeec9 in ?? ()
+#18 0x0000000000000000 in ?? ()
+
+441	in dl-lookup.c
+
+Backtrace END
+Fliping array at pos: 0
+Fliping value of field: size
+Memory content before bitflip:0xb00x010x000x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe968
+address max offset: 8
+Memory content after  bitflip:0xb00x010x000x500x000x000x000x00
+frame name: elf_dynamic_do_Rela
+symbol name: ranges
+symbol filename: dl-reloc.c
+symbol line: 264
+value: {{start = 140737351899048, size = 1342177712, nrelative = 11, lazy = 0}, {start = 0, size = 0, nrelative = 0, lazy = 0}}
+value address: 0x7fffffffe960
+Type: The type is an array.
+Type sizeof: 64
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 1L)
+
+[INFO -- 2017-03-27 11:25:45]
+Fault Injection Successful after 1.36723303795s
+[INFO -- 2017-03-27 11:26:02]
+event type: exit
+[INFO -- 2017-03-27 11:26:02]
+exit code: 0

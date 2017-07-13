@@ -1,0 +1,52 @@
+2017-02-28 15:30:20:Starting flip_value script
+2017-02-28 15:30:20:Initialization strings:
+2017-02-28 15:30:20:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 15:30:20:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 15:30:20:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 15:30:20:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 15:30:20:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 15:30:20:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-02-28 15:30:20:initSignal:12
+2017-02-28 15:30:20:endSignal:15
+2017-02-28 15:30:20:seqSignal:15
+2017-02-28 15:30:33:Backtrace BEGIN:
+2017-02-28 15:30:33:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff71a16c7 in next_line (fd=fd@entry=3, buffer=buffer@entry=0x7fffffffc230 "0-227\n", cp=cp@entry=0x7fffffffe268, re=re@entry=0x7fffffffe270, buffer_end=buffer_end@entry=0x7fffffffe230 "\260\342\377\377\377\177") at ../sysdeps/unix/sysv/linux/getsysstats.c:88
+#2  0x00007ffff71a194d in __get_nprocs () at ../sysdeps/unix/sysv/linux/getsysstats.c:151
+#3  0x00007ffff7175608 in posix_sysconf (name=84) at ../sysdeps/posix/sysconf.c:631
+#4  linux_sysconf (name=84) at ../sysdeps/unix/sysv/linux/x86_64/../sysconf.c:140
+#5  __GI___sysconf (name=84) at ../sysdeps/unix/sysv/linux/x86_64/sysconf.c:36
+#6  0x00007ffff7915b0a in ?? ()
+#7  0x00007ffff5ec7cf8 in ?? ()
+#8  0x00007ffff5ec7c80 in ?? ()
+#9  0x00007fffffffe650 in ?? ()
+#10 0x0000000000000400 in ?? ()
+#11 0x0000000000000024 in ?? ()
+#12 0x0000000000000000 in ?? ()
+
+2017-02-28 15:30:33:76	in ../sysdeps/unix/syscall-template.S
+
+2017-02-28 15:30:33:Backtrace END
+2017-02-28 15:30:33:Type: The type is a pointer.
+2017-02-28 15:30:33:Type sizeof: 8
+2017-02-28 15:30:33:Fliping a bit of the value pointed by a pointer
+2017-02-28 15:30:33:Type: The type is an integer type.
+2017-02-28 15:30:33:Type sizeof: 1
+2017-02-28 15:30:33:Mem contents(hex):0x30
+2017-02-28 15:30:33:Fault Mode: Double bit-flip
+2017-02-28 15:30:33:base address to flip value: 0x7fffffffc230 
+2017-02-28 15:30:33:address max offset: 1
+2017-02-28 15:30:33:Memory content before bitflip:0x30
+2017-02-28 15:30:33:Memory content after  bitflip:0x24
+2017-02-28 15:30:33:Mem contents(hex):0x24
+2017-02-28 15:30:33:frame name: __get_nprocs
+2017-02-28 15:30:33:symbol name: buffer
+2017-02-28 15:30:33:symbol filename: ../sysdeps/unix/sysv/linux/getsysstats.c
+2017-02-28 15:30:33:symbol line: 140
+2017-02-28 15:30:33:value: 0x7fffffffc230 "$-227\n"
+2017-02-28 15:30:33:value address: 0x7fffffffe258
+2017-02-28 15:30:33:Type: The type is a pointer.
+2017-02-28 15:30:33:Type sizeof: 8
+2017-02-28 15:30:33:Fault Injection Successful after 13.4917960167s
+2017-02-28 15:30:46:event type: exit
+2017-02-28 15:30:46:exit code: 0

@@ -1,0 +1,56 @@
+[INFO -- 2017-02-26 20:28:29]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 20:28:29]
+Initialization strings:
+[INFO -- 2017-02-26 20:28:29]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-26 20:28:29]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 20:28:29]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 20:28:29]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 20:28:29]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 20:28:29]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 20:28:29]
+initSignal:0
+[INFO -- 2017-02-26 20:28:29]
+endSignal:3
+[INFO -- 2017-02-26 20:28:29]
+seqSignal:15
+[INFO -- 2017-02-26 20:28:29]
+faultMode:3
+[INFO -- 2017-02-26 20:28:30]
+Backtrace BEGIN:
+#0  0x00007ffff713835e in _IO_acquire_lock_fct (p=<synthetic pointer>) at libioP.h:891
+#1  _IO_fgets (buf=0x7fffffffe640 "324.396093\n", n=<optimized out>, fp=0x609b40) at iofgets.c:50
+#2  0x0000000000404538 in read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:202
+#3  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+886	in libioP.h
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x2f
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffee07 
+address max offset: 1
+Memory content after  bitflip:0x00
+frame name: read_input
+symbol name: file
+symbol filename: hotspot_check.c
+symbol line: 190
+value: 0x7fffffffee07 ""
+value address: 0x7fffffffe770
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-26 20:28:30]
+Fault Injection Successful after 1.60345292091s
+[INFO -- 2017-02-26 20:29:02]
+event type: exit
+[INFO -- 2017-02-26 20:29:02]
+exit code: 0

@@ -1,0 +1,70 @@
+[INFO -- 2017-03-06 13:19:47]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 13:19:47]
+Initialization strings:
+[INFO -- 2017-03-06 13:19:47]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-06 13:19:47]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 13:19:47]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 13:19:48]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 13:19:48]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 13:19:48]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-06 13:19:48]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-06 13:19:48]
+initSignal:15
+[INFO -- 2017-03-06 13:19:48]
+endSignal:20
+[INFO -- 2017-03-06 13:19:48]
+seqSignal:20
+[INFO -- 2017-03-06 13:19:48]
+faultMode:0
+[INFO -- 2017-03-06 13:20:08]
+Backtrace BEGIN:
+#0  0x00000000004716a3 in State::mass_sum (this=0x7fa5e0, enhanced_precision_sum=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:2988
+#1  0x000000000044532f in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:292
+
+2983	      local.correction = 0.0;
+2984	      int ic;
+2985	      for (ic = 0; ic < (int)ncells; ic++) {
+2986	         if (celltype[ic] == REAL_CELL) {
+2987	            //  Exclude boundary cells.
+2988	            corrected_next_term= H[ic]*mesh->lev_deltax[level[ic]]*mesh->lev_deltay[level[ic]] + local.correction;
+2989	            new_sum            = local.sum + local.correction;
+2990	            local.correction   = corrected_next_term - (new_sum - local.sum);
+2991	            local.sum          = new_sum;
+2992	         }
+
+Backtrace END
+Fliping array at pos: 2
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x73
+Fault Mode: Single bit-flip
+base address to flip value: 0x56a624 
+address max offset: 1
+Memory content after  bitflip:0x7b
+frame name: State::mass_sum
+symbol name: state_timer_descriptor
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 135
+value: {0x56a5f0 "state_timer_apply_BCs", 0x56a608 "state_timer_set_timestep", 0x56a624 "{tate_timer_finite_difference", 0x56a644 "state_timer_refine_potential", 0x56a664 "state_timer_calc_mpot", 0x56a67c "state_timer_rezone_all", 0x56a694 "state_timer_mass_sum", 0x56a6ac "state_timer_read", 0x56a6c0 "state_timer_write"}
+value address: 0x7ceaa0 <state_timer_descriptor>
+Type: The type is an array.
+Type sizeof: 72
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 8L)
+
+[INFO -- 2017-03-06 13:20:08]
+Fault Injection Successful after 20.5692839622s
+[INFO -- 2017-03-06 13:20:50]
+event type: exit
+[INFO -- 2017-03-06 13:20:50]
+exit code: 0

@@ -1,0 +1,69 @@
+[INFO -- 2017-03-03 10:49:49]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-03 10:49:49]
+Initialization strings:
+[INFO -- 2017-03-03 10:49:49]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-03 10:49:49]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 10:49:49]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 10:49:49]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 10:49:49]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 10:49:49]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-03 10:49:49]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-03 10:49:49]
+initSignal:40
+[INFO -- 2017-03-03 10:49:49]
+endSignal:49
+[INFO -- 2017-03-03 10:49:49]
+seqSignal:20
+[INFO -- 2017-03-03 10:49:49]
+faultMode:0
+[INFO -- 2017-03-03 10:50:35]
+Backtrace BEGIN:
+#0  0x0000000000515cf2 in Mesh::L__ZN4Mesh14calc_neighborsEi_3701__par_loop1_2_43 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3716
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe0c8 in ?? ()
+#3  0x00007ffff68f4100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+3711	         int jjcur = jj*levmult;
+3712	         int jjbot = max( (jj-1)*levmult, 0         );
+3713	         int jjtop = min( (jj+1)*levmult, jmaxsize-1);
+3714	
+3715	         int nlftval = nlft[ic];
+3716	         int nrhtval = nrht[ic];
+3717	         int nbotval = nbot[ic];
+3718	         int ntopval = ntop[ic];
+3719	
+3720	         // Taking care of boundary cells
+
+Backtrace END
+Memory content before bitflip:0xff0x7f0x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffd604
+address max offset: 4
+Memory content after  bitflip:0xff0x7f0x040x00
+frame name: Mesh::L__ZN4Mesh14calc_neighborsEi_3701__par_loop1_2_43
+symbol name: flags
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+symbol line: 3595
+value: 294911
+value address: 0x7fffffffd604
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-03 10:50:35]
+Fault Injection Successful after 46.2733299732s
+[INFO -- 2017-03-03 10:50:52]
+event type: exit
+[INFO -- 2017-03-03 10:50:52]
+exit code: 0

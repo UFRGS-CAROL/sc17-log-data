@@ -1,0 +1,45 @@
+2016-10-29 06:41:12:Initialization strings:
+2016-10-29 06:41:12:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-29 06:41:12:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-29 06:41:12:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-29 06:41:12:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-29 06:41:12:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-29 06:41:12:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-29 06:41:14:Trying Fault Injection
+2016-10-29 06:41:14:Backtrace BEGIN:
+2016-10-29 06:41:14:#0  __GI___isoc99_vsscanf (string=0x7fffffffe77a "324.026775\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:42
+#1  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#2  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#3  main (argc=-7168, argv=0x407198) at hotspot_check.c:264
+
+2016-10-29 06:41:14:37	in isoc99_vsscanf.c
+
+2016-10-29 06:41:14:Backtrace END
+2016-10-29 06:41:14:Type: The type is an integer type.
+2016-10-29 06:41:14:Type sizeof: 4
+2016-10-29 06:41:14:Mem contents(hex):0xe40x000x000x00
+2016-10-29 06:41:14:base address to flip value: 0x608ec0 
+2016-10-29 06:41:14:address max offset: 4
+2016-10-29 06:41:14:Memory content before bitflip:0xe40x000x000x00
+2016-10-29 06:41:14:Memory content after  bitflip:0xf40x000x000x00
+2016-10-29 06:41:14:Mem contents(hex):0xf40x000x000x00
+2016-10-29 06:41:14:frame name: read_input
+2016-10-29 06:41:14:symbol name: num_omp_threads
+2016-10-29 06:41:14:symbol filename: hotspot_check.c
+2016-10-29 06:41:14:symbol line: 39
+2016-10-29 06:41:14:value: 244
+2016-10-29 06:41:14:value address: 0x608ec0 <num_omp_threads>
+2016-10-29 06:41:14:Type: The type is an integer type.
+2016-10-29 06:41:14:Type sizeof: 4
+2016-10-29 06:41:14:Fault Injection Successful after 2.24321103096s
+2016-10-29 06:41:18:Fault Already Injected
+2016-10-29 06:41:20:Fault Already Injected
+2016-10-29 06:41:21:Fault Already Injected
+2016-10-29 06:41:21:Fault Already Injected
+2016-10-29 06:41:21:Fault Already Injected
+2016-10-29 06:41:22:Fault Already Injected
+2016-10-29 06:41:22:Fault Already Injected
+2016-10-29 06:41:23:Fault Already Injected
+2016-10-29 06:41:25:Fault Already Injected
+2016-10-29 06:41:31:event type: exit
+2016-10-29 06:41:31:exit code: 1

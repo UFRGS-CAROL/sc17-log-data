@@ -1,0 +1,45 @@
+2017-02-27 17:57:26:Starting flip_value script
+2017-02-27 17:57:26:Initialization strings:
+2017-02-27 17:57:26:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-27 17:57:26:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 17:57:26:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 17:57:26:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-27 17:57:26:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-27 17:57:26:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-27 17:57:26:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-27 17:57:26:initSignal:0
+2017-02-27 17:57:26:endSignal:5
+2017-02-27 17:57:26:seqSignal:20
+2017-02-27 17:57:27:Backtrace BEGIN:
+2017-02-27 17:57:27:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec50, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec50) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec50) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x000000000000000b in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+2017-02-27 17:57:27:69	in dl-debug.c
+
+2017-02-27 17:57:27:Backtrace END
+2017-02-27 17:57:27:Type: The type is an integer type.
+2017-02-27 17:57:27:Type sizeof: 8
+2017-02-27 17:57:27:Mem contents(hex):0xf00x450x440x000x000x000x000x00
+2017-02-27 17:57:27:Fault Mode: Double bit-flip
+2017-02-27 17:57:27:base address to flip value: 0x7fffffffeb98
+2017-02-27 17:57:27:address max offset: 8
+2017-02-27 17:57:27:Memory content before bitflip:0xf00x450x440x000x000x000x000x00
+2017-02-27 17:57:27:Memory content after  bitflip:0xf00x450x440x000x000x000x000xa0
+2017-02-27 17:57:27:Mem contents(hex):0xf00x450x440x000x000x000x000xa0
+2017-02-27 17:57:27:frame name: _dl_sysdep_start
+2017-02-27 17:57:27:symbol name: user_entry
+2017-02-27 17:57:27:symbol filename: ../elf/dl-sysdep.c
+2017-02-27 17:57:27:symbol line: 89
+2017-02-27 17:57:27:value: 11529215046072944112
+2017-02-27 17:57:27:value address: 0x7fffffffeb98
+2017-02-27 17:57:27:Type: The type is an integer type.
+2017-02-27 17:57:27:Type sizeof: 8
+2017-02-27 17:57:27:Fault Injection Successful after 1.3854598999s
+2017-02-27 17:57:27:event type: exit
+2017-02-27 17:57:27:exit code: no exit code available

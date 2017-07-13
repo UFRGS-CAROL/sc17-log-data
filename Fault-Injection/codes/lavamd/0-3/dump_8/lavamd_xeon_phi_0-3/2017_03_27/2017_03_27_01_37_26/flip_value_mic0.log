@@ -1,0 +1,58 @@
+[INFO -- 2017-03-27 01:37:01]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 01:37:01]
+Initialization strings:
+[INFO -- 2017-03-27 01:37:02]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 01:37:02]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 01:37:02]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 01:37:02]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 01:37:02]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 01:37:02]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 01:37:02]
+initSignal:0
+[INFO -- 2017-03-27 01:37:02]
+endSignal:3
+[INFO -- 2017-03-27 01:37:02]
+seqSignal:30
+[INFO -- 2017-03-27 01:37:02]
+faultMode:2
+[INFO -- 2017-03-27 01:37:02]
+Backtrace BEGIN:
+#0  0x00007ffff7138921 in __GI__IO_fread (buf=0x7ffff61415d8, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#1  0x0000000000402204 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:149
+
+37	in iofread.c
+
+Backtrace END
+Fliping array at pos: 42
+Memory content before bitflip:0x0d
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe672 
+address max offset: 1
+Memory content after  bitflip:0x2b
+frame name: main
+symbol name: test_info
+symbol filename: main_check.c
+symbol line: 188
+value: ",]\336\367\377\177\000\000\070L\r\367\377\177\000\000p\b\000\000\000\000\000\000\004L\r\367\377\177\000\000\240\231\377\367\377\177\000\000\070L+\367\377\177\000\000\020`\336\367\377\177\000\000p\b\000\000\000\000\000\000\330\027\016\367\377\177\000\000\240\231\377\367\377\177\000\000(\347\377\377\377\177\000\000$\347\377\377\377\177\000\000[\362\001"
+value address: 0x7fffffffe648
+Type: The type is an array.
+Type sizeof: 100
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 99L)
+
+[INFO -- 2017-03-27 01:37:02]
+Fault Injection Successful after 0.712563991547s
+[INFO -- 2017-03-27 01:37:19]
+event type: exit
+[INFO -- 2017-03-27 01:37:19]
+exit code: 0

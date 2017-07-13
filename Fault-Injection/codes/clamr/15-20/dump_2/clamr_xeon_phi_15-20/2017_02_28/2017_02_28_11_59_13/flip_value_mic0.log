@@ -1,0 +1,74 @@
+2017-02-28 11:58:01:Starting flip_value script
+2017-02-28 11:58:01:Initialization strings:
+2017-02-28 11:58:01:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 11:58:01:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 11:58:01:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 11:58:01:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 11:58:01:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 11:58:01:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 11:58:01:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 11:58:01:initSignal:15
+2017-02-28 11:58:01:endSignal:20
+2017-02-28 11:58:01:seqSignal:20
+2017-02-28 11:58:19:Backtrace BEGIN:
+2017-02-28 11:58:19:#0  __strchrnul (s=s@entry=0x574746 "\n", c_in=c_in@entry=37) at ../string/strchrnul.c:49
+#1  0x00007ffff6b67453 in __find_specmb (format=0x574746 "\n") at printf-parse.h:108
+#2  _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe118) at vfprintf.c:1669
+#3  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#4  0x000000000054b5c5 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:470
+#5  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#6  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-28 11:58:19:44	in ../string/strchrnul.c
+
+2017-02-28 11:58:19:Backtrace END
+2017-02-28 11:58:25:Type: The type is an array.
+2017-02-28 11:58:25:Type sizeof: 120
+2017-02-28 11:58:25:Fliping array at pos: 9
+2017-02-28 11:58:25:Type: The type is an integer type.
+2017-02-28 11:58:25:Type sizeof: 4
+2017-02-28 11:58:25:Mem contents(hex):0x000x000x000x00
+2017-02-28 11:58:25:Fault Mode: Random bit-flip
+2017-02-28 11:58:25:base address to flip value: 0x7ffff6c38d24 
+2017-02-28 11:58:25:address max offset: 4
+2017-02-28 11:58:25:Memory content before bitflip:0x000x000x000x00
+2017-02-28 11:58:25:Backtrace BEGIN:
+2017-02-28 11:58:25:#0  __strchrnul (s=s@entry=0x574746 "\n", c_in=c_in@entry=37) at ../string/strchrnul.c:49
+#1  0x00007ffff6b67453 in __find_specmb (format=0x574746 "\n") at printf-parse.h:108
+#2  _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe118) at vfprintf.c:1669
+#3  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#4  0x000000000054b5c5 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:470
+#5  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#6  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-28 11:58:25:44	in ../string/strchrnul.c
+
+2017-02-28 11:58:25:Backtrace END
+2017-02-28 11:58:30:Type: The type is an array.
+2017-02-28 11:58:30:Type sizeof: 91
+2017-02-28 11:58:30:Fliping array at pos: 53
+2017-02-28 11:58:30:Type: The type is an integer type.
+2017-02-28 11:58:30:Type sizeof: 1
+2017-02-28 11:58:30:Mem contents(hex):0x00
+2017-02-28 11:58:30:Fault Mode: Single bit-flip
+2017-02-28 11:58:30:base address to flip value: 0x7ffff6c38fb5  
+2017-02-28 11:58:30:address max offset: 1
+2017-02-28 11:58:30:Memory content before bitflip:0x00
+2017-02-28 11:58:30:Memory content after  bitflip:0x80
+2017-02-28 11:58:30:Mem contents(hex):0x80
+2017-02-28 11:58:30:frame name: __find_specmb
+2017-02-28 11:58:30:symbol name: jump_table
+2017-02-28 11:58:30:symbol filename: vfprintf.c
+2017-02-28 11:58:30:symbol line: 275
+2017-02-28 11:58:30:value: "\001\000\000\004\000\016\000\006\000\000\a\002\000\003\t\000\005\b\b\b\b\b\b\b\b\b\000\000\000\000\000\000\000\032\000\031\000\023\023\023\000\035\000\000\f\000\000\000\000\000\000\025\000\200\000\000\022\000\r\000\000\000\000\000\000\032\000\024\017\023\023\023\n\017\034\000\v\030\027\021\026\f\000\025\033\020\000\000\022\000\r"
+2017-02-28 11:58:30:value address: 0x7ffff6c38f80 <jump_table>
+2017-02-28 11:58:30:Type: The type is an array.
+2017-02-28 11:58:30:Type sizeof: 91
+2017-02-28 11:58:30:Field name: None
+2017-02-28 11:58:30:Field Type:
+2017-02-28 11:58:30:Type: A range type, that is, an integer type with bounds.
+2017-02-28 11:58:30:Type sizeof: 8
+2017-02-28 11:58:30:Type range: (0L, 90L)
+2017-02-28 11:58:30:Fault Injection Successful after 29.8713738918s
+2017-02-28 11:59:06:event type: exit
+2017-02-28 11:59:06:exit code: 0

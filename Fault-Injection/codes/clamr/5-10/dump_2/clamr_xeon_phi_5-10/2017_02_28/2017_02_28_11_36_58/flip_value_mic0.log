@@ -1,0 +1,75 @@
+2017-02-28 11:34:16:Starting flip_value script
+2017-02-28 11:34:16:Initialization strings:
+2017-02-28 11:34:16:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 11:34:16:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 11:34:16:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 11:34:17:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 11:34:17:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 11:34:17:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 11:34:17:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 11:34:17:initSignal:5
+2017-02-28 11:34:17:endSignal:10
+2017-02-28 11:34:17:seqSignal:20
+2017-02-28 11:34:23:Backtrace BEGIN:
+2017-02-28 11:34:23:#0  std::vector<double, std::allocator<double> >::operator[] (this=0x7f9ff8, __n=188543) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x0000000000536893 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:395
+#2  0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#3  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-28 11:34:23:775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+2017-02-28 11:34:23:Backtrace END
+2017-02-28 11:34:30:Type: The type is an integer type.
+2017-02-28 11:34:30:Type sizeof: 4
+2017-02-28 11:34:30:Mem contents(hex):0x670x000x000x00
+2017-02-28 11:34:30:Fault Mode: One bit-flip
+2017-02-28 11:34:30:base address to flip value: 0x572f94 
+2017-02-28 11:34:30:address max offset: 4
+2017-02-28 11:34:30:Memory content before bitflip:0x670x000x000x00
+2017-02-28 11:34:31:Backtrace BEGIN:
+2017-02-28 11:34:31:#0  std::vector<double, std::allocator<double> >::operator[] (this=0x7f9ff8, __n=188543) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x0000000000536893 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:395
+#2  0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#3  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-28 11:34:31:775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+2017-02-28 11:34:31:Backtrace END
+2017-02-28 11:34:39:Type: The type is an enum.
+2017-02-28 11:34:39:Type sizeof: 4
+2017-02-28 11:34:39:Mem contents(hex):0x010x000x000x00
+2017-02-28 11:34:39:Fault Mode: Single bit-flip
+2017-02-28 11:34:39:base address to flip value: 0x7fffffffe618
+2017-02-28 11:34:39:address max offset: 4
+2017-02-28 11:34:39:Memory content before bitflip:0x010x000x000x00
+2017-02-28 11:34:39:Memory content after  bitflip:0x010x000x000x20
+2017-02-28 11:34:39:Mem contents(hex):0x010x000x000x20
+2017-02-28 11:34:39:frame name: Mesh::init
+2017-02-28 11:34:39:symbol name: initial_order
+2017-02-28 11:34:39:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+2017-02-28 11:34:39:symbol line: 1361
+2017-02-28 11:34:39:value: 536870913
+2017-02-28 11:34:39:value address: 0x7fffffffe618
+2017-02-28 11:34:39:Type: The type is an enum.
+2017-02-28 11:34:39:Type sizeof: 4
+2017-02-28 11:34:39:Field name: ORIGINAL_ORDER
+2017-02-28 11:34:39:Field Type:
+2017-02-28 11:34:39:Fault Injection Successful after 22.4806070328s

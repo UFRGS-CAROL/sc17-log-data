@@ -1,0 +1,76 @@
+2016-10-30 06:09:08:Initialization strings:
+2016-10-30 06:09:08:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-30 06:09:08:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-30 06:09:08:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-30 06:09:08:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-30 06:09:08:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-30 06:09:08:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-30 06:09:08:Trying Fault Injection
+2016-10-30 06:09:08:Inferior PID: 138233
+2016-10-30 06:09:08:Inferior is valid: True
+2016-10-30 06:09:08:Inferior #threads: 1
+2016-10-30 06:09:08:Backtrace BEGIN:
+2016-10-30 06:09:08:#0  elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=0x363cb8, version=0x7ffff7ff7300, sym=0x7ffff750a058, reloc=0x7ffff755a818, map=0x7ffff7ff9000) at ../sysdeps/x86_64/dl-machine.h:277
+#1  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ff9000) at do-rel.h:137
+#2  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#3  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#4  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec30, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#5  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec30) at rtld.c:308
+#6  _dl_start (arg=0x7fffffffec30) at rtld.c:414
+#7  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#8  0x0000000000000006 in ?? ()
+#9  0x00007fffffffee22 in ?? ()
+#10 0x00007fffffffee52 in ?? ()
+#11 0x00007fffffffee58 in ?? ()
+#12 0x00007fffffffee5b in ?? ()
+#13 0x00007fffffffee5f in ?? ()
+#14 0x00007fffffffee9c in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+2016-10-30 06:09:08:272	in ../sysdeps/x86_64/dl-machine.h
+
+2016-10-30 06:09:08:Backtrace END
+2016-10-30 06:09:08:Thread name: None
+2016-10-30 06:09:08:Thread num: 1
+2016-10-30 06:09:08:Thread ptid: (138233, 138233, 0)
+2016-10-30 06:09:08:bitFlip function
+2016-10-30 06:09:08:Type: The type is a structure.
+2016-10-30 06:09:08:Type sizeof: 24
+2016-10-30 06:09:08:Fliping value of field: next
+2016-10-30 06:09:08:bitFlip function
+2016-10-30 06:09:08:Type: The type is a pointer.
+2016-10-30 06:09:08:Type sizeof: 8
+2016-10-30 06:09:08:Fliping a bit of the pointer
+2016-10-30 06:09:09:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-10-30 06:09:09:base address to flip value: 0x7ffff7ffe008 
+2016-10-30 06:09:09:address max offset: 8
+2016-10-30 06:09:09:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-10-30 06:09:09:Memory content after  bitflip:0x000x000x000x800x000x000x000x00
+2016-10-30 06:09:09:Mem contents(hex):0x000x000x000x800x000x000x000x00
+2016-10-30 06:09:09:frame name: dl_main
+2016-10-30 06:09:09:symbol name: _dl_rtld_libname2
+2016-10-30 06:09:09:symbol filename: rtld.c
+2016-10-30 06:09:09:symbol line: 196
+2016-10-30 06:09:09:value: {name = 0x0, next = 0x80000000, dont_free = 0}
+2016-10-30 06:09:09:value address: 0x7ffff7ffe000 <_dl_rtld_libname2>
+2016-10-30 06:09:09:Type: The type is a structure.
+2016-10-30 06:09:09:Type sizeof: 24
+2016-10-30 06:09:09:Field name: name
+2016-10-30 06:09:09:Field Type:
+2016-10-30 06:09:09:Type: The type is a pointer.
+2016-10-30 06:09:09:Type sizeof: 8
+2016-10-30 06:09:09:Field name: next
+2016-10-30 06:09:09:Field Type:
+2016-10-30 06:09:09:Type: The type is a pointer.
+2016-10-30 06:09:09:Type sizeof: 8
+2016-10-30 06:09:09:Field name: dont_free
+2016-10-30 06:09:09:Field Type:
+2016-10-30 06:09:09:Type: The type is an integer type.
+2016-10-30 06:09:09:Type sizeof: 4
+2016-10-30 06:09:09:Fault Injection Successful after 1.02859711647s
+2016-10-30 06:09:14:Fault Already Injected
+2016-10-30 06:09:21:Fault Already Injected
+2016-10-30 06:09:25:Fault Already Injected
+2016-10-30 06:09:25:Fault Already Injected
+2016-10-30 06:09:33:event type: exit
+2016-10-30 06:09:33:exit code: 0

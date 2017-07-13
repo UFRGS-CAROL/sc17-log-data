@@ -1,0 +1,73 @@
+[INFO -- 2017-03-03 05:33:58]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-03 05:33:58]
+Initialization strings:
+[INFO -- 2017-03-03 05:33:58]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-03 05:33:58]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 05:33:58]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 05:33:58]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 05:33:58]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 05:33:58]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-03 05:33:58]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-03 05:33:58]
+initSignal:25
+[INFO -- 2017-03-03 05:33:58]
+endSignal:30
+[INFO -- 2017-03-03 05:33:58]
+seqSignal:20
+[INFO -- 2017-03-03 05:33:58]
+faultMode:2
+[INFO -- 2017-03-03 05:34:37]
+Backtrace BEGIN:
+#0  0x00000000005210a9 in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3245
+#1  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+3240	               nbot[nc+3]  = -1;
+3241	               ntop[nc+2]  = -1;
+3242	               ntop[nc+3]  = -1;
+3243	            }
+3244	         }
+3245	         if (mpot[ic] > 0){
+3246	            nc++;
+3247	            switch(celltype[nc]){
+3248	            case LEFT_BOUNDARY:
+3249	               nlft[nc] = nc;
+
+Backtrace END
+Fliping value of field: tv_sec
+Memory content before bitflip:0xa10x450xb90x580x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe3a0
+address max offset: 8
+Memory content after  bitflip:0x690xa10x0e0xa20x350x5c0xca0x81
+frame name: State::rezone_all
+symbol name: tstart_cpu
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 1031
+value: {tv_sec = -9094355112099405463, tv_usec = 281049}
+value address: 0x7fffffffe3a0
+Type: The type is a structure.
+Type sizeof: 16
+Field name: tv_sec
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: tv_usec
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-03 05:34:37]
+Fault Injection Successful after 39.9545660019s
+[INFO -- 2017-03-03 05:35:04]
+event type: exit
+[INFO -- 2017-03-03 05:35:04]
+exit code: 0

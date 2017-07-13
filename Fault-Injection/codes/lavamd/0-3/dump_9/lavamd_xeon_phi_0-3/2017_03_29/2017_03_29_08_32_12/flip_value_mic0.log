@@ -1,0 +1,55 @@
+[INFO -- 2017-03-29 08:31:44]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-29 08:31:44]
+Initialization strings:
+[INFO -- 2017-03-29 08:31:45]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-29 08:31:45]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-29 08:31:45]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-29 08:31:45]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-29 08:31:45]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-29 08:31:45]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-29 08:31:45]
+initSignal:0
+[INFO -- 2017-03-29 08:31:45]
+endSignal:3
+[INFO -- 2017-03-29 08:31:45]
+seqSignal:30
+[INFO -- 2017-03-29 08:31:45]
+faultMode:2
+[INFO -- 2017-03-29 08:31:46]
+Backtrace BEGIN:
+#0  0x00007ffff7142890 in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1368
+#1  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#2  0x00000000004025ee in main (argc=7, argv=0x7fffffffebc8) at main_check.c:180
+
+1363	in fileops.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0xc80xeb0xff0xff0xff0x7f0x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe828
+address max offset: 8
+Memory content after  bitflip:0xa80xaa0x030x170x670x9a0x680x7c
+frame name: main
+symbol name: argv
+symbol filename: main_check.c
+symbol line: 43
+value: 0x7fffffffebc8
+value address: 0x7fffffffe828
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-29 08:31:46]
+Fault Injection Successful after 1.24275588989s
+[INFO -- 2017-03-29 08:32:05]
+event type: exit
+[INFO -- 2017-03-29 08:32:05]
+exit code: 0

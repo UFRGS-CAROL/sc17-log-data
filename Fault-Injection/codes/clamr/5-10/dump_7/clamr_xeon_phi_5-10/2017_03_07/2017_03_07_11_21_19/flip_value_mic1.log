@@ -1,0 +1,69 @@
+[INFO -- 2017-03-07 11:13:51]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-07 11:13:51]
+Initialization strings:
+[INFO -- 2017-03-07 11:13:51]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-07 11:13:51]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 11:13:51]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 11:13:51]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 11:13:51]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 11:13:51]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-07 11:13:51]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-07 11:13:51]
+initSignal:5
+[INFO -- 2017-03-07 11:13:51]
+endSignal:10
+[INFO -- 2017-03-07 11:13:51]
+seqSignal:20
+[INFO -- 2017-03-07 11:13:51]
+faultMode:1
+[EXCEPTION -- 2017-03-07 11:14:02]
+gdbException: Cannot access memory at address 0x3ff8000000000010
+[INFO -- 2017-03-07 11:14:07]
+Backtrace BEGIN:
+#0  0x000000000054246b in Bounds_Infinite (b=0x3ff8000000000000) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/Bounds.c:68
+#1  0x000000000053cef2 in KDTree_CreateTree (t=0x7f9d50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:243
+#2  0x000000000053d3f4 in KDTree_QueryCircleIntersect_Double (t=0x7f9d50, result_num=0x7fffffffe5dc, result_indicies=0x181ae10, circ_radius=24, ncells=264192, x=0x7fff0c0d6010, dx=0x7ffecc1ce010, y=0x7ffe8c1cc010, dy=0x7ffe4c1bf010) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:329
+#3  0x00000000005080fe in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1535
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+63	void Bounds_Copy(TBounds* src, TBounds* dest) {
+64	   assert(src && dest);
+65	   MEMCPY(src, dest, 1, TBounds);
+66	}
+67	
+68	void Bounds_Infinite(TBounds* b){
+69	   assert(b);
+70	   b->min.x = POSITIVE_INFINITY;
+71	   b->min.y = POSITIVE_INFINITY;
+72	   b->max.x = NEGATIVE_INFINITY;
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000xf00x3f
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffea08
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x600x3f
+frame name: main
+symbol name: deltax_in
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 253
+value: 0.001953125
+value address: 0x7fffffffea08
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-07 11:14:07]
+Fault Injection Successful after 16.6007490158s
+[INFO -- 2017-03-07 11:14:53]
+event type: exit
+[INFO -- 2017-03-07 11:14:53]
+exit code: 0

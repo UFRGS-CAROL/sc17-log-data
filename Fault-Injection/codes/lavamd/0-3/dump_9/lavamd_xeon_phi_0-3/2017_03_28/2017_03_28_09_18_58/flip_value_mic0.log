@@ -1,0 +1,63 @@
+[INFO -- 2017-03-28 09:18:33]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-28 09:18:33]
+Initialization strings:
+[INFO -- 2017-03-28 09:18:34]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-28 09:18:34]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 09:18:34]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 09:18:34]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 09:18:34]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 09:18:34]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-28 09:18:34]
+initSignal:0
+[INFO -- 2017-03-28 09:18:34]
+endSignal:3
+[INFO -- 2017-03-28 09:18:34]
+seqSignal:30
+[INFO -- 2017-03-28 09:18:34]
+faultMode:0
+[INFO -- 2017-03-28 09:18:34]
+Backtrace BEGIN:
+#0  0x0000000000402193 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:148
+
+143	        exit(1);
+144	    }
+145	
+146	    rv_cpu = (FOUR_VECTOR*)malloc(dim_cpu.space_mem);
+147	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+148	        fread(&(rv_cpu[i].v), 1, sizeof(double), file);
+149	        fread(&(rv_cpu[i].x), 1, sizeof(double), file);
+150	        fread(&(rv_cpu[i].y), 1, sizeof(double), file);
+151	        fread(&(rv_cpu[i].z), 1, sizeof(double), file);
+152	    }
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: z
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7ffff6ab0018
+address max offset: 4
+Memory content after  bitflip:0x000x020x000x00
+frame name: main
+symbol name: box_cpu
+symbol filename: main_check.c
+symbol line: 57
+value: 0x7ffff6ab0010
+value address: 0x7fffffffe8b0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-28 09:18:34]
+Fault Injection Successful after 0.563765048981s
+[INFO -- 2017-03-28 09:18:51]
+event type: exit
+[INFO -- 2017-03-28 09:18:51]
+exit code: 0

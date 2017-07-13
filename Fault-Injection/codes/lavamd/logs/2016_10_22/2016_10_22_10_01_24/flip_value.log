@@ -1,0 +1,48 @@
+2016-10-22 10:01:15:Initialization strings:
+2016-10-22 10:01:15:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-22 10:01:15:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-22 10:01:15:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-22 10:01:15:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-22 10:01:15:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-22 10:01:15:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-22 10:01:16:Trying Fault Injection
+2016-10-22 10:01:16:Inferior PID: 159744
+2016-10-22 10:01:16:Inferior is valid: True
+2016-10-22 10:01:16:Inferior #threads: 1
+2016-10-22 10:01:16:Backtrace BEGIN:
+2016-10-22 10:01:16:#0  0x00007ffff71963d0 in __open_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7143025 in __GI__IO_file_open (fp=fp@entry=0x60e1c0, filename=<optimized out>, posix_mode=<optimized out>, prot=prot@entry=438, read_write=8, is32not64=is32not64@entry=1) at fileops.c:220
+#2  0x00007ffff7143130 in _IO_new_file_fopen (fp=fp@entry=0x60e1c0, filename=filename@entry=0x7fffffffee62 "/micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15", mode=<optimized out>, mode@entry=0x408c18 "rb", is32not64=is32not64@entry=1) at fileops.c:327
+#3  0x00007ffff71384d2 in __fopen_internal (filename=0x7fffffffee62 "/micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15", mode=0x408c18 "rb", is32=1) at iofopen.c:86
+#4  0x00000000004022be in main (argc=7, argv=0x7fffffffec08) at main_check.c:156
+
+2016-10-22 10:01:16:76	in ../sysdeps/unix/syscall-template.S
+
+2016-10-22 10:01:16:Backtrace END
+2016-10-22 10:01:16:Thread name: None
+2016-10-22 10:01:16:Thread num: 1
+2016-10-22 10:01:16:Thread ptid: (159744, 159744, 0)
+2016-10-22 10:01:16:bitFlip function
+2016-10-22 10:01:16:Type: The type is a pointer.
+2016-10-22 10:01:16:Type sizeof: 8
+2016-10-22 10:01:16:Fliping a bit of the pointer
+2016-10-22 10:01:16:Mem contents(hex):0x100x300x060xf60xff0x7f0x000x00
+2016-10-22 10:01:16:base address to flip value: 0x7fffffffe980
+2016-10-22 10:01:16:address max offset: 8
+2016-10-22 10:01:16:Memory content before bitflip:0x100x300x060xf60xff0x7f0x000x00
+2016-10-22 10:01:16:Memory content after  bitflip:0x100x300x060xf40xff0x7f0x000x00
+2016-10-22 10:01:16:Mem contents(hex):0x100x300x060xf40xff0x7f0x000x00
+2016-10-22 10:01:16:frame name: main
+2016-10-22 10:01:16:symbol name: rv_cpu
+2016-10-22 10:01:16:symbol filename: main_check.c
+2016-10-22 10:01:16:symbol line: 58
+2016-10-22 10:01:16:value: 0x7ffff6063010
+2016-10-22 10:01:16:value address: 0x7fffffffe980
+2016-10-22 10:01:16:Type: The type is a pointer.
+2016-10-22 10:01:16:Type sizeof: 8
+2016-10-22 10:01:16:Fault Injection Successful after 1.89650511742s
+2016-10-22 10:01:17:Fault Already Injected
+2016-10-22 10:01:17:Fault Already Injected
+2016-10-22 10:01:18:Fault Already Injected
+2016-10-22 10:01:18:event type: exit
+2016-10-22 10:01:18:exit code: no exit code available

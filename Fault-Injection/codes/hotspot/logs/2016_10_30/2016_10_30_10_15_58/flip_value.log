@@ -1,0 +1,61 @@
+2016-10-30 10:15:36:Initialization strings:
+2016-10-30 10:15:37:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-30 10:15:37:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-30 10:15:37:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-30 10:15:37:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-30 10:15:37:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-30 10:15:37:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-30 10:15:37:Trying Fault Injection
+2016-10-30 10:15:37:Backtrace BEGIN:
+2016-10-30 10:15:37:#0  0x00007ffff7de67d3 in dl_new_hash (s=0x7ffff7863a3d "d_malloc") at dl-lookup.c:514
+#1  _dl_lookup_symbol_x (undef_name=0x7ffff7863a32 "kmpc_aligned_malloc", undef_map=undef_map@entry=0x7ffff7ffab28, ref=ref@entry=0x7fffffffe970, symbol_scope=symbol_scope@entry=0x7ffff7ffae80, version=0x7ffff7ff8808, type_class=1, flags=1, skip_map=0x0) at dl-lookup.c:753
+#2  0x00007ffff7de854f in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=<optimized out>, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff7874be0, map=0x7ffff7ffab28) at ../sysdeps/x86_64/dl-machine.h:277
+#3  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ffab28) at do-rel.h:137
+#4  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#5  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#6  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebe0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#7  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebe0) at rtld.c:308
+#8  _dl_start (arg=0x7fffffffebe0) at rtld.c:414
+#9  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#10 0x0000000000000008 in ?? ()
+#11 0x00007fffffffede9 in ?? ()
+#12 0x00007fffffffee1f in ?? ()
+#13 0x00007fffffffee24 in ?? ()
+#14 0x00007fffffffee29 in ?? ()
+#15 0x00007fffffffee2e in ?? ()
+#16 0x00007fffffffee32 in ?? ()
+#17 0x00007fffffffee64 in ?? ()
+#18 0x00007fffffffee97 in ?? ()
+#19 0x0000000000000000 in ?? ()
+
+2016-10-30 10:15:37:509	in dl-lookup.c
+
+2016-10-30 10:15:37:Backtrace END
+2016-10-30 10:15:37:Type: The type is an integer type.
+2016-10-30 10:15:37:Type sizeof: 8
+2016-10-30 10:15:37:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-10-30 10:15:37:base address to flip value: 0x7ffff7ffdff0 
+2016-10-30 10:15:37:address max offset: 8
+2016-10-30 10:15:37:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-10-30 10:15:37:Memory content after  bitflip:0x000x000x000x000x000x000x000x08
+2016-10-30 10:15:37:Mem contents(hex):0x000x000x000x000x000x000x000x08
+2016-10-30 10:15:37:frame name: _dl_start
+2016-10-30 10:15:37:symbol name: relocate_time
+2016-10-30 10:15:37:symbol filename: rtld.c
+2016-10-30 10:15:37:symbol line: 200
+2016-10-30 10:15:37:value: 576460752303423488
+2016-10-30 10:15:37:value address: 0x7ffff7ffdff0 <relocate_time>
+2016-10-30 10:15:37:Type: The type is an integer type.
+2016-10-30 10:15:37:Type sizeof: 8
+2016-10-30 10:15:37:Fault Injection Successful after 0.449462890625s
+2016-10-30 10:15:38:Fault Already Injected
+2016-10-30 10:15:41:Fault Already Injected
+2016-10-30 10:15:41:Fault Already Injected
+2016-10-30 10:15:43:Fault Already Injected
+2016-10-30 10:15:46:Fault Already Injected
+2016-10-30 10:15:47:Fault Already Injected
+2016-10-30 10:15:48:Fault Already Injected
+2016-10-30 10:15:48:Fault Already Injected
+2016-10-30 10:15:50:Fault Already Injected
+2016-10-30 10:15:52:event type: exit
+2016-10-30 10:15:52:exit code: 0

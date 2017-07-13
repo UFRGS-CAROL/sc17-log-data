@@ -1,0 +1,85 @@
+2017-03-02 03:03:01:Starting flip_value script
+2017-03-02 03:03:01:Initialization strings:
+2017-03-02 03:03:01:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 03:03:01:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 03:03:02:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 03:03:02:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 03:03:02:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 03:03:02:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-02 03:03:02:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-02 03:03:02:initSignal:15
+2017-03-02 03:03:02:endSignal:20
+2017-03-02 03:03:02:seqSignal:20
+2017-03-02 03:03:17:Backtrace BEGIN:
+2017-03-02 03:03:18:#0  0x00007ffff6b641b0 in _itoa_word (value=value@entry=2, buflim=buflim@entry=0x7fffffffe0d0 "\240U\347\366\377\177", base=base@entry=10, upper_case=<optimized out>) at _itoa.c:179
+#1  0x00007ffff6b6781a in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe118) at vfprintf.c:1641
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b5c5 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:470
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-03-02 03:03:18:174	in _itoa.c
+
+2017-03-02 03:03:18:Backtrace END
+2017-03-02 03:03:23:Type: The type is an integer type.
+2017-03-02 03:03:23:Type sizeof: 4
+2017-03-02 03:03:23:Mem contents(hex):0xd00xf20x7c0x00
+2017-03-02 03:03:23:Fault Mode: Random bit-flip
+2017-03-02 03:03:23:base address to flip value: 0x7fffffffdbc8
+2017-03-02 03:03:23:address max offset: 4
+2017-03-02 03:03:23:Memory content before bitflip:0xd00xf20x7c0x00
+2017-03-02 03:03:23:Backtrace BEGIN:
+2017-03-02 03:03:23:#0  0x00007ffff6b641b0 in _itoa_word (value=value@entry=2, buflim=buflim@entry=0x7fffffffe0d0 "\240U\347\366\377\177", base=base@entry=10, upper_case=<optimized out>) at _itoa.c:179
+#1  0x00007ffff6b6781a in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe118) at vfprintf.c:1641
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b5c5 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:470
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-03-02 03:03:23:174	in _itoa.c
+
+2017-03-02 03:03:23:Backtrace END
+2017-03-02 03:03:29:Type: The type is an array.
+2017-03-02 03:03:29:Type sizeof: 120
+2017-03-02 03:03:29:Fliping array at pos: 28
+2017-03-02 03:03:29:Type: The type is an integer type.
+2017-03-02 03:03:29:Type sizeof: 4
+2017-03-02 03:03:29:Mem contents(hex):0x000x000x000x00
+2017-03-02 03:03:29:Fault Mode: One bit-flip
+2017-03-02 03:03:29:base address to flip value: 0x7ffff6c38cf0 
+2017-03-02 03:03:29:address max offset: 4
+2017-03-02 03:03:29:Memory content before bitflip:0x000x000x000x00
+2017-03-02 03:03:29:Backtrace BEGIN:
+2017-03-02 03:03:29:#0  pthread_cond_wait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S:185
+#1  0x00007ffff7911675 in ?? ()
+#2  0x00007ffff68fab00 in ?? ()
+#3  0x00007fff48224100 in ?? ()
+#4  0x00000000000000a2 in ?? ()
+#5  0x00000000005249aa in Mesh::L__ZN4Mesh24calc_spatial_coordinatesEi_2384__par_loop0_2_65 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2384
+#6  0x0000000100000000 in ?? ()
+#7  0x0000000000000000 in ?? ()
+
+2017-03-02 03:03:29:180	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S
+
+2017-03-02 03:03:29:Backtrace END
+2017-03-02 03:03:34:Type: The type is a pointer.
+2017-03-02 03:03:34:Type sizeof: 8
+2017-03-02 03:03:34:Fliping a bit of the pointer
+2017-03-02 03:03:34:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-03-02 03:03:34:Fault Mode: Single bit-flip
+2017-03-02 03:03:34:base address to flip value: 0x7d0728 
+2017-03-02 03:03:34:address max offset: 8
+2017-03-02 03:03:34:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-03-02 03:03:34:Memory content after  bitflip:0x000x040x000x000x000x000x000x00
+2017-03-02 03:03:34:Mem contents(hex):0x000x040x000x000x000x000x000x00
+2017-03-02 03:03:34:frame name: main
+2017-03-02 03:03:34:symbol name: restart_file
+2017-03-02 03:03:34:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-03-02 03:03:34:symbol line: 152
+2017-03-02 03:03:34:value: 0x0
+2017-03-02 03:03:34:value address: 0x7d0728 <restart_file>
+2017-03-02 03:03:34:Type: The type is a pointer.
+2017-03-02 03:03:34:Type sizeof: 8
+2017-03-02 03:03:34:Fault Injection Successful after 32.9942259789s
+2017-03-02 03:04:08:event type: exit
+2017-03-02 03:04:08:exit code: 0

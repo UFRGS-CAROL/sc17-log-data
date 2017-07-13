@@ -1,0 +1,60 @@
+[INFO -- 2017-02-27 03:23:05]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 03:23:05]
+Initialization strings:
+[INFO -- 2017-02-27 03:23:05]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-27 03:23:05]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 03:23:05]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 03:23:05]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 03:23:05]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 03:23:05]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-27 03:23:05]
+initSignal:12
+[INFO -- 2017-02-27 03:23:05]
+endSignal:15
+[INFO -- 2017-02-27 03:23:05]
+seqSignal:15
+[INFO -- 2017-02-27 03:23:05]
+faultMode:0
+[INFO -- 2017-02-27 03:23:17]
+Backtrace BEGIN:
+#0  0x00007ffff7107cc5 in round_away (negative=false, last_digit_odd=true, half_bit=true, more_bits=true, mode=mode@entry=0) at ../include/rounding-mode.h:46
+#1  0x00007ffff7107f47 in round_and_return (retval=retval@entry=0x7fffffffdf68, exponent=8, negative=negative@entry=0, round_limb=<optimized out>, round_limb@entry=13202297840065778672, round_bit=<optimized out>, more_bits=<optimized out>) at strtod_l.c:311
+#2  0x00007ffff7109845 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe050 "323.715698", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1762
+#3  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe050 "323.715698", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0) at strtod.c:54
+#4  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2332
+#5  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "323.715698\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#6  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#7  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#8  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+41	in ../include/rounding-mode.h
+
+Backtrace END
+Memory content before bitflip:0x6f0x120x830x3c
+Fault Mode: Single bit-flip
+base address to flip value: 0x4074f8 
+address max offset: 4
+Memory content after  bitflip:0x6f0x120x830x7c
+frame name: main
+symbol name: chip_height
+symbol filename: hotspot_check.c
+symbol line: 34
+value: 5.44451813e+36
+value address: 0x4074f8 <chip_height>
+Type: A floating point type.
+Type sizeof: 4
+
+[INFO -- 2017-02-27 03:23:17]
+Fault Injection Successful after 12.8366360664s
+[INFO -- 2017-02-27 03:23:31]
+event type: exit
+[INFO -- 2017-02-27 03:23:31]
+exit code: 1

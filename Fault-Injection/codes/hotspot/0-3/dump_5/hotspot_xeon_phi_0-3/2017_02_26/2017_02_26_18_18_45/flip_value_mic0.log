@@ -1,0 +1,74 @@
+[INFO -- 2017-02-26 18:18:09]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 18:18:09]
+Initialization strings:
+[INFO -- 2017-02-26 18:18:09]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-26 18:18:09]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 18:18:09]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 18:18:09]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 18:18:09]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 18:18:09]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 18:18:09]
+initSignal:0
+[INFO -- 2017-02-26 18:18:09]
+endSignal:3
+[INFO -- 2017-02-26 18:18:09]
+seqSignal:15
+[INFO -- 2017-02-26 18:18:09]
+faultMode:3
+[INFO -- 2017-02-26 18:18:10]
+Backtrace BEGIN:
+#0  0x00007ffff7df4397 in munmap () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7df2190 in _dl_load_cache_lookup (name=name@entry=0x400859 "libm.so.6") at dl-cache.c:234
+#2  0x00007ffff7de5698 in _dl_map_object (loader=0x7ffff7ffe168, name=0x400859 "libm.so.6", type=1, trace_mode=0, mode=0, nsid=<optimized out>) at dl-load.c:2054
+#3  0x00007ffff7de964f in openaux (a=a@entry=0x7fffffffe968) at dl-deps.c:63
+#4  0x00007ffff7deba83 in _dl_catch_error (objname=objname@entry=0x7fffffffe960, errstring=errstring@entry=0x7fffffffe958, mallocedp=mallocedp@entry=0x7fffffffe957, operate=operate@entry=0x7ffff7de9620 <openaux>, args=args@entry=0x7fffffffe968) at dl-error.c:187
+#5  0x00007ffff7de98a9 in _dl_map_object_deps (map=map@entry=0x7ffff7ffe168, preloads=<optimized out>, npreloads=npreloads@entry=0, trace_mode=trace_mode@entry=0, open_mode=open_mode@entry=0) at dl-deps.c:254
+#6  0x00007ffff7ddff28 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1612
+#7  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebb0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#8  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebb0) at rtld.c:308
+#9  _dl_start (arg=0x7fffffffebb0) at rtld.c:414
+#10 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#11 0x0000000000000008 in ?? ()
+#12 0x00007fffffffedb6 in ?? ()
+#13 0x00007fffffffedf5 in ?? ()
+#14 0x00007fffffffedfa in ?? ()
+#15 0x00007fffffffedff in ?? ()
+#16 0x00007fffffffee04 in ?? ()
+#17 0x00007fffffffee07 in ?? ()
+#18 0x00007fffffffee43 in ?? ()
+#19 0x00007fffffffee80 in ?? ()
+#20 0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping a bit of the pointer
+Memory content before bitflip:0x880xe70xff0xff0xff0x7f0x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffff7ffdfc0 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: _dl_catch_error
+symbol name: catchp
+symbol filename: dl-error.c
+symbol line: 180
+value: 0x7ffff7ffdfc0 <data>
+value address: 0x7fffffffe740
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-26 18:18:10]
+Fault Injection Successful after 1.52896904945s
+[INFO -- 2017-02-26 18:18:38]
+event type: exit
+[INFO -- 2017-02-26 18:18:38]
+exit code: 0

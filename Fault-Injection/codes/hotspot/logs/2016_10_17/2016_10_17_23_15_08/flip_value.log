@@ -1,0 +1,72 @@
+2016-10-17 23:14:46:Initialization strings:
+2016-10-17 23:14:46:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-17 23:14:46:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-17 23:14:46:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-17 23:14:46:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-17 23:14:46:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-17 23:14:46:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-17 23:14:48:Trying Fault Injection
+2016-10-17 23:14:48:Backtrace BEGIN:
+2016-10-17 23:14:48:#0  0x00007ffff7108122 in str_to_mpn (str=str@entry=0x7fffffffe013 ".283953", digcnt=digcnt@entry=6, n=n@entry=0x7fffffffdf30, nsize=nsize@entry=0x7fffffffdf18, exponent=exponent@entry=0x7fffffffdf20, decimal_len=decimal_len@entry=1, thousands=0x0, decimal=<optimized out>) at strtod_l.c:366
+#1  0x00007ffff71092a0 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe010 "335.283953", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1449
+#2  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe010 "335.283953", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0) at strtod.c:54
+#3  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2332
+#4  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "335.283953\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#5  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#6  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#7  main (argc=-8173, argv=0x6) at hotspot_check.c:264
+
+2016-10-17 23:14:48:361	in strtod_l.c
+
+2016-10-17 23:14:48:Backtrace END
+2016-10-17 23:14:48:Type: The type is an array.
+2016-10-17 23:14:48:Type sizeof: 24
+2016-10-17 23:14:48:Fliping array at pos: 0
+2016-10-17 23:14:48:Type: The type is a structure.
+2016-10-17 23:14:48:Type sizeof: 24
+2016-10-17 23:14:48:Fliping value of field: overflow_arg_area
+2016-10-17 23:14:48:Type: The type is a pointer.
+2016-10-17 23:14:48:Type sizeof: 8
+2016-10-17 23:14:48:Fault Injection Failed after 2.79863595963s
+2016-10-17 23:14:50:Trying Fault Injection
+2016-10-17 23:14:50:Backtrace BEGIN:
+2016-10-17 23:14:50:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff71436c0 in _IO_new_file_underflow (fp=0x609b40) at fileops.c:580
+#2  0x00007ffff714459e in __GI__IO_default_uflow (fp=0x609b40) at genops.c:435
+#3  0x00007ffff713939e in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe77a "324.187350\n", n=248, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:69
+#4  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe77a "324.187350\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#5  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe77a "324.187350\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#6  0x0000000000401712 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:201
+#7  main (argc=3, argv=0x7ffff7ef5000) at hotspot_check.c:264
+
+2016-10-17 23:14:50:76	in ../sysdeps/unix/syscall-template.S
+
+2016-10-17 23:14:50:Backtrace END
+2016-10-17 23:14:50:Type: The type is a pointer.
+2016-10-17 23:14:50:Type sizeof: 8
+2016-10-17 23:14:50:Fliping a bit of the pointer
+2016-10-17 23:14:50:Mem contents(hex):0x7a0xe70xff0xff0xff0x7f0x000x00
+2016-10-17 23:14:50:base address to flip value: 0x7fffffffe588
+2016-10-17 23:14:50:address max offset: 8
+2016-10-17 23:14:50:Memory content before bitflip:0x7a0xe70xff0xff0xff0x7f0x000x00
+2016-10-17 23:14:50:Memory content after  bitflip:0x7a0xe60xff0xff0xff0x7f0x000x00
+2016-10-17 23:14:50:Mem contents(hex):0x7a0xe60xff0xff0xff0x7f0x000x00
+2016-10-17 23:14:50:frame name: __GI__IO_getline_info
+2016-10-17 23:14:50:symbol name: buf
+2016-10-17 23:14:50:symbol filename: iogetline.c
+2016-10-17 23:14:50:symbol line: 53
+2016-10-17 23:14:50:value: 0x7fffffffe77a "324.187350\n"
+2016-10-17 23:14:50:value address: 0x7fffffffe588
+2016-10-17 23:14:50:Type: The type is a pointer.
+2016-10-17 23:14:50:Type sizeof: 8
+2016-10-17 23:14:50:Fault Injection Successful after 4.46813988686s
+2016-10-17 23:14:51:Fault Already Injected
+2016-10-17 23:14:54:Fault Already Injected
+2016-10-17 23:14:54:Fault Already Injected
+2016-10-17 23:14:55:Fault Already Injected
+2016-10-17 23:14:56:Fault Already Injected
+2016-10-17 23:14:59:Fault Already Injected
+2016-10-17 23:15:01:Fault Already Injected
+2016-10-17 23:15:01:Fault Already Injected
+2016-10-17 23:15:02:event type: exit
+2016-10-17 23:15:02:exit code: 0

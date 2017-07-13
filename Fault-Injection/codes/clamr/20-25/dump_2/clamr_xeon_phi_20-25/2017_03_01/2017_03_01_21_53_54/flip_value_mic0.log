@@ -1,0 +1,111 @@
+2017-03-01 21:52:24:Starting flip_value script
+2017-03-01 21:52:24:Initialization strings:
+2017-03-01 21:52:24:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 21:52:24:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 21:52:24:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 21:52:25:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 21:52:25:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 21:52:25:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 21:52:25:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 21:52:25:initSignal:20
+2017-03-01 21:52:25:endSignal:25
+2017-03-01 21:52:25:seqSignal:20
+2017-03-01 21:52:45:Backtrace BEGIN:
+2017-03-01 21:52:45:#0  __GI___waitpid (pid=151034, stat_loc=stat_loc@entry=0x7fffffffe1b8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:40
+#1  0x00007ffff6b5f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x000000000047d449 in update_timestamp () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c:111
+#3  0x000000000047dfd7 in start_iteration () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c:315
+#4  0x0000000000445cfd in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:412
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-01 21:52:45:35	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-03-01 21:52:45:Backtrace END
+2017-03-01 21:52:51:Type: The type is an integer type.
+2017-03-01 21:52:51:Type sizeof: 4
+2017-03-01 21:52:51:Mem contents(hex):0x000x000x000x00
+2017-03-01 21:52:51:Fault Mode: Zero bit-flip
+2017-03-01 21:52:51:base address to flip value: 0x7ffff6e76420 
+2017-03-01 21:52:51:address max offset: 4
+2017-03-01 21:52:51:Memory content before bitflip:0x000x000x000x00
+2017-03-01 21:52:51:Backtrace BEGIN:
+2017-03-01 21:52:51:#0  __GI___waitpid (pid=151034, stat_loc=stat_loc@entry=0x7fffffffe1b8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:40
+#1  0x00007ffff6b5f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x000000000047d449 in update_timestamp () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c:111
+#3  0x000000000047dfd7 in start_iteration () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c:315
+#4  0x0000000000445cfd in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:412
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-01 21:52:51:35	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-03-01 21:52:51:Backtrace END
+2017-03-01 21:52:56:Type: The type is an array.
+2017-03-01 21:52:56:Type sizeof: 50
+2017-03-01 21:52:56:Fliping array at pos: 37
+2017-03-01 21:52:56:Type: The type is an integer type.
+2017-03-01 21:52:56:Type sizeof: 1
+2017-03-01 21:52:56:Mem contents(hex):0xc5
+2017-03-01 21:52:56:Fault Mode: Random bit-flip
+2017-03-01 21:52:56:base address to flip value: 0x7fffffffe399 
+2017-03-01 21:52:56:address max offset: 1
+2017-03-01 21:52:56:Memory content before bitflip:0xc5
+2017-03-01 21:52:56:Backtrace BEGIN:
+2017-03-01 21:52:56:#0  pthread_cond_wait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S:185
+#1  0x00007ffff7911675 in ?? ()
+#2  0x0000000002b4e78c in ?? ()
+#3  0x00007ffff6878000 in ?? ()
+#4  0x00007fff00000001 in ?? ()
+#5  0x4710536cb41ed990 in ?? ()
+#6  0x0000000000000022 in ?? ()
+#7  0x0000000100000000 in ?? ()
+#8  0x0000000000000000 in ?? ()
+
+2017-03-01 21:52:56:180	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S
+
+2017-03-01 21:52:56:Backtrace END
+2017-03-01 21:53:01:Type: The type is an integer type.
+2017-03-01 21:53:01:Type sizeof: 4
+2017-03-01 21:53:01:Mem contents(hex):0x010x000x000x00
+2017-03-01 21:53:01:Fault Mode: Zero bit-flip
+2017-03-01 21:53:01:base address to flip value: 0x7d0748 
+2017-03-01 21:53:01:address max offset: 4
+2017-03-01 21:53:01:Memory content before bitflip:0x010x000x000x00
+2017-03-01 21:53:01:Backtrace BEGIN:
+2017-03-01 21:53:01:#0  __GI___waitpid (pid=151034, stat_loc=stat_loc@entry=0x7fffffffe1b8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:40
+#1  0x00007ffff6b5f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x000000000047d449 in update_timestamp () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c:111
+#3  0x000000000047dfd7 in start_iteration () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c:315
+#4  0x0000000000445cfd in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:412
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-01 21:53:01:35	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-03-01 21:53:01:Backtrace END
+2017-03-01 21:53:06:Type: The type is an array.
+2017-03-01 21:53:06:Type sizeof: 200
+2017-03-01 21:53:06:Fliping array at pos: 76
+2017-03-01 21:53:06:Type: The type is an integer type.
+2017-03-01 21:53:06:Type sizeof: 1
+2017-03-01 21:53:06:Mem contents(hex):0x00
+2017-03-01 21:53:06:Fault Mode: Double bit-flip
+2017-03-01 21:53:06:base address to flip value: 0x7d082c  
+2017-03-01 21:53:06:address max offset: 1
+2017-03-01 21:53:06:Memory content before bitflip:0x00
+2017-03-01 21:53:06:Memory content after  bitflip:0xa0
+2017-03-01 21:53:06:Mem contents(hex):0xa0
+2017-03-01 21:53:06:frame name: update_timestamp
+2017-03-01 21:53:06:symbol name: log_file_name
+2017-03-01 21:53:06:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c
+2017-03-01 21:53:06:symbol line: 52
+2017-03-01 21:53:06:value: '\000' <repeats 76 times>, "\240", '\000' <repeats 122 times>
+2017-03-01 21:53:06:value address: 0x7d07e0 <log_file_name>
+2017-03-01 21:53:06:Type: The type is an array.
+2017-03-01 21:53:06:Type sizeof: 200
+2017-03-01 21:53:06:Field name: None
+2017-03-01 21:53:06:Field Type:
+2017-03-01 21:53:06:Type: A range type, that is, an integer type with bounds.
+2017-03-01 21:53:06:Type sizeof: 1
+2017-03-01 21:53:06:Type range: (0L, 199L)
+2017-03-01 21:53:06:Fault Injection Successful after 41.9912788868s
+2017-03-01 21:53:41:event type: exit
+2017-03-01 21:53:41:exit code: 0

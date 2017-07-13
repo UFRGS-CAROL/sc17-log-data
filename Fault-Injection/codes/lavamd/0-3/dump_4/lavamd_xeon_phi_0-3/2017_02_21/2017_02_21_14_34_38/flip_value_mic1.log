@@ -1,0 +1,168 @@
+2017-02-21 14:33:56:Starting flip_value script
+2017-02-21 14:33:56:Initialization strings:
+2017-02-21 14:33:57:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-21 14:33:57:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 14:33:57:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 14:33:57:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-21 14:33:57:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-21 14:33:57:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-02-21 14:33:57:initSignal:0
+2017-02-21 14:33:57:endSignal:3
+2017-02-21 14:33:57:seqSignal:30
+2017-02-21 14:33:57:Backtrace BEGIN:
+2017-02-21 14:33:57:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebc0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebc0) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffebc0) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000007 in ?? ()
+#7  0x00007fffffffedb7 in ?? ()
+#8  0x00007fffffffedf4 in ?? ()
+#9  0x00007fffffffedf8 in ?? ()
+#10 0x00007fffffffedfb in ?? ()
+#11 0x00007fffffffee41 in ?? ()
+#12 0x00007fffffffee86 in ?? ()
+#13 0x00007fffffffeec9 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2017-02-21 14:33:57:69	in dl-debug.c
+
+2017-02-21 14:33:57:Backtrace END
+2017-02-21 14:33:57:Type: The type is a pointer.
+2017-02-21 14:33:57:Type sizeof: 8
+2017-02-21 14:33:58:Backtrace BEGIN:
+2017-02-21 14:33:58:#0  0x00007ffff71388d0 in __GI__IO_fread (buf=0x7ffff619bbb8, size=1, count=8, fp=0x60e1c0) at iofread.c:41
+#1  0x0000000000402204 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:149
+
+2017-02-21 14:33:58:36	in iofread.c
+
+2017-02-21 14:33:58:Backtrace END
+2017-02-21 14:33:58:Type: The type is an integer type.
+2017-02-21 14:33:58:Type sizeof: 4
+2017-02-21 14:33:58:Mem contents(hex):0x0f0x000x000x00
+2017-02-21 14:33:58:Fault Mode: Random bit-flip
+2017-02-21 14:33:58:base address to flip value: 0x7fffffffe72c
+2017-02-21 14:33:58:address max offset: 4
+2017-02-21 14:33:58:Memory content before bitflip:0x0f0x000x000x00
+2017-02-21 14:33:58:Backtrace BEGIN:
+2017-02-21 14:33:58:#0  0x00007ffff713893b in _IO_acquire_lock_fct (p=<synthetic pointer>) at libioP.h:892
+#1  __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:41
+#2  0x0000000000402245 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:150
+
+2017-02-21 14:33:58:887	in libioP.h
+
+2017-02-21 14:33:58:Backtrace END
+2017-02-21 14:33:58:Type: The type is a pointer.
+2017-02-21 14:33:58:Type sizeof: 8
+2017-02-21 14:33:58:Fliping a bit of the value pointed by a pointer
+2017-02-21 14:33:58:Type: A floating point type.
+2017-02-21 14:33:58:Type sizeof: 8
+2017-02-21 14:33:58:Mem contents(hex):0x5f0x0d0x400x000x000x000x000x00
+2017-02-21 14:33:58:Fault Mode: Zero bit-flip
+2017-02-21 14:33:58:base address to flip value: 0x7ffff7ff86a0
+2017-02-21 14:33:58:address max offset: 8
+2017-02-21 14:33:58:Memory content before bitflip:0x5f0x0d0x400x000x000x000x000x00
+2017-02-21 14:33:58:Backtrace BEGIN:
+2017-02-21 14:33:58:#0  0x00007ffff71505d0 in __GI_memcpy (dstpp=dstpp@entry=0x7ffff4e85258, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#3  0x00000000004025ee in main (argc=7, argv=0x7fffffffebc8) at main_check.c:180
+
+2017-02-21 14:33:58:54	in ../string/memcpy.c
+
+2017-02-21 14:33:58:Backtrace END
+2017-02-21 14:33:58:Type: The type is a structure.
+2017-02-21 14:33:58:Type sizeof: 168
+2017-02-21 14:33:58:Fliping value of field: __doallocate
+2017-02-21 14:33:58:Type: The type is a pointer.
+2017-02-21 14:33:58:Type sizeof: 8
+2017-02-21 14:33:58:Fliping a bit of the value pointed by a pointer
+2017-02-21 14:33:58:Type: The type is a function.
+2017-02-21 14:33:58:Type sizeof: 1
+2017-02-21 14:33:58:Mem contents(hex):0x41
+2017-02-21 14:33:58:Fault Mode: Random bit-flip
+2017-02-21 14:33:58:base address to flip value: 0x7ffff7137990 
+2017-02-21 14:33:58:address max offset: 1
+2017-02-21 14:33:58:Memory content before bitflip:0x41
+2017-02-21 14:33:59:Backtrace BEGIN:
+2017-02-21 14:33:59:#0  0x0000000000402542 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:176
+
+2017-02-21 14:33:59:171	        exit(1);
+172	    }
+173	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+174	        fv_cpu[i].v = 0;
+175	        fv_cpu[i].x = 0;
+176	        fv_cpu[i].y = 0;
+177	        fv_cpu[i].z = 0;
+178	
+179	        fread(&(fv_cpu_GOLD[i].v), 1, sizeof(double), file);
+180	        fread(&(fv_cpu_GOLD[i].x), 1, sizeof(double), file);
+
+2017-02-21 14:33:59:Backtrace END
+2017-02-21 14:33:59:Type: The type is an integer type.
+2017-02-21 14:33:59:Type sizeof: 4
+2017-02-21 14:33:59:Mem contents(hex):0x2f0x0d0x000x00
+2017-02-21 14:33:59:Fault Mode: Random bit-flip
+2017-02-21 14:33:59:base address to flip value: 0x7fffffffe71c
+2017-02-21 14:33:59:address max offset: 4
+2017-02-21 14:33:59:Memory content before bitflip:0x2f0x0d0x000x00
+2017-02-21 14:33:59:Backtrace BEGIN:
+2017-02-21 14:33:59:#0  0x0000000000402823 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:208
+
+2017-02-21 14:33:59:203	
+204		for(i=0; i<dim_cpu.space_elem; i=i+1) {
+205	            fv_cpu[i].v = 0;
+206	            fv_cpu[i].x = 0;
+207	            fv_cpu[i].y = 0;
+208	            fv_cpu[i].z = 0;
+209		}
+210	
+211	#ifdef ERR_INJ
+212		if(loop == 2){
+
+2017-02-21 14:33:59:Backtrace END
+2017-02-21 14:33:59:Type: The type is an integer type.
+2017-02-21 14:33:59:Type sizeof: 4
+2017-02-21 14:33:59:Mem contents(hex):0x2f0x0d0x000x00
+2017-02-21 14:33:59:Fault Mode: Random bit-flip
+2017-02-21 14:33:59:base address to flip value: 0x7fffffffe71c
+2017-02-21 14:33:59:address max offset: 4
+2017-02-21 14:33:59:Memory content before bitflip:0x2f0x0d0x000x00
+2017-02-21 14:33:59:Backtrace BEGIN:
+2017-02-21 14:33:59:#0  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffdd18) at allocatestack.c:548
+#1  __pthread_create_2_1 (newthread=0x7fffffffdd10, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffa82d5600) at pthread_create.c:524
+#2  0x00007ffff790d323 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-02-21 14:33:59:543	in allocatestack.c
+
+2017-02-21 14:33:59:Backtrace END
+2017-02-21 14:34:01:Type: The type is an array.
+2017-02-21 14:34:01:Type sizeof: 12
+2017-02-21 14:34:01:Fliping array at pos: 2
+2017-02-21 14:34:01:Type: The type is an integer type.
+2017-02-21 14:34:01:Type sizeof: 4
+2017-02-21 14:34:01:Mem contents(hex):0x100x050x000x00
+2017-02-21 14:34:01:Fault Mode: Double bit-flip
+2017-02-21 14:34:01:base address to flip value: 0x7ffff743c348 
+2017-02-21 14:34:01:address max offset: 4
+2017-02-21 14:34:01:Memory content before bitflip:0x100x050x000x00
+2017-02-21 14:34:01:Memory content after  bitflip:0x100x050x000x14
+2017-02-21 14:34:01:Mem contents(hex):0x100x050x000x14
+2017-02-21 14:34:01:frame name: __pthread_create_2_1
+2017-02-21 14:34:01:symbol name: _thread_db_pthread_specific
+2017-02-21 14:34:01:symbol filename: ../nptl_db/structs.def
+2017-02-21 14:34:01:symbol line: 34
+2017-02-21 14:34:01:value: {2048, 1, 335545616}
+2017-02-21 14:34:01:value address: 0x7ffff743c340 <_thread_db_pthread_specific>
+2017-02-21 14:34:01:Type: The type is an array.
+2017-02-21 14:34:01:Type sizeof: 12
+2017-02-21 14:34:01:Field name: None
+2017-02-21 14:34:01:Field Type:
+2017-02-21 14:34:01:Type: A range type, that is, an integer type with bounds.
+2017-02-21 14:34:01:Type sizeof: 8
+2017-02-21 14:34:01:Type range: (0L, 2L)
+2017-02-21 14:34:01:Fault Injection Successful after 4.44684410095s
+2017-02-21 14:34:15:event type: exit
+2017-02-21 14:34:15:exit code: 0

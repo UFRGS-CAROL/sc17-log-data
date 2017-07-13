@@ -1,0 +1,72 @@
+[INFO -- 2017-03-04 18:07:54]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-04 18:07:54]
+Initialization strings:
+[INFO -- 2017-03-04 18:07:54]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-04 18:07:54]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-04 18:07:54]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-04 18:07:54]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-04 18:07:54]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-04 18:07:54]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-04 18:07:54]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-04 18:07:54]
+initSignal:0
+[INFO -- 2017-03-04 18:07:54]
+endSignal:5
+[INFO -- 2017-03-04 18:07:54]
+seqSignal:20
+[INFO -- 2017-03-04 18:07:54]
+faultMode:2
+[INFO -- 2017-03-04 18:07:55]
+Backtrace BEGIN:
+#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7ddfe9b in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1462
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec50, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec50) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec50) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x000000000000000b in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+69	in dl-debug.c
+
+Backtrace END
+Fliping value of field: next
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff7ffe008 
+address max offset: 8
+Memory content after  bitflip:0x6e0xd50x6a0xcb0xde0xba0x120x30
+frame name: dl_main
+symbol name: _dl_rtld_libname2
+symbol filename: rtld.c
+symbol line: 196
+value: {name = 0x0, next = 0x3012badecb6ad56e, dont_free = 0}
+value address: 0x7ffff7ffe000 <_dl_rtld_libname2>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: name
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: next
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: dont_free
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+
+[INFO -- 2017-03-04 18:07:55]
+Fault Injection Successful after 1.19767999649s
+[INFO -- 2017-03-04 18:08:49]
+event type: exit
+[INFO -- 2017-03-04 18:08:49]
+exit code: 0

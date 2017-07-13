@@ -1,0 +1,88 @@
+2017-01-23 18:47:19:Starting flip_value script
+2017-01-23 18:47:19:Initialization strings:
+2017-01-23 18:47:19:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-23 18:47:19:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-23 18:47:19:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-23 18:47:19:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-23 18:47:19:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-23 18:47:19:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-23 18:47:19:initSignal:2
+2017-01-23 18:47:19:endSignal:4
+2017-01-23 18:47:19:seqSignal:30
+2017-01-23 18:47:23:Trying Fault Injection
+2017-01-23 18:47:23:Inferior PID: 115135
+2017-01-23 18:47:23:Inferior is valid: True
+2017-01-23 18:47:23:Inferior #threads: 229
+2017-01-23 18:47:23:Backtrace BEGIN:
+2017-01-23 18:47:23:#0  0x0000000000404d25 in L_lud_omp_123__par_loop2_2_5 () at lud_omp.c:147
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-01-23 18:47:23:142	
+143	            for (i = 0; i < BS; i++)
+144	            {
+145	                for (k=0; k < BS; k++) {
+146	#pragma omp simd 
+147	                    for (j = 0; j < BS; j++) {
+148	                        sum[j] += temp_left[BS*i + k] * temp_top[BS*k + j];
+149	                    }
+150	                }
+151	#pragma omp simd 
+
+2017-01-23 18:47:23:Backtrace END
+2017-01-23 18:47:28:Thread name: None
+2017-01-23 18:47:28:Thread num: 25
+2017-01-23 18:47:28:Thread ptid: (115135, 115163, 0)
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:Error Exception(frameFlip): invalid frame
+2017-01-23 18:47:28:bitFlip function
+2017-01-23 18:47:28:Type: The type is a pointer.
+2017-01-23 18:47:28:Type sizeof: 8
+2017-01-23 18:47:28:Fliping a bit of the pointer
+2017-01-23 18:47:28:Mem contents(hex):0x100xc00xec0xf50xff0x7f0x000x00
+2017-01-23 18:47:28:base address to flip value: 0x7fffffffd9c0
+2017-01-23 18:47:28:address max offset: 8
+2017-01-23 18:47:28:Memory content before bitflip:0x100xc00xec0xf50xff0x7f0x000x00
+2017-01-23 18:47:28:Memory content after  bitflip:0x100xc00xec0xf50xff0x7f0x400x00
+2017-01-23 18:47:28:Mem contents(hex):0x100xc00xec0xf50xff0x7f0x400x00
+2017-01-23 18:47:28:frame name: L_lud_omp_123__par_loop2_2_5
+2017-01-23 18:47:28:symbol name: a
+2017-01-23 18:47:28:symbol filename: lud_omp.c
+2017-01-23 18:47:28:symbol line: 123
+2017-01-23 18:47:28:value: 0x7ffff5ecc010
+2017-01-23 18:47:28:value address: 0x7fffffffd9c0
+2017-01-23 18:47:28:Type: The type is a pointer.
+2017-01-23 18:47:28:Type sizeof: 8
+2017-01-23 18:47:28:Fault Injection Successful after 9.27446508408s
+2017-01-23 18:47:28:Fault Already Injected
+2017-01-23 18:47:28:Fault Already Injected
+2017-01-23 18:47:28:event type: exit
+2017-01-23 18:47:28:exit code: no exit code available

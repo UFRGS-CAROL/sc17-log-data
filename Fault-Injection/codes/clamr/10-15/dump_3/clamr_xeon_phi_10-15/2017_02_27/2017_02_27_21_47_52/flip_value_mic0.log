@@ -1,0 +1,65 @@
+2017-02-27 21:46:40:Starting flip_value script
+2017-02-27 21:46:40:Initialization strings:
+2017-02-27 21:46:40:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-27 21:46:40:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 21:46:40:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 21:46:40:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-27 21:46:40:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-27 21:46:40:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-27 21:46:40:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-27 21:46:40:initSignal:10
+2017-02-27 21:46:40:endSignal:15
+2017-02-27 21:46:40:seqSignal:20
+2017-02-27 21:46:51:Backtrace BEGIN:
+2017-02-27 21:46:51:#0  0x000000000054263b in Bounds_AddBounds (b=0x7ffc10c8bb50, add=0x37642b0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/Bounds.c:79
+#1  0x000000000053d096 in KDTree_CreateTree (t=0x7fb150) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:255
+#2  0x00000000005413f6 in KDTree_QueryCircleInterior_Double (t=0x7fb150, result_num=0x7fffffffe65c, result_indicies=0xb02ed0, circ_radius=24, ncells=264756, x=0x1d27cd0, dx=0x212fce0, y=0x2537cf0, dy=0x2c44250) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:625
+#3  0x0000000000471e70 in State::fill_circle (this=0x7fb9e0, circ_radius=24, fill_value=100, background=7) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:990
+#4  0x00000000004452cb in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:282
+
+2017-02-27 21:46:51:74	}
+75	
+76	void Bounds_AddBounds(TBounds* b, TBounds* add) {
+77	   assert(b && add);
+78	   b->min.x = MIN(b->min.x, add->min.x);
+79	   b->min.y = MIN(b->min.y, add->min.y);
+80	   b->max.x = MAX(b->max.x, add->max.x);
+81	   b->max.y = MAX(b->max.y, add->max.y);
+82	}
+83	
+
+2017-02-27 21:46:51:Backtrace END
+2017-02-27 21:46:57:Type: The type is a structure.
+2017-02-27 21:46:57:Type sizeof: 24
+2017-02-27 21:46:57:Fliping value of field: std::_Vector_base<int, std::allocator<int> >
+2017-02-27 21:46:57:Type: The type is a structure.
+2017-02-27 21:46:57:Type sizeof: 24
+2017-02-27 21:46:57:Fliping value of field: _M_impl
+2017-02-27 21:46:57:Type: The type is a structure.
+2017-02-27 21:46:57:Type sizeof: 24
+2017-02-27 21:46:57:Fliping value of field: _M_end_of_storage
+2017-02-27 21:46:57:Type: The type is a pointer.
+2017-02-27 21:46:57:Type sizeof: 8
+2017-02-27 21:46:57:Fliping a bit of the pointer
+2017-02-27 21:46:57:Mem contents(hex):0xa00x570xc00x000x000x000x000x00
+2017-02-27 21:46:57:Fault Mode: Single bit-flip
+2017-02-27 21:46:57:base address to flip value: 0x7fffffffe6c8
+2017-02-27 21:46:57:address max offset: 8
+2017-02-27 21:46:57:Memory content before bitflip:0xa00x570xc00x000x000x000x000x00
+2017-02-27 21:46:57:Memory content after  bitflip:0xa00x170xc00x000x000x000x000x00
+2017-02-27 21:46:57:Mem contents(hex):0xa00x170xc00x000x000x000x000x00
+2017-02-27 21:46:57:frame name: State::fill_circle
+2017-02-27 21:46:57:symbol name: ind
+2017-02-27 21:46:57:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+2017-02-27 21:46:57:symbol line: 986
+2017-02-27 21:46:57:value: {<std::_Vector_base<int, std::allocator<int> >> = {_M_impl = {<std::allocator<int>> = {<__gnu_cxx::new_allocator<int>> = {<No data fields>}, <No data fields>}, _M_start = 0xb02ed0, _M_finish = 0xc057a0, _M_end_of_storage = 0xc017a0}}, <No data fields>}
+2017-02-27 21:46:57:value address: 0x7fffffffe6b8
+2017-02-27 21:46:57:Type: The type is a structure.
+2017-02-27 21:46:57:Type sizeof: 24
+2017-02-27 21:46:57:Field name: std::_Vector_base<int, std::allocator<int> >
+2017-02-27 21:46:57:Field Type:
+2017-02-27 21:46:57:Type: The type is a structure.
+2017-02-27 21:46:57:Type sizeof: 24
+2017-02-27 21:46:57:Fault Injection Successful after 17.0808150768s
+2017-02-27 21:47:37:event type: exit
+2017-02-27 21:47:37:exit code: 0

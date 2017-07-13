@@ -1,0 +1,83 @@
+2017-02-28 15:43:49:Starting flip_value script
+2017-02-28 15:43:49:Initialization strings:
+2017-02-28 15:43:49:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 15:43:49:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 15:43:49:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 15:43:50:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 15:43:50:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 15:43:50:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 15:43:50:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 15:43:50:initSignal:30
+2017-02-28 15:43:50:endSignal:35
+2017-02-28 15:43:50:seqSignal:20
+2017-02-28 15:44:20:Backtrace BEGIN:
+2017-02-28 15:44:20:#0  0x000000000045581e in State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1413
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffdac0 in ?? ()
+#3  0x00007fffffffdab8 in ?? ()
+#4  0x00007fffffffdad0 in ?? ()
+#5  0x00007fffffffdad8 in ?? ()
+#6  0x00007fffffffda38 in ?? ()
+#7  0x00007fffffffda70 in ?? ()
+#8  0x00007fffffffda68 in ?? ()
+#9  0x00007fffffffdba8 in ?? ()
+#10 0x00007fffffffdbc8 in ?? ()
+#11 0x00007fffffffdbe8 in ?? ()
+#12 0x00007fffffffda30 in ?? ()
+#13 0x00000000000000f4 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2017-02-28 15:44:20:1408	
+1409	      real_t Hyplus  = U_halfstep(deltaT, Hic, Ht, HYFLUXIC, HYFLUXNT,
+1410	                           dyic, dyt, dyic, dyt, SQR(dyic), SQR(dyt));
+1411	      real_t Uyplus  = U_halfstep(deltaT, Uic, Ut, VUFLUXIC, VUFLUXNT,
+1412	                           dyic, dyt, dyic, dyt, SQR(dyic), SQR(dyt));
+1413	      real_t Vyplus  = U_halfstep(deltaT, Vic, Vt, VYFLUXIC, VYFLUXNT,
+1414	                           dyic, dyt, dyic, dyt, SQR(dyic), SQR(dyt));
+1415	
+1416	      real_t Hxfluxminus = HNEWXFLUXMINUS;
+1417	      real_t Uxfluxminus = UNEWXFLUXMINUS;
+
+2017-02-28 15:44:20:Backtrace END
+2017-02-28 15:45:32:Type: The type is a pointer.
+2017-02-28 15:45:32:Type sizeof: 8
+2017-02-28 15:45:32:Fliping a bit of the value pointed by a pointer
+2017-02-28 15:45:32:Type: The type is a structure.
+2017-02-28 15:45:32:Type sizeof: 368
+2017-02-28 15:45:32:Fliping value of field: state_memory
+2017-02-28 15:45:32:Type: The type is a structure.
+2017-02-28 15:45:32:Type sizeof: 96
+2017-02-28 15:45:32:Fliping value of field: memory_ptr_dict
+2017-02-28 15:45:32:Type: The type is a structure.
+2017-02-28 15:45:32:Type sizeof: 48
+2017-02-28 15:45:32:Fliping value of field: _M_t
+2017-02-28 15:45:32:Type: The type is a structure.
+2017-02-28 15:45:32:Type sizeof: 48
+2017-02-28 15:45:32:Fliping value of field: _M_impl
+2017-02-28 15:45:32:Type: The type is a structure.
+2017-02-28 15:45:32:Type sizeof: 48
+2017-02-28 15:45:32:Fliping value of field: _M_header
+2017-02-28 15:45:32:Type: The type is a structure.
+2017-02-28 15:45:32:Type sizeof: 32
+2017-02-28 15:45:32:Fliping value of field: _M_left
+2017-02-28 15:45:32:Type: The type is a pointer.
+2017-02-28 15:45:32:Type sizeof: 8
+2017-02-28 15:45:32:Fliping a bit of the pointer
+2017-02-28 15:45:32:Mem contents(hex):0x000xb90x7f0x000x000x000x000x00
+2017-02-28 15:45:32:Fault Mode: Double bit-flip
+2017-02-28 15:45:32:base address to flip value: 0x7fba28
+2017-02-28 15:45:32:address max offset: 8
+2017-02-28 15:45:32:Memory content before bitflip:0x000xb90x7f0x000x000x000x000x00
+2017-02-28 15:45:32:Memory content after  bitflip:0x000xb90x7f0x000x000x000x000x90
+2017-02-28 15:45:32:Mem contents(hex):0x000xb90x7f0x000x000x000x000x90
+2017-02-28 15:45:32:frame name: State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37
+2017-02-28 15:45:32:symbol name: this
+2017-02-28 15:45:32:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+2017-02-28 15:45:32:symbol line: 1210
+2017-02-28 15:45:32:value: 0x7fb9e0
+2017-02-28 15:45:32:value address: 0x7fffffffda30
+2017-02-28 15:45:32:Type: The type is a pointer.
+2017-02-28 15:45:32:Type sizeof: 8
+2017-02-28 15:45:32:Fault Injection Successful after 102.432455063s
+2017-02-28 15:45:51:event type: exit
+2017-02-28 15:45:51:exit code: 0

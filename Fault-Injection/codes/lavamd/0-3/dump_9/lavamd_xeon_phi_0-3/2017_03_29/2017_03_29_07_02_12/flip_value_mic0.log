@@ -1,0 +1,61 @@
+[INFO -- 2017-03-29 07:01:45]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-29 07:01:45]
+Initialization strings:
+[INFO -- 2017-03-29 07:01:45]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-29 07:01:45]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-29 07:01:45]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-29 07:01:45]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-29 07:01:45]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-29 07:01:45]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-29 07:01:45]
+initSignal:0
+[INFO -- 2017-03-29 07:01:45]
+endSignal:3
+[INFO -- 2017-03-29 07:01:45]
+seqSignal:30
+[INFO -- 2017-03-29 07:01:45]
+faultMode:2
+[INFO -- 2017-03-29 07:01:50]
+Backtrace BEGIN:
+#0  0x00007ffff719f03a in mmap64 () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7431e2c in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffdd18) at allocatestack.c:504
+#2  __pthread_create_2_1 (newthread=0x7fffffffdd10, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffecf38100) at pthread_create.c:524
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping array at pos: 2
+Memory content before bitflip:0x100x050x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff743c348 
+address max offset: 4
+Memory content after  bitflip:0x020xbf0x3c0x39
+frame name: allocate_stack
+symbol name: _thread_db_pthread_specific
+symbol filename: ../nptl_db/structs.def
+symbol line: 34
+value: {2048, 1, 960282370}
+value address: 0x7ffff743c340 <_thread_db_pthread_specific>
+Type: The type is an array.
+Type sizeof: 12
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 2L)
+
+[INFO -- 2017-03-29 07:01:50]
+Fault Injection Successful after 5.428399086s
+[INFO -- 2017-03-29 07:02:05]
+event type: exit
+[INFO -- 2017-03-29 07:02:05]
+exit code: 0

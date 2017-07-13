@@ -1,0 +1,90 @@
+2017-03-02 03:56:35:Starting flip_value script
+2017-03-02 03:56:35:Initialization strings:
+2017-03-02 03:56:35:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 03:56:35:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 03:56:35:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 03:56:35:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 03:56:35:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 03:56:35:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-02 03:56:35:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-02 03:56:35:initSignal:35
+2017-03-02 03:56:35:endSignal:40
+2017-03-02 03:56:35:seqSignal:20
+2017-03-02 03:57:12:Backtrace BEGIN:
+2017-03-02 03:57:12:#0  0x000000000051be09 in Mesh::L__ZN4Mesh12rezone_countESt6vectorIiSaIiEERiS3__2269__par_loop0_2_51 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2272
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x0000000000000100 in ?? ()
+#3  0x00007ffff68fab00 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-03-02 03:57:12:2267	
+2268	#ifdef _OPENMP
+2269	#pragma omp parallel for reduction (+:my_jcount,my_icount)
+2270	#endif
+2271	   for (uint ic=0; ic<ncells; ++ic){
+2272	      if (mpot[ic] < 0) {
+2273	         if (celltype[ic] == REAL_CELL) {
+2274	            // remove all but cell that will remain to get count right when split
+2275	            // across processors
+2276	            if (! is_lower_left(i[ic],j[ic]) ) my_jcount--;
+
+2017-03-02 03:57:12:Backtrace END
+2017-03-02 03:57:16:Backtrace BEGIN:
+2017-03-02 03:57:16:#0  0x000000000051be09 in Mesh::L__ZN4Mesh12rezone_countESt6vectorIiSaIiEERiS3__2269__par_loop0_2_51 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2272
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x0000000000000100 in ?? ()
+#3  0x00007ffff68fab00 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-03-02 03:57:16:2267	
+2268	#ifdef _OPENMP
+2269	#pragma omp parallel for reduction (+:my_jcount,my_icount)
+2270	#endif
+2271	   for (uint ic=0; ic<ncells; ++ic){
+2272	      if (mpot[ic] < 0) {
+2273	         if (celltype[ic] == REAL_CELL) {
+2274	            // remove all but cell that will remain to get count right when split
+2275	            // across processors
+2276	            if (! is_lower_left(i[ic],j[ic]) ) my_jcount--;
+
+2017-03-02 03:57:16:Backtrace END
+2017-03-02 03:57:20:Backtrace BEGIN:
+2017-03-02 03:57:20:#0  0x000000000051be09 in Mesh::L__ZN4Mesh12rezone_countESt6vectorIiSaIiEERiS3__2269__par_loop0_2_51 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2272
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x0000000000000100 in ?? ()
+#3  0x00007ffff68fab00 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-03-02 03:57:20:2267	
+2268	#ifdef _OPENMP
+2269	#pragma omp parallel for reduction (+:my_jcount,my_icount)
+2270	#endif
+2271	   for (uint ic=0; ic<ncells; ++ic){
+2272	      if (mpot[ic] < 0) {
+2273	         if (celltype[ic] == REAL_CELL) {
+2274	            // remove all but cell that will remain to get count right when split
+2275	            // across processors
+2276	            if (! is_lower_left(i[ic],j[ic]) ) my_jcount--;
+
+2017-03-02 03:57:20:Backtrace END
+2017-03-02 03:57:29:Backtrace BEGIN:
+2017-03-02 03:57:29:#0  0x000000000051be09 in Mesh::L__ZN4Mesh12rezone_countESt6vectorIiSaIiEERiS3__2269__par_loop0_2_51 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2272
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x0000000000000100 in ?? ()
+#3  0x00007ffff68fab00 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-03-02 03:57:29:2267	
+2268	#ifdef _OPENMP
+2269	#pragma omp parallel for reduction (+:my_jcount,my_icount)
+2270	#endif
+2271	   for (uint ic=0; ic<ncells; ++ic){
+2272	      if (mpot[ic] < 0) {
+2273	         if (celltype[ic] == REAL_CELL) {
+2274	            // remove all but cell that will remain to get count right when split
+2275	            // across processors
+2276	            if (! is_lower_left(i[ic],j[ic]) ) my_jcount--;
+
+2017-03-02 03:57:29:Backtrace END
+2017-03-02 03:57:50:event type: exit
+2017-03-02 03:57:50:exit code: 0

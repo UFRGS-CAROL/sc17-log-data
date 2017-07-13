@@ -1,0 +1,69 @@
+[INFO -- 2017-03-10 08:59:59]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-10 08:59:59]
+Initialization strings:
+[INFO -- 2017-03-10 08:59:59]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-10 08:59:59]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 08:59:59]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 08:59:59]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-10 08:59:59]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-10 08:59:59]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-10 08:59:59]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-10 08:59:59]
+initSignal:25
+[INFO -- 2017-03-10 08:59:59]
+endSignal:30
+[INFO -- 2017-03-10 08:59:59]
+seqSignal:20
+[INFO -- 2017-03-10 08:59:59]
+faultMode:0
+[INFO -- 2017-03-10 09:00:31]
+Backtrace BEGIN:
+#0  0x0000000000470799 in State::L__ZN5State21calc_refine_potentialERSt6vectorIiSaIiEERiS4__2618__par_loop0_2_39 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:2687
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe290 in ?? ()
+#3  0x00007fffffffe298 in ?? ()
+#4  0x00007fffffffe230 in ?? ()
+#5  0x00007fffffffe228 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2682	      duminus1 = Hic-Hl;
+2683	      //duminus2 = Uic-Ul;
+2684	      duhalf1 = Hr-Hic;
+2685	      //duhalf2 = Ur-Uic;
+2686	
+2687	      qpot = max(fabs(duminus1/Hic), fabs(duhalf1/Hic));
+2688	      if (qpot > qmax) qmax = qpot;
+2689	
+2690	      duplus1 = Ht-Hic;
+2691	      //duplus2 = Vt-Vic;
+
+Backtrace END
+Memory content before bitflip:0x9f0x020x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffdbc8
+address max offset: 4
+Memory content after  bitflip:0x9f0x020x400x00
+frame name: State::L__ZN5State21calc_refine_potentialERSt6vectorIiSaIiEERiS4__2618__par_loop0_2_39
+symbol name: nb
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 2648
+value: 4194975
+value address: 0x7fffffffdbc8
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-10 09:00:31]
+Fault Injection Successful after 32.4961988926s
+[INFO -- 2017-03-10 09:01:00]
+event type: exit
+[INFO -- 2017-03-10 09:01:00]
+exit code: 0

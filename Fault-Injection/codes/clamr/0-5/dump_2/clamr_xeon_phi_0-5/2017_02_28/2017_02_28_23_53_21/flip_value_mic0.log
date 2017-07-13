@@ -1,0 +1,106 @@
+2017-02-28 23:51:42:Starting flip_value script
+2017-02-28 23:51:42:Initialization strings:
+2017-02-28 23:51:42:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-28 23:51:42:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 23:51:42:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 23:51:42:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 23:51:42:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 23:51:42:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 23:51:42:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 23:51:42:initSignal:0
+2017-02-28 23:51:42:endSignal:5
+2017-02-28 23:51:42:seqSignal:20
+2017-02-28 23:51:45:Backtrace BEGIN:
+2017-02-28 23:51:45:#0  hsfc2d (coord=0x7fffffffdfb8, nkey=2, key=0x7ffcc829d1e4) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfc.c:104
+#1  0x000000000053a65d in hsfc2sort (N=264192, X=0x7ffd881b0010, Y=0x7ffd481a2010, ibase=0, Info=0x7ffd0809f010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:138
+#2  0x0000000000536b19 in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#3  0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-28 23:51:45:99	  order[1] = 1 ;
+100	  reflect = ( 0 << 0 ) | ( 0 );
+101	
+102	  for ( i = 1 ; i <= NBits ; i++ ) {
+103	    const unsigned s = MaxBits - i ;
+104	    const unsigned c = gray_inv[ reflect ^ (
+105	      ( ( ( coord[0] >> s ) & 01 ) << order[0] ) |
+106	      ( ( ( coord[1] >> s ) & 01 ) << order[1] ) ) ];
+107	     
+108	    const unsigned off   = 2 * i ;                   /* Bit offset */
+
+2017-02-28 23:51:45:Backtrace END
+2017-02-28 23:51:50:Type: The type is an array.
+2017-02-28 23:51:50:Type sizeof: 4
+2017-02-28 23:51:50:Fliping array at pos: 2
+2017-02-28 23:51:50:Type: The type is an integer type.
+2017-02-28 23:51:50:Type sizeof: 1
+2017-02-28 23:51:50:Mem contents(hex):0x00
+2017-02-28 23:51:50:Fault Mode: Zero bit-flip
+2017-02-28 23:51:50:base address to flip value: 0x7fffffffdf16 
+2017-02-28 23:51:50:address max offset: 1
+2017-02-28 23:51:50:Memory content before bitflip:0x00
+2017-02-28 23:51:50:Backtrace BEGIN:
+2017-02-28 23:51:50:#0  hsfc2d (coord=0x7fffffffdfb8, nkey=2, key=0x7ffcc829d1e4) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfc.c:104
+#1  0x000000000053a65d in hsfc2sort (N=264192, X=0x7ffd881b0010, Y=0x7ffd481a2010, ibase=0, Info=0x7ffd0809f010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:138
+#2  0x0000000000536b19 in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#3  0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-28 23:51:50:99	  order[1] = 1 ;
+100	  reflect = ( 0 << 0 ) | ( 0 );
+101	
+102	  for ( i = 1 ; i <= NBits ; i++ ) {
+103	    const unsigned s = MaxBits - i ;
+104	    const unsigned c = gray_inv[ reflect ^ (
+105	      ( ( ( coord[0] >> s ) & 01 ) << order[0] ) |
+106	      ( ( ( coord[1] >> s ) & 01 ) << order[1] ) ) ];
+107	     
+108	    const unsigned off   = 2 * i ;                   /* Bit offset */
+
+2017-02-28 23:51:50:Backtrace END
+2017-02-28 23:51:56:Type: The type is an integer type.
+2017-02-28 23:51:56:Type sizeof: 4
+2017-02-28 23:51:56:Mem contents(hex):0x000x000x000x00
+2017-02-28 23:51:56:Fault Mode: Random bit-flip
+2017-02-28 23:51:56:base address to flip value: 0x7fffffffe044
+2017-02-28 23:51:56:address max offset: 4
+2017-02-28 23:51:56:Memory content before bitflip:0x000x000x000x00
+2017-02-28 23:51:56:Backtrace BEGIN:
+2017-02-28 23:51:56:#0  hsfc2d (coord=0x7fffffffdfb8, nkey=2, key=0x7ffcc829d1e4) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfc.c:104
+#1  0x000000000053a65d in hsfc2sort (N=264192, X=0x7ffd881b0010, Y=0x7ffd481a2010, ibase=0, Info=0x7ffd0809f010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:138
+#2  0x0000000000536b19 in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#3  0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-28 23:51:56:99	  order[1] = 1 ;
+100	  reflect = ( 0 << 0 ) | ( 0 );
+101	
+102	  for ( i = 1 ; i <= NBits ; i++ ) {
+103	    const unsigned s = MaxBits - i ;
+104	    const unsigned c = gray_inv[ reflect ^ (
+105	      ( ( ( coord[0] >> s ) & 01 ) << order[0] ) |
+106	      ( ( ( coord[1] >> s ) & 01 ) << order[1] ) ) ];
+107	     
+108	    const unsigned off   = 2 * i ;                   /* Bit offset */
+
+2017-02-28 23:51:56:Backtrace END
+2017-02-28 23:52:01:Type: The type is an integer type.
+2017-02-28 23:52:01:Type sizeof: 4
+2017-02-28 23:52:01:Mem contents(hex):0x010x000x000x00
+2017-02-28 23:52:01:Fault Mode: Double bit-flip
+2017-02-28 23:52:01:base address to flip value: 0x7fffffffdf90
+2017-02-28 23:52:01:address max offset: 4
+2017-02-28 23:52:01:Memory content before bitflip:0x010x000x000x00
+2017-02-28 23:52:01:Memory content after  bitflip:0x010x120x000x00
+2017-02-28 23:52:01:Mem contents(hex):0x010x120x000x00
+2017-02-28 23:52:01:frame name: hsfc2sort
+2017-02-28 23:52:01:symbol name: ldinfo
+2017-02-28 23:52:01:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c
+2017-02-28 23:52:01:symbol line: 116
+2017-02-28 23:52:01:value: 4609
+2017-02-28 23:52:01:value address: 0x7fffffffdf90
+2017-02-28 23:52:01:Type: The type is an integer type.
+2017-02-28 23:52:01:Type sizeof: 4
+2017-02-28 23:52:01:Fault Injection Successful after 19.2422780991s
+2017-02-28 23:52:01:event type: exit
+2017-02-28 23:52:01:exit code: no exit code available

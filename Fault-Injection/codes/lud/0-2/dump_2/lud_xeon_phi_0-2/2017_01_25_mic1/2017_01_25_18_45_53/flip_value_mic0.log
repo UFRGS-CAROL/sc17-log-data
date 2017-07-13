@@ -1,0 +1,123 @@
+2017-01-25 18:45:34:Starting flip_value script
+2017-01-25 18:45:34:Initialization strings:
+2017-01-25 18:45:35:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 18:45:35:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 18:45:35:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 18:45:35:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 18:45:35:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 18:45:35:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 18:45:35:initSignal:0
+2017-01-25 18:45:35:endSignal:2
+2017-01-25 18:45:35:seqSignal:30
+2017-01-25 18:45:35:Trying Fault Injection
+2017-01-25 18:45:35:Inferior PID: 249843
+2017-01-25 18:45:35:Inferior is valid: True
+2017-01-25 18:45:35:Inferior #threads: 1
+2017-01-25 18:45:35:Backtrace BEGIN:
+2017-01-25 18:45:35:#0  0x00007ffff7de5bfb in check_match (undef_name=undef_name@entry=0x7ffff7868909 "pthread_condattr_init", ref=ref@entry=0x7ffff7861ac0, version=version@entry=0x7ffff7ff8910, flags=flags@entry=1, type_class=type_class@entry=1, sym=sym@entry=0x7ffff742c9d8, symidx=292, strtab=0x7ffff742ce40 "", map=0x7ffff7ff94d0, versioned_sym=0x7fffffffe768, num_versions=0x7fffffffe764) at dl-lookup.c:92
+#1  0x00007ffff7de6010 in do_lookup_x (undef_name=undef_name@entry=0x7ffff7868909 "pthread_condattr_init", new_hash=new_hash@entry=2060450622, old_hash=old_hash@entry=0x7fffffffe830, ref=0x7ffff7861ac0, result=result@entry=0x7fffffffe840, scope=<optimized out>, i=4, version=0x7ffff7ff8910, flags=1, skip=0x0, type_class=1, undef_map=0x7ffff7ffab28) at dl-lookup.c:423
+#2  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x7ffff7868909 "pthread_condattr_init", undef_map=undef_map@entry=0x7ffff7ffab28, ref=ref@entry=0x7fffffffe990, symbol_scope=symbol_scope@entry=0x7ffff7ffae80, version=0x7ffff7ff8910, type_class=1, flags=1, skip_map=0x0) at dl-lookup.c:775
+#3  0x00007ffff7de854f in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=<optimized out>, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff7874a60, map=0x7ffff7ffab28) at ../sysdeps/x86_64/dl-machine.h:277
+#4  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ffab28) at do-rel.h:137
+#5  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#6  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#7  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#8  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#9  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#10 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#11 0x0000000000000009 in ?? ()
+#12 0x00007fffffffee08 in ?? ()
+#13 0x00007fffffffee3f in ?? ()
+#14 0x00007fffffffee42 in ?? ()
+#15 0x00007fffffffee47 in ?? ()
+#16 0x00007fffffffee4a in ?? ()
+#17 0x00007fffffffee4e in ?? ()
+#18 0x00007fffffffee51 in ?? ()
+#19 0x00007fffffffee90 in ?? ()
+#20 0x00007fffffffee93 in ?? ()
+#21 0x0000000000000000 in ?? ()
+
+2017-01-25 18:45:35:87	in dl-lookup.c
+
+2017-01-25 18:45:35:Backtrace END
+2017-01-25 18:45:35:Thread name: None
+2017-01-25 18:45:35:Thread num: 1
+2017-01-25 18:45:35:Thread ptid: (249843, 249843, 0)
+2017-01-25 18:45:35:bitFlip function
+2017-01-25 18:45:35:Type: The type is an array.
+2017-01-25 18:45:35:Type sizeof: 64
+2017-01-25 18:45:35:Fliping array at pos: 1
+2017-01-25 18:45:35:bitFlip function
+2017-01-25 18:45:35:Type: The type is a structure.
+2017-01-25 18:45:35:Type sizeof: 32
+2017-01-25 18:45:35:Fliping value of field: lazy
+2017-01-25 18:45:35:bitFlip function
+2017-01-25 18:45:35:Type: The type is an integer type.
+2017-01-25 18:45:35:Type sizeof: 4
+2017-01-25 18:45:35:Mem contents(hex):0x000x000x000x00
+2017-01-25 18:45:35:base address to flip value: 0x7fffffffe9d8
+2017-01-25 18:45:35:address max offset: 4
+2017-01-25 18:45:35:Memory content before bitflip:0x000x000x000x00
+2017-01-25 18:45:35:Memory content after  bitflip:0x200x000x000x00
+2017-01-25 18:45:35:Mem contents(hex):0x200x000x000x00
+2017-01-25 18:45:35:frame name: elf_dynamic_do_Rela
+2017-01-25 18:45:35:symbol name: ranges
+2017-01-25 18:45:35:symbol filename: dl-reloc.c
+2017-01-25 18:45:35:symbol line: 264
+2017-01-25 18:45:35:value: {{start = 140737346180152, size = 47808, nrelative = 1782, lazy = 0}, {start = 0, size = 0, nrelative = 0, lazy = 32}}
+2017-01-25 18:45:35:value address: 0x7fffffffe9a0
+2017-01-25 18:45:35:Type: The type is an array.
+2017-01-25 18:45:35:Type sizeof: 64
+2017-01-25 18:45:35:Field name: None
+2017-01-25 18:45:35:Field Type:
+2017-01-25 18:45:35:Type: A range type, that is, an integer type with bounds.
+2017-01-25 18:45:35:Type sizeof: 8
+2017-01-25 18:45:35:Type range: (0L, 1L)
+2017-01-25 18:45:35:Fault Injection Successful after 0.534329891205s
+2017-01-25 18:45:35:Fault Already Injected
+2017-01-25 18:45:36:Fault Already Injected
+2017-01-25 18:45:36:Fault Already Injected
+2017-01-25 18:45:36:Fault Already Injected
+2017-01-25 18:45:37:Fault Already Injected
+2017-01-25 18:45:37:Fault Already Injected
+2017-01-25 18:45:38:Fault Already Injected
+2017-01-25 18:45:38:Fault Already Injected
+2017-01-25 18:45:38:Fault Already Injected
+2017-01-25 18:45:38:Fault Already Injected
+2017-01-25 18:45:38:Fault Already Injected
+2017-01-25 18:45:39:Fault Already Injected
+2017-01-25 18:45:39:Fault Already Injected
+2017-01-25 18:45:39:Fault Already Injected
+2017-01-25 18:45:40:Fault Already Injected
+2017-01-25 18:45:40:Fault Already Injected
+2017-01-25 18:45:41:Fault Already Injected
+2017-01-25 18:45:41:Fault Already Injected
+2017-01-25 18:45:41:Fault Already Injected
+2017-01-25 18:45:41:Fault Already Injected
+2017-01-25 18:45:41:Fault Already Injected
+2017-01-25 18:45:42:Fault Already Injected
+2017-01-25 18:45:42:Fault Already Injected
+2017-01-25 18:45:42:Fault Already Injected
+2017-01-25 18:45:43:Fault Already Injected
+2017-01-25 18:45:43:Fault Already Injected
+2017-01-25 18:45:43:Fault Already Injected
+2017-01-25 18:45:43:Fault Already Injected
+2017-01-25 18:45:44:Fault Already Injected
+2017-01-25 18:45:44:Fault Already Injected
+2017-01-25 18:45:44:Fault Already Injected
+2017-01-25 18:45:45:Fault Already Injected
+2017-01-25 18:45:45:Fault Already Injected
+2017-01-25 18:45:45:Fault Already Injected
+2017-01-25 18:45:45:Fault Already Injected
+2017-01-25 18:45:45:Fault Already Injected
+2017-01-25 18:45:46:Fault Already Injected
+2017-01-25 18:45:46:Fault Already Injected
+2017-01-25 18:45:46:Fault Already Injected
+2017-01-25 18:45:46:Fault Already Injected
+2017-01-25 18:45:46:Fault Already Injected
+2017-01-25 18:45:47:Fault Already Injected
+2017-01-25 18:45:47:Fault Already Injected
+2017-01-25 18:45:47:Fault Already Injected
+2017-01-25 18:45:47:Fault Already Injected
+2017-01-25 18:45:47:event type: exit
+2017-01-25 18:45:47:exit code: 0

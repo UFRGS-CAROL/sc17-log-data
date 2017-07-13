@@ -1,0 +1,63 @@
+[INFO -- 2017-03-22 23:31:11]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-22 23:31:11]
+Initialization strings:
+[INFO -- 2017-03-22 23:31:11]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-22 23:31:11]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-22 23:31:11]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-22 23:31:11]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-22 23:31:11]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-22 23:31:11]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-22 23:31:11]
+initSignal:0
+[INFO -- 2017-03-22 23:31:11]
+endSignal:3
+[INFO -- 2017-03-22 23:31:11]
+seqSignal:30
+[INFO -- 2017-03-22 23:31:11]
+faultMode:3
+[INFO -- 2017-03-22 23:31:16]
+Backtrace BEGIN:
+#0  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffdd18) at allocatestack.c:557
+#1  __pthread_create_2_1 (newthread=0x7fffffffdd10, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fff64161600) at pthread_create.c:524
+#2  0x00007ffff790d323 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+552	in allocatestack.c
+
+Backtrace END
+Fliping value of field: next
+Fliping a bit of the pointer
+Memory content before bitflip:0xc00x690xff0xf70xff0x7f0x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffff76462f0 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: allocate_stack
+symbol name: __stack_user
+symbol filename: allocatestack.c
+symbol line: 125
+value: {next = 0x0, prev = 0x7ffff7ff69c0}
+value address: 0x7ffff76462f0 <__stack_user>
+Type: The type is a structure.
+Type sizeof: 16
+Field name: next
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: prev
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-22 23:31:16]
+Fault Injection Successful after 5.87635707855s
+[INFO -- 2017-03-22 23:31:30]
+event type: exit
+[INFO -- 2017-03-22 23:31:30]
+exit code: 0

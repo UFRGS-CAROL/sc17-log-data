@@ -1,0 +1,73 @@
+2017-03-01 16:20:37:Starting flip_value script
+2017-03-01 16:20:37:Initialization strings:
+2017-03-01 16:20:37:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-01 16:20:37:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 16:20:37:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 16:20:37:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 16:20:37:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 16:20:37:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 16:20:37:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 16:20:37:initSignal:0
+2017-03-01 16:20:37:endSignal:5
+2017-03-01 16:20:37:seqSignal:20
+2017-03-01 16:20:39:Backtrace BEGIN:
+2017-03-01 16:20:39:#0  0x0000000000536908 in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:395
+#1  0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#2  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-03-01 16:20:39:390	         jscale = 1.0 / (ycentermax - ycentermin);
+391	
+392	         //   Scale the indices to a normalized [0, 1] range for hsfc.
+393	         for (uint ic = 0; ic < ncells; ++ic){
+394	             iunit[ic] = (x[ic] + 0.5 * dx[ic] - xcentermin) * iscale;
+395	             junit[ic] = (y[ic] + 0.5 * dy[ic] - ycentermin) * jscale;
+396	         }
+397	
+398	         if (have_spatial_variables == 0){
+399	            x.clear();
+
+2017-03-01 16:20:39:Backtrace END
+2017-03-01 16:20:43:Type: The type is an integer type.
+2017-03-01 16:20:43:Type sizeof: 4
+2017-03-01 16:20:43:Mem contents(hex):0x000x000x000x00
+2017-03-01 16:20:43:Fault Mode: Random bit-flip
+2017-03-01 16:20:43:base address to flip value: 0x7d0774 
+2017-03-01 16:20:43:address max offset: 4
+2017-03-01 16:20:43:Memory content before bitflip:0x000x000x000x00
+2017-03-01 16:20:43:Backtrace BEGIN:
+2017-03-01 16:20:43:#0  0x0000000000536908 in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:395
+#1  0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#2  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-03-01 16:20:43:390	         jscale = 1.0 / (ycentermax - ycentermin);
+391	
+392	         //   Scale the indices to a normalized [0, 1] range for hsfc.
+393	         for (uint ic = 0; ic < ncells; ++ic){
+394	             iunit[ic] = (x[ic] + 0.5 * dx[ic] - xcentermin) * iscale;
+395	             junit[ic] = (y[ic] + 0.5 * dy[ic] - ycentermin) * jscale;
+396	         }
+397	
+398	         if (have_spatial_variables == 0){
+399	            x.clear();
+
+2017-03-01 16:20:43:Backtrace END
+2017-03-01 16:20:48:Type: The type is an integer type.
+2017-03-01 16:20:48:Type sizeof: 4
+2017-03-01 16:20:48:Mem contents(hex):0x650x000x000x00
+2017-03-01 16:20:48:Fault Mode: Double bit-flip
+2017-03-01 16:20:48:base address to flip value: 0x56a094 
+2017-03-01 16:20:48:address max offset: 4
+2017-03-01 16:20:48:Memory content before bitflip:0x650x000x000x00
+2017-03-01 16:20:48:Memory content after  bitflip:0xe70x000x000x00
+2017-03-01 16:20:48:Mem contents(hex):0xe70x000x000x00
+2017-03-01 16:20:48:frame name: main
+2017-03-01 16:20:48:symbol name: CRUX_CLAMR_VERSION
+2017-03-01 16:20:48:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-03-01 16:20:48:symbol line: 676
+2017-03-01 16:20:48:value: 231
+2017-03-01 16:20:48:value address: 0x56a094 <CRUX_CLAMR_VERSION>
+2017-03-01 16:20:48:Type: The type is an integer type.
+2017-03-01 16:20:48:Type sizeof: 4
+2017-03-01 16:20:48:Fault Injection Successful after 11.9182260036s
+2017-03-01 16:21:37:event type: exit
+2017-03-01 16:21:37:exit code: 0

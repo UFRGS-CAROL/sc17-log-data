@@ -1,0 +1,64 @@
+[INFO -- 2017-02-25 15:32:16]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 15:32:16]
+Initialization strings:
+[INFO -- 2017-02-25 15:32:16]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-25 15:32:16]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 15:32:16]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 15:32:16]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 15:32:16]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 15:32:16]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-25 15:32:16]
+initSignal:12
+[INFO -- 2017-02-25 15:32:16]
+endSignal:15
+[INFO -- 2017-02-25 15:32:16]
+seqSignal:15
+[INFO -- 2017-02-25 15:32:16]
+faultMode:3
+[INFO -- 2017-02-25 15:32:29]
+Backtrace BEGIN:
+#0  0x00007ffff7107f95 in round_and_return (retval=retval@entry=0x7fffffffdf68, exponent=8, negative=negative@entry=0, round_limb=round_limb@entry=11943547364708059998, round_bit=48, more_bits=1) at strtod_l.c:342
+#1  0x00007ffff7109845 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe050 "323.647461", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1762
+#2  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe050 "323.647461", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0) at strtod.c:54
+#3  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2332
+#4  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "323.647461\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#5  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#6  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#7  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+337	in strtod_l.c
+
+Backtrace END
+Fliping array at pos: 30
+Memory content before bitflip:0x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe65e 
+address max offset: 1
+Memory content after  bitflip:0x00
+frame name: read_input
+symbol name: str
+symbol filename: hotspot_check.c
+symbol line: 194
+value: "323.647461\n\000\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\240\211`\000\000\000\000\000\023\000\000\000\000\000\000\000\023\000\000\000\000\000\000\000\240\211`", '\000' <repeats 13 times>, "\060\000\000\000\060\000\000\000\240\347\377\377\377\177\000\000\340\346\377\377\377\177\000\000\377\017\000\000\000\000\000\000\210\023\016\367\377\177\000\000\350\003\000\000\000\000\000\000\350\003\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000"...
+value address: 0x7fffffffe640
+Type: The type is an array.
+Type sizeof: 256
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 255L)
+
+[INFO -- 2017-02-25 15:32:29]
+Fault Injection Successful after 13.1007668972s
+[INFO -- 2017-02-25 15:32:43]
+event type: exit
+[INFO -- 2017-02-25 15:32:43]
+exit code: 0

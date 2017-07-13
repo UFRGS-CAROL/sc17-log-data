@@ -1,0 +1,64 @@
+[INFO -- 2017-03-03 02:31:13]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-03 02:31:13]
+Initialization strings:
+[INFO -- 2017-03-03 02:31:13]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-03 02:31:13]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 02:31:13]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 02:31:14]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 02:31:14]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 02:31:14]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-03 02:31:14]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-03 02:31:14]
+initSignal:20
+[INFO -- 2017-03-03 02:31:14]
+endSignal:25
+[INFO -- 2017-03-03 02:31:14]
+seqSignal:20
+[INFO -- 2017-03-03 02:31:14]
+faultMode:3
+[INFO -- 2017-03-03 02:31:40]
+Backtrace BEGIN:
+#0  __GI___waitpid (pid=184069, stat_loc=stat_loc@entry=0x7fffffffe1b8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:40
+#1  0x00007ffff6b5f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x000000000047d449 in update_timestamp () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c:111
+#3  0x000000000047dfd7 in start_iteration () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c:315
+#4  0x0000000000445cfd in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:412
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+35	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+Backtrace END
+Fliping array at pos: 28
+Memory content before bitflip:0x72
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe32c 
+address max offset: 1
+Memory content after  bitflip:0x00
+frame name: update_timestamp
+symbol name: string
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c
+symbol line: 104
+value: "echo 1488526020 > /micNfs/ca\000ol/logs/timestamp.txt", '\000' <repeats 49 times>
+value address: 0x7fffffffe310
+Type: The type is an array.
+Type sizeof: 100
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 99L)
+
+[INFO -- 2017-03-03 02:31:40]
+Fault Injection Successful after 26.5201098919s
+[INFO -- 2017-03-03 02:32:17]
+event type: exit
+[INFO -- 2017-03-03 02:32:17]
+exit code: 0

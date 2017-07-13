@@ -1,0 +1,56 @@
+[INFO -- 2017-03-27 08:08:33]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 08:08:33]
+Initialization strings:
+[INFO -- 2017-03-27 08:08:33]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 08:08:33]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 08:08:33]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 08:08:33]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 08:08:33]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 08:08:33]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 08:08:33]
+initSignal:0
+[INFO -- 2017-03-27 08:08:33]
+endSignal:3
+[INFO -- 2017-03-27 08:08:33]
+seqSignal:30
+[INFO -- 2017-03-27 08:08:33]
+faultMode:1
+[INFO -- 2017-03-27 08:08:36]
+Backtrace BEGIN:
+#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff74312d0 in ?? () at pthread_create.c:237 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libpthread.so.0
+#2  0x00007fffa8ff3600 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7ffff7646318 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x280x000x000x00
+frame name: allocate_stack
+symbol name: __nptl_last_event
+symbol filename: pthread_create.c
+symbol line: 47
+value: 0x0
+value address: 0x7ffff7646318 <__nptl_last_event>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-27 08:08:36]
+Fault Injection Successful after 3.23529410362s
+[INFO -- 2017-03-27 08:08:55]
+event type: exit
+[INFO -- 2017-03-27 08:08:55]
+exit code: 0

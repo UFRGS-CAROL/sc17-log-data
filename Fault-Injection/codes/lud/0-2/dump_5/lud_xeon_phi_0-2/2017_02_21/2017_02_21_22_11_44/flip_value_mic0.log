@@ -1,0 +1,114 @@
+2017-02-21 22:11:16:Starting flip_value script
+2017-02-21 22:11:16:Initialization strings:
+2017-02-21 22:11:17:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-21 22:11:17:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 22:11:17:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 22:11:17:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-21 22:11:17:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-21 22:11:17:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-02-21 22:11:17:initSignal:0
+2017-02-21 22:11:17:endSignal:2
+2017-02-21 22:11:17:seqSignal:30
+2017-02-21 22:11:17:Backtrace BEGIN:
+2017-02-21 22:11:17:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142911 in __GI__IO_file_xsgetn (fp=0x60c010, data=<optimized out>, n=16777216) at fileops.c:1422
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=16777216, count=1, fp=0x60c010) at iofread.c:42
+#3  0x0000000000402b5a in main (argc=9, argv=0x7fffffffec08) at lud_check.c:105
+
+2017-02-21 22:11:17:76	in ../sysdeps/unix/syscall-template.S
+
+2017-02-21 22:11:17:Backtrace END
+2017-02-21 22:11:17:Type: The type is a pointer.
+2017-02-21 22:11:17:Type sizeof: 8
+2017-02-21 22:11:17:Fliping a bit of the value pointed by a pointer
+2017-02-21 22:11:17:Type: A floating point type.
+2017-02-21 22:11:17:Type sizeof: 4
+2017-02-21 22:11:17:Mem contents(hex):0x000x000x200x41
+2017-02-21 22:11:17:Fault Mode: One bit-flip
+2017-02-21 22:11:17:base address to flip value: 0x7ffff5ecc010
+2017-02-21 22:11:17:address max offset: 4
+2017-02-21 22:11:17:Memory content before bitflip:0x000x000x200x41
+2017-02-21 22:11:17:Backtrace BEGIN:
+2017-02-21 22:11:17:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142911 in __GI__IO_file_xsgetn (fp=0x60c240, data=<optimized out>, n=16777216) at fileops.c:1422
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=16777216, count=1, fp=0x60c240) at iofread.c:42
+#3  0x0000000000402b9c in main (argc=9, argv=0x7fffffffec08) at lud_check.c:106
+
+2017-02-21 22:11:17:76	in ../sysdeps/unix/syscall-template.S
+
+2017-02-21 22:11:17:Backtrace END
+2017-02-21 22:11:17:Type: The type is an integer type.
+2017-02-21 22:11:17:Type sizeof: 4
+2017-02-21 22:11:17:Mem contents(hex):0x680xe10xff0xf7
+2017-02-21 22:11:17:Fault Mode: Zero bit-flip
+2017-02-21 22:11:17:base address to flip value: 0x7fffffffe9b0
+2017-02-21 22:11:17:address max offset: 4
+2017-02-21 22:11:17:Memory content before bitflip:0x680xe10xff0xf7
+2017-02-21 22:11:18:Backtrace BEGIN:
+2017-02-21 22:11:18:#0  0x00007ffff719f097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff74321df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:640
+#2  __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffed2e5600) at pthread_create.c:524
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-02-21 22:11:18:76	in ../sysdeps/unix/syscall-template.S
+
+2017-02-21 22:11:18:Backtrace END
+2017-02-21 22:11:19:Type: The type is a structure.
+2017-02-21 22:11:19:Type sizeof: 56
+2017-02-21 22:11:19:Fliping value of field: schedparam
+2017-02-21 22:11:19:Type: The type is a structure.
+2017-02-21 22:11:19:Type sizeof: 4
+2017-02-21 22:11:19:Fliping value of field: __sched_priority
+2017-02-21 22:11:19:Type: The type is an integer type.
+2017-02-21 22:11:19:Type sizeof: 4
+2017-02-21 22:11:19:Mem contents(hex):0x900xba0xb70xf7
+2017-02-21 22:11:19:Fault Mode: Single bit-flip
+2017-02-21 22:11:19:base address to flip value: 0x7fffffffd178
+2017-02-21 22:11:19:address max offset: 4
+2017-02-21 22:11:19:Memory content before bitflip:0x900xba0xb70xf7
+2017-02-21 22:11:19:Memory content after  bitflip:0x900xfa0xb70xf7
+2017-02-21 22:11:19:Mem contents(hex):0x900xfa0xb70xf7
+2017-02-21 22:11:19:frame name: allocate_stack
+2017-02-21 22:11:19:symbol name: default_attr
+2017-02-21 22:11:19:symbol filename: pthread_create.c
+2017-02-21 22:11:19:symbol line: 494
+2017-02-21 22:11:19:value: {schedparam = {__sched_priority = -138937712}, schedpolicy = 32767, flags = 0, guardsize = 140737346919649, stackaddr = 0x7ffff4ec7c80, stacksize = 140737302527104, cpuset = 0x880, cpusetsize = 140737349401216}
+2017-02-21 22:11:19:value address: 0x7fffffffd178
+2017-02-21 22:11:19:Type: The type is a structure.
+2017-02-21 22:11:19:Type sizeof: 56
+2017-02-21 22:11:19:Field name: schedparam
+2017-02-21 22:11:19:Field Type:
+2017-02-21 22:11:19:Type: The type is a structure.
+2017-02-21 22:11:19:Type sizeof: 4
+2017-02-21 22:11:19:Field name: schedpolicy
+2017-02-21 22:11:19:Field Type:
+2017-02-21 22:11:19:Type: The type is an integer type.
+2017-02-21 22:11:19:Type sizeof: 4
+2017-02-21 22:11:19:Field name: flags
+2017-02-21 22:11:19:Field Type:
+2017-02-21 22:11:19:Type: The type is an integer type.
+2017-02-21 22:11:19:Type sizeof: 4
+2017-02-21 22:11:19:Field name: guardsize
+2017-02-21 22:11:19:Field Type:
+2017-02-21 22:11:19:Type: The type is an integer type.
+2017-02-21 22:11:19:Type sizeof: 8
+2017-02-21 22:11:19:Field name: stackaddr
+2017-02-21 22:11:19:Field Type:
+2017-02-21 22:11:19:Type: The type is a pointer.
+2017-02-21 22:11:19:Type sizeof: 8
+2017-02-21 22:11:19:Field name: stacksize
+2017-02-21 22:11:19:Field Type:
+2017-02-21 22:11:19:Type: The type is an integer type.
+2017-02-21 22:11:19:Type sizeof: 8
+2017-02-21 22:11:19:Field name: cpuset
+2017-02-21 22:11:19:Field Type:
+2017-02-21 22:11:19:Type: The type is a pointer.
+2017-02-21 22:11:19:Type sizeof: 8
+2017-02-21 22:11:19:Field name: cpusetsize
+2017-02-21 22:11:19:Field Type:
+2017-02-21 22:11:19:Type: The type is an integer type.
+2017-02-21 22:11:19:Type sizeof: 8
+2017-02-21 22:11:19:Fault Injection Successful after 2.6325750351s
+2017-02-21 22:11:37:event type: exit
+2017-02-21 22:11:37:exit code: 0

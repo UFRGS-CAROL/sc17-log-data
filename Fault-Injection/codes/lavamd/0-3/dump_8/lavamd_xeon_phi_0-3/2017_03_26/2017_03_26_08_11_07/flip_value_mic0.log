@@ -1,0 +1,55 @@
+[INFO -- 2017-03-26 08:10:42]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 08:10:42]
+Initialization strings:
+[INFO -- 2017-03-26 08:10:42]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 08:10:42]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 08:10:42]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 08:10:42]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 08:10:42]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 08:10:42]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 08:10:42]
+initSignal:0
+[INFO -- 2017-03-26 08:10:42]
+endSignal:3
+[INFO -- 2017-03-26 08:10:42]
+seqSignal:30
+[INFO -- 2017-03-26 08:10:42]
+faultMode:2
+[INFO -- 2017-03-26 08:10:43]
+Backtrace BEGIN:
+#0  __GI__IO_sgetn (fp=0x60e1c0, data=0x7ffff4d4eb20, n=8) at genops.c:495
+#1  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#2  0x000000000040262f in main (argc=7, argv=0x7fffffffebc8) at main_check.c:181
+
+490	in genops.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff74266c0 
+address max offset: 8
+Memory content after  bitflip:0xec0xa90x9a0xa10x730x7d0xae0x97
+frame name: __GI__IO_sgetn
+symbol name: freeres_list
+symbol filename: genops.c
+symbol line: 944
+value: 0x0
+value address: 0x7ffff74266c0 <freeres_list>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-26 08:10:43]
+Fault Injection Successful after 1.57853388786s
+[INFO -- 2017-03-26 08:11:00]
+event type: exit
+[INFO -- 2017-03-26 08:11:00]
+exit code: 0

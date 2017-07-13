@@ -1,0 +1,62 @@
+[INFO -- 2017-02-27 06:37:54]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 06:37:54]
+Initialization strings:
+[INFO -- 2017-02-27 06:37:55]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-27 06:37:55]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 06:37:55]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 06:37:55]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 06:37:55]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 06:37:55]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-27 06:37:55]
+initSignal:0
+[INFO -- 2017-02-27 06:37:55]
+endSignal:2
+[INFO -- 2017-02-27 06:37:55]
+seqSignal:30
+[INFO -- 2017-02-27 06:37:55]
+faultMode:1
+[EXCEPTION -- 2017-02-27 06:37:55]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-02-27 06:37:56]
+Backtrace BEGIN:
+#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff74312d0 in ?? () at pthread_create.c:237 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libpthread.so.0
+#2  0x00007ffff4cc9780 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+Backtrace END
+Fliping array at pos: 0
+Memory content before bitflip:0x400x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7ffff743c250 
+address max offset: 4
+Memory content after  bitflip:0x430x000x000x00
+frame name: create_thread
+symbol name: _thread_db_list_t_prev
+symbol filename: ../nptl_db/structs.def
+symbol line: 42
+value: {67, 1, 8}
+value address: 0x7ffff743c250 <_thread_db_pthread_key_struct_destr>
+Type: The type is an array.
+Type sizeof: 12
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 2L)
+
+[INFO -- 2017-02-27 06:37:56]
+Fault Injection Successful after 1.04121303558s
+[INFO -- 2017-02-27 06:38:11]
+event type: exit
+[INFO -- 2017-02-27 06:38:11]
+exit code: 0

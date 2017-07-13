@@ -1,0 +1,65 @@
+[INFO -- 2017-03-03 11:57:51]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-03 11:57:51]
+Initialization strings:
+[INFO -- 2017-03-03 11:57:51]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-03 11:57:51]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 11:57:51]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 11:57:51]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 11:57:51]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 11:57:51]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-03 11:57:51]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-03 11:57:51]
+initSignal:0
+[INFO -- 2017-03-03 11:57:51]
+endSignal:5
+[INFO -- 2017-03-03 11:57:51]
+seqSignal:20
+[INFO -- 2017-03-03 11:57:51]
+faultMode:1
+[INFO -- 2017-03-03 11:57:57]
+Backtrace BEGIN:
+#0  0x00000000005369a0 in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:395
+#1  0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#2  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+390	         jscale = 1.0 / (ycentermax - ycentermin);
+391	
+392	         //   Scale the indices to a normalized [0, 1] range for hsfc.
+393	         for (uint ic = 0; ic < ncells; ++ic){
+394	             iunit[ic] = (x[ic] + 0.5 * dx[ic] - xcentermin) * iscale;
+395	             junit[ic] = (y[ic] + 0.5 * dy[ic] - ycentermin) * jscale;
+396	         }
+397	
+398	         if (have_spatial_variables == 0){
+399	            x.clear();
+
+Backtrace END
+Memory content before bitflip:0x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7d0abc 
+address max offset: 1
+Memory content after  bitflip:0x82
+frame name: Mesh::init
+symbol name: dynamic_load_balance_on
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+symbol line: 142
+value: 130
+value address: 0x7d0abc <dynamic_load_balance_on>
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2017-03-03 11:57:57]
+Fault Injection Successful after 6.12092399597s
+[INFO -- 2017-03-03 11:58:49]
+event type: exit
+[INFO -- 2017-03-03 11:58:49]
+exit code: 0

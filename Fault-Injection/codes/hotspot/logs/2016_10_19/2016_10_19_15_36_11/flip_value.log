@@ -1,0 +1,70 @@
+2016-10-19 15:35:50:Initialization strings:
+2016-10-19 15:35:50:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-19 15:35:50:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-19 15:35:50:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-19 15:35:50:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-19 15:35:50:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-19 15:35:50:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-19 15:35:51:Trying Fault Injection
+2016-10-19 15:35:51:Backtrace BEGIN:
+2016-10-19 15:35:51:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebe0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebe0) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffebe0) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000008 in ?? ()
+#7  0x00007fffffffede9 in ?? ()
+#8  0x00007fffffffee1f in ?? ()
+#9  0x00007fffffffee24 in ?? ()
+#10 0x00007fffffffee29 in ?? ()
+#11 0x00007fffffffee2e in ?? ()
+#12 0x00007fffffffee32 in ?? ()
+#13 0x00007fffffffee64 in ?? ()
+#14 0x00007fffffffee97 in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+2016-10-19 15:35:51:69	in dl-debug.c
+
+2016-10-19 15:35:51:Backtrace END
+2016-10-19 15:35:51:Type: The type is a pointer.
+2016-10-19 15:35:51:Type sizeof: 8
+2016-10-19 15:35:51:Fault Injection Failed after 1.40859103203s
+2016-10-19 15:35:51:Trying Fault Injection
+2016-10-19 15:35:51:Backtrace BEGIN:
+2016-10-19 15:35:51:#0  _pthread_cleanup_push_defer (buffer=0x7fffffffe280, routine=0x7ffff7135e30 <__funlockfile>, arg=0x7fffffffe400) at cleanup_defer_compat.c:30
+#1  0x00007ffff71249c6 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:340
+#2  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "330.623042\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#5  main (argc=-7552, argv=0x7ffff7135e30 <__funlockfile>) at hotspot_check.c:264
+
+2016-10-19 15:35:51:25	in cleanup_defer_compat.c
+
+2016-10-19 15:35:51:Backtrace END
+2016-10-19 15:35:51:Type: A floating point type.
+2016-10-19 15:35:51:Type sizeof: 4
+2016-10-19 15:35:51:Mem contents(hex):0x6f0x120x830x3c
+2016-10-19 15:35:51:base address to flip value: 0x40739c 
+2016-10-19 15:35:51:address max offset: 4
+2016-10-19 15:35:51:Memory content before bitflip:0x6f0x120x830x3c
+2016-10-19 15:35:51:Memory content after  bitflip:0x6f0x120x830x38
+2016-10-19 15:35:51:Mem contents(hex):0x6f0x120x830x38
+2016-10-19 15:35:51:frame name: read_input
+2016-10-19 15:35:51:symbol name: chip_height
+2016-10-19 15:35:51:symbol filename: hotspot_check.c
+2016-10-19 15:35:51:symbol line: 33
+2016-10-19 15:35:51:value: 6.2500003e-05
+2016-10-19 15:35:51:value address: 0x40739c <chip_height>
+2016-10-19 15:35:51:Type: A floating point type.
+2016-10-19 15:35:51:Type sizeof: 4
+2016-10-19 15:35:51:Fault Injection Successful after 1.72099494934s
+2016-10-19 15:35:52:Fault Already Injected
+2016-10-19 15:35:53:Fault Already Injected
+2016-10-19 15:35:54:Fault Already Injected
+2016-10-19 15:35:54:Fault Already Injected
+2016-10-19 15:35:59:Fault Already Injected
+2016-10-19 15:36:04:Fault Already Injected
+2016-10-19 15:36:04:Fault Already Injected
+2016-10-19 15:36:05:event type: exit
+2016-10-19 15:36:05:exit code: 0

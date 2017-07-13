@@ -1,0 +1,131 @@
+2017-02-28 12:10:01:Starting flip_value script
+2017-02-28 12:10:01:Initialization strings:
+2017-02-28 12:10:01:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 12:10:01:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 12:10:01:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 12:10:01:(4) file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-02-28 12:10:01:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-02-28 12:10:01:(6) set args 16394 10 228 /micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10 /micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10
+2017-02-28 12:10:01:initSignal:4
+2017-02-28 12:10:01:endSignal:8
+2017-02-28 12:10:01:seqSignal:30
+2017-02-28 12:10:06:Backtrace BEGIN:
+2017-02-28 12:10:06:#0  0x00007ffff6e245d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6dd0911 in __GI__IO_file_xsgetn (fp=0x619b30, data=<optimized out>, n=1075184100) at fileops.c:1422
+#2  0x00007ffff6dc6929 in __GI__IO_fread (buf=<optimized out>, size=1075184100, count=1, fp=0x619b30) at iofread.c:42
+#3  0x00000000004014f6 in ReadArrayFromFile (input_itemsets=0x7fff76699010, gold_itemsets=0x7fff36538010, max_rows=16395, filenameinput=0x7fffffffee44 "/micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10", filenamegold=0x7fffffffee8a "/micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10") at needle_check.cpp:50
+#4  0x0000000000402bbc in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:319
+#5  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-02-28 12:10:06:76	in ../sysdeps/unix/syscall-template.S
+
+2017-02-28 12:10:06:Backtrace END
+2017-02-28 12:10:06:Type: The type is an array.
+2017-02-28 12:10:06:Type sizeof: 2304
+2017-02-28 12:10:06:Fliping array at pos: 10
+2017-02-28 12:10:06:Type: The type is an array.
+2017-02-28 12:10:06:Type sizeof: 96
+2017-02-28 12:10:06:Fliping array at pos: 10
+2017-02-28 12:10:06:Type: The type is an integer type.
+2017-02-28 12:10:06:Type sizeof: 4
+2017-02-28 12:10:06:Mem contents(hex):0x040x000x000x00
+2017-02-28 12:10:06:Fault Mode: One bit-flip
+2017-02-28 12:10:06:base address to flip value: 0x6061e8 
+2017-02-28 12:10:06:address max offset: 4
+2017-02-28 12:10:06:Memory content before bitflip:0x040x000x000x00
+2017-02-28 12:10:06:Backtrace BEGIN:
+2017-02-28 12:10:06:#0  0x0000000000402c73 in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:330
+#1  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-02-28 12:10:06:325	    //}
+326	
+327	
+328	    for (int i = 1 ; i < max_cols; i++){
+329	        for (int j = 1 ; j < max_rows; j++){
+330	            referrence[i*max_cols+j] = blosum62[input_itemsets[i*max_cols]][input_itemsets[j]];
+331	        }
+332	    }
+333	
+334	    for( int i = 1; i< max_rows ; i++)
+
+2017-02-28 12:10:06:Backtrace END
+2017-02-28 12:10:07:Type: The type is an integer type.
+2017-02-28 12:10:07:Type sizeof: 4
+2017-02-28 12:10:07:Mem contents(hex):0x060x000x000x00
+2017-02-28 12:10:07:Fault Mode: Zero bit-flip
+2017-02-28 12:10:07:base address to flip value: 0x7fffffffeb10
+2017-02-28 12:10:07:address max offset: 4
+2017-02-28 12:10:07:Memory content before bitflip:0x060x000x000x00
+2017-02-28 12:10:07:Backtrace BEGIN:
+2017-02-28 12:10:07:#0  runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:330
+#1  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-02-28 12:10:07:325	    //}
+326	
+327	
+328	    for (int i = 1 ; i < max_cols; i++){
+329	        for (int j = 1 ; j < max_rows; j++){
+330	            referrence[i*max_cols+j] = blosum62[input_itemsets[i*max_cols]][input_itemsets[j]];
+331	        }
+332	    }
+333	
+334	    for( int i = 1; i< max_rows ; i++)
+
+2017-02-28 12:10:07:Backtrace END
+2017-02-28 12:10:07:Type: The type is an array.
+2017-02-28 12:10:07:Type sizeof: 2304
+2017-02-28 12:10:07:Fliping array at pos: 13
+2017-02-28 12:10:07:Type: The type is an array.
+2017-02-28 12:10:07:Type sizeof: 96
+2017-02-28 12:10:07:Fliping array at pos: 18
+2017-02-28 12:10:07:Type: The type is an integer type.
+2017-02-28 12:10:07:Type sizeof: 4
+2017-02-28 12:10:07:Mem contents(hex):0x030x000x000x00
+2017-02-28 12:10:07:Fault Mode: One bit-flip
+2017-02-28 12:10:07:base address to flip value: 0x606328 
+2017-02-28 12:10:07:address max offset: 4
+2017-02-28 12:10:07:Memory content before bitflip:0x030x000x000x00
+2017-02-28 12:10:07:Backtrace BEGIN:
+2017-02-28 12:10:07:#0  0x0000000000402c20 in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:330
+#1  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-02-28 12:10:07:325	    //}
+326	
+327	
+328	    for (int i = 1 ; i < max_cols; i++){
+329	        for (int j = 1 ; j < max_rows; j++){
+330	            referrence[i*max_cols+j] = blosum62[input_itemsets[i*max_cols]][input_itemsets[j]];
+331	        }
+332	    }
+333	
+334	    for( int i = 1; i< max_rows ; i++)
+
+2017-02-28 12:10:07:Backtrace END
+2017-02-28 12:10:07:Type: The type is an array.
+2017-02-28 12:10:07:Type sizeof: 20
+2017-02-28 12:10:07:Fliping array at pos: 11
+2017-02-28 12:10:07:Type: The type is an integer type.
+2017-02-28 12:10:07:Type sizeof: 1
+2017-02-28 12:10:07:Mem contents(hex):0x00
+2017-02-28 12:10:07:Fault Mode: Double bit-flip
+2017-02-28 12:10:07:base address to flip value: 0x7fffffffe823 
+2017-02-28 12:10:07:address max offset: 1
+2017-02-28 12:10:07:Memory content before bitflip:0x00
+2017-02-28 12:10:07:Memory content after  bitflip:0x50
+2017-02-28 12:10:07:Mem contents(hex):0x50
+2017-02-28 12:10:07:frame name: runTest
+2017-02-28 12:10:07:symbol name: appName
+2017-02-28 12:10:07:symbol filename: needle_check.cpp
+2017-02-28 12:10:07:symbol line: 294
+2017-02-28 12:10:07:value: "openmpNW\000\003\000P\000\000\000\000H8\206", <incomplete sequence \367>
+2017-02-28 12:10:07:value address: 0x7fffffffe818
+2017-02-28 12:10:07:Type: The type is an array.
+2017-02-28 12:10:07:Type sizeof: 20
+2017-02-28 12:10:07:Field name: None
+2017-02-28 12:10:07:Field Type:
+2017-02-28 12:10:07:Type: A range type, that is, an integer type with bounds.
+2017-02-28 12:10:07:Type sizeof: 1
+2017-02-28 12:10:07:Type range: (0L, 19L)
+2017-02-28 12:10:07:Fault Injection Successful after 6.79859209061s
+2017-02-28 12:10:39:event type: exit
+2017-02-28 12:10:39:exit code: 0

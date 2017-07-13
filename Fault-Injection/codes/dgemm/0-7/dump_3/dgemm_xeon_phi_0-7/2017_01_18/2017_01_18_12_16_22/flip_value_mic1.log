@@ -1,0 +1,41 @@
+2017-01-18 12:15:19:Starting flip_value script
+2017-01-18 12:15:19:Initialization strings:
+2017-01-18 12:15:20:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-18 12:15:20:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-18 12:15:20:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-18 12:15:20:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-18 12:15:20:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-18 12:15:20:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-18 12:15:20:initSignal:0
+2017-01-18 12:15:20:endSignal:7
+2017-01-18 12:15:20:seqSignal:15
+2017-01-18 12:15:22:Backtrace BEGIN:
+2017-01-18 12:15:22:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff71436c0 in _IO_new_file_underflow (fp=0x6073f0) at fileops.c:580
+#2  0x00007ffff71429e8 in __GI__IO_file_xsgetn (fp=0x6073f0, data=<optimized out>, n=8) at fileops.c:1402
+#3  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x6073f0) at iofread.c:42
+#4  0x0000000000403c08 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:250
+#5  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+2017-01-18 12:15:22:76	in ../sysdeps/unix/syscall-template.S
+
+2017-01-18 12:15:22:Backtrace END
+2017-01-18 12:15:22:Type: The type is an integer type.
+2017-01-18 12:15:22:Type sizeof: 4
+2017-01-18 12:15:22:Mem contents(hex):0x000x070x000x00
+2017-01-18 12:15:22:base address to flip value: 0x7fffffffe688
+2017-01-18 12:15:22:address max offset: 4
+2017-01-18 12:15:22:Memory content before bitflip:0x000x070x000x00
+2017-01-18 12:15:22:Memory content after  bitflip:0x100x070x000x00
+2017-01-18 12:15:22:Mem contents(hex):0x100x070x000x00
+2017-01-18 12:15:22:frame name: read_input
+2017-01-18 12:15:22:symbol name: j
+2017-01-18 12:15:22:symbol filename: dgemm.c
+2017-01-18 12:15:22:symbol line: 237
+2017-01-18 12:15:22:value: 1808
+2017-01-18 12:15:22:value address: 0x7fffffffe688
+2017-01-18 12:15:22:Type: The type is an integer type.
+2017-01-18 12:15:22:Type sizeof: 4
+2017-01-18 12:15:22:Fault Injection Successful after 2.78355789185s
+2017-01-18 12:16:15:event type: exit
+2017-01-18 12:16:15:exit code: 1

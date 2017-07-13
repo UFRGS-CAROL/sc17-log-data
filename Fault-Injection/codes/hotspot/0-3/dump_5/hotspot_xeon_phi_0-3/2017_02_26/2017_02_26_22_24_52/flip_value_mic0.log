@@ -1,0 +1,57 @@
+[INFO -- 2017-02-26 22:24:11]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 22:24:11]
+Initialization strings:
+[INFO -- 2017-02-26 22:24:11]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-26 22:24:11]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 22:24:11]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 22:24:11]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 22:24:11]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 22:24:11]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 22:24:11]
+initSignal:0
+[INFO -- 2017-02-26 22:24:11]
+endSignal:3
+[INFO -- 2017-02-26 22:24:11]
+seqSignal:15
+[INFO -- 2017-02-26 22:24:11]
+faultMode:2
+[INFO -- 2017-02-26 22:24:14]
+Backtrace BEGIN:
+#0  _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:1978
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "326.558732\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000404598 in read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:207
+#4  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+1973	in vfscanf.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x400x9b0x600x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe780
+address max offset: 8
+Memory content after  bitflip:0x500x5b0x7c0x110x960x210xb40xc2
+frame name: read_input
+symbol name: fp
+symbol filename: hotspot_check.c
+symbol line: 193
+value: 0x609b40
+value address: 0x7fffffffe780
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-26 22:24:14]
+Fault Injection Successful after 3.8693010807s
+[INFO -- 2017-02-26 22:24:14]
+event type: exit
+[EXCEPTION -- 2017-02-26 22:24:14]
+exit code: no exit code available

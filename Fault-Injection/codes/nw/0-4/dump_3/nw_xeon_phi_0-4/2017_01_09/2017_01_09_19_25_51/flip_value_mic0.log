@@ -1,0 +1,58 @@
+2017-01-09 19:24:50:Starting flip_value script
+2017-01-09 19:24:50:Initialization strings:
+2017-01-09 19:24:50:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-09 19:24:50:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-09 19:24:50:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-09 19:24:50:(4) file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-01-09 19:24:50:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-01-09 19:24:50:(6) set args 16394 10 228 /micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10 /micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10
+2017-01-09 19:24:50:initSignal:0
+2017-01-09 19:24:50:endSignal:4
+2017-01-09 19:24:50:seqSignal:30
+2017-01-09 19:24:59:Trying Fault Injection
+2017-01-09 19:24:59:Inferior PID: 180429
+2017-01-09 19:24:59:Inferior is valid: True
+2017-01-09 19:24:59:Inferior #threads: 1
+2017-01-09 19:24:59:Backtrace BEGIN:
+2017-01-09 19:24:59:#0  0x00007ffff6e245d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6dd0911 in __GI__IO_file_xsgetn (fp=0x619900, data=<optimized out>, n=1075184100) at fileops.c:1422
+#2  0x00007ffff6dc6929 in __GI__IO_fread (buf=<optimized out>, size=1075184100, count=1, fp=0x619900) at iofread.c:42
+#3  0x00000000004014c3 in ReadArrayFromFile (input_itemsets=0x7fff76699010, gold_itemsets=0x7fff36538010, max_rows=16395, filenameinput=0x7fffffffee44 "/micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10", filenamegold=0x7fffffffee8a "/micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10") at needle_check.cpp:49
+#4  0x0000000000402bbc in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:319
+#5  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-01-09 19:24:59:76	in ../sysdeps/unix/syscall-template.S
+
+2017-01-09 19:24:59:Backtrace END
+2017-01-09 19:24:59:Thread name: None
+2017-01-09 19:25:00:Thread num: 1
+2017-01-09 19:25:00:Thread ptid: (180429, 180429, 0)
+2017-01-09 19:25:00:bitFlip function
+2017-01-09 19:25:00:Type: The type is a pointer.
+2017-01-09 19:25:00:Type sizeof: 8
+2017-01-09 19:25:00:Fliping a bit of the value pointed by a pointer
+2017-01-09 19:25:00:bitFlip function
+2017-01-09 19:25:00:Type: The type is a pointer.
+2017-01-09 19:25:00:Type sizeof: 8
+2017-01-09 19:25:00:Fliping a bit of the pointer
+2017-01-09 19:25:00:Mem contents(hex):0xfe0xed0xff0xff0xff0x7f0x000x00
+2017-01-09 19:25:00:base address to flip value: 0x7fffffffec08
+2017-01-09 19:25:00:address max offset: 8
+2017-01-09 19:25:00:Memory content before bitflip:0xfe0xed0xff0xff0xff0x7f0x000x00
+2017-01-09 19:25:00:Memory content after  bitflip:0xfe0xed0xff0xff0xff0x7f0x000x80
+2017-01-09 19:25:00:Mem contents(hex):0xfe0xed0xff0xff0xff0x7f0x000x80
+2017-01-09 19:25:00:frame name: main
+2017-01-09 19:25:00:symbol name: argv
+2017-01-09 19:25:00:symbol filename: needle_check.cpp
+2017-01-09 19:25:00:symbol line: 112
+2017-01-09 19:25:00:value: 0x7fffffffec08
+2017-01-09 19:25:00:value address: 0x7fffffffeb18
+2017-01-09 19:25:00:Type: The type is a pointer.
+2017-01-09 19:25:00:Type sizeof: 8
+2017-01-09 19:25:00:Fault Injection Successful after 10.0669341087s
+2017-01-09 19:25:00:Fault Already Injected
+2017-01-09 19:25:06:Fault Already Injected
+2017-01-09 19:25:06:Fault Already Injected
+2017-01-09 19:25:06:Fault Already Injected
+2017-01-09 19:25:44:event type: exit
+2017-01-09 19:25:44:exit code: 0

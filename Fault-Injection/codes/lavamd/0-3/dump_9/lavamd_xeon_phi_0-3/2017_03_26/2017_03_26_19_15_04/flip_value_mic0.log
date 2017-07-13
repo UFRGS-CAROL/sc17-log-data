@@ -1,0 +1,54 @@
+[INFO -- 2017-03-26 19:14:12]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 19:14:12]
+Initialization strings:
+[INFO -- 2017-03-26 19:14:13]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 19:14:13]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 19:14:13]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 19:14:13]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 19:14:13]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 19:14:13]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 19:14:13]
+initSignal:0
+[INFO -- 2017-03-26 19:14:13]
+endSignal:3
+[INFO -- 2017-03-26 19:14:13]
+seqSignal:30
+[INFO -- 2017-03-26 19:14:13]
+faultMode:1
+[INFO -- 2017-03-26 19:14:13]
+Backtrace BEGIN:
+#0  0x00007ffff7142890 in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1368
+#1  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#2  0x0000000000402286 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:151
+
+1363	in fileops.c
+
+Backtrace END
+Fliping value of field: alpha
+Memory content before bitflip:0x000x000x000x000x000x000xe00x3f
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe8a0
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000xe00x3a
+frame name: main
+symbol name: par_cpu
+symbol filename: main_check.c
+symbol line: 55
+value: {alpha = 4.1359030627651384e-25}
+value address: 0x7fffffffe8a0
+Type: The type is a structure.
+Type sizeof: 8
+Field name: alpha
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-26 19:14:13]
+Fault Injection Successful after 0.763164043427s

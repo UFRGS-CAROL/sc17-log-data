@@ -1,0 +1,78 @@
+[INFO -- 2017-03-05 19:19:05]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-05 19:19:05]
+Initialization strings:
+[INFO -- 2017-03-05 19:19:05]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-05 19:19:05]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 19:19:05]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 19:19:06]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 19:19:06]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 19:19:06]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-05 19:19:06]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-05 19:19:06]
+initSignal:40
+[INFO -- 2017-03-05 19:19:06]
+endSignal:49
+[INFO -- 2017-03-05 19:19:06]
+seqSignal:20
+[INFO -- 2017-03-05 19:19:06]
+faultMode:2
+[EXCEPTION -- 2017-03-05 19:19:51]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-05 19:19:51]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-05 19:19:51]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-05 19:19:51]
+pythonException: invalid frame
+[INFO -- 2017-03-05 19:19:51]
+Backtrace BEGIN:
+#0  0x00000000004703be in State::L__ZN5State21calc_refine_potentialERSt6vectorIiSaIiEERiS4__2618__par_loop0_2_39 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:2679
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe290 in ?? ()
+#3  0x00007fffffffe298 in ?? ()
+#4  0x00007fffffffe230 in ?? ()
+#5  0x00007fffffffe228 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2674	      duhalf1 = Hic-Hl;
+2675	      //duhalf2 = Uic-Ul;
+2676	
+2677	      state_t qmax = REFINE_NEG_THOUSAND;
+2678	
+2679	      state_t qpot = max(fabs(duplus1/Hic), fabs(duhalf1/Hic));
+2680	      if (qpot > qmax) qmax = qpot;
+2681	
+2682	      duminus1 = Hic-Hl;
+2683	      //duminus2 = Uic-Ul;
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x790x8f0xf6
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff68ff040
+address max offset: 4
+Memory content after  bitflip:0x970xdb0xee0x89
+frame name: State::L__ZN5State21calc_refine_potentialERSt6vectorIiSaIiEERiS4__2618__par_loop0_2_39
+symbol name: nrht
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 2589
+value: 0x7ffff68ff040
+value address: 0x7fffffffdc80
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-05 19:19:51]
+Fault Injection Successful after 45.7813360691s
+[INFO -- 2017-03-05 19:19:52]
+event type: exit
+[EXCEPTION -- 2017-03-05 19:19:52]
+exit code: no exit code available

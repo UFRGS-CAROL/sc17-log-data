@@ -1,0 +1,46 @@
+2016-10-28 17:01:18:Initialization strings:
+2016-10-28 17:01:19:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-28 17:01:19:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-28 17:01:19:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-28 17:01:19:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-28 17:01:19:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-28 17:01:19:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-28 17:01:19:Trying Fault Injection
+2016-10-28 17:01:19:Backtrace BEGIN:
+2016-10-28 17:01:19:#0  __GI___waitpid (pid=126148, stat_loc=stat_loc@entry=0x7fffffffe268, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000405ccc in update_timestamp () at ../../include/log_helper.c:107
+#3  start_log_file (benchmark_name=0x1ecc4 <error: Cannot access memory at address 0x1ecc4>, test_info=0x7fffffffe268 "") at ../../include/log_helper.c:196
+#4  0x0000000000401681 in main (argc=126148, argv=0x7fffffffe268) at hotspot_check.c:254
+
+2016-10-28 17:01:19:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-28 17:01:19:Backtrace END
+2016-10-28 17:01:19:Type: A floating point type.
+2016-10-28 17:01:19:Type sizeof: 4
+2016-10-28 17:01:19:Mem contents(hex):0x6f0x120x830x3c
+2016-10-28 17:01:19:base address to flip value: 0x4073a0 
+2016-10-28 17:01:19:address max offset: 4
+2016-10-28 17:01:19:Memory content before bitflip:0x6f0x120x830x3c
+2016-10-28 17:01:19:Memory content after  bitflip:0x6f0x120xc30x3c
+2016-10-28 17:01:19:Mem contents(hex):0x6f0x120xc30x3c
+2016-10-28 17:01:19:frame name: main
+2016-10-28 17:01:19:symbol name: chip_width
+2016-10-28 17:01:19:symbol filename: hotspot_check.c
+2016-10-28 17:01:19:symbol line: 34
+2016-10-28 17:01:19:value: 0.0238125008
+2016-10-28 17:01:19:value address: 0x4073a0 <chip_width>
+2016-10-28 17:01:19:Type: A floating point type.
+2016-10-28 17:01:19:Type sizeof: 4
+2016-10-28 17:01:19:Fault Injection Successful after 0.542498111725s
+2016-10-28 17:01:19:Fault Already Injected
+2016-10-28 17:01:21:Fault Already Injected
+2016-10-28 17:01:24:Fault Already Injected
+2016-10-28 17:01:25:Fault Already Injected
+2016-10-28 17:01:25:Fault Already Injected
+2016-10-28 17:01:26:Fault Already Injected
+2016-10-28 17:01:29:Fault Already Injected
+2016-10-28 17:01:31:Fault Already Injected
+2016-10-28 17:01:33:Fault Already Injected
+2016-10-28 17:01:34:event type: exit
+2016-10-28 17:01:34:exit code: 0

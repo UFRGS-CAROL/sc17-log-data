@@ -1,0 +1,58 @@
+[INFO -- 2017-03-08 06:09:47]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-08 06:09:47]
+Initialization strings:
+[INFO -- 2017-03-08 06:09:47]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-08 06:09:47]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 06:09:47]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 06:09:47]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 06:09:47]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 06:09:47]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-08 06:09:47]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-08 06:09:47]
+initSignal:15
+[INFO -- 2017-03-08 06:09:47]
+endSignal:20
+[INFO -- 2017-03-08 06:09:47]
+seqSignal:20
+[INFO -- 2017-03-08 06:09:47]
+faultMode:2
+[INFO -- 2017-03-08 06:10:09]
+Backtrace BEGIN:
+#0  0x00007ffff6b67990 in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe118) at vfprintf.c:1641
+#1  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#2  0x000000000054b5c5 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:470
+#3  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#4  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+1636	in vfprintf.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000xf00x3f
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffea08
+address max offset: 8
+Memory content after  bitflip:0x1e0x010x230xdc0x090xcc0xd70xda
+frame name: main
+symbol name: deltax_in
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 253
+value: -4.1238307047621923e+129
+value address: 0x7fffffffea08
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-08 06:10:09]
+Fault Injection Successful after 22.8268680573s
+[INFO -- 2017-03-08 06:10:46]
+event type: exit
+[INFO -- 2017-03-08 06:10:46]
+exit code: 0

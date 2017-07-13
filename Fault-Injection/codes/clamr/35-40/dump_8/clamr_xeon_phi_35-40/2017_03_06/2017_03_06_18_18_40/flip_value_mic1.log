@@ -1,0 +1,63 @@
+[INFO -- 2017-03-06 18:11:12]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 18:11:12]
+Initialization strings:
+[INFO -- 2017-03-06 18:11:13]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-06 18:11:13]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 18:11:13]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 18:11:13]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 18:11:13]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 18:11:13]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-06 18:11:13]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-06 18:11:13]
+initSignal:35
+[INFO -- 2017-03-06 18:11:13]
+endSignal:40
+[INFO -- 2017-03-06 18:11:13]
+seqSignal:20
+[INFO -- 2017-03-06 18:11:13]
+faultMode:0
+[EXCEPTION -- 2017-03-06 18:11:57]
+pythonException: invalid frame
+[INFO -- 2017-03-06 18:11:57]
+Backtrace BEGIN:
+#0  0x000000000051e437 in Mesh::refine_smooth (this=0x7ff0000000000000, mpot=..., icount=@0x70b8f4eb2d7bdc50: <error reading variable>, jcount=@0x7fffffffd600: -158339008) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1835
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x0000000000000000 in ?? ()
+
+1830	#ifdef _OPENMP
+1831	#pragma omp parallel for
+1832	#endif
+1833	   for(uint ic=0; ic<ncells; ic++) {
+1834	      int n1=0, n2=0, n3=0;
+1835	      mpot[ic] = mpot_old[ic];
+1836	      if (mpot_old[ic] >= 0) continue;
+1837	      if (mpot_old[ic] <= -1000000) continue;
+1838	      if ( is_upper_right(i[ic],j[ic]) ) {
+1839	         n1 = nbot[ic];
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x380x41
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffd530
+address max offset: 8
+Memory content after  bitflip:0x400x000x000x000x000x000x380x41
+frame name: Mesh::refine_smooth
+symbol name: my_ncells
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+symbol line: 1612
+value: 4699506211161112640
+value address: 0x7fffffffd530
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2017-03-06 18:11:57]
+Fault Injection Successful after 44.1805379391s

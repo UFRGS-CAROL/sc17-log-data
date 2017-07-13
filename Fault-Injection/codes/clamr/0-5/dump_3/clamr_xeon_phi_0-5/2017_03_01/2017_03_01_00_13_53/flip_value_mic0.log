@@ -1,0 +1,104 @@
+2017-03-01 00:11:39:Starting flip_value script
+2017-03-01 00:11:39:Initialization strings:
+2017-03-01 00:11:40:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-01 00:11:40:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 00:11:40:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 00:11:40:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 00:11:40:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 00:11:40:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 00:11:40:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 00:11:40:initSignal:0
+2017-03-01 00:11:40:endSignal:5
+2017-03-01 00:11:40:seqSignal:20
+2017-03-01 00:11:43:Backtrace BEGIN:
+2017-03-01 00:11:43:#0  0x000000000053b285 in hsfc2d (coord=0x7fffffffdfb8, nkey=2, key=0x7ffcc82ef000) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfc.c:96
+#1  0x000000000053a65d in hsfc2sort (N=264192, X=0x7ffd881b0010, Y=0x7ffd481a2010, ibase=0, Info=0x7ffd0809f010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:138
+#2  0x0000000000536b19 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#3  0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-03-01 00:11:43:91	    init = 1 ;
+92	  }
+93	
+94	  /* Zero out the key */
+95	
+96	  for ( i = 0 ; i < NKey ; ++i ) key[i] = 0 ;
+97	
+98	  order[0] = 0 ;
+99	  order[1] = 1 ;
+100	  reflect = ( 0 << 0 ) | ( 0 );
+
+2017-03-01 00:11:43:Backtrace END
+2017-03-01 00:11:48:Type: The type is an integer type.
+2017-03-01 00:11:48:Type sizeof: 4
+2017-03-01 00:11:48:Mem contents(hex):0xff0x7f0x000x00
+2017-03-01 00:11:48:Fault Mode: One bit-flip
+2017-03-01 00:11:48:base address to flip value: 0x7fffffffe05c
+2017-03-01 00:11:48:address max offset: 4
+2017-03-01 00:11:48:Memory content before bitflip:0xff0x7f0x000x00
+2017-03-01 00:11:48:Backtrace BEGIN:
+2017-03-01 00:11:48:#0  0x000000000053b285 in hsfc2d (coord=0x7fffffffdfb8, nkey=2, key=0x7ffcc82ef000) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfc.c:96
+#1  0x000000000053a65d in hsfc2sort (N=264192, X=0x7ffd881b0010, Y=0x7ffd481a2010, ibase=0, Info=0x7ffd0809f010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:138
+#2  0x0000000000536b19 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#3  0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-03-01 00:11:48:91	    init = 1 ;
+92	  }
+93	
+94	  /* Zero out the key */
+95	
+96	  for ( i = 0 ; i < NKey ; ++i ) key[i] = 0 ;
+97	
+98	  order[0] = 0 ;
+99	  order[1] = 1 ;
+100	  reflect = ( 0 << 0 ) | ( 0 );
+
+2017-03-01 00:11:48:Backtrace END
+2017-03-01 00:11:52:Type: The type is an integer type.
+2017-03-01 00:11:52:Type sizeof: 4
+2017-03-01 00:11:52:Mem contents(hex):0x000x000x000x00
+2017-03-01 00:11:52:Fault Mode: One bit-flip
+2017-03-01 00:11:52:base address to flip value: 0x7d0ab8 
+2017-03-01 00:11:52:address max offset: 4
+2017-03-01 00:11:52:Memory content before bitflip:0x000x000x000x00
+2017-03-01 00:11:53:Backtrace BEGIN:
+2017-03-01 00:11:53:#0  0x000000000053b285 in hsfc2d (coord=0x7fffffffdfb8, nkey=2, key=0x7ffcc82ef000) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfc.c:96
+#1  0x000000000053a65d in hsfc2sort (N=264192, X=0x7ffd881b0010, Y=0x7ffd481a2010, ibase=0, Info=0x7ffd0809f010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:138
+#2  0x0000000000536b19 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#3  0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-03-01 00:11:53:91	    init = 1 ;
+92	  }
+93	
+94	  /* Zero out the key */
+95	
+96	  for ( i = 0 ; i < NKey ; ++i ) key[i] = 0 ;
+97	
+98	  order[0] = 0 ;
+99	  order[1] = 1 ;
+100	  reflect = ( 0 << 0 ) | ( 0 );
+
+2017-03-01 00:11:53:Backtrace END
+2017-03-01 00:11:57:Type: The type is a structure.
+2017-03-01 00:11:57:Type sizeof: 24
+2017-03-01 00:11:57:Fliping value of field: std::_Vector_base<real_t, std::allocator<real_t> >
+2017-03-01 00:11:57:Type: The type is a structure.
+2017-03-01 00:11:57:Type sizeof: 24
+2017-03-01 00:11:57:Fliping value of field: _M_impl
+2017-03-01 00:11:57:Type: The type is a structure.
+2017-03-01 00:11:57:Type sizeof: 24
+2017-03-01 00:11:57:Fliping value of field: std::allocator<real_t>
+2017-03-01 00:11:57:Type: The type is a structure.
+2017-03-01 00:11:57:Type sizeof: 1
+2017-03-01 00:11:57:Fliping value of field: __gnu_cxx::new_allocator<real_t>
+2017-03-01 00:11:57:Type: The type is a structure.
+2017-03-01 00:11:57:Type sizeof: 1
+2017-03-01 00:11:57:Mem contents(hex):0x10
+2017-03-01 00:11:57:Fault Mode: One bit-flip
+2017-03-01 00:11:57:base address to flip value: 0x7fffffffe170
+2017-03-01 00:11:57:address max offset: 1
+2017-03-01 00:11:57:Memory content before bitflip:0x10
+2017-03-01 00:12:44:event type: exit
+2017-03-01 00:12:44:exit code: 0

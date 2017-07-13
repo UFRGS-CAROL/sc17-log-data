@@ -1,0 +1,71 @@
+[INFO -- 2017-03-10 20:28:52]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-10 20:28:52]
+Initialization strings:
+[INFO -- 2017-03-10 20:28:53]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-10 20:28:53]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 20:28:53]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 20:28:53]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-10 20:28:53]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-10 20:28:53]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-10 20:28:53]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-10 20:28:53]
+initSignal:35
+[INFO -- 2017-03-10 20:28:53]
+endSignal:40
+[INFO -- 2017-03-10 20:28:53]
+seqSignal:20
+[INFO -- 2017-03-10 20:28:53]
+faultMode:1
+[INFO -- 2017-03-10 20:29:43]
+Backtrace BEGIN:
+#0  0x000000000044ad23 in std::__fill_n_a<int*, unsigned long, int> (__first=0x15f544c, __n=266052, __value=@0x7fffffffe494: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:765
+#1  0x000000000044ac9e in std::fill_n<int*, unsigned long, int> (__first=0x1516b40, __n=266052, __value=@0x7fffffffe494: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:801
+#2  0x0000000000448bba in std::__uninitialized_fill_n<true>::__uninit_fill_n<int*, unsigned long, int> (__first=0x1516b40, __n=266052, __x=@0x7fffffffe494: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:220
+#3  0x000000000044ac56 in std::uninitialized_fill_n<int*, unsigned long, int> (__first=0x1516b40, __n=266052, __x=@0x7fffffffe494: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:246
+#4  0x000000000044ac1a in std::__uninitialized_fill_n_a<int*, unsigned long, int, int> (__first=0x1516b40, __n=266052, __x=@0x7fffffffe494: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:358
+#5  0x0000000000449b30 in std::vector<int, std::allocator<int> >::_M_fill_initialize (this=0x7fffffffe698, __n=266052, __value=@0x7fffffffe494: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:1301
+#6  0x00000000004496a4 in std::vector<int, std::allocator<int> >::vector (this=0x7fffffffe698, __n=266052, __value=@0x7fffffffe494: 0, __a=...) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:306
+#7  0x0000000000446163 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:476
+#8  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+760	    __gnu_cxx::__enable_if<__is_scalar<_Tp>::__value, _OutputIterator>::__type
+761	    __fill_n_a(_OutputIterator __first, _Size __n, const _Tp& __value)
+762	    {
+763	      const _Tp __tmp = __value;
+764	      for (__decltype(__n + 0) __niter = __n;
+765		   __niter > 0; --__niter, ++__first)
+766		*__first = __tmp;
+767	      return __first;
+768	    }
+769	
+
+Backtrace END
+Memory content before bitflip:0x510xe40x100x710x730x2a0x290x3f
+Fault Mode: Double bit-flip
+base address to flip value: 0x7d06f8 
+address max offset: 8
+Memory content after  bitflip:0x510xe40x100x710xf70x2a0x290x3f
+frame name: std::uninitialized_fill_n<int*, unsigned long, int>
+symbol name: cpu_time_partmeas
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 174
+value: 0.00019201536682248108
+value address: 0x7d06f8 <cpu_time_partmeas>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-10 20:29:43]
+Fault Injection Successful after 50.5539290905s
+[INFO -- 2017-03-10 20:29:55]
+event type: exit
+[INFO -- 2017-03-10 20:29:55]
+exit code: 0

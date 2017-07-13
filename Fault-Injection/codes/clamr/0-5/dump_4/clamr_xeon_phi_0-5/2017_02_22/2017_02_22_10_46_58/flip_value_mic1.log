@@ -1,0 +1,81 @@
+2017-02-22 10:45:53:Starting flip_value script
+2017-02-22 10:45:53:Initialization strings:
+2017-02-22 10:45:54:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-22 10:45:54:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 10:45:54:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 10:45:54:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-22 10:45:54:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-22 10:45:54:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-22 10:45:54:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-22 10:45:54:initSignal:0
+2017-02-22 10:45:54:endSignal:5
+2017-02-22 10:45:54:seqSignal:20
+2017-02-22 10:45:54:Backtrace BEGIN:
+2017-02-22 10:45:54:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec50, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec50) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec50) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x000000000000000b in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+2017-02-22 10:45:54:69	in dl-debug.c
+
+2017-02-22 10:45:54:Backtrace END
+2017-02-22 10:45:55:Type: The type is a pointer.
+2017-02-22 10:45:55:Type sizeof: 8
+2017-02-22 10:45:55:Fliping a bit of the pointer
+2017-02-22 10:45:55:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-22 10:45:55:Fault Mode: Zero bit-flip
+2017-02-22 10:45:55:base address to flip value: 0x7ffff7ffe038 
+2017-02-22 10:45:55:address max offset: 8
+2017-02-22 10:45:55:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-22 10:45:55:Backtrace BEGIN:
+2017-02-22 10:45:55:#0  syscall () at ../sysdeps/unix/sysv/linux/x86_64/syscall.S:38
+#1  0x00007ffff7916c8d in ?? ()
+#2  0x0000000000000040 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-02-22 10:45:55:33	in ../sysdeps/unix/sysv/linux/x86_64/syscall.S
+
+2017-02-22 10:45:55:Backtrace END
+2017-02-22 10:45:55:Backtrace BEGIN:
+2017-02-22 10:45:55:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd0cd8 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+2017-02-22 10:45:55:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-02-22 10:45:55:Backtrace END
+2017-02-22 10:45:59:Type: The type is an array.
+2017-02-22 10:45:59:Type sizeof: 12
+2017-02-22 10:45:59:Fliping array at pos: 2
+2017-02-22 10:45:59:Type: The type is an integer type.
+2017-02-22 10:45:59:Type sizeof: 4
+2017-02-22 10:45:59:Mem contents(hex):0x080x000x000x00
+2017-02-22 10:45:59:Fault Mode: Double bit-flip
+2017-02-22 10:45:59:base address to flip value: 0x7ffff6e8c2e8 
+2017-02-22 10:45:59:address max offset: 4
+2017-02-22 10:45:59:Memory content before bitflip:0x080x000x000x00
+2017-02-22 10:45:59:Memory content after  bitflip:0x080x000x090x00
+2017-02-22 10:45:59:Mem contents(hex):0x080x000x090x00
+2017-02-22 10:45:59:frame name: allocate_stack
+2017-02-22 10:45:59:symbol name: _thread_db_td_eventbuf_t_eventnum
+2017-02-22 10:45:59:symbol filename: ../nptl_db/structs.def
+2017-02-22 10:45:59:symbol line: 48
+2017-02-22 10:45:59:value: {32, 1, 589832}
+2017-02-22 10:45:59:value address: 0x7ffff6e8c2e0 <_thread_db_td_eventbuf_t_eventnum>
+2017-02-22 10:45:59:Type: The type is an array.
+2017-02-22 10:45:59:Type sizeof: 12
+2017-02-22 10:45:59:Field name: None
+2017-02-22 10:45:59:Field Type:
+2017-02-22 10:45:59:Type: A range type, that is, an integer type with bounds.
+2017-02-22 10:45:59:Type sizeof: 8
+2017-02-22 10:45:59:Type range: (0L, 2L)
+2017-02-22 10:45:59:Fault Injection Successful after 5.2255051136s
+2017-02-22 10:46:51:event type: exit
+2017-02-22 10:46:51:exit code: 0

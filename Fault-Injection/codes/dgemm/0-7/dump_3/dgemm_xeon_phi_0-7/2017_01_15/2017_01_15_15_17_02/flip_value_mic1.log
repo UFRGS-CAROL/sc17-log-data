@@ -1,0 +1,75 @@
+2017-01-15 15:14:57:Starting flip_value script
+2017-01-15 15:14:57:Initialization strings:
+2017-01-15 15:14:58:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-15 15:14:58:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-15 15:14:58:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-15 15:14:58:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-15 15:14:58:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-15 15:14:58:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-15 15:14:58:initSignal:0
+2017-01-15 15:14:58:endSignal:7
+2017-01-15 15:14:58:seqSignal:15
+2017-01-15 15:14:58:Backtrace BEGIN:
+2017-01-15 15:14:58:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebb0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebb0) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffebb0) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000008 in ?? ()
+#7  0x00007fffffffedb9 in ?? ()
+#8  0x00007fffffffedf4 in ?? ()
+#9  0x00007fffffffedf8 in ?? ()
+#10 0x00007fffffffedfd in ?? ()
+#11 0x00007fffffffee00 in ?? ()
+#12 0x00007fffffffee3c in ?? ()
+#13 0x00007fffffffee78 in ?? ()
+#14 0x00007fffffffeecb in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+2017-01-15 15:14:58:69	in dl-debug.c
+
+2017-01-15 15:14:58:Backtrace END
+2017-01-15 15:14:58:Type: The type is a structure.
+2017-01-15 15:14:58:Type sizeof: 40
+2017-01-15 15:14:58:Fliping value of field: r_map
+2017-01-15 15:14:58:Type: The type is a pointer.
+2017-01-15 15:14:58:Type sizeof: 8
+2017-01-15 15:14:58:Fliping a bit of the pointer
+2017-01-15 15:14:58:Mem contents(hex):0x680xe10xff0xf70xff0x7f0x000x00
+2017-01-15 15:14:58:base address to flip value: 0x7ffff7ffe148 
+2017-01-15 15:14:58:address max offset: 8
+2017-01-15 15:14:58:Memory content before bitflip:0x680xe10xff0xf70xff0x7f0x000x00
+2017-01-15 15:14:58:Memory content after  bitflip:0x680xe10xff0xb70xff0x7f0x000x00
+2017-01-15 15:14:58:Mem contents(hex):0x680xe10xff0xb70xff0x7f0x000x00
+2017-01-15 15:14:58:frame name: __GI__dl_debug_state
+2017-01-15 15:14:58:symbol name: _r_debug
+2017-01-15 15:14:58:symbol filename: dl-debug.c
+2017-01-15 15:14:58:symbol line: 37
+2017-01-15 15:14:58:value: {r_version = 1, r_map = 0x7fffb7ffe168, r_brk = 140737351959488, r_state = RT_CONSISTENT, r_ldbase = 140737351897088}
+2017-01-15 15:14:58:value address: 0x7ffff7ffe140 <_r_debug>
+2017-01-15 15:14:58:Type: The type is a structure.
+2017-01-15 15:14:58:Type sizeof: 40
+2017-01-15 15:14:58:Field name: r_version
+2017-01-15 15:14:58:Field Type:
+2017-01-15 15:14:58:Type: The type is an integer type.
+2017-01-15 15:14:58:Type sizeof: 4
+2017-01-15 15:14:58:Field name: r_map
+2017-01-15 15:14:58:Field Type:
+2017-01-15 15:14:58:Type: The type is a pointer.
+2017-01-15 15:14:58:Type sizeof: 8
+2017-01-15 15:14:58:Field name: r_brk
+2017-01-15 15:14:58:Field Type:
+2017-01-15 15:14:58:Type: The type is an integer type.
+2017-01-15 15:14:58:Type sizeof: 8
+2017-01-15 15:14:58:Field name: r_state
+2017-01-15 15:14:58:Field Type:
+2017-01-15 15:14:58:Type: The type is an enum.
+2017-01-15 15:14:58:Type sizeof: 4
+2017-01-15 15:14:58:Field name: r_ldbase
+2017-01-15 15:14:58:Field Type:
+2017-01-15 15:14:58:Type: The type is an integer type.
+2017-01-15 15:14:58:Type sizeof: 8
+2017-01-15 15:14:58:Fault Injection Successful after 0.811024904251s
+2017-01-15 15:15:38:event type: exit
+2017-01-15 15:15:38:exit code: 0

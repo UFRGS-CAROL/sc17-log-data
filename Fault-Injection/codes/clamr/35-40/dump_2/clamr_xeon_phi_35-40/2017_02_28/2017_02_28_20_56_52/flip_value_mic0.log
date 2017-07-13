@@ -1,0 +1,86 @@
+2017-02-28 20:53:34:Starting flip_value script
+2017-02-28 20:53:34:Initialization strings:
+2017-02-28 20:53:35:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 20:53:35:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 20:53:35:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 20:53:35:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 20:53:35:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 20:53:35:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 20:53:35:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 20:53:35:initSignal:35
+2017-02-28 20:53:35:endSignal:40
+2017-02-28 20:53:35:seqSignal:20
+2017-02-28 20:54:14:Backtrace BEGIN:
+2017-02-28 20:54:14:#0  0x0000000000454296 in State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1399
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffdac0 in ?? ()
+#3  0x00007fffffffdab8 in ?? ()
+#4  0x00007fffffffdad0 in ?? ()
+#5  0x00007fffffffdad8 in ?? ()
+#6  0x00007fffffffda38 in ?? ()
+#7  0x00007fffffffda70 in ?? ()
+#8  0x00007fffffffda68 in ?? ()
+#9  0x00007fffffffdba8 in ?? ()
+#10 0x00007fffffffdbc8 in ?? ()
+#11 0x00007fffffffdbe8 in ?? ()
+#12 0x00007fffffffda30 in ?? ()
+#13 0x00000000000000e4 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2017-02-28 20:54:14:1394	
+1395	      real_t Hxplus  = U_halfstep(deltaT, Hic, Hr, HXFLUXIC, HXFLUXNR,
+1396	                           dxic, dxr, dxic, dxr, SQR(dxic), SQR(dxr));
+1397	      real_t Uxplus  = U_halfstep(deltaT, Uic, Ur, UXFLUXIC, UXFLUXNR,
+1398	                           dxic, dxr, dxic, dxr, SQR(dxic), SQR(dxr));
+1399	      real_t Vxplus  = U_halfstep(deltaT, Vic, Vr, UVFLUXIC, UVFLUXNR,
+1400	                           dxic, dxr, dxic, dxr, SQR(dxic), SQR(dxr));
+1401	
+1402	      real_t Hyminus = U_halfstep(deltaT, Hb, Hic, HYFLUXNB, HYFLUXIC,
+1403	                           dyb, dyic, dyb, dyic, SQR(dyb), SQR(dyic));
+
+2017-02-28 20:54:14:Backtrace END
+2017-02-28 20:54:43:Type: A floating point type.
+2017-02-28 20:54:43:Type sizeof: 8
+2017-02-28 20:54:43:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-28 20:54:43:Fault Mode: Random bit-flip
+2017-02-28 20:54:43:base address to flip value: 0x7fffffffce78
+2017-02-28 20:54:43:address max offset: 8
+2017-02-28 20:54:43:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-28 20:54:43:Backtrace BEGIN:
+2017-02-28 20:54:43:#0  0x0000000000454296 in State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1399
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffdac0 in ?? ()
+#3  0x00007fffffffdab8 in ?? ()
+#4  0x00007fffffffdad0 in ?? ()
+#5  0x00007fffffffdad8 in ?? ()
+#6  0x00007fffffffda38 in ?? ()
+#7  0x00007fffffffda70 in ?? ()
+#8  0x00007fffffffda68 in ?? ()
+#9  0x00007fffffffdba8 in ?? ()
+#10 0x00007fffffffdbc8 in ?? ()
+#11 0x00007fffffffdbe8 in ?? ()
+#12 0x00007fffffffda30 in ?? ()
+#13 0x00000000000000e4 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2017-02-28 20:54:43:1394	
+1395	      real_t Hxplus  = U_halfstep(deltaT, Hic, Hr, HXFLUXIC, HXFLUXNR,
+1396	                           dxic, dxr, dxic, dxr, SQR(dxic), SQR(dxr));
+1397	      real_t Uxplus  = U_halfstep(deltaT, Uic, Ur, UXFLUXIC, UXFLUXNR,
+1398	                           dxic, dxr, dxic, dxr, SQR(dxic), SQR(dxr));
+1399	      real_t Vxplus  = U_halfstep(deltaT, Vic, Vr, UVFLUXIC, UVFLUXNR,
+1400	                           dxic, dxr, dxic, dxr, SQR(dxic), SQR(dxr));
+1401	
+1402	      real_t Hyminus = U_halfstep(deltaT, Hb, Hic, HYFLUXNB, HYFLUXIC,
+1403	                           dyb, dyic, dyb, dyic, SQR(dyb), SQR(dyic));
+
+2017-02-28 20:54:43:Backtrace END
+2017-02-28 20:54:47:Type: A floating point type.
+2017-02-28 20:54:47:Type sizeof: 8
+2017-02-28 20:54:47:Mem contents(hex):0x000x000x000x000x000x000x1c0x40
+2017-02-28 20:54:47:Fault Mode: Random bit-flip
+2017-02-28 20:54:47:base address to flip value: 0x7fffffffcce0
+2017-02-28 20:54:47:address max offset: 8
+2017-02-28 20:54:47:Memory content before bitflip:0x000x000x000x000x000x000x1c0x40
+2017-02-28 20:54:58:event type: exit
+2017-02-28 20:54:58:exit code: 0

@@ -1,0 +1,57 @@
+[INFO -- 2017-02-26 10:42:45]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 10:42:45]
+Initialization strings:
+[INFO -- 2017-02-26 10:42:45]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-26 10:42:45]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 10:42:45]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 10:42:45]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 10:42:45]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 10:42:45]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 10:42:45]
+initSignal:3
+[INFO -- 2017-02-26 10:42:45]
+endSignal:6
+[INFO -- 2017-02-26 10:42:45]
+seqSignal:15
+[INFO -- 2017-02-26 10:42:45]
+faultMode:3
+[INFO -- 2017-02-26 10:42:50]
+Backtrace BEGIN:
+#0  __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "323.375510\n", n=255, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:92
+#1  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "323.375510\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#2  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe640 "323.375510\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#3  0x0000000000404538 in read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:202
+#4  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+87	in iogetline.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe5d8
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: __GI__IO_getline_info
+symbol name: eof
+symbol filename: iogetline.c
+symbol line: 57
+value: 0x0
+value address: 0x7fffffffe5d8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-26 10:42:50]
+Fault Injection Successful after 5.11698508263s
+[INFO -- 2017-02-26 10:43:10]
+event type: exit
+[INFO -- 2017-02-26 10:43:10]
+exit code: 0

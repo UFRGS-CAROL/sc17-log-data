@@ -1,0 +1,88 @@
+2016-10-26 19:40:01:Initialization strings:
+2016-10-26 19:40:01:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-26 19:40:01:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-26 19:40:01:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-26 19:40:01:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-26 19:40:01:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-26 19:40:01:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-26 19:40:01:Trying Fault Injection
+2016-10-26 19:40:01:Inferior PID: 75444
+2016-10-26 19:40:01:Inferior is valid: True
+2016-10-26 19:40:01:Inferior #threads: 1
+2016-10-26 19:40:01:Backtrace BEGIN:
+2016-10-26 19:40:01:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec30, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec30) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec30) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000006 in ?? ()
+#7  0x00007fffffffee22 in ?? ()
+#8  0x00007fffffffee52 in ?? ()
+#9  0x00007fffffffee58 in ?? ()
+#10 0x00007fffffffee5b in ?? ()
+#11 0x00007fffffffee5f in ?? ()
+#12 0x00007fffffffee9c in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2016-10-26 19:40:01:69	in dl-debug.c
+
+2016-10-26 19:40:01:Backtrace END
+2016-10-26 19:40:02:Thread name: None
+2016-10-26 19:40:02:Thread num: 1
+2016-10-26 19:40:02:Thread ptid: (75444, 75444, 0)
+2016-10-26 19:40:02:bitFlip function
+2016-10-26 19:40:02:Type: The type is a pointer.
+2016-10-26 19:40:02:Type sizeof: 8
+2016-10-26 19:40:02:Error gdbException(frameFlip): Attempt to dereference a generic pointer.
+2016-10-26 19:40:02:Fault Injection Failed after 1.04714107513s
+2016-10-26 19:40:02:Trying Fault Injection
+2016-10-26 19:40:02:Inferior PID: 75444
+2016-10-26 19:40:02:Inferior is valid: True
+2016-10-26 19:40:02:Inferior #threads: 1
+2016-10-26 19:40:02:Backtrace BEGIN:
+2016-10-26 19:40:02:#0  __GI___waitpid (pid=75456, stat_loc=stat_loc@entry=0x7fffffffe5e8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff6d9d41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x000000000040648c in update_timestamp () at ../../include/log_helper.c:108
+#3  start_log_file (benchmark_name=0x126c0 <error: Cannot access memory at address 0x126c0>, test_info=0x7fffffffe5e8 "") at ../../include/log_helper.c:197
+#4  0x00000000004014df in runTest (argc=<optimized out>, argv=<optimized out>) at needle_check.cpp:294
+#5  main (argc=75456, argv=0x7fffffffe5e8) at needle_check.cpp:114
+
+2016-10-26 19:40:02:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-26 19:40:02:Backtrace END
+2016-10-26 19:40:02:Thread name: None
+2016-10-26 19:40:02:Thread num: 1
+2016-10-26 19:40:02:Thread ptid: (75444, 75444, 0)
+2016-10-26 19:40:02:bitFlip function
+2016-10-26 19:40:02:Type: The type is an array.
+2016-10-26 19:40:02:Type sizeof: 200
+2016-10-26 19:40:02:Fliping array at pos: 33
+2016-10-26 19:40:02:bitFlip function
+2016-10-26 19:40:02:Type: The type is an integer type.
+2016-10-26 19:40:02:Type sizeof: 1
+2016-10-26 19:40:02:Mem contents(hex):0x00
+2016-10-26 19:40:02:base address to flip value: 0x60a3a1  
+2016-10-26 19:40:02:address max offset: 1
+2016-10-26 19:40:02:Memory content before bitflip:0x00
+2016-10-26 19:40:02:Memory content after  bitflip:0x20
+2016-10-26 19:40:02:Mem contents(hex):0x20
+2016-10-26 19:40:02:frame name: start_log_file
+2016-10-26 19:40:02:symbol name: log_file_name
+2016-10-26 19:40:02:symbol filename: ../../include/log_helper.c
+2016-10-26 19:40:02:symbol line: 53
+2016-10-26 19:40:02:value: '\000' <repeats 33 times>, " ", '\000' <repeats 165 times>
+2016-10-26 19:40:02:value address: 0x60a380 <log_file_name>
+2016-10-26 19:40:02:Type: The type is an array.
+2016-10-26 19:40:02:Type sizeof: 200
+2016-10-26 19:40:02:Field name: None
+2016-10-26 19:40:02:Field Type:
+2016-10-26 19:40:02:Type: A range type, that is, an integer type with bounds.
+2016-10-26 19:40:02:Type sizeof: 1
+2016-10-26 19:40:02:Type range: (0L, 199L)
+2016-10-26 19:40:02:Fault Injection Successful after 1.17036795616s
+2016-10-26 19:40:04:Fault Already Injected
+2016-10-26 19:40:08:Fault Already Injected
+2016-10-26 19:40:10:Fault Already Injected
+2016-10-26 19:40:15:event type: exit
+2016-10-26 19:40:15:exit code: 0

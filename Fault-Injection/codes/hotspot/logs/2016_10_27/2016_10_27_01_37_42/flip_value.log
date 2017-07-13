@@ -1,0 +1,58 @@
+2016-10-27 01:37:21:Initialization strings:
+2016-10-27 01:37:21:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-27 01:37:21:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-27 01:37:21:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-27 01:37:21:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-27 01:37:21:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-27 01:37:21:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-27 01:37:21:Trying Fault Injection
+2016-10-27 01:37:21:Backtrace BEGIN:
+2016-10-27 01:37:21:#0  _IO_no_init (fp=fp@entry=0x7fffffffe3c0, flags=flags@entry=32768, orientation=orientation@entry=-1, wd=wd@entry=0x0, jmp=jmp@entry=0x0) at genops.c:643
+#1  0x00007ffff71406b5 in _IO_vsnprintf (string=0x7fffffffe716 "", maxlen=<optimized out>, format=0x407168 "simIter:%d gridSize:%dx%d", args=args@entry=0x7fffffffe528) at vsnprintf.c:115
+#2  0x00007ffff711ead4 in __snprintf (s=<optimized out>, maxlen=<optimized out>, format=<optimized out>) at snprintf.c:33
+#3  0x000000000040166f in main (argc=-7232, argv=0x8000) at hotspot_check.c:253
+
+2016-10-27 01:37:21:638	in genops.c
+
+2016-10-27 01:37:21:Backtrace END
+2016-10-27 01:37:22:Type: The type is a structure.
+2016-10-27 01:37:22:Type sizeof: 304
+2016-10-27 01:37:22:Fliping value of field: overflow_buf
+2016-10-27 01:37:22:Type: The type is an array.
+2016-10-27 01:37:22:Type sizeof: 64
+2016-10-27 01:37:22:Fliping array at pos: 57
+2016-10-27 01:37:22:Type: The type is an integer type.
+2016-10-27 01:37:22:Type sizeof: 1
+2016-10-27 01:37:22:Mem contents(hex):0x60
+2016-10-27 01:37:22:base address to flip value: 0x7fffffffe4e9 
+2016-10-27 01:37:22:address max offset: 1
+2016-10-27 01:37:22:Memory content before bitflip:0x60
+2016-10-27 01:37:22:Memory content after  bitflip:0xe0
+2016-10-27 01:37:22:Mem contents(hex):0xe0
+2016-10-27 01:37:22:frame name: _IO_vsnprintf
+2016-10-27 01:37:22:symbol name: sf
+2016-10-27 01:37:22:symbol filename: vsnprintf.c
+2016-10-27 01:37:22:symbol line: 101
+2016-10-27 01:37:22:value: {f = {_sbf = {_f = {_flags = 0, _IO_read_ptr = 0x1 <error: Cannot access memory at address 0x1>, _IO_read_end = 0x7fffffffe520 "", _IO_read_base = 0x7ffff7ffe4c0 " \344\377\367\377\177", _IO_write_base = 0x0, _IO_write_ptr = 0x7fffffffe548 "\210\023\016\367\377\177", _IO_write_end = 0x7ffff7ff86a0 "-\v@", _IO_buf_base = 0x7ffff7de68cc <_dl_lookup_symbol_x+348> "H\203\304\060\203", <incomplete sequence \370>, _IO_buf_end = 0x5 <error: Cannot access memory at address 0x5>, _IO_save_base = 0x7ffff7ff86a0 "-\v@", _IO_backup_base = 0x1 <error: Cannot access memory at address 0x1>, _IO_save_end = 0x0, _markers = 0x1, _chain = 0x7ffff7ffe168, _fileno = 0, _flags2 = 0, _old_offset = 0, _cur_column = 0, _vtable_offset = 0 '\000', _shortbuf = "", _lock = 0x0, _offset = 140737488348304, _codecvt = 0x100000000, _wide_data = 0x7ffff7ffe168, _freeres_list = 0x7fffffffe480, _freeres_buf = 0x400b00, _freeres_size = 3193449721, _mode = 91816454, _unused2 = '\000' <repeats 12 times>, "\210\023\016\367\377\177\000"}, vtable = 0x7ffff7ff99a0}, _s = {_allocate_buffer = 0x0, _free_buffer = 0x0}}, overflow_buf = '\000' <repeats 48 times>, "\377\377\377\377\000\000\000\000K\340\035\367\377\177\000"}
+2016-10-27 01:37:22:value address: 0x7fffffffe3c0
+2016-10-27 01:37:22:Type: The type is a structure.
+2016-10-27 01:37:22:Type sizeof: 304
+2016-10-27 01:37:22:Field name: f
+2016-10-27 01:37:22:Field Type:
+2016-10-27 01:37:22:Type: The type is a structure.
+2016-10-27 01:37:22:Type sizeof: 240
+2016-10-27 01:37:22:Field name: overflow_buf
+2016-10-27 01:37:22:Field Type:
+2016-10-27 01:37:22:Type: The type is an array.
+2016-10-27 01:37:22:Type sizeof: 64
+2016-10-27 01:37:22:Fault Injection Successful after 1.04965996742s
+2016-10-27 01:37:25:Fault Already Injected
+2016-10-27 01:37:26:Fault Already Injected
+2016-10-27 01:37:27:Fault Already Injected
+2016-10-27 01:37:27:Fault Already Injected
+2016-10-27 01:37:31:Fault Already Injected
+2016-10-27 01:37:32:Fault Already Injected
+2016-10-27 01:37:34:Fault Already Injected
+2016-10-27 01:37:34:Fault Already Injected
+2016-10-27 01:37:36:event type: exit
+2016-10-27 01:37:36:exit code: 0

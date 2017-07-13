@@ -1,0 +1,42 @@
+2017-03-02 02:34:47:Starting flip_value script
+2017-03-02 02:34:47:Initialization strings:
+2017-03-02 02:34:47:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-02 02:34:47:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 02:34:47:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 02:34:47:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-02 02:34:47:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-02 02:34:47:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-03-02 02:34:47:initSignal:0
+2017-03-02 02:34:47:endSignal:3
+2017-03-02 02:34:47:seqSignal:30
+2017-03-02 02:34:48:Backtrace BEGIN:
+2017-03-02 02:34:48:#0  0x00007ffff71388d0 in __GI__IO_fread (buf=0x7ffff4d75290, size=1, count=8, fp=0x60e1c0) at iofread.c:41
+#1  0x00000000004025ad in main (argc=7, argv=0x7fffffffebc8) at main_check.c:179
+
+2017-03-02 02:34:48:36	in iofread.c
+
+2017-03-02 02:34:48:Backtrace END
+2017-03-02 02:34:48:Type: The type is a pointer.
+2017-03-02 02:34:48:Type sizeof: 8
+2017-03-02 02:34:48:Fliping a bit of the value pointed by a pointer
+2017-03-02 02:34:48:Type: The type is a pointer.
+2017-03-02 02:34:48:Type sizeof: 8
+2017-03-02 02:34:48:Fliping a bit of the pointer
+2017-03-02 02:34:48:Mem contents(hex):0xb70xed0xff0xff0xff0x7f0x000x00
+2017-03-02 02:34:48:Fault Mode: Single bit-flip
+2017-03-02 02:34:48:base address to flip value: 0x7fffffffebc8
+2017-03-02 02:34:48:address max offset: 8
+2017-03-02 02:34:48:Memory content before bitflip:0xb70xed0xff0xff0xff0x7f0x000x00
+2017-03-02 02:34:48:Memory content after  bitflip:0xf70xed0xff0xff0xff0x7f0x000x00
+2017-03-02 02:34:48:Mem contents(hex):0xf70xed0xff0xff0xff0x7f0x000x00
+2017-03-02 02:34:48:frame name: main
+2017-03-02 02:34:48:symbol name: argv
+2017-03-02 02:34:48:symbol filename: main_check.c
+2017-03-02 02:34:48:symbol line: 43
+2017-03-02 02:34:48:value: 0x7fffffffebc8
+2017-03-02 02:34:48:value address: 0x7fffffffe828
+2017-03-02 02:34:48:Type: The type is a pointer.
+2017-03-02 02:34:48:Type sizeof: 8
+2017-03-02 02:34:48:Fault Injection Successful after 1.70537495613s
+2017-03-02 02:35:05:event type: exit
+2017-03-02 02:35:05:exit code: 0

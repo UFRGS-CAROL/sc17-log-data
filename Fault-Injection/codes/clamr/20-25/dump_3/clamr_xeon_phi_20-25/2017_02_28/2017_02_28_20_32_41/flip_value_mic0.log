@@ -1,0 +1,61 @@
+2017-02-28 20:29:32:Starting flip_value script
+2017-02-28 20:29:32:Initialization strings:
+2017-02-28 20:29:33:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 20:29:33:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 20:29:33:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 20:29:33:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 20:29:33:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 20:29:33:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 20:29:33:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 20:29:33:initSignal:20
+2017-02-28 20:29:33:endSignal:25
+2017-02-28 20:29:33:seqSignal:20
+2017-02-28 20:29:53:Backtrace BEGIN:
+2017-02-28 20:29:53:#0  _IO_new_file_xsputn (f=0x1922050, data=<optimized out>, n=1) at fileops.c:1315
+#1  0x00007ffff6b677b3 in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe118) at vfprintf.c:1641
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b5c5 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:470
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-28 20:29:53:1310	in fileops.c
+
+2017-02-28 20:29:53:Backtrace END
+2017-02-28 20:29:59:Type: The type is an integer type.
+2017-02-28 20:29:59:Type sizeof: 4
+2017-02-28 20:29:59:Mem contents(hex):0x010x000x000x00
+2017-02-28 20:29:59:Fault Mode: Zero bit-flip
+2017-02-28 20:29:59:base address to flip value: 0x7fffffffe928
+2017-02-28 20:29:59:address max offset: 4
+2017-02-28 20:29:59:Memory content before bitflip:0x010x000x000x00
+2017-02-28 20:29:59:Backtrace BEGIN:
+2017-02-28 20:29:59:#0  _IO_new_file_xsputn (f=0x1922050, data=<optimized out>, n=1) at fileops.c:1315
+#1  0x00007ffff6b677b3 in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe118) at vfprintf.c:1641
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b5c5 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:470
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-28 20:29:59:1310	in fileops.c
+
+2017-02-28 20:29:59:Backtrace END
+2017-02-28 20:30:05:Type: A floating point type.
+2017-02-28 20:30:05:Type sizeof: 4
+2017-02-28 20:30:05:Mem contents(hex):0x000x800x800x43
+2017-02-28 20:30:05:Fault Mode: Single bit-flip
+2017-02-28 20:30:05:base address to flip value: 0x7d0bc8 
+2017-02-28 20:30:05:address max offset: 4
+2017-02-28 20:30:05:Memory content before bitflip:0x000x800x800x43
+2017-02-28 20:30:05:Memory content after  bitflip:0x400x800x800x43
+2017-02-28 20:30:05:Mem contents(hex):0x400x800x800x43
+2017-02-28 20:30:05:frame name: write_graphics_info
+2017-02-28 20:30:05:symbol name: graphics_xmax
+2017-02-28 20:30:05:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c
+2017-02-28 20:30:05:symbol line: 188
+2017-02-28 20:30:05:value: 257.001953
+2017-02-28 20:30:05:value address: 0x7d0bc8 <graphics_xmax>
+2017-02-28 20:30:05:Type: A floating point type.
+2017-02-28 20:30:05:Type sizeof: 4
+2017-02-28 20:30:05:Fault Injection Successful after 32.2912089825s
+2017-02-28 20:30:33:event type: exit
+2017-02-28 20:30:33:exit code: 0

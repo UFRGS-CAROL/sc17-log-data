@@ -1,0 +1,74 @@
+[INFO -- 2017-03-23 09:51:05]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-23 09:51:05]
+Initialization strings:
+[INFO -- 2017-03-23 09:51:05]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-23 09:51:05]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-23 09:51:05]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-23 09:51:05]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-23 09:51:05]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-23 09:51:05]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-03-23 09:51:05]
+initSignal:6
+[INFO -- 2017-03-23 09:51:05]
+endSignal:8
+[INFO -- 2017-03-23 09:51:05]
+seqSignal:30
+[INFO -- 2017-03-23 09:51:05]
+faultMode:0
+[EXCEPTION -- 2017-03-23 09:51:16]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-23 09:51:16]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-23 09:51:16]
+pythonException: invalid frame
+[INFO -- 2017-03-23 09:51:16]
+Backtrace BEGIN:
+#0  0x00000000004033c5 in L_main_130__par_loop0_2_0 () at lud_check.c:134
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x0000000000000000 in ?? ()
+
+129	    int i, host_errors = 0;
+130	#pragma omp parallel for reduction(+:host_errors)
+131		for ( i = 0; i < matrix_dim; i++) {
+132			int j;
+133			for ( j = 0; j < matrix_dim; j++) {
+134	                	if ((fabs((m[i + matrix_dim * j] - gold[i + matrix_dim * j]) / m[i + matrix_dim * j]) > 0.0000000001) || (fabs((m[i + matrix_dim * j] - gold[i + matrix_dim * j]) / gold[i + matrix_dim * j]) > 0.0000000001)) {
+135				//if (m[i + matrix_dim * j] != gold[i + matrix_dim * j]) {
+136					char error_detail[200];
+137					sprintf(error_detail," p: [%d, %d], r: %1.16e, e: %1.16e", i, j, m[i + matrix_dim * j], gold[i + matrix_dim * j]);
+138					host_errors++;
+
+Backtrace END
+Fliping array at pos: 50
+Memory content before bitflip:0x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffe14a 
+address max offset: 1
+Memory content after  bitflip:0x08
+frame name: L_main_130__par_loop0_2_0
+symbol name: test_info
+symbol filename: lud_check.c
+symbol line: 116
+value: "\377\377\377\377\000\000\000\000\000\000\000\000\377\177\000\000f\377\377\377\377\377\377\377\000\000\000\000\000\000\000\000\240\341\377\377\377\177\000\000(\230\377\367\377\177\000\000\000\000\b\000\002\000\000\000\313V\021\367\377\177\000\000\000\000\000\000\000\000\000\000\377\377\377\377\377\377\377\377\330\341\377\377\377\177\000\000\070L\r\367\377\177\000\000\020`\336\367\377\177\000\000Pz@\000\000\000\000\000\330\027\016\000\016\000\000\000\240\231\377\367\377\177\000\000\001\000\000\000,\000\000\000jz@\000\000\000\000\000\000\365\003\000\000\000\000\000\300\341\377\377\377\177\000\000\\\r@\000\000\000\000\000i\305\067\024>K\031@(\006@\000\000\000\000\000(\342\377\377\377\177\000\000\377\377\377\377\000\000\000"
+value address: 0x7fffffffe118
+Type: The type is an array.
+Type sizeof: 200
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 199L)
+
+[INFO -- 2017-03-23 09:51:16]
+Fault Injection Successful after 11.9066998959s
+[INFO -- 2017-03-23 09:51:18]
+event type: exit
+[INFO -- 2017-03-23 09:51:18]
+exit code: 0

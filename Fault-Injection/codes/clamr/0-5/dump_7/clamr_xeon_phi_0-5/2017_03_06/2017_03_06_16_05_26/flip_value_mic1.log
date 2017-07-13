@@ -1,0 +1,67 @@
+[INFO -- 2017-03-06 16:04:21]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 16:04:21]
+Initialization strings:
+[INFO -- 2017-03-06 16:04:22]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-06 16:04:22]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 16:04:22]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 16:04:22]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 16:04:22]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 16:04:22]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-06 16:04:22]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-06 16:04:22]
+initSignal:0
+[INFO -- 2017-03-06 16:04:22]
+endSignal:5
+[INFO -- 2017-03-06 16:04:22]
+seqSignal:20
+[INFO -- 2017-03-06 16:04:22]
+faultMode:0
+[INFO -- 2017-03-06 16:04:30]
+Backtrace BEGIN:
+#0  0x000000000053b2d3 in hsfc2d (coord=0x7fffffffdfb8, nkey=2, key=0x7ffcc81bd39c) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfc.c:103
+#1  0x000000000053a65d in hsfc2sort (N=264192, X=0x7ffd881b0010, Y=0x7ffd481a2010, ibase=0, Info=0x7ffd0809f010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:138
+#2  0x0000000000536b19 in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#3  0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+98	  order[0] = 0 ;
+99	  order[1] = 1 ;
+100	  reflect = ( 0 << 0 ) | ( 0 );
+101	
+102	  for ( i = 1 ; i <= NBits ; i++ ) {
+103	    const unsigned s = MaxBits - i ;
+104	    const unsigned c = gray_inv[ reflect ^ (
+105	      ( ( ( coord[0] >> s ) & 01 ) << order[0] ) |
+106	      ( ( ( coord[1] >> s ) & 01 ) << order[1] ) ) ];
+107	     
+
+Backtrace END
+Memory content before bitflip:0x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7d0abe 
+address max offset: 1
+Memory content after  bitflip:0x08
+frame name: Mesh::init
+symbol name: iversion_flag
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+symbol line: 146
+value: 8
+value address: 0x7d0abe <iversion_flag>
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2017-03-06 16:04:30]
+Fault Injection Successful after 8.4234418869s
+[INFO -- 2017-03-06 16:05:20]
+event type: exit
+[INFO -- 2017-03-06 16:05:20]
+exit code: 0

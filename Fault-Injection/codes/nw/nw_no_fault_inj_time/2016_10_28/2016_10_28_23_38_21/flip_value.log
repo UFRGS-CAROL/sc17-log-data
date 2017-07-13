@@ -1,0 +1,93 @@
+2016-10-28 23:36:54:Initialization strings:
+2016-10-28 23:36:54:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-28 23:36:54:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-28 23:36:54:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-28 23:36:54:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-28 23:36:54:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-28 23:36:54:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-28 23:36:55:Trying Fault Injection
+2016-10-28 23:36:55:Inferior PID: 108934
+2016-10-28 23:36:55:Inferior is valid: True
+2016-10-28 23:36:55:Inferior #threads: 1
+2016-10-28 23:36:55:Backtrace BEGIN:
+2016-10-28 23:36:55:#0  sysmalloc (av=0x7ffff70b2aa0 <main_arena>, nb=72720) at malloc.c:2713
+#1  _int_malloc (av=av@entry=0x7ffff70b2aa0 <main_arena>, bytes=bytes@entry=72704) at malloc.c:3791
+#2  0x00007ffff6dd807b in __GI___libc_malloc (bytes=72704) at malloc.c:2892
+#3  0x00007ffff7572cdd in pool (this=0x7ffff78573e0 <(anonymous namespace)::emergency_pool>) at /sandbox/build/tmp/tmp/work/k1om-mpss-linux/gcc-runtime-5.1.1+mpss3.7-1/gcc-5.1.1+mpss3.7/libstdc++-v3/libsupc++/eh_alloc.cc:117
+#4  __static_initialization_and_destruction_0 (__priority=65535, __initialize_p=1) at /sandbox/build/tmp/tmp/work/k1om-mpss-linux/gcc-runtime-5.1.1+mpss3.7-1/gcc-5.1.1+mpss3.7/libstdc++-v3/libsupc++/eh_alloc.cc:244
+#5  _GLOBAL__sub_I_eh_alloc.cc(void) () at /sandbox/build/tmp/tmp/work/k1om-mpss-linux/gcc-runtime-5.1.1+mpss3.7-1/gcc-5.1.1+mpss3.7/libstdc++-v3/libsupc++/eh_alloc.cc:307
+#6  0x00007ffff760f74c in __do_global_ctors_aux () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/usr/lib64/libstdc++.so.6
+#7  0x00007ffff756f8f7 in _init () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/usr/lib64/libstdc++.so.6
+#8  0x00007fffffffec70 in ?? ()
+#9  0x00007ffff7debb98 in call_init (l=0x7ffff784ba58, argc=argc@entry=6, argv=argv@entry=0x7fffffffec38, env=env@entry=0x7fffffffec70) at dl-init.c:58
+#10 0x00007ffff7debd37 in call_init (env=0x7fffffffec70, argv=0x7fffffffec38, argc=6, l=<optimized out>) at dl-init.c:126
+#11 _dl_init (main_map=0x7ffff7ffe168, argc=6, argv=0x7fffffffec38, env=0x7fffffffec70) at dl-init.c:120
+#12 0x00007ffff7dddbfa in _dl_start_user () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#13 0x0000000000000006 in ?? ()
+#14 0x00007fffffffee22 in ?? ()
+#15 0x00007fffffffee52 in ?? ()
+#16 0x00007fffffffee58 in ?? ()
+#17 0x00007fffffffee5b in ?? ()
+#18 0x00007fffffffee5f in ?? ()
+#19 0x00007fffffffee9c in ?? ()
+#20 0x0000000000000000 in ?? ()
+
+2016-10-28 23:36:55:2708	in malloc.c
+
+2016-10-28 23:36:55:Backtrace END
+2016-10-28 23:36:58:Thread name: None
+2016-10-28 23:36:58:Thread num: 1
+2016-10-28 23:36:58:Thread ptid: (108934, 108934, 0)
+2016-10-28 23:36:58:bitFlip function
+2016-10-28 23:36:58:Type: The type is a structure.
+2016-10-28 23:36:58:Type sizeof: 64
+2016-10-28 23:36:58:Fliping value of field: emergency_mutex
+2016-10-28 23:36:58:bitFlip function
+2016-10-28 23:36:58:Type: The type is a structure.
+2016-10-28 23:36:58:Type sizeof: 40
+2016-10-28 23:36:58:Fliping value of field: _M_mutex
+2016-10-28 23:36:58:bitFlip function
+2016-10-28 23:36:58:Type: The type is a union.
+2016-10-28 23:36:58:Type sizeof: 40
+2016-10-28 23:36:58:Fliping value of field name: __align
+2016-10-28 23:36:58:bitFlip function
+2016-10-28 23:36:58:Type: The type is an integer type.
+2016-10-28 23:36:58:Type sizeof: 8
+2016-10-28 23:36:58:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-10-28 23:36:58:base address to flip value: 0x7ffff78573e0 
+2016-10-28 23:36:58:address max offset: 8
+2016-10-28 23:36:58:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-10-28 23:36:58:Memory content after  bitflip:0x000x000x000x000x400x000x000x00
+2016-10-28 23:36:58:Mem contents(hex):0x000x000x000x000x400x000x000x00
+2016-10-28 23:36:58:frame name: _GLOBAL__sub_I_eh_alloc.cc(void)
+2016-10-28 23:36:58:symbol name: (anonymous namespace)::emergency_pool
+2016-10-28 23:36:58:symbol filename: /sandbox/build/tmp/tmp/work/k1om-mpss-linux/gcc-runtime-5.1.1+mpss3.7-1/gcc-5.1.1+mpss3.7/libstdc++-v3/libsupc++/eh_alloc.cc
+2016-10-28 23:36:58:symbol line: 244
+2016-10-28 23:36:58:value: {emergency_mutex = {_M_mutex = {__data = {__lock = 0, __count = 64, __owner = 0, __nusers = 0, __kind = 0, __spins = 0, __elision = 0, __list = {__prev = 0x0, __next = 0x0}}, __size = "\000\000\000\000@", '\000' <repeats 34 times>, __align = 274877906944}}, first_free_entry = 0x0, arena = 0x0, arena_size = 72704}
+2016-10-28 23:36:58:value address: 0x7ffff78573e0 <(anonymous namespace)::emergency_pool>
+2016-10-28 23:36:58:Type: The type is a structure.
+2016-10-28 23:36:58:Type sizeof: 64
+2016-10-28 23:36:58:Field name: emergency_mutex
+2016-10-28 23:36:58:Field Type:
+2016-10-28 23:36:58:Type: The type is a structure.
+2016-10-28 23:36:58:Type sizeof: 40
+2016-10-28 23:36:58:Field name: first_free_entry
+2016-10-28 23:36:58:Field Type:
+2016-10-28 23:36:58:Type: The type is a pointer.
+2016-10-28 23:36:58:Type sizeof: 8
+2016-10-28 23:36:58:Field name: arena
+2016-10-28 23:36:58:Field Type:
+2016-10-28 23:36:58:Type: The type is a pointer.
+2016-10-28 23:36:58:Type sizeof: 8
+2016-10-28 23:36:58:Field name: arena_size
+2016-10-28 23:36:58:Field Type:
+2016-10-28 23:36:58:Type: The type is an integer type.
+2016-10-28 23:36:58:Type sizeof: 8
+2016-10-28 23:36:58:Fault Injection Successful after 4.44367289543s
+2016-10-28 23:36:59:Fault Already Injected
+2016-10-28 23:37:00:Fault Already Injected
+2016-10-28 23:37:00:Fault Already Injected
+2016-10-28 23:37:01:Fault Already Injected
+2016-10-28 23:37:02:Fault Already Injected
+2016-10-28 23:37:03:Fault Already Injected
+2016-10-28 23:37:03:Fault Already Injected

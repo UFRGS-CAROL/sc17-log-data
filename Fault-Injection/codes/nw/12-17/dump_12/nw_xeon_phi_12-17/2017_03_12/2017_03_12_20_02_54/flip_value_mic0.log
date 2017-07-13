@@ -1,0 +1,63 @@
+[INFO -- 2017-03-12 20:02:34]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-12 20:02:34]
+Initialization strings:
+[INFO -- 2017-03-12 20:02:34]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-12 20:02:34]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-12 20:02:34]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-12 20:02:34]
+(4) file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+[INFO -- 2017-03-12 20:02:34]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+[INFO -- 2017-03-12 20:02:34]
+(6) set args 16394 10 228 /micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10 /micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10
+[INFO -- 2017-03-12 20:02:34]
+initSignal:12
+[INFO -- 2017-03-12 20:02:34]
+endSignal:17
+[INFO -- 2017-03-12 20:02:34]
+seqSignal:30
+[INFO -- 2017-03-12 20:02:34]
+faultMode:3
+[INFO -- 2017-03-12 20:02:46]
+Backtrace BEGIN:
+#0  0x0000000000402c3e in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:330
+#1  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+325	    //}
+326	
+327	
+328	    for (int i = 1 ; i < max_cols; i++){
+329	        for (int j = 1 ; j < max_rows; j++){
+330	            referrence[i*max_cols+j] = blosum62[input_itemsets[i*max_cols]][input_itemsets[j]];
+331	        }
+332	    }
+333	
+334	    for( int i = 1; i< max_rows ; i++)
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x100xa00x7f0xb60xff0x7f0x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffea18
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: runTest
+symbol name: referrence
+symbol filename: needle_check.cpp
+symbol line: 266
+value: 0x7fffb67fa010
+value address: 0x7fffffffea18
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-12 20:02:46]
+Fault Injection Successful after 12.4338450432s
+[INFO -- 2017-03-12 20:02:46]
+event type: exit
+[EXCEPTION -- 2017-03-12 20:02:46]
+exit code: no exit code available

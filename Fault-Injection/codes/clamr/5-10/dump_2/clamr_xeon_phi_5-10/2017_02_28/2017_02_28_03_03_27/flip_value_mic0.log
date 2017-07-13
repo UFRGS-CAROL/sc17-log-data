@@ -1,0 +1,63 @@
+2017-02-28 03:01:03:Starting flip_value script
+2017-02-28 03:01:03:Initialization strings:
+2017-02-28 03:01:04:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 03:01:04:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 03:01:04:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 03:01:04:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 03:01:04:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 03:01:04:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 03:01:04:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 03:01:04:initSignal:5
+2017-02-28 03:01:04:endSignal:10
+2017-02-28 03:01:04:seqSignal:20
+2017-02-28 03:01:13:Backtrace BEGIN:
+2017-02-28 03:01:13:#0  0x0000000000520c68 in Mesh::rezone_all (this=0x7f9a50, icount=564, jcount=0, mpot=..., have_state=0, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3217
+#1  0x00000000005083a4 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1553
+#2  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-28 03:01:13:3212	               nrht[nc] = (mpot[nrht_old[ic]] == 0) ? index[nrht_old[ic]] : -1;
+3213	            }
+3214	            if (nbot_old[ic] < (int)ncells && nbot_old[ic] >= 0){
+3215	               nbot[nc] = (mpot[nbot_old[ic]] == 0) ? index[nbot_old[ic]] : -1;
+3216	            }
+3217	            if (ntop_old[ic] < (int)ncells && ntop_old[ic] >= 0){
+3218	               ntop[nc] = (mpot[ntop_old[ic]] == 0) ? index[ntop_old[ic]] : -1;
+3219	            }
+3220	         } else if (mpot[ic] <= -2) {
+3221	            nlft[nc]  = -1;
+
+2017-02-28 03:01:13:Backtrace END
+2017-02-28 03:01:17:Type: The type is a structure.
+2017-02-28 03:01:17:Type sizeof: 24
+2017-02-28 03:01:17:Fliping value of field: std::_Vector_base<int, std::allocator<int> >
+2017-02-28 03:01:17:Type: The type is a structure.
+2017-02-28 03:01:17:Type sizeof: 24
+2017-02-28 03:01:17:Fliping value of field: _M_impl
+2017-02-28 03:01:17:Type: The type is a structure.
+2017-02-28 03:01:17:Type sizeof: 24
+2017-02-28 03:01:17:Fliping value of field: _M_finish
+2017-02-28 03:01:17:Type: The type is a pointer.
+2017-02-28 03:01:17:Type sizeof: 8
+2017-02-28 03:01:17:Fliping a bit of the pointer
+2017-02-28 03:01:17:Mem contents(hex):0x000xce0x100x010x000x000x000x00
+2017-02-28 03:01:17:Fault Mode: Single bit-flip
+2017-02-28 03:01:17:base address to flip value: 0x7fffffffe768
+2017-02-28 03:01:17:address max offset: 8
+2017-02-28 03:01:17:Memory content before bitflip:0x000xce0x100x010x000x000x000x00
+2017-02-28 03:01:17:Memory content after  bitflip:0x000xce0x100x010x000x080x000x00
+2017-02-28 03:01:17:Mem contents(hex):0x000xce0x100x010x000x080x000x00
+2017-02-28 03:01:17:frame name: Mesh::rezone_all
+2017-02-28 03:01:17:symbol name: mpot
+2017-02-28 03:01:17:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+2017-02-28 03:01:17:symbol line: 2547
+2017-02-28 03:01:17:value: {<std::_Vector_base<int, std::allocator<int> >> = {_M_impl = {<std::allocator<int>> = {<__gnu_cxx::new_allocator<int>> = {<No data fields>}, <No data fields>}, _M_start = 0x100ae00, _M_finish = 0x8000110ce00, _M_end_of_storage = 0x110ce00}}, <No data fields>}
+2017-02-28 03:01:17:value address: 0x7fffffffe760
+2017-02-28 03:01:17:Type: The type is a structure.
+2017-02-28 03:01:17:Type sizeof: 24
+2017-02-28 03:01:17:Field name: std::_Vector_base<int, std::allocator<int> >
+2017-02-28 03:01:17:Field Type:
+2017-02-28 03:01:17:Type: The type is a structure.
+2017-02-28 03:01:17:Type sizeof: 24
+2017-02-28 03:01:17:Fault Injection Successful after 13.346601963s
+2017-02-28 03:02:02:event type: exit
+2017-02-28 03:02:02:exit code: 0

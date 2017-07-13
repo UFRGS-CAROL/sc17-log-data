@@ -1,0 +1,111 @@
+2017-03-01 22:01:01:Starting flip_value script
+2017-03-01 22:01:01:Initialization strings:
+2017-03-01 22:01:01:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 22:01:01:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 22:01:01:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 22:01:01:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 22:01:01:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 22:01:01:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 22:01:01:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 22:01:01:initSignal:5
+2017-03-01 22:01:01:endSignal:10
+2017-03-01 22:01:01:seqSignal:20
+2017-03-01 22:01:09:Backtrace BEGIN:
+2017-03-01 22:01:09:#0  0x0000000000542636 in Bounds_AddBounds (b=0x23d3700, add=0x16fa600) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/Bounds.c:79
+#1  0x000000000053cf5f in KDTree_CreateTree (t=0x7fb150) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:245
+#2  0x000000000053d3f4 in KDTree_QueryCircleIntersect_Double (t=0x7fb150, result_num=0x7fffffffe5dc, result_indicies=0x181c210, circ_radius=24, ncells=264192, x=0x7ffe881cb010, dx=0x7ffe481bf010, y=0x7ffe081be010, dy=0x7ffdc81b0010) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:329
+#3  0x00000000005080fe in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1535
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-03-01 22:01:09:74	}
+75	
+76	void Bounds_AddBounds(TBounds* b, TBounds* add) {
+77	   assert(b && add);
+78	   b->min.x = MIN(b->min.x, add->min.x);
+79	   b->min.y = MIN(b->min.y, add->min.y);
+80	   b->max.x = MAX(b->max.x, add->max.x);
+81	   b->max.y = MAX(b->max.y, add->max.y);
+82	}
+83	
+
+2017-03-01 22:01:09:Backtrace END
+2017-03-01 22:01:15:Type: The type is a pointer.
+2017-03-01 22:01:15:Type sizeof: 8
+2017-03-01 22:01:15:Fliping a bit of the value pointed by a pointer
+2017-03-01 22:01:15:Type: The type is a structure.
+2017-03-01 22:01:15:Type sizeof: 32
+2017-03-01 22:01:15:Fliping value of field: max
+2017-03-01 22:01:15:Type: The type is a structure.
+2017-03-01 22:01:15:Type sizeof: 16
+2017-03-01 22:01:15:Fliping value of field: x
+2017-03-01 22:01:15:Type: A floating point type.
+2017-03-01 22:01:15:Type sizeof: 8
+2017-03-01 22:01:15:Mem contents(hex):0x000x000x000x000x000xc00x590xc0
+2017-03-01 22:01:15:Fault Mode: Zero bit-flip
+2017-03-01 22:01:15:base address to flip value: 0x23d3710
+2017-03-01 22:01:15:address max offset: 8
+2017-03-01 22:01:15:Memory content before bitflip:0x000x000x000x000x000xc00x590xc0
+2017-03-01 22:01:15:Backtrace BEGIN:
+2017-03-01 22:01:15:#0  0x0000000000542636 in Bounds_AddBounds (b=0x23d3700, add=0x16fa600) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/Bounds.c:79
+#1  0x000000000053cf5f in KDTree_CreateTree (t=0x7fb150) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:245
+#2  0x000000000053d3f4 in KDTree_QueryCircleIntersect_Double (t=0x7fb150, result_num=0x7fffffffe5dc, result_indicies=0x181c210, circ_radius=24, ncells=264192, x=0x7ffe881cb010, dx=0x7ffe481bf010, y=0x7ffe081be010, dy=0x7ffdc81b0010) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:329
+#3  0x00000000005080fe in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1535
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-03-01 22:01:15:74	}
+75	
+76	void Bounds_AddBounds(TBounds* b, TBounds* add) {
+77	   assert(b && add);
+78	   b->min.x = MIN(b->min.x, add->min.x);
+79	   b->min.y = MIN(b->min.y, add->min.y);
+80	   b->max.x = MAX(b->max.x, add->max.x);
+81	   b->max.y = MAX(b->max.y, add->max.y);
+82	}
+83	
+
+2017-03-01 22:01:15:Backtrace END
+2017-03-01 22:01:20:Type: The type is a pointer.
+2017-03-01 22:01:20:Type sizeof: 8
+2017-03-01 22:01:20:Fliping a bit of the pointer
+2017-03-01 22:01:20:Mem contents(hex):0x000x370x3d0x020x000x000x000x00
+2017-03-01 22:01:20:Fault Mode: Random bit-flip
+2017-03-01 22:01:20:base address to flip value: 0x7fffffffe330
+2017-03-01 22:01:20:address max offset: 8
+2017-03-01 22:01:20:Memory content before bitflip:0x000x370x3d0x020x000x000x000x00
+2017-03-01 22:01:20:Backtrace BEGIN:
+2017-03-01 22:01:20:#0  0x0000000000542636 in Bounds_AddBounds (b=0x23d3700, add=0x16fa600) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/Bounds.c:79
+#1  0x000000000053cf5f in KDTree_CreateTree (t=0x7fb150) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:245
+#2  0x000000000053d3f4 in KDTree_QueryCircleIntersect_Double (t=0x7fb150, result_num=0x7fffffffe5dc, result_indicies=0x181c210, circ_radius=24, ncells=264192, x=0x7ffe881cb010, dx=0x7ffe481bf010, y=0x7ffe081be010, dy=0x7ffdc81b0010) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:329
+#3  0x00000000005080fe in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1535
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-03-01 22:01:20:74	}
+75	
+76	void Bounds_AddBounds(TBounds* b, TBounds* add) {
+77	   assert(b && add);
+78	   b->min.x = MIN(b->min.x, add->min.x);
+79	   b->min.y = MIN(b->min.y, add->min.y);
+80	   b->max.x = MAX(b->max.x, add->max.x);
+81	   b->max.y = MAX(b->max.y, add->max.y);
+82	}
+83	
+
+2017-03-01 22:01:20:Backtrace END
+2017-03-01 22:01:26:Type: The type is an integer type.
+2017-03-01 22:01:26:Type sizeof: 4
+2017-03-01 22:01:26:Mem contents(hex):0x640x000x000x00
+2017-03-01 22:01:26:Fault Mode: Double bit-flip
+2017-03-01 22:01:26:base address to flip value: 0x7d0764 
+2017-03-01 22:01:26:address max offset: 4
+2017-03-01 22:01:26:Memory content before bitflip:0x640x000x000x00
+2017-03-01 22:01:26:Memory content after  bitflip:0x640x0a0x000x00
+2017-03-01 22:01:26:Mem contents(hex):0x640x0a0x000x00
+2017-03-01 22:01:26:frame name: main
+2017-03-01 22:01:26:symbol name: graphic_outputInterval
+2017-03-01 22:01:26:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-03-01 22:01:26:symbol line: 143
+2017-03-01 22:01:26:value: 2660
+2017-03-01 22:01:26:value address: 0x7d0764 <graphic_outputInterval>
+2017-03-01 22:01:26:Type: The type is an integer type.
+2017-03-01 22:01:26:Type sizeof: 4
+2017-03-01 22:01:26:Fault Injection Successful after 25.1162900925s

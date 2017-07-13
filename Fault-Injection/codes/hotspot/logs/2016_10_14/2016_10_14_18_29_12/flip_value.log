@@ -1,0 +1,46 @@
+2016-10-14 18:28:51:Initialization strings:
+2016-10-14 18:28:51:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-14 18:28:51:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-14 18:28:51:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-14 18:28:51:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-14 18:28:51:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-14 18:28:51:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-14 18:28:51:Trying Fault Injection
+2016-10-14 18:28:51:Backtrace BEGIN:
+2016-10-14 18:28:51:#0  __GI___waitpid (pid=232421, stat_loc=stat_loc@entry=0x7fffffffe268, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000405ccc in update_timestamp () at ../../include/log_helper.c:107
+#3  start_log_file (benchmark_name=0x38be5 <error: Cannot access memory at address 0x38be5>, test_info=0x7fffffffe268 "") at ../../include/log_helper.c:196
+#4  0x0000000000401681 in main (argc=232421, argv=0x7fffffffe268) at hotspot_check.c:254
+
+2016-10-14 18:28:51:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-14 18:28:51:Backtrace END
+2016-10-14 18:28:51:Type: The type is an integer type.
+2016-10-14 18:28:51:Type sizeof: 4
+2016-10-14 18:28:51:Mem contents(hex):0xe50x8b0x030x00
+2016-10-14 18:28:51:base address to flip value: 0x7fffffffe244
+2016-10-14 18:28:51:address max offset: 4
+2016-10-14 18:28:51:Memory content before bitflip:0xe50x8b0x030x00
+2016-10-14 18:28:51:Memory content after  bitflip:0xe50x8b0x030x20
+2016-10-14 18:28:51:Mem contents(hex):0xe50x8b0x030x20
+2016-10-14 18:28:51:frame name: do_system
+2016-10-14 18:28:51:symbol name: pid
+2016-10-14 18:28:51:symbol filename: ../sysdeps/posix/system.c
+2016-10-14 18:28:51:symbol line: 57
+2016-10-14 18:28:51:value: 537103333
+2016-10-14 18:28:51:value address: 0x7fffffffe244
+2016-10-14 18:28:51:Type: The type is an integer type.
+2016-10-14 18:28:51:Type sizeof: 4
+2016-10-14 18:28:51:Fault Injection Successful after 0.837519884109s
+2016-10-14 18:28:51:Fault Already Injected
+2016-10-14 18:28:53:Fault Already Injected
+2016-10-14 18:28:56:Fault Already Injected
+2016-10-14 18:28:57:Fault Already Injected
+2016-10-14 18:28:58:Fault Already Injected
+2016-10-14 18:29:00:Fault Already Injected
+2016-10-14 18:29:02:Fault Already Injected
+2016-10-14 18:29:05:Fault Already Injected
+2016-10-14 18:29:05:Fault Already Injected
+2016-10-14 18:29:06:event type: exit
+2016-10-14 18:29:06:exit code: 0

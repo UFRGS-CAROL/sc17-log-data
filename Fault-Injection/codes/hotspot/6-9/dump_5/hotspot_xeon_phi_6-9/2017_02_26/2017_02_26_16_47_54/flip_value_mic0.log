@@ -1,0 +1,62 @@
+[INFO -- 2017-02-26 16:47:12]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 16:47:12]
+Initialization strings:
+[INFO -- 2017-02-26 16:47:12]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-26 16:47:12]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 16:47:12]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 16:47:12]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 16:47:12]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 16:47:12]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 16:47:12]
+initSignal:6
+[INFO -- 2017-02-26 16:47:12]
+endSignal:9
+[INFO -- 2017-02-26 16:47:12]
+seqSignal:15
+[INFO -- 2017-02-26 16:47:12]
+faultMode:1
+[INFO -- 2017-02-26 16:47:19]
+Backtrace BEGIN:
+#0  0x0000000000404564 in read_input (vect=0x7ffff66cb010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee43 "/micNfs/gdb-fault-injection/injector/data/hotspot/power_1024") at hotspot_check.c:205
+#1  0x0000000000404ad7 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:266
+
+200	
+201	    for (i=0; i < grid_rows * grid_cols; i++) {
+202	        if (fgets(str, STR_SIZE, fp) == NULL) {
+203	            fatal("fgets error");
+204	        }
+205	        if (feof(fp))
+206	            fatal("not enough lines in file");
+207	        if ((sscanf(str, "%f", &val) != 1) )
+208	            fatal("invalid file format");
+209	        vect[i] = val;
+
+Backtrace END
+Memory content before bitflip:0x6f0x120x830x3c
+Fault Mode: Double bit-flip
+base address to flip value: 0x4074f8 
+address max offset: 4
+Memory content after  bitflip:0x6f0x120xd30x3c
+frame name: read_input
+symbol name: chip_height
+symbol filename: hotspot_check.c
+symbol line: 34
+value: 0.0257656258
+value address: 0x4074f8 <chip_height>
+Type: A floating point type.
+Type sizeof: 4
+
+[INFO -- 2017-02-26 16:47:19]
+Fault Injection Successful after 7.77777004242s
+[INFO -- 2017-02-26 16:47:37]
+event type: exit
+[INFO -- 2017-02-26 16:47:37]
+exit code: 1

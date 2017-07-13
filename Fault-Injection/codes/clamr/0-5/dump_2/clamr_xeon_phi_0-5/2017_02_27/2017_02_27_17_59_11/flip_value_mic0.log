@@ -1,0 +1,41 @@
+2017-02-27 17:57:37:Starting flip_value script
+2017-02-27 17:57:37:Initialization strings:
+2017-02-27 17:57:37:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-27 17:57:37:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 17:57:37:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 17:57:37:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-27 17:57:37:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-27 17:57:37:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-27 17:57:37:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-27 17:57:37:initSignal:0
+2017-02-27 17:57:37:endSignal:5
+2017-02-27 17:57:37:seqSignal:20
+2017-02-27 17:57:38:Backtrace BEGIN:
+2017-02-27 17:57:38:#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff6e812d0 in ?? () at pthread_create.c:237 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libpthread.so.0
+#2  0x00007ffc12bd6f00 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-02-27 17:57:38:76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+2017-02-27 17:57:38:Backtrace END
+2017-02-27 17:57:42:Type: The type is an integer type.
+2017-02-27 17:57:42:Type sizeof: 8
+2017-02-27 17:57:42:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-27 17:57:42:Fault Mode: Single bit-flip
+2017-02-27 17:57:42:base address to flip value: 0x7ffff7096310 
+2017-02-27 17:57:42:address max offset: 8
+2017-02-27 17:57:42:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-27 17:57:42:Memory content after  bitflip:0x000x000x000x000x040x000x000x00
+2017-02-27 17:57:42:Mem contents(hex):0x000x000x000x000x040x000x000x00
+2017-02-27 17:57:42:frame name: create_thread
+2017-02-27 17:57:42:symbol name: stack_cache_actsize
+2017-02-27 17:57:42:symbol filename: allocatestack.c
+2017-02-27 17:57:42:symbol line: 106
+2017-02-27 17:57:42:value: 17179869184
+2017-02-27 17:57:42:value address: 0x7ffff7096310 <stack_cache_actsize>
+2017-02-27 17:57:42:Type: The type is an integer type.
+2017-02-27 17:57:42:Type sizeof: 8
+2017-02-27 17:57:42:Fault Injection Successful after 5.08664798737s
+2017-02-27 17:59:03:event type: exit
+2017-02-27 17:59:03:exit code: 0

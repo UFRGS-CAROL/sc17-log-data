@@ -1,0 +1,54 @@
+2017-01-25 22:17:01:Starting flip_value script
+2017-01-25 22:17:01:Initialization strings:
+2017-01-25 22:17:02:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-25 22:17:02:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 22:17:02:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 22:17:02:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-25 22:17:02:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-25 22:17:02:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-25 22:17:02:initSignal:0
+2017-01-25 22:17:02:endSignal:7
+2017-01-25 22:17:02:seqSignal:15
+2017-01-25 22:17:05:Backtrace BEGIN:
+2017-01-25 22:17:05:#0  0x0000000000403d0a in read_gold (gold=0x7fffeecc9040, fileGold=0x7fffffffee78 "/micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks", order=2048) at dgemm.c:266
+#1  0x00000000004041e3 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:329
+
+2017-01-25 22:17:05:261	        printf( "The gold file was not opened\n" );
+262	        exit(1);
+263	    }
+264	
+265	    for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+266	            fread(&gold[(i)+(order)*(j)], 1, sizeof(double), file);
+267	        }
+268	    fclose(file);
+269	}
+270	
+
+2017-01-25 22:17:05:Backtrace END
+2017-01-25 22:17:05:Type: The type is an array.
+2017-01-25 22:17:05:Type sizeof: 200
+2017-01-25 22:17:05:Fliping array at pos: 164
+2017-01-25 22:17:05:Type: The type is an integer type.
+2017-01-25 22:17:05:Type sizeof: 1
+2017-01-25 22:17:05:Mem contents(hex):0x00
+2017-01-25 22:17:05:base address to flip value: 0x7fffffffe88c 
+2017-01-25 22:17:05:address max offset: 1
+2017-01-25 22:17:05:Memory content before bitflip:0x00
+2017-01-25 22:17:05:Memory content after  bitflip:0x08
+2017-01-25 22:17:05:Mem contents(hex):0x08
+2017-01-25 22:17:05:frame name: main
+2017-01-25 22:17:05:symbol name: test_info
+2017-01-25 22:17:05:symbol filename: dgemm.c
+2017-01-25 22:17:05:symbol line: 341
+2017-01-25 22:17:05:value: "0\206\377\367\377\177\000\000\b\000\000\000\000\000\000\000\034\327\354\366\000\000\000\000.(\274<", '\000' <repeats 12 times>, "h\350\377\377\377\177\000\000\001\000\000\000\000\000\000\000p\351\377\377\377\177\000\000\370\234\377\367\377\177\000\000\000\000\000\000\000\000\000\000\230\351\377\377\377\177\000\000\000\215\377\367\377\177\000\000\314h\336\367\377\177\000\000\a\000\000\000\000\000\000\000\000\215\377\367\377\177\000\000\001", '\000' <repeats 15 times>, "\001\000\000\000\000\000\000\000,]\336\367\377\177\000\000\070L\r\367\377\177\000\000\001\b\000\000\b\000\000\000HJ\r\367\377\177\000\000\240\231\377\367\377\177\000\000\070L\r\367\377\177\000\000\020`\336\367\377\177\000"
+2017-01-25 22:17:05:value address: 0x7fffffffe7e8
+2017-01-25 22:17:05:Type: The type is an array.
+2017-01-25 22:17:05:Type sizeof: 200
+2017-01-25 22:17:05:Field name: None
+2017-01-25 22:17:05:Field Type:
+2017-01-25 22:17:05:Type: A range type, that is, an integer type with bounds.
+2017-01-25 22:17:05:Type sizeof: 1
+2017-01-25 22:17:05:Type range: (0L, 199L)
+2017-01-25 22:17:05:Fault Injection Successful after 3.14827609062s
+2017-01-25 22:17:42:event type: exit
+2017-01-25 22:17:42:exit code: 0

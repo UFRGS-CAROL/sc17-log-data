@@ -1,0 +1,61 @@
+[INFO -- 2017-03-28 19:52:23]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-28 19:52:23]
+Initialization strings:
+[INFO -- 2017-03-28 19:52:24]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-28 19:52:24]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 19:52:24]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 19:52:24]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 19:52:24]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 19:52:24]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-28 19:52:24]
+initSignal:0
+[INFO -- 2017-03-28 19:52:24]
+endSignal:3
+[INFO -- 2017-03-28 19:52:24]
+seqSignal:30
+[INFO -- 2017-03-28 19:52:24]
+faultMode:1
+[INFO -- 2017-03-28 19:52:24]
+Backtrace BEGIN:
+#0  0x0000000000402377 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:162
+
+157	        printf( "The file 'input_charges' was not opened\n" );
+158	        exit(1);
+159	    }
+160	
+161	    qv_cpu = (fp*)malloc(dim_cpu.space_mem2);
+162	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+163	        fread(&(qv_cpu[i]), 1, sizeof(double), file);
+164	    }
+165	    fclose(file);
+166	
+
+Backtrace END
+Fliping value of field: alpha
+Memory content before bitflip:0x000x000x000x000x000x000xe00x3f
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe8a0
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x060xe00x3f
+frame name: main
+symbol name: par_cpu
+symbol filename: main_check.c
+symbol line: 55
+value: {alpha = 0.500732421875}
+value address: 0x7fffffffe8a0
+Type: The type is a structure.
+Type sizeof: 8
+Field name: alpha
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-28 19:52:24]
+Fault Injection Successful after 0.933753967285s

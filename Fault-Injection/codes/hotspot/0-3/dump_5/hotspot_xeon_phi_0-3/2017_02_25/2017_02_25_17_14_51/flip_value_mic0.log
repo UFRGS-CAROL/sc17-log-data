@@ -1,0 +1,56 @@
+[INFO -- 2017-02-25 17:14:12]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 17:14:12]
+Initialization strings:
+[INFO -- 2017-02-25 17:14:12]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-25 17:14:12]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 17:14:12]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 17:14:12]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 17:14:12]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 17:14:12]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-25 17:14:12]
+initSignal:0
+[INFO -- 2017-02-25 17:14:12]
+endSignal:3
+[INFO -- 2017-02-25 17:14:12]
+seqSignal:15
+[INFO -- 2017-02-25 17:14:12]
+faultMode:2
+[INFO -- 2017-02-25 17:14:13]
+Backtrace BEGIN:
+#0  __sigprocmask (how=how@entry=2, set=set@entry=0x7fffffffe278, oset=oset@entry=0x0) at ../sysdeps/unix/sysv/linux/x86_64/sigprocmask.c:39
+#1  0x00007ffff710f517 in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:161
+#2  0x0000000000405b29 in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405f0e in start_log_file (benchmark_name=0x407478 "openMPHotspot", test_info=0x7fffffffe7a0 "simIter:1000 gridSize:1024x1024") at ../include/log_helper.c:196
+#4  0x0000000000404a17 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:255
+
+34	in ../sysdeps/unix/sysv/linux/x86_64/sigprocmask.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x608af0 
+address max offset: 8
+Memory content after  bitflip:0xeb0xa20xf90x5a0x700xd20x920x21
+frame name: update_timestamp
+symbol name: kernel_time_acc
+symbol filename: ../include/log_helper.c
+symbol line: 62
+value: 5.8880096699090717e-147
+value address: 0x608af0 <kernel_time_acc>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-02-25 17:14:13]
+Fault Injection Successful after 1.60832309723s
+[INFO -- 2017-02-25 17:14:44]
+event type: exit
+[INFO -- 2017-02-25 17:14:44]
+exit code: 0

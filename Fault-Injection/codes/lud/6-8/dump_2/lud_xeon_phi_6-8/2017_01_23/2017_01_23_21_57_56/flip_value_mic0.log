@@ -1,0 +1,90 @@
+2017-01-23 21:57:34:Starting flip_value script
+2017-01-23 21:57:34:Initialization strings:
+2017-01-23 21:57:34:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-23 21:57:34:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-23 21:57:34:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-23 21:57:34:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-23 21:57:34:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-23 21:57:34:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-23 21:57:34:initSignal:6
+2017-01-23 21:57:34:endSignal:8
+2017-01-23 21:57:34:seqSignal:30
+2017-01-23 21:57:41:Trying Fault Injection
+2017-01-23 21:57:41:Inferior PID: 75826
+2017-01-23 21:57:41:Inferior is valid: True
+2017-01-23 21:57:41:Inferior #threads: 229
+2017-01-23 21:57:41:Backtrace BEGIN:
+2017-01-23 21:57:41:#0  0x00000000004038b7 in lud_diagonal_omp (a=0x7ffff5ecc010, size=2048, offset=1696) at lud_omp.c:29
+#1  0x0000000000403af9 in lud_omp (a=0x7ffff5ecc010, size=2048) at lud_omp.c:62
+#2  0x0000000000402c78 in main (argc=9, argv=0x7fffffffec08) at lud_check.c:124
+
+2017-01-23 21:57:41:24	        }
+25	   
+26	        float temp = 1.f/AA(i,i);
+27	        for (j = i+1; j < BS; j++) {
+28	            for (k = 0; k < i ; k++) {
+29	                AA(j,i) = AA(j,i) - AA(j,k) * AA(k,i);
+30	            }
+31	            AA(j,i) = AA(j,i)*temp;
+32	        }
+33	    }
+
+2017-01-23 21:57:41:Backtrace END
+2017-01-23 21:57:45:Thread name: None
+2017-01-23 21:57:45:Thread num: 1
+2017-01-23 21:57:45:Thread ptid: (75826, 75826, 0)
+2017-01-23 21:57:45:bitFlip function
+2017-01-23 21:57:45:Type: The type is an array.
+2017-01-23 21:57:45:Type sizeof: 200
+2017-01-23 21:57:45:Fliping array at pos: 43
+2017-01-23 21:57:45:bitFlip function
+2017-01-23 21:57:45:Type: The type is an integer type.
+2017-01-23 21:57:45:Type sizeof: 1
+2017-01-23 21:57:45:Mem contents(hex):0xff
+2017-01-23 21:57:45:base address to flip value: 0x7fffffffe873 
+2017-01-23 21:57:45:address max offset: 1
+2017-01-23 21:57:45:Memory content before bitflip:0xff
+2017-01-23 21:57:45:Memory content after  bitflip:0xfd
+2017-01-23 21:57:45:Mem contents(hex):0xfd
+2017-01-23 21:57:45:frame name: main
+2017-01-23 21:57:45:symbol name: test_info
+2017-01-23 21:57:45:symbol filename: lud_check.c
+2017-01-23 21:57:45:symbol line: 116
+2017-01-23 21:57:45:value: "matrix_dim:2048 threads:228\000\377\177\000\000\001\000\000\000\000\000\000\000\300\351\377\375\377\177\000\000\370\234\377\367\377\177\000\000\000\000\000\000\000\000\000\000\350\351\377\377\377\177\000\000\000\215\377\367\377\177\000\000\314h\336\367\377\177\000\000\a\000\000\000\000\000\000\000\000\215\377\367\377\177\000\000\001", '\000' <repeats 15 times>, "\001\000\000\000\000\000\000\000,]\336\367\377\177\000\000\070L\r\367\377\177\000\000\001\b\000\000\000\000\000\000HJ\r\367\377\177\000\000\240\231\377\367\377\177\000\000\070L\r\367\377\177\000\000\020`\336\367\377\177\000\000\001\b\000\000\000\000\000\000\330\027\016\367\377\177\000"
+2017-01-23 21:57:45:value address: 0x7fffffffe848
+2017-01-23 21:57:45:Type: The type is an array.
+2017-01-23 21:57:45:Type sizeof: 200
+2017-01-23 21:57:45:Field name: None
+2017-01-23 21:57:45:Field Type:
+2017-01-23 21:57:45:Type: A range type, that is, an integer type with bounds.
+2017-01-23 21:57:45:Type sizeof: 1
+2017-01-23 21:57:45:Type range: (0L, 199L)
+2017-01-23 21:57:45:Fault Injection Successful after 11.0468111038s
+2017-01-23 21:57:45:Fault Already Injected
+2017-01-23 21:57:45:Fault Already Injected
+2017-01-23 21:57:45:Fault Already Injected
+2017-01-23 21:57:45:Fault Already Injected
+2017-01-23 21:57:46:Fault Already Injected
+2017-01-23 21:57:46:Fault Already Injected
+2017-01-23 21:57:46:Fault Already Injected
+2017-01-23 21:57:46:Fault Already Injected
+2017-01-23 21:57:46:Fault Already Injected
+2017-01-23 21:57:46:Fault Already Injected
+2017-01-23 21:57:47:Fault Already Injected
+2017-01-23 21:57:47:Fault Already Injected
+2017-01-23 21:57:47:Fault Already Injected
+2017-01-23 21:57:47:Fault Already Injected
+2017-01-23 21:57:47:Fault Already Injected
+2017-01-23 21:57:48:Fault Already Injected
+2017-01-23 21:57:48:Fault Already Injected
+2017-01-23 21:57:48:Fault Already Injected
+2017-01-23 21:57:48:Fault Already Injected
+2017-01-23 21:57:48:Fault Already Injected
+2017-01-23 21:57:49:Fault Already Injected
+2017-01-23 21:57:49:Fault Already Injected
+2017-01-23 21:57:49:Fault Already Injected
+2017-01-23 21:57:49:Fault Already Injected
+2017-01-23 21:57:49:Fault Already Injected
+2017-01-23 21:57:49:Fault Already Injected
+2017-01-23 21:57:49:event type: exit
+2017-01-23 21:57:49:exit code: 0

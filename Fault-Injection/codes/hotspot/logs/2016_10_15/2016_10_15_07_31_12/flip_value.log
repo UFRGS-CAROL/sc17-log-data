@@ -1,0 +1,45 @@
+2016-10-15 07:31:05:Initialization strings:
+2016-10-15 07:31:06:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-15 07:31:06:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-15 07:31:06:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-15 07:31:06:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-15 07:31:06:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-15 07:31:06:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-15 07:31:06:Trying Fault Injection
+2016-10-15 07:31:06:Backtrace BEGIN:
+2016-10-15 07:31:06:#0  0x00007ffff714460c in __GI__IO_default_xsputn (f=f@entry=0x609b40, data=data@entry=0x407618, n=n@entry=8) at genops.c:475
+#1  0x00007ffff7142c88 in _IO_new_file_xsputn (f=0x609b40, data=<optimized out>, n=8) at fileops.c:1340
+#2  0x00007ffff71143ad in _IO_vfprintf_internal (s=0x609b40, format=0x407618 "#HEADER %s\n", ap=ap@entry=0x7fffffffe2e8) at vfprintf.c:1323
+#3  0x00007ffff711e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#4  0x00000000004061d1 in start_log_file (benchmark_name=0x7ffff7ef5000 "", test_info=0x407618 "#HEADER %s\n") at ../../include/log_helper.c:266
+#5  0x0000000000401681 in main (argc=-135311360, argv=0x407618) at hotspot_check.c:254
+
+2016-10-15 07:31:06:470	in genops.c
+
+2016-10-15 07:31:06:Backtrace END
+2016-10-15 07:31:06:Type: The type is an array.
+2016-10-15 07:31:06:Type sizeof: 24
+2016-10-15 07:31:06:Fliping array at pos: 0
+2016-10-15 07:31:06:Type: The type is a structure.
+2016-10-15 07:31:06:Type sizeof: 24
+2016-10-15 07:31:06:Fliping value of field: gp_offset
+2016-10-15 07:31:06:Type: The type is an integer type.
+2016-10-15 07:31:06:Type sizeof: 4
+2016-10-15 07:31:06:Mem contents(hex):0x100x000x000x00
+2016-10-15 07:31:06:base address to flip value: 0x7fffffffe2e8
+2016-10-15 07:31:06:address max offset: 4
+2016-10-15 07:31:06:Memory content before bitflip:0x100x000x000x00
+2016-10-15 07:31:06:Memory content after  bitflip:0x100x400x000x00
+2016-10-15 07:31:06:Mem contents(hex):0x100x400x000x00
+2016-10-15 07:31:06:frame name: __fprintf
+2016-10-15 07:31:06:symbol name: arg
+2016-10-15 07:31:06:symbol filename: fprintf.c
+2016-10-15 07:31:06:symbol line: 28
+2016-10-15 07:31:06:value: {{gp_offset = 16400, fp_offset = 48, overflow_arg_area = 0x7fffffffe3c0, reg_save_area = 0x7fffffffe300}}
+2016-10-15 07:31:06:value address: 0x7fffffffe2e8
+2016-10-15 07:31:06:Type: The type is an array.
+2016-10-15 07:31:06:Type sizeof: 24
+2016-10-15 07:31:06:Fault Injection Successful after 0.880539894104s
+2016-10-15 07:31:06:Fault Already Injected
+2016-10-15 07:31:06:event type: exit
+2016-10-15 07:31:06:exit code: no exit code available

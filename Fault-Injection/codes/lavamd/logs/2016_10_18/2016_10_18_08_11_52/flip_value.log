@@ -1,0 +1,241 @@
+2016-10-18 08:11:39:Initialization strings:
+2016-10-18 08:11:39:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-18 08:11:39:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-18 08:11:39:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-18 08:11:39:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-18 08:11:39:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-18 08:11:39:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-18 08:11:39:Trying Fault Injection
+2016-10-18 08:11:39:Inferior PID: 230698
+2016-10-18 08:11:39:Inferior is valid: True
+2016-10-18 08:11:39:Inferior #threads: 1
+2016-10-18 08:11:39:Backtrace BEGIN:
+2016-10-18 08:11:40:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000007 in ?? ()
+#7  0x00007fffffffedf0 in ?? ()
+#8  0x00007fffffffee1e in ?? ()
+#9  0x00007fffffffee22 in ?? ()
+#10 0x00007fffffffee25 in ?? ()
+#11 0x00007fffffffee62 in ?? ()
+#12 0x00007fffffffee9e in ?? ()
+#13 0x00007fffffffeed8 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2016-10-18 08:11:40:69	in dl-debug.c
+
+2016-10-18 08:11:40:Backtrace END
+2016-10-18 08:11:40:Thread name: None
+2016-10-18 08:11:40:Thread num: 1
+2016-10-18 08:11:40:Thread ptid: (230698, 230698, 0)
+2016-10-18 08:11:40:bitFlip function
+2016-10-18 08:11:40:Type: The type is a pointer.
+2016-10-18 08:11:40:Type sizeof: 8
+2016-10-18 08:11:40:Error gdbException(frameFlip): Attempt to dereference a generic pointer.
+2016-10-18 08:11:40:Fault Injection Failed after 1.10426807404s
+2016-10-18 08:11:40:Trying Fault Injection
+2016-10-18 08:11:40:Inferior PID: 230698
+2016-10-18 08:11:40:Inferior is valid: True
+2016-10-18 08:11:40:Inferior #threads: 1
+2016-10-18 08:11:40:Backtrace BEGIN:
+2016-10-18 08:11:40:#0  0x00007ffff713890a in __GI__IO_fread (buf=0x7ffff6404270, size=1, count=8, fp=0x60e1c0) at iofread.c:41
+#1  0x00000000004021c3 in main (argc=7, argv=0x7fffffffec08) at main_check.c:148
+
+2016-10-18 08:11:40:36	in iofread.c
+
+2016-10-18 08:11:40:Backtrace END
+2016-10-18 08:11:40:Thread name: None
+2016-10-18 08:11:40:Thread num: 1
+2016-10-18 08:11:40:Thread ptid: (230698, 230698, 0)
+2016-10-18 08:11:40:bitFlip function
+2016-10-18 08:11:40:Type: The type is a pointer.
+2016-10-18 08:11:40:Type sizeof: 8
+2016-10-18 08:11:40:Fliping a bit of the pointer
+2016-10-18 08:11:40:Mem contents(hex):0x100x000xab0xf60xff0x7f0x000x00
+2016-10-18 08:11:40:base address to flip value: 0x7fffffffe8f0
+2016-10-18 08:11:40:address max offset: 8
+2016-10-18 08:11:40:Memory content before bitflip:0x100x000xab0xf60xff0x7f0x000x00
+2016-10-18 08:11:40:Memory content after  bitflip:0x100x800xab0xf60xff0x7f0x000x00
+2016-10-18 08:11:40:Mem contents(hex):0x100x800xab0xf60xff0x7f0x000x00
+2016-10-18 08:11:40:frame name: main
+2016-10-18 08:11:40:symbol name: box_cpu
+2016-10-18 08:11:40:symbol filename: main_check.c
+2016-10-18 08:11:40:symbol line: 57
+2016-10-18 08:11:40:value: 0x7ffff6ab0010
+2016-10-18 08:11:40:value address: 0x7fffffffe8f0
+2016-10-18 08:11:40:Type: The type is a pointer.
+2016-10-18 08:11:40:Type sizeof: 8
+2016-10-18 08:11:40:Fault Injection Successful after 1.39017605782s
+2016-10-18 08:11:40:Fault Already Injected
+2016-10-18 08:11:41:Fault Already Injected
+2016-10-18 08:11:41:Fault Already Injected
+2016-10-18 08:11:41:Fault Already Injected
+2016-10-18 08:11:41:Fault Already Injected
+2016-10-18 08:11:41:Fault Already Injected
+2016-10-18 08:11:41:Fault Already Injected
+2016-10-18 08:11:41:Fault Already Injected
+2016-10-18 08:11:41:Fault Already Injected
+2016-10-18 08:11:41:Fault Already Injected
+2016-10-18 08:11:41:Fault Already Injected
+2016-10-18 08:11:41:Fault Already Injected
+2016-10-18 08:11:41:Fault Already Injected
+2016-10-18 08:11:41:Fault Already Injected
+2016-10-18 08:11:41:Fault Already Injected
+2016-10-18 08:11:41:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:42:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:43:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:44:Fault Already Injected
+2016-10-18 08:11:45:Fault Already Injected
+2016-10-18 08:11:45:Fault Already Injected
+2016-10-18 08:11:45:Fault Already Injected
+2016-10-18 08:11:45:Fault Already Injected
+2016-10-18 08:11:45:Fault Already Injected
+2016-10-18 08:11:45:Fault Already Injected
+2016-10-18 08:11:45:Fault Already Injected
+2016-10-18 08:11:45:Fault Already Injected
+2016-10-18 08:11:45:Fault Already Injected
+2016-10-18 08:11:45:Fault Already Injected
+2016-10-18 08:11:45:Fault Already Injected
+2016-10-18 08:11:45:Fault Already Injected
+2016-10-18 08:11:45:Fault Already Injected
+2016-10-18 08:11:45:Fault Already Injected
+2016-10-18 08:11:45:Fault Already Injected
+2016-10-18 08:11:45:Fault Already Injected
+2016-10-18 08:11:45:Fault Already Injected
+2016-10-18 08:11:45:event type: exit
+2016-10-18 08:11:45:exit code: no exit code available

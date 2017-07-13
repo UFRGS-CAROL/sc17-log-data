@@ -1,0 +1,38 @@
+2016-10-25 18:53:58:Initialization strings:
+2016-10-25 18:53:58:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-25 18:53:58:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-25 18:53:58:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-25 18:53:58:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-25 18:53:58:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-25 18:53:58:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-25 18:54:00:Trying Fault Injection
+2016-10-25 18:54:00:Backtrace BEGIN:
+2016-10-25 18:54:00:#0  0x00007ffff713f587 in _IO_feof (fp=0x609b40) at feof.c:36
+#1  0x0000000000401723 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:204
+#2  main (argc=6331200, argv=0x1) at hotspot_check.c:264
+
+2016-10-25 18:54:00:31	in feof.c
+
+2016-10-25 18:54:00:Backtrace END
+2016-10-25 18:54:00:Type: The type is an integer type.
+2016-10-25 18:54:00:Type sizeof: 4
+2016-10-25 18:54:00:Mem contents(hex):0x000x040x000x00
+2016-10-25 18:54:00:base address to flip value: 0x7fffffffe600
+2016-10-25 18:54:00:address max offset: 4
+2016-10-25 18:54:00:Memory content before bitflip:0x000x040x000x00
+2016-10-25 18:54:00:Memory content after  bitflip:0x020x040x000x00
+2016-10-25 18:54:00:Mem contents(hex):0x020x040x000x00
+2016-10-25 18:54:00:frame name: main
+2016-10-25 18:54:00:symbol name: grid_rows
+2016-10-25 18:54:00:symbol filename: hotspot_check.c
+2016-10-25 18:54:00:symbol line: 229
+2016-10-25 18:54:00:value: 1026
+2016-10-25 18:54:00:value address: 0x7fffffffe600
+2016-10-25 18:54:00:Type: The type is an integer type.
+2016-10-25 18:54:00:Type sizeof: 4
+2016-10-25 18:54:00:Fault Injection Successful after 2.30997204781s
+2016-10-25 18:54:05:Fault Already Injected
+2016-10-25 18:54:05:Fault Already Injected
+2016-10-25 18:54:05:Fault Already Injected
+2016-10-25 18:54:06:event type: exit
+2016-10-25 18:54:06:exit code: 1

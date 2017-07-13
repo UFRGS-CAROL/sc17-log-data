@@ -1,0 +1,256 @@
+2016-10-30 19:15:34:Initialization strings:
+2016-10-30 19:15:34:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-30 19:15:34:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-30 19:15:34:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-30 19:15:34:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-30 19:15:34:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-30 19:15:34:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-30 19:15:35:Trying Fault Injection
+2016-10-30 19:15:35:Backtrace BEGIN:
+2016-10-30 19:15:35:#0  0x00007ffff7151e58 in __GI___rawmemchr (s=s@entry=0x7fffffffe77a, c_in=c_in@entry=0) at ../string/rawmemchr.c:72
+#1  0x00007ffff7145ad0 in _IO_str_init_static_internal (sf=sf@entry=0x7fffffffe400, ptr=ptr@entry=0x7fffffffe77a "323.882697\n", size=size@entry=0, pstart=pstart@entry=0x0) at strops.c:44
+#2  0x00007ffff71365d5 in __GI___isoc99_vsscanf (string=0x7fffffffe77a "323.882697\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:41
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#5  main (argc=-6277, argv=0x0) at hotspot_check.c:264
+
+2016-10-30 19:15:35:67	in ../string/rawmemchr.c
+
+2016-10-30 19:15:35:Backtrace END
+2016-10-30 19:15:35:Type: The type is an array.
+2016-10-30 19:15:35:Type sizeof: 24
+2016-10-30 19:15:35:Fliping array at pos: 0
+2016-10-30 19:15:35:Type: The type is a structure.
+2016-10-30 19:15:35:Type sizeof: 24
+2016-10-30 19:15:35:Fliping value of field: overflow_arg_area
+2016-10-30 19:15:35:Type: The type is a pointer.
+2016-10-30 19:15:35:Type sizeof: 8
+2016-10-30 19:15:35:Fault Injection Failed after 1.2253010273s
+2016-10-30 19:15:35:Trying Fault Injection
+2016-10-30 19:15:35:Backtrace BEGIN:
+2016-10-30 19:15:35:#0  _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:1848
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "329.206604\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=-7168, argv=0x33) at hotspot_check.c:264
+
+2016-10-30 19:15:35:1843	in vfscanf.c
+
+2016-10-30 19:15:35:Backtrace END
+2016-10-30 19:15:35:Type: The type is an array.
+2016-10-30 19:15:35:Type sizeof: 24
+2016-10-30 19:15:35:Fliping array at pos: 0
+2016-10-30 19:15:35:Type: The type is a structure.
+2016-10-30 19:15:35:Type sizeof: 24
+2016-10-30 19:15:35:Fliping value of field: reg_save_area
+2016-10-30 19:15:35:Type: The type is a pointer.
+2016-10-30 19:15:35:Type sizeof: 8
+2016-10-30 19:15:35:Fault Injection Failed after 1.78799891472s
+2016-10-30 19:15:37:Trying Fault Injection
+2016-10-30 19:15:37:Backtrace BEGIN:
+2016-10-30 19:15:37:#0  __memchr (s=s@entry=0x7ffff7f71e8b, c_in=c_in@entry=10, n=252, n@entry=255) at ../string/memchr.c:68
+#1  0x00007ffff7139361 in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe77a "324.101249\n", n=255, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:94
+#2  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe77a "324.101249\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#3  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe77a "324.101249\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#4  0x0000000000401712 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:201
+#5  main (argc=-134799730, argv=0xa) at hotspot_check.c:264
+
+2016-10-30 19:15:37:63	in ../string/memchr.c
+
+2016-10-30 19:15:37:Backtrace END
+2016-10-30 19:15:37:Type: The type is an integer type.
+2016-10-30 19:15:37:Type sizeof: 4
+2016-10-30 19:15:37:Mem contents(hex):0x000x040x000x00
+2016-10-30 19:15:37:base address to flip value: 0x7fffffffe600
+2016-10-30 19:15:37:address max offset: 4
+2016-10-30 19:15:37:Memory content before bitflip:0x000x040x000x00
+2016-10-30 19:15:37:Memory content after  bitflip:0x000x040x200x00
+2016-10-30 19:15:37:Mem contents(hex):0x000x040x200x00
+2016-10-30 19:15:37:frame name: read_input
+2016-10-30 19:15:37:symbol name: grid_rows
+2016-10-30 19:15:37:symbol filename: hotspot_check.c
+2016-10-30 19:15:37:symbol line: 229
+2016-10-30 19:15:37:value: 2098176
+2016-10-30 19:15:37:value address: 0x7fffffffe600
+2016-10-30 19:15:37:Type: The type is an integer type.
+2016-10-30 19:15:37:Type sizeof: 4
+2016-10-30 19:15:37:Fault Injection Successful after 3.4724650383s
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:40:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:41:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:42:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:43:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:Fault Already Injected
+2016-10-30 19:15:44:event type: exit
+2016-10-30 19:15:44:exit code: no exit code available

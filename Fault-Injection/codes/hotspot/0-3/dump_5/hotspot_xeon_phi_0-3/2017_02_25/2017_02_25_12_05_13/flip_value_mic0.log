@@ -1,0 +1,124 @@
+[INFO -- 2017-02-25 12:04:32]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 12:04:32]
+Initialization strings:
+[INFO -- 2017-02-25 12:04:32]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-25 12:04:32]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 12:04:32]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 12:04:32]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 12:04:32]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 12:04:32]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-25 12:04:32]
+initSignal:0
+[INFO -- 2017-02-25 12:04:32]
+endSignal:3
+[INFO -- 2017-02-25 12:04:32]
+seqSignal:15
+[INFO -- 2017-02-25 12:04:32]
+faultMode:3
+[INFO -- 2017-02-25 12:04:33]
+Backtrace BEGIN:
+#0  0x00007ffff719f067 in munmap () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff714451a in __GI__IO_setb (f=f@entry=0x609030, b=b@entry=0x0, eb=eb@entry=0x0, a=a@entry=0) at genops.c:401
+#2  0x00007ffff7142e6e in _IO_new_file_close_it (fp=fp@entry=0x609030) at fileops.c:184
+#3  0x00007ffff7137c17 in _IO_new_fclose (fp=0x609030) at iofclose.c:59
+#4  0x00007ffff71667fe in __tzfile_read (file=<optimized out>, file@entry=0x7ffff71f01ba "/etc/localtime", extra=extra@entry=0, extrap=extrap@entry=0x0) at tzfile.c:450
+#5  0x00007ffff7165960 in tzset_internal (always=<optimized out>, explicit=explicit@entry=1) at tzset.c:447
+#6  0x00007ffff7165cab in __tz_convert (timer=0x7fffffffe608, use_localtime=0, tp=0x7ffff7429460 <_tmbuf>) at tzset.c:632
+#7  0x0000000000405f72 in start_log_file (benchmark_name=0x407478 "openMPHotspot", test_info=0x7fffffffe7a0 "simIter:1000 gridSize:1024x1024") at ../include/log_helper.c:204
+#8  0x0000000000404a17 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:255
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping value of field: __dummy
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffff7423600 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: _IO_new_file_close_it
+symbol name: _IO_file_jumps_mmap
+symbol filename: fileops.c
+symbol line: 1550
+value: {__dummy = 0, __dummy2 = 0, __finish = 0x7ffff7142f30 <_IO_new_file_finish>, __overflow = 0x7ffff71437f0 <_IO_new_file_overflow>, __underflow = 0x7ffff7142b20 <_IO_file_underflow_mmap>, __uflow = 0x7ffff7144590 <__GI__IO_default_uflow>, __pbackfail = 0x7ffff7145450 <__GI__IO_default_pbackfail>, __xsputn = 0x7ffff7142ba0 <_IO_new_file_xsputn>, __xsgetn = 0x7ffff7142770 <_IO_file_xsgetn_mmap>, __seekoff = 0x7ffff7142a40 <_IO_file_seekoff_mmap>, __seekpos = 0x7ffff71447f0 <_IO_default_seekpos>, __setbuf = 0x7ffff7141ce0 <_IO_file_setbuf_mmap>, __sync = 0x7ffff71424b0 <_IO_file_sync_mmap>, __doallocate = 0x7ffff7137990 <__GI__IO_file_doallocate>, __read = 0x7ffff7142b80 <__GI__IO_file_read>, __write = 0x7ffff71426e0 <_IO_new_file_write>, __seek = 0x7ffff71424a0 <__GI__IO_file_seek>, __close = 0x7ffff7142290 <_IO_file_close_mmap>, __stat = 0x7ffff71426d0 <__GI__IO_file_stat>, __showmanyc = 0x7ffff71455b0 <_IO_default_showmanyc>, __imbue = 0x7ffff71455c0 <_IO_default_imbue>}
+value address: 0x7ffff7423600 <_IO_file_jumps_mmap>
+Type: The type is a structure.
+Type sizeof: 168
+Field name: __dummy
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: __dummy2
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: __finish
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __overflow
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __underflow
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __uflow
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __pbackfail
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __xsputn
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __xsgetn
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __seekoff
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __seekpos
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __setbuf
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __sync
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __doallocate
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __read
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __write
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __seek
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __close
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __stat
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __showmanyc
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __imbue
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2017-02-25 12:04:33]
+Fault Injection Successful after 1.73597693443s
+[INFO -- 2017-02-25 12:04:57]
+event type: exit
+[INFO -- 2017-02-25 12:04:57]
+exit code: 0

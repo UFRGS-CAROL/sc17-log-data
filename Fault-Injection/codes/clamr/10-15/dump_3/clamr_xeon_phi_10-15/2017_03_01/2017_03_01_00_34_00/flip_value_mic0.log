@@ -1,0 +1,117 @@
+2017-03-01 00:32:03:Starting flip_value script
+2017-03-01 00:32:03:Initialization strings:
+2017-03-01 00:32:03:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 00:32:03:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 00:32:03:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 00:32:03:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 00:32:03:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 00:32:03:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 00:32:03:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 00:32:03:initSignal:10
+2017-03-01 00:32:03:endSignal:15
+2017-03-01 00:32:03:seqSignal:20
+2017-03-01 00:32:15:Backtrace BEGIN:
+2017-03-01 00:32:15:#0  0x000000000053d049 in KDTree_CreateTree (t=0x7fb150) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:254
+#1  0x00000000005413f6 in KDTree_QueryCircleInterior_Double (t=0x7fb150, result_num=0x7fffffffe65c, result_indicies=0xb02ed0, circ_radius=24, ncells=264756, x=0x1d27cd0, dx=0x212fce0, y=0x2537cf0, dy=0x2c44250) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:625
+#2  0x0000000000471e70 in State::fill_circle (this=0x7fb9e0, circ_radius=24, fill_value=100, background=7) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:990
+#3  0x00000000004452cb in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:282
+
+2017-03-01 00:32:15:249	         /* Add the "right" child to the tree and the stack */
+250	         stack[stack_ptr++] = next_node;  /* Node Number in the Tree */
+251	         stack[stack_ptr++] = mid + 1;    /* Element Span Minimum */
+252	         stack[stack_ptr++] = max;        /* Element Span Maximum */
+253	         Bounds_Infinite(&(t->tree_safety_boxes[next_node]));
+254	         for (i = min + 1; (int)i <= max; i++) {
+255	            Bounds_AddBounds(&(t->tree_safety_boxes[next_node]),
+256	                             &(t->elements[idx[i]]));
+257	         }
+258	         next_node++;
+
+2017-03-01 00:32:15:Backtrace END
+2017-03-01 00:32:20:Type: The type is an integer type.
+2017-03-01 00:32:20:Type sizeof: 4
+2017-03-01 00:32:20:Mem contents(hex):0x9c0x680x030x00
+2017-03-01 00:32:20:Fault Mode: Zero bit-flip
+2017-03-01 00:32:20:base address to flip value: 0x7fffffffe4a4
+2017-03-01 00:32:20:address max offset: 4
+2017-03-01 00:32:20:Memory content before bitflip:0x9c0x680x030x00
+2017-03-01 00:32:21:Backtrace BEGIN:
+2017-03-01 00:32:21:#0  0x000000000053d049 in KDTree_CreateTree (t=0x7fb150) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:254
+#1  0x00000000005413f6 in KDTree_QueryCircleInterior_Double (t=0x7fb150, result_num=0x7fffffffe65c, result_indicies=0xb02ed0, circ_radius=24, ncells=264756, x=0x1d27cd0, dx=0x212fce0, y=0x2537cf0, dy=0x2c44250) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:625
+#2  0x0000000000471e70 in State::fill_circle (this=0x7fb9e0, circ_radius=24, fill_value=100, background=7) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:990
+#3  0x00000000004452cb in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:282
+
+2017-03-01 00:32:21:249	         /* Add the "right" child to the tree and the stack */
+250	         stack[stack_ptr++] = next_node;  /* Node Number in the Tree */
+251	         stack[stack_ptr++] = mid + 1;    /* Element Span Minimum */
+252	         stack[stack_ptr++] = max;        /* Element Span Maximum */
+253	         Bounds_Infinite(&(t->tree_safety_boxes[next_node]));
+254	         for (i = min + 1; (int)i <= max; i++) {
+255	            Bounds_AddBounds(&(t->tree_safety_boxes[next_node]),
+256	                             &(t->elements[idx[i]]));
+257	         }
+258	         next_node++;
+
+2017-03-01 00:32:21:Backtrace END
+2017-03-01 00:32:27:Type: The type is a pointer.
+2017-03-01 00:32:27:Type sizeof: 8
+2017-03-01 00:32:27:Fliping a bit of the value pointed by a pointer
+2017-03-01 00:32:27:Type: The type is a structure.
+2017-03-01 00:32:27:Type sizeof: 2272
+2017-03-01 00:32:27:Fliping value of field: z
+2017-03-01 00:32:27:Type: The type is a structure.
+2017-03-01 00:32:27:Type sizeof: 24
+2017-03-01 00:32:27:Fliping value of field: std::_Vector_base<real_t, std::allocator<real_t> >
+2017-03-01 00:32:27:Type: The type is a structure.
+2017-03-01 00:32:27:Type sizeof: 24
+2017-03-01 00:32:27:Fliping value of field: _M_impl
+2017-03-01 00:32:27:Type: The type is a structure.
+2017-03-01 00:32:27:Type sizeof: 24
+2017-03-01 00:32:27:Fliping value of field: _M_end_of_storage
+2017-03-01 00:32:27:Type: The type is a pointer.
+2017-03-01 00:32:27:Type sizeof: 8
+2017-03-01 00:32:27:Fliping a bit of the pointer
+2017-03-01 00:32:27:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-03-01 00:32:27:Fault Mode: One bit-flip
+2017-03-01 00:32:27:base address to flip value: 0x7fb438
+2017-03-01 00:32:27:address max offset: 8
+2017-03-01 00:32:27:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-03-01 00:32:27:Backtrace BEGIN:
+2017-03-01 00:32:27:#0  0x000000000053d049 in KDTree_CreateTree (t=0x7fb150) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:254
+#1  0x00000000005413f6 in KDTree_QueryCircleInterior_Double (t=0x7fb150, result_num=0x7fffffffe65c, result_indicies=0xb02ed0, circ_radius=24, ncells=264756, x=0x1d27cd0, dx=0x212fce0, y=0x2537cf0, dy=0x2c44250) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:625
+#2  0x0000000000471e70 in State::fill_circle (this=0x7fb9e0, circ_radius=24, fill_value=100, background=7) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:990
+#3  0x00000000004452cb in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:282
+
+2017-03-01 00:32:27:249	         /* Add the "right" child to the tree and the stack */
+250	         stack[stack_ptr++] = next_node;  /* Node Number in the Tree */
+251	         stack[stack_ptr++] = mid + 1;    /* Element Span Minimum */
+252	         stack[stack_ptr++] = max;        /* Element Span Maximum */
+253	         Bounds_Infinite(&(t->tree_safety_boxes[next_node]));
+254	         for (i = min + 1; (int)i <= max; i++) {
+255	            Bounds_AddBounds(&(t->tree_safety_boxes[next_node]),
+256	                             &(t->elements[idx[i]]));
+257	         }
+258	         next_node++;
+
+2017-03-01 00:32:27:Backtrace END
+2017-03-01 00:32:33:Type: The type is a pointer.
+2017-03-01 00:32:33:Type sizeof: 8
+2017-03-01 00:32:33:Fliping a bit of the pointer
+2017-03-01 00:32:33:Mem contents(hex):0xe00xb90x7f0x000x000x000x000x00
+2017-03-01 00:32:33:Fault Mode: Double bit-flip
+2017-03-01 00:32:33:base address to flip value: 0x7fffffffe668
+2017-03-01 00:32:33:address max offset: 8
+2017-03-01 00:32:33:Memory content before bitflip:0xe00xb90x7f0x000x000x000x000x00
+2017-03-01 00:32:33:Memory content after  bitflip:0xe00xb90x7f0x000x050x000x000x00
+2017-03-01 00:32:33:Mem contents(hex):0xe00xb90x7f0x000x050x000x000x00
+2017-03-01 00:32:33:frame name: State::fill_circle
+2017-03-01 00:32:33:symbol name: this
+2017-03-01 00:32:33:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+2017-03-01 00:32:33:symbol line: 0
+2017-03-01 00:32:33:value: 0x7fb9e0
+2017-03-01 00:32:33:value address: 0x7fffffffe668
+2017-03-01 00:32:33:Type: The type is a pointer.
+2017-03-01 00:32:33:Type sizeof: 8
+2017-03-01 00:32:33:Fault Injection Successful after 30.3726708889s
+2017-03-01 00:32:37:event type: exit
+2017-03-01 00:32:37:exit code: no exit code available

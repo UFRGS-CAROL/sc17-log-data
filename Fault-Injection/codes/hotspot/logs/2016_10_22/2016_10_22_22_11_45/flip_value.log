@@ -1,0 +1,68 @@
+2016-10-22 22:11:23:Initialization strings:
+2016-10-22 22:11:23:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-22 22:11:23:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-22 22:11:23:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-22 22:11:23:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-22 22:11:23:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-22 22:11:23:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-22 22:11:24:Trying Fault Injection
+2016-10-22 22:11:24:Backtrace BEGIN:
+2016-10-22 22:11:24:#0  0x00007ffff7126544 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2084
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "324.491136\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=-7168, argv=0xa) at hotspot_check.c:264
+
+2016-10-22 22:11:24:2079	in vfscanf.c
+
+2016-10-22 22:11:24:Backtrace END
+2016-10-22 22:11:24:Type: The type is an array.
+2016-10-22 22:11:24:Type sizeof: 24
+2016-10-22 22:11:24:Fliping array at pos: 0
+2016-10-22 22:11:24:Type: The type is a structure.
+2016-10-22 22:11:24:Type sizeof: 24
+2016-10-22 22:11:24:Fliping value of field: overflow_arg_area
+2016-10-22 22:11:24:Type: The type is a pointer.
+2016-10-22 22:11:24:Type sizeof: 8
+2016-10-22 22:11:24:Fault Injection Failed after 1.95483994484s
+2016-10-22 22:11:25:Trying Fault Injection
+2016-10-22 22:11:25:Backtrace BEGIN:
+2016-10-22 22:11:25:#0  str_to_mpn (str=0x7fffffffe015 "44218", str@entry=0x7fffffffe013 ".944218", digcnt=5, digcnt@entry=6, n=n@entry=0x7fffffffdf30, nsize=nsize@entry=0x7fffffffdf18, exponent=exponent@entry=0x7fffffffdf20, decimal_len=decimal_len@entry=1, thousands=0x0, decimal=<optimized out>) at strtod_l.c:369
+#1  0x00007ffff71092a0 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe010 "328.944218", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1449
+#2  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe010 "328.944218", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0) at strtod.c:54
+#3  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2332
+#4  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "328.944218\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#5  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#6  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#7  main (argc=-8173, argv=0xffffdefe) at hotspot_check.c:264
+
+2016-10-22 22:11:25:364	in strtod_l.c
+
+2016-10-22 22:11:25:Backtrace END
+2016-10-22 22:11:25:Type: A floating point type.
+2016-10-22 22:11:25:Type sizeof: 4
+2016-10-22 22:11:25:Mem contents(hex):0x6f0x120x830x3c
+2016-10-22 22:11:25:base address to flip value: 0x4073a0 
+2016-10-22 22:11:25:address max offset: 4
+2016-10-22 22:11:25:Memory content before bitflip:0x6f0x120x830x3c
+2016-10-22 22:11:25:Memory content after  bitflip:0x6f0x320x830x3c
+2016-10-22 22:11:25:Mem contents(hex):0x6f0x320x830x3c
+2016-10-22 22:11:25:frame name: read_input
+2016-10-22 22:11:25:symbol name: chip_width
+2016-10-22 22:11:25:symbol filename: hotspot_check.c
+2016-10-22 22:11:25:symbol line: 34
+2016-10-22 22:11:25:value: 0.0160152595
+2016-10-22 22:11:25:value address: 0x4073a0 <chip_width>
+2016-10-22 22:11:25:Type: A floating point type.
+2016-10-22 22:11:25:Type sizeof: 4
+2016-10-22 22:11:25:Fault Injection Successful after 2.47107195854s
+2016-10-22 22:11:25:Fault Already Injected
+2016-10-22 22:11:26:Fault Already Injected
+2016-10-22 22:11:29:Fault Already Injected
+2016-10-22 22:11:32:Fault Already Injected
+2016-10-22 22:11:32:Fault Already Injected
+2016-10-22 22:11:34:Fault Already Injected
+2016-10-22 22:11:34:Fault Already Injected
+2016-10-22 22:11:37:Fault Already Injected
+2016-10-22 22:11:39:event type: exit
+2016-10-22 22:11:39:exit code: 0

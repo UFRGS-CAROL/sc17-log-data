@@ -1,0 +1,61 @@
+[INFO -- 2017-02-27 04:35:34]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 04:35:34]
+Initialization strings:
+[INFO -- 2017-02-27 04:35:34]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-27 04:35:34]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 04:35:34]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 04:35:34]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 04:35:34]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 04:35:34]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-27 04:35:34]
+initSignal:0
+[INFO -- 2017-02-27 04:35:34]
+endSignal:2
+[INFO -- 2017-02-27 04:35:34]
+seqSignal:30
+[INFO -- 2017-02-27 04:35:34]
+faultMode:3
+[INFO -- 2017-02-27 04:35:35]
+Backtrace BEGIN:
+#0  0x00007ffff7196b70 in __close_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142ee0 in _IO_new_file_close_it (fp=fp@entry=0x60cb40) at fileops.c:171
+#2  0x00007ffff7137c17 in _IO_new_fclose (fp=0x60cb40) at iofclose.c:59
+#3  0x0000000000405a3d in start_log_file (benchmark_name=0x4075ac "openmpLUD", test_info=0x7fffffffe848 "matrix_dim:2048 threads:228") at ../include/log_helper.c:274
+#4  0x0000000000402c4b in main (argc=9, argv=0x7fffffffec08) at lud_check.c:118
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping array at pos: 8
+Memory content before bitflip:0xe8
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe559 
+address max offset: 1
+Memory content after  bitflip:0x00
+frame name: start_log_file
+symbol name: minute
+symbol filename: ../include/log_helper.c
+symbol line: 200
+value: "35\000\377\177\000\000H\000\377"
+value address: 0x7fffffffe551
+Type: The type is an array.
+Type sizeof: 10
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 9L)
+
+[INFO -- 2017-02-27 04:35:35]
+Fault Injection Successful after 1.49719309807s
+[INFO -- 2017-02-27 04:35:50]
+event type: exit
+[INFO -- 2017-02-27 04:35:50]
+exit code: 0

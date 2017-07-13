@@ -1,0 +1,59 @@
+[INFO -- 2017-03-14 08:51:13]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-14 08:51:13]
+Initialization strings:
+[INFO -- 2017-03-14 08:51:13]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-14 08:51:13]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-14 08:51:13]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-14 08:51:14]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-14 08:51:14]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-14 08:51:14]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-14 08:51:14]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-14 08:51:14]
+initSignal:40
+[INFO -- 2017-03-14 08:51:14]
+endSignal:49
+[INFO -- 2017-03-14 08:51:14]
+seqSignal:20
+[INFO -- 2017-03-14 08:51:14]
+faultMode:2
+[INFO -- 2017-03-14 08:52:06]
+Backtrace BEGIN:
+#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd0cd8 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+Backtrace END
+Memory content before bitflip:0x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7d0708 
+address max offset: 1
+Memory content after  bitflip:0x85
+frame name: std::fill_n<int*, unsigned long, int>
+symbol name: do_display_graphics
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 99
+value: 133
+value address: 0x7d0708 <do_display_graphics>
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2017-03-14 08:52:06]
+Fault Injection Successful after 52.8054339886s
+[INFO -- 2017-03-14 08:52:12]
+event type: exit
+[INFO -- 2017-03-14 08:52:12]
+exit code: 0

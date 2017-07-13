@@ -1,0 +1,83 @@
+2017-02-21 21:46:25:Starting flip_value script
+2017-02-21 21:46:25:Initialization strings:
+2017-02-21 21:46:26:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-21 21:46:26:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 21:46:26:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 21:46:26:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-21 21:46:26:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-21 21:46:26:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-21 21:46:26:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-21 21:46:26:initSignal:20
+2017-02-21 21:46:26:endSignal:25
+2017-02-21 21:46:26:seqSignal:20
+2017-02-21 21:46:46:Backtrace BEGIN:
+2017-02-21 21:46:46:#0  0x00007ffff6b650e4 in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1540
+#1  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#2  0x000000000054b9dd in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:479
+#3  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#4  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-21 21:46:46:1535	in vfprintf.c
+
+2017-02-21 21:46:46:Backtrace END
+2017-02-21 21:46:52:Type: The type is an array.
+2017-02-21 21:46:52:Type sizeof: 24
+2017-02-21 21:46:52:Fliping array at pos: 0
+2017-02-21 21:46:52:Type: The type is a structure.
+2017-02-21 21:46:52:Type sizeof: 24
+2017-02-21 21:46:52:Fliping value of field: overflow_arg_area
+2017-02-21 21:46:52:Type: The type is a pointer.
+2017-02-21 21:46:52:Type sizeof: 8
+2017-02-21 21:46:52:Backtrace BEGIN:
+2017-02-21 21:46:52:#0  0x00007ffff6b650e4 in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1540
+#1  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#2  0x000000000054b9dd in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:479
+#3  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#4  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-21 21:46:52:1535	in vfprintf.c
+
+2017-02-21 21:46:52:Backtrace END
+2017-02-21 21:46:57:Type: The type is a pointer.
+2017-02-21 21:46:57:Type sizeof: 8
+2017-02-21 21:46:58:Fliping a bit of the value pointed by a pointer
+2017-02-21 21:46:58:Type: The type is a structure.
+2017-02-21 21:46:58:Type sizeof: 2656
+2017-02-21 21:46:58:Fliping value of field: dup_fatal
+2017-02-21 21:46:58:Type: The type is an integer type.
+2017-02-21 21:46:58:Type sizeof: 4
+2017-02-21 21:46:58:Mem contents(hex):0x010x000x000x00
+2017-02-21 21:46:58:Fault Mode: One bit-flip
+2017-02-21 21:46:58:base address to flip value: 0x7f5fe8
+2017-02-21 21:46:58:address max offset: 4
+2017-02-21 21:46:58:Memory content before bitflip:0x010x000x000x00
+2017-02-21 21:46:58:Backtrace BEGIN:
+2017-02-21 21:46:58:#0  0x00007ffff6b650e4 in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1540
+#1  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#2  0x000000000054b9dd in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:479
+#3  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#4  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-21 21:46:58:1535	in vfprintf.c
+
+2017-02-21 21:46:58:Backtrace END
+2017-02-21 21:47:03:Type: The type is an integer type.
+2017-02-21 21:47:03:Type sizeof: 4
+2017-02-21 21:47:03:Mem contents(hex):0xff0xff0xff0xff
+2017-02-21 21:47:03:Fault Mode: Double bit-flip
+2017-02-21 21:47:03:base address to flip value: 0x7fffffffdb7c
+2017-02-21 21:47:03:address max offset: 4
+2017-02-21 21:47:03:Memory content before bitflip:0xff0xff0xff0xff
+2017-02-21 21:47:03:Memory content after  bitflip:0xaf0xff0xff0xff
+2017-02-21 21:47:03:Mem contents(hex):0xaf0xff0xff0xff
+2017-02-21 21:47:03:frame name: _IO_vfprintf_internal
+2017-02-21 21:47:03:symbol name: alt
+2017-02-21 21:47:03:symbol filename: vfprintf.c
+2017-02-21 21:47:03:symbol line: 1358
+2017-02-21 21:47:03:value: -81
+2017-02-21 21:47:03:value address: 0x7fffffffdb7c
+2017-02-21 21:47:03:Type: The type is an integer type.
+2017-02-21 21:47:03:Type sizeof: 4
+2017-02-21 21:47:03:Fault Injection Successful after 37.4770290852s
+2017-02-21 21:47:38:event type: exit
+2017-02-21 21:47:38:exit code: 0

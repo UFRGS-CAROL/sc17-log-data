@@ -1,0 +1,69 @@
+2017-03-01 10:20:43:Starting flip_value script
+2017-03-01 10:20:43:Initialization strings:
+2017-03-01 10:20:44:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-01 10:20:44:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 10:20:44:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 10:20:44:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 10:20:44:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 10:20:44:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-03-01 10:20:44:initSignal:0
+2017-03-01 10:20:44:endSignal:3
+2017-03-01 10:20:44:seqSignal:30
+2017-03-01 10:20:44:Backtrace BEGIN:
+2017-03-01 10:20:44:#0  0x0000000000402275 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:151
+
+2017-03-01 10:20:44:146	    rv_cpu = (FOUR_VECTOR*)malloc(dim_cpu.space_mem);
+147	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+148	        fread(&(rv_cpu[i].v), 1, sizeof(double), file);
+149	        fread(&(rv_cpu[i].x), 1, sizeof(double), file);
+150	        fread(&(rv_cpu[i].y), 1, sizeof(double), file);
+151	        fread(&(rv_cpu[i].z), 1, sizeof(double), file);
+152	    }
+153	
+154	    fclose(file);
+155	
+
+2017-03-01 10:20:44:Backtrace END
+2017-03-01 10:20:44:Type: The type is an integer type.
+2017-03-01 10:20:44:Type sizeof: 4
+2017-03-01 10:20:44:Mem contents(hex):0x020x000x000x00
+2017-03-01 10:20:44:Fault Mode: One bit-flip
+2017-03-01 10:20:44:base address to flip value: 0x7fffffffe738
+2017-03-01 10:20:44:address max offset: 4
+2017-03-01 10:20:44:Memory content before bitflip:0x020x000x000x00
+2017-03-01 10:20:44:Backtrace BEGIN:
+2017-03-01 10:20:44:#0  0x00000000004021bb in main (argc=7, argv=0x7fffffffebc8) at main_check.c:148
+
+2017-03-01 10:20:44:143	        exit(1);
+144	    }
+145	
+146	    rv_cpu = (FOUR_VECTOR*)malloc(dim_cpu.space_mem);
+147	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+148	        fread(&(rv_cpu[i].v), 1, sizeof(double), file);
+149	        fread(&(rv_cpu[i].x), 1, sizeof(double), file);
+150	        fread(&(rv_cpu[i].y), 1, sizeof(double), file);
+151	        fread(&(rv_cpu[i].z), 1, sizeof(double), file);
+152	    }
+
+2017-03-01 10:20:44:Backtrace END
+2017-03-01 10:20:44:Type: The type is a pointer.
+2017-03-01 10:20:44:Type sizeof: 8
+2017-03-01 10:20:44:Fliping a bit of the pointer
+2017-03-01 10:20:44:Mem contents(hex):0xc80xeb0xff0xff0xff0x7f0x000x00
+2017-03-01 10:20:44:Fault Mode: Single bit-flip
+2017-03-01 10:20:44:base address to flip value: 0x7fffffffe828
+2017-03-01 10:20:44:address max offset: 8
+2017-03-01 10:20:44:Memory content before bitflip:0xc80xeb0xff0xff0xff0x7f0x000x00
+2017-03-01 10:20:44:Memory content after  bitflip:0xc80xeb0xff0xff0xfd0x7f0x000x00
+2017-03-01 10:20:44:Mem contents(hex):0xc80xeb0xff0xff0xfd0x7f0x000x00
+2017-03-01 10:20:44:frame name: main
+2017-03-01 10:20:44:symbol name: argv
+2017-03-01 10:20:44:symbol filename: main_check.c
+2017-03-01 10:20:44:symbol line: 43
+2017-03-01 10:20:44:value: 0x7fffffffebc8
+2017-03-01 10:20:44:value address: 0x7fffffffe828
+2017-03-01 10:20:44:Type: The type is a pointer.
+2017-03-01 10:20:44:Type sizeof: 8
+2017-03-01 10:20:44:Fault Injection Successful after 0.987195014954s
+2017-03-01 10:21:02:event type: exit
+2017-03-01 10:21:02:exit code: 0

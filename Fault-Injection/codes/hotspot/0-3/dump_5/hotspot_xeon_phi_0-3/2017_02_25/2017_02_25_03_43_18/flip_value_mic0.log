@@ -1,0 +1,55 @@
+[INFO -- 2017-02-25 03:42:37]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 03:42:37]
+Initialization strings:
+[INFO -- 2017-02-25 03:42:38]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-25 03:42:38]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 03:42:38]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 03:42:38]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 03:42:38]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 03:42:38]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-25 03:42:38]
+initSignal:0
+[INFO -- 2017-02-25 03:42:38]
+endSignal:3
+[INFO -- 2017-02-25 03:42:38]
+seqSignal:15
+[INFO -- 2017-02-25 03:42:38]
+faultMode:2
+[INFO -- 2017-02-25 03:42:40]
+Backtrace BEGIN:
+#0  0x00007ffff713836c in _IO_acquire_lock_fct (p=<synthetic pointer>) at libioP.h:892
+#1  _IO_fgets (buf=<optimized out>, n=<optimized out>, fp=0x609b40) at iofgets.c:50
+#2  0x0000000000404538 in read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:202
+#3  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+887	in libioP.h
+
+Backtrace END
+Memory content before bitflip:0x6f0x120x830x3c
+Fault Mode: Random bit-flip
+base address to flip value: 0x4074f8 
+address max offset: 4
+Memory content after  bitflip:0x220x7d0x890x2b
+frame name: main
+symbol name: chip_height
+symbol filename: hotspot_check.c
+symbol line: 34
+value: 9.76916681e-13
+value address: 0x4074f8 <chip_height>
+Type: A floating point type.
+Type sizeof: 4
+
+[INFO -- 2017-02-25 03:42:40]
+Fault Injection Successful after 2.14990210533s
+[INFO -- 2017-02-25 03:43:03]
+event type: exit
+[INFO -- 2017-02-25 03:43:03]
+exit code: 0

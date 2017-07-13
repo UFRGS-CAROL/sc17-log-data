@@ -1,0 +1,66 @@
+2017-02-28 04:17:23:Starting flip_value script
+2017-02-28 04:17:23:Initialization strings:
+2017-02-28 04:17:23:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-28 04:17:23:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 04:17:23:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 04:17:23:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-28 04:17:23:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-28 04:17:23:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-02-28 04:17:23:initSignal:0
+2017-02-28 04:17:23:endSignal:3
+2017-02-28 04:17:23:seqSignal:30
+2017-02-28 04:17:24:Backtrace BEGIN:
+2017-02-28 04:17:24:#0  0x00007ffff7142876 in __GI__IO_file_xsgetn (fp=0x60e1c0, data=0x7ffff52c6c40, n=8) at fileops.c:1355
+#1  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#2  0x000000000040262f in main (argc=7, argv=0x7fffffffebc8) at main_check.c:181
+
+2017-02-28 04:17:24:1350	in fileops.c
+
+2017-02-28 04:17:24:Backtrace END
+2017-02-28 04:17:24:Type: The type is a structure.
+2017-02-28 04:17:24:Type sizeof: 168
+2017-02-28 04:17:24:Fliping value of field: __dummy
+2017-02-28 04:17:24:Type: The type is an integer type.
+2017-02-28 04:17:24:Type sizeof: 8
+2017-02-28 04:17:24:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-28 04:17:24:Fault Mode: One bit-flip
+2017-02-28 04:17:24:base address to flip value: 0x7ffff74236c0 
+2017-02-28 04:17:24:address max offset: 8
+2017-02-28 04:17:24:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-28 04:17:25:Backtrace BEGIN:
+2017-02-28 04:17:25:#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff74312d0 in ?? () at pthread_create.c:237 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libpthread.so.0
+#2  0x00007ffe65fe2980 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-02-28 04:17:25:76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+2017-02-28 04:17:25:Backtrace END
+2017-02-28 04:17:26:Type: The type is an array.
+2017-02-28 04:17:26:Type sizeof: 12
+2017-02-28 04:17:26:Fliping array at pos: 1
+2017-02-28 04:17:26:Type: The type is an integer type.
+2017-02-28 04:17:26:Type sizeof: 4
+2017-02-28 04:17:26:Mem contents(hex):0x010x000x000x00
+2017-02-28 04:17:26:Fault Mode: Single bit-flip
+2017-02-28 04:17:26:base address to flip value: 0x7ffff743c3c4 
+2017-02-28 04:17:26:address max offset: 4
+2017-02-28 04:17:26:Memory content before bitflip:0x010x000x000x00
+2017-02-28 04:17:26:Memory content after  bitflip:0x030x000x000x00
+2017-02-28 04:17:26:Mem contents(hex):0x030x000x000x00
+2017-02-28 04:17:26:frame name: __pthread_create_2_1
+2017-02-28 04:17:26:symbol name: _thread_db_pthread_list
+2017-02-28 04:17:26:symbol filename: ../nptl_db/structs.def
+2017-02-28 04:17:26:symbol line: 26
+2017-02-28 04:17:26:value: {128, 3, 704}
+2017-02-28 04:17:26:value address: 0x7ffff743c3c0 <_thread_db_pthread_list>
+2017-02-28 04:17:26:Type: The type is an array.
+2017-02-28 04:17:26:Type sizeof: 12
+2017-02-28 04:17:26:Field name: None
+2017-02-28 04:17:26:Field Type:
+2017-02-28 04:17:26:Type: A range type, that is, an integer type with bounds.
+2017-02-28 04:17:26:Type sizeof: 8
+2017-02-28 04:17:26:Type range: (0L, 2L)
+2017-02-28 04:17:26:Fault Injection Successful after 3.8653550148s
+2017-02-28 04:17:41:event type: exit
+2017-02-28 04:17:41:exit code: 0

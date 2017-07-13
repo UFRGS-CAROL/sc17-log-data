@@ -1,0 +1,121 @@
+[INFO -- 2017-02-27 01:04:33]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 01:04:33]
+Initialization strings:
+[INFO -- 2017-02-27 01:04:33]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-27 01:04:33]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 01:04:33]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 01:04:33]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 01:04:33]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 01:04:33]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-27 01:04:33]
+initSignal:0
+[INFO -- 2017-02-27 01:04:33]
+endSignal:3
+[INFO -- 2017-02-27 01:04:33]
+seqSignal:15
+[INFO -- 2017-02-27 01:04:33]
+faultMode:0
+[INFO -- 2017-02-27 01:04:34]
+Backtrace BEGIN:
+#0  _IO_str_init_static_internal (sf=sf@entry=0x7fffffffe440, ptr=ptr@entry=0x7fffffffe640 "324.800756\n", size=size@entry=0, pstart=pstart@entry=0x0) at strops.c:62
+#1  0x00007ffff71365d5 in __GI___isoc99_vsscanf (string=0x7fffffffe640 "324.800756\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:41
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000404598 in read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:207
+#4  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+57	in strops.c
+
+Backtrace END
+Fliping value of field: __seekoff
+Fliping a bit of the pointer
+Memory content before bitflip:0xb00x5b0x140xf70xff0x7f0x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7ffff74237c8 
+address max offset: 8
+Memory content after  bitflip:0xb00x5b0x140xf30xff0x7f0x000x00
+frame name: _IO_str_init_static_internal
+symbol name: _IO_str_jumps
+symbol filename: strops.c
+symbol line: 348
+value: {__dummy = 0, __dummy2 = 0, __finish = 0x7ffff7145a80 <_IO_str_finish>, __overflow = 0x7ffff7145760 <__GI__IO_str_overflow>, __underflow = 0x7ffff7145700 <__GI__IO_str_underflow>, __uflow = 0x7ffff7144590 <__GI__IO_default_uflow>, __pbackfail = 0x7ffff7145a60 <__GI__IO_str_pbackfail>, __xsputn = 0x7ffff71445c0 <__GI__IO_default_xsputn>, __xsgetn = 0x7ffff7144690 <__GI__IO_default_xsgetn>, __seekoff = 0x7ffff3145bb0, __seekpos = 0x7ffff71447f0 <_IO_default_seekpos>, __setbuf = 0x7ffff7144740 <_IO_default_setbuf>, __sync = 0x7ffff71449e0 <_IO_default_sync>, __doallocate = 0x7ffff7144810 <__GI__IO_default_doallocate>, __read = 0x7ffff7145590 <_IO_default_read>, __write = 0x7ffff71455a0 <_IO_default_write>, __seek = 0x7ffff7145570 <_IO_default_seek>, __close = 0x7ffff71449e0 <_IO_default_sync>, __stat = 0x7ffff7145580 <_IO_default_stat>, __showmanyc = 0x7ffff71455b0 <_IO_default_showmanyc>, __imbue = 0x7ffff71455c0 <_IO_default_imbue>}
+value address: 0x7ffff7423780 <_IO_str_jumps>
+Type: The type is a structure.
+Type sizeof: 168
+Field name: __dummy
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: __dummy2
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: __finish
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __overflow
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __underflow
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __uflow
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __pbackfail
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __xsputn
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __xsgetn
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __seekoff
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __seekpos
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __setbuf
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __sync
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __doallocate
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __read
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __write
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __seek
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __close
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __stat
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __showmanyc
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __imbue
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2017-02-27 01:04:34]
+Fault Injection Successful after 1.15715789795s
+[INFO -- 2017-02-27 01:05:02]
+event type: exit
+[INFO -- 2017-02-27 01:05:02]
+exit code: 0

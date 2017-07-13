@@ -1,0 +1,87 @@
+2016-10-11 18:24:52:Initialization strings:
+2016-10-11 18:24:52:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-11 18:24:52:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-11 18:24:52:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-11 18:24:52:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-11 18:24:52:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-11 18:24:52:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-11 18:24:54:Trying Fault Injection
+2016-10-11 18:24:54:Inferior PID: 171717
+2016-10-11 18:24:54:Inferior is valid: True
+2016-10-11 18:24:54:Inferior #threads: 33
+2016-10-11 18:24:54:Backtrace BEGIN:
+2016-10-11 18:24:54:#0  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffdd58) at allocatestack.c:548
+#1  __pthread_create_2_1 (newthread=0x7fffffffdd50, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7ffff7f25600) at pthread_create.c:524
+#2  0x00007ffff790d323 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2016-10-11 18:24:54:543	in allocatestack.c
+
+2016-10-11 18:24:54:Backtrace END
+2016-10-11 18:24:54:Thread name: None
+2016-10-11 18:24:54:Thread num: 1
+2016-10-11 18:24:54:Thread ptid: (171717, 171717, 0)
+2016-10-11 18:24:54:bitFlip function
+2016-10-11 18:24:54:Type: The type is a structure.
+2016-10-11 18:24:54:Type sizeof: 56
+2016-10-11 18:24:54:Fliping value of field: stacksize
+2016-10-11 18:24:54:bitFlip function
+2016-10-11 18:24:54:Type: The type is an integer type.
+2016-10-11 18:24:54:Type sizeof: 8
+2016-10-11 18:24:54:Mem contents(hex):0x900xba0xb70xf70xff0x7f0x000x00
+2016-10-11 18:24:54:base address to flip value: 0x7fffffffdb18
+2016-10-11 18:24:54:address max offset: 8
+2016-10-11 18:24:54:Memory content before bitflip:0x900xba0xb70xf70xff0x7f0x000x00
+2016-10-11 18:24:54:Memory content after  bitflip:0x900xba0xb70xf70xfd0x7f0x000x00
+2016-10-11 18:24:54:Mem contents(hex):0x900xba0xb70xf70xfd0x7f0x000x00
+2016-10-11 18:24:54:frame name: __pthread_create_2_1
+2016-10-11 18:24:54:symbol name: default_attr
+2016-10-11 18:24:54:symbol filename: pthread_create.c
+2016-10-11 18:24:54:symbol line: 494
+2016-10-11 18:24:54:value: {schedparam = {__sched_priority = -138954096}, schedpolicy = 32767, flags = 0, guardsize = 140737346923321, stackaddr = 0x2, stacksize = 140728759466640, cpuset = 0x4000, cpusetsize = 1}
+2016-10-11 18:24:54:value address: 0x7fffffffdaf8
+2016-10-11 18:24:54:Type: The type is a structure.
+2016-10-11 18:24:54:Type sizeof: 56
+2016-10-11 18:24:54:Field name: schedparam
+2016-10-11 18:24:54:Field Type:
+2016-10-11 18:24:54:Type: The type is a structure.
+2016-10-11 18:24:54:Type sizeof: 4
+2016-10-11 18:24:54:Field name: schedpolicy
+2016-10-11 18:24:54:Field Type:
+2016-10-11 18:24:54:Type: The type is an integer type.
+2016-10-11 18:24:54:Type sizeof: 4
+2016-10-11 18:24:54:Field name: flags
+2016-10-11 18:24:54:Field Type:
+2016-10-11 18:24:54:Type: The type is an integer type.
+2016-10-11 18:24:54:Type sizeof: 4
+2016-10-11 18:24:54:Field name: guardsize
+2016-10-11 18:24:54:Field Type:
+2016-10-11 18:24:54:Type: The type is an integer type.
+2016-10-11 18:24:54:Type sizeof: 8
+2016-10-11 18:24:54:Field name: stackaddr
+2016-10-11 18:24:54:Field Type:
+2016-10-11 18:24:54:Type: The type is a pointer.
+2016-10-11 18:24:54:Type sizeof: 8
+2016-10-11 18:24:54:Field name: stacksize
+2016-10-11 18:24:54:Field Type:
+2016-10-11 18:24:54:Type: The type is an integer type.
+2016-10-11 18:24:54:Type sizeof: 8
+2016-10-11 18:24:54:Field name: cpuset
+2016-10-11 18:24:54:Field Type:
+2016-10-11 18:24:54:Type: The type is a pointer.
+2016-10-11 18:24:54:Type sizeof: 8
+2016-10-11 18:24:54:Field name: cpusetsize
+2016-10-11 18:24:54:Field Type:
+2016-10-11 18:24:54:Type: The type is an integer type.
+2016-10-11 18:24:54:Type sizeof: 8
+2016-10-11 18:24:54:Fault Injection Successful after 2.9615149498s
+2016-10-11 18:24:55:Fault Already Injected
+2016-10-11 18:24:57:Fault Already Injected
+2016-10-11 18:24:57:Fault Already Injected
+2016-10-11 18:24:59:Fault Already Injected
+2016-10-11 18:25:00:Fault Already Injected
+2016-10-11 18:25:01:Fault Already Injected
+2016-10-11 18:25:01:Fault Already Injected
+2016-10-11 18:25:02:Fault Already Injected
+2016-10-11 18:25:04:event type: exit
+2016-10-11 18:25:04:exit code: 0

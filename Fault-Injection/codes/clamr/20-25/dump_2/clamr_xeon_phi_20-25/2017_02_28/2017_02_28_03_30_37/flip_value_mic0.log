@@ -1,0 +1,84 @@
+2017-02-28 03:29:15:Starting flip_value script
+2017-02-28 03:29:15:Initialization strings:
+2017-02-28 03:29:16:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 03:29:16:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 03:29:16:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 03:29:16:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 03:29:16:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 03:29:16:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 03:29:16:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 03:29:16:initSignal:20
+2017-02-28 03:29:16:endSignal:25
+2017-02-28 03:29:16:seqSignal:20
+2017-02-28 03:29:40:Backtrace BEGIN:
+2017-02-28 03:29:40:#0  0x00000000005361e9 in Mesh::partition_cells (this=0x7f9a50, numpe=0, z_order=..., method=ORIGINAL_ORDER) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:369
+#1  0x00000000004461e3 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:477
+#2  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 03:29:40:364	   //  Partition cells according to one of several possible orderings.
+365	   int have_spatial_variables=0;
+366	   switch (method)
+367	   {   case ORIGINAL_ORDER:
+368	         //  Set z_order to the current cell order.
+369	         for (uint ic = 0; ic < ncells; ++ic)
+370	         {   z_order[ic] = ic; }
+371	
+372	         cpu_timers[MESH_TIMER_PARTITION] += cpu_timer_stop(tstart_cpu);
+373	
+
+2017-02-28 03:29:40:Backtrace END
+2017-02-28 03:29:50:Type: The type is an integer type.
+2017-02-28 03:29:50:Type sizeof: 4
+2017-02-28 03:29:50:Mem contents(hex):0x500x530xb40x02
+2017-02-28 03:29:50:Fault Mode: Random bit-flip
+2017-02-28 03:29:50:base address to flip value: 0x7fffffffdf08
+2017-02-28 03:29:50:address max offset: 4
+2017-02-28 03:29:50:Memory content before bitflip:0x500x530xb40x02
+2017-02-28 03:29:50:Backtrace BEGIN:
+2017-02-28 03:29:50:#0  0x00000000005361e9 in Mesh::partition_cells (this=0x7f9a50, numpe=0, z_order=..., method=ORIGINAL_ORDER) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:369
+#1  0x00000000004461e3 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:477
+#2  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 03:29:50:364	   //  Partition cells according to one of several possible orderings.
+365	   int have_spatial_variables=0;
+366	   switch (method)
+367	   {   case ORIGINAL_ORDER:
+368	         //  Set z_order to the current cell order.
+369	         for (uint ic = 0; ic < ncells; ++ic)
+370	         {   z_order[ic] = ic; }
+371	
+372	         cpu_timers[MESH_TIMER_PARTITION] += cpu_timer_stop(tstart_cpu);
+373	
+
+2017-02-28 03:29:50:Backtrace END
+2017-02-28 03:29:59:Type: The type is a structure.
+2017-02-28 03:29:59:Type sizeof: 16
+2017-02-28 03:29:59:Fliping value of field: tv_usec
+2017-02-28 03:29:59:Type: The type is an integer type.
+2017-02-28 03:29:59:Type sizeof: 8
+2017-02-28 03:29:59:Mem contents(hex):0x820x980x080x000x000x000x000x00
+2017-02-28 03:29:59:Fault Mode: Double bit-flip
+2017-02-28 03:29:59:base address to flip value: 0x7fffffffe040
+2017-02-28 03:29:59:address max offset: 8
+2017-02-28 03:29:59:Memory content before bitflip:0x820x980x080x000x000x000x000x00
+2017-02-28 03:29:59:Memory content after  bitflip:0x820x980x080x000x000x840x000x00
+2017-02-28 03:29:59:Mem contents(hex):0x820x980x080x000x000x840x000x00
+2017-02-28 03:29:59:frame name: Mesh::partition_cells
+2017-02-28 03:29:59:symbol name: tstart_cpu
+2017-02-28 03:29:59:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp
+2017-02-28 03:29:59:symbol line: 334
+2017-02-28 03:29:59:value: {tv_sec = 1488270301, tv_usec = 145135535429762}
+2017-02-28 03:29:59:value address: 0x7fffffffe038
+2017-02-28 03:29:59:Type: The type is a structure.
+2017-02-28 03:29:59:Type sizeof: 16
+2017-02-28 03:29:59:Field name: tv_sec
+2017-02-28 03:29:59:Field Type:
+2017-02-28 03:29:59:Type: The type is an integer type.
+2017-02-28 03:29:59:Type sizeof: 8
+2017-02-28 03:29:59:Field name: tv_usec
+2017-02-28 03:29:59:Field Type:
+2017-02-28 03:29:59:Type: The type is an integer type.
+2017-02-28 03:29:59:Type sizeof: 8
+2017-02-28 03:29:59:Fault Injection Successful after 43.5993990898s
+2017-02-28 03:30:29:event type: exit
+2017-02-28 03:30:29:exit code: 0

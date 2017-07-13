@@ -1,0 +1,63 @@
+[INFO -- 2017-02-25 11:14:58]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 11:14:58]
+Initialization strings:
+[INFO -- 2017-02-25 11:14:58]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-25 11:14:58]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 11:14:58]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 11:14:58]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 11:14:58]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 11:14:58]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-25 11:14:58]
+initSignal:12
+[INFO -- 2017-02-25 11:14:58]
+endSignal:15
+[INFO -- 2017-02-25 11:14:58]
+seqSignal:15
+[INFO -- 2017-02-25 11:14:58]
+faultMode:3
+[INFO -- 2017-02-25 11:15:12]
+Backtrace BEGIN:
+#0  0x0000000000401470 in single_iteration (result=0x7ffff62ca010, temp=0x7ffff6acc010, power=0x7ffff66cb010, row=1024, col=1024, Cap_1=0.00136533321, Rx_1=0.100000001, Ry_1=0.100000001, Rz_1=4.88281257e-05, step=1.45833345e-10) at hotspot_check.c:50
+#1  0x000000000040440d in compute_tran_temp (result=0x7ffff62ca010, num_iterations=1000, temp=0x7ffff6acc010, power=0x7ffff66cb010, row=1024, col=1024) at hotspot_check.c:173
+#2  0x0000000000404b67 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:277
+
+45	 * by one time step
+46	 */
+47	void single_iteration(FLOAT *result, FLOAT *temp, FLOAT *power, int row, int col,
+48	                      FLOAT Cap_1, FLOAT Rx_1, FLOAT Ry_1, FLOAT Rz_1,
+49	                      FLOAT step)
+50	{
+51	    FLOAT delta;
+52	    int r, c;
+53	    int chunk;
+54	    int num_chunk = row*col / (BLOCK_SIZE_R * BLOCK_SIZE_C);
+
+Backtrace END
+Memory content before bitflip:0xe80x030x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe6a8
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: compute_tran_temp
+symbol name: num_iterations
+symbol filename: hotspot_check.c
+symbol line: 146
+value: 0
+value address: 0x7fffffffe6a8
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-02-25 11:15:12]
+Fault Injection Successful after 14.9719650745s
+[INFO -- 2017-02-25 11:15:13]
+event type: exit
+[INFO -- 2017-02-25 11:15:13]
+exit code: 1

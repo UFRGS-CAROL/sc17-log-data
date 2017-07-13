@@ -1,0 +1,41 @@
+2017-01-12 15:39:08:Starting flip_value script
+2017-01-12 15:39:08:Initialization strings:
+2017-01-12 15:39:09:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-12 15:39:09:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-12 15:39:09:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-12 15:39:09:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-12 15:39:09:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-12 15:39:09:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-12 15:39:09:initSignal:0
+2017-01-12 15:39:09:endSignal:7
+2017-01-12 15:39:09:seqSignal:15
+2017-01-12 15:39:10:Backtrace BEGIN:
+2017-01-12 15:39:10:#0  0x00007ffff71505d6 in __GI_memcpy (dstpp=dstpp@entry=0x7ffff55d2b10, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x6071c0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x6071c0) at iofread.c:42
+#3  0x0000000000403bc3 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:249
+#4  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+2017-01-12 15:39:10:54	in ../string/memcpy.c
+
+2017-01-12 15:39:10:Backtrace END
+2017-01-12 15:39:10:Type: The type is a pointer.
+2017-01-12 15:39:10:Type sizeof: 8
+2017-01-12 15:39:10:Fliping a bit of the pointer
+2017-01-12 15:39:10:Mem contents(hex):0x400xb00xcc0xf20xff0x7f0x000x00
+2017-01-12 15:39:10:base address to flip value: 0x606b50 
+2017-01-12 15:39:10:address max offset: 8
+2017-01-12 15:39:10:Memory content before bitflip:0x400xb00xcc0xf20xff0x7f0x000x00
+2017-01-12 15:39:10:Memory content after  bitflip:0x410xb00xcc0xf20xff0x7f0x000x00
+2017-01-12 15:39:10:Mem contents(hex):0x410xb00xcc0xf20xff0x7f0x000x00
+2017-01-12 15:39:10:frame name: main
+2017-01-12 15:39:10:symbol name: B
+2017-01-12 15:39:10:symbol filename: dgemm.c
+2017-01-12 15:39:10:symbol line: 280
+2017-01-12 15:39:10:value: 0x7ffff2ccb040
+2017-01-12 15:39:10:value address: 0x606b50 <B.1136>
+2017-01-12 15:39:10:Type: The type is a pointer.
+2017-01-12 15:39:10:Type sizeof: 8
+2017-01-12 15:39:10:Fault Injection Successful after 1.53718495369s
+2017-01-12 15:39:20:event type: exit
+2017-01-12 15:39:20:exit code: no exit code available

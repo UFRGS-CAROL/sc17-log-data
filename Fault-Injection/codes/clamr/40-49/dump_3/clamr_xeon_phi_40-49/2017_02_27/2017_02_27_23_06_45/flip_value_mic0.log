@@ -1,0 +1,152 @@
+2017-02-27 23:01:31:Starting flip_value script
+2017-02-27 23:01:31:Initialization strings:
+2017-02-27 23:01:31:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-27 23:01:31:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 23:01:31:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 23:01:31:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-27 23:01:31:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-27 23:01:31:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-27 23:01:31:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-27 23:01:31:initSignal:40
+2017-02-27 23:01:31:endSignal:49
+2017-02-27 23:01:31:seqSignal:20
+2017-02-27 23:02:15:Backtrace BEGIN:
+2017-02-27 23:02:15:#0  0x000000000052078c in Mesh::rezone_all (this=0x7fae50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3196
+#1  0x0000000000471447 in State::rezone_all (this=0x7fb9e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-27 23:02:15:3191	
+3192	      for (int ic = 0; ic < new_ncells; ic++){
+3193	         nlft_old[ic] = -1;
+3194	         nrht_old[ic] = -1;
+3195	         nbot_old[ic] = -1;
+3196	         ntop_old[ic] = -1;
+3197	      }
+3198	
+3199	      mesh_memory.memory_swap(&nlft,  &nlft_old);
+3200	      mesh_memory.memory_swap(&nrht,  &nrht_old);
+
+2017-02-27 23:02:15:Backtrace END
+2017-02-27 23:02:18:Type: The type is an integer type.
+2017-02-27 23:02:18:Type sizeof: 4
+2017-02-27 23:02:18:Mem contents(hex):0x000x000x000x00
+2017-02-27 23:02:18:Fault Mode: Zero bit-flip
+2017-02-27 23:02:18:base address to flip value: 0x7d074c 
+2017-02-27 23:02:18:address max offset: 4
+2017-02-27 23:02:18:Memory content before bitflip:0x000x000x000x00
+2017-02-27 23:02:19:Backtrace BEGIN:
+2017-02-27 23:02:19:#0  0x000000000052078c in Mesh::rezone_all (this=0x7fae50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3196
+#1  0x0000000000471447 in State::rezone_all (this=0x7fb9e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-27 23:02:19:3191	
+3192	      for (int ic = 0; ic < new_ncells; ic++){
+3193	         nlft_old[ic] = -1;
+3194	         nrht_old[ic] = -1;
+3195	         nbot_old[ic] = -1;
+3196	         ntop_old[ic] = -1;
+3197	      }
+3198	
+3199	      mesh_memory.memory_swap(&nlft,  &nlft_old);
+3200	      mesh_memory.memory_swap(&nrht,  &nrht_old);
+
+2017-02-27 23:02:19:Backtrace END
+2017-02-27 23:02:23:Type: The type is an integer type.
+2017-02-27 23:02:23:Type sizeof: 4
+2017-02-27 23:02:23:Mem contents(hex):0x6f0x750x740x70
+2017-02-27 23:02:23:Fault Mode: One bit-flip
+2017-02-27 23:02:23:base address to flip value: 0x7fffffffe42c
+2017-02-27 23:02:23:address max offset: 4
+2017-02-27 23:02:23:Memory content before bitflip:0x6f0x750x740x70
+2017-02-27 23:02:23:Backtrace BEGIN:
+2017-02-27 23:02:23:#0  0x000000000052078c in Mesh::rezone_all (this=0x7fae50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3196
+#1  0x0000000000471447 in State::rezone_all (this=0x7fb9e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-27 23:02:23:3191	
+3192	      for (int ic = 0; ic < new_ncells; ic++){
+3193	         nlft_old[ic] = -1;
+3194	         nrht_old[ic] = -1;
+3195	         nbot_old[ic] = -1;
+3196	         ntop_old[ic] = -1;
+3197	      }
+3198	
+3199	      mesh_memory.memory_swap(&nlft,  &nlft_old);
+3200	      mesh_memory.memory_swap(&nrht,  &nrht_old);
+
+2017-02-27 23:02:23:Backtrace END
+2017-02-27 23:02:32:Type: The type is an integer type.
+2017-02-27 23:02:32:Type sizeof: 4
+2017-02-27 23:02:32:Mem contents(hex):0x000x000x000x00
+2017-02-27 23:02:32:Fault Mode: Zero bit-flip
+2017-02-27 23:02:32:base address to flip value: 0x7d0718 
+2017-02-27 23:02:32:address max offset: 4
+2017-02-27 23:02:32:Memory content before bitflip:0x000x000x000x00
+2017-02-27 23:02:32:Backtrace BEGIN:
+2017-02-27 23:02:32:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd0cd8 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+2017-02-27 23:02:32:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-02-27 23:02:32:Backtrace END
+2017-02-27 23:02:41:Type: The type is an integer type.
+2017-02-27 23:02:41:Type sizeof: 4
+2017-02-27 23:02:41:Mem contents(hex):0x060x000x000x00
+2017-02-27 23:02:41:Fault Mode: Random bit-flip
+2017-02-27 23:02:41:base address to flip value: 0x572f98 
+2017-02-27 23:02:41:address max offset: 4
+2017-02-27 23:02:42:Memory content before bitflip:0x060x000x000x00
+2017-02-27 23:02:42:Backtrace BEGIN:
+2017-02-27 23:02:42:#0  0x000000000052078c in Mesh::rezone_all (this=0x7fae50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3196
+#1  0x0000000000471447 in State::rezone_all (this=0x7fb9e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-27 23:02:42:3191	
+3192	      for (int ic = 0; ic < new_ncells; ic++){
+3193	         nlft_old[ic] = -1;
+3194	         nrht_old[ic] = -1;
+3195	         nbot_old[ic] = -1;
+3196	         ntop_old[ic] = -1;
+3197	      }
+3198	
+3199	      mesh_memory.memory_swap(&nlft,  &nlft_old);
+3200	      mesh_memory.memory_swap(&nrht,  &nrht_old);
+
+2017-02-27 23:02:42:Backtrace END
+2017-02-27 23:02:51:Type: The type is an array.
+2017-02-27 23:02:51:Type sizeof: 192
+2017-02-27 23:02:51:Fliping array at pos: 15
+2017-02-27 23:02:51:Type: The type is a pointer.
+2017-02-27 23:02:51:Type sizeof: 8
+2017-02-27 23:02:51:Fliping a bit of the pointer
+2017-02-27 23:02:51:Mem contents(hex):0x140x210x570x000x000x000x000x00
+2017-02-27 23:02:51:Fault Mode: Double bit-flip
+2017-02-27 23:02:51:base address to flip value: 0x7cee98 
+2017-02-27 23:02:51:address max offset: 8
+2017-02-27 23:02:51:Memory content before bitflip:0x140x210x570x000x000x000x000x00
+2017-02-27 23:02:51:Memory content after  bitflip:0x140x050x570x000x000x000x000x00
+2017-02-27 23:02:51:Mem contents(hex):0x140x050x570x000x000x000x000x00
+2017-02-27 23:02:51:frame name: Mesh::rezone_all
+2017-02-27 23:02:51:symbol name: mesh_timer_descriptor
+2017-02-27 23:02:51:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+2017-02-27 23:02:51:symbol line: 149
+2017-02-27 23:02:51:value: {0x571f98 "mesh_timer_count_BCs", 0x571fb0 "mesh_timer_calc_neighbors", 0x571fcc "mesh_timer_hash_setup", 0x571fe4 "mesh_timer_hash_query", 0x571ffc "mesh_timer_find_boundary", 0x572018 "mesh_timer_push_setup", 0x572030 "mesh_timer_push_boundary", 0x57204c "mesh_timer_local_list", 0x572064 "mesh_timer_layer1", 0x572078 "mesh_timer_layer2", 0x57208c "mesh_timer_layer_list", 0x5720a4 "mesh_timer_copy_mesh_data", 0x5720c0 "mesh_timer_fill_mesh_ghost", 0x5720dc "mesh_timer_fill_neigh_ghost", 0x5720f8 "mesh_timer_set_corner_neigh", 0x570514 <__$U5+20> "error2(std::basic_stringstream<char, std::char_traits<char>, std::allocator<char>> &, int &)", 0x57212c "mesh_timer_setup_comm", 0x572144 "mesh_timer_kdtree_setup", 0x57215c "mesh_timer_kdtree_query", 0x572174 "mesh_timer_refine_smooth", 0x572190 "mesh_timer_rezone_all", 0x5721a8 "mesh_timer_partition", 0x5721c0 "mesh_timer_calc_spatial_coordinates", 0x5721e4 "mesh_timer_load_balance"}
+2017-02-27 23:02:51:value address: 0x7cee20 <mesh_timer_descriptor>
+2017-02-27 23:02:51:Type: The type is an array.
+2017-02-27 23:02:51:Type sizeof: 192
+2017-02-27 23:02:51:Field name: None
+2017-02-27 23:02:51:Field Type:
+2017-02-27 23:02:51:Type: A range type, that is, an integer type with bounds.
+2017-02-27 23:02:51:Type sizeof: 1
+2017-02-27 23:02:51:Type range: (0L, 23L)
+2017-02-27 23:02:51:Fault Injection Successful after 80.9060471058s
+2017-02-27 23:02:58:event type: exit
+2017-02-27 23:02:58:exit code: 0

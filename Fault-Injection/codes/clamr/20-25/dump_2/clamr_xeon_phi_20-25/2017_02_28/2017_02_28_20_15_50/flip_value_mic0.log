@@ -1,0 +1,61 @@
+2017-02-28 20:13:26:Starting flip_value script
+2017-02-28 20:13:26:Initialization strings:
+2017-02-28 20:13:26:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 20:13:26:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 20:13:26:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 20:13:26:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 20:13:26:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 20:13:26:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 20:13:26:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 20:13:26:initSignal:20
+2017-02-28 20:13:26:endSignal:25
+2017-02-28 20:13:26:seqSignal:20
+2017-02-28 20:13:47:Backtrace BEGIN:
+2017-02-28 20:13:47:#0  __GI_memset (dstpp=0x3250010, c=0, len=16908552) at ../string/memset.c:63
+#1  0x0000000000552f8a in genvector_p (inum=4227136, elsize=4, file=0x5742c0 "/micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c", line=135) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/genmalloc/genmalloc.c:87
+#2  0x000000000054571b in compact_hash_init (ncells=264756, isize=2056, jsize=2056, report_level=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c:135
+#3  0x0000000000513572 in Mesh::calc_neighbors (this=0x7f9a50, ncells=264756) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3626
+#4  0x0000000000445e6e in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:434
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 20:13:47:58	in ../string/memset.c
+
+2017-02-28 20:13:47:Backtrace END
+2017-02-28 20:13:51:Type: A boolean type.
+2017-02-28 20:13:51:Type sizeof: 1
+2017-02-28 20:13:51:Mem contents(hex):0x01
+2017-02-28 20:13:51:Fault Mode: Random bit-flip
+2017-02-28 20:13:51:base address to flip value: 0x7d0784 
+2017-02-28 20:13:51:address max offset: 1
+2017-02-28 20:13:51:Memory content before bitflip:0x01
+2017-02-28 20:13:51:Backtrace BEGIN:
+2017-02-28 20:13:51:#0  __GI_memset (dstpp=0x3250010, c=0, len=16908552) at ../string/memset.c:63
+#1  0x0000000000552f8a in genvector_p (inum=4227136, elsize=4, file=0x5742c0 "/micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c", line=135) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/genmalloc/genmalloc.c:87
+#2  0x000000000054571b in compact_hash_init (ncells=264756, isize=2056, jsize=2056, report_level=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c:135
+#3  0x0000000000513572 in Mesh::calc_neighbors (this=0x7f9a50, ncells=264756) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3626
+#4  0x0000000000445e6e in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:434
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 20:13:51:58	in ../string/memset.c
+
+2017-02-28 20:13:51:Backtrace END
+2017-02-28 20:13:59:Type: The type is an integer type.
+2017-02-28 20:13:59:Type sizeof: 4
+2017-02-28 20:13:59:Mem contents(hex):0x000x000x000x00
+2017-02-28 20:13:59:Fault Mode: Single bit-flip
+2017-02-28 20:13:59:base address to flip value: 0x7d0ab4 
+2017-02-28 20:13:59:address max offset: 4
+2017-02-28 20:13:59:Memory content before bitflip:0x000x000x000x00
+2017-02-28 20:13:59:Memory content after  bitflip:0x000x000x800x00
+2017-02-28 20:13:59:Mem contents(hex):0x000x000x800x00
+2017-02-28 20:13:59:frame name: Mesh::calc_neighbors
+2017-02-28 20:13:59:symbol name: do_stencil_warning
+2017-02-28 20:13:59:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+2017-02-28 20:13:59:symbol line: 133
+2017-02-28 20:13:59:value: 8388608
+2017-02-28 20:13:59:value address: 0x7d0ab4 <do_stencil_warning>
+2017-02-28 20:13:59:Type: The type is an integer type.
+2017-02-28 20:13:59:Type sizeof: 4
+2017-02-28 20:13:59:Fault Injection Successful after 33.1280829906s
+2017-02-28 20:14:33:event type: exit
+2017-02-28 20:14:33:exit code: 0

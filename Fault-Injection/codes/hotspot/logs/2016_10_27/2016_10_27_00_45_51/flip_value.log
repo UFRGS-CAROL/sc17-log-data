@@ -1,0 +1,80 @@
+2016-10-27 00:45:36:Initialization strings:
+2016-10-27 00:45:36:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-27 00:45:36:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-27 00:45:36:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-27 00:45:36:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-27 00:45:36:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-27 00:45:36:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-27 00:45:37:Trying Fault Injection
+2016-10-27 00:45:37:Backtrace BEGIN:
+2016-10-27 00:45:37:#0  0x00007ffff7124a15 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:449
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "325.718150\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=-7552, argv=0x0) at hotspot_check.c:264
+
+2016-10-27 00:45:37:444	in vfscanf.c
+
+2016-10-27 00:45:37:Backtrace END
+2016-10-27 00:45:37:Type: The type is an array.
+2016-10-27 00:45:37:Type sizeof: 24
+2016-10-27 00:45:37:Fliping array at pos: 0
+2016-10-27 00:45:37:Type: The type is a structure.
+2016-10-27 00:45:37:Type sizeof: 24
+2016-10-27 00:45:37:Fliping value of field: overflow_arg_area
+2016-10-27 00:45:37:Type: The type is a pointer.
+2016-10-27 00:45:37:Type sizeof: 8
+2016-10-27 00:45:37:Fault Injection Failed after 1.8537170887s
+2016-10-27 00:45:39:Trying Fault Injection
+2016-10-27 00:45:39:Backtrace BEGIN:
+2016-10-27 00:45:39:#0  0x00007ffff7108122 in str_to_mpn (str=str@entry=0x7fffffffe010 "324.397616", digcnt=digcnt@entry=3, n=n@entry=0x7fffffffdf30, nsize=nsize@entry=0x7fffffffdf18, exponent=exponent@entry=0x7fffffffdf20, decimal_len=decimal_len@entry=1, thousands=0x0, decimal=<optimized out>) at strtod_l.c:366
+#1  0x00007ffff7109af9 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe010 "324.397616", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1198
+#2  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe010 "324.397616", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0) at strtod.c:54
+#3  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2332
+#4  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "324.397616\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#5  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#6  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#7  main (argc=-8176, argv=0x3) at hotspot_check.c:264
+
+2016-10-27 00:45:39:361	in strtod_l.c
+
+2016-10-27 00:45:39:Backtrace END
+2016-10-27 00:45:39:Type: The type is an array.
+2016-10-27 00:45:39:Type sizeof: 11
+2016-10-27 00:45:39:Fliping array at pos: 8
+2016-10-27 00:45:39:Type: The type is an integer type.
+2016-10-27 00:45:39:Type sizeof: 1
+2016-10-27 00:45:39:Fault Injection Failed after 3.9229080677s
+2016-10-27 00:45:40:Trying Fault Injection
+2016-10-27 00:45:40:Backtrace BEGIN:
+2016-10-27 00:45:40:#0  __GI___rawmemchr (s=s@entry=0x7fffffffe77a, c_in=c_in@entry=0) at ../string/rawmemchr.c:145
+#1  0x00007ffff7145ad0 in _IO_str_init_static_internal (sf=sf@entry=0x7fffffffe400, ptr=ptr@entry=0x7fffffffe77a "323.648966\n", size=size@entry=0, pstart=pstart@entry=0x0) at strops.c:44
+#2  0x00007ffff71365d5 in __GI___isoc99_vsscanf (string=0x7fffffffe77a "323.648966\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:41
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#5  main (argc=-6272, argv=0x0) at hotspot_check.c:264
+
+2016-10-27 00:45:40:140	in ../string/rawmemchr.c
+
+2016-10-27 00:45:40:Backtrace END
+2016-10-27 00:45:40:Type: The type is an integer type.
+2016-10-27 00:45:40:Type sizeof: 4
+2016-10-27 00:45:40:Mem contents(hex):0x000x040x000x00
+2016-10-27 00:45:40:base address to flip value: 0x7fffffffe600
+2016-10-27 00:45:40:address max offset: 4
+2016-10-27 00:45:40:Memory content before bitflip:0x000x040x000x00
+2016-10-27 00:45:40:Memory content after  bitflip:0x000x840x000x00
+2016-10-27 00:45:40:Mem contents(hex):0x000x840x000x00
+2016-10-27 00:45:40:frame name: read_input
+2016-10-27 00:45:40:symbol name: grid_rows
+2016-10-27 00:45:40:symbol filename: hotspot_check.c
+2016-10-27 00:45:40:symbol line: 229
+2016-10-27 00:45:40:value: 33792
+2016-10-27 00:45:40:value address: 0x7fffffffe600
+2016-10-27 00:45:40:Type: The type is an integer type.
+2016-10-27 00:45:40:Type sizeof: 4
+2016-10-27 00:45:40:Fault Injection Successful after 4.77136397362s
+2016-10-27 00:45:41:Fault Already Injected
+2016-10-27 00:45:42:Fault Already Injected
+2016-10-27 00:45:45:event type: exit
+2016-10-27 00:45:45:exit code: 1

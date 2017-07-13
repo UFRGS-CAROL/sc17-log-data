@@ -1,0 +1,76 @@
+[INFO -- 2017-03-26 05:56:16]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 05:56:16]
+Initialization strings:
+[INFO -- 2017-03-26 05:56:16]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-26 05:56:16]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 05:56:16]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 05:56:16]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-26 05:56:16]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-26 05:56:16]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-26 05:56:16]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-26 05:56:16]
+initSignal:35
+[INFO -- 2017-03-26 05:56:16]
+endSignal:40
+[INFO -- 2017-03-26 05:56:16]
+seqSignal:20
+[INFO -- 2017-03-26 05:56:16]
+faultMode:3
+[EXCEPTION -- 2017-03-26 05:57:00]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-26 05:57:00]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-26 05:57:00]
+pythonException: invalid frame
+[INFO -- 2017-03-26 05:57:00]
+Backtrace BEGIN:
+#0  0x0000000000470eb7 in State::L__ZN5State21calc_refine_potentialERSt6vectorIiSaIiEERiS4__2618__par_loop0_2_39 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:2700
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe290 in ?? ()
+#3  0x00007fffffffe298 in ?? ()
+#4  0x00007fffffffe230 in ?? ()
+#5  0x00007fffffffe228 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2695	      qpot = max(fabs(duplus1/Hic), fabs(duhalf1/Hic));
+2696	      if (qpot > qmax) qmax = qpot;
+2697	
+2698	      duminus1 = Hic-Hb;
+2699	      //duminus2 = Vic-Vb;
+2700	      duhalf1 = Ht-Hic;
+2701	      //duhalf2 = Vt-Vic;
+2702	
+2703	      qpot = max(fabs(duminus1/Hic), fabs(duhalf1/Hic));
+2704	      if (qpot > qmax) qmax = qpot;
+
+Backtrace END
+Fliping a bit of the reference
+Memory content before bitflip:0x400x7f0x510x010x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe510
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: State::L__ZN5State21calc_refine_potentialERSt6vectorIiSaIiEERiS4__2618__par_loop0_2_39
+symbol name: mpot
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 2618
+value: @0x7fffffffe510
+value address: 0x7fffffffe510
+Type: A reference type.
+Type sizeof: 8
+
+[INFO -- 2017-03-26 05:57:00]
+Fault Injection Successful after 44.3848218918s
+[INFO -- 2017-03-26 05:57:01]
+event type: exit
+[EXCEPTION -- 2017-03-26 05:57:01]
+exit code: no exit code available

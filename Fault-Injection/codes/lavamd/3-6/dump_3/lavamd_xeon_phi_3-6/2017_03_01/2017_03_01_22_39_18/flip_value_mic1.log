@@ -1,0 +1,48 @@
+2017-03-01 22:38:40:Starting flip_value script
+2017-03-01 22:38:40:Initialization strings:
+2017-03-01 22:38:41:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 22:38:41:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 22:38:41:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 22:38:41:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 22:38:41:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 22:38:41:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-03-01 22:38:41:initSignal:3
+2017-03-01 22:38:41:endSignal:6
+2017-03-01 22:38:41:seqSignal:30
+2017-03-01 22:38:44:Backtrace BEGIN:
+2017-03-01 22:38:44:#0  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffdd18) at allocatestack.c:548
+#1  __pthread_create_2_1 (newthread=0x7fffffffdd10, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffece78100) at pthread_create.c:524
+#2  0x00007ffff790d323 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-01 22:38:44:543	in allocatestack.c
+
+2017-03-01 22:38:44:Backtrace END
+2017-03-01 22:38:45:Type: The type is an array.
+2017-03-01 22:38:45:Type sizeof: 12
+2017-03-01 22:38:45:Fliping array at pos: 0
+2017-03-01 22:38:45:Type: The type is an integer type.
+2017-03-01 22:38:45:Type sizeof: 4
+2017-03-01 22:38:45:Mem contents(hex):0x400x000x000x00
+2017-03-01 22:38:45:Fault Mode: Double bit-flip
+2017-03-01 22:38:45:base address to flip value: 0x7ffff743c250 
+2017-03-01 22:38:45:address max offset: 4
+2017-03-01 22:38:45:Memory content before bitflip:0x400x000x000x00
+2017-03-01 22:38:45:Memory content after  bitflip:0x200x000x000x00
+2017-03-01 22:38:45:Mem contents(hex):0x200x000x000x00
+2017-03-01 22:38:45:frame name: __pthread_create_2_1
+2017-03-01 22:38:45:symbol name: _thread_db_pthread_key_struct_destr
+2017-03-01 22:38:45:symbol filename: ../nptl_db/structs.def
+2017-03-01 22:38:45:symbol line: 64
+2017-03-01 22:38:45:value: {32, 1, 8}
+2017-03-01 22:38:45:value address: 0x7ffff743c250 <_thread_db_pthread_key_struct_destr>
+2017-03-01 22:38:45:Type: The type is an array.
+2017-03-01 22:38:45:Type sizeof: 12
+2017-03-01 22:38:45:Field name: None
+2017-03-01 22:38:45:Field Type:
+2017-03-01 22:38:45:Type: A range type, that is, an integer type with bounds.
+2017-03-01 22:38:45:Type sizeof: 8
+2017-03-01 22:38:45:Type range: (0L, 2L)
+2017-03-01 22:38:45:Fault Injection Successful after 4.96454501152s
+2017-03-01 22:39:11:event type: exit
+2017-03-01 22:39:11:exit code: 0

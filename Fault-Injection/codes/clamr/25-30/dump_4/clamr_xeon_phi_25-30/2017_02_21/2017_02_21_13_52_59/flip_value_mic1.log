@@ -1,0 +1,87 @@
+2017-02-21 13:51:38:Starting flip_value script
+2017-02-21 13:51:38:Initialization strings:
+2017-02-21 13:51:38:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-21 13:51:38:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 13:51:38:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 13:51:39:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-21 13:51:39:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-21 13:51:39:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-21 13:51:39:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-21 13:51:39:initSignal:25
+2017-02-21 13:51:39:endSignal:30
+2017-02-21 13:51:39:seqSignal:20
+2017-02-21 13:52:04:Backtrace BEGIN:
+2017-02-21 13:52:04:#0  0x00000000005361dc in Mesh::partition_cells (this=0x7f9a50, numpe=0, z_order=..., method=ORIGINAL_ORDER) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:370
+#1  0x00000000004461e3 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:477
+#2  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-21 13:52:04:365	   int have_spatial_variables=0;
+366	   switch (method)
+367	   {   case ORIGINAL_ORDER:
+368	         //  Set z_order to the current cell order.
+369	         for (uint ic = 0; ic < ncells; ++ic)
+370	         {   z_order[ic] = ic; }
+371	
+372	         cpu_timers[MESH_TIMER_PARTITION] += cpu_timer_stop(tstart_cpu);
+373	
+374	         return;
+
+2017-02-21 13:52:04:Backtrace END
+2017-02-21 13:52:14:Type: A floating point type.
+2017-02-21 13:52:14:Type sizeof: 8
+2017-02-21 13:52:14:Mem contents(hex):0xa00xe30x100x010x000x000x000x00
+2017-02-21 13:52:14:Fault Mode: One bit-flip
+2017-02-21 13:52:14:base address to flip value: 0x7fffffffe088
+2017-02-21 13:52:14:address max offset: 8
+2017-02-21 13:52:14:Memory content before bitflip:0xa00xe30x100x010x000x000x000x00
+2017-02-21 13:52:14:Backtrace BEGIN:
+2017-02-21 13:52:14:#0  0x00000000005361dc in Mesh::partition_cells (this=0x7f9a50, numpe=0, z_order=..., method=ORIGINAL_ORDER) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:370
+#1  0x00000000004461e3 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:477
+#2  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-21 13:52:14:365	   int have_spatial_variables=0;
+366	   switch (method)
+367	   {   case ORIGINAL_ORDER:
+368	         //  Set z_order to the current cell order.
+369	         for (uint ic = 0; ic < ncells; ++ic)
+370	         {   z_order[ic] = ic; }
+371	
+372	         cpu_timers[MESH_TIMER_PARTITION] += cpu_timer_stop(tstart_cpu);
+373	
+374	         return;
+
+2017-02-21 13:52:14:Backtrace END
+2017-02-21 13:52:23:Type: The type is a structure.
+2017-02-21 13:52:23:Type sizeof: 24
+2017-02-21 13:52:23:Fliping value of field: std::_Vector_base<real_t, std::allocator<real_t> >
+2017-02-21 13:52:23:Type: The type is a structure.
+2017-02-21 13:52:23:Type sizeof: 24
+2017-02-21 13:52:23:Fliping value of field: _M_impl
+2017-02-21 13:52:23:Type: The type is a structure.
+2017-02-21 13:52:23:Type sizeof: 24
+2017-02-21 13:52:23:Fliping value of field: _M_end_of_storage
+2017-02-21 13:52:23:Type: The type is a pointer.
+2017-02-21 13:52:23:Type sizeof: 8
+2017-02-21 13:52:23:Fliping a bit of the pointer
+2017-02-21 13:52:23:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-21 13:52:23:Fault Mode: Double bit-flip
+2017-02-21 13:52:23:base address to flip value: 0x7fffffffe018
+2017-02-21 13:52:23:address max offset: 8
+2017-02-21 13:52:23:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-21 13:52:23:Memory content after  bitflip:0xa00x000x000x000x000x000x000x00
+2017-02-21 13:52:23:Mem contents(hex):0xa00x000x000x000x000x000x000x00
+2017-02-21 13:52:23:frame name: Mesh::partition_cells
+2017-02-21 13:52:23:symbol name: iunit
+2017-02-21 13:52:23:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp
+2017-02-21 13:52:23:symbol line: 331
+2017-02-21 13:52:23:value: {<std::_Vector_base<real_t, std::allocator<real_t> >> = {_M_impl = {<std::allocator<real_t>> = {<__gnu_cxx::new_allocator<real_t>> = {<No data fields>}, <No data fields>}, _M_start = 0x0, _M_finish = 0x0, _M_end_of_storage = 0xa0}}, <No data fields>}
+2017-02-21 13:52:23:value address: 0x7fffffffe008
+2017-02-21 13:52:23:Type: The type is a structure.
+2017-02-21 13:52:23:Type sizeof: 24
+2017-02-21 13:52:23:Field name: std::_Vector_base<real_t, std::allocator<real_t> >
+2017-02-21 13:52:23:Field Type:
+2017-02-21 13:52:23:Type: The type is a structure.
+2017-02-21 13:52:23:Type sizeof: 24
+2017-02-21 13:52:23:Fault Injection Successful after 44.9838480949s
+2017-02-21 13:52:52:event type: exit
+2017-02-21 13:52:52:exit code: 0

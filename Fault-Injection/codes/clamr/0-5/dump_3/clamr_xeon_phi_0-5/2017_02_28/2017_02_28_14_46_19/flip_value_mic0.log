@@ -1,0 +1,106 @@
+2017-02-28 14:45:09:Starting flip_value script
+2017-02-28 14:45:09:Initialization strings:
+2017-02-28 14:45:09:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-28 14:45:09:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 14:45:09:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 14:45:10:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 14:45:10:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 14:45:10:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 14:45:10:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 14:45:10:initSignal:0
+2017-02-28 14:45:10:endSignal:5
+2017-02-28 14:45:10:seqSignal:20
+2017-02-28 14:45:11:Backtrace BEGIN:
+2017-02-28 14:45:11:#0  0x000000000047a8d5 in std::__fill_n_a<double*, unsigned long, double> (__first=0x7ffdcc376000, __n=264192, __value=@0x7fffffffe000: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:766
+#1  0x000000000047a842 in std::fill_n<double*, unsigned long, double> (__first=0x7ffdcc1b0010, __n=264192, __value=@0x7fffffffe000: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:801
+#2  0x000000000047971e in std::__uninitialized_fill_n<true>::__uninit_fill_n<double*, unsigned long, double> (__first=0x7ffdcc1b0010, __n=264192, __x=@0x7fffffffe000: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:220
+#3  0x000000000047a7fa in std::uninitialized_fill_n<double*, unsigned long, double> (__first=0x7ffdcc1b0010, __n=264192, __x=@0x7fffffffe000: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:246
+#4  0x000000000047a7be in std::__uninitialized_fill_n_a<double*, unsigned long, double, double> (__first=0x7ffdcc1b0010, __n=264192, __x=@0x7fffffffe000: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:358
+#5  0x000000000047a01c in std::vector<double, std::allocator<double> >::_M_fill_insert (this=0x7fffffffe170, __position=..., __n=264192, __x=@0x7fffffffe000: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/vector.tcc:496
+#6  0x0000000000479b4d in std::vector<double, std::allocator<double> >::insert (this=0x7fffffffe170, __position=..., __n=264192, __x=@0x7fffffffe000: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:1073
+#7  0x0000000000479acd in std::vector<double, std::allocator<double> >::resize (this=0x7fffffffe170, __new_size=264192, __x=0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:716
+#8  0x00000000005363d1 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:386
+#9  0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#10 0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-28 14:45:11:761	    __fill_n_a(_OutputIterator __first, _Size __n, const _Tp& __value)
+762	    {
+763	      const _Tp __tmp = __value;
+764	      for (__decltype(__n + 0) __niter = __n;
+765		   __niter > 0; --__niter, ++__first)
+766		*__first = __tmp;
+767	      return __first;
+768	    }
+769	
+770	  template<typename _Size, typename _Tp>
+
+2017-02-28 14:45:11:Backtrace END
+2017-02-28 14:45:15:Type: The type is an array.
+2017-02-28 14:45:15:Type sizeof: 72
+2017-02-28 14:45:15:Fliping array at pos: 5
+2017-02-28 14:45:15:Type: The type is a pointer.
+2017-02-28 14:45:15:Type sizeof: 8
+2017-02-28 14:45:15:Fliping a bit of the value pointed by a pointer
+2017-02-28 14:45:15:Type: The type is an integer type.
+2017-02-28 14:45:15:Type sizeof: 1
+2017-02-28 14:45:15:Mem contents(hex):0x73
+2017-02-28 14:45:15:Fault Mode: Random bit-flip
+2017-02-28 14:45:15:base address to flip value: 0x56a67c 
+2017-02-28 14:45:15:address max offset: 1
+2017-02-28 14:45:15:Memory content before bitflip:0x73
+2017-02-28 14:45:15:Backtrace BEGIN:
+2017-02-28 14:45:15:#0  0x000000000047a8d5 in std::__fill_n_a<double*, unsigned long, double> (__first=0x7ffdcc376000, __n=264192, __value=@0x7fffffffe000: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:766
+#1  0x000000000047a842 in std::fill_n<double*, unsigned long, double> (__first=0x7ffdcc1b0010, __n=264192, __value=@0x7fffffffe000: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:801
+#2  0x000000000047971e in std::__uninitialized_fill_n<true>::__uninit_fill_n<double*, unsigned long, double> (__first=0x7ffdcc1b0010, __n=264192, __x=@0x7fffffffe000: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:220
+#3  0x000000000047a7fa in std::uninitialized_fill_n<double*, unsigned long, double> (__first=0x7ffdcc1b0010, __n=264192, __x=@0x7fffffffe000: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:246
+#4  0x000000000047a7be in std::__uninitialized_fill_n_a<double*, unsigned long, double, double> (__first=0x7ffdcc1b0010, __n=264192, __x=@0x7fffffffe000: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:358
+#5  0x000000000047a01c in std::vector<double, std::allocator<double> >::_M_fill_insert (this=0x7fffffffe170, __position=..., __n=264192, __x=@0x7fffffffe000: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/vector.tcc:496
+#6  0x0000000000479b4d in std::vector<double, std::allocator<double> >::insert (this=0x7fffffffe170, __position=..., __n=264192, __x=@0x7fffffffe000: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:1073
+#7  0x0000000000479acd in std::vector<double, std::allocator<double> >::resize (this=0x7fffffffe170, __new_size=264192, __x=0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:716
+#8  0x00000000005363d1 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:386
+#9  0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#10 0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-28 14:45:15:761	    __fill_n_a(_OutputIterator __first, _Size __n, const _Tp& __value)
+762	    {
+763	      const _Tp __tmp = __value;
+764	      for (__decltype(__n + 0) __niter = __n;
+765		   __niter > 0; --__niter, ++__first)
+766		*__first = __tmp;
+767	      return __first;
+768	    }
+769	
+770	  template<typename _Size, typename _Tp>
+
+2017-02-28 14:45:15:Backtrace END
+2017-02-28 14:45:20:Type: The type is an array.
+2017-02-28 14:45:20:Type sizeof: 72
+2017-02-28 14:45:20:Fliping array at pos: 7
+2017-02-28 14:45:20:Type: The type is a pointer.
+2017-02-28 14:45:20:Type sizeof: 8
+2017-02-28 14:45:20:Fliping a bit of the value pointed by a pointer
+2017-02-28 14:45:20:Type: The type is an integer type.
+2017-02-28 14:45:20:Type sizeof: 1
+2017-02-28 14:45:20:Mem contents(hex):0x73
+2017-02-28 14:45:20:Fault Mode: Single bit-flip
+2017-02-28 14:45:20:base address to flip value: 0x56a6ac 
+2017-02-28 14:45:20:address max offset: 1
+2017-02-28 14:45:20:Memory content before bitflip:0x73
+2017-02-28 14:45:20:Memory content after  bitflip:0x71
+2017-02-28 14:45:20:Mem contents(hex):0x71
+2017-02-28 14:45:20:frame name: std::vector<double, std::allocator<double> >::insert
+2017-02-28 14:45:20:symbol name: state_timer_descriptor
+2017-02-28 14:45:20:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+2017-02-28 14:45:20:symbol line: 135
+2017-02-28 14:45:20:value: {0x56a5f0 "state_timer_apply_BCs", 0x56a608 "state_timer_set_timestep", 0x56a624 "state_timer_finite_difference", 0x56a644 "state_timer_refine_potential", 0x56a664 "state_timer_calc_mpot", 0x56a67c "state_timer_rezone_all", 0x56a694 "state_timer_mass_sum", 0x56a6ac "qtate_timer_read", 0x56a6c0 "state_timer_write"}
+2017-02-28 14:45:20:value address: 0x7ceaa0 <state_timer_descriptor>
+2017-02-28 14:45:20:Type: The type is an array.
+2017-02-28 14:45:20:Type sizeof: 72
+2017-02-28 14:45:20:Field name: None
+2017-02-28 14:45:20:Field Type:
+2017-02-28 14:45:20:Type: A range type, that is, an integer type with bounds.
+2017-02-28 14:45:20:Type sizeof: 1
+2017-02-28 14:45:20:Type range: (0L, 8L)
+2017-02-28 14:45:20:Fault Injection Successful after 10.5930390358s
+2017-02-28 14:46:09:event type: exit
+2017-02-28 14:46:09:exit code: 0

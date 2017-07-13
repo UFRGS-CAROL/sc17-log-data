@@ -1,0 +1,121 @@
+[INFO -- 2017-03-18 04:49:29]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-18 04:49:29]
+Initialization strings:
+[INFO -- 2017-03-18 04:49:29]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-18 04:49:29]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-18 04:49:29]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-18 04:49:29]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-18 04:49:29]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-18 04:49:29]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-18 04:49:29]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-18 04:49:29]
+initSignal:25
+[INFO -- 2017-03-18 04:49:29]
+endSignal:30
+[INFO -- 2017-03-18 04:49:29]
+seqSignal:20
+[INFO -- 2017-03-18 04:49:29]
+faultMode:0
+[EXCEPTION -- 2017-03-18 04:50:01]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-03-18 04:50:07]
+Backtrace BEGIN:
+#0  _IO_new_file_xsputn (f=0x1920e80, data=0x7fffffffe0dd, n=3) at fileops.c:1268
+#1  0x00007ffff6b677b3 in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1641
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b9dd in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:479
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+1263	in fileops.c
+
+Backtrace END
+Fliping value of field: __dummy
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7ffff6e736c0 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x100x000x000x00
+frame name: _IO_new_file_xsputn
+symbol name: __GI__IO_file_jumps
+symbol filename: fileops.c
+symbol line: 1525
+value: {__dummy = 68719476736, __dummy2 = 0, __finish = 0x7ffff6b92f30 <_IO_new_file_finish>, __overflow = 0x7ffff6b937f0 <_IO_new_file_overflow>, __underflow = 0x7ffff6b93570 <_IO_new_file_underflow>, __uflow = 0x7ffff6b94590 <__GI__IO_default_uflow>, __pbackfail = 0x7ffff6b95450 <__GI__IO_default_pbackfail>, __xsputn = 0x7ffff6b92ba0 <_IO_new_file_xsputn>, __xsgetn = 0x7ffff6b92860 <__GI__IO_file_xsgetn>, __seekoff = 0x7ffff6b91e30 <_IO_new_file_seekoff>, __seekpos = 0x7ffff6b947f0 <_IO_default_seekpos>, __setbuf = 0x7ffff6b91cb0 <_IO_new_file_setbuf>, __sync = 0x7ffff6b91bf0 <_IO_new_file_sync>, __doallocate = 0x7ffff6b87990 <__GI__IO_file_doallocate>, __read = 0x7ffff6b92b80 <__GI__IO_file_read>, __write = 0x7ffff6b926e0 <_IO_new_file_write>, __seek = 0x7ffff6b924a0 <__GI__IO_file_seek>, __close = 0x7ffff6b91ca0 <__GI__IO_file_close>, __stat = 0x7ffff6b926d0 <__GI__IO_file_stat>, __showmanyc = 0x7ffff6b955b0 <_IO_default_showmanyc>, __imbue = 0x7ffff6b955c0 <_IO_default_imbue>}
+value address: 0x7ffff6e736c0 <_IO_file_jumps>
+Type: The type is a structure.
+Type sizeof: 168
+Field name: __dummy
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: __dummy2
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: __finish
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __overflow
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __underflow
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __uflow
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __pbackfail
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __xsputn
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __xsgetn
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __seekoff
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __seekpos
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __setbuf
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __sync
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __doallocate
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __read
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __write
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __seek
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __close
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __stat
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __showmanyc
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __imbue
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-18 04:50:07]
+Fault Injection Successful after 38.3961260319s

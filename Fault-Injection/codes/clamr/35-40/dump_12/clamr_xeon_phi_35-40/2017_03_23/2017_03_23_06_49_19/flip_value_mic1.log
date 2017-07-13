@@ -1,0 +1,68 @@
+[INFO -- 2017-03-23 06:45:52]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-23 06:45:52]
+Initialization strings:
+[INFO -- 2017-03-23 06:45:53]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-23 06:45:53]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-23 06:45:53]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-23 06:45:53]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-23 06:45:53]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-23 06:45:53]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-23 06:45:53]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-23 06:45:53]
+initSignal:35
+[INFO -- 2017-03-23 06:45:53]
+endSignal:40
+[INFO -- 2017-03-23 06:45:53]
+seqSignal:20
+[INFO -- 2017-03-23 06:45:53]
+faultMode:1
+[INFO -- 2017-03-23 06:46:37]
+Backtrace BEGIN:
+#0  State::L__ZN5State25apply_boundary_conditionsEv_702__par_loop0_2_30 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:717
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe118 in ?? ()
+#3  0x00007fffffffe0e8 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+712	         int nl = nlft[ic];
+713	         H[ic] =  H[nl];
+714	         U[ic] = -U[nl];
+715	         V[ic] =  V[nl];
+716	      }
+717	      if (mesh->is_bottom_boundary(ic)) {
+718	         int nt = ntop[ic];
+719	         H[ic] =  H[nt];
+720	         U[ic] =  U[nt];
+721	         V[ic] = -V[nt];
+
+Backtrace END
+Fliping a bit of the reference
+Memory content before bitflip:0x440x0f0x040x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7f9ec8
+address max offset: 8
+Memory content after  bitflip:0x440x5f0x040x000x000x000x000x00
+frame name: State::L__ZN5State25apply_boundary_conditionsEv_702__par_loop0_2_30
+symbol name: ncells
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 694
+value: @0x7f9ec8
+value address: 0x7f9ec8
+Type: A reference type.
+Type sizeof: 8
+
+[INFO -- 2017-03-23 06:46:37]
+Fault Injection Successful after 44.4756360054s
+[INFO -- 2017-03-23 06:46:39]
+event type: exit
+[EXCEPTION -- 2017-03-23 06:46:39]
+exit code: no exit code available

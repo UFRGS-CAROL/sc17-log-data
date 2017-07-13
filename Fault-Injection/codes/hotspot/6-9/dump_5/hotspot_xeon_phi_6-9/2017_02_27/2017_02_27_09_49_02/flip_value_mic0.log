@@ -1,0 +1,54 @@
+[INFO -- 2017-02-27 09:48:22]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 09:48:22]
+Initialization strings:
+[INFO -- 2017-02-27 09:48:22]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-27 09:48:22]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 09:48:22]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 09:48:22]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 09:48:22]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 09:48:22]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-27 09:48:22]
+initSignal:6
+[INFO -- 2017-02-27 09:48:22]
+endSignal:9
+[INFO -- 2017-02-27 09:48:22]
+seqSignal:15
+[INFO -- 2017-02-27 09:48:22]
+faultMode:0
+[INFO -- 2017-02-27 09:48:28]
+Backtrace BEGIN:
+#0  _IO_feof (fp=0x609b40) at feof.c:38
+#1  0x000000000040455e in read_input (vect=0x7ffff66cb010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee43 "/micNfs/gdb-fault-injection/injector/data/hotspot/power_1024") at hotspot_check.c:205
+#2  0x0000000000404ad7 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:266
+
+33	in feof.c
+
+Backtrace END
+Memory content before bitflip:0x6f0x120x830x3c
+Fault Mode: Single bit-flip
+base address to flip value: 0x4074fc 
+address max offset: 4
+Memory content after  bitflip:0x670x120x830x3c
+frame name: read_input
+symbol name: chip_width
+symbol filename: hotspot_check.c
+symbol line: 35
+value: 0.0159999859
+value address: 0x4074fc <chip_width>
+Type: A floating point type.
+Type sizeof: 4
+
+[INFO -- 2017-02-27 09:48:28]
+Fault Injection Successful after 6.59085798264s
+[INFO -- 2017-02-27 09:48:48]
+event type: exit
+[INFO -- 2017-02-27 09:48:48]
+exit code: 0

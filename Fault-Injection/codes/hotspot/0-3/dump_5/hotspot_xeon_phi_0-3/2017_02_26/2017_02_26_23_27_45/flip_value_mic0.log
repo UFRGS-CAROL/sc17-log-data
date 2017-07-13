@@ -1,0 +1,63 @@
+[INFO -- 2017-02-26 23:26:30]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 23:26:30]
+Initialization strings:
+[INFO -- 2017-02-26 23:26:31]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-26 23:26:31]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 23:26:31]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 23:26:31]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 23:26:31]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 23:26:31]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 23:26:31]
+initSignal:0
+[INFO -- 2017-02-26 23:26:31]
+endSignal:3
+[INFO -- 2017-02-26 23:26:31]
+seqSignal:15
+[INFO -- 2017-02-26 23:26:31]
+faultMode:2
+[INFO -- 2017-02-26 23:26:32]
+Backtrace BEGIN:
+#0  check_match (undef_name=undef_name@entry=0x400a39 "fflush", ref=ref@entry=0x4004b0, version=version@entry=0x7ffff7ff86a0, flags=flags@entry=1, type_class=type_class@entry=1, sym=sym@entry=0x7ffff70d5418, symidx=84, strtab=0x7ffff70e17d8 "", map=0x7ffff7ff99a0, versioned_sym=0x7fffffffe248, num_versions=0x7fffffffe244) at dl-lookup.c:92
+#1  0x00007ffff7de6010 in do_lookup_x (undef_name=undef_name@entry=0x400a39 "fflush", new_hash=new_hash@entry=4248842797, old_hash=old_hash@entry=0x7fffffffe310, ref=0x4004b0, result=result@entry=0x7fffffffe320, scope=<optimized out>, i=5, version=0x7ffff7ff86a0, flags=1, skip=0x0, type_class=1, undef_map=0x7ffff7ffe168) at dl-lookup.c:423
+#2  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x400a39 "fflush", undef_map=0x7ffff7ffe168, ref=ref@entry=0x7fffffffe3d8, symbol_scope=0x7ffff7ffe4c0, version=0x7ffff7ff86a0, type_class=type_class@entry=1, flags=1, skip_map=0x0) at dl-lookup.c:775
+#3  0x00007ffff7deafea in _dl_fixup (l=<optimized out>, reloc_arg=<optimized out>) at ../elf/dl-runtime.c:111
+#4  0x00007ffff7df1859 in _dl_runtime_resolve () at ../sysdeps/x86_64/dl-trampoline.S:89
+#5  0x00000000004065a7 in start_log_file (benchmark_name=0x407478 "openMPHotspot", test_info=0x7fffffffe7a0 "simIter:1000 gridSize:1024x1024") at ../include/log_helper.c:273
+#6  0x0000000000404a17 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:255
+
+87	in dl-lookup.c
+
+Backtrace END
+Fliping array at pos: 5
+Memory content before bitflip:0x69
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff7df9025  
+address max offset: 1
+Memory content after  bitflip:0xe8
+frame name: _dl_fixup
+symbol name: __PRETTY_FUNCTION__
+symbol filename: ../elf/dl-runtime.c
+symbol line: 0
+value: "_dl_f\350xup"
+value address: 0x7ffff7df9020 <__PRETTY_FUNCTION__.10256>
+Type: The type is an array.
+Type sizeof: 10
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 9L)
+
+[INFO -- 2017-02-26 23:26:32]
+Fault Injection Successful after 1.05505394936s
+[INFO -- 2017-02-26 23:26:57]
+event type: exit
+[INFO -- 2017-02-26 23:26:57]
+exit code: 0

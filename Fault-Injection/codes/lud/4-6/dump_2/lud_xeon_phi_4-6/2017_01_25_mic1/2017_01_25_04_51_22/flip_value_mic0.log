@@ -1,0 +1,95 @@
+2017-01-25 04:51:02:Starting flip_value script
+2017-01-25 04:51:02:Initialization strings:
+2017-01-25 04:51:02:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 04:51:02:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 04:51:02:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 04:51:02:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 04:51:02:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 04:51:02:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 04:51:02:initSignal:4
+2017-01-25 04:51:02:endSignal:6
+2017-01-25 04:51:02:seqSignal:30
+2017-01-25 04:51:08:Trying Fault Injection
+2017-01-25 04:51:08:Inferior PID: 198854
+2017-01-25 04:51:08:Inferior is valid: True
+2017-01-25 04:51:08:Inferior #threads: 229
+2017-01-25 04:51:08:Backtrace BEGIN:
+2017-01-25 04:51:08:#0  0x00000000004032b0 in L_main_130__par_loop0_2_0 () at lud_check.c:134
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x0000000000000000 in ?? ()
+
+2017-01-25 04:51:08:129	    int i, host_errors = 0;
+130	#pragma omp parallel for reduction(+:host_errors)
+131		for ( i = 0; i < matrix_dim; i++) {
+132			int j;
+133			for ( j = 0; j < matrix_dim; j++) {
+134	                	if ((fabs((m[i + matrix_dim * j] - gold[i + matrix_dim * j]) / m[i + matrix_dim * j]) > 0.0000000001) || (fabs((m[i + matrix_dim * j] - gold[i + matrix_dim * j]) / gold[i + matrix_dim * j]) > 0.0000000001)) {
+135				//if (m[i + matrix_dim * j] != gold[i + matrix_dim * j]) {
+136					char error_detail[200];
+137					sprintf(error_detail," p: [%d, %d], r: %1.16e, e: %1.16e", i, j, m[i + matrix_dim * j], gold[i + matrix_dim * j]);
+138					host_errors++;
+
+2017-01-25 04:51:08:Backtrace END
+2017-01-25 04:51:14:Thread name: None
+2017-01-25 04:51:14:Thread num: 30
+2017-01-25 04:51:14:Thread ptid: (198854, 198887, 0)
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:Error Exception(frameFlip): invalid frame
+2017-01-25 04:51:14:bitFlip function
+2017-01-25 04:51:14:Type: The type is an integer type.
+2017-01-25 04:51:14:Type sizeof: 4
+2017-01-25 04:51:14:Mem contents(hex):0x000x080x000x00
+2017-01-25 04:51:14:base address to flip value: 0x7fffffffe938
+2017-01-25 04:51:14:address max offset: 4
+2017-01-25 04:51:14:Memory content before bitflip:0x000x080x000x00
+2017-01-25 04:51:14:Memory content after  bitflip:0x000x080x000x80
+2017-01-25 04:51:14:Mem contents(hex):0x000x080x000x80
+2017-01-25 04:51:14:frame name: L_main_130__par_loop0_2_0
+2017-01-25 04:51:14:symbol name: matrix_dim
+2017-01-25 04:51:14:symbol filename: lud_check.c
+2017-01-25 04:51:14:symbol line: 46
+2017-01-25 04:51:14:value: -2147481600
+2017-01-25 04:51:14:value address: 0x7fffffffe938
+2017-01-25 04:51:14:Type: The type is an integer type.
+2017-01-25 04:51:14:Type sizeof: 4
+2017-01-25 04:51:14:Fault Injection Successful after 12.7355639935s
+2017-01-25 04:51:14:Fault Already Injected
+2017-01-25 04:51:15:Fault Already Injected
+2017-01-25 04:51:15:Fault Already Injected
+2017-01-25 04:51:15:Fault Already Injected
+2017-01-25 04:51:15:Fault Already Injected
+2017-01-25 04:51:15:Fault Already Injected
+2017-01-25 04:51:15:event type: exit
+2017-01-25 04:51:15:exit code: 0

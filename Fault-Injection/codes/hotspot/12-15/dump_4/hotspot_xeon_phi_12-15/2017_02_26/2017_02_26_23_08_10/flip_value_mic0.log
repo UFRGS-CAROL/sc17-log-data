@@ -1,0 +1,56 @@
+[INFO -- 2017-02-26 23:07:36]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 23:07:36]
+Initialization strings:
+[INFO -- 2017-02-26 23:07:36]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-26 23:07:36]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 23:07:36]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 23:07:36]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 23:07:36]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 23:07:36]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 23:07:36]
+initSignal:12
+[INFO -- 2017-02-26 23:07:36]
+endSignal:15
+[INFO -- 2017-02-26 23:07:36]
+seqSignal:15
+[INFO -- 2017-02-26 23:07:36]
+faultMode:0
+[INFO -- 2017-02-26 23:07:50]
+Backtrace BEGIN:
+#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff74312d0 in ?? () at pthread_create.c:237 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libpthread.so.0
+#2  0x00007fff133f9300 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7ffff7646318 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x080x000x000x000x00
+frame name: create_thread
+symbol name: __nptl_last_event
+symbol filename: pthread_create.c
+symbol line: 47
+value: 0x0
+value address: 0x7ffff7646318 <__nptl_last_event>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-26 23:07:50]
+Fault Injection Successful after 14.7763938904s
+[INFO -- 2017-02-26 23:08:03]
+event type: exit
+[INFO -- 2017-02-26 23:08:03]
+exit code: 0

@@ -1,0 +1,71 @@
+[INFO -- 2017-02-25 17:21:01]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 17:21:01]
+Initialization strings:
+[INFO -- 2017-02-25 17:21:02]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-25 17:21:02]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 17:21:02]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 17:21:02]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 17:21:02]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 17:21:02]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-25 17:21:02]
+initSignal:4
+[INFO -- 2017-02-25 17:21:02]
+endSignal:8
+[INFO -- 2017-02-25 17:21:02]
+seqSignal:30
+[INFO -- 2017-02-25 17:21:02]
+faultMode:2
+[INFO -- 2017-02-25 17:21:11]
+Backtrace BEGIN:
+#0  __GI___waitpid (pid=179102, stat_loc=stat_loc@entry=0x7fffffffe4d8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:40
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405f16 in log_error_count (kernel_errors=0) at ../include/log_helper.c:369
+#4  0x0000000000402def in main (argc=9, argv=0x7fffffffec08) at lud_check.c:149
+
+35	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+Backtrace END
+Fliping value of field: sa_mask
+Fliping value of field: __val
+Fliping array at pos: 2
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe590
+address max offset: 8
+Memory content after  bitflip:0xfc0x1d0x370xe50xbc0x710x4a0xaf
+frame name: do_system
+symbol name: sa
+symbol filename: ../sysdeps/posix/system.c
+symbol line: 58
+value: {__sigaction_handler = {sa_handler = 0x1, sa_sigaction = 0x1}, sa_mask = {__val = {65536, 0, 12631033161027362300, 0 <repeats 13 times>}}, sa_flags = 0, sa_restorer = 0x4}
+value address: 0x7fffffffe578
+Type: The type is a structure.
+Type sizeof: 152
+Field name: __sigaction_handler
+Field Type: The type is a union.
+Field Type sizeof: 8
+Field name: sa_mask
+Field Type: The type is a structure.
+Field Type sizeof: 128
+Field name: sa_flags
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: sa_restorer
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2017-02-25 17:21:11]
+Fault Injection Successful after 9.96290802956s
+[INFO -- 2017-02-25 17:21:12]
+event type: exit
+[INFO -- 2017-02-25 17:21:12]
+exit code: 0

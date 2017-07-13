@@ -1,0 +1,62 @@
+[INFO -- 2017-03-03 15:35:00]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-03 15:35:00]
+Initialization strings:
+[INFO -- 2017-03-03 15:35:00]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-03 15:35:00]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 15:35:00]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 15:35:00]
+(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-03 15:35:00]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-03 15:35:00]
+(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+[INFO -- 2017-03-03 15:35:00]
+initSignal:0
+[INFO -- 2017-03-03 15:35:00]
+endSignal:7
+[INFO -- 2017-03-03 15:35:00]
+seqSignal:15
+[INFO -- 2017-03-03 15:35:00]
+faultMode:2
+[INFO -- 2017-03-03 15:35:03]
+Backtrace BEGIN:
+#0  0x0000000000403d18 in read_gold (gold=0x7fffeecc9040, fileGold=0x7fffffffee78 "/micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks", order=2048) at dgemm.c:266
+#1  0x00000000004041e3 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:329
+
+261	        printf( "The gold file was not opened\n" );
+262	        exit(1);
+263	    }
+264	
+265	    for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+266	            fread(&gold[(i)+(order)*(j)], 1, sizeof(double), file);
+267	        }
+268	    fclose(file);
+269	}
+270	
+
+Backtrace END
+Memory content before bitflip:0x100x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe908
+address max offset: 4
+Memory content after  bitflip:0x360xc80x890x96
+frame name: main
+symbol name: block
+symbol filename: dgemm.c
+symbol line: 282
+value: -1769355210
+value address: 0x7fffffffe908
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-03 15:35:03]
+Fault Injection Successful after 3.67082691193s
+[INFO -- 2017-03-03 15:35:08]
+event type: exit
+[INFO -- 2017-03-03 15:35:08]
+exit code: 1

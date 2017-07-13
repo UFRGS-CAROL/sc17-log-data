@@ -1,0 +1,59 @@
+[INFO -- 2017-03-26 21:41:02]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 21:41:02]
+Initialization strings:
+[INFO -- 2017-03-26 21:41:02]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 21:41:02]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 21:41:02]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 21:41:02]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 21:41:02]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 21:41:02]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 21:41:02]
+initSignal:0
+[INFO -- 2017-03-26 21:41:02]
+endSignal:3
+[INFO -- 2017-03-26 21:41:02]
+seqSignal:30
+[INFO -- 2017-03-26 21:41:02]
+faultMode:3
+[EXCEPTION -- 2017-03-26 21:41:03]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-03-26 21:41:03]
+Backtrace BEGIN:
+#0  0x00007ffff71963d0 in __open_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7143025 in __GI__IO_file_open (fp=fp@entry=0x60e1c0, filename=<optimized out>, posix_mode=<optimized out>, prot=prot@entry=438, read_write=8, is32not64=is32not64@entry=1) at fileops.c:220
+#2  0x00007ffff7143130 in _IO_new_file_fopen (fp=fp@entry=0x60e1c0, filename=filename@entry=0x7fffffffedfb "/micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15", mode=<optimized out>, mode@entry=0x408c18 "rb", is32not64=is32not64@entry=1) at fileops.c:327
+#3  0x00007ffff71384d2 in __fopen_internal (filename=0x7fffffffedfb "/micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15", mode=0x408c18 "rb", is32=1) at iofopen.c:86
+#4  0x00000000004020c8 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:141
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00x860xff0xf70xff0x7f0x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe9b8
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: main
+symbol name: fv_cpu
+symbol filename: main_check.c
+symbol line: 60
+value: 0x7ffff7ff86a0
+value address: 0x7fffffffe9b8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-26 21:41:03]
+Fault Injection Successful after 1.31401395798s
+[INFO -- 2017-03-26 21:41:19]
+event type: exit
+[INFO -- 2017-03-26 21:41:19]
+exit code: 0

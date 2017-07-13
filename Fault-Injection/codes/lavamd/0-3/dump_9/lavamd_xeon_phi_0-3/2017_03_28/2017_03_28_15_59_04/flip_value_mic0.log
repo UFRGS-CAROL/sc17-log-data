@@ -1,0 +1,82 @@
+[INFO -- 2017-03-28 15:58:13]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-28 15:58:13]
+Initialization strings:
+[INFO -- 2017-03-28 15:58:13]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-28 15:58:13]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 15:58:13]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 15:58:13]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 15:58:13]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 15:58:13]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-28 15:58:13]
+initSignal:0
+[INFO -- 2017-03-28 15:58:13]
+endSignal:3
+[INFO -- 2017-03-28 15:58:13]
+seqSignal:30
+[INFO -- 2017-03-28 15:58:13]
+faultMode:0
+[INFO -- 2017-03-28 15:58:14]
+Backtrace BEGIN:
+#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebc0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebc0) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffebc0) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000007 in ?? ()
+#7  0x00007fffffffedb7 in ?? ()
+#8  0x00007fffffffedf4 in ?? ()
+#9  0x00007fffffffedf8 in ?? ()
+#10 0x00007fffffffedfb in ?? ()
+#11 0x00007fffffffee41 in ?? ()
+#12 0x00007fffffffee86 in ?? ()
+#13 0x00007fffffffeec9 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+69	in dl-debug.c
+
+Backtrace END
+Fliping value of field: r_ldbase
+Memory content before bitflip:0x000xd00xdd0xf70xff0x7f0x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7ffff7ffe160 
+address max offset: 8
+Memory content after  bitflip:0x000xd00xdd0xf70xff0xff0x000x00
+frame name: __GI__dl_debug_state
+symbol name: _r_debug
+symbol filename: dl-debug.c
+symbol line: 37
+value: {r_version = 1, r_map = 0x7ffff7ffe168, r_brk = 140737351959488, r_state = RT_CONSISTENT, r_ldbase = 281474840252416}
+value address: 0x7ffff7ffe140 <_r_debug>
+Type: The type is a structure.
+Type sizeof: 40
+Field name: r_version
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: r_map
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: r_brk
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: r_state
+Field Type: The type is an enum.
+Field Type sizeof: 4
+Field name: r_ldbase
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-28 15:58:14]
+Fault Injection Successful after 1.21380805969s
+[INFO -- 2017-03-28 15:58:31]
+event type: exit
+[INFO -- 2017-03-28 15:58:31]
+exit code: 0

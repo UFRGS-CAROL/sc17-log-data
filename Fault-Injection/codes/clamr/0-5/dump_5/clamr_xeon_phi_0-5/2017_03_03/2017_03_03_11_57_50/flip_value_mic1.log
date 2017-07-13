@@ -1,0 +1,67 @@
+[INFO -- 2017-03-03 11:56:45]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-03 11:56:45]
+Initialization strings:
+[INFO -- 2017-03-03 11:56:46]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-03 11:56:46]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 11:56:46]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 11:56:46]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 11:56:46]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 11:56:46]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-03 11:56:46]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-03 11:56:46]
+initSignal:0
+[INFO -- 2017-03-03 11:56:46]
+endSignal:5
+[INFO -- 2017-03-03 11:56:46]
+seqSignal:20
+[INFO -- 2017-03-03 11:56:46]
+faultMode:1
+[INFO -- 2017-03-03 11:56:46]
+Backtrace BEGIN:
+#0  _dl_elf_hash (name_arg=<optimized out>) at ../sysdeps/generic/dl-hash.h:62
+#1  do_lookup_x (undef_name=undef_name@entry=0x7ffff730ac80 "_ZNSt7num_getIwSt19istreambuf_iteratorIwSt11char_traitsIwEEED1Ev", new_hash=new_hash@entry=2125618849, old_hash=old_hash@entry=0x7fffffffe880, ref=0x7ffff72d17b8, result=result@entry=0x7fffffffe890, scope=<optimized out>, i=<optimized out>, version=0x7ffff7ff6030, flags=1, skip=0x0, type_class=0, undef_map=0x7ffff7ff99b8) at dl-lookup.c:439
+#2  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x7ffff730ac80 "_ZNSt7num_getIwSt19istreambuf_iteratorIwSt11char_traitsIwEEED1Ev", undef_map=undef_map@entry=0x7ffff7ff99b8, ref=ref@entry=0x7fffffffe9e0, symbol_scope=symbol_scope@entry=0x7ffff7ff9d10, version=0x7ffff7ff6030, type_class=0, flags=1, skip_map=0x0) at dl-lookup.c:775
+#3  0x00007ffff7de854f in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=<optimized out>, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff732ae40, map=0x7ffff7ff99b8) at ../sysdeps/x86_64/dl-machine.h:277
+#4  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ff99b8) at do-rel.h:137
+#5  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#6  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#7  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec50, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#8  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec50) at rtld.c:308
+#9  _dl_start (arg=0x7fffffffec50) at rtld.c:414
+#10 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#11 0x000000000000000b in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+57	in ../sysdeps/generic/dl-hash.h
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x800xac0x300xf70xff0x7f0x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe748
+address max offset: 8
+Memory content after  bitflip:0x800x840x300xf70xff0x7f0x000x00
+frame name: do_lookup_x
+symbol name: undef_name
+symbol filename: dl-lookup.c
+symbol line: 350
+value: 0x7ffff730ac80 "_ZNSt7num_getIwSt19istreambuf_iteratorIwSt11char_traitsIwEEED1Ev"
+value address: 0x7fffffffe748
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-03 11:56:46]
+Fault Injection Successful after 0.799787998199s
+[INFO -- 2017-03-03 11:57:40]
+event type: exit
+[INFO -- 2017-03-03 11:57:40]
+exit code: 0

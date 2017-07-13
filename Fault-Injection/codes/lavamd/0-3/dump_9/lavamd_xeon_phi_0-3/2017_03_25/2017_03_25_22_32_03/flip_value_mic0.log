@@ -1,0 +1,77 @@
+[INFO -- 2017-03-25 22:31:34]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-25 22:31:34]
+Initialization strings:
+[INFO -- 2017-03-25 22:31:34]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-25 22:31:34]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-25 22:31:34]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-25 22:31:34]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-25 22:31:34]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-25 22:31:34]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-25 22:31:34]
+initSignal:0
+[INFO -- 2017-03-25 22:31:34]
+endSignal:3
+[INFO -- 2017-03-25 22:31:34]
+seqSignal:30
+[INFO -- 2017-03-25 22:31:34]
+faultMode:1
+[INFO -- 2017-03-25 22:31:35]
+Backtrace BEGIN:
+#0  0x00007ffff7df436a in mmap64 () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7de3e03 in _dl_map_segments (loader=0x7fffffffe400, has_holes=<optimized out>, maplength=2351256, nloadcmds=2, loadcmds=0x7fffffffe0a0, type=<optimized out>, header=0x7ffff7ffa660, fd=<optimized out>, l=0x7ffff7ffa658) at ./dl-map-segments.h:90
+#2  _dl_map_object_from_fd (name=name@entry=0x4009f9 "libm.so.6", fd=<optimized out>, fbp=fbp@entry=0x7fffffffe3b8, realname=<optimized out>, loader=loader@entry=0x7ffff7ffe168, l_type=l_type@entry=1, mode=0, stack_endp=0x7fffffffe3b0, nsid=0) at dl-load.c:1222
+#3  0x00007ffff7de52f9 in _dl_map_object (loader=0x7ffff7ffe168, name=0x4009f9 "libm.so.6", type=1, trace_mode=0, mode=0, nsid=<optimized out>) at dl-load.c:2188
+#4  0x00007ffff7de964f in openaux (a=a@entry=0x7fffffffe978) at dl-deps.c:63
+#5  0x00007ffff7deba83 in _dl_catch_error (objname=objname@entry=0x7fffffffe970, errstring=errstring@entry=0x7fffffffe968, mallocedp=mallocedp@entry=0x7fffffffe967, operate=operate@entry=0x7ffff7de9620 <openaux>, args=args@entry=0x7fffffffe978) at dl-error.c:187
+#6  0x00007ffff7de98a9 in _dl_map_object_deps (map=map@entry=0x7ffff7ffe168, preloads=<optimized out>, npreloads=npreloads@entry=0, trace_mode=trace_mode@entry=0, open_mode=open_mode@entry=0) at dl-deps.c:254
+#7  0x00007ffff7ddff28 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1612
+#8  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebc0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#9  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebc0) at rtld.c:308
+#10 _dl_start (arg=0x7fffffffebc0) at rtld.c:414
+#11 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#12 0x0000000000000007 in ?? ()
+#13 0x00007fffffffedb7 in ?? ()
+#14 0x00007fffffffedf4 in ?? ()
+#15 0x00007fffffffedf8 in ?? ()
+#16 0x00007fffffffedfb in ?? ()
+#17 0x00007fffffffee41 in ?? ()
+#18 0x00007fffffffee86 in ?? ()
+#19 0x00007fffffffeec9 in ?? ()
+#20 0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping array at pos: 22
+Memory content before bitflip:0x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7ffff7df9a66  
+address max offset: 1
+Memory content after  bitflip:0x11
+frame name: _dl_map_segments
+symbol name: __PRETTY_FUNCTION__
+symbol filename: dl-load.c
+symbol line: 0
+value: "_dl_map_object_from_fd\021"
+value address: 0x7ffff7df9a50 <__PRETTY_FUNCTION__.9666>
+Type: The type is an array.
+Type sizeof: 23
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 22L)
+
+[INFO -- 2017-03-25 22:31:35]
+Fault Injection Successful after 1.55404496193s
+[INFO -- 2017-03-25 22:31:56]
+event type: exit
+[INFO -- 2017-03-25 22:31:56]
+exit code: 0

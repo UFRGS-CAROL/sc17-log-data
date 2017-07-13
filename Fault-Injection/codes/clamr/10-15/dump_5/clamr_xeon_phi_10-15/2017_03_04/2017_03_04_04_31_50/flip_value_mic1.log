@@ -1,0 +1,76 @@
+[INFO -- 2017-03-04 04:30:37]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-04 04:30:37]
+Initialization strings:
+[INFO -- 2017-03-04 04:30:38]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-04 04:30:38]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-04 04:30:38]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-04 04:30:38]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-04 04:30:38]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-04 04:30:38]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-04 04:30:38]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-04 04:30:38]
+initSignal:10
+[INFO -- 2017-03-04 04:30:38]
+endSignal:15
+[INFO -- 2017-03-04 04:30:38]
+seqSignal:20
+[INFO -- 2017-03-04 04:30:38]
+faultMode:2
+[EXCEPTION -- 2017-03-04 04:30:55]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2017-03-04 04:31:01]
+Backtrace BEGIN:
+#0  0x0000000000542cfd in Bounds_CenterAxis (b=0x3741770, axis=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/Bounds.c:123
+#1  0x000000000053c337 in median_sort (t=0x7f9d50, cut_direction=1, k=16546, num=33094, idx=0x4563c28) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:91
+#2  0x000000000053ce2b in KDTree_CreateTree (t=0x7f9d50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:236
+#3  0x00000000005413f6 in KDTree_QueryCircleInterior_Double (t=0x7f9d50, result_num=0x7fffffffe65c, result_indicies=0xb01ad0, circ_radius=24, ncells=264756, x=0x1d268d0, dx=0x212e8e0, y=0x25368f0, dy=0x2c42e50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:625
+#4  0x0000000000471e70 in State::fill_circle (this=0x7fa5e0, circ_radius=24, fill_value=100, background=7) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:990
+#5  0x00000000004452cb in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:282
+
+118	   
+119	   assert(b);
+120	   if(axis == XAXIS)
+121	      center = (b->min.x + b->max.x) * 0.5;
+122	   else if(axis == YAXIS)
+123	      center = (b->min.y + b->max.y) * 0.5;
+124	   else
+125	      assert(NULL);
+126	   return(center);
+127	}
+
+Backtrace END
+Fliping array at pos: 1
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x73
+Fault Mode: Random bit-flip
+base address to flip value: 0x56a608 
+address max offset: 1
+Memory content after  bitflip:0x44
+frame name: State::fill_circle
+symbol name: state_timer_descriptor
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 135
+value: {0x56a5f0 "state_timer_apply_BCs", 0x56a608 "Dtate_timer_set_timestep", 0x56a624 "state_timer_finite_difference", 0x56a644 "state_timer_refine_potential", 0x56a664 "state_timer_calc_mpot", 0x56a67c "state_timer_rezone_all", 0x56a694 "state_timer_mass_sum", 0x56a6ac "state_timer_read", 0x56a6c0 "state_timer_write"}
+value address: 0x7ceaa0 <state_timer_descriptor>
+Type: The type is an array.
+Type sizeof: 72
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 8L)
+
+[INFO -- 2017-03-04 04:31:01]
+Fault Injection Successful after 23.0706670284s
+[INFO -- 2017-03-04 04:31:40]
+event type: exit
+[EXCEPTION -- 2017-03-04 04:31:40]
+exit code: no exit code available

@@ -1,0 +1,148 @@
+2017-02-27 17:14:49:Starting flip_value script
+2017-02-27 17:14:49:Initialization strings:
+2017-02-27 17:14:49:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-27 17:14:49:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 17:14:49:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 17:14:49:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-27 17:14:49:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-27 17:14:49:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-02-27 17:14:49:initSignal:0
+2017-02-27 17:14:49:endSignal:3
+2017-02-27 17:14:49:seqSignal:30
+2017-02-27 17:14:49:Backtrace BEGIN:
+2017-02-27 17:14:49:#0  0x0000000000401cfe in main (argc=7, argv=0x7fffffffebc8) at main_check.c:114
+
+2017-02-27 17:14:49:109	
+110	                for(l=-1; l<2; l++) {
+111	
+112	                    for(m=-1; m<2; m++) {
+113	
+114	                        for(n=-1; n<2; n++) {
+115	
+116	                            if((((i+l)>=0 && (j+m)>=0 && (k+n)>=0)==true && ((i+l)<dim_cpu.boxes1d_arg && (j+m)<dim_cpu.boxes1d_arg && (k+n)<dim_cpu.boxes1d_arg)==true) && (l==0 && m==0 && n==0)==false) {
+117	
+118	                                box_cpu[nh].nei[box_cpu[nh].nn].x = (k+n);
+
+2017-02-27 17:14:49:Backtrace END
+2017-02-27 17:14:49:Type: The type is an integer type.
+2017-02-27 17:14:49:Type sizeof: 4
+2017-02-27 17:14:49:Mem contents(hex):0x000x000x000x00
+2017-02-27 17:14:49:Fault Mode: Zero bit-flip
+2017-02-27 17:14:49:base address to flip value: 0x7fffffffe730
+2017-02-27 17:14:49:address max offset: 4
+2017-02-27 17:14:49:Memory content before bitflip:0x000x000x000x00
+2017-02-27 17:14:50:Backtrace BEGIN:
+2017-02-27 17:14:50:#0  0x00007ffff714296f in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1372
+#1  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#2  0x0000000000402286 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:151
+
+2017-02-27 17:14:50:1367	in fileops.c
+
+2017-02-27 17:14:50:Backtrace END
+2017-02-27 17:14:50:Type: The type is an integer type.
+2017-02-27 17:14:50:Type sizeof: 4
+2017-02-27 17:14:50:Mem contents(hex):0x020x000x000x00
+2017-02-27 17:14:50:Fault Mode: Zero bit-flip
+2017-02-27 17:14:50:base address to flip value: 0x7fffffffe734
+2017-02-27 17:14:50:address max offset: 4
+2017-02-27 17:14:50:Memory content before bitflip:0x020x000x000x00
+2017-02-27 17:14:50:Backtrace BEGIN:
+2017-02-27 17:14:50:#0  0x00007ffff713895f in _IO_acquire_lock_fct (p=<synthetic pointer>) at libioP.h:892
+#1  __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:41
+#2  0x00000000004025ad in main (argc=7, argv=0x7fffffffebc8) at main_check.c:179
+
+2017-02-27 17:14:50:887	in libioP.h
+
+2017-02-27 17:14:50:Backtrace END
+2017-02-27 17:14:50:Type: The type is a pointer.
+2017-02-27 17:14:50:Type sizeof: 8
+2017-02-27 17:14:50:Fliping a bit of the value pointed by a pointer
+2017-02-27 17:14:50:Type: The type is an integer type.
+2017-02-27 17:14:50:Type sizeof: 1
+2017-02-27 17:14:50:Mem contents(hex):0x2f
+2017-02-27 17:14:50:Fault Mode: One bit-flip
+2017-02-27 17:14:50:base address to flip value: 0x7fffffffedfb 
+2017-02-27 17:14:50:address max offset: 1
+2017-02-27 17:14:50:Memory content before bitflip:0x2f
+2017-02-27 17:14:51:Backtrace BEGIN:
+2017-02-27 17:14:51:#0  0x00000000004027d6 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:206
+
+2017-02-27 17:14:51:201		loop_start = timing_get_time();
+202	#endif
+203	
+204		for(i=0; i<dim_cpu.space_elem; i=i+1) {
+205	            fv_cpu[i].v = 0;
+206	            fv_cpu[i].x = 0;
+207	            fv_cpu[i].y = 0;
+208	            fv_cpu[i].z = 0;
+209		}
+210	
+
+2017-02-27 17:14:51:Backtrace END
+2017-02-27 17:14:51:Type: The type is a structure.
+2017-02-27 17:14:51:Type sizeof: 8
+2017-02-27 17:14:51:Fliping value of field: alpha
+2017-02-27 17:14:51:Type: A floating point type.
+2017-02-27 17:14:51:Type sizeof: 8
+2017-02-27 17:14:51:Mem contents(hex):0x000x000x000x000x000x000xe00x3f
+2017-02-27 17:14:51:Fault Mode: Zero bit-flip
+2017-02-27 17:14:51:base address to flip value: 0x7fffffffe8a0
+2017-02-27 17:14:51:address max offset: 8
+2017-02-27 17:14:51:Memory content before bitflip:0x000x000x000x000x000x000xe00x3f
+2017-02-27 17:14:51:Backtrace BEGIN:
+2017-02-27 17:14:51:#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff74312d0 in ?? () at pthread_create.c:237 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libpthread.so.0
+#2  0x00007ffce63d5600 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-02-27 17:14:51:76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+2017-02-27 17:14:51:Backtrace END
+2017-02-27 17:14:54:Type: The type is an array.
+2017-02-27 17:14:54:Type sizeof: 12
+2017-02-27 17:14:54:Fliping array at pos: 2
+2017-02-27 17:14:54:Type: The type is an integer type.
+2017-02-27 17:14:54:Type sizeof: 4
+2017-02-27 17:14:54:Mem contents(hex):0x000x000x000x00
+2017-02-27 17:14:54:Fault Mode: One bit-flip
+2017-02-27 17:14:54:base address to flip value: 0x7ffff743c298 
+2017-02-27 17:14:54:address max offset: 4
+2017-02-27 17:14:54:Memory content before bitflip:0x000x000x000x00
+2017-02-27 17:14:54:Backtrace BEGIN:
+2017-02-27 17:14:54:#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff7430125 in create_thread (pd=pd@entry=0x7ffce5fcf680, attr=attr@entry=0x7fffffffdd18, stopped_start=<optimized out>, stopped_start@entry=false, stackaddr=<optimized out>, thread_ran=0x7fffffffdab7) at ../sysdeps/unix/sysv/linux/createthread.c:102
+#2  0x00007ffff7431adf in __pthread_create_2_1 (newthread=<optimized out>, attr=<optimized out>, start_routine=<optimized out>, arg=<optimized out>) at pthread_create.c:664
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-02-27 17:14:54:76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+2017-02-27 17:14:54:Backtrace END
+2017-02-27 17:14:57:Type: The type is an array.
+2017-02-27 17:14:57:Type sizeof: 12
+2017-02-27 17:14:57:Fliping array at pos: 2
+2017-02-27 17:14:57:Type: The type is an integer type.
+2017-02-27 17:14:57:Type sizeof: 4
+2017-02-27 17:14:57:Mem contents(hex):0x080x000x000x00
+2017-02-27 17:14:57:Fault Mode: Double bit-flip
+2017-02-27 17:14:57:base address to flip value: 0x7ffff743c2e8 
+2017-02-27 17:14:57:address max offset: 4
+2017-02-27 17:14:57:Memory content before bitflip:0x080x000x000x00
+2017-02-27 17:14:57:Memory content after  bitflip:0x2a0x000x000x00
+2017-02-27 17:14:57:Mem contents(hex):0x2a0x000x000x00
+2017-02-27 17:14:57:frame name: create_thread
+2017-02-27 17:14:57:symbol name: _thread_db_td_eventbuf_t_eventnum
+2017-02-27 17:14:57:symbol filename: ../nptl_db/structs.def
+2017-02-27 17:14:57:symbol line: 48
+2017-02-27 17:14:57:value: {32, 1, 42}
+2017-02-27 17:14:57:value address: 0x7ffff743c2e0 <_thread_db_td_eventbuf_t_eventnum>
+2017-02-27 17:14:57:Type: The type is an array.
+2017-02-27 17:14:57:Type sizeof: 12
+2017-02-27 17:14:57:Field name: None
+2017-02-27 17:14:57:Field Type:
+2017-02-27 17:14:57:Type: A range type, that is, an integer type with bounds.
+2017-02-27 17:14:57:Type sizeof: 8
+2017-02-27 17:14:57:Type range: (0L, 2L)
+2017-02-27 17:14:57:Fault Injection Successful after 8.41801691055s
+2017-02-27 17:15:09:event type: exit
+2017-02-27 17:15:09:exit code: 0

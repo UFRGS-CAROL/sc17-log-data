@@ -1,0 +1,57 @@
+[INFO -- 2017-03-07 15:09:17]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-07 15:09:17]
+Initialization strings:
+[INFO -- 2017-03-07 15:09:17]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-07 15:09:17]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 15:09:17]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 15:09:17]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-03-07 15:09:17]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-03-07 15:09:17]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-03-07 15:09:17]
+initSignal:12
+[INFO -- 2017-03-07 15:09:17]
+endSignal:15
+[INFO -- 2017-03-07 15:09:17]
+seqSignal:15
+[INFO -- 2017-03-07 15:09:17]
+faultMode:2
+[INFO -- 2017-03-07 15:09:30]
+Backtrace BEGIN:
+#0  __GI___isoc99_vsscanf (string=0x7fffffffe640 "323.062469\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:41
+#1  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#2  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#3  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+36	in isoc99_vsscanf.c
+
+Backtrace END
+Fliping array at pos: 0
+Fliping value of field: fp_offset
+Memory content before bitflip:0x300x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe56c
+address max offset: 4
+Memory content after  bitflip:0xaa0xff0x3c0x4c
+frame name: __isoc99_sscanf
+symbol name: arg
+symbol filename: isoc99_sscanf.c
+symbol line: 27
+value: {{gp_offset = 16, fp_offset = 1279066026, overflow_arg_area = 0x7fffffffe640, reg_save_area = 0x7fffffffe580}}
+value address: 0x7fffffffe568
+Type: The type is an array.
+Type sizeof: 24
+
+[INFO -- 2017-03-07 15:09:30]
+Fault Injection Successful after 13.7708280087s
+[INFO -- 2017-03-07 15:09:43]
+event type: exit
+[INFO -- 2017-03-07 15:09:43]
+exit code: 0

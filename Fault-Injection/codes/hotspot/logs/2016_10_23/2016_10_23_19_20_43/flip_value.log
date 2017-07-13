@@ -1,0 +1,46 @@
+2016-10-23 19:20:21:Initialization strings:
+2016-10-23 19:20:22:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-23 19:20:22:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-23 19:20:22:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-23 19:20:22:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-23 19:20:22:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-23 19:20:22:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-23 19:20:22:Trying Fault Injection
+2016-10-23 19:20:22:Backtrace BEGIN:
+2016-10-23 19:20:22:#0  __GI___waitpid (pid=82939, stat_loc=stat_loc@entry=0x7fffffffe268, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000405ccc in update_timestamp () at ../../include/log_helper.c:107
+#3  start_log_file (benchmark_name=0x143fb <error: Cannot access memory at address 0x143fb>, test_info=0x7fffffffe268 "") at ../../include/log_helper.c:196
+#4  0x0000000000401681 in main (argc=82939, argv=0x7fffffffe268) at hotspot_check.c:254
+
+2016-10-23 19:20:22:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-23 19:20:22:Backtrace END
+2016-10-23 19:20:22:Type: The type is an integer type.
+2016-10-23 19:20:22:Type sizeof: 8
+2016-10-23 19:20:22:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-10-23 19:20:22:base address to flip value: 0x608e78 
+2016-10-23 19:20:22:address max offset: 8
+2016-10-23 19:20:22:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-10-23 19:20:22:Memory content after  bitflip:0x000x000x000x000x000x000x000x80
+2016-10-23 19:20:22:Mem contents(hex):0x000x000x000x000x000x000x000x80
+2016-10-23 19:20:22:frame name: update_timestamp
+2016-10-23 19:20:22:symbol name: last_iter_with_errors
+2016-10-23 19:20:22:symbol filename: ../../include/log_helper.c
+2016-10-23 19:20:22:symbol line: 58
+2016-10-23 19:20:22:value: 9223372036854775808
+2016-10-23 19:20:22:value address: 0x608e78 <last_iter_with_errors>
+2016-10-23 19:20:22:Type: The type is an integer type.
+2016-10-23 19:20:22:Type sizeof: 8
+2016-10-23 19:20:22:Fault Injection Successful after 0.579289913177s
+2016-10-23 19:20:22:Fault Already Injected
+2016-10-23 19:20:23:Fault Already Injected
+2016-10-23 19:20:24:Fault Already Injected
+2016-10-23 19:20:26:Fault Already Injected
+2016-10-23 19:20:28:Fault Already Injected
+2016-10-23 19:20:33:Fault Already Injected
+2016-10-23 19:20:34:Fault Already Injected
+2016-10-23 19:20:36:Fault Already Injected
+2016-10-23 19:20:37:Fault Already Injected
+2016-10-23 19:20:37:event type: exit
+2016-10-23 19:20:37:exit code: 0

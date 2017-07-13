@@ -1,0 +1,53 @@
+2016-10-28 22:53:59:Initialization strings:
+2016-10-28 22:53:59:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-28 22:53:59:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-28 22:53:59:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-28 22:53:59:(4) file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-28 22:53:59:(5) set remote exec-file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-28 22:53:59:(6) set args -s 8192 -n 228 -i /micNfs/gdb-fault-injection-lud/bin/input_8192_th_228 -g /micNfs/gdb-fault-injection-lud/bin/gold_8192_th_228
+2016-10-28 22:54:01:Trying Fault Injection
+2016-10-28 22:54:01:Inferior PID: 87432
+2016-10-28 22:54:01:Inferior is valid: True
+2016-10-28 22:54:01:Inferior #threads: 1
+2016-10-28 22:54:01:Backtrace BEGIN:
+2016-10-28 22:54:01:#0  __GI___waitpid (pid=87444, stat_loc=stat_loc@entry=0x7fffffffe5e8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000405e9c in update_timestamp () at ../../include/log_helper.c:108
+#3  start_log_file (benchmark_name=0x15594 <error: Cannot access memory at address 0x15594>, test_info=0x7fffffffe5e8 "") at ../../include/log_helper.c:197
+#4  0x0000000000402c62 in main (argc=87444, argv=0x7fffffffe5e8) at lud_check.c:117
+
+2016-10-28 22:54:01:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-28 22:54:01:Backtrace END
+2016-10-28 22:54:01:Thread name: None
+2016-10-28 22:54:01:Thread num: 1
+2016-10-28 22:54:01:Thread ptid: (87432, 87432, 0)
+2016-10-28 22:54:01:bitFlip function
+2016-10-28 22:54:01:Type: A floating point type.
+2016-10-28 22:54:01:Type sizeof: 8
+2016-10-28 22:54:01:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-10-28 22:54:01:base address to flip value: 0x614510 
+2016-10-28 22:54:01:address max offset: 8
+2016-10-28 22:54:01:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-10-28 22:54:01:Memory content after  bitflip:0x000x000x080x000x000x000x000x00
+2016-10-28 22:54:01:Mem contents(hex):0x000x000x080x000x000x000x000x00
+2016-10-28 22:54:01:frame name: start_log_file
+2016-10-28 22:54:01:symbol name: kernel_time_acc
+2016-10-28 22:54:01:symbol filename: ../../include/log_helper.c
+2016-10-28 22:54:01:symbol line: 63
+2016-10-28 22:54:01:value: 2.5903268932681547e-318
+2016-10-28 22:54:01:value address: 0x614510 <kernel_time_acc>
+2016-10-28 22:54:01:Type: A floating point type.
+2016-10-28 22:54:01:Type sizeof: 8
+2016-10-28 22:54:01:Fault Injection Successful after 2.1240708828s
+2016-10-28 22:54:01:Fault Already Injected
+2016-10-28 22:54:01:Fault Already Injected
+2016-10-28 22:54:03:Fault Already Injected
+2016-10-28 22:54:06:Fault Already Injected
+2016-10-28 22:54:06:Fault Already Injected
+2016-10-28 22:54:06:Fault Already Injected
+2016-10-28 22:54:06:Fault Already Injected
+2016-10-28 22:54:06:Fault Already Injected
+2016-10-28 22:54:07:Fault Already Injected
+2016-10-28 22:54:09:event type: exit
+2016-10-28 22:54:09:exit code: 0

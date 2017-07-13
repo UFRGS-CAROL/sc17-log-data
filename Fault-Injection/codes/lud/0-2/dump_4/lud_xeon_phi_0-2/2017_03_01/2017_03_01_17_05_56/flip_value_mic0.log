@@ -1,0 +1,157 @@
+2017-03-01 17:05:27:Starting flip_value script
+2017-03-01 17:05:27:Initialization strings:
+2017-03-01 17:05:27:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 17:05:27:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 17:05:27:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 17:05:27:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-03-01 17:05:27:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-03-01 17:05:27:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-03-01 17:05:27:initSignal:0
+2017-03-01 17:05:27:endSignal:2
+2017-03-01 17:05:27:seqSignal:30
+2017-03-01 17:05:28:Backtrace BEGIN:
+2017-03-01 17:05:28:#0  0x00007ffff788c5fa in ?? ()
+#1  0x0000000000000001 in ?? ()
+#2  0x0000000000000001 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-01 17:05:28:32	static struct option long_options[] = {
+33	  /* name, has_arg, flag, val */
+34	  {"input", 1, NULL, 'i'},
+35	  {"gold", 1, NULL, 'g'},
+36	  {"size", 1, NULL, 's'},
+37	  {0,0,0,0}
+38	};
+39	
+40	extern void
+41	lud_omp(float *m, int matrix_dim);
+
+2017-03-01 17:05:28:Backtrace END
+2017-03-01 17:05:30:Backtrace BEGIN:
+2017-03-01 17:05:30:#0  0x00007ffff788c5fa in ?? ()
+#1  0x0000000000000001 in ?? ()
+#2  0x0000000000000001 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-01 17:05:30:42	
+43	int
+44	main ( int argc, char *argv[] )
+45	{
+46	  int matrix_dim = 0; /* default size */
+47	  int opt, option_index=0;
+48	  func_ret_t ret;
+49	  const char *input_file = NULL;
+50	  const char *gold_file = NULL;
+51	  float *m, *gold;
+
+2017-03-01 17:05:30:Backtrace END
+2017-03-01 17:05:32:Backtrace BEGIN:
+2017-03-01 17:05:32:#0  0x00007ffff788c5fa in ?? ()
+#1  0x0000000000000001 in ?? ()
+#2  0x0000000000000001 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-01 17:05:32:52	  stopwatch sw;
+53	
+54		
+55	  while ((opt = getopt_long(argc, argv, "::s:n:i:g:", 
+56	                            long_options, &option_index)) != -1 ) {
+57	    switch(opt){
+58	    case 'i':
+59	      input_file = optarg;
+60	      break;
+61	    case 'g':
+
+2017-03-01 17:05:32:Backtrace END
+2017-03-01 17:05:34:Backtrace BEGIN:
+2017-03-01 17:05:34:#0  0x00007ffff788c5fa in ?? ()
+#1  0x0000000000000001 in ?? ()
+#2  0x0000000000000001 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-01 17:05:34:62	      gold_file = optarg;
+63	      break;
+64	    case 'v':
+65	      do_verify = 1;
+66	      break;
+67	    case 'n':
+68	      omp_num_threads = atoi(optarg);
+69	      break;
+70	    case 's':
+71	      matrix_dim = atoi(optarg);
+
+2017-03-01 17:05:34:Backtrace END
+2017-03-01 17:05:36:Backtrace BEGIN:
+2017-03-01 17:05:36:#0  0x00007ffff788c5fa in ?? ()
+#1  0x0000000000000001 in ?? ()
+#2  0x0000000000000001 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-01 17:05:36:72	      break;
+73	    case '?':
+74	      fprintf(stderr, "invalid option\n");
+75	      break;
+76	    case ':':
+77	      fprintf(stderr, "missing argument\n");
+78	      break;
+79	    default:
+80	      fprintf(stderr, "Usage: %s [-v] [-s matrix_size|-i input_file]\n",
+81		      argv[0]);
+
+2017-03-01 17:05:36:Backtrace END
+2017-03-01 17:05:38:Backtrace BEGIN:
+2017-03-01 17:05:38:#0  0x00007ffff788c5fa in ?? ()
+#1  0x0000000000000001 in ?? ()
+#2  0x0000000000000001 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-01 17:05:38:82	      exit(EXIT_FAILURE);
+83	    }
+84	  }
+85	  
+86	  if ( (optind < argc) || (optind == 1)) {
+87	    fprintf(stderr, "Usage: %s [-n no. of threads] [-s matrix_size] [-i input_file] [-g gold_file]\n", argv[0]);
+88	    exit(EXIT_FAILURE);
+89	  }
+90	
+91	  if (input_file && gold_file && matrix_dim>0) {
+
+2017-03-01 17:05:38:Backtrace END
+2017-03-01 17:05:40:Backtrace BEGIN:
+2017-03-01 17:05:40:#0  0x00007ffff788c5fa in ?? ()
+#1  0x0000000000000001 in ?? ()
+#2  0x0000000000000001 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-01 17:05:40:92		int n = matrix_dim;
+93		FILE *f_a, *f_gold;
+94		f_a = fopen(input_file, "rb");
+95		f_gold = fopen(gold_file, "rb");
+96	
+97		if ((f_a == NULL) || (f_gold == NULL)) {
+98			printf("Error opening files\n");
+99	    		exit(EXIT_FAILURE);
+100		}
+101	
+
+2017-03-01 17:05:40:Backtrace END
+2017-03-01 17:05:42:Backtrace BEGIN:
+2017-03-01 17:05:42:#0  0x00007ffff788c5fa in ?? ()
+#1  0x0000000000000001 in ?? ()
+#2  0x0000000000000001 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-01 17:05:42:102	        m = (float*) malloc(sizeof(float)*n*n);
+103	        gold = (float*) malloc(sizeof(float)*n*n);
+104		//std::cout << "read...";
+105		fread(m, sizeof(float) * n * n, 1, f_a);
+106		fread(gold, sizeof(float) * n * n, 1, f_gold);
+107		fclose(f_a);
+108		fclose(f_gold);
+109	  }
+110	  else {
+111	    printf("No input, gold, or matrix_dim specified!\n");
+
+2017-03-01 17:05:42:Backtrace END
+2017-03-01 17:05:49:event type: exit
+2017-03-01 17:05:49:exit code: 0

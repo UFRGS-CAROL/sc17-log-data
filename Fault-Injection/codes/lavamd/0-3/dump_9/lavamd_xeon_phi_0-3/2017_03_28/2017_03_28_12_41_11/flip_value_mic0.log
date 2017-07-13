@@ -1,0 +1,66 @@
+[INFO -- 2017-03-28 12:40:47]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-28 12:40:47]
+Initialization strings:
+[INFO -- 2017-03-28 12:40:48]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-28 12:40:48]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 12:40:48]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 12:40:48]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 12:40:48]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 12:40:48]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-28 12:40:48]
+initSignal:0
+[INFO -- 2017-03-28 12:40:48]
+endSignal:3
+[INFO -- 2017-03-28 12:40:48]
+seqSignal:30
+[INFO -- 2017-03-28 12:40:48]
+faultMode:2
+[INFO -- 2017-03-28 12:40:48]
+Backtrace BEGIN:
+#0  0x0000000000402014 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:122
+
+117	
+118	                                box_cpu[nh].nei[box_cpu[nh].nn].x = (k+n);
+119	                                box_cpu[nh].nei[box_cpu[nh].nn].y = (j+m);
+120	                                box_cpu[nh].nei[box_cpu[nh].nn].z = (i+l);
+121	                                box_cpu[nh].nei[box_cpu[nh].nn].number = (box_cpu[nh].nei[box_cpu[nh].nn].z * dim_cpu.boxes1d_arg * dim_cpu.boxes1d_arg) + (box_cpu[nh].nei[box_cpu[nh].nn].y * dim_cpu.boxes1d_arg) + box_cpu[nh].nei[box_cpu[nh].nn].x;
+122	                                box_cpu[nh].nei[box_cpu[nh].nn].offset = box_cpu[nh].nei[box_cpu[nh].nn].number * NUMBER_PAR_PER_BOX;
+123	
+124	                                box_cpu[nh].nn = box_cpu[nh].nn + 1;
+125	
+126	                            }
+
+Backtrace END
+Fliping array at pos: 67
+Memory content before bitflip:0xf7
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe68b 
+address max offset: 1
+Memory content after  bitflip:0xb1
+frame name: main
+symbol name: test_info
+symbol filename: main_check.c
+symbol line: 188
+value: ",]\336\367\377\177\000\000\070L\r\367\377\177\000\000p\b\000\000\000\000\000\000\004L\r\367\377\177\000\000\240\231\377\367\377\177\000\000\070L\r\367\377\177\000\000\020`\336\367\377\177\000\000p\b\000\000\000\000\000\000\330\027\016\261\377\177\000\000\240\231\377\367\377\177\000\000(\347\377\377\377\177\000\000$\347\377\377\377\177\000\000[\362\001"
+value address: 0x7fffffffe648
+Type: The type is an array.
+Type sizeof: 100
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 99L)
+
+[INFO -- 2017-03-28 12:40:48]
+Fault Injection Successful after 0.58283495903s
+[INFO -- 2017-03-28 12:41:05]
+event type: exit
+[INFO -- 2017-03-28 12:41:05]
+exit code: 0

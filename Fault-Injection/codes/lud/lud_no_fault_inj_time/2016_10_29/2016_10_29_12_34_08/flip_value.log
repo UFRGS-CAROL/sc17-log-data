@@ -1,0 +1,77 @@
+2016-10-29 12:33:51:Initialization strings:
+2016-10-29 12:33:52:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-29 12:33:52:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-29 12:33:52:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-29 12:33:52:(4) file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-29 12:33:52:(5) set remote exec-file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-29 12:33:52:(6) set args -s 8192 -n 228 -i /micNfs/gdb-fault-injection-lud/bin/input_8192_th_228 -g /micNfs/gdb-fault-injection-lud/bin/gold_8192_th_228
+2016-10-29 12:33:53:Trying Fault Injection
+2016-10-29 12:33:53:Inferior PID: 33318
+2016-10-29 12:33:53:Inferior is valid: True
+2016-10-29 12:33:53:Inferior #threads: 1
+2016-10-29 12:33:53:Backtrace BEGIN:
+2016-10-29 12:33:53:#0  __GI___waitpid (pid=33326, stat_loc=stat_loc@entry=0x7fffffffe728, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x00000000004065db in update_timestamp () at ../../include/log_helper.c:108
+#3  start_iteration () at ../../include/log_helper.c:312
+#4  0x0000000000402c69 in main (argc=33326, argv=0x7fffffffe728) at lud_check.c:121
+
+2016-10-29 12:33:53:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-29 12:33:53:Backtrace END
+2016-10-29 12:33:53:Thread name: None
+2016-10-29 12:33:53:Thread num: 1
+2016-10-29 12:33:53:Thread ptid: (33318, 33318, 0)
+2016-10-29 12:33:53:bitFlip function
+2016-10-29 12:33:53:Type: The type is a structure.
+2016-10-29 12:33:53:Type sizeof: 152
+2016-10-29 12:33:53:Fliping value of field: __sigaction_handler
+2016-10-29 12:33:53:bitFlip function
+2016-10-29 12:33:53:Type: The type is a union.
+2016-10-29 12:33:53:Type sizeof: 8
+2016-10-29 12:33:53:Fliping value of field name: sa_sigaction
+2016-10-29 12:33:53:bitFlip function
+2016-10-29 12:33:53:Type: The type is a pointer.
+2016-10-29 12:33:53:Type sizeof: 8
+2016-10-29 12:33:53:Fliping a bit of the pointer
+2016-10-29 12:33:53:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-10-29 12:33:53:base address to flip value: 0x7ffff7426440 
+2016-10-29 12:33:53:address max offset: 8
+2016-10-29 12:33:53:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-10-29 12:33:53:Memory content after  bitflip:0x000x000x000x000x000x000x020x00
+2016-10-29 12:33:53:Mem contents(hex):0x000x000x000x000x000x000x020x00
+2016-10-29 12:33:53:frame name: do_system
+2016-10-29 12:33:53:symbol name: quit
+2016-10-29 12:33:53:symbol filename: ../sysdeps/posix/system.c
+2016-10-29 12:33:53:symbol line: 34
+2016-10-29 12:33:53:value: {__sigaction_handler = {sa_handler = 0x2000000000000, sa_sigaction = 0x2000000000000}, sa_mask = {__val = {0, 140737415839745, 140737488349412, 140737488349412, 140737488349412, 140737488349412, 140737488349422, 18446744073709551615, 140737488349412, 18446744073709551615, 0, 0, 0, 0, 0, 0}}, sa_flags = 67108864, sa_restorer = 0x7ffff7103610 <__restore_rt>}
+2016-10-29 12:33:53:value address: 0x7ffff7426440 <quit>
+2016-10-29 12:33:53:Type: The type is a structure.
+2016-10-29 12:33:53:Type sizeof: 152
+2016-10-29 12:33:53:Field name: __sigaction_handler
+2016-10-29 12:33:53:Field Type:
+2016-10-29 12:33:53:Type: The type is a union.
+2016-10-29 12:33:53:Type sizeof: 8
+2016-10-29 12:33:53:Field name: sa_mask
+2016-10-29 12:33:53:Field Type:
+2016-10-29 12:33:53:Type: The type is a structure.
+2016-10-29 12:33:53:Type sizeof: 128
+2016-10-29 12:33:53:Field name: sa_flags
+2016-10-29 12:33:53:Field Type:
+2016-10-29 12:33:53:Type: The type is an integer type.
+2016-10-29 12:33:53:Type sizeof: 4
+2016-10-29 12:33:53:Field name: sa_restorer
+2016-10-29 12:33:53:Field Type:
+2016-10-29 12:33:53:Type: The type is a pointer.
+2016-10-29 12:33:53:Type sizeof: 8
+2016-10-29 12:33:53:Fault Injection Successful after 1.53783202171s
+2016-10-29 12:33:53:Fault Already Injected
+2016-10-29 12:33:56:Fault Already Injected
+2016-10-29 12:33:57:Fault Already Injected
+2016-10-29 12:33:57:Fault Already Injected
+2016-10-29 12:33:57:Fault Already Injected
+2016-10-29 12:33:58:Fault Already Injected
+2016-10-29 12:33:59:Fault Already Injected
+2016-10-29 12:33:59:Fault Already Injected
+2016-10-29 12:34:02:event type: exit
+2016-10-29 12:34:02:exit code: 0

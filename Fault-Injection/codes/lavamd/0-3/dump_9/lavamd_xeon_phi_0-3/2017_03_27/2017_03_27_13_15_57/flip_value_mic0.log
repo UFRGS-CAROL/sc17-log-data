@@ -1,0 +1,61 @@
+[INFO -- 2017-03-27 13:15:35]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 13:15:35]
+Initialization strings:
+[INFO -- 2017-03-27 13:15:35]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 13:15:35]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 13:15:35]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 13:15:35]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 13:15:35]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 13:15:35]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 13:15:35]
+initSignal:0
+[INFO -- 2017-03-27 13:15:35]
+endSignal:3
+[INFO -- 2017-03-27 13:15:35]
+seqSignal:30
+[INFO -- 2017-03-27 13:15:35]
+faultMode:3
+[INFO -- 2017-03-27 13:15:37]
+Backtrace BEGIN:
+#0  0x0000000000402858 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:204
+
+199	    for(loop=0; loop<iteractions; loop++) {
+200	#ifdef TIMING
+201		loop_start = timing_get_time();
+202	#endif
+203	
+204		for(i=0; i<dim_cpu.space_elem; i=i+1) {
+205	            fv_cpu[i].v = 0;
+206	            fv_cpu[i].x = 0;
+207	            fv_cpu[i].y = 0;
+208	            fv_cpu[i].z = 0;
+
+Backtrace END
+Memory content before bitflip:0x020x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe734
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: main
+symbol name: l
+symbol filename: main_check.c
+symbol line: 53
+value: 0
+value address: 0x7fffffffe734
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-27 13:15:37]
+Fault Injection Successful after 2.24936199188s
+[INFO -- 2017-03-27 13:15:51]
+event type: exit
+[INFO -- 2017-03-27 13:15:51]
+exit code: 0

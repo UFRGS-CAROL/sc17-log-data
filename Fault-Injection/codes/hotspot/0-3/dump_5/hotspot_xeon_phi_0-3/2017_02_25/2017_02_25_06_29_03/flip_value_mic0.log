@@ -1,0 +1,55 @@
+[INFO -- 2017-02-25 06:28:24]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 06:28:24]
+Initialization strings:
+[INFO -- 2017-02-25 06:28:25]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-25 06:28:25]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 06:28:25]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 06:28:25]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 06:28:25]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 06:28:25]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-25 06:28:25]
+initSignal:0
+[INFO -- 2017-02-25 06:28:25]
+endSignal:3
+[INFO -- 2017-02-25 06:28:25]
+seqSignal:15
+[INFO -- 2017-02-25 06:28:25]
+faultMode:2
+[INFO -- 2017-02-25 06:28:26]
+Backtrace BEGIN:
+#0  __GI___xstat (vers=<optimized out>, name=0x6089a0 <full_log_file_name> "/micNfs/carol/logs/2017_02_25_11_28_02_openMPHotspot_mic1.local.log", buf=0x7fffffffe6c8) at ../sysdeps/unix/sysv/linux/wordsize-64/xstat.c:35
+#1  0x0000000000406423 in start_log_file (benchmark_name=0x407478 "openMPHotspot", test_info=0x7fffffffe7a0 "simIter:1000 gridSize:1024x1024") at ../include/log_helper.c:253
+#2  0x0000000000404a17 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:255
+
+30	in ../sysdeps/unix/sysv/linux/wordsize-64/xstat.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x200xea0xff0xff0xff0x7f0x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffea08
+address max offset: 8
+Memory content after  bitflip:0x580xdb0xbc0x1c0x160x070xcb0x51
+frame name: main
+symbol name: pfile
+symbol filename: hotspot_check.c
+symbol line: 232
+value: 0x7fffffffea20 "\216\377w\001"
+value address: 0x7fffffffea08
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-25 06:28:26]
+Fault Injection Successful after 1.10225391388s
+[INFO -- 2017-02-25 06:28:56]
+event type: exit
+[INFO -- 2017-02-25 06:28:56]
+exit code: 0

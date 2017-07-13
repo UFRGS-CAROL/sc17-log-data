@@ -1,0 +1,145 @@
+2017-01-25 11:50:42:Starting flip_value script
+2017-01-25 11:50:42:Initialization strings:
+2017-01-25 11:50:42:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 11:50:42:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 11:50:42:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 11:50:42:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 11:50:42:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 11:50:42:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 11:50:42:initSignal:0
+2017-01-25 11:50:42:endSignal:2
+2017-01-25 11:50:42:seqSignal:30
+2017-01-25 11:50:43:Trying Fault Injection
+2017-01-25 11:50:43:Inferior PID: 228092
+2017-01-25 11:50:43:Inferior is valid: True
+2017-01-25 11:50:43:Inferior #threads: 8
+2017-01-25 11:50:43:Backtrace BEGIN:
+2017-01-25 11:50:43:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd2d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff7fd2df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff7fd2d14 in ?? ()
+#8  0x00007ffff7fd2de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+2017-01-25 11:50:43:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-01-25 11:50:43:Backtrace END
+2017-01-25 11:50:43:Error(threadFlip): No Threads with symbols
+2017-01-25 11:50:43:Fault Injection Failed after 1.7361369133s
+2017-01-25 11:50:44:Trying Fault Injection
+2017-01-25 11:50:44:Inferior PID: 228092
+2017-01-25 11:50:44:Inferior is valid: True
+2017-01-25 11:50:44:Inferior #threads: 179
+2017-01-25 11:50:44:Backtrace BEGIN:
+2017-01-25 11:50:44:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd2d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff7fd2df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff7fd2d14 in ?? ()
+#8  0x00007ffff7fd2de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+2017-01-25 11:50:44:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-01-25 11:50:44:Backtrace END
+2017-01-25 11:50:47:Thread name: None
+2017-01-25 11:50:47:Thread num: 1
+2017-01-25 11:50:47:Thread ptid: (228092, 228092, 0)
+2017-01-25 11:50:47:bitFlip function
+2017-01-25 11:50:47:Type: The type is a pointer.
+2017-01-25 11:50:47:Type sizeof: 8
+2017-01-25 11:50:47:Fliping a bit of the pointer
+2017-01-25 11:50:47:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-01-25 11:50:47:base address to flip value: 0x7ffff7646318 
+2017-01-25 11:50:47:address max offset: 8
+2017-01-25 11:50:47:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-01-25 11:50:47:Memory content after  bitflip:0x000x000x000x000x020x000x000x00
+2017-01-25 11:50:47:Mem contents(hex):0x000x000x000x000x020x000x000x00
+2017-01-25 11:50:47:frame name: allocate_stack
+2017-01-25 11:50:47:symbol name: __nptl_last_event
+2017-01-25 11:50:47:symbol filename: pthread_create.c
+2017-01-25 11:50:47:symbol line: 47
+2017-01-25 11:50:47:value: 0x0
+2017-01-25 11:50:47:value address: 0x7ffff7646318 <__nptl_last_event>
+2017-01-25 11:50:47:Type: The type is a pointer.
+2017-01-25 11:50:47:Type sizeof: 8
+2017-01-25 11:50:47:Fault Injection Successful after 5.22497105598s
+2017-01-25 11:50:47:Fault Already Injected
+2017-01-25 11:50:47:Fault Already Injected
+2017-01-25 11:50:47:Fault Already Injected
+2017-01-25 11:50:47:Fault Already Injected
+2017-01-25 11:50:47:Fault Already Injected
+2017-01-25 11:50:48:Fault Already Injected
+2017-01-25 11:50:48:Fault Already Injected
+2017-01-25 11:50:48:Fault Already Injected
+2017-01-25 11:50:48:Fault Already Injected
+2017-01-25 11:50:48:Fault Already Injected
+2017-01-25 11:50:48:Fault Already Injected
+2017-01-25 11:50:49:Fault Already Injected
+2017-01-25 11:50:49:Fault Already Injected
+2017-01-25 11:50:49:Fault Already Injected
+2017-01-25 11:50:49:Fault Already Injected
+2017-01-25 11:50:49:Fault Already Injected
+2017-01-25 11:50:49:Fault Already Injected
+2017-01-25 11:50:50:Fault Already Injected
+2017-01-25 11:50:50:Fault Already Injected
+2017-01-25 11:50:50:Fault Already Injected
+2017-01-25 11:50:50:Fault Already Injected
+2017-01-25 11:50:50:Fault Already Injected
+2017-01-25 11:50:51:Fault Already Injected
+2017-01-25 11:50:51:Fault Already Injected
+2017-01-25 11:50:51:Fault Already Injected
+2017-01-25 11:50:51:Fault Already Injected
+2017-01-25 11:50:51:Fault Already Injected
+2017-01-25 11:50:51:Fault Already Injected
+2017-01-25 11:50:52:Fault Already Injected
+2017-01-25 11:50:52:Fault Already Injected
+2017-01-25 11:50:52:Fault Already Injected
+2017-01-25 11:50:52:Fault Already Injected
+2017-01-25 11:50:52:Fault Already Injected
+2017-01-25 11:50:52:Fault Already Injected
+2017-01-25 11:50:52:Fault Already Injected
+2017-01-25 11:50:53:Fault Already Injected
+2017-01-25 11:50:53:Fault Already Injected
+2017-01-25 11:50:53:Fault Already Injected
+2017-01-25 11:50:53:Fault Already Injected
+2017-01-25 11:50:53:Fault Already Injected
+2017-01-25 11:50:53:Fault Already Injected
+2017-01-25 11:50:53:Fault Already Injected
+2017-01-25 11:50:54:Fault Already Injected
+2017-01-25 11:50:54:Fault Already Injected
+2017-01-25 11:50:54:Fault Already Injected
+2017-01-25 11:50:54:Fault Already Injected
+2017-01-25 11:50:54:Fault Already Injected
+2017-01-25 11:50:54:Fault Already Injected
+2017-01-25 11:50:54:Fault Already Injected
+2017-01-25 11:50:55:Fault Already Injected
+2017-01-25 11:50:55:Fault Already Injected
+2017-01-25 11:50:55:Fault Already Injected
+2017-01-25 11:50:55:Fault Already Injected
+2017-01-25 11:50:55:Fault Already Injected
+2017-01-25 11:50:55:Fault Already Injected
+2017-01-25 11:50:55:Fault Already Injected
+2017-01-25 11:50:56:Fault Already Injected
+2017-01-25 11:50:56:Fault Already Injected
+2017-01-25 11:50:56:Fault Already Injected
+2017-01-25 11:50:56:Fault Already Injected
+2017-01-25 11:50:56:Fault Already Injected
+2017-01-25 11:50:56:Fault Already Injected
+2017-01-25 11:50:57:Fault Already Injected
+2017-01-25 11:50:57:Fault Already Injected
+2017-01-25 11:50:57:Fault Already Injected
+2017-01-25 11:50:58:Fault Already Injected
+2017-01-25 11:51:02:event type: exit
+2017-01-25 11:51:02:exit code: 0

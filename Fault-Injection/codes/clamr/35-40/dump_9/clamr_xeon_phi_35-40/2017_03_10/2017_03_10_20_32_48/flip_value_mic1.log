@@ -1,0 +1,62 @@
+[INFO -- 2017-03-10 20:31:36]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-10 20:31:36]
+Initialization strings:
+[INFO -- 2017-03-10 20:31:36]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-10 20:31:36]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 20:31:36]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 20:31:36]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-10 20:31:36]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-10 20:31:36]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-10 20:31:36]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-10 20:31:36]
+initSignal:35
+[INFO -- 2017-03-10 20:31:36]
+endSignal:40
+[INFO -- 2017-03-10 20:31:36]
+seqSignal:20
+[INFO -- 2017-03-10 20:31:36]
+faultMode:1
+[EXCEPTION -- 2017-03-10 20:32:19]
+pythonException: invalid frame
+[INFO -- 2017-03-10 20:32:19]
+Backtrace BEGIN:
+#0  pthread_cond_signal@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_signal.S:91
+#1  0x00007ffff79132c0 in ?? ()
+#2  0x000000000161a6a0 in ?? ()
+#3  0x000000000161a6a0 in ?? ()
+#4  0x00007fffffffdcb0 in ?? ()
+#5  0x000000000044afc6 in std::__uninitialized_copy_a<int*, int*, int> (__first=0x15, __last=0x15, __result=0x7ffff68d7080) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:281
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+86	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_signal.S
+
+Backtrace END
+Memory content before bitflip:0x1b0x670xd30x110xc00xdd0x160x40
+Fault Mode: Double bit-flip
+base address to flip value: 0x7d06b0 
+address max offset: 8
+Memory content after  bitflip:0x1b0x670xfb0x110xc00xdd0x160x40
+frame name: std::__uninitialized_copy_a<int*, int*, int>
+symbol name: cpu_time_graphics
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 172
+value: 5.7165530023283067
+value address: 0x7d06b0 <cpu_time_graphics>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-10 20:32:19]
+Fault Injection Successful after 43.4347939491s
+[INFO -- 2017-03-10 20:32:41]
+event type: exit
+[INFO -- 2017-03-10 20:32:41]
+exit code: 0

@@ -1,0 +1,83 @@
+2017-03-01 13:40:12:Starting flip_value script
+2017-03-01 13:40:12:Initialization strings:
+2017-03-01 13:40:12:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-01 13:40:12:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 13:40:12:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 13:40:12:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 13:40:12:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 13:40:12:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 13:40:12:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 13:40:12:initSignal:0
+2017-03-01 13:40:12:endSignal:5
+2017-03-01 13:40:12:seqSignal:20
+2017-03-01 13:40:13:Backtrace BEGIN:
+2017-03-01 13:40:13:#0  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffe318) at allocatestack.c:557
+#1  __pthread_create_2_1 (newthread=0x7fffffffe310, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffec2bd600) at pthread_create.c:524
+#2  0x00007ffff790d323 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-01 13:40:13:552	in allocatestack.c
+
+2017-03-01 13:40:13:Backtrace END
+2017-03-01 13:40:15:Type: The type is an array.
+2017-03-01 13:40:15:Type sizeof: 12
+2017-03-01 13:40:15:Fliping array at pos: 1
+2017-03-01 13:40:15:Type: The type is an integer type.
+2017-03-01 13:40:15:Type sizeof: 4
+2017-03-01 13:40:15:Mem contents(hex):0x010x000x000x00
+2017-03-01 13:40:15:Fault Mode: One bit-flip
+2017-03-01 13:40:15:base address to flip value: 0x7ffff6e8c254 
+2017-03-01 13:40:15:address max offset: 4
+2017-03-01 13:40:15:Memory content before bitflip:0x010x000x000x00
+2017-03-01 13:40:16:Backtrace BEGIN:
+2017-03-01 13:40:16:#0  malloc (n=15) at dl-minimal.c:93
+#1  <function called from gdb>
+#2  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffe318) at allocatestack.c:557
+#3  __pthread_create_2_1 (newthread=0x7fffffffe310, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffec2bd600) at pthread_create.c:524
+#4  0x00007ffff790d323 in ?? ()
+#5  0x0000000000000000 in ?? ()
+
+2017-03-01 13:40:16:88	in dl-minimal.c
+
+2017-03-01 13:40:16:Backtrace END
+2017-03-01 13:40:18:Backtrace BEGIN:
+2017-03-01 13:40:18:#0  __pthread_mutex_unlock_usercnt (mutex=0x7ffff7b792c0, decr=1) at pthread_mutex_unlock.c:40
+#1  0x00007ffff790c6ce in ?? ()
+#2  0x00007ffff7fd0cd8 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+2017-03-01 13:40:18:35	in pthread_mutex_unlock.c
+
+2017-03-01 13:40:18:Backtrace END
+2017-03-01 13:40:21:Type: The type is an array.
+2017-03-01 13:40:21:Type sizeof: 16
+2017-03-01 13:40:21:Fliping array at pos: 7
+2017-03-01 13:40:21:Type: The type is an integer type.
+2017-03-01 13:40:21:Type sizeof: 1
+2017-03-01 13:40:21:Mem contents(hex):0x37
+2017-03-01 13:40:21:Fault Mode: Double bit-flip
+2017-03-01 13:40:21:base address to flip value: 0x7ffff7df6607  
+2017-03-01 13:40:21:address max offset: 1
+2017-03-01 13:40:21:Memory content before bitflip:0x37
+2017-03-01 13:40:21:Memory content after  bitflip:0x13
+2017-03-01 13:40:21:Mem contents(hex):0x13
+2017-03-01 13:40:21:frame name: malloc
+2017-03-01 13:40:21:symbol name: __GI__itoa_lower_digits
+2017-03-01 13:40:21:symbol filename: dl-minimal.c
+2017-03-01 13:40:21:symbol line: 381
+2017-03-01 13:40:21:value: "0123456\023\070\071abcdef"
+2017-03-01 13:40:21:value address: 0x7ffff7df6600 <_itoa_lower_digits>
+2017-03-01 13:40:21:Type: The type is an array.
+2017-03-01 13:40:21:Type sizeof: 16
+2017-03-01 13:40:21:Field name: None
+2017-03-01 13:40:21:Field Type:
+2017-03-01 13:40:21:Type: A range type, that is, an integer type with bounds.
+2017-03-01 13:40:21:Type sizeof: 8
+2017-03-01 13:40:21:Type range: (0L, 15L)
+2017-03-01 13:40:21:Fault Injection Successful after 9.43881988525s
+2017-03-01 13:40:21:Type: The type is a pointer.
+2017-03-01 13:40:21:Type sizeof: 8
+2017-03-01 13:41:11:event type: exit
+2017-03-01 13:41:11:exit code: 0

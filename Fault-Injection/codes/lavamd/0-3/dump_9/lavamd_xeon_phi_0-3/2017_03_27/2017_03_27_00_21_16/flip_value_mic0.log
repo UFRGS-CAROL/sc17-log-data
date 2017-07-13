@@ -1,0 +1,57 @@
+[INFO -- 2017-03-27 00:20:26]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 00:20:26]
+Initialization strings:
+[INFO -- 2017-03-27 00:20:26]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 00:20:26]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 00:20:26]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 00:20:26]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 00:20:26]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 00:20:26]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 00:20:26]
+initSignal:0
+[INFO -- 2017-03-27 00:20:26]
+endSignal:3
+[INFO -- 2017-03-27 00:20:26]
+seqSignal:30
+[INFO -- 2017-03-27 00:20:26]
+faultMode:1
+[EXCEPTION -- 2017-03-27 00:20:27]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2017-03-27 00:20:27]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-03-27 00:20:27]
+Backtrace BEGIN:
+#0  0x00007ffff71388d5 in __GI__IO_fread (buf=0x7ffff61371c8, size=1, count=8, fp=0x60e1c0) at iofread.c:41
+#1  0x0000000000402286 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:151
+
+36	in iofread.c
+
+Backtrace END
+Fliping value of field: alpha
+Memory content before bitflip:0x000x000x000x000x000x000xe00x3f
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe8a0
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x640x3f
+frame name: main
+symbol name: par_cpu
+symbol filename: main_check.c
+symbol line: 55
+value: {alpha = 0.00244140625}
+value address: 0x7fffffffe8a0
+Type: The type is a structure.
+Type sizeof: 8
+Field name: alpha
+Field Type: A floating point type.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-27 00:20:27]
+Fault Injection Successful after 1.53282999992s

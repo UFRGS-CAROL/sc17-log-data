@@ -1,0 +1,82 @@
+2016-10-19 11:09:28:Initialization strings:
+2016-10-19 11:09:28:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-19 11:09:28:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-19 11:09:28:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-19 11:09:28:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-19 11:09:28:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-19 11:09:28:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-19 11:09:33:Trying Fault Injection
+2016-10-19 11:09:33:Backtrace BEGIN:
+2016-10-19 11:09:33:#0  0x00007ffff7126540 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2084
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe87a "0.000008\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401808 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=-7168, argv=0x8) at hotspot_check.c:265
+
+2016-10-19 11:09:33:2079	in vfscanf.c
+
+2016-10-19 11:09:33:Backtrace END
+2016-10-19 11:09:33:Type: The type is a structure.
+2016-10-19 11:09:33:Type sizeof: 240
+2016-10-19 11:09:33:Fliping value of field: _s
+2016-10-19 11:09:33:Type: The type is a structure.
+2016-10-19 11:09:33:Type sizeof: 16
+2016-10-19 11:09:33:Fliping value of field: _free_buffer
+2016-10-19 11:09:33:Type: The type is a pointer.
+2016-10-19 11:09:33:Type sizeof: 8
+2016-10-19 11:09:33:Fliping a bit of the value pointed by a pointer
+2016-10-19 11:09:33:Type: The type is a function.
+2016-10-19 11:09:33:Type sizeof: 1
+2016-10-19 11:09:33:Fault Injection Failed after 5.78521609306s
+2016-10-19 11:09:33:Trying Fault Injection
+2016-10-19 11:09:33:Backtrace BEGIN:
+2016-10-19 11:09:33:#0  0x00007ffff7126540 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2084
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe87a "0.000008\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401808 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=-7168, argv=0x8) at hotspot_check.c:265
+
+2016-10-19 11:09:33:2079	in vfscanf.c
+
+2016-10-19 11:09:33:Backtrace END
+2016-10-19 11:09:33:Type: The type is a structure.
+2016-10-19 11:09:33:Type sizeof: 8
+2016-10-19 11:09:33:Fliping value of field: __value
+2016-10-19 11:09:33:Type: The type is a union.
+2016-10-19 11:09:33:Type sizeof: 4
+2016-10-19 11:09:33:Fliping value of field name: __wch
+2016-10-19 11:09:33:Type: The type is an integer type.
+2016-10-19 11:09:33:Type sizeof: 4
+2016-10-19 11:09:33:Mem contents(hex):0x000x000x000x00
+2016-10-19 11:09:33:base address to flip value: 0x7fffffffe24c
+2016-10-19 11:09:33:address max offset: 4
+2016-10-19 11:09:33:Memory content before bitflip:0x000x000x000x00
+2016-10-19 11:09:33:Memory content after  bitflip:0x010x000x000x00
+2016-10-19 11:09:33:Mem contents(hex):0x010x000x000x00
+2016-10-19 11:09:33:frame name: _IO_vfscanf_internal
+2016-10-19 11:09:33:symbol name: state
+2016-10-19 11:09:33:symbol filename: vfscanf.c
+2016-10-19 11:09:33:symbol line: 245
+2016-10-19 11:09:33:value: {__count = 0, __value = {__wch = 1, __wchb = "\001\000\000"}}
+2016-10-19 11:09:33:value address: 0x7fffffffe248
+2016-10-19 11:09:33:Type: The type is a structure.
+2016-10-19 11:09:33:Type sizeof: 8
+2016-10-19 11:09:33:Field name: __count
+2016-10-19 11:09:33:Field Type:
+2016-10-19 11:09:33:Type: The type is an integer type.
+2016-10-19 11:09:33:Type sizeof: 4
+2016-10-19 11:09:33:Field name: __value
+2016-10-19 11:09:33:Field Type:
+2016-10-19 11:09:33:Type: The type is a union.
+2016-10-19 11:09:33:Type sizeof: 4
+2016-10-19 11:09:33:Fault Injection Successful after 5.88637900352s
+2016-10-19 11:09:33:Fault Already Injected
+2016-10-19 11:09:33:Fault Already Injected
+2016-10-19 11:09:34:Fault Already Injected
+2016-10-19 11:09:35:Fault Already Injected
+2016-10-19 11:09:35:Fault Already Injected
+2016-10-19 11:09:36:Fault Already Injected
+2016-10-19 11:09:38:Fault Already Injected
+2016-10-19 11:09:38:Fault Already Injected
+2016-10-19 11:09:43:event type: exit
+2016-10-19 11:09:43:exit code: 0

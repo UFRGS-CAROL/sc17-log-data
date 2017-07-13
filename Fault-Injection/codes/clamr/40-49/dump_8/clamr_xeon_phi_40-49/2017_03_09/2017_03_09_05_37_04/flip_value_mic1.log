@@ -1,0 +1,73 @@
+[INFO -- 2017-03-09 05:34:14]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-09 05:34:14]
+Initialization strings:
+[INFO -- 2017-03-09 05:34:15]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-09 05:34:15]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-09 05:34:15]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-09 05:34:15]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-09 05:34:15]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-09 05:34:15]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-09 05:34:15]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-09 05:34:15]
+initSignal:40
+[INFO -- 2017-03-09 05:34:15]
+endSignal:49
+[INFO -- 2017-03-09 05:34:15]
+seqSignal:20
+[INFO -- 2017-03-09 05:34:15]
+faultMode:0
+[INFO -- 2017-03-09 05:35:06]
+Backtrace BEGIN:
+#0  0x000000000053c22f in median_sort (t=0x7f9d50, cut_direction=0, k=64, num=129, idx=0x3164d48) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:87
+#1  0x000000000053ce2b in KDTree_CreateTree (t=0x7f9d50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:236
+#2  0x000000000053d3f4 in KDTree_QueryCircleIntersect_Double (t=0x7f9d50, result_num=0x7fffffffe5dc, result_indicies=0x181ae10, circ_radius=24, ncells=264192, x=0x7ffc517ae010, dx=0x7ffc515a9010, y=0x7ffc513a4010, dy=0x7ffc5119f010) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:329
+#3  0x00000000005080fe in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1535
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+82	      i = left + 1;
+83	      j = right;
+84	      while (1) {
+85	         for (i++;
+86	              Bounds_CenterAxis(&(t->elements[idx[i]]), cut_direction) <
+87	                Bounds_CenterAxis(&(t->elements[a]), cut_direction);
+88	              i++);
+89	         for (j--;
+90	              Bounds_CenterAxis(&(t->elements[idx[j]]), cut_direction) >
+91	              Bounds_CenterAxis(&(t->elements[a]), cut_direction);
+
+Backtrace END
+Fliping array at pos: 10
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x6d
+Fault Mode: Single bit-flip
+base address to flip value: 0x57208c 
+address max offset: 1
+Memory content after  bitflip:0x2d
+frame name: Mesh::init
+symbol name: mesh_timer_descriptor
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+symbol line: 149
+value: {0x571f98 "mesh_timer_count_BCs", 0x571fb0 "mesh_timer_calc_neighbors", 0x571fcc "mesh_timer_hash_setup", 0x571fe4 "mesh_timer_hash_query", 0x571ffc "mesh_timer_find_boundary", 0x572018 "mesh_timer_push_setup", 0x572030 "mesh_timer_push_boundary", 0x57204c "mesh_timer_local_list", 0x572064 "mesh_timer_layer1", 0x572078 "mesh_timer_layer2", 0x57208c "-esh_timer_layer_list", 0x5720a4 "mesh_timer_copy_mesh_data", 0x5720c0 "mesh_timer_fill_mesh_ghost", 0x5720dc "mesh_timer_fill_neigh_ghost", 0x5720f8 "mesh_timer_set_corner_neigh", 0x572114 "mesh_timer_neigh_adjust", 0x57212c "mesh_timer_setup_comm", 0x572144 "mesh_timer_kdtree_setup", 0x57215c "mesh_timer_kdtree_query", 0x572174 "mesh_timer_refine_smooth", 0x572190 "mesh_timer_rezone_all", 0x5721a8 "mesh_timer_partition", 0x5721c0 "mesh_timer_calc_spatial_coordinates", 0x5721e4 "mesh_timer_load_balance"}
+value address: 0x7cee20 <mesh_timer_descriptor>
+Type: The type is an array.
+Type sizeof: 192
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 23L)
+
+[INFO -- 2017-03-09 05:35:06]
+Fault Injection Successful after 51.5057730675s
+[INFO -- 2017-03-09 05:36:45]
+event type: exit
+[INFO -- 2017-03-09 05:36:45]
+exit code: 0

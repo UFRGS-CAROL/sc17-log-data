@@ -1,0 +1,57 @@
+2016-10-31 22:14:15:Initialization strings:
+2016-10-31 22:14:15:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-31 22:14:15:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 22:14:15:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 22:14:15:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-31 22:14:15:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-31 22:14:15:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-31 22:14:16:Trying Fault Injection
+2016-10-31 22:14:16:Inferior PID: 19666
+2016-10-31 22:14:16:Inferior is valid: True
+2016-10-31 22:14:16:Inferior #threads: 1
+2016-10-31 22:14:16:Backtrace BEGIN:
+2016-10-31 22:14:16:#0  0x0000000000402259 in main (argc=7, argv=0x7fffffffec08) at main_check.c:151
+
+2016-10-31 22:14:16:146	    rv_cpu = (FOUR_VECTOR*)malloc(dim_cpu.space_mem);
+147	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+148	        fread(&(rv_cpu[i].v), 1, sizeof(double), file);
+149	        fread(&(rv_cpu[i].x), 1, sizeof(double), file);
+150	        fread(&(rv_cpu[i].y), 1, sizeof(double), file);
+151	        fread(&(rv_cpu[i].z), 1, sizeof(double), file);
+152	    }
+153	
+154	    fclose(file);
+155	
+
+2016-10-31 22:14:16:Backtrace END
+2016-10-31 22:14:16:Thread name: None
+2016-10-31 22:14:16:Thread num: 1
+2016-10-31 22:14:16:Thread ptid: (19666, 19666, 0)
+2016-10-31 22:14:16:bitFlip function
+2016-10-31 22:14:16:Type: The type is a pointer.
+2016-10-31 22:14:16:Type sizeof: 8
+2016-10-31 22:14:16:Fliping a bit of the pointer
+2016-10-31 22:14:16:Mem contents(hex):0x250xee0xff0xff0xff0x7f0x000x00
+2016-10-31 22:14:16:base address to flip value: 0x7fffffffe8c8
+2016-10-31 22:14:16:address max offset: 8
+2016-10-31 22:14:16:Memory content before bitflip:0x250xee0xff0xff0xff0x7f0x000x00
+2016-10-31 22:14:16:Memory content after  bitflip:0x250xee0x7f0xff0xff0x7f0x000x00
+2016-10-31 22:14:16:Mem contents(hex):0x250xee0x7f0xff0xff0x7f0x000x00
+2016-10-31 22:14:16:frame name: main
+2016-10-31 22:14:16:symbol name: input_distance
+2016-10-31 22:14:16:symbol filename: main_check.c
+2016-10-31 22:14:16:symbol line: 49
+2016-10-31 22:14:16:value: 0x7fffffffee25 "/micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15"
+2016-10-31 22:14:16:value address: 0x7fffffffe8c8
+2016-10-31 22:14:16:Type: The type is a pointer.
+2016-10-31 22:14:16:Type sizeof: 8
+2016-10-31 22:14:16:Fault Injection Successful after 1.22731399536s
+2016-10-31 22:14:16:Fault Already Injected
+2016-10-31 22:14:17:Fault Already Injected
+2016-10-31 22:14:17:Fault Already Injected
+2016-10-31 22:14:19:Fault Already Injected
+2016-10-31 22:14:20:Fault Already Injected
+2016-10-31 22:14:22:Fault Already Injected
+2016-10-31 22:14:22:Fault Already Injected
+2016-10-31 22:14:26:event type: exit
+2016-10-31 22:14:26:exit code: 0

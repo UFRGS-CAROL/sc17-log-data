@@ -1,0 +1,48 @@
+2017-03-02 00:47:20:Starting flip_value script
+2017-03-02 00:47:20:Initialization strings:
+2017-03-02 00:47:20:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 00:47:20:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 00:47:20:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 00:47:20:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-03-02 00:47:20:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-03-02 00:47:20:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-03-02 00:47:20:initSignal:0
+2017-03-02 00:47:20:endSignal:2
+2017-03-02 00:47:20:seqSignal:30
+2017-03-02 00:47:20:Backtrace BEGIN:
+2017-03-02 00:47:21:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd2d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff7fd2df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff7fd2d14 in ?? ()
+#8  0x00007ffff7fd2de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+2017-03-02 00:47:21:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-03-02 00:47:21:Backtrace END
+2017-03-02 00:47:21:Type: The type is an integer type.
+2017-03-02 00:47:21:Type sizeof: 4
+2017-03-02 00:47:21:Mem contents(hex):0x080x000x000x00
+2017-03-02 00:47:21:Fault Mode: Single bit-flip
+2017-03-02 00:47:21:base address to flip value: 0x7ffff743c244 
+2017-03-02 00:47:21:address max offset: 4
+2017-03-02 00:47:21:Memory content before bitflip:0x080x000x000x00
+2017-03-02 00:47:21:Memory content after  bitflip:0x880x000x000x00
+2017-03-02 00:47:21:Mem contents(hex):0x880x000x000x00
+2017-03-02 00:47:21:frame name: __pthread_create_2_1
+2017-03-02 00:47:21:symbol name: _thread_db_sizeof_td_thr_events_t
+2017-03-02 00:47:21:symbol filename: ../nptl_db/structs.def
+2017-03-02 00:47:21:symbol line: 44
+2017-03-02 00:47:21:value: 136
+2017-03-02 00:47:21:value address: 0x7ffff743c244 <_thread_db_sizeof_td_thr_events_t>
+2017-03-02 00:47:21:Type: The type is an integer type.
+2017-03-02 00:47:21:Type sizeof: 4
+2017-03-02 00:47:21:Fault Injection Successful after 1.69422698021s
+2017-03-02 00:47:35:event type: exit
+2017-03-02 00:47:35:exit code: 0

@@ -1,0 +1,53 @@
+2017-03-01 14:48:56:Starting flip_value script
+2017-03-01 14:48:56:Initialization strings:
+2017-03-01 14:48:57:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 14:48:57:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 14:48:57:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 14:48:57:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 14:48:57:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 14:48:57:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 14:48:57:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 14:48:57:initSignal:30
+2017-03-01 14:48:57:endSignal:35
+2017-03-01 14:48:57:seqSignal:20
+2017-03-01 14:49:27:Backtrace BEGIN:
+2017-03-01 14:49:28:#0  0x0000000000520779 in Mesh::rezone_all (this=0x7fae50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3195
+#1  0x0000000000471447 in State::rezone_all (this=0x7fb9e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-01 14:49:28:3190	      int *ntop_old     = (int *)mesh_memory.memory_malloc(new_ncells, sizeof(int), "ntop_old",  flags);
+3191	
+3192	      for (int ic = 0; ic < new_ncells; ic++){
+3193	         nlft_old[ic] = -1;
+3194	         nrht_old[ic] = -1;
+3195	         nbot_old[ic] = -1;
+3196	         ntop_old[ic] = -1;
+3197	      }
+3198	
+3199	      mesh_memory.memory_swap(&nlft,  &nlft_old);
+
+2017-03-01 14:49:28:Backtrace END
+2017-03-01 14:49:31:Type: The type is a pointer.
+2017-03-01 14:49:31:Type sizeof: 8
+2017-03-01 14:49:31:Fliping a bit of the value pointed by a pointer
+2017-03-01 14:49:31:Type: The type is an integer type.
+2017-03-01 14:49:31:Type sizeof: 4
+2017-03-01 14:49:32:Mem contents(hex):0x010x000x000x00
+2017-03-01 14:49:32:Fault Mode: Single bit-flip
+2017-03-01 14:49:32:base address to flip value: 0x8ff6e0
+2017-03-01 14:49:32:address max offset: 4
+2017-03-01 14:49:32:Memory content before bitflip:0x010x000x000x00
+2017-03-01 14:49:32:Memory content after  bitflip:0x010x000x400x00
+2017-03-01 14:49:32:Mem contents(hex):0x010x000x400x00
+2017-03-01 14:49:32:frame name: Mesh::rezone_all
+2017-03-01 14:49:32:symbol name: i_old
+2017-03-01 14:49:32:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+2017-03-01 14:49:32:symbol line: 2603
+2017-03-01 14:49:32:value: 0x8ff6e0
+2017-03-01 14:49:32:value address: 0x7fffffffde28
+2017-03-01 14:49:32:Type: The type is a pointer.
+2017-03-01 14:49:32:Type sizeof: 8
+2017-03-01 14:49:32:Fault Injection Successful after 35.0265820026s
+2017-03-01 14:49:54:event type: exit
+2017-03-01 14:49:54:exit code: 0

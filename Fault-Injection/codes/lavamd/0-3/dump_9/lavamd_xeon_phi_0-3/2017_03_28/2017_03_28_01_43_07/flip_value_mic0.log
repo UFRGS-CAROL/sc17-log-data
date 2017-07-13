@@ -1,0 +1,61 @@
+[INFO -- 2017-03-28 01:42:16]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-28 01:42:16]
+Initialization strings:
+[INFO -- 2017-03-28 01:42:16]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-28 01:42:16]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 01:42:16]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 01:42:16]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 01:42:16]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 01:42:16]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-28 01:42:16]
+initSignal:0
+[INFO -- 2017-03-28 01:42:16]
+endSignal:3
+[INFO -- 2017-03-28 01:42:16]
+seqSignal:30
+[INFO -- 2017-03-28 01:42:16]
+faultMode:3
+[INFO -- 2017-03-28 01:42:21]
+Backtrace BEGIN:
+#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff7430125 in create_thread (pd=pd@entry=0x7ffd647b2a80, attr=attr@entry=0x7fffffffdd18, stopped_start=<optimized out>, stopped_start@entry=false, stackaddr=<optimized out>, thread_ran=0x7fffffffdab7) at ../sysdeps/unix/sysv/linux/createthread.c:102
+#2  0x00007ffff7431adf in __pthread_create_2_1 (newthread=<optimized out>, attr=<optimized out>, start_routine=<optimized out>, arg=<optimized out>) at pthread_create.c:664
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+Backtrace END
+Fliping value of field: event_bits
+Fliping array at pos: 0
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffff7646320 
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: create_thread
+symbol name: __nptl_threads_events
+symbol filename: pthread_create.c
+symbol line: 44
+value: {event_bits = {0, 0}}
+value address: 0x7ffff7646320 <__nptl_threads_events>
+Type: The type is a structure.
+Type sizeof: 8
+Field name: event_bits
+Field Type: The type is an array.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-28 01:42:21]
+Fault Injection Successful after 5.23116588593s
+[INFO -- 2017-03-28 01:42:36]
+event type: exit
+[INFO -- 2017-03-28 01:42:36]
+exit code: 0

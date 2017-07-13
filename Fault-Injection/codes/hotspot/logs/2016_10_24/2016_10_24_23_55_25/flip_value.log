@@ -1,0 +1,53 @@
+2016-10-24 23:55:03:Initialization strings:
+2016-10-24 23:55:03:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-24 23:55:03:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 23:55:03:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 23:55:03:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-24 23:55:03:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-24 23:55:03:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-24 23:55:06:Trying Fault Injection
+2016-10-24 23:55:06:Backtrace BEGIN:
+2016-10-24 23:55:06:#0  _pthread_cleanup_push_defer (buffer=0x7fffffffe280, routine=0x7ffff7135e30 <__funlockfile>, arg=0x7fffffffe400) at cleanup_defer_compat.c:30
+#1  0x00007ffff71249c6 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:340
+#2  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "324.112949\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#5  main (argc=-7552, argv=0x7ffff7135e30 <__funlockfile>) at hotspot_check.c:264
+
+2016-10-24 23:55:06:25	in cleanup_defer_compat.c
+
+2016-10-24 23:55:06:Backtrace END
+2016-10-24 23:55:06:Type: The type is an array.
+2016-10-24 23:55:06:Type sizeof: 24
+2016-10-24 23:55:06:Fliping array at pos: 0
+2016-10-24 23:55:06:Type: The type is a structure.
+2016-10-24 23:55:06:Type sizeof: 24
+2016-10-24 23:55:06:Fliping value of field: gp_offset
+2016-10-24 23:55:06:Type: The type is an integer type.
+2016-10-24 23:55:06:Type sizeof: 4
+2016-10-24 23:55:06:Mem contents(hex):0x100x000x000x00
+2016-10-24 23:55:06:base address to flip value: 0x7fffffffe528
+2016-10-24 23:55:06:address max offset: 4
+2016-10-24 23:55:06:Memory content before bitflip:0x100x000x000x00
+2016-10-24 23:55:06:Memory content after  bitflip:0x140x000x000x00
+2016-10-24 23:55:06:Mem contents(hex):0x140x000x000x00
+2016-10-24 23:55:06:frame name: __isoc99_sscanf
+2016-10-24 23:55:06:symbol name: arg
+2016-10-24 23:55:06:symbol filename: isoc99_sscanf.c
+2016-10-24 23:55:06:symbol line: 27
+2016-10-24 23:55:06:value: {{gp_offset = 20, fp_offset = 48, overflow_arg_area = 0x7fffffffe600, reg_save_area = 0x7fffffffe540}}
+2016-10-24 23:55:06:value address: 0x7fffffffe528
+2016-10-24 23:55:06:Type: The type is an array.
+2016-10-24 23:55:06:Type sizeof: 24
+2016-10-24 23:55:06:Fault Injection Successful after 3.62191605568s
+2016-10-24 23:55:07:Fault Already Injected
+2016-10-24 23:55:07:Fault Already Injected
+2016-10-24 23:55:08:Fault Already Injected
+2016-10-24 23:55:14:Fault Already Injected
+2016-10-24 23:55:15:Fault Already Injected
+2016-10-24 23:55:17:Fault Already Injected
+2016-10-24 23:55:18:Fault Already Injected
+2016-10-24 23:55:18:Fault Already Injected
+2016-10-24 23:55:19:Fault Already Injected
+2016-10-24 23:55:19:event type: exit
+2016-10-24 23:55:19:exit code: 0

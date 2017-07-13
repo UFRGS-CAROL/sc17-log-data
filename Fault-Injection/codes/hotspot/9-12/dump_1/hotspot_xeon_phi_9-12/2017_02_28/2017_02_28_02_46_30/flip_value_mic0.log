@@ -1,0 +1,47 @@
+2017-02-28 02:45:57:Starting flip_value script
+2017-02-28 02:45:57:Initialization strings:
+2017-02-28 02:45:57:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 02:45:57:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 02:45:57:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 02:45:57:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 02:45:57:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 02:45:57:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-02-28 02:45:57:initSignal:9
+2017-02-28 02:45:57:endSignal:12
+2017-02-28 02:45:57:seqSignal:15
+2017-02-28 02:46:07:Backtrace BEGIN:
+2017-02-28 02:46:07:#0  0x0000000000404581 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#1  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-02-28 02:46:07:202	        if (fgets(str, STR_SIZE, fp) == NULL) {
+203	            fatal("fgets error");
+204	        }
+205	        if (feof(fp))
+206	            fatal("not enough lines in file");
+207	        if ((sscanf(str, "%f", &val) != 1) )
+208	            fatal("invalid file format");
+209	        vect[i] = val;
+210	    }
+211	
+
+2017-02-28 02:46:07:Backtrace END
+2017-02-28 02:46:07:Type: A floating point type.
+2017-02-28 02:46:07:Type sizeof: 4
+2017-02-28 02:46:07:Mem contents(hex):0x000x000xa00x42
+2017-02-28 02:46:07:Fault Mode: Double bit-flip
+2017-02-28 02:46:07:base address to flip value: 0x407500 
+2017-02-28 02:46:07:address max offset: 4
+2017-02-28 02:46:07:Memory content before bitflip:0x000x000xa00x42
+2017-02-28 02:46:07:Memory content after  bitflip:0x050x000xa00x42
+2017-02-28 02:46:07:Mem contents(hex):0x050x000xa00x42
+2017-02-28 02:46:07:frame name: read_input
+2017-02-28 02:46:07:symbol name: amb_temp
+2017-02-28 02:46:07:symbol filename: hotspot_check.c
+2017-02-28 02:46:07:symbol line: 38
+2017-02-28 02:46:07:value: 80.0000381
+2017-02-28 02:46:07:value address: 0x407500 <amb_temp>
+2017-02-28 02:46:07:Type: A floating point type.
+2017-02-28 02:46:07:Type sizeof: 4
+2017-02-28 02:46:07:Fault Injection Successful after 10.4872701168s
+2017-02-28 02:46:22:event type: exit
+2017-02-28 02:46:22:exit code: 0

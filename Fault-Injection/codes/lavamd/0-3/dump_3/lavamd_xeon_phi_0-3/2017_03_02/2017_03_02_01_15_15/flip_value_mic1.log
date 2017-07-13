@@ -1,0 +1,49 @@
+2017-03-02 01:14:51:Starting flip_value script
+2017-03-02 01:14:51:Initialization strings:
+2017-03-02 01:14:51:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-02 01:14:51:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 01:14:51:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 01:14:51:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-02 01:14:51:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-02 01:14:51:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-03-02 01:14:51:initSignal:0
+2017-03-02 01:14:51:endSignal:3
+2017-03-02 01:14:51:seqSignal:30
+2017-03-02 01:14:53:Backtrace BEGIN:
+2017-03-02 01:14:53:#0  __GI___waitpid (pid=105233, stat_loc=stat_loc@entry=0x7fffffffdea8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000406619 in update_timestamp () at ../include/log_helper.c:107
+#3  0x00000000004069fe in start_log_file (benchmark_name=0x408cc0 "openmpLavaMD", test_info=0x7fffffffe648 "box:15 spaceElem:337500 cores:228") at ../include/log_helper.c:196
+#4  0x0000000000402707 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:190
+
+2017-03-02 01:14:53:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-03-02 01:14:53:Backtrace END
+2017-03-02 01:14:53:Type: The type is an array.
+2017-03-02 01:14:53:Type sizeof: 200
+2017-03-02 01:14:53:Fliping array at pos: 192
+2017-03-02 01:14:53:Type: The type is an integer type.
+2017-03-02 01:14:53:Type sizeof: 1
+2017-03-02 01:14:53:Mem contents(hex):0x00
+2017-03-02 01:14:53:Fault Mode: Double bit-flip
+2017-03-02 01:14:53:base address to flip value: 0x60cf20  
+2017-03-02 01:14:53:address max offset: 1
+2017-03-02 01:14:53:Memory content before bitflip:0x00
+2017-03-02 01:14:53:Memory content after  bitflip:0x90
+2017-03-02 01:14:53:Mem contents(hex):0x90
+2017-03-02 01:14:53:frame name: start_log_file
+2017-03-02 01:14:53:symbol name: log_file_name
+2017-03-02 01:14:53:symbol filename: ../include/log_helper.c
+2017-03-02 01:14:53:symbol line: 52
+2017-03-02 01:14:53:value: '\000' <repeats 192 times>, "\220\000\000\000\000\000\000"
+2017-03-02 01:14:53:value address: 0x60ce60 <log_file_name>
+2017-03-02 01:14:53:Type: The type is an array.
+2017-03-02 01:14:53:Type sizeof: 200
+2017-03-02 01:14:53:Field name: None
+2017-03-02 01:14:53:Field Type:
+2017-03-02 01:14:53:Type: A range type, that is, an integer type with bounds.
+2017-03-02 01:14:53:Type sizeof: 1
+2017-03-02 01:14:53:Type range: (0L, 199L)
+2017-03-02 01:14:53:Fault Injection Successful after 2.44003391266s
+2017-03-02 01:15:08:event type: exit
+2017-03-02 01:15:08:exit code: 0

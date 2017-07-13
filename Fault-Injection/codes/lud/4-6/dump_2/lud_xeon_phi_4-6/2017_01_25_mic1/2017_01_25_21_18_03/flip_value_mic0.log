@@ -1,0 +1,70 @@
+2017-01-25 21:17:42:Starting flip_value script
+2017-01-25 21:17:42:Initialization strings:
+2017-01-25 21:17:42:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 21:17:42:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 21:17:42:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 21:17:42:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 21:17:42:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 21:17:42:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 21:17:42:initSignal:4
+2017-01-25 21:17:42:endSignal:6
+2017-01-25 21:17:42:seqSignal:30
+2017-01-25 21:17:47:Trying Fault Injection
+2017-01-25 21:17:47:Inferior PID: 190732
+2017-01-25 21:17:47:Inferior is valid: True
+2017-01-25 21:17:47:Inferior #threads: 229
+2017-01-25 21:17:47:Backtrace BEGIN:
+2017-01-25 21:17:48:#0  0x0000000000404ca3 in L_lud_omp_123__par_loop2_2_5 () at lud_omp.c:148
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-01-25 21:17:48:143	            for (i = 0; i < BS; i++)
+144	            {
+145	                for (k=0; k < BS; k++) {
+146	#pragma omp simd 
+147	                    for (j = 0; j < BS; j++) {
+148	                        sum[j] += temp_left[BS*i + k] * temp_top[BS*k + j];
+149	                    }
+150	                }
+151	#pragma omp simd 
+152	                for (j = 0; j < BS; j++) {
+
+2017-01-25 21:17:48:Backtrace END
+2017-01-25 21:17:56:Thread name: None
+2017-01-25 21:17:56:Thread num: 5
+2017-01-25 21:17:56:Thread ptid: (190732, 190740, 0)
+2017-01-25 21:17:56:Error Exception(frameFlip): invalid frame
+2017-01-25 21:17:56:Error Exception(frameFlip): invalid frame
+2017-01-25 21:17:56:Error Exception(frameFlip): invalid frame
+2017-01-25 21:17:56:Error Exception(frameFlip): invalid frame
+2017-01-25 21:17:56:Error Exception(frameFlip): invalid frame
+2017-01-25 21:17:56:Error Exception(frameFlip): invalid frame
+2017-01-25 21:17:56:Error Exception(frameFlip): invalid frame
+2017-01-25 21:17:56:Error Exception(frameFlip): invalid frame
+2017-01-25 21:17:56:bitFlip function
+2017-01-25 21:17:56:Type: The type is an integer type.
+2017-01-25 21:17:56:Type sizeof: 4
+2017-01-25 21:17:56:Mem contents(hex):0x600x040x000x00
+2017-01-25 21:17:56:base address to flip value: 0x7fffffffc69c
+2017-01-25 21:17:56:address max offset: 4
+2017-01-25 21:17:56:Memory content before bitflip:0x600x040x000x00
+2017-01-25 21:17:56:Memory content after  bitflip:0x600x040x000x08
+2017-01-25 21:17:56:Mem contents(hex):0x600x040x000x08
+2017-01-25 21:17:56:frame name: L_lud_omp_123__par_loop2_2_5
+2017-01-25 21:17:56:symbol name: j_global
+2017-01-25 21:17:56:symbol filename: lud_omp.c
+2017-01-25 21:17:56:symbol line: 127
+2017-01-25 21:17:56:value: 134218848
+2017-01-25 21:17:56:value address: 0x7fffffffc69c
+2017-01-25 21:17:56:Type: The type is an integer type.
+2017-01-25 21:17:56:Type sizeof: 4
+2017-01-25 21:17:56:Fault Injection Successful after 14.7926769257s
+2017-01-25 21:17:57:Fault Already Injected
+2017-01-25 21:17:57:Fault Already Injected
+2017-01-25 21:17:57:Fault Already Injected
+2017-01-25 21:17:57:event type: exit
+2017-01-25 21:17:57:exit code: no exit code available

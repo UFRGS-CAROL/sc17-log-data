@@ -1,0 +1,60 @@
+[INFO -- 2017-03-14 05:59:41]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-14 05:59:41]
+Initialization strings:
+[INFO -- 2017-03-14 05:59:41]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-14 05:59:41]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-14 05:59:41]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-14 05:59:41]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-14 05:59:41]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-14 05:59:41]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-14 05:59:41]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-14 05:59:41]
+initSignal:30
+[INFO -- 2017-03-14 05:59:41]
+endSignal:35
+[INFO -- 2017-03-14 05:59:41]
+seqSignal:20
+[INFO -- 2017-03-14 05:59:41]
+faultMode:1
+[INFO -- 2017-03-14 06:00:22]
+Backtrace BEGIN:
+#0  pthread_cond_signal@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_signal.S:91
+#1  0x00007ffff79132c0 in ?? ()
+#2  0x00000000018205c0 in ?? ()
+#3  0x00000000018205c0 in ?? ()
+#4  0x00007fffffffdcb0 in ?? ()
+#5  0x000000000044afc6 in std::__uninitialized_copy_a<int*, int*, int> (__first=0x12, __last=0x12, __result=0x7fff883a1b80) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:281
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+86	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_signal.S
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x380x40
+Fault Mode: Double bit-flip
+base address to flip value: 0x7d0670 
+address max offset: 8
+Memory content after  bitflip:0x050x000x000x000x000x000x380x40
+frame name: std::__uninitialized_copy_a<int*, int*, int>
+symbol name: circ_radius
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 163
+value: 24.000000000000018
+value address: 0x7d0670 <circ_radius>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-14 06:00:22]
+Fault Injection Successful after 41.0852060318s
+[INFO -- 2017-03-14 06:00:41]
+event type: exit
+[INFO -- 2017-03-14 06:00:41]
+exit code: 0

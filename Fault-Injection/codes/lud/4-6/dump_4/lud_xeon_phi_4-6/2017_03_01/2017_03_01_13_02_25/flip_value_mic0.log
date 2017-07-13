@@ -1,0 +1,88 @@
+2017-03-01 13:01:45:Starting flip_value script
+2017-03-01 13:01:45:Initialization strings:
+2017-03-01 13:01:45:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 13:01:45:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 13:01:45:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 13:01:45:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-03-01 13:01:45:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-03-01 13:01:45:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-03-01 13:01:45:initSignal:4
+2017-03-01 13:01:45:endSignal:6
+2017-03-01 13:01:45:seqSignal:30
+2017-03-01 13:01:50:Backtrace BEGIN:
+2017-03-01 13:01:50:#0  0x0000000000404c9c in L_lud_omp_123__par_loop2_2_5 () at lud_omp.c:148
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-03-01 13:01:50:143	            for (i = 0; i < BS; i++)
+144	            {
+145	                for (k=0; k < BS; k++) {
+146	#pragma omp simd 
+147	                    for (j = 0; j < BS; j++) {
+148	                        sum[j] += temp_left[BS*i + k] * temp_top[BS*k + j];
+149	                    }
+150	                }
+151	#pragma omp simd 
+152	                for (j = 0; j < BS; j++) {
+
+2017-03-01 13:01:50:Backtrace END
+2017-03-01 13:01:59:Type: The type is an integer type.
+2017-03-01 13:01:59:Type sizeof: 4
+2017-03-01 13:01:59:Mem contents(hex):0x070x000x000x00
+2017-03-01 13:01:59:Fault Mode: Random bit-flip
+2017-03-01 13:01:59:base address to flip value: 0x7fffffffc6a0
+2017-03-01 13:01:59:address max offset: 4
+2017-03-01 13:01:59:Memory content before bitflip:0x070x000x000x00
+2017-03-01 13:01:59:Backtrace BEGIN:
+2017-03-01 13:01:59:#0  0x0000000000404c9c in L_lud_omp_123__par_loop2_2_5 () at lud_omp.c:148
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-03-01 13:01:59:143	            for (i = 0; i < BS; i++)
+144	            {
+145	                for (k=0; k < BS; k++) {
+146	#pragma omp simd 
+147	                    for (j = 0; j < BS; j++) {
+148	                        sum[j] += temp_left[BS*i + k] * temp_top[BS*k + j];
+149	                    }
+150	                }
+151	#pragma omp simd 
+152	                for (j = 0; j < BS; j++) {
+
+2017-03-01 13:01:59:Backtrace END
+2017-03-01 13:02:02:Type: The type is an array.
+2017-03-01 13:02:02:Type sizeof: 64
+2017-03-01 13:02:02:Fliping array at pos: 1
+2017-03-01 13:02:02:Type: A floating point type.
+2017-03-01 13:02:02:Type sizeof: 4
+2017-03-01 13:02:02:Mem contents(hex):0x4b0x610x9f0x3c
+2017-03-01 13:02:02:Fault Mode: Double bit-flip
+2017-03-01 13:02:02:base address to flip value: 0x7fffffffc844
+2017-03-01 13:02:02:address max offset: 4
+2017-03-01 13:02:02:Memory content before bitflip:0x4b0x610x9f0x3c
+2017-03-01 13:02:02:Memory content after  bitflip:0x4b0xe50x9f0x3c
+2017-03-01 13:02:02:Mem contents(hex):0x4b0xe50x9f0x3c
+2017-03-01 13:02:02:frame name: L_lud_omp_123__par_loop2_2_5
+2017-03-01 13:02:02:symbol name: sum
+2017-03-01 13:02:02:symbol filename: lud_omp.c
+2017-03-01 13:02:02:symbol line: 130
+2017-03-01 13:02:02:value: {0.0194752105, 0.0195185151, 0.0194371436, 0.0194175579, 0.0193974338, 0.0193783529, 0.019359028, 0.019339988, 0.0193204805, 0.0154253701, 0.0154099409, 0.0153941438, 0.0153795341, 0.0153635638, 0.0153481737, 0.015333008}
+2017-03-01 13:02:02:value address: 0x7fffffffc840
+2017-03-01 13:02:02:Type: The type is an array.
+2017-03-01 13:02:02:Type sizeof: 64
+2017-03-01 13:02:02:Field name: None
+2017-03-01 13:02:02:Field Type:
+2017-03-01 13:02:02:Type: A range type, that is, an integer type with bounds.
+2017-03-01 13:02:02:Type sizeof: 1
+2017-03-01 13:02:02:Type range: (0L, 15L)
+2017-03-01 13:02:02:Fault Injection Successful after 17.7380390167s
+2017-03-01 13:02:07:event type: exit
+2017-03-01 13:02:07:exit code: 1

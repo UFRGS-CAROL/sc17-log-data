@@ -1,0 +1,46 @@
+2017-01-25 15:13:07:Starting flip_value script
+2017-01-25 15:13:07:Initialization strings:
+2017-01-25 15:13:07:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-25 15:13:07:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 15:13:07:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 15:13:07:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-25 15:13:07:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-25 15:13:07:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-25 15:13:07:initSignal:0
+2017-01-25 15:13:07:endSignal:7
+2017-01-25 15:13:07:seqSignal:15
+2017-01-25 15:13:12:Backtrace BEGIN:
+2017-01-25 15:13:12:#0  0x000000000040440b in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:367
+
+2017-01-25 15:13:12:362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+371	        kernel_start = timing_get_time();
+
+2017-01-25 15:13:12:Backtrace END
+2017-01-25 15:13:12:Type: The type is a pointer.
+2017-01-25 15:13:12:Type sizeof: 8
+2017-01-25 15:13:12:Fliping a bit of the pointer
+2017-01-25 15:13:12:Mem contents(hex):0x400xc00xcc0xf40xff0x7f0x000x00
+2017-01-25 15:13:12:base address to flip value: 0x606b48 
+2017-01-25 15:13:12:address max offset: 8
+2017-01-25 15:13:12:Memory content before bitflip:0x400xc00xcc0xf40xff0x7f0x000x00
+2017-01-25 15:13:12:Memory content after  bitflip:0x400xc00xcc0xf40xfb0x7f0x000x00
+2017-01-25 15:13:12:Mem contents(hex):0x400xc00xcc0xf40xfb0x7f0x000x00
+2017-01-25 15:13:12:frame name: main
+2017-01-25 15:13:12:symbol name: A
+2017-01-25 15:13:12:symbol filename: dgemm.c
+2017-01-25 15:13:12:symbol line: 280
+2017-01-25 15:13:12:value: 0x7ffff4ccc040
+2017-01-25 15:13:12:value address: 0x606b48 <A.1136>
+2017-01-25 15:13:12:Type: The type is a pointer.
+2017-01-25 15:13:12:Type sizeof: 8
+2017-01-25 15:13:12:Fault Injection Successful after 5.44966197014s
+2017-01-25 15:13:17:event type: exit
+2017-01-25 15:13:17:exit code: no exit code available

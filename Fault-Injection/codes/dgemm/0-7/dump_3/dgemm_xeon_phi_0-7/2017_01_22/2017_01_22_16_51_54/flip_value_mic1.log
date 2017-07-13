@@ -1,0 +1,53 @@
+2017-01-22 16:49:49:Starting flip_value script
+2017-01-22 16:49:49:Initialization strings:
+2017-01-22 16:49:49:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-22 16:49:49:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-22 16:49:49:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-22 16:49:49:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-22 16:49:49:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-22 16:49:49:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-22 16:49:49:initSignal:0
+2017-01-22 16:49:49:endSignal:7
+2017-01-22 16:49:49:seqSignal:15
+2017-01-22 16:49:53:Backtrace BEGIN:
+2017-01-22 16:49:53:#0  0x000000000040440b in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:367
+
+2017-01-22 16:49:53:362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+371	        kernel_start = timing_get_time();
+
+2017-01-22 16:49:53:Backtrace END
+2017-01-22 16:49:53:Type: The type is an array.
+2017-01-22 16:49:53:Type sizeof: 200
+2017-01-22 16:49:53:Fliping array at pos: 154
+2017-01-22 16:49:53:Type: The type is an integer type.
+2017-01-22 16:49:53:Type sizeof: 1
+2017-01-22 16:49:53:Mem contents(hex):0x0d
+2017-01-22 16:49:53:base address to flip value: 0x7fffffffe882 
+2017-01-22 16:49:53:address max offset: 1
+2017-01-22 16:49:53:Memory content before bitflip:0x0d
+2017-01-22 16:49:53:Memory content after  bitflip:0x8d
+2017-01-22 16:49:53:Mem contents(hex):0x8d
+2017-01-22 16:49:53:frame name: main
+2017-01-22 16:49:53:symbol name: test_info
+2017-01-22 16:49:53:symbol filename: dgemm.c
+2017-01-22 16:49:53:symbol line: 341
+2017-01-22 16:49:53:value: "matrix_dim:2048 threads:228 block_size:16 block_offset:12\000\377\377\377\177\000\000\370\234\377\367\377\177\000\000\000\000\000\000\000\000\000\000\230\351\377\377\377\177\000\000\000\215\377\367\377\177\000\000\314h\336\367\377\177\000\000\a\000\000\000\000\000\000\000\000\215\377\367\377\177\000\000\001", '\000' <repeats 15 times>, "\001\000\000\000\000\000\000\000,]\336\367\377\177\000\000\070L\215\367\377\177\000\000\001\b\000\000\000\000\000\000HJ\r\367\377\177\000\000\240\231\377\367\377\177\000\000\070L\r\367\377\177\000\000\020`\336\367\377\177\000"
+2017-01-22 16:49:53:value address: 0x7fffffffe7e8
+2017-01-22 16:49:53:Type: The type is an array.
+2017-01-22 16:49:53:Type sizeof: 200
+2017-01-22 16:49:53:Field name: None
+2017-01-22 16:49:53:Field Type:
+2017-01-22 16:49:53:Type: A range type, that is, an integer type with bounds.
+2017-01-22 16:49:53:Type sizeof: 1
+2017-01-22 16:49:53:Type range: (0L, 199L)
+2017-01-22 16:49:53:Fault Injection Successful after 4.97166395187s
+2017-01-22 16:50:31:event type: exit
+2017-01-22 16:50:31:exit code: 0

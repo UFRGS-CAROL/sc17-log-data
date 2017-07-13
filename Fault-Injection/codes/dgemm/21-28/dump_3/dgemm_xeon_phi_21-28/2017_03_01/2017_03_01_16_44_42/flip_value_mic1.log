@@ -1,0 +1,75 @@
+2017-03-01 16:43:22:Starting flip_value script
+2017-03-01 16:43:22:Initialization strings:
+2017-03-01 16:43:22:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-01 16:43:22:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 16:43:22:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 16:43:22:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-01 16:43:22:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-01 16:43:22:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-03-01 16:43:22:initSignal:21
+2017-03-01 16:43:22:endSignal:28
+2017-03-01 16:43:22:seqSignal:15
+2017-03-01 16:43:43:Backtrace BEGIN:
+2017-03-01 16:43:43:#0  0x00000000004037c2 in L_dgemm_185__par_region0_2_0 () at dgemm.c:221
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe550 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-01 16:43:43:216	                            CC_arr(i,j) = 0.0;
+217	
+218	                    for (kg=kk,k=0; kg<MIN(kk+block,order); k++,kg++)
+219	                        for (jg=jj,j=0; jg<MIN(jj+block,order); j++,jg++)
+220	                            for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+221	                                CC_arr(i,j) += AA_arr(i,k)*BB_arr(j,k);
+222	
+223	                    for (jg=jj,j=0; jg<MIN(jj+block,order); j++,jg++)
+224	                        for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+225	                            C_arr(ig,jg) += CC_arr(i,j);
+
+2017-03-01 16:43:43:Backtrace END
+2017-03-01 16:43:54:Type: The type is a pointer.
+2017-03-01 16:43:54:Type sizeof: 8
+2017-03-01 16:43:54:Fliping a bit of the pointer
+2017-03-01 16:43:54:Mem contents(hex):0x400xa00xcc0xf00xff0x7f0x000x00
+2017-03-01 16:43:54:Fault Mode: Zero bit-flip
+2017-03-01 16:43:54:base address to flip value: 0x7fffffffe550
+2017-03-01 16:43:54:address max offset: 8
+2017-03-01 16:43:54:Memory content before bitflip:0x400xa00xcc0xf00xff0x7f0x000x00
+2017-03-01 16:43:54:Backtrace BEGIN:
+2017-03-01 16:43:54:#0  0x00000000004037c2 in L_dgemm_185__par_region0_2_0 () at dgemm.c:221
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe550 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-01 16:43:54:216	                            CC_arr(i,j) = 0.0;
+217	
+218	                    for (kg=kk,k=0; kg<MIN(kk+block,order); k++,kg++)
+219	                        for (jg=jj,j=0; jg<MIN(jj+block,order); j++,jg++)
+220	                            for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+221	                                CC_arr(i,j) += AA_arr(i,k)*BB_arr(j,k);
+222	
+223	                    for (jg=jj,j=0; jg<MIN(jj+block,order); j++,jg++)
+224	                        for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+225	                            C_arr(ig,jg) += CC_arr(i,j);
+
+2017-03-01 16:43:54:Backtrace END
+2017-03-01 16:44:04:Type: The type is an integer type.
+2017-03-01 16:44:04:Type sizeof: 4
+2017-03-01 16:44:04:Mem contents(hex):0x020x000x000x00
+2017-03-01 16:44:04:Fault Mode: Single bit-flip
+2017-03-01 16:44:04:base address to flip value: 0x7fffffffdf40
+2017-03-01 16:44:04:address max offset: 4
+2017-03-01 16:44:04:Memory content before bitflip:0x020x000x000x00
+2017-03-01 16:44:04:Memory content after  bitflip:0x020x000x020x00
+2017-03-01 16:44:04:Mem contents(hex):0x020x000x020x00
+2017-03-01 16:44:04:frame name: L_dgemm_185__par_region0_2_0
+2017-03-01 16:44:04:symbol name: block
+2017-03-01 16:44:04:symbol filename: dgemm.c
+2017-03-01 16:44:04:symbol line: 181
+2017-03-01 16:44:04:value: 131074
+2017-03-01 16:44:04:value address: 0x7fffffffdf40
+2017-03-01 16:44:04:Type: The type is an integer type.
+2017-03-01 16:44:04:Type sizeof: 4
+2017-03-01 16:44:04:Fault Injection Successful after 42.7428851128s
+2017-03-01 16:44:20:event type: exit
+2017-03-01 16:44:20:exit code: 0

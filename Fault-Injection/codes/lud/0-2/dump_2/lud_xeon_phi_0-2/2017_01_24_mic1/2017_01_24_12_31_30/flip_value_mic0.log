@@ -1,0 +1,120 @@
+2017-01-24 12:30:50:Starting flip_value script
+2017-01-24 12:30:50:Initialization strings:
+2017-01-24 12:30:50:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-24 12:30:50:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 12:30:50:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 12:30:50:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 12:30:50:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 12:30:50:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-24 12:30:50:initSignal:0
+2017-01-24 12:30:50:endSignal:2
+2017-01-24 12:30:50:seqSignal:30
+2017-01-24 12:30:50:Trying Fault Injection
+2017-01-24 12:30:50:Inferior PID: 213398
+2017-01-24 12:30:50:Inferior is valid: True
+2017-01-24 12:30:50:Inferior #threads: 1
+2017-01-24 12:30:50:Backtrace BEGIN:
+2017-01-24 12:30:51:#0  0x00007ffff710369d in __GI___libc_sigaction (sig=sig@entry=3, act=act@entry=0x7fffffffe2d8, oact=oact@entry=0x7ffff7426440 <quit>) at ../sysdeps/unix/sysv/linux/x86_64/sigaction.c:62
+#1  0x00007ffff71037fd in __GI___sigaction (sig=sig@entry=3, act=act@entry=0x7fffffffe2d8, oact=oact@entry=0x7ffff7426440 <quit>) at ../nptl/sigaction.c:43
+#2  0x00007ffff710f33e in do_system (line=0x7fffffffe390 "echo 1485278986 > /micNfs/carol/logs/timestamp.txt") at ../sysdeps/posix/system.c:76
+#3  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#4  0x0000000000405392 in start_log_file (benchmark_name=0x4075ac "openmpLUD", test_info=0x7fffffffe848 "matrix_dim:2048 threads:228") at ../include/log_helper.c:196
+#5  0x0000000000402c4b in main (argc=9, argv=0x7fffffffec08) at lud_check.c:118
+
+2017-01-24 12:30:51:57	in ../sysdeps/unix/sysv/linux/x86_64/sigaction.c
+
+2017-01-24 12:30:51:Backtrace END
+2017-01-24 12:30:51:Thread name: None
+2017-01-24 12:30:51:Thread num: 1
+2017-01-24 12:30:51:Thread ptid: (213398, 213398, 0)
+2017-01-24 12:30:51:bitFlip function
+2017-01-24 12:30:51:Type: The type is a structure.
+2017-01-24 12:30:51:Type sizeof: 152
+2017-01-24 12:30:51:Fliping value of field: k_sa_handler
+2017-01-24 12:30:51:bitFlip function
+2017-01-24 12:30:51:Type: The type is a pointer.
+2017-01-24 12:30:51:Type sizeof: 8
+2017-01-24 12:30:51:Fliping a bit of the pointer
+2017-01-24 12:30:51:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-01-24 12:30:51:base address to flip value: 0x7fffffffe170
+2017-01-24 12:30:51:address max offset: 8
+2017-01-24 12:30:51:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-01-24 12:30:51:Memory content after  bitflip:0x000x000x000x000x000x000x040x00
+2017-01-24 12:30:51:Mem contents(hex):0x000x000x000x000x000x000x040x00
+2017-01-24 12:30:51:frame name: __GI___libc_sigaction
+2017-01-24 12:30:51:symbol name: koact
+2017-01-24 12:30:51:symbol filename: ../sysdeps/unix/sysv/linux/x86_64/sigaction.c
+2017-01-24 12:30:51:symbol line: 49
+2017-01-24 12:30:51:value: {k_sa_handler = 0x4000000000000, sa_flags = 0, sa_restorer = 0x7fd666d42610, sa_mask = {__val = {0, 5, 140737354107896, 1, 0, 1, 140737354110160, 18446744073709551615, 140737488348148, 0, 140737354111016, 140737488347680, 4294967296, 140737354110160, 140737488347664, 140737341742530}}}
+2017-01-24 12:30:51:value address: 0x7fffffffe170
+2017-01-24 12:30:51:Type: The type is a structure.
+2017-01-24 12:30:51:Type sizeof: 152
+2017-01-24 12:30:51:Field name: k_sa_handler
+2017-01-24 12:30:51:Field Type:
+2017-01-24 12:30:51:Type: The type is a pointer.
+2017-01-24 12:30:51:Type sizeof: 8
+2017-01-24 12:30:51:Field name: sa_flags
+2017-01-24 12:30:51:Field Type:
+2017-01-24 12:30:51:Type: The type is an integer type.
+2017-01-24 12:30:51:Type sizeof: 8
+2017-01-24 12:30:51:Field name: sa_restorer
+2017-01-24 12:30:51:Field Type:
+2017-01-24 12:30:51:Type: The type is a pointer.
+2017-01-24 12:30:51:Type sizeof: 8
+2017-01-24 12:30:51:Field name: sa_mask
+2017-01-24 12:30:51:Field Type:
+2017-01-24 12:30:51:Type: The type is a structure.
+2017-01-24 12:30:51:Type sizeof: 128
+2017-01-24 12:30:51:Fault Injection Successful after 1.13794898987s
+2017-01-24 12:30:51:Fault Already Injected
+2017-01-24 12:30:51:Fault Already Injected
+2017-01-24 12:30:51:Fault Already Injected
+2017-01-24 12:30:52:Fault Already Injected
+2017-01-24 12:30:52:Fault Already Injected
+2017-01-24 12:30:52:Fault Already Injected
+2017-01-24 12:30:52:Fault Already Injected
+2017-01-24 12:30:52:Fault Already Injected
+2017-01-24 12:30:52:Fault Already Injected
+2017-01-24 12:30:53:Fault Already Injected
+2017-01-24 12:30:53:Fault Already Injected
+2017-01-24 12:30:53:Fault Already Injected
+2017-01-24 12:30:53:Fault Already Injected
+2017-01-24 12:30:53:Fault Already Injected
+2017-01-24 12:30:54:Fault Already Injected
+2017-01-24 12:30:54:Fault Already Injected
+2017-01-24 12:30:54:Fault Already Injected
+2017-01-24 12:30:55:Fault Already Injected
+2017-01-24 12:30:55:Fault Already Injected
+2017-01-24 12:30:55:Fault Already Injected
+2017-01-24 12:30:56:Fault Already Injected
+2017-01-24 12:30:56:Fault Already Injected
+2017-01-24 12:30:57:Fault Already Injected
+2017-01-24 12:30:57:Fault Already Injected
+2017-01-24 12:30:57:Fault Already Injected
+2017-01-24 12:30:58:Fault Already Injected
+2017-01-24 12:30:58:Fault Already Injected
+2017-01-24 12:30:58:Fault Already Injected
+2017-01-24 12:30:59:Fault Already Injected
+2017-01-24 12:30:59:Fault Already Injected
+2017-01-24 12:30:59:Fault Already Injected
+2017-01-24 12:31:00:Fault Already Injected
+2017-01-24 12:31:00:Fault Already Injected
+2017-01-24 12:31:00:Fault Already Injected
+2017-01-24 12:31:00:Fault Already Injected
+2017-01-24 12:31:01:Fault Already Injected
+2017-01-24 12:31:01:Fault Already Injected
+2017-01-24 12:31:01:Fault Already Injected
+2017-01-24 12:31:02:Fault Already Injected
+2017-01-24 12:31:02:Fault Already Injected
+2017-01-24 12:31:02:Fault Already Injected
+2017-01-24 12:31:02:Fault Already Injected
+2017-01-24 12:31:02:Fault Already Injected
+2017-01-24 12:31:03:Fault Already Injected
+2017-01-24 12:31:03:Fault Already Injected
+2017-01-24 12:31:03:Fault Already Injected
+2017-01-24 12:31:03:Fault Already Injected
+2017-01-24 12:31:03:Fault Already Injected
+2017-01-24 12:31:04:Fault Already Injected
+2017-01-24 12:31:04:Fault Already Injected
+2017-01-24 12:31:04:event type: exit
+2017-01-24 12:31:04:exit code: 0

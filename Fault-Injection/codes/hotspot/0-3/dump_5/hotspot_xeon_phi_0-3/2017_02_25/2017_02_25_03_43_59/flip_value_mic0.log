@@ -1,0 +1,61 @@
+[INFO -- 2017-02-25 03:43:18]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 03:43:18]
+Initialization strings:
+[INFO -- 2017-02-25 03:43:18]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-25 03:43:19]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 03:43:19]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 03:43:19]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 03:43:19]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 03:43:19]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-25 03:43:19]
+initSignal:0
+[INFO -- 2017-02-25 03:43:19]
+endSignal:3
+[INFO -- 2017-02-25 03:43:19]
+seqSignal:15
+[INFO -- 2017-02-25 03:43:19]
+faultMode:2
+[EXCEPTION -- 2017-02-25 03:43:21]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2017-02-25 03:43:21]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-02-25 03:43:22]
+Backtrace BEGIN:
+#0  0x00007ffff714f7fc in __memchr (s=s@entry=0x7ffff7fd12aa, c_in=c_in@entry=10, n=249, n@entry=255) at ../string/memchr.c:135
+#1  0x00007ffff7139361 in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "324.008455\n", n=255, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:94
+#2  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "324.008455\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#3  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe640 "324.008455\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#4  0x0000000000404538 in read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:202
+#5  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+130	in ../string/memchr.c
+
+Backtrace END
+Memory content before bitflip:0x150x010xa20x43
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe74c
+address max offset: 4
+Memory content after  bitflip:0x9b0x300xa10x82
+frame name: read_input
+symbol name: val
+symbol filename: hotspot_check.c
+symbol line: 195
+value: -2.3684722e-37
+value address: 0x7fffffffe74c
+Type: A floating point type.
+Type sizeof: 4
+
+[INFO -- 2017-02-25 03:43:22]
+Fault Injection Successful after 3.07129907608s
+[INFO -- 2017-02-25 03:43:45]
+event type: exit
+[INFO -- 2017-02-25 03:43:45]
+exit code: 0

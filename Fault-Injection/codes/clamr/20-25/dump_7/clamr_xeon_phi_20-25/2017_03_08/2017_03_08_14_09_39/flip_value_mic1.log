@@ -1,0 +1,59 @@
+[INFO -- 2017-03-08 14:07:59]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-08 14:07:59]
+Initialization strings:
+[INFO -- 2017-03-08 14:08:00]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-08 14:08:00]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 14:08:00]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 14:08:00]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 14:08:00]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 14:08:00]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-08 14:08:00]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-08 14:08:00]
+initSignal:20
+[INFO -- 2017-03-08 14:08:00]
+endSignal:25
+[INFO -- 2017-03-08 14:08:00]
+seqSignal:20
+[INFO -- 2017-03-08 14:08:00]
+faultMode:0
+[INFO -- 2017-03-08 14:08:27]
+Backtrace BEGIN:
+#0  __GI___waitpid (pid=105455, stat_loc=stat_loc@entry=0x7fffffffe1b8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:40
+#1  0x00007ffff6b5f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x000000000047d449 in update_timestamp () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c:111
+#3  0x000000000047dfd7 in start_iteration () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c:315
+#4  0x0000000000445cfd in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:412
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+35	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+Backtrace END
+Memory content before bitflip:0x660x660x660x660x660x660xee0x3f
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffe500
+address max offset: 8
+Memory content after  bitflip:0x660x660x670x660x660x660xee0x3f
+frame name: do_calc
+symbol name: sigma
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 393
+value: 0.95000000000727591
+value address: 0x7fffffffe500
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-08 14:08:27]
+Fault Injection Successful after 27.6342670918s
+[INFO -- 2017-03-08 14:09:04]
+event type: exit
+[INFO -- 2017-03-08 14:09:04]
+exit code: 0

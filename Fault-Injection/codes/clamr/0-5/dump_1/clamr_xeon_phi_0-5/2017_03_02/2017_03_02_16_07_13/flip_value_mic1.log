@@ -1,0 +1,60 @@
+[INFO -- 2017-03-02 16:06:08]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-02 16:06:08]
+Initialization strings:
+[INFO -- 2017-03-02 16:06:08]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-02 16:06:08]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-02 16:06:08]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-02 16:06:08]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-02 16:06:08]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-02 16:06:08]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-02 16:06:08]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-02 16:06:08]
+initSignal:0
+[INFO -- 2017-03-02 16:06:08]
+endSignal:5
+[INFO -- 2017-03-02 16:06:08]
+seqSignal:20
+[INFO -- 2017-03-02 16:06:08]
+faultMode:2
+[EXCEPTION -- 2017-03-02 16:06:09]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-03-02 16:06:10]
+Backtrace BEGIN:
+#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff6e80125 in create_thread (pd=pd@entry=0x7fff88beca00, attr=attr@entry=0x7fffffffe318, stopped_start=<optimized out>, stopped_start@entry=false, stackaddr=<optimized out>, thread_ran=0x7fffffffe0b7) at ../sysdeps/unix/sysv/linux/createthread.c:102
+#2  0x00007ffff6e81adf in __pthread_create_2_1 (newthread=<optimized out>, attr=<optimized out>, start_routine=<optimized out>, arg=<optimized out>) at pthread_create.c:664
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff7096418 
+address max offset: 4
+Memory content after  bitflip:0x770xc30x600x71
+frame name: __pthread_create_2_1
+symbol name: __pthread_debug
+symbol filename: pthread_create.c
+symbol line: 41
+value: 1902166903
+value address: 0x7ffff7096418 <__pthread_debug>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-02 16:06:10]
+Fault Injection Successful after 2.42623901367s
+[INFO -- 2017-03-02 16:07:04]
+event type: exit
+[INFO -- 2017-03-02 16:07:04]
+exit code: 0

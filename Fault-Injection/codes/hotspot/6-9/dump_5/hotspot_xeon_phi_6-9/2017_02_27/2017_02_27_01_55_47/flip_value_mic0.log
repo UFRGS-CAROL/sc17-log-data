@@ -1,0 +1,65 @@
+[INFO -- 2017-02-27 01:55:13]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 01:55:13]
+Initialization strings:
+[INFO -- 2017-02-27 01:55:13]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-27 01:55:13]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 01:55:13]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 01:55:13]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 01:55:13]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 01:55:13]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-27 01:55:13]
+initSignal:6
+[INFO -- 2017-02-27 01:55:13]
+endSignal:9
+[INFO -- 2017-02-27 01:55:13]
+seqSignal:15
+[INFO -- 2017-02-27 01:55:13]
+faultMode:3
+[EXCEPTION -- 2017-02-27 01:55:20]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-02-27 01:55:20]
+Backtrace BEGIN:
+#0  0x000000000040459e in read_input (vect=0x7ffff66cb010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee43 "/micNfs/gdb-fault-injection/injector/data/hotspot/power_1024") at hotspot_check.c:207
+#1  0x0000000000404ad7 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:266
+
+202	        if (fgets(str, STR_SIZE, fp) == NULL) {
+203	            fatal("fgets error");
+204	        }
+205	        if (feof(fp))
+206	            fatal("not enough lines in file");
+207	        if ((sscanf(str, "%f", &val) != 1) )
+208	            fatal("invalid file format");
+209	        vect[i] = val;
+210	    }
+211	
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x2f
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffee80 
+address max offset: 1
+Memory content after  bitflip:0x00
+frame name: main
+symbol name: ofile
+symbol filename: hotspot_check.c
+symbol line: 232
+value: 0x7fffffffee80 ""
+value address: 0x7fffffffea10
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-27 01:55:20]
+Fault Injection Successful after 7.40152096748s
+[INFO -- 2017-02-27 01:55:22]
+event type: exit
+[INFO -- 2017-02-27 01:55:22]
+exit code: 1

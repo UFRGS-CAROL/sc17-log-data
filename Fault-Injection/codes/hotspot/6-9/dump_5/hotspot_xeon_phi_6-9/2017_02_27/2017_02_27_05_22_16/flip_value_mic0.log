@@ -1,0 +1,57 @@
+[INFO -- 2017-02-27 05:21:44]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 05:21:44]
+Initialization strings:
+[INFO -- 2017-02-27 05:21:45]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-27 05:21:45]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 05:21:45]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 05:21:45]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 05:21:45]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 05:21:45]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-27 05:21:45]
+initSignal:6
+[INFO -- 2017-02-27 05:21:45]
+endSignal:9
+[INFO -- 2017-02-27 05:21:45]
+seqSignal:15
+[INFO -- 2017-02-27 05:21:45]
+faultMode:0
+[INFO -- 2017-02-27 05:21:51]
+Backtrace BEGIN:
+#0  __memchr (s=s@entry=0x7ffff7fb53ad, c_in=c_in@entry=10, n=252, n@entry=255) at ../string/memchr.c:135
+#1  0x00007ffff7139361 in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "0.000008\n", n=255, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:94
+#2  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "0.000008\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#3  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe640 "0.000008\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#4  0x0000000000404538 in read_input (vect=0x7ffff66cb010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee43 "/micNfs/gdb-fault-injection/injector/data/hotspot/power_1024") at hotspot_check.c:202
+#5  0x0000000000404ad7 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:266
+
+130	in ../string/memchr.c
+
+Backtrace END
+Memory content before bitflip:0x6f0x120x030x3a
+Fault Mode: Single bit-flip
+base address to flip value: 0x4074f4 
+address max offset: 4
+Memory content after  bitflip:0x6f0x120x130x3a
+frame name: main
+symbol name: t_chip
+symbol filename: hotspot_check.c
+symbol line: 33
+value: 0.00056103518
+value address: 0x4074f4 <t_chip>
+Type: A floating point type.
+Type sizeof: 4
+
+[INFO -- 2017-02-27 05:21:51]
+Fault Injection Successful after 6.66521692276s
+[INFO -- 2017-02-27 05:22:10]
+event type: exit
+[INFO -- 2017-02-27 05:22:10]
+exit code: 1

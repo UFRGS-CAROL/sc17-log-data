@@ -1,0 +1,50 @@
+2016-10-20 21:24:00:Initialization strings:
+2016-10-20 21:24:01:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-20 21:24:01:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-20 21:24:01:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-20 21:24:01:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-20 21:24:01:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-20 21:24:01:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-20 21:24:04:Trying Fault Injection
+2016-10-20 21:24:04:Backtrace BEGIN:
+2016-10-20 21:24:04:#0  0x00007ffff714f799 in __memchr (s=s@entry=0x7ffff7ff16f5, c_in=c_in@entry=10, n=253, n@entry=255) at ../string/memchr.c:67
+#1  0x00007ffff7139361 in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe77a "324.193451\n", n=255, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:94
+#2  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe77a "324.193451\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#3  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe77a "324.193451\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#4  0x0000000000401712 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:201
+#5  main (argc=-134277385, argv=0xa) at hotspot_check.c:264
+
+2016-10-20 21:24:04:62	in ../string/memchr.c
+
+2016-10-20 21:24:04:Backtrace END
+2016-10-20 21:24:04:Type: The type is a pointer.
+2016-10-20 21:24:04:Type sizeof: 8
+2016-10-20 21:24:04:Fliping a bit of the value pointed by a pointer
+2016-10-20 21:24:04:Type: The type is an integer type.
+2016-10-20 21:24:04:Type sizeof: 1
+2016-10-20 21:24:04:Mem contents(hex):0x33
+2016-10-20 21:24:04:base address to flip value: 0x7fffffffe77a 
+2016-10-20 21:24:04:address max offset: 1
+2016-10-20 21:24:04:Memory content before bitflip:0x33
+2016-10-20 21:24:04:Memory content after  bitflip:0x23
+2016-10-20 21:24:04:Mem contents(hex):0x23
+2016-10-20 21:24:04:frame name: __GI__IO_getline_info
+2016-10-20 21:24:04:symbol name: buf
+2016-10-20 21:24:04:symbol filename: iogetline.c
+2016-10-20 21:24:04:symbol line: 53
+2016-10-20 21:24:04:value: 0x7fffffffe77a "#24.193451\n"
+2016-10-20 21:24:04:value address: 0x7fffffffe588
+2016-10-20 21:24:04:Type: The type is a pointer.
+2016-10-20 21:24:04:Type sizeof: 8
+2016-10-20 21:24:04:Fault Injection Successful after 3.13350701332s
+2016-10-20 21:24:04:Fault Already Injected
+2016-10-20 21:24:05:Fault Already Injected
+2016-10-20 21:24:06:Fault Already Injected
+2016-10-20 21:24:06:Fault Already Injected
+2016-10-20 21:24:10:Fault Already Injected
+2016-10-20 21:24:10:Fault Already Injected
+2016-10-20 21:24:12:Fault Already Injected
+2016-10-20 21:24:12:Fault Already Injected
+2016-10-20 21:24:14:Fault Already Injected
+2016-10-20 21:24:16:event type: exit
+2016-10-20 21:24:16:exit code: 0

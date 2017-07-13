@@ -1,0 +1,70 @@
+2016-10-29 17:33:33:Initialization strings:
+2016-10-29 17:33:33:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-29 17:33:33:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-29 17:33:33:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-29 17:33:33:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-29 17:33:33:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-29 17:33:33:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-29 17:33:33:Trying Fault Injection
+2016-10-29 17:33:33:Backtrace BEGIN:
+2016-10-29 17:33:33:#0  elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=0x352dc8, version=0x7ffff7ff8c70, sym=0x7ffff70d6630, reloc=0x7ffff70ef320, map=0x7ffff7ff99a0) at ../sysdeps/x86_64/dl-machine.h:277
+#1  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ff99a0) at do-rel.h:137
+#2  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#3  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#4  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebe0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#5  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebe0) at rtld.c:308
+#6  _dl_start (arg=0x7fffffffebe0) at rtld.c:414
+#7  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#8  0x0000000000000008 in ?? ()
+#9  0x00007fffffffede9 in ?? ()
+#10 0x00007fffffffee1f in ?? ()
+#11 0x00007fffffffee24 in ?? ()
+#12 0x00007fffffffee29 in ?? ()
+#13 0x00007fffffffee2e in ?? ()
+#14 0x00007fffffffee32 in ?? ()
+#15 0x00007fffffffee64 in ?? ()
+#16 0x00007fffffffee97 in ?? ()
+#17 0x0000000000000000 in ?? ()
+
+2016-10-29 17:33:33:272	in ../sysdeps/x86_64/dl-machine.h
+
+2016-10-29 17:33:33:Backtrace END
+2016-10-29 17:33:33:Type: The type is an array.
+2016-10-29 17:33:33:Type sizeof: 64
+2016-10-29 17:33:33:Fliping array at pos: 0
+2016-10-29 17:33:33:Type: The type is a structure.
+2016-10-29 17:33:33:Type sizeof: 32
+2016-10-29 17:33:33:Fliping value of field: start
+2016-10-29 17:33:33:Type: The type is an integer type.
+2016-10-29 17:33:33:Type sizeof: 8
+2016-10-29 17:33:33:Mem contents(hex):0xc80x810x0e0xf70xff0x7f0x000x00
+2016-10-29 17:33:33:base address to flip value: 0x7fffffffe980
+2016-10-29 17:33:33:address max offset: 8
+2016-10-29 17:33:33:Memory content before bitflip:0xc80x810x0e0xf70xff0x7f0x000x00
+2016-10-29 17:33:33:Memory content after  bitflip:0xc80x810x0e0xf70xff0x770x000x00
+2016-10-29 17:33:33:Mem contents(hex):0xc80x810x0e0xf70xff0x770x000x00
+2016-10-29 17:33:33:frame name: elf_dynamic_do_Rela
+2016-10-29 17:33:33:symbol name: ranges
+2016-10-29 17:33:33:symbol filename: dl-reloc.c
+2016-10-29 17:33:33:symbol line: 264
+2016-10-29 17:33:33:value: {{start = 131941245288904, size = 30480, nrelative = 1191, lazy = 0}, {start = 140737338341592, size = 216, nrelative = 0, lazy = 1}}
+2016-10-29 17:33:33:value address: 0x7fffffffe980
+2016-10-29 17:33:33:Type: The type is an array.
+2016-10-29 17:33:33:Type sizeof: 64
+2016-10-29 17:33:33:Field name: None
+2016-10-29 17:33:33:Field Type:
+2016-10-29 17:33:33:Type: A range type, that is, an integer type with bounds.
+2016-10-29 17:33:33:Type sizeof: 8
+2016-10-29 17:33:33:Type range: (0L, 1L)
+2016-10-29 17:33:33:Fault Injection Successful after 0.812076091766s
+2016-10-29 17:33:33:Fault Already Injected
+2016-10-29 17:33:35:Fault Already Injected
+2016-10-29 17:33:35:Fault Already Injected
+2016-10-29 17:33:37:Fault Already Injected
+2016-10-29 17:33:38:Fault Already Injected
+2016-10-29 17:33:38:Fault Already Injected
+2016-10-29 17:33:39:Fault Already Injected
+2016-10-29 17:33:41:Fault Already Injected
+2016-10-29 17:33:46:Fault Already Injected
+2016-10-29 17:33:48:event type: exit
+2016-10-29 17:33:48:exit code: 0

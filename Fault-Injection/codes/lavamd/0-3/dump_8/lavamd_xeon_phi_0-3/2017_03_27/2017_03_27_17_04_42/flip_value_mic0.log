@@ -1,0 +1,69 @@
+[INFO -- 2017-03-27 17:04:33]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 17:04:33]
+Initialization strings:
+[INFO -- 2017-03-27 17:04:33]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 17:04:33]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 17:04:33]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 17:04:33]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 17:04:33]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 17:04:33]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 17:04:33]
+initSignal:0
+[INFO -- 2017-03-27 17:04:33]
+endSignal:3
+[INFO -- 2017-03-27 17:04:33]
+seqSignal:30
+[INFO -- 2017-03-27 17:04:33]
+faultMode:2
+[INFO -- 2017-03-27 17:04:35]
+Backtrace BEGIN:
+#0  0x00007ffff7104fdf in msort_with_tmp (p=p@entry=0x7fffffffd9d8, b=b@entry=0x60f410, n=n@entry=14) at msort.c:40
+#1  0x00007ffff7105011 in msort_with_tmp (n=14, b=<optimized out>, p=<optimized out>) at msort.c:45
+#2  msort_with_tmp (p=p@entry=0x7fffffffd9d8, b=b@entry=0x60f410, n=n@entry=28) at msort.c:53
+#3  0x00007ffff7105011 in msort_with_tmp (n=28, b=<optimized out>, p=<optimized out>) at msort.c:45
+#4  msort_with_tmp (p=p@entry=0x7fffffffd9d8, b=b@entry=0x60f410, n=n@entry=57) at msort.c:53
+#5  0x00007ffff7105011 in msort_with_tmp (n=57, b=<optimized out>, p=<optimized out>) at msort.c:45
+#6  msort_with_tmp (p=p@entry=0x7fffffffd9d8, b=b@entry=0x60f410, n=n@entry=114) at msort.c:53
+#7  0x00007ffff7105011 in msort_with_tmp (n=114, b=<optimized out>, p=<optimized out>) at msort.c:45
+#8  msort_with_tmp (p=p@entry=0x7fffffffd9d8, b=0x60f410, n=n@entry=228) at msort.c:53
+#9  0x00007ffff71053da in msort_with_tmp (n=6353936, b=<optimized out>, p=0x7fffffffd9d8) at msort.c:45
+#10 __GI___qsort_r (b=0x7ffff6df7240, n=228, s=268, cmp=<optimized out>, arg=<optimized out>) at msort.c:254
+#11 0x00007ffff787af7d in ?? ()
+#12 0x00007fff000000e3 in ?? ()
+#13 0x00007fff00000004 in ?? ()
+#14 0x0000000000000003 in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+35	in msort.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: s
+Memory content before bitflip:0x080x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffd9d8
+address max offset: 8
+Memory content after  bitflip:0xe10x2e0x810x3c0x6f0xc20xde0xbd
+frame name: msort_with_tmp
+symbol name: p
+symbol filename: msort.c
+symbol line: 40
+value: 0x7fffffffd9d8
+value address: 0x7fffffffd7f8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-27 17:04:35]
+Fault Injection Successful after 2.08022403717s
+[INFO -- 2017-03-27 17:04:35]
+event type: exit
+[EXCEPTION -- 2017-03-27 17:04:35]
+exit code: no exit code available

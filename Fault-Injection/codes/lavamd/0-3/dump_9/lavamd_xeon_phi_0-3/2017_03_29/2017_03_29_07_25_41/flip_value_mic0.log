@@ -1,0 +1,59 @@
+[INFO -- 2017-03-29 07:24:50]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-29 07:24:50]
+Initialization strings:
+[INFO -- 2017-03-29 07:24:50]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-29 07:24:50]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-29 07:24:50]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-29 07:24:50]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-29 07:24:50]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-29 07:24:50]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-29 07:24:50]
+initSignal:0
+[INFO -- 2017-03-29 07:24:50]
+endSignal:3
+[INFO -- 2017-03-29 07:24:50]
+seqSignal:30
+[INFO -- 2017-03-29 07:24:50]
+faultMode:0
+[EXCEPTION -- 2017-03-29 07:24:52]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-03-29 07:24:58]
+Backtrace BEGIN:
+#0  pthread_cond_wait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S:185
+#1  0x00007ffff7911675 in ?? ()
+#2  0x0000000000000000 in ?? ()
+
+180	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S
+
+Backtrace END
+Fliping array at pos: 9
+Memory content before bitflip:0x39
+Fault Mode: Single bit-flip
+base address to flip value: 0x7ffff7df6609  
+address max offset: 1
+Memory content after  bitflip:0x19
+frame name: malloc
+symbol name: _itoa_lower_digits
+symbol filename: dl-minimal.c
+symbol line: 382
+value: "012345678\031abcdef"
+value address: 0x7ffff7df6600 <_itoa_lower_digits>
+Type: The type is an array.
+Type sizeof: 16
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 15L)
+
+[INFO -- 2017-03-29 07:24:58]
+Fault Injection Successful after 8.0569870472s
+[EXCEPTION -- 2017-03-29 07:24:58]
+gdbException: Attempt to dereference a generic pointer.

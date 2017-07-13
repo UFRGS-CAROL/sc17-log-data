@@ -1,0 +1,61 @@
+[INFO -- 2017-03-28 21:07:06]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-28 21:07:06]
+Initialization strings:
+[INFO -- 2017-03-28 21:07:06]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-28 21:07:06]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 21:07:06]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 21:07:06]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 21:07:06]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 21:07:06]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-28 21:07:06]
+initSignal:0
+[INFO -- 2017-03-28 21:07:06]
+endSignal:3
+[INFO -- 2017-03-28 21:07:06]
+seqSignal:30
+[INFO -- 2017-03-28 21:07:06]
+faultMode:0
+[INFO -- 2017-03-28 21:07:07]
+Backtrace BEGIN:
+#0  0x0000000000402580 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:179
+
+174	        fv_cpu[i].v = 0;
+175	        fv_cpu[i].x = 0;
+176	        fv_cpu[i].y = 0;
+177	        fv_cpu[i].z = 0;
+178	
+179	        fread(&(fv_cpu_GOLD[i].v), 1, sizeof(double), file);
+180	        fread(&(fv_cpu_GOLD[i].x), 1, sizeof(double), file);
+181	        fread(&(fv_cpu_GOLD[i].y), 1, sizeof(double), file);
+182	        fread(&(fv_cpu_GOLD[i].z), 1, sizeof(double), file);
+183	    }
+
+Backtrace END
+Memory content before bitflip:0x020x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffe738
+address max offset: 4
+Memory content after  bitflip:0x020x000x000x40
+frame name: main
+symbol name: m
+symbol filename: main_check.c
+symbol line: 53
+value: 1073741826
+value address: 0x7fffffffe738
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-28 21:07:07]
+Fault Injection Successful after 1.81113290787s
+[INFO -- 2017-03-28 21:07:25]
+event type: exit
+[INFO -- 2017-03-28 21:07:25]
+exit code: 0

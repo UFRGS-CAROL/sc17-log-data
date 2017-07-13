@@ -1,0 +1,62 @@
+[INFO -- 2017-03-07 04:26:23]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-07 04:26:23]
+Initialization strings:
+[INFO -- 2017-03-07 04:26:24]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-07 04:26:24]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 04:26:24]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 04:26:24]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 04:26:24]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 04:26:24]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-07 04:26:24]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-07 04:26:24]
+initSignal:0
+[INFO -- 2017-03-07 04:26:24]
+endSignal:5
+[INFO -- 2017-03-07 04:26:24]
+seqSignal:20
+[INFO -- 2017-03-07 04:26:24]
+faultMode:3
+[INFO -- 2017-03-07 04:26:26]
+Backtrace BEGIN:
+#0  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffe318) at allocatestack.c:548
+#1  __pthread_create_2_1 (newthread=0x7fffffffe310, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7ffff4148100) at pthread_create.c:524
+#2  0x00007ffff790d323 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+543	in allocatestack.c
+
+Backtrace END
+Fliping array at pos: 0
+Memory content before bitflip:0x800x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffff6e8c3c0 
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: __pthread_create_2_1
+symbol name: _thread_db_pthread_list
+symbol filename: ../nptl_db/structs.def
+symbol line: 26
+value: {0, 1, 704}
+value address: 0x7ffff6e8c3c0 <_thread_db_pthread_list>
+Type: The type is an array.
+Type sizeof: 12
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 2L)
+
+[INFO -- 2017-03-07 04:26:26]
+Fault Injection Successful after 2.81131792068s
+[INFO -- 2017-03-07 04:27:17]
+event type: exit
+[INFO -- 2017-03-07 04:27:17]
+exit code: 0

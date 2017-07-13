@@ -1,0 +1,88 @@
+[INFO -- 2017-02-27 02:51:01]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 02:51:01]
+Initialization strings:
+[INFO -- 2017-02-27 02:51:02]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-27 02:51:02]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 02:51:02]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 02:51:02]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 02:51:02]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 02:51:02]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-27 02:51:02]
+initSignal:0
+[INFO -- 2017-02-27 02:51:02]
+endSignal:3
+[INFO -- 2017-02-27 02:51:02]
+seqSignal:15
+[INFO -- 2017-02-27 02:51:02]
+faultMode:3
+[INFO -- 2017-02-27 02:51:03]
+Backtrace BEGIN:
+#0  0x00007ffff7de5bfb in check_match (undef_name=undef_name@entry=0x7ffff742ced0 "__getrlimit", ref=ref@entry=0x7ffff742aef0, version=version@entry=0x7ffff7ff8bf8, flags=flags@entry=1, type_class=type_class@entry=1, sym=sym@entry=0x7ffff70d4ea8, symidx=26, strtab=0x7ffff70e17d8 "", map=0x7ffff7ff99a0, versioned_sym=0x7fffffffe818, num_versions=0x7fffffffe814) at dl-lookup.c:92
+#1  0x00007ffff7de6010 in do_lookup_x (undef_name=undef_name@entry=0x7ffff742ced0 "__getrlimit", new_hash=new_hash@entry=4025794932, old_hash=old_hash@entry=0x7fffffffe8e0, ref=0x7ffff742aef0, result=result@entry=0x7fffffffe8f0, scope=<optimized out>, i=5, version=0x7ffff7ff8bf8, flags=1, skip=0x0, type_class=1, undef_map=0x7ffff7ff94d0) at dl-lookup.c:423
+#2  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x7ffff742ced0 "__getrlimit", undef_map=0x7ffff7ff94d0, ref=ref@entry=0x7fffffffe9a8, symbol_scope=0x7ffff7ff9828, version=0x7ffff7ff8bf8, type_class=type_class@entry=1, flags=1, skip_map=0x0) at dl-lookup.c:775
+#3  0x00007ffff7deafea in _dl_fixup (l=<optimized out>, reloc_arg=<optimized out>) at ../elf/dl-runtime.c:111
+#4  0x00007ffff7df1859 in _dl_runtime_resolve () at ../sysdeps/x86_64/dl-trampoline.S:89
+#5  0x00007ffff742fe7c in __pthread_initialize_minimal_internal () at nptl-init.c:438
+#6  0x00007ffff742f529 in _init () at ../sysdeps/x86_64/crti.S:72
+#7  0x00007ffff7ddd380 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#8  0x00007ffff7debb98 in call_init (l=0x7ffff7ff94d0, argc=8, argv=0x7fffffffebb8, env=0x7fffffffec00) at dl-init.c:58
+#9  0x00007ffff7debd57 in call_init (env=0x7fffffffec00, argv=0x7fffffffebb8, argc=8, l=<optimized out>) at dl-init.c:88
+#10 _dl_init (main_map=0x7ffff7ffe168, argc=8, argv=0x7fffffffebb8, env=0x7fffffffec00) at dl-init.c:87
+#11 0x00007ffff7dddbfa in _dl_start_user () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#12 0x0000000000000008 in ?? ()
+#13 0x00007fffffffedb6 in ?? ()
+#14 0x00007fffffffedf5 in ?? ()
+#15 0x00007fffffffedfa in ?? ()
+#16 0x00007fffffffedff in ?? ()
+#17 0x00007fffffffee04 in ?? ()
+#18 0x00007fffffffee07 in ?? ()
+#19 0x00007fffffffee43 in ?? ()
+#20 0x00007fffffffee80 in ?? ()
+#21 0x0000000000000000 in ?? ()
+
+87	in dl-lookup.c
+
+Backtrace END
+Fliping value of field: sa_mask
+Fliping value of field: __val
+Fliping array at pos: 11
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffead8
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: __pthread_initialize_minimal_internal
+symbol name: sa
+symbol filename: nptl-init.c
+symbol line: 391
+value: {__sigaction_handler = {sa_handler = 0x7ffff742fbc0 <sighandler_setxid>, sa_sigaction = 0x7ffff742fbc0 <sighandler_setxid>}, sa_mask = {__val = {6442450944, 0 <repeats 15 times>}}, sa_flags = 268435460, sa_restorer = 0x1}
+value address: 0x7fffffffea78
+Type: The type is a structure.
+Type sizeof: 152
+Field name: __sigaction_handler
+Field Type: The type is a union.
+Field Type sizeof: 8
+Field name: sa_mask
+Field Type: The type is a structure.
+Field Type sizeof: 128
+Field name: sa_flags
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: sa_restorer
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2017-02-27 02:51:03]
+Fault Injection Successful after 1.76105499268s
+[INFO -- 2017-02-27 02:51:27]
+event type: exit
+[INFO -- 2017-02-27 02:51:27]
+exit code: 0

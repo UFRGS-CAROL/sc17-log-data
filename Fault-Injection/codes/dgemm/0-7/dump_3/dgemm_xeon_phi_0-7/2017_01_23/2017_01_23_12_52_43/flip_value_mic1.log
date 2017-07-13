@@ -1,0 +1,47 @@
+2017-01-23 12:49:37:Starting flip_value script
+2017-01-23 12:49:37:Initialization strings:
+2017-01-23 12:49:37:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-23 12:49:37:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-23 12:49:37:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-23 12:49:37:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-23 12:49:37:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-23 12:49:37:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-23 12:49:37:initSignal:0
+2017-01-23 12:49:37:endSignal:7
+2017-01-23 12:49:37:seqSignal:15
+2017-01-23 12:49:40:Backtrace BEGIN:
+2017-01-23 12:49:40:#0  0x0000000000403d42 in read_gold (gold=0x7fffeecc9040, fileGold=0x7fffffffee78 "/micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks", order=2048) at dgemm.c:266
+#1  0x00000000004041e3 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:329
+
+2017-01-23 12:49:40:261	        printf( "The gold file was not opened\n" );
+262	        exit(1);
+263	    }
+264	
+265	    for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+266	            fread(&gold[(i)+(order)*(j)], 1, sizeof(double), file);
+267	        }
+268	    fclose(file);
+269	}
+270	
+
+2017-01-23 12:49:40:Backtrace END
+2017-01-23 12:49:40:Type: The type is a pointer.
+2017-01-23 12:49:40:Type sizeof: 8
+2017-01-23 12:49:40:Fliping a bit of the pointer
+2017-01-23 12:49:40:Mem contents(hex):0xf00xeb0xff0xff0xff0x7f0x000x00
+2017-01-23 12:49:40:base address to flip value: 0x7fffffffe9a0
+2017-01-23 12:49:40:address max offset: 8
+2017-01-23 12:49:40:Memory content before bitflip:0xf00xeb0xff0xff0xff0x7f0x000x00
+2017-01-23 12:49:40:Memory content after  bitflip:0xe00xeb0xff0xff0xff0x7f0x000x00
+2017-01-23 12:49:40:Mem contents(hex):0xe00xeb0xff0xff0xff0x7f0x000x00
+2017-01-23 12:49:40:frame name: main
+2017-01-23 12:49:40:symbol name: argv
+2017-01-23 12:49:40:symbol filename: dgemm.c
+2017-01-23 12:49:40:symbol line: 271
+2017-01-23 12:49:40:value: 0x7fffffffebf0
+2017-01-23 12:49:40:value address: 0x7fffffffe9a0
+2017-01-23 12:49:40:Type: The type is a pointer.
+2017-01-23 12:49:40:Type sizeof: 8
+2017-01-23 12:49:40:Fault Injection Successful after 3.76169991493s
+2017-01-23 12:50:17:event type: exit
+2017-01-23 12:50:17:exit code: 0

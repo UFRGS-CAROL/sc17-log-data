@@ -1,0 +1,61 @@
+[INFO -- 2017-02-25 07:05:04]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 07:05:04]
+Initialization strings:
+[INFO -- 2017-02-25 07:05:05]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-25 07:05:05]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 07:05:05]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 07:05:05]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 07:05:05]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 07:05:05]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-25 07:05:05]
+initSignal:6
+[INFO -- 2017-02-25 07:05:05]
+endSignal:9
+[INFO -- 2017-02-25 07:05:05]
+seqSignal:15
+[INFO -- 2017-02-25 07:05:05]
+faultMode:2
+[INFO -- 2017-02-25 07:05:12]
+Backtrace BEGIN:
+#0  _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2084
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "0.000008\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000404598 in read_input (vect=0x7ffff66cb010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee43 "/micNfs/gdb-fault-injection/injector/data/hotspot/power_1024") at hotspot_check.c:207
+#4  0x0000000000404ad7 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:266
+
+2079	in vfscanf.c
+
+Backtrace END
+Fliping array at pos: 8
+Memory content before bitflip:0x61
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff71f6db8  
+address max offset: 1
+Memory content after  bitflip:0xa8
+frame name: _IO_vfscanf_internal
+symbol name: __PRETTY_FUNCTION__
+symbol filename: vfscanf.c
+symbol line: 0
+value: "_IO_vfsc\250nf_internal"
+value address: 0x7ffff71f6db0 <__PRETTY_FUNCTION__.12402>
+Type: The type is an array.
+Type sizeof: 21
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 20L)
+
+[INFO -- 2017-02-25 07:05:12]
+Fault Injection Successful after 7.15246391296s
+[INFO -- 2017-02-25 07:05:29]
+event type: exit
+[INFO -- 2017-02-25 07:05:29]
+exit code: 0

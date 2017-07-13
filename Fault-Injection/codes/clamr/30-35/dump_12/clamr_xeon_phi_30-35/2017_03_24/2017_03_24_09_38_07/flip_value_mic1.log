@@ -1,0 +1,65 @@
+[INFO -- 2017-03-24 09:36:55]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-24 09:36:55]
+Initialization strings:
+[INFO -- 2017-03-24 09:36:55]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-24 09:36:55]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-24 09:36:55]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-24 09:36:55]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-24 09:36:55]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-24 09:36:55]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-24 09:36:55]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-24 09:36:55]
+initSignal:30
+[INFO -- 2017-03-24 09:36:55]
+endSignal:35
+[INFO -- 2017-03-24 09:36:55]
+seqSignal:20
+[INFO -- 2017-03-24 09:36:55]
+faultMode:1
+[INFO -- 2017-03-24 09:37:37]
+Backtrace BEGIN:
+#0  0x00000000005361f5 in Mesh::partition_cells (this=0x7f9a50, numpe=0, z_order=..., method=ORIGINAL_ORDER) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:369
+#1  0x00000000004461e3 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:477
+#2  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+364	   //  Partition cells according to one of several possible orderings.
+365	   int have_spatial_variables=0;
+366	   switch (method)
+367	   {   case ORIGINAL_ORDER:
+368	         //  Set z_order to the current cell order.
+369	         for (uint ic = 0; ic < ncells; ++ic)
+370	         {   z_order[ic] = ic; }
+371	
+372	         cpu_timers[MESH_TIMER_PARTITION] += cpu_timer_stop(tstart_cpu);
+373	
+
+Backtrace END
+Memory content before bitflip:0x010x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7d0754 
+address max offset: 4
+Memory content after  bitflip:0x310x000x000x00
+frame name: do_calc
+symbol name: levmx
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 139
+value: 49
+value address: 0x7d0754 <levmx>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-24 09:37:37]
+Fault Injection Successful after 42.7704699039s
+[INFO -- 2017-03-24 09:37:57]
+event type: exit
+[INFO -- 2017-03-24 09:37:57]
+exit code: 0

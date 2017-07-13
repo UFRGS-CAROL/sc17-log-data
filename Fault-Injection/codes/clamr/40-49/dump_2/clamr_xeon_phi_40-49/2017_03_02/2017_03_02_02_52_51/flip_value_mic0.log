@@ -1,0 +1,43 @@
+2017-03-02 02:48:04:Starting flip_value script
+2017-03-02 02:48:04:Initialization strings:
+2017-03-02 02:48:04:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 02:48:04:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 02:48:04:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 02:48:05:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 02:48:05:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 02:48:05:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-02 02:48:05:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-02 02:48:05:initSignal:40
+2017-03-02 02:48:05:endSignal:49
+2017-03-02 02:48:05:seqSignal:20
+2017-03-02 02:48:50:Backtrace BEGIN:
+2017-03-02 02:48:50:#0  0x00007ffff6b92bc3 in _IO_new_file_xsputn (f=0x1920c50, data=0x7fffffffe0cf, n=1) at fileops.c:1281
+#1  0x00007ffff6b677b3 in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe118) at vfprintf.c:1641
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b5c5 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:470
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-03-02 02:48:50:1276	in fileops.c
+
+2017-03-02 02:48:50:Backtrace END
+2017-03-02 02:48:56:Type: The type is an integer type.
+2017-03-02 02:48:56:Type sizeof: 4
+2017-03-02 02:48:56:Mem contents(hex):0x000x000x000x00
+2017-03-02 02:48:56:Fault Mode: Double bit-flip
+2017-03-02 02:48:56:base address to flip value: 0x7d06dc 
+2017-03-02 02:48:56:address max offset: 4
+2017-03-02 02:48:56:Memory content before bitflip:0x000x000x000x00
+2017-03-02 02:48:56:Memory content after  bitflip:0x180x000x000x00
+2017-03-02 02:48:56:Mem contents(hex):0x180x000x000x00
+2017-03-02 02:48:56:frame name: main
+2017-03-02 02:48:56:symbol name: view_mode
+2017-03-02 02:48:56:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-03-02 02:48:56:symbol line: 112
+2017-03-02 02:48:56:value: 24
+2017-03-02 02:48:56:value address: 0x7d06dc <view_mode>
+2017-03-02 02:48:56:Type: The type is an integer type.
+2017-03-02 02:48:56:Type sizeof: 4
+2017-03-02 02:48:56:Fault Injection Successful after 51.0694470406s
+2017-03-02 02:49:37:event type: exit
+2017-03-02 02:49:37:exit code: 0

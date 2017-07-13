@@ -1,0 +1,61 @@
+[INFO -- 2017-03-26 21:47:42]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 21:47:42]
+Initialization strings:
+[INFO -- 2017-03-26 21:47:42]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 21:47:42]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 21:47:42]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 21:47:42]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 21:47:42]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 21:47:42]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 21:47:42]
+initSignal:0
+[INFO -- 2017-03-26 21:47:42]
+endSignal:3
+[INFO -- 2017-03-26 21:47:42]
+seqSignal:30
+[INFO -- 2017-03-26 21:47:42]
+faultMode:3
+[INFO -- 2017-03-26 21:47:44]
+Backtrace BEGIN:
+#0  __GI___waitpid (pid=213174, stat_loc=stat_loc@entry=0x7fffffffdea8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000406619 in update_timestamp () at ../include/log_helper.c:107
+#3  0x00000000004069fe in start_log_file (benchmark_name=0x408cc0 "openmpLavaMD", test_info=0x7fffffffe648 "box:15 spaceElem:337500 cores:228") at ../include/log_helper.c:196
+#4  0x0000000000402707 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:190
+
+26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+Backtrace END
+Fliping array at pos: 9
+Memory content before bitflip:0x34
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe06d 
+address max offset: 1
+Memory content after  bitflip:0x00
+frame name: update_timestamp
+symbol name: time_s
+symbol filename: ../include/log_helper.c
+symbol line: 99
+value: "149057902", '\000' <repeats 11 times>, "\003\000\000\000\000\000\000\000\003\000\000\000\000\000\000\000X\261\377\367\377\177\000\000\060\262\377\367\377\177"
+value address: 0x7fffffffe064
+Type: The type is an array.
+Type sizeof: 50
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 49L)
+
+[INFO -- 2017-03-26 21:47:44]
+Fault Injection Successful after 2.36060094833s
+[INFO -- 2017-03-26 21:47:57]
+event type: exit
+[INFO -- 2017-03-26 21:47:57]
+exit code: 0

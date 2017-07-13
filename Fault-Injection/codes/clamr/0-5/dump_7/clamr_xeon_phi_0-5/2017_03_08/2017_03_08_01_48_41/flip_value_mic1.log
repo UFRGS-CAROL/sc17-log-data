@@ -1,0 +1,62 @@
+[INFO -- 2017-03-08 01:47:36]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-08 01:47:36]
+Initialization strings:
+[INFO -- 2017-03-08 01:47:36]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-08 01:47:36]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 01:47:36]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 01:47:36]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 01:47:36]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 01:47:36]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-08 01:47:36]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-08 01:47:36]
+initSignal:0
+[INFO -- 2017-03-08 01:47:36]
+endSignal:5
+[INFO -- 2017-03-08 01:47:36]
+seqSignal:20
+[INFO -- 2017-03-08 01:47:36]
+faultMode:1
+[INFO -- 2017-03-08 01:47:37]
+Backtrace BEGIN:
+#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff6e812d0 in ?? () at pthread_create.c:237 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libpthread.so.0
+#2  0x00007fffed7f5100 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+Backtrace END
+Fliping array at pos: 2
+Memory content before bitflip:0x3c0x060x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7ffff6e8c368 
+address max offset: 4
+Memory content after  bitflip:0x140x060x000x00
+frame name: __pthread_create_2_1
+symbol name: _thread_db_pthread_schedpolicy
+symbol filename: ../nptl_db/structs.def
+symbol line: 32
+value: {32, 1, 1556}
+value address: 0x7ffff6e8c360 <_thread_db_pthread_schedpolicy>
+Type: The type is an array.
+Type sizeof: 12
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 2L)
+
+[INFO -- 2017-03-08 01:47:37]
+Fault Injection Successful after 1.78606796265s
+[INFO -- 2017-03-08 01:48:32]
+event type: exit
+[INFO -- 2017-03-08 01:48:32]
+exit code: 0

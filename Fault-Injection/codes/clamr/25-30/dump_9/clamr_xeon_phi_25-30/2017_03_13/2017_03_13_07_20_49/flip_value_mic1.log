@@ -1,0 +1,67 @@
+[INFO -- 2017-03-13 07:19:10]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-13 07:19:10]
+Initialization strings:
+[INFO -- 2017-03-13 07:19:11]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-13 07:19:11]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-13 07:19:11]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-13 07:19:11]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-13 07:19:11]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-13 07:19:11]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-13 07:19:11]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-13 07:19:11]
+initSignal:25
+[INFO -- 2017-03-13 07:19:11]
+endSignal:30
+[INFO -- 2017-03-13 07:19:11]
+seqSignal:20
+[INFO -- 2017-03-13 07:19:11]
+faultMode:2
+[INFO -- 2017-03-13 07:19:47]
+Backtrace BEGIN:
+#0  0x00000000005361b7 in Mesh::partition_cells (this=0x7f9a50, numpe=0, z_order=..., method=ORIGINAL_ORDER) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:370
+#1  0x00000000004461e3 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:477
+#2  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+365	   int have_spatial_variables=0;
+366	   switch (method)
+367	   {   case ORIGINAL_ORDER:
+368	         //  Set z_order to the current cell order.
+369	         for (uint ic = 0; ic < ncells; ++ic)
+370	         {   z_order[ic] = ic; }
+371	
+372	         cpu_timers[MESH_TIMER_PARTITION] += cpu_timer_stop(tstart_cpu);
+373	
+374	         return;
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: offtile_ratio_local
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7f9cd8
+address max offset: 8
+Memory content after  bitflip:0x390x950xcd0x810xdd0x160x6c0x2b
+frame name: do_calc
+symbol name: mesh
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 158
+value: 0x7f9a50
+value address: 0x7d0678 <mesh>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-13 07:19:47]
+Fault Injection Successful after 36.6884200573s
+[INFO -- 2017-03-13 07:20:12]
+event type: exit
+[INFO -- 2017-03-13 07:20:12]
+exit code: 0

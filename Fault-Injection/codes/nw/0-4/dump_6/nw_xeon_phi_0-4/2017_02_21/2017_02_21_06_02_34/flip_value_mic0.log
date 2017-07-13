@@ -1,0 +1,67 @@
+2017-02-21 06:01:36:Starting flip_value script
+2017-02-21 06:01:36:Initialization strings:
+2017-02-21 06:01:37:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-21 06:01:37:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 06:01:37:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 06:01:37:(4) file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-02-21 06:01:37:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-02-21 06:01:37:(6) set args 16394 10 228 /micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10 /micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10
+2017-02-21 06:01:37:initSignal:0
+2017-02-21 06:01:37:endSignal:4
+2017-02-21 06:01:37:seqSignal:30
+2017-02-21 06:01:40:Backtrace BEGIN:
+2017-02-21 06:01:40:#0  0x00007ffff6e245d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6dd0911 in __GI__IO_file_xsgetn (fp=0x619900, data=<optimized out>, n=1075184100) at fileops.c:1422
+#2  0x00007ffff6dc6929 in __GI__IO_fread (buf=<optimized out>, size=1075184100, count=1, fp=0x619900) at iofread.c:42
+#3  0x00000000004014c3 in ReadArrayFromFile (input_itemsets=0x7fff76699010, gold_itemsets=0x7fff36538010, max_rows=16395, filenameinput=0x7fffffffee44 "/micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10", filenamegold=0x7fffffffee8a "/micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10") at needle_check.cpp:49
+#4  0x0000000000402bbc in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:319
+#5  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-02-21 06:01:40:76	in ../sysdeps/unix/syscall-template.S
+
+2017-02-21 06:01:40:Backtrace END
+2017-02-21 06:01:40:Type: The type is an array.
+2017-02-21 06:01:40:Type sizeof: 2304
+2017-02-21 06:01:40:Fliping array at pos: 10
+2017-02-21 06:01:40:Type: The type is an array.
+2017-02-21 06:01:40:Type sizeof: 96
+2017-02-21 06:01:40:Fliping array at pos: 19
+2017-02-21 06:01:40:Type: The type is an integer type.
+2017-02-21 06:01:40:Type sizeof: 4
+2017-02-21 06:01:40:Mem contents(hex):0x010x000x000x00
+2017-02-21 06:01:40:Fault Mode: One bit-flip
+2017-02-21 06:01:40:base address to flip value: 0x60620c 
+2017-02-21 06:01:40:address max offset: 4
+2017-02-21 06:01:40:Memory content before bitflip:0x010x000x000x00
+2017-02-21 06:01:40:Backtrace BEGIN:
+2017-02-21 06:01:40:#0  0x00007ffff6e245d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6dd0911 in __GI__IO_file_xsgetn (fp=0x619900, data=<optimized out>, n=1075184100) at fileops.c:1422
+#2  0x00007ffff6dc6929 in __GI__IO_fread (buf=<optimized out>, size=1075184100, count=1, fp=0x619900) at iofread.c:42
+#3  0x00000000004014c3 in ReadArrayFromFile (input_itemsets=0x7fff76699010, gold_itemsets=0x7fff36538010, max_rows=16395, filenameinput=0x7fffffffee44 "/micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10", filenamegold=0x7fffffffee8a "/micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10") at needle_check.cpp:49
+#4  0x0000000000402bbc in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:319
+#5  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-02-21 06:01:40:76	in ../sysdeps/unix/syscall-template.S
+
+2017-02-21 06:01:40:Backtrace END
+2017-02-21 06:01:40:Type: The type is a pointer.
+2017-02-21 06:01:40:Type sizeof: 8
+2017-02-21 06:01:40:Fliping a bit of the pointer
+2017-02-21 06:01:40:Mem contents(hex):0x440xee0xff0xff0xff0x7f0x000x00
+2017-02-21 06:01:40:Fault Mode: Double bit-flip
+2017-02-21 06:01:40:base address to flip value: 0x7fffffffea00
+2017-02-21 06:01:40:address max offset: 8
+2017-02-21 06:01:40:Memory content before bitflip:0x440xee0xff0xff0xff0x7f0x000x00
+2017-02-21 06:01:40:Memory content after  bitflip:0x440xee0xff0xb70xff0x7f0x000x00
+2017-02-21 06:01:40:Mem contents(hex):0x440xee0xff0xb70xff0x7f0x000x00
+2017-02-21 06:01:40:frame name: runTest
+2017-02-21 06:01:40:symbol name: array_path
+2017-02-21 06:01:40:symbol filename: needle_check.cpp
+2017-02-21 06:01:40:symbol line: 267
+2017-02-21 06:01:40:value: 0x7fffffffee44 "/micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10"
+2017-02-21 06:01:40:value address: 0x7fffffffea00
+2017-02-21 06:01:40:Type: The type is a pointer.
+2017-02-21 06:01:40:Type sizeof: 8
+2017-02-21 06:01:40:Fault Injection Successful after 3.54942297935s
+2017-02-21 06:02:27:event type: exit
+2017-02-21 06:02:27:exit code: 0

@@ -1,0 +1,61 @@
+2016-10-31 02:56:21:Initialization strings:
+2016-10-31 02:56:21:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-31 02:56:21:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 02:56:21:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 02:56:21:(4) file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-31 02:56:21:(5) set remote exec-file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-31 02:56:21:(6) set args -s 8192 -n 228 -i /micNfs/gdb-fault-injection-lud/bin/input_8192_th_228 -g /micNfs/gdb-fault-injection-lud/bin/gold_8192_th_228
+2016-10-31 02:56:21:Trying Fault Injection
+2016-10-31 02:56:21:Inferior PID: 124174
+2016-10-31 02:56:21:Inferior is valid: True
+2016-10-31 02:56:21:Inferior #threads: 1
+2016-10-31 02:56:21:Backtrace BEGIN:
+2016-10-31 02:56:21:#0  _init (argc=9, argv=0x7fffffffec28, envp=0x7fffffffec78) at ../csu/init-first.c:72
+#1  0x00007ffff7debb98 in call_init (l=0x7ffff7ff99a0, argc=argc@entry=9, argv=argv@entry=0x7fffffffec28, env=env@entry=0x7fffffffec78) at dl-init.c:58
+#2  0x00007ffff7debd37 in call_init (env=0x7fffffffec78, argv=0x7fffffffec28, argc=9, l=<optimized out>) at dl-init.c:126
+#3  _dl_init (main_map=0x7ffff7ffe168, argc=9, argv=0x7fffffffec28, env=0x7fffffffec78) at dl-init.c:120
+#4  0x00007ffff7dddbfa in _dl_start_user () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#5  0x0000000000000009 in ?? ()
+#6  0x00007fffffffee2c in ?? ()
+#7  0x00007fffffffee5a in ?? ()
+#8  0x00007fffffffee5d in ?? ()
+#9  0x00007fffffffee62 in ?? ()
+#10 0x00007fffffffee65 in ?? ()
+#11 0x00007fffffffee69 in ?? ()
+#12 0x00007fffffffee6c in ?? ()
+#13 0x00007fffffffeea2 in ?? ()
+#14 0x00007fffffffeea5 in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+2016-10-31 02:56:21:67	in ../csu/init-first.c
+
+2016-10-31 02:56:21:Backtrace END
+2016-10-31 02:56:21:Thread name: None
+2016-10-31 02:56:21:Thread num: 1
+2016-10-31 02:56:21:Thread ptid: (124174, 124174, 0)
+2016-10-31 02:56:21:bitFlip function
+2016-10-31 02:56:21:Type: The type is a pointer.
+2016-10-31 02:56:21:Type sizeof: 8
+2016-10-31 02:56:21:Fliping a bit of the value pointed by a pointer
+2016-10-31 02:56:21:bitFlip function
+2016-10-31 02:56:21:Type: The type is a pointer.
+2016-10-31 02:56:21:Type sizeof: 8
+2016-10-31 02:56:21:Fliping a bit of the pointer
+2016-10-31 02:56:21:Mem contents(hex):0x2c0xee0xff0xff0xff0x7f0x000x00
+2016-10-31 02:56:21:base address to flip value: 0x7fffffffec28
+2016-10-31 02:56:21:address max offset: 8
+2016-10-31 02:56:21:Memory content before bitflip:0x2c0xee0xff0xff0xff0x7f0x000x00
+2016-10-31 02:56:21:Memory content after  bitflip:0x2c0xee0xff0xbf0xff0x7f0x000x00
+2016-10-31 02:56:21:Mem contents(hex):0x2c0xee0xff0xbf0xff0x7f0x000x00
+2016-10-31 02:56:21:frame name: _init
+2016-10-31 02:56:21:symbol name: __libc_argv
+2016-10-31 02:56:21:symbol filename: ../csu/init-first.c
+2016-10-31 02:56:21:symbol line: 39
+2016-10-31 02:56:21:value: 0x7fffffffec28
+2016-10-31 02:56:21:value address: 0x7ffff74292a0 <__libc_argv>
+2016-10-31 02:56:21:Type: The type is a pointer.
+2016-10-31 02:56:21:Type sizeof: 8
+2016-10-31 02:56:21:Fault Injection Successful after 0.896996974945s
+2016-10-31 02:56:21:Fault Already Injected
+2016-10-31 02:56:21:event type: exit
+2016-10-31 02:56:21:exit code: no exit code available

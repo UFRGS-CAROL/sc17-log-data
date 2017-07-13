@@ -1,0 +1,66 @@
+[INFO -- 2017-03-04 05:05:46]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-04 05:05:46]
+Initialization strings:
+[INFO -- 2017-03-04 05:05:46]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-04 05:05:46]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-04 05:05:46]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-04 05:05:46]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-04 05:05:46]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-04 05:05:46]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-04 05:05:46]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-04 05:05:46]
+initSignal:20
+[INFO -- 2017-03-04 05:05:46]
+endSignal:25
+[INFO -- 2017-03-04 05:05:46]
+seqSignal:20
+[INFO -- 2017-03-04 05:05:46]
+faultMode:2
+[INFO -- 2017-03-04 05:06:14]
+Backtrace BEGIN:
+#0  0x000000000051f428 in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2586
+#1  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2581	
+2582	   int new_ncells = ncells + add_ncells;
+2583	
+2584	   int ref_entry_count = 0;
+2585	   if (have_state){
+2586	      for (uint ic=0; ic<ncells; ic++) {
+2587	         if (mpot[ic] > 0) ref_entry_count++;
+2588	         if (mpot[ic] < 0) {
+2589	            // Normal cell coarsening
+2590	            if (is_lower_left(i[ic],j[ic]) ) mpot[ic] = -2;
+
+Backtrace END
+Memory content before bitflip:0x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7d0abc 
+address max offset: 1
+Memory content after  bitflip:0x3e
+frame name: Mesh::rezone_all
+symbol name: dynamic_load_balance_on
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+symbol line: 142
+value: 62
+value address: 0x7d0abc <dynamic_load_balance_on>
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2017-03-04 05:06:14]
+Fault Injection Successful after 28.3145010471s
+[INFO -- 2017-03-04 05:06:50]
+event type: exit
+[INFO -- 2017-03-04 05:06:50]
+exit code: 0

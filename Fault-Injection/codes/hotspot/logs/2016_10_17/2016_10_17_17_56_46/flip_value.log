@@ -1,0 +1,43 @@
+2016-10-17 17:56:34:Initialization strings:
+2016-10-17 17:56:34:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-17 17:56:34:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-17 17:56:34:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-17 17:56:34:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-17 17:56:34:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-17 17:56:34:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-17 17:56:36:Trying Fault Injection
+2016-10-17 17:56:36:Backtrace BEGIN:
+2016-10-17 17:56:36:#0  __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe010 "324.171796", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1443
+#1  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe010 "324.171796", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0) at strtod.c:54
+#2  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2332
+#3  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "324.171796\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#4  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#5  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#6  main (argc=-8312, argv=0xfffffffff71e74d8) at hotspot_check.c:264
+
+2016-10-17 17:56:36:1438	in strtod_l.c
+
+2016-10-17 17:56:36:Backtrace END
+2016-10-17 17:56:36:Type: The type is an integer type.
+2016-10-17 17:56:36:Type sizeof: 4
+2016-10-17 17:56:36:Mem contents(hex):0x640xee0xff0xff
+2016-10-17 17:56:36:base address to flip value: 0x7fffffffe610
+2016-10-17 17:56:36:address max offset: 4
+2016-10-17 17:56:36:Memory content before bitflip:0x640xee0xff0xff
+2016-10-17 17:56:36:Memory content after  bitflip:0x640xfe0xff0xff
+2016-10-17 17:56:36:Mem contents(hex):0x640xfe0xff0xff
+2016-10-17 17:56:36:frame name: main
+2016-10-17 17:56:36:symbol name: errors
+2016-10-17 17:56:36:symbol filename: hotspot_check.c
+2016-10-17 17:56:36:symbol line: 281
+2016-10-17 17:56:36:value: -412
+2016-10-17 17:56:36:value address: 0x7fffffffe610
+2016-10-17 17:56:36:Type: The type is an integer type.
+2016-10-17 17:56:36:Type sizeof: 4
+2016-10-17 17:56:36:Fault Injection Successful after 2.78499507904s
+2016-10-17 17:56:37:Fault Already Injected
+2016-10-17 17:56:37:Fault Already Injected
+2016-10-17 17:56:38:Fault Already Injected
+2016-10-17 17:56:39:Fault Already Injected
+2016-10-17 17:56:39:event type: exit
+2016-10-17 17:56:39:exit code: 1

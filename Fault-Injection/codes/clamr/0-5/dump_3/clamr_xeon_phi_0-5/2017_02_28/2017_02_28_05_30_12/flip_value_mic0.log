@@ -1,0 +1,63 @@
+2017-02-28 05:26:04:Starting flip_value script
+2017-02-28 05:26:04:Initialization strings:
+2017-02-28 05:26:05:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-28 05:26:05:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 05:26:05:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 05:26:05:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 05:26:05:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 05:26:05:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 05:26:05:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 05:26:05:initSignal:0
+2017-02-28 05:26:05:endSignal:5
+2017-02-28 05:26:05:seqSignal:20
+2017-02-28 05:26:06:Backtrace BEGIN:
+2017-02-28 05:26:06:#0  0x00000000005368f5 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:395
+#1  0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#2  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-28 05:26:06:390	         jscale = 1.0 / (ycentermax - ycentermin);
+391	
+392	         //   Scale the indices to a normalized [0, 1] range for hsfc.
+393	         for (uint ic = 0; ic < ncells; ++ic){
+394	             iunit[ic] = (x[ic] + 0.5 * dx[ic] - xcentermin) * iscale;
+395	             junit[ic] = (y[ic] + 0.5 * dy[ic] - ycentermin) * jscale;
+396	         }
+397	
+398	         if (have_spatial_variables == 0){
+399	            x.clear();
+
+2017-02-28 05:26:06:Backtrace END
+2017-02-28 05:26:10:Type: The type is a structure.
+2017-02-28 05:26:10:Type sizeof: 24
+2017-02-28 05:26:10:Fliping value of field: std::_Vector_base<int, std::allocator<int> >
+2017-02-28 05:26:10:Type: The type is a structure.
+2017-02-28 05:26:10:Type sizeof: 24
+2017-02-28 05:26:10:Fliping value of field: _M_impl
+2017-02-28 05:26:10:Type: The type is a structure.
+2017-02-28 05:26:10:Type sizeof: 24
+2017-02-28 05:26:10:Fliping value of field: _M_finish
+2017-02-28 05:26:10:Type: The type is a pointer.
+2017-02-28 05:26:10:Type sizeof: 8
+2017-02-28 05:26:10:Fliping a bit of the pointer
+2017-02-28 05:26:10:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-28 05:26:10:Fault Mode: Single bit-flip
+2017-02-28 05:26:10:base address to flip value: 0x7fffffffe138
+2017-02-28 05:26:10:address max offset: 8
+2017-02-28 05:26:10:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-28 05:26:10:Memory content after  bitflip:0x000x800x000x000x000x000x000x00
+2017-02-28 05:26:10:Mem contents(hex):0x000x800x000x000x000x000x000x00
+2017-02-28 05:26:10:frame name: Mesh::partition_cells
+2017-02-28 05:26:10:symbol name: j_scaled
+2017-02-28 05:26:10:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp
+2017-02-28 05:26:10:symbol line: 330
+2017-02-28 05:26:10:value: {<std::_Vector_base<int, std::allocator<int> >> = {_M_impl = {<std::allocator<int>> = {<__gnu_cxx::new_allocator<int>> = {<No data fields>}, <No data fields>}, _M_start = 0x0, _M_finish = 0x8000, _M_end_of_storage = 0x0}}, <No data fields>}
+2017-02-28 05:26:10:value address: 0x7fffffffe130
+2017-02-28 05:26:10:Type: The type is a structure.
+2017-02-28 05:26:10:Type sizeof: 24
+2017-02-28 05:26:10:Field name: std::_Vector_base<int, std::allocator<int> >
+2017-02-28 05:26:10:Field Type:
+2017-02-28 05:26:10:Type: The type is a structure.
+2017-02-28 05:26:10:Type sizeof: 24
+2017-02-28 05:26:10:Fault Injection Successful after 5.09340190887s
+2017-02-28 05:27:17:event type: exit
+2017-02-28 05:27:17:exit code: 0

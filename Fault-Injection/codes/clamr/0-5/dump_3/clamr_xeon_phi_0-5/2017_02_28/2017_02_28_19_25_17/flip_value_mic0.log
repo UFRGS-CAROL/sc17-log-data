@@ -1,0 +1,48 @@
+2017-02-28 19:21:10:Starting flip_value script
+2017-02-28 19:21:10:Initialization strings:
+2017-02-28 19:21:10:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-28 19:21:10:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 19:21:10:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 19:21:10:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 19:21:10:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 19:21:10:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 19:21:10:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 19:21:10:initSignal:0
+2017-02-28 19:21:10:endSignal:5
+2017-02-28 19:21:10:seqSignal:20
+2017-02-28 19:21:11:Backtrace BEGIN:
+2017-02-28 19:21:11:#0  __GI___waitpid (pid=33306, stat_loc=stat_loc@entry=0x7fffffffe278, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff6b5f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x000000000047d449 in update_timestamp () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c:111
+#3  0x000000000047d7b7 in start_log_file (benchmark_name=0x569964 "clamr_openmponly", test_info=0x7fffffffe888 "OMP THREADS = 228 ") at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c:200
+#4  0x0000000000444912 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:210
+
+2017-02-28 19:21:11:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-02-28 19:21:11:Backtrace END
+2017-02-28 19:21:11:Type: The type is an array.
+2017-02-28 19:21:11:Type sizeof: 50
+2017-02-28 19:21:11:Fliping array at pos: 47
+2017-02-28 19:21:11:Type: The type is an integer type.
+2017-02-28 19:21:11:Type sizeof: 1
+2017-02-28 19:21:11:Mem contents(hex):0x00
+2017-02-28 19:21:11:Fault Mode: Single bit-flip
+2017-02-28 19:21:11:base address to flip value: 0x7fffffffe8b7 
+2017-02-28 19:21:11:address max offset: 1
+2017-02-28 19:21:11:Memory content before bitflip:0x00
+2017-02-28 19:21:11:Memory content after  bitflip:0x80
+2017-02-28 19:21:11:Mem contents(hex):0x80
+2017-02-28 19:21:11:frame name: main
+2017-02-28 19:21:11:symbol name: temp
+2017-02-28 19:21:11:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-02-28 19:21:11:symbol line: 201
+2017-02-28 19:21:11:value: "OMP THREADS = 228 ", '\000' <repeats 29 times>, "\200\000"
+2017-02-28 19:21:11:value address: 0x7fffffffe888
+2017-02-28 19:21:11:Type: The type is an array.
+2017-02-28 19:21:11:Type sizeof: 50
+2017-02-28 19:21:11:Field name: None
+2017-02-28 19:21:11:Field Type:
+2017-02-28 19:21:11:Type: A range type, that is, an integer type with bounds.
+2017-02-28 19:21:11:Type sizeof: 1
+2017-02-28 19:21:11:Type range: (0L, 49L)
+2017-02-28 19:21:11:Fault Injection Successful after 1.37676095963s

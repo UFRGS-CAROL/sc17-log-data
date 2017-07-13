@@ -1,0 +1,44 @@
+2017-02-20 15:00:21:Starting flip_value script
+2017-02-20 15:00:21:Initialization strings:
+2017-02-20 15:00:21:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-20 15:00:21:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 15:00:21:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 15:00:22:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-20 15:00:22:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-20 15:00:22:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-20 15:00:22:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-20 15:00:22:initSignal:20
+2017-02-20 15:00:22:endSignal:25
+2017-02-20 15:00:22:seqSignal:20
+2017-02-20 15:00:42:Backtrace BEGIN:
+2017-02-20 15:00:42:#0  0x00007ffff6be6b70 in __close_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6b92ee0 in _IO_new_file_close_it (fp=fp@entry=0x1920e80) at fileops.c:171
+#2  0x00007ffff6b87c17 in _IO_new_fclose (fp=0x1920e80) at iofclose.c:59
+#3  0x000000000054c1c6 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:503
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-20 15:00:42:76	in ../sysdeps/unix/syscall-template.S
+
+2017-02-20 15:00:42:Backtrace END
+2017-02-20 15:00:48:Type: A reference type.
+2017-02-20 15:00:48:Type sizeof: 8
+2017-02-20 15:00:48:Fliping a bit of the reference
+2017-02-20 15:00:48:Mem contents(hex):0x340x0a0x040x000x000x000x000x00
+2017-02-20 15:00:48:Fault Mode: Single bit-flip
+2017-02-20 15:00:48:base address to flip value: 0x7f9ec8
+2017-02-20 15:00:48:address max offset: 8
+2017-02-20 15:00:48:Memory content before bitflip:0x340x0a0x040x000x000x000x000x00
+2017-02-20 15:00:48:Memory content after  bitflip:0x340x0a0x040x000x000x400x000x00
+2017-02-20 15:00:48:Mem contents(hex):0x340x0a0x040x000x000x400x000x00
+2017-02-20 15:00:48:frame name: main
+2017-02-20 15:00:48:symbol name: ncells
+2017-02-20 15:00:48:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-02-20 15:00:48:symbol line: 285
+2017-02-20 15:00:48:value: @0x7f9ec8
+2017-02-20 15:00:48:value address: 0x7f9ec8
+2017-02-20 15:00:48:Type: A reference type.
+2017-02-20 15:00:48:Type sizeof: 8
+2017-02-20 15:00:48:Fault Injection Successful after 26.5428709984s
+2017-02-20 15:01:02:event type: exit
+2017-02-20 15:01:02:exit code: no exit code available

@@ -1,0 +1,59 @@
+[INFO -- 2017-03-08 02:56:25]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-08 02:56:25]
+Initialization strings:
+[INFO -- 2017-03-08 02:56:26]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-08 02:56:26]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 02:56:26]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 02:56:26]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 02:56:26]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 02:56:26]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-08 02:56:26]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-08 02:56:26]
+initSignal:15
+[INFO -- 2017-03-08 02:56:26]
+endSignal:20
+[INFO -- 2017-03-08 02:56:26]
+seqSignal:20
+[INFO -- 2017-03-08 02:56:26]
+faultMode:0
+[INFO -- 2017-03-08 02:56:51]
+Backtrace BEGIN:
+#0  0x00007ffff6b650cf in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1561
+#1  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#2  0x000000000054b98d in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:478
+#3  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#4  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+1556	in vfprintf.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x55
+Fault Mode: Single bit-flip
+base address to flip value: 0x54aee9 
+address max offset: 1
+Memory content after  bitflip:0xd5
+frame name: main
+symbol name: set_graphics_cell_coordinates
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 116
+value: 0x54aee9 <set_graphics_cell_coordinates_double>
+value address: 0x7ce548 <set_graphics_cell_coordinates>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-08 02:56:51]
+Fault Injection Successful after 25.6513979435s
+[INFO -- 2017-03-08 02:57:22]
+event type: exit
+[EXCEPTION -- 2017-03-08 02:57:22]
+exit code: no exit code available

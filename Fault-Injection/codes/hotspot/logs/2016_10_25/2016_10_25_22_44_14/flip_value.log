@@ -1,0 +1,47 @@
+2016-10-25 22:43:52:Initialization strings:
+2016-10-25 22:43:52:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-25 22:43:52:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-25 22:43:52:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-25 22:43:52:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-25 22:43:52:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-25 22:43:52:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-25 22:43:53:Trying Fault Injection
+2016-10-25 22:43:53:Backtrace BEGIN:
+2016-10-25 22:43:53:#0  0x00007ffff71963d0 in __open_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7143025 in __GI__IO_file_open (fp=fp@entry=0x609b40, filename=<optimized out>, posix_mode=<optimized out>, prot=prot@entry=438, read_write=4100, is32not64=is32not64@entry=1) at fileops.c:220
+#2  0x00007ffff7143130 in _IO_new_file_fopen (fp=fp@entry=0x609b40, filename=filename@entry=0x608d40 <full_log_file_name> "/micNfs/carol/logs/2016_10_26_03_41_00_openMPHotspot_carolxeon1-mic0.log", mode=<optimized out>, mode@entry=0x40759c "a", is32not64=is32not64@entry=1) at fileops.c:327
+#3  0x00007ffff71384d2 in __fopen_internal (filename=0x608d40 <full_log_file_name> "/micNfs/carol/logs/2016_10_26_03_41_00_openMPHotspot_carolxeon1-mic0.log", mode=0x40759c "a", is32=1) at iofopen.c:86
+#4  0x0000000000406150 in start_log_file (benchmark_name=0x608d40 <full_log_file_name> "/micNfs/carol/logs/2016_10_26_03_41_00_openMPHotspot_carolxeon1-mic0.log", test_info=0x441 <error: Cannot access memory at address 0x441>) at ../../include/log_helper.c:260
+#5  0x0000000000401681 in main (argc=6327616, argv=0x441) at hotspot_check.c:254
+
+2016-10-25 22:43:53:76	in ../sysdeps/unix/syscall-template.S
+
+2016-10-25 22:43:53:Backtrace END
+2016-10-25 22:43:53:Type: The type is an integer type.
+2016-10-25 22:43:53:Type sizeof: 8
+2016-10-25 22:43:53:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-10-25 22:43:53:base address to flip value: 0x608e88 
+2016-10-25 22:43:53:address max offset: 8
+2016-10-25 22:43:53:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-10-25 22:43:53:Memory content after  bitflip:0x000x000x000x000x020x000x000x00
+2016-10-25 22:43:53:Mem contents(hex):0x000x000x000x000x020x000x000x00
+2016-10-25 22:43:53:frame name: start_log_file
+2016-10-25 22:43:53:symbol name: iteration_number
+2016-10-25 22:43:53:symbol filename: ../../include/log_helper.c
+2016-10-25 22:43:53:symbol line: 61
+2016-10-25 22:43:53:value: 8589934592
+2016-10-25 22:43:53:value address: 0x608e88 <iteration_number>
+2016-10-25 22:43:53:Type: The type is an integer type.
+2016-10-25 22:43:53:Type sizeof: 8
+2016-10-25 22:43:53:Fault Injection Successful after 1.42331194878s
+2016-10-25 22:43:53:Fault Already Injected
+2016-10-25 22:43:57:Fault Already Injected
+2016-10-25 22:44:02:Fault Already Injected
+2016-10-25 22:44:03:Fault Already Injected
+2016-10-25 22:44:03:Fault Already Injected
+2016-10-25 22:44:03:Fault Already Injected
+2016-10-25 22:44:04:Fault Already Injected
+2016-10-25 22:44:05:Fault Already Injected
+2016-10-25 22:44:07:Fault Already Injected
+2016-10-25 22:44:08:event type: exit
+2016-10-25 22:44:08:exit code: 0

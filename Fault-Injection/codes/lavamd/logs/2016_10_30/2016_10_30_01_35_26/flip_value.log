@@ -1,0 +1,81 @@
+2016-10-30 01:35:09:Initialization strings:
+2016-10-30 01:35:09:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-30 01:35:09:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-30 01:35:09:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-30 01:35:09:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-30 01:35:09:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-30 01:35:09:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-30 01:35:09:Trying Fault Injection
+2016-10-30 01:35:09:Inferior PID: 230474
+2016-10-30 01:35:09:Inferior is valid: True
+2016-10-30 01:35:09:Inferior #threads: 1
+2016-10-30 01:35:09:Backtrace BEGIN:
+2016-10-30 01:35:09:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000007 in ?? ()
+#7  0x00007fffffffedf0 in ?? ()
+#8  0x00007fffffffee1e in ?? ()
+#9  0x00007fffffffee22 in ?? ()
+#10 0x00007fffffffee25 in ?? ()
+#11 0x00007fffffffee62 in ?? ()
+#12 0x00007fffffffee9e in ?? ()
+#13 0x00007fffffffeed8 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2016-10-30 01:35:09:69	in dl-debug.c
+
+2016-10-30 01:35:09:Backtrace END
+2016-10-30 01:35:09:Thread name: None
+2016-10-30 01:35:09:Thread num: 1
+2016-10-30 01:35:09:Thread ptid: (230474, 230474, 0)
+2016-10-30 01:35:09:bitFlip function
+2016-10-30 01:35:09:Type: The type is a pointer.
+2016-10-30 01:35:09:Type sizeof: 8
+2016-10-30 01:35:09:Error gdbException(frameFlip): Attempt to dereference a generic pointer.
+2016-10-30 01:35:09:Fault Injection Failed after 0.84360408783s
+2016-10-30 01:35:10:Trying Fault Injection
+2016-10-30 01:35:10:Inferior PID: 230474
+2016-10-30 01:35:10:Inferior is valid: True
+2016-10-30 01:35:10:Inferior #threads: 1
+2016-10-30 01:35:10:Backtrace BEGIN:
+2016-10-30 01:35:10:#0  0x00007ffff71388eb in __GI__IO_fread (buf=0x7ffff5e7e5c8, size=1, count=8, fp=0x60e1c0) at iofread.c:41
+#1  0x00000000004023b2 in main (argc=7, argv=0x7fffffffec08) at main_check.c:163
+
+2016-10-30 01:35:10:36	in iofread.c
+
+2016-10-30 01:35:10:Backtrace END
+2016-10-30 01:35:10:Thread name: None
+2016-10-30 01:35:10:Thread num: 1
+2016-10-30 01:35:10:Thread ptid: (230474, 230474, 0)
+2016-10-30 01:35:10:bitFlip function
+2016-10-30 01:35:10:Type: The type is an integer type.
+2016-10-30 01:35:10:Type sizeof: 4
+2016-10-30 01:35:10:Mem contents(hex):0x020x000x000x00
+2016-10-30 01:35:10:base address to flip value: 0x7fffffffe77c
+2016-10-30 01:35:10:address max offset: 4
+2016-10-30 01:35:10:Memory content before bitflip:0x020x000x000x00
+2016-10-30 01:35:10:Memory content after  bitflip:0x020x000x400x00
+2016-10-30 01:35:10:Mem contents(hex):0x020x000x400x00
+2016-10-30 01:35:10:frame name: main
+2016-10-30 01:35:10:symbol name: n
+2016-10-30 01:35:10:symbol filename: main_check.c
+2016-10-30 01:35:10:symbol line: 53
+2016-10-30 01:35:10:value: 4194306
+2016-10-30 01:35:10:value address: 0x7fffffffe77c
+2016-10-30 01:35:10:Type: The type is an integer type.
+2016-10-30 01:35:10:Type sizeof: 4
+2016-10-30 01:35:10:Fault Injection Successful after 1.37377405167s
+2016-10-30 01:35:10:Fault Already Injected
+2016-10-30 01:35:12:Fault Already Injected
+2016-10-30 01:35:14:Fault Already Injected
+2016-10-30 01:35:17:Fault Already Injected
+2016-10-30 01:35:17:Fault Already Injected
+2016-10-30 01:35:18:Fault Already Injected
+2016-10-30 01:35:18:Fault Already Injected
+2016-10-30 01:35:19:Fault Already Injected
+2016-10-30 01:35:19:event type: exit
+2016-10-30 01:35:19:exit code: 0

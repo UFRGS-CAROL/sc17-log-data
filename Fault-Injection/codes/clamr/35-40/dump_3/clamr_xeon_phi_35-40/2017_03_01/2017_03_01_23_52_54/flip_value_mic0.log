@@ -1,0 +1,86 @@
+2017-03-01 23:51:06:Starting flip_value script
+2017-03-01 23:51:06:Initialization strings:
+2017-03-01 23:51:06:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 23:51:06:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 23:51:06:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 23:51:06:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 23:51:06:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 23:51:06:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 23:51:06:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 23:51:06:initSignal:35
+2017-03-01 23:51:06:endSignal:40
+2017-03-01 23:51:06:seqSignal:20
+2017-03-01 23:51:42:Backtrace BEGIN:
+2017-03-01 23:51:42:#0  0x0000000000453bd4 in State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1395
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffdac0 in ?? ()
+#3  0x00007fffffffdab8 in ?? ()
+#4  0x00007fffffffdad0 in ?? ()
+#5  0x00007fffffffdad8 in ?? ()
+#6  0x00007fffffffda38 in ?? ()
+#7  0x00007fffffffda70 in ?? ()
+#8  0x00007fffffffda68 in ?? ()
+#9  0x00007fffffffdba8 in ?? ()
+#10 0x00007fffffffdbc8 in ?? ()
+#11 0x00007fffffffdbe8 in ?? ()
+#12 0x00007fffffffda30 in ?? ()
+#13 0x00000000000000f4 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2017-03-01 23:51:42:1390	      real_t Uxminus = U_halfstep(deltaT, Ul, Uic, UXFLUXNL, UXFLUXIC,
+1391	                           dxl, dxic, dxl, dxic, SQR(dxl), SQR(dxic));
+1392	      real_t Vxminus = U_halfstep(deltaT, Vl, Vic, UVFLUXNL, UVFLUXIC,
+1393	                           dxl, dxic, dxl, dxic, SQR(dxl), SQR(dxic));
+1394	
+1395	      real_t Hxplus  = U_halfstep(deltaT, Hic, Hr, HXFLUXIC, HXFLUXNR,
+1396	                           dxic, dxr, dxic, dxr, SQR(dxic), SQR(dxr));
+1397	      real_t Uxplus  = U_halfstep(deltaT, Uic, Ur, UXFLUXIC, UXFLUXNR,
+1398	                           dxic, dxr, dxic, dxr, SQR(dxic), SQR(dxr));
+1399	      real_t Vxplus  = U_halfstep(deltaT, Vic, Vr, UVFLUXIC, UVFLUXNR,
+
+2017-03-01 23:51:42:Backtrace END
+2017-03-01 23:52:29:Type: A floating point type.
+2017-03-01 23:52:29:Type sizeof: 8
+2017-03-01 23:52:29:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-03-01 23:52:29:Fault Mode: One bit-flip
+2017-03-01 23:52:29:base address to flip value: 0x7fffffffcfa8
+2017-03-01 23:52:29:address max offset: 8
+2017-03-01 23:52:29:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-03-01 23:52:29:Backtrace BEGIN:
+2017-03-01 23:52:30:#0  0x0000000000453bd4 in State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1395
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffdac0 in ?? ()
+#3  0x00007fffffffdab8 in ?? ()
+#4  0x00007fffffffdad0 in ?? ()
+#5  0x00007fffffffdad8 in ?? ()
+#6  0x00007fffffffda38 in ?? ()
+#7  0x00007fffffffda70 in ?? ()
+#8  0x00007fffffffda68 in ?? ()
+#9  0x00007fffffffdba8 in ?? ()
+#10 0x00007fffffffdbc8 in ?? ()
+#11 0x00007fffffffdbe8 in ?? ()
+#12 0x00007fffffffda30 in ?? ()
+#13 0x00000000000000f4 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2017-03-01 23:52:30:1390	      real_t Uxminus = U_halfstep(deltaT, Ul, Uic, UXFLUXNL, UXFLUXIC,
+1391	                           dxl, dxic, dxl, dxic, SQR(dxl), SQR(dxic));
+1392	      real_t Vxminus = U_halfstep(deltaT, Vl, Vic, UVFLUXNL, UVFLUXIC,
+1393	                           dxl, dxic, dxl, dxic, SQR(dxl), SQR(dxic));
+1394	
+1395	      real_t Hxplus  = U_halfstep(deltaT, Hic, Hr, HXFLUXIC, HXFLUXNR,
+1396	                           dxic, dxr, dxic, dxr, SQR(dxic), SQR(dxr));
+1397	      real_t Uxplus  = U_halfstep(deltaT, Uic, Ur, UXFLUXIC, UXFLUXNR,
+1398	                           dxic, dxr, dxic, dxr, SQR(dxic), SQR(dxr));
+1399	      real_t Vxplus  = U_halfstep(deltaT, Vic, Vr, UVFLUXIC, UVFLUXNR,
+
+2017-03-01 23:52:30:Backtrace END
+2017-03-01 23:52:33:Type: A floating point type.
+2017-03-01 23:52:33:Type sizeof: 8
+2017-03-01 23:52:33:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-03-01 23:52:33:Fault Mode: Zero bit-flip
+2017-03-01 23:52:33:base address to flip value: 0x7fffffffd140
+2017-03-01 23:52:33:address max offset: 8
+2017-03-01 23:52:33:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-03-01 23:52:47:event type: exit
+2017-03-01 23:52:47:exit code: 0

@@ -1,0 +1,69 @@
+[INFO -- 2017-02-27 05:38:13]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 05:38:13]
+Initialization strings:
+[INFO -- 2017-02-27 05:38:14]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-27 05:38:14]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 05:38:14]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 05:38:14]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 05:38:14]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 05:38:14]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-27 05:38:14]
+initSignal:0
+[INFO -- 2017-02-27 05:38:14]
+endSignal:2
+[INFO -- 2017-02-27 05:38:14]
+seqSignal:30
+[INFO -- 2017-02-27 05:38:14]
+faultMode:2
+[INFO -- 2017-02-27 05:38:14]
+Backtrace BEGIN:
+#0  dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1467
+#1  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#2  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#3  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#4  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#5  0x0000000000000009 in ?? ()
+#6  0x00007fffffffee08 in ?? ()
+#7  0x00007fffffffee3f in ?? ()
+#8  0x00007fffffffee42 in ?? ()
+#9  0x00007fffffffee47 in ?? ()
+#10 0x00007fffffffee4a in ?? ()
+#11 0x00007fffffffee4e in ?? ()
+#12 0x00007fffffffee51 in ?? ()
+#13 0x00007fffffffee90 in ?? ()
+#14 0x00007fffffffee93 in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+1462	in rtld.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping a bit of the pointer
+Memory content before bitflip:0x080xee0xff0xff0xff0x7f0x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffec08
+address max offset: 8
+Memory content after  bitflip:0xdc0xb20x600x660x110x1b0xa60x0b
+frame name: _dl_start
+symbol name: _dl_argv
+symbol filename: rtld.c
+symbol line: 86
+value: 0x7fffffffec08
+value address: 0x7ffff7ffcca0 <_dl_argv>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-27 05:38:14]
+Fault Injection Successful after 0.402648925781s
+[INFO -- 2017-02-27 05:38:14]
+event type: exit
+[EXCEPTION -- 2017-02-27 05:38:14]
+exit code: no exit code available

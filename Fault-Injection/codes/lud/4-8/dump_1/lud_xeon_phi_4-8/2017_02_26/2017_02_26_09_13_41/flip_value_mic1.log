@@ -1,0 +1,67 @@
+[INFO -- 2017-02-26 09:13:09]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 09:13:09]
+Initialization strings:
+[INFO -- 2017-02-26 09:13:09]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-26 09:13:09]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 09:13:09]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 09:13:09]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 09:13:09]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 09:13:09]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-26 09:13:09]
+initSignal:4
+[INFO -- 2017-02-26 09:13:09]
+endSignal:8
+[INFO -- 2017-02-26 09:13:09]
+seqSignal:30
+[INFO -- 2017-02-26 09:13:09]
+faultMode:2
+[INFO -- 2017-02-26 09:13:19]
+Backtrace BEGIN:
+#0  0x0000000000404327 in L_lud_omp_69__par_loop0_2_4 () at lud_omp.c:92
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+87	            //
+88	            j_global += BS * (chunk_idx+1);
+89	            for (j = 0; j < BS; j++) {
+90	                for (i = 0; i < BS; i++) {
+91	                    sum = 0.f;
+92	                    for (k=0; k < i; k++) {
+93	                        sum += temp[BS*i +k] * BB((i_global+k),(j_global+j));
+94	                    }
+95	                    i_here = i_global + i;
+96	                    j_here = j_global + j;
+
+Backtrace END
+Memory content before bitflip:0x010x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffc694
+address max offset: 4
+Memory content after  bitflip:0x390xe70x110x3c
+frame name: L_lud_omp_69__par_loop0_2_4
+symbol name: i
+symbol filename: lud_omp.c
+symbol line: 73
+value: 1007806265
+value address: 0x7fffffffc694
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-02-26 09:13:19]
+Fault Injection Successful after 10.0524299145s
+[INFO -- 2017-02-26 09:13:20]
+event type: exit
+[EXCEPTION -- 2017-02-26 09:13:20]
+exit code: no exit code available

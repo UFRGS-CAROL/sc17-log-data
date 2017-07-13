@@ -1,0 +1,61 @@
+2016-10-17 01:52:24:Initialization strings:
+2016-10-17 01:52:24:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-17 01:52:24:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-17 01:52:24:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-17 01:52:24:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-17 01:52:24:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-17 01:52:24:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-17 01:52:28:Trying Fault Injection
+2016-10-17 01:52:28:Backtrace BEGIN:
+2016-10-17 01:52:28:#0  _IO_no_init (fp=fp@entry=0x7fffffffe400, flags=flags@entry=32768, orientation=orientation@entry=-1, wd=wd@entry=0x0, jmp=jmp@entry=0x0) at genops.c:667
+#1  0x00007ffff71365b7 in __GI___isoc99_vsscanf (string=0x7fffffffe77a "323.350973\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:39
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=-7168, argv=0xfbad8000) at hotspot_check.c:264
+
+2016-10-17 01:52:28:662	in genops.c
+
+2016-10-17 01:52:28:Backtrace END
+2016-10-17 01:52:28:Type: The type is a structure.
+2016-10-17 01:52:28:Type sizeof: 16
+2016-10-17 01:52:28:Fliping value of field: cnt
+2016-10-17 01:52:28:Type: The type is an integer type.
+2016-10-17 01:52:28:Type sizeof: 4
+2016-10-17 01:52:28:Mem contents(hex):0x000x000x000x00
+2016-10-17 01:52:28:base address to flip value: 0x7ffff74266e4 
+2016-10-17 01:52:28:address max offset: 4
+2016-10-17 01:52:28:Memory content before bitflip:0x000x000x000x00
+2016-10-17 01:52:28:Memory content after  bitflip:0x000x000x200x00
+2016-10-17 01:52:28:Mem contents(hex):0x000x000x200x00
+2016-10-17 01:52:28:frame name: _IO_no_init
+2016-10-17 01:52:28:symbol name: list_all_lock
+2016-10-17 01:52:28:symbol filename: genops.c
+2016-10-17 01:52:28:symbol line: 38
+2016-10-17 01:52:28:value: {lock = 0, cnt = 2097152, owner = 0x0}
+2016-10-17 01:52:28:value address: 0x7ffff74266e0 <list_all_lock>
+2016-10-17 01:52:28:Type: The type is a structure.
+2016-10-17 01:52:28:Type sizeof: 16
+2016-10-17 01:52:28:Field name: lock
+2016-10-17 01:52:28:Field Type:
+2016-10-17 01:52:28:Type: The type is an integer type.
+2016-10-17 01:52:28:Type sizeof: 4
+2016-10-17 01:52:28:Field name: cnt
+2016-10-17 01:52:28:Field Type:
+2016-10-17 01:52:28:Type: The type is an integer type.
+2016-10-17 01:52:28:Type sizeof: 4
+2016-10-17 01:52:28:Field name: owner
+2016-10-17 01:52:28:Field Type:
+2016-10-17 01:52:28:Type: The type is a pointer.
+2016-10-17 01:52:28:Type sizeof: 8
+2016-10-17 01:52:28:Fault Injection Successful after 4.5334880352s
+2016-10-17 01:52:30:Fault Already Injected
+2016-10-17 01:52:30:Fault Already Injected
+2016-10-17 01:52:34:Fault Already Injected
+2016-10-17 01:52:34:Fault Already Injected
+2016-10-17 01:52:35:Fault Already Injected
+2016-10-17 01:52:36:Fault Already Injected
+2016-10-17 01:52:36:Fault Already Injected
+2016-10-17 01:52:38:Fault Already Injected
+2016-10-17 01:52:39:Fault Already Injected
+2016-10-17 01:52:40:event type: exit
+2016-10-17 01:52:40:exit code: 0

@@ -1,0 +1,74 @@
+[INFO -- 2017-03-23 18:35:41]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-23 18:35:41]
+Initialization strings:
+[INFO -- 2017-03-23 18:35:42]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-23 18:35:42]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-23 18:35:42]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-23 18:35:42]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-23 18:35:42]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-23 18:35:42]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-23 18:35:42]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-23 18:35:42]
+initSignal:25
+[INFO -- 2017-03-23 18:35:42]
+endSignal:30
+[INFO -- 2017-03-23 18:35:42]
+seqSignal:20
+[INFO -- 2017-03-23 18:35:42]
+faultMode:2
+[INFO -- 2017-03-23 18:36:12]
+Backtrace BEGIN:
+#0  0x0000000000449a10 in std::vector<int, std::allocator<int> >::operator[] (this=0x7fffffffe3b0, __n=182796) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x00000000005209f9 in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3209
+#2  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#3  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#4  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+Backtrace END
+Fliping value of field: tv_usec
+Memory content before bitflip:0xad0xae0x0d0x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7d06c0 
+address max offset: 8
+Memory content after  bitflip:0x970x690x1c0x6b0xaa0x480x1a0x4e
+frame name: std::vector<int, std::allocator<int> >::operator[]
+symbol name: tstart
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 168
+value: {tv_sec = 1490308318, tv_usec = 5627890581131520407}
+value address: 0x7d06b8 <tstart>
+Type: The type is a structure.
+Type sizeof: 16
+Field name: tv_sec
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: tv_usec
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-23 18:36:12]
+Fault Injection Successful after 30.9363079071s
+[INFO -- 2017-03-23 18:36:46]
+event type: exit
+[INFO -- 2017-03-23 18:36:46]
+exit code: 0

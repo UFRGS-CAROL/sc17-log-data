@@ -1,0 +1,63 @@
+2017-01-26 02:33:33:Starting flip_value script
+2017-01-26 02:33:33:Initialization strings:
+2017-01-26 02:33:34:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-26 02:33:34:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-26 02:33:34:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-26 02:33:34:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-26 02:33:34:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-26 02:33:34:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-26 02:33:34:initSignal:6
+2017-01-26 02:33:34:endSignal:8
+2017-01-26 02:33:34:seqSignal:30
+2017-01-26 02:33:41:Trying Fault Injection
+2017-01-26 02:33:41:Inferior PID: 121974
+2017-01-26 02:33:41:Inferior is valid: True
+2017-01-26 02:33:41:Inferior #threads: 229
+2017-01-26 02:33:41:Backtrace BEGIN:
+2017-01-26 02:33:41:#0  0x00007ffff71963ed in open64 () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7143025 in __GI__IO_file_open (fp=fp@entry=0x61da30, filename=<optimized out>, posix_mode=<optimized out>, prot=prot@entry=438, read_write=4100, is32not64=is32not64@entry=1) at fileops.c:220
+#2  0x00007ffff7143130 in _IO_new_file_fopen (fp=fp@entry=0x61da30, filename=filename@entry=0x60bbe0 <full_log_file_name> "/micNfs/carol/logs/2017_01_26_07_28_06_openmpLUD_mic0-mic0.ece.neu.edu.log", mode=<optimized out>, mode@entry=0x407840 "a", is32not64=is32not64@entry=1) at fileops.c:327
+#3  0x00007ffff71384d2 in __fopen_internal (filename=0x60bbe0 <full_log_file_name> "/micNfs/carol/logs/2017_01_26_07_28_06_openmpLUD_mic0-mic0.ece.neu.edu.log", mode=0x407840 "a", is32=1) at iofopen.c:86
+#4  0x0000000000405e35 in end_iteration () at ../include/log_helper.c:345
+#5  0x0000000000402c82 in main (argc=9, argv=0x7fffffffec08) at lud_check.c:126
+
+2017-01-26 02:33:41:76	in ../sysdeps/unix/syscall-template.S
+
+2017-01-26 02:33:41:Backtrace END
+2017-01-26 02:33:44:Thread name: None
+2017-01-26 02:33:44:Thread num: 1
+2017-01-26 02:33:44:Thread ptid: (121974, 121974, 0)
+2017-01-26 02:33:44:bitFlip function
+2017-01-26 02:33:44:Type: The type is an enum.
+2017-01-26 02:33:44:Type sizeof: 4
+2017-01-26 02:33:44:Mem contents(hex):0x200xd30xdd0xf7
+2017-01-26 02:33:44:base address to flip value: 0x7fffffffe780
+2017-01-26 02:33:44:address max offset: 4
+2017-01-26 02:33:44:Memory content before bitflip:0x200xd30xdd0xf7
+2017-01-26 02:33:44:Memory content after  bitflip:0x200xd30xdd0xff
+2017-01-26 02:33:44:Mem contents(hex):0x200xd30xdd0xff
+2017-01-26 02:33:44:frame name: main
+2017-01-26 02:33:44:symbol name: ret
+2017-01-26 02:33:44:symbol filename: lud_check.c
+2017-01-26 02:33:44:symbol line: 48
+2017-01-26 02:33:44:value: (unknown: 4292727584)
+2017-01-26 02:33:44:value address: 0x7fffffffe780
+2017-01-26 02:33:44:Type: The type is an enum.
+2017-01-26 02:33:44:Type sizeof: 4
+2017-01-26 02:33:44:Field name: RET_SUCCESS
+2017-01-26 02:33:44:Field Type:
+2017-01-26 02:33:44:Fault Injection Successful after 10.5461039543s
+2017-01-26 02:33:44:Fault Already Injected
+2017-01-26 02:33:44:Fault Already Injected
+2017-01-26 02:33:45:Fault Already Injected
+2017-01-26 02:33:45:Fault Already Injected
+2017-01-26 02:33:45:Fault Already Injected
+2017-01-26 02:33:45:Fault Already Injected
+2017-01-26 02:33:45:Fault Already Injected
+2017-01-26 02:33:46:Fault Already Injected
+2017-01-26 02:33:46:Fault Already Injected
+2017-01-26 02:33:46:Fault Already Injected
+2017-01-26 02:33:46:Fault Already Injected
+2017-01-26 02:33:46:Fault Already Injected
+2017-01-26 02:33:46:event type: exit
+2017-01-26 02:33:46:exit code: 0

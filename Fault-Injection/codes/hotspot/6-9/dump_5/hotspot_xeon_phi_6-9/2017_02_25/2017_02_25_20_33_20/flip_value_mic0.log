@@ -1,0 +1,57 @@
+[INFO -- 2017-02-25 20:32:39]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 20:32:39]
+Initialization strings:
+[INFO -- 2017-02-25 20:32:39]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-25 20:32:39]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 20:32:39]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 20:32:39]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 20:32:39]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 20:32:39]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-25 20:32:39]
+initSignal:6
+[INFO -- 2017-02-25 20:32:39]
+endSignal:9
+[INFO -- 2017-02-25 20:32:39]
+seqSignal:15
+[INFO -- 2017-02-25 20:32:39]
+faultMode:2
+[INFO -- 2017-02-25 20:32:45]
+Backtrace BEGIN:
+#0  __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "0.000163\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:105
+#1  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "0.000163\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#2  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe640 "0.000163\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#3  0x0000000000404538 in read_input (vect=0x7ffff66cb010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee43 "/micNfs/gdb-fault-injection/injector/data/hotspot/power_1024") at hotspot_check.c:202
+#4  0x0000000000404ad7 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:266
+
+100	in iogetline.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x100xb00x6c0xf60xff0x7f0x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe9c8
+address max offset: 8
+Memory content after  bitflip:0x590xce0x8b0x5b0x3b0x7e0x050xc4
+frame name: main
+symbol name: power
+symbol filename: hotspot_check.c
+symbol line: 231
+value: 0x7ffff66cb010
+value address: 0x7fffffffe9c8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-25 20:32:45]
+Fault Injection Successful after 6.9352118969s
+[INFO -- 2017-02-25 20:32:54]
+event type: exit
+[EXCEPTION -- 2017-02-25 20:32:54]
+exit code: no exit code available

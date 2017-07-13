@@ -1,0 +1,98 @@
+2016-11-02 09:05:36:Initialization strings:
+2016-11-02 09:05:37:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-11-02 09:05:37:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-02 09:05:37:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-02 09:05:37:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-02 09:05:37:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-02 09:05:37:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-11-02 09:05:37:Trying Fault Injection
+2016-11-02 09:05:37:Backtrace BEGIN:
+2016-11-02 09:05:37:#0  0x00007ffff7df4247 in open64 () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7de23e8 in open_verify (name=0xe5a94 <error: Cannot access memory at address 0xe5a94>, name@entry=0x7fffffffe140 "/lib64/libpthread.so.0", fbp=fbp@entry=0x7fffffffe348, loader=loader@entry=0x7ffff7ffe168, whatcode=whatcode@entry=64, mode=mode@entry=0, found_other_class=found_other_class@entry=0x7fffffffe337, free_name=false) at dl-load.c:1537
+#2  0x00007ffff7de2afc in open_path (name=name@entry=0x400a13 "libpthread.so.0", namelen=namelen@entry=16, mode=mode@entry=0, sps=sps@entry=0x7ffff7ffcdf0 <rtld_search_dirs>, realname=realname@entry=0x7fffffffe338, fbp=fbp@entry=0x7fffffffe348, loader=0x7ffff7ffe168, whatcode=64, found_other_class=0x7fffffffe337) at dl-load.c:1806
+#3  0x00007ffff7de574f in _dl_map_object (loader=0x7ffff7ffe168, name=0x400a13 "libpthread.so.0", type=1, trace_mode=0, mode=0, nsid=<optimized out>) at dl-load.c:2109
+#4  0x00007ffff7de964f in openaux (a=a@entry=0x7fffffffe998) at dl-deps.c:63
+#5  0x00007ffff7deba83 in _dl_catch_error (objname=objname@entry=0x7fffffffe990, errstring=errstring@entry=0x7fffffffe988, mallocedp=mallocedp@entry=0x7fffffffe987, operate=operate@entry=0x7ffff7de9620 <openaux>, args=args@entry=0x7fffffffe998) at dl-error.c:187
+#6  0x00007ffff7de98a9 in _dl_map_object_deps (map=map@entry=0x7ffff7ffe168, preloads=<optimized out>, npreloads=npreloads@entry=0, trace_mode=trace_mode@entry=0, open_mode=open_mode@entry=0) at dl-deps.c:254
+#7  0x00007ffff7ddff28 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1612
+#8  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebe0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#9  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebe0) at rtld.c:308
+#10 _dl_start (arg=0x7fffffffebe0) at rtld.c:414
+#11 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#12 0x0000000000000008 in ?? ()
+#13 0x00007fffffffede9 in ?? ()
+#14 0x00007fffffffee1f in ?? ()
+#15 0x00007fffffffee24 in ?? ()
+#16 0x00007fffffffee29 in ?? ()
+#17 0x00007fffffffee2e in ?? ()
+#18 0x00007fffffffee32 in ?? ()
+#19 0x00007fffffffee64 in ?? ()
+#20 0x00007fffffffee97 in ?? ()
+#21 0x0000000000000000 in ?? ()
+
+2016-11-02 09:05:37:76	in ../sysdeps/unix/syscall-template.S
+
+2016-11-02 09:05:37:Backtrace END
+2016-11-02 09:05:37:Type: The type is a structure.
+2016-11-02 09:05:37:Type sizeof: 232
+2016-11-02 09:05:37:Fliping value of field: env
+2016-11-02 09:05:37:Type: The type is an array.
+2016-11-02 09:05:37:Type sizeof: 200
+2016-11-02 09:05:37:Fliping array at pos: 0
+2016-11-02 09:05:37:Type: The type is a structure.
+2016-11-02 09:05:37:Type sizeof: 200
+2016-11-02 09:05:37:Fliping value of field: __saved_mask
+2016-11-02 09:05:37:Type: The type is a structure.
+2016-11-02 09:05:37:Type sizeof: 128
+2016-11-02 09:05:37:Fliping value of field: __val
+2016-11-02 09:05:37:Type: The type is an array.
+2016-11-02 09:05:37:Type sizeof: 128
+2016-11-02 09:05:37:Fliping array at pos: 12
+2016-11-02 09:05:37:Type: The type is an integer type.
+2016-11-02 09:05:37:Type sizeof: 8
+2016-11-02 09:05:37:Mem contents(hex):0x680xe10xff0xf70xff0x7f0x000x00
+2016-11-02 09:05:37:base address to flip value: 0x7fffffffe7f0
+2016-11-02 09:05:37:address max offset: 8
+2016-11-02 09:05:37:Memory content before bitflip:0x680xe10xff0xf70xff0x7f0x000x00
+2016-11-02 09:05:37:Memory content after  bitflip:0x480xe10xff0xf70xff0x7f0x000x00
+2016-11-02 09:05:37:Mem contents(hex):0x480xe10xff0xf70xff0x7f0x000x00
+2016-11-02 09:05:37:frame name: _dl_catch_error
+2016-11-02 09:05:37:symbol name: c
+2016-11-02 09:05:37:symbol filename: dl-error.c
+2016-11-02 09:05:37:symbol line: 173
+2016-11-02 09:05:37:value: {objname = 0x7fffffffe990, errstring = 0x7fffffffe988, malloced = 0x7fffffffe987, errcode = 0x7fffffffe724, env = {{__jmpbuf = {0, -740294656, 6325136, 140737354129768, 4196883, 0, -843055104, -17877988147200}, __mask_was_saved = 6325120, __saved_mask = {__val = {140737354129768, 4196869, 0, 18446744072872787968, 18446726195721404416, 6325104, 140737354129768, 4196540, 0, 18446744072879079424, 18446726195721404416, 6325088, 140737354129736, 4196441, 0, 18446744072885370880}}}}}
+2016-11-02 09:05:37:value address: 0x7fffffffe728
+2016-11-02 09:05:37:Type: The type is a structure.
+2016-11-02 09:05:37:Type sizeof: 232
+2016-11-02 09:05:37:Field name: objname
+2016-11-02 09:05:37:Field Type:
+2016-11-02 09:05:37:Type: The type is a pointer.
+2016-11-02 09:05:37:Type sizeof: 8
+2016-11-02 09:05:37:Field name: errstring
+2016-11-02 09:05:37:Field Type:
+2016-11-02 09:05:37:Type: The type is a pointer.
+2016-11-02 09:05:37:Type sizeof: 8
+2016-11-02 09:05:37:Field name: malloced
+2016-11-02 09:05:37:Field Type:
+2016-11-02 09:05:37:Type: The type is a pointer.
+2016-11-02 09:05:37:Type sizeof: 8
+2016-11-02 09:05:37:Field name: errcode
+2016-11-02 09:05:37:Field Type:
+2016-11-02 09:05:37:Type: The type is a pointer.
+2016-11-02 09:05:37:Type sizeof: 8
+2016-11-02 09:05:37:Field name: env
+2016-11-02 09:05:37:Field Type:
+2016-11-02 09:05:37:Type: The type is an array.
+2016-11-02 09:05:37:Type sizeof: 200
+2016-11-02 09:05:37:Fault Injection Successful after 0.789495944977s
+2016-11-02 09:05:38:Fault Already Injected
+2016-11-02 09:05:41:Fault Already Injected
+2016-11-02 09:05:41:Fault Already Injected
+2016-11-02 09:05:42:Fault Already Injected
+2016-11-02 09:05:46:Fault Already Injected
+2016-11-02 09:05:47:Fault Already Injected
+2016-11-02 09:05:49:Fault Already Injected
+2016-11-02 09:05:50:Fault Already Injected
+2016-11-02 09:05:51:Fault Already Injected
+2016-11-02 09:05:52:event type: exit
+2016-11-02 09:05:52:exit code: 0

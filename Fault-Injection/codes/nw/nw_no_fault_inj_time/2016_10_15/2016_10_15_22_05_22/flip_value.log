@@ -1,0 +1,71 @@
+2016-10-15 22:05:05:Initialization strings:
+2016-10-15 22:05:06:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-15 22:05:06:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-15 22:05:06:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-15 22:05:06:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-15 22:05:06:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-15 22:05:06:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-15 22:05:06:Trying Fault Injection
+2016-10-15 22:05:06:Inferior PID: 199026
+2016-10-15 22:05:06:Inferior is valid: True
+2016-10-15 22:05:06:Inferior #threads: 1
+2016-10-15 22:05:06:Backtrace BEGIN:
+2016-10-15 22:05:06:#0  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ff9000) at do-rel.h:112
+#1  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#2  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#3  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec30, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#4  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec30) at rtld.c:308
+#5  _dl_start (arg=0x7fffffffec30) at rtld.c:414
+#6  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#7  0x0000000000000006 in ?? ()
+#8  0x00007fffffffee22 in ?? ()
+#9  0x00007fffffffee52 in ?? ()
+#10 0x00007fffffffee58 in ?? ()
+#11 0x00007fffffffee5b in ?? ()
+#12 0x00007fffffffee5f in ?? ()
+#13 0x00007fffffffee9c in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2016-10-15 22:05:06:107	in do-rel.h
+
+2016-10-15 22:05:06:Backtrace END
+2016-10-15 22:05:06:Thread name: None
+2016-10-15 22:05:06:Thread num: 1
+2016-10-15 22:05:06:Thread ptid: (199026, 199026, 0)
+2016-10-15 22:05:06:bitFlip function
+2016-10-15 22:05:06:Type: The type is an array.
+2016-10-15 22:05:06:Type sizeof: 64
+2016-10-15 22:05:06:Fliping array at pos: 0
+2016-10-15 22:05:06:bitFlip function
+2016-10-15 22:05:06:Type: The type is a structure.
+2016-10-15 22:05:06:Type sizeof: 32
+2016-10-15 22:05:06:Fliping value of field: start
+2016-10-15 22:05:06:bitFlip function
+2016-10-15 22:05:06:Type: The type is an integer type.
+2016-10-15 22:05:06:Type sizeof: 8
+2016-10-15 22:05:06:Mem contents(hex):0x400x3e0x550xf70xff0x7f0x000x00
+2016-10-15 22:05:06:base address to flip value: 0x7fffffffe9d0
+2016-10-15 22:05:06:address max offset: 8
+2016-10-15 22:05:06:Memory content before bitflip:0x400x3e0x550xf70xff0x7f0x000x00
+2016-10-15 22:05:06:Memory content after  bitflip:0x400x3e0x550xf70xff0x7f0x000x02
+2016-10-15 22:05:06:Mem contents(hex):0x400x3e0x550xf70xff0x7f0x000x02
+2016-10-15 22:05:06:frame name: _dl_relocate_object
+2016-10-15 22:05:06:symbol name: ranges
+2016-10-15 22:05:06:symbol filename: dl-reloc.c
+2016-10-15 22:05:06:symbol line: 264
+2016-10-15 22:05:06:value: {{start = 144255925418802752, size = 113304, nrelative = 798, lazy = 0}, {start = 0, size = 0, nrelative = 0, lazy = 0}}
+2016-10-15 22:05:06:value address: 0x7fffffffe9d0
+2016-10-15 22:05:06:Type: The type is an array.
+2016-10-15 22:05:06:Type sizeof: 64
+2016-10-15 22:05:06:Field name: None
+2016-10-15 22:05:06:Field Type:
+2016-10-15 22:05:06:Type: A range type, that is, an integer type with bounds.
+2016-10-15 22:05:06:Type sizeof: 8
+2016-10-15 22:05:06:Type range: (0L, 1L)
+2016-10-15 22:05:06:Fault Injection Successful after 0.522047996521s
+2016-10-15 22:05:11:Fault Already Injected
+2016-10-15 22:05:12:Fault Already Injected
+2016-10-15 22:05:14:Fault Already Injected
+2016-10-15 22:05:15:Fault Already Injected
+2016-10-15 22:05:15:event type: exit
+2016-10-15 22:05:15:exit code: 0

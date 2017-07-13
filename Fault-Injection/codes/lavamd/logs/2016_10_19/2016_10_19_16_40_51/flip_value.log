@@ -1,0 +1,84 @@
+2016-10-19 16:40:33:Initialization strings:
+2016-10-19 16:40:34:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-19 16:40:34:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-19 16:40:34:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-19 16:40:34:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-19 16:40:34:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-19 16:40:34:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-19 16:40:34:Trying Fault Injection
+2016-10-19 16:40:34:Inferior PID: 151244
+2016-10-19 16:40:34:Inferior is valid: True
+2016-10-19 16:40:34:Inferior #threads: 1
+2016-10-19 16:40:34:Backtrace BEGIN:
+2016-10-19 16:40:34:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000007 in ?? ()
+#7  0x00007fffffffedf0 in ?? ()
+#8  0x00007fffffffee1e in ?? ()
+#9  0x00007fffffffee22 in ?? ()
+#10 0x00007fffffffee25 in ?? ()
+#11 0x00007fffffffee62 in ?? ()
+#12 0x00007fffffffee9e in ?? ()
+#13 0x00007fffffffeed8 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2016-10-19 16:40:34:69	in dl-debug.c
+
+2016-10-19 16:40:34:Backtrace END
+2016-10-19 16:40:34:Thread name: None
+2016-10-19 16:40:34:Thread num: 1
+2016-10-19 16:40:34:Thread ptid: (151244, 151244, 0)
+2016-10-19 16:40:34:bitFlip function
+2016-10-19 16:40:34:Type: The type is a pointer.
+2016-10-19 16:40:34:Type sizeof: 8
+2016-10-19 16:40:34:Error gdbException(frameFlip): Attempt to dereference a generic pointer.
+2016-10-19 16:40:34:Fault Injection Failed after 0.555730104446s
+2016-10-19 16:40:35:Trying Fault Injection
+2016-10-19 16:40:35:Inferior PID: 151244
+2016-10-19 16:40:35:Inferior is valid: True
+2016-10-19 16:40:35:Inferior #threads: 1
+2016-10-19 16:40:35:Backtrace BEGIN:
+2016-10-19 16:40:35:#0  __GI___waitpid (pid=151253, stat_loc=stat_loc@entry=0x7fffffffdee8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000406619 in update_timestamp () at ../../include/log_helper.c:107
+#3  0x00000000004069fe in start_log_file (benchmark_name=0x408cc0 "openmpLavaMD", test_info=0x7fffffffe688 "box:15 spaceElem:337500 cores:228") at ../../include/log_helper.c:196
+#4  0x0000000000402707 in main (argc=7, argv=0x7fffffffec08) at main_check.c:190
+
+2016-10-19 16:40:35:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-19 16:40:35:Backtrace END
+2016-10-19 16:40:35:Thread name: None
+2016-10-19 16:40:35:Thread num: 1
+2016-10-19 16:40:35:Thread ptid: (151244, 151244, 0)
+2016-10-19 16:40:35:bitFlip function
+2016-10-19 16:40:35:Type: The type is an integer type.
+2016-10-19 16:40:35:Type sizeof: 4
+2016-10-19 16:40:35:Mem contents(hex):0x010x000x000x00
+2016-10-19 16:40:35:base address to flip value: 0x60cdb0 
+2016-10-19 16:40:35:address max offset: 4
+2016-10-19 16:40:35:Memory content before bitflip:0x010x000x000x00
+2016-10-19 16:40:35:Memory content after  bitflip:0x010x400x000x00
+2016-10-19 16:40:35:Mem contents(hex):0x010x400x000x00
+2016-10-19 16:40:35:frame name: start_log_file
+2016-10-19 16:40:35:symbol name: iter_interval_print
+2016-10-19 16:40:35:symbol filename: ../../include/log_helper.c
+2016-10-19 16:40:35:symbol line: 47
+2016-10-19 16:40:35:value: 16385
+2016-10-19 16:40:35:value address: 0x60cdb0 <iter_interval_print>
+2016-10-19 16:40:35:Type: The type is an integer type.
+2016-10-19 16:40:35:Type sizeof: 4
+2016-10-19 16:40:35:Fault Injection Successful after 1.63556098938s
+2016-10-19 16:40:37:Fault Already Injected
+2016-10-19 16:40:39:Fault Already Injected
+2016-10-19 16:40:39:Fault Already Injected
+2016-10-19 16:40:40:Fault Already Injected
+2016-10-19 16:40:41:Fault Already Injected
+2016-10-19 16:40:42:Fault Already Injected
+2016-10-19 16:40:42:Fault Already Injected
+2016-10-19 16:40:43:Fault Already Injected
+2016-10-19 16:40:45:event type: exit
+2016-10-19 16:40:45:exit code: 0

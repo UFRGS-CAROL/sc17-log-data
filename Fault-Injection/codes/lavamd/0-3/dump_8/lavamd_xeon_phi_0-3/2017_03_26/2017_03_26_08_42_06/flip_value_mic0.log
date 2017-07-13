@@ -1,0 +1,64 @@
+[INFO -- 2017-03-26 08:41:40]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 08:41:40]
+Initialization strings:
+[INFO -- 2017-03-26 08:41:40]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 08:41:40]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 08:41:40]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 08:41:40]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 08:41:40]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 08:41:40]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 08:41:40]
+initSignal:0
+[INFO -- 2017-03-26 08:41:40]
+endSignal:3
+[INFO -- 2017-03-26 08:41:40]
+seqSignal:30
+[INFO -- 2017-03-26 08:41:40]
+faultMode:2
+[EXCEPTION -- 2017-03-26 08:41:41]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-03-26 08:41:41]
+Backtrace BEGIN:
+#0  0x0000000000402259 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:151
+
+146	    rv_cpu = (FOUR_VECTOR*)malloc(dim_cpu.space_mem);
+147	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+148	        fread(&(rv_cpu[i].v), 1, sizeof(double), file);
+149	        fread(&(rv_cpu[i].x), 1, sizeof(double), file);
+150	        fread(&(rv_cpu[i].y), 1, sizeof(double), file);
+151	        fread(&(rv_cpu[i].z), 1, sizeof(double), file);
+152	    }
+153	
+154	    fclose(file);
+155	
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x2f
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffedfb 
+address max offset: 1
+Memory content after  bitflip:0x41
+frame name: main
+symbol name: input_distance
+symbol filename: main_check.c
+symbol line: 49
+value: 0x7fffffffedfb "AmicNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15"
+value address: 0x7fffffffe888
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-26 08:41:41]
+Fault Injection Successful after 1.33102297783s
+[INFO -- 2017-03-26 08:41:59]
+event type: exit
+[INFO -- 2017-03-26 08:41:59]
+exit code: 0

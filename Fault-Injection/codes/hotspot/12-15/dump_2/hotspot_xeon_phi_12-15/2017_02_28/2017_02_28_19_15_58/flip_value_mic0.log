@@ -1,0 +1,180 @@
+2017-02-28 19:15:19:Starting flip_value script
+2017-02-28 19:15:19:Initialization strings:
+2017-02-28 19:15:19:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 19:15:19:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 19:15:19:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 19:15:19:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 19:15:19:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 19:15:19:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-02-28 19:15:19:initSignal:12
+2017-02-28 19:15:19:endSignal:15
+2017-02-28 19:15:19:seqSignal:15
+2017-02-28 19:15:33:Backtrace BEGIN:
+2017-02-28 19:15:33:#0  0x00007ffff78a9843 in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 19:15:33:221	    fprintf(stderr, "\t<no. of threads>   - number of threads\n");
+222	    fprintf(stderr, "\t<temp_file>  - name of the file containing the initial temperature values of each cell\n");
+223	    fprintf(stderr, "\t<power_file> - name of the file containing the dissipated power values of each cell\n");
+224	    fprintf(stderr, "\t<output_file> - name of the output file\n");
+225	    exit(1);
+226	}
+227	
+228	int main(int argc, char **argv)
+229	{
+230	    int grid_rows, grid_cols, sim_time, i;
+
+2017-02-28 19:15:33:Backtrace END
+2017-02-28 19:15:35:Backtrace BEGIN:
+2017-02-28 19:15:35:#0  0x00007ffff78a9843 in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 19:15:35:231	    FLOAT *temp, *power, *result, *final_result, *gold;
+232	    char *tfile, *pfile, *ofile;
+233	
+234	    /* check validity of inputs	*/
+235	    if (argc != 8)
+236	        usage(argc, argv);
+237	    if ((grid_rows = atoi(argv[1])) <= 0 ||
+238	            (grid_cols = atoi(argv[2])) <= 0 ||
+239	            (sim_time = atoi(argv[3])) <= 0 ||
+240	            (num_omp_threads = atoi(argv[4])) <= 0
+
+2017-02-28 19:15:35:Backtrace END
+2017-02-28 19:15:36:Backtrace BEGIN:
+2017-02-28 19:15:36:#0  0x00007ffff78a9843 in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 19:15:36:241	       )
+242	        usage(argc, argv);
+243	
+244	    /* allocate memory for the temperature and power arrays	*/
+245	    temp = (FLOAT *) calloc (grid_rows * grid_cols, sizeof(FLOAT));
+246	    power = (FLOAT *) calloc (grid_rows * grid_cols, sizeof(FLOAT));
+247	    result = (FLOAT *) calloc (grid_rows * grid_cols, sizeof(FLOAT));
+248	    gold = (FLOAT *) calloc (grid_rows * grid_cols, sizeof(FLOAT));
+249	    if(!temp || !power)
+250	        fatal("unable to allocate memory");
+
+2017-02-28 19:15:36:Backtrace END
+2017-02-28 19:15:37:Backtrace BEGIN:
+2017-02-28 19:15:37:#0  0x00007ffff78a9843 in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 19:15:37:251	
+252	#ifdef LOGS
+253	    char test_info[100];
+254	    snprintf(test_info, 100, "simIter:%d gridSize:%dx%d",sim_time, grid_rows, grid_cols);
+255	    start_log_file((char *)"openMPHotspot", test_info);
+256	    set_max_errors_iter(MAX_ERR_ITER_LOG);
+257	    set_iter_interval_print(10);
+258	#endif /* LOGS */
+259	
+260	    /* read initial temperatures and input power	*/
+
+2017-02-28 19:15:37:Backtrace END
+2017-02-28 19:15:38:Backtrace BEGIN:
+2017-02-28 19:15:38:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd2d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff7fd2df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff7fd2d14 in ?? ()
+#8  0x00007ffff7fd2de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+2017-02-28 19:15:38:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-02-28 19:15:38:Backtrace END
+2017-02-28 19:15:39:Backtrace BEGIN:
+2017-02-28 19:15:39:#0  0x00007ffff78a9843 in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 19:15:39:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-02-28 19:15:39:Backtrace END
+2017-02-28 19:15:40:Backtrace BEGIN:
+2017-02-28 19:15:40:#0  0x00007ffff78a9843 in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 19:15:40:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-02-28 19:15:40:Backtrace END
+2017-02-28 19:15:51:event type: exit
+2017-02-28 19:15:51:exit code: 0

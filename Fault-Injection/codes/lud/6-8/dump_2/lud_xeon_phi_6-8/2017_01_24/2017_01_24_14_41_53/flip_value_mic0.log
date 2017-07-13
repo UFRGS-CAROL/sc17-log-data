@@ -1,0 +1,78 @@
+2017-01-24 14:41:34:Starting flip_value script
+2017-01-24 14:41:34:Initialization strings:
+2017-01-24 14:41:35:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-24 14:41:35:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 14:41:35:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 14:41:35:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 14:41:35:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 14:41:35:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-24 14:41:35:initSignal:6
+2017-01-24 14:41:35:endSignal:8
+2017-01-24 14:41:35:seqSignal:30
+2017-01-24 14:41:42:Trying Fault Injection
+2017-01-24 14:41:42:Inferior PID: 34305
+2017-01-24 14:41:42:Inferior is valid: True
+2017-01-24 14:41:42:Inferior #threads: 229
+2017-01-24 14:41:42:Backtrace BEGIN:
+2017-01-24 14:41:42:#0  do_system (line=0x7fffffffe630 "echo 1485286571 > /micNfs/carol/logs/timestamp.txt") at ../sysdeps/posix/system.c:116
+#1  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#2  0x0000000000405f16 in log_error_count (kernel_errors=0) at ../include/log_helper.c:369
+#3  0x0000000000402def in main (argc=9, argv=0x7fffffffec08) at lud_check.c:149
+
+2017-01-24 14:41:42:111	in ../sysdeps/posix/system.c
+
+2017-01-24 14:41:42:Backtrace END
+2017-01-24 14:41:45:Thread name: None
+2017-01-24 14:41:45:Thread num: 1
+2017-01-24 14:41:45:Thread ptid: (34305, 34305, 0)
+2017-01-24 14:41:45:bitFlip function
+2017-01-24 14:41:45:Type: The type is a structure.
+2017-01-24 14:41:45:Type sizeof: 152
+2017-01-24 14:41:45:Fliping value of field: sa_mask
+2017-01-24 14:41:45:bitFlip function
+2017-01-24 14:41:45:Type: The type is a structure.
+2017-01-24 14:41:45:Type sizeof: 128
+2017-01-24 14:41:45:Fliping value of field: __val
+2017-01-24 14:41:45:bitFlip function
+2017-01-24 14:41:45:Type: The type is an array.
+2017-01-24 14:41:45:Type sizeof: 128
+2017-01-24 14:41:45:Fliping array at pos: 0
+2017-01-24 14:41:45:bitFlip function
+2017-01-24 14:41:45:Type: The type is an integer type.
+2017-01-24 14:41:45:Type sizeof: 8
+2017-01-24 14:41:45:Mem contents(hex):0x000x000x010x000x000x000x000x00
+2017-01-24 14:41:45:base address to flip value: 0x7fffffffe580
+2017-01-24 14:41:45:address max offset: 8
+2017-01-24 14:41:45:Memory content before bitflip:0x000x000x010x000x000x000x000x00
+2017-01-24 14:41:45:Memory content after  bitflip:0x000x000x010x000x000x000x000x20
+2017-01-24 14:41:45:Mem contents(hex):0x000x000x010x000x000x000x000x20
+2017-01-24 14:41:45:frame name: do_system
+2017-01-24 14:41:45:symbol name: sa
+2017-01-24 14:41:45:symbol filename: ../sysdeps/posix/system.c
+2017-01-24 14:41:45:symbol line: 58
+2017-01-24 14:41:45:value: {__sigaction_handler = {sa_handler = 0x1, sa_sigaction = 0x1}, sa_mask = {__val = {2305843009213759488, 0 <repeats 15 times>}}, sa_flags = 0, sa_restorer = 0x4}
+2017-01-24 14:41:45:value address: 0x7fffffffe578
+2017-01-24 14:41:45:Type: The type is a structure.
+2017-01-24 14:41:45:Type sizeof: 152
+2017-01-24 14:41:45:Field name: __sigaction_handler
+2017-01-24 14:41:45:Field Type:
+2017-01-24 14:41:45:Type: The type is a union.
+2017-01-24 14:41:45:Type sizeof: 8
+2017-01-24 14:41:45:Field name: sa_mask
+2017-01-24 14:41:45:Field Type:
+2017-01-24 14:41:45:Type: The type is a structure.
+2017-01-24 14:41:45:Type sizeof: 128
+2017-01-24 14:41:45:Field name: sa_flags
+2017-01-24 14:41:45:Field Type:
+2017-01-24 14:41:45:Type: The type is an integer type.
+2017-01-24 14:41:45:Type sizeof: 4
+2017-01-24 14:41:45:Field name: sa_restorer
+2017-01-24 14:41:45:Field Type:
+2017-01-24 14:41:45:Type: The type is a pointer.
+2017-01-24 14:41:45:Type sizeof: 8
+2017-01-24 14:41:45:Fault Injection Successful after 10.8903560638s
+2017-01-24 14:41:46:Fault Already Injected
+2017-01-24 14:41:46:Fault Already Injected
+2017-01-24 14:41:46:Fault Already Injected
+2017-01-24 14:41:46:event type: exit
+2017-01-24 14:41:46:exit code: 0

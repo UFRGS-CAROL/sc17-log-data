@@ -1,0 +1,79 @@
+[INFO -- 2017-02-27 01:34:29]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 01:34:29]
+Initialization strings:
+[INFO -- 2017-02-27 01:34:29]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-27 01:34:29]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 01:34:29]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 01:34:29]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 01:34:29]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 01:34:29]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-27 01:34:29]
+initSignal:0
+[INFO -- 2017-02-27 01:34:29]
+endSignal:3
+[INFO -- 2017-02-27 01:34:29]
+seqSignal:15
+[INFO -- 2017-02-27 01:34:29]
+faultMode:2
+[INFO -- 2017-02-27 01:34:29]
+Backtrace BEGIN:
+#0  0x00007ffff7de5e89 in do_lookup_x (undef_name=undef_name@entry=0x7ffff7868835 "sigemptyset", new_hash=new_hash@entry=1689534051, old_hash=old_hash@entry=0x7fffffffe7e0, ref=0x7ffff7862630, result=result@entry=0x7fffffffe7f0, scope=<optimized out>, i=3, version=0x7ffff7ff88f8, flags=1, skip=0x0, type_class=1, undef_map=0x7ffff7ffab28) at dl-lookup.c:402
+#1  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x7ffff7868835 "sigemptyset", undef_map=undef_map@entry=0x7ffff7ffab28, ref=ref@entry=0x7fffffffe940, symbol_scope=symbol_scope@entry=0x7ffff7ffae80, version=0x7ffff7ff88f8, type_class=1, flags=1, skip_map=0x0) at dl-lookup.c:775
+#2  0x00007ffff7de854f in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=<optimized out>, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff7874c40, map=0x7ffff7ffab28) at ../sysdeps/x86_64/dl-machine.h:277
+#3  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ffab28) at do-rel.h:137
+#4  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#5  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#6  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebb0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#7  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebb0) at rtld.c:308
+#8  _dl_start (arg=0x7fffffffebb0) at rtld.c:414
+#9  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#10 0x0000000000000008 in ?? ()
+#11 0x00007fffffffedb6 in ?? ()
+#12 0x00007fffffffedf5 in ?? ()
+#13 0x00007fffffffedfa in ?? ()
+#14 0x00007fffffffedff in ?? ()
+#15 0x00007fffffffee04 in ?? ()
+#16 0x00007fffffffee07 in ?? ()
+#17 0x00007fffffffee43 in ?? ()
+#18 0x00007fffffffee80 in ?? ()
+#19 0x0000000000000000 in ?? ()
+
+397	in dl-lookup.c
+
+Backtrace END
+Fliping value of field: s
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe7f0
+address max offset: 8
+Memory content after  bitflip:0xa30xb80xa80xdc0x720x330x860xa9
+frame name: _dl_lookup_symbol_x
+symbol name: current_value
+symbol filename: dl-lookup.c
+symbol line: 755
+value: {s = 0xa9863372dca8b8a3, m = 0x0}
+value address: 0x7fffffffe7f0
+Type: The type is a structure.
+Type sizeof: 16
+Field name: s
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: m
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2017-02-27 01:34:29]
+Fault Injection Successful after 0.944220066071s
+[INFO -- 2017-02-27 01:35:03]
+event type: exit
+[INFO -- 2017-02-27 01:35:03]
+exit code: 0

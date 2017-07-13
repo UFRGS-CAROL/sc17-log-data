@@ -1,0 +1,41 @@
+2017-02-28 03:50:42:Starting flip_value script
+2017-02-28 03:50:42:Initialization strings:
+2017-02-28 03:50:43:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 03:50:43:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 03:50:43:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 03:50:43:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 03:50:43:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 03:50:43:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 03:50:43:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 03:50:43:initSignal:40
+2017-02-28 03:50:43:endSignal:49
+2017-02-28 03:50:43:seqSignal:20
+2017-02-28 03:51:26:Backtrace BEGIN:
+2017-02-28 03:51:26:#0  0x000000000045bb2c in State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1562
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffdac0 in ?? ()
+#3  0x00007fffffffdab8 in ?? ()
+#4  0x00007fffffffdad0 in ?? ()
+#5  0x00007fffffffdad8 in ?? ()
+#6  0x00007fffffffda38 in ?? ()
+#7  0x00007fffffffda70 in ?? ()
+#8  0x00007fffffffda68 in ?? ()
+#9  0x00007fffffffdba8 in ?? ()
+#10 0x00007fffffffdbc8 in ?? ()
+#11 0x00007fffffffdbe8 in ?? ()
+#12 0x00007fffffffda30 in ?? ()
+#13 0x00000000000000e4 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2017-02-28 03:51:26:1557	      if(lvl < level[nl]) {
+1558	         Hl2 = (Hl2 + Hlt) * HALF;
+1559	         Ul2 = (Ul2 + Ult) * HALF;
+1560	      }
+1561	
+1562	      real_t wplusx_H = w_corrector(deltaT, (dric+dxr)*HALF, fabs(Uxplus/Hxplus) + sqrt(g*Hxplus),
+1563	                           Hr-Hic, Hic-Hl2, Hrr-Hr);
+1564	
+1565	      wplusx_H *= Hr - Hic;
+1566	
+
+2017-02-28 03:51:26:Backtrace END

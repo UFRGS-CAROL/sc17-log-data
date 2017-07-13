@@ -1,0 +1,85 @@
+2016-10-24 03:18:18:Initialization strings:
+2016-10-24 03:18:18:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-24 03:18:18:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 03:18:18:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 03:18:18:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-24 03:18:18:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-24 03:18:18:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-24 03:18:20:Trying Fault Injection
+2016-10-24 03:18:20:Backtrace BEGIN:
+2016-10-24 03:18:20:#0  __GI___rawmemchr (s=s@entry=0x7fffffffe77a, c_in=c_in@entry=0) at ../string/rawmemchr.c:101
+#1  0x00007ffff7145ad0 in _IO_str_init_static_internal (sf=sf@entry=0x7fffffffe400, ptr=ptr@entry=0x7fffffffe77a "328.393033\n", size=size@entry=0, pstart=pstart@entry=0x0) at strops.c:44
+#2  0x00007ffff71365d5 in __GI___isoc99_vsscanf (string=0x7fffffffe77a "328.393033\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:41
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#5  main (argc=-6272, argv=0x0) at hotspot_check.c:264
+
+2016-10-24 03:18:20:96	in ../string/rawmemchr.c
+
+2016-10-24 03:18:20:Backtrace END
+2016-10-24 03:18:20:Type: The type is an array.
+2016-10-24 03:18:20:Type sizeof: 24
+2016-10-24 03:18:20:Fliping array at pos: 0
+2016-10-24 03:18:20:Type: The type is a structure.
+2016-10-24 03:18:20:Type sizeof: 24
+2016-10-24 03:18:20:Fliping value of field: reg_save_area
+2016-10-24 03:18:20:Type: The type is a pointer.
+2016-10-24 03:18:20:Type sizeof: 8
+2016-10-24 03:18:20:Fault Injection Failed after 2.48590493202s
+2016-10-24 03:18:22:Trying Fault Injection
+2016-10-24 03:18:22:Backtrace BEGIN:
+2016-10-24 03:18:22:#0  _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:1978
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "323.184544\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=-7168, argv=0x1) at hotspot_check.c:264
+
+2016-10-24 03:18:22:1973	in vfscanf.c
+
+2016-10-24 03:18:22:Backtrace END
+2016-10-24 03:18:22:Type: The type is an array.
+2016-10-24 03:18:22:Type sizeof: 24
+2016-10-24 03:18:22:Fliping array at pos: 0
+2016-10-24 03:18:22:Type: The type is a structure.
+2016-10-24 03:18:22:Type sizeof: 24
+2016-10-24 03:18:22:Fliping value of field: reg_save_area
+2016-10-24 03:18:22:Type: The type is a pointer.
+2016-10-24 03:18:22:Type sizeof: 8
+2016-10-24 03:18:22:Fault Injection Failed after 4.5046889782s
+2016-10-24 03:18:24:Trying Fault Injection
+2016-10-24 03:18:24:Backtrace BEGIN:
+2016-10-24 03:18:24:#0  0x00007ffff7128be7 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2332
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe87a "0.000008\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401808 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=-8176, argv=0x7fffffffe240) at hotspot_check.c:265
+
+2016-10-24 03:18:24:2327	in vfscanf.c
+
+2016-10-24 03:18:24:Backtrace END
+2016-10-24 03:18:24:Type: A floating point type.
+2016-10-24 03:18:24:Type sizeof: 4
+2016-10-24 03:18:24:Mem contents(hex):0x000x000xa00x42
+2016-10-24 03:18:24:base address to flip value: 0x4073a4 
+2016-10-24 03:18:24:address max offset: 4
+2016-10-24 03:18:24:Memory content before bitflip:0x000x000xa00x42
+2016-10-24 03:18:24:Memory content after  bitflip:0x000x000xa80x42
+2016-10-24 03:18:24:Mem contents(hex):0x000x000xa80x42
+2016-10-24 03:18:24:frame name: read_input
+2016-10-24 03:18:24:symbol name: amb_temp
+2016-10-24 03:18:24:symbol filename: hotspot_check.c
+2016-10-24 03:18:24:symbol line: 37
+2016-10-24 03:18:24:value: 84
+2016-10-24 03:18:24:value address: 0x4073a4 <amb_temp>
+2016-10-24 03:18:24:Type: A floating point type.
+2016-10-24 03:18:24:Type sizeof: 4
+2016-10-24 03:18:24:Fault Injection Successful after 6.68969702721s
+2016-10-24 03:18:24:Fault Already Injected
+2016-10-24 03:18:28:Fault Already Injected
+2016-10-24 03:18:29:Fault Already Injected
+2016-10-24 03:18:30:Fault Already Injected
+2016-10-24 03:18:30:Fault Already Injected
+2016-10-24 03:18:31:Fault Already Injected
+2016-10-24 03:18:33:Fault Already Injected
+2016-10-24 03:18:33:event type: exit
+2016-10-24 03:18:33:exit code: 0

@@ -1,0 +1,58 @@
+[INFO -- 2017-03-25 22:02:54]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-25 22:02:54]
+Initialization strings:
+[INFO -- 2017-03-25 22:02:55]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-25 22:02:55]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-25 22:02:55]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-25 22:02:55]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-25 22:02:55]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-25 22:02:55]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-25 22:02:55]
+initSignal:0
+[INFO -- 2017-03-25 22:02:55]
+endSignal:3
+[INFO -- 2017-03-25 22:02:55]
+seqSignal:30
+[INFO -- 2017-03-25 22:02:55]
+faultMode:3
+[INFO -- 2017-03-25 22:02:55]
+Backtrace BEGIN:
+#0  __GI___pthread_mutex_unlock (mutex=0x7ffff7ffd948 <_rtld_global+2312>) at pthread_mutex_unlock.c:315
+#1  0x00007ffff71d604b in __GI__dl_addr (address=<optimized out>, info=0x7fffffffeac0, mapp=0x0, symbolp=0x0) at dl-addr.c:141
+#2  0x00007ffff7909e93 in ?? ()
+#3  0x00007ffff7ffab10 in ?? ()
+#4  0x00007ffff785b000 in ?? ()
+#5  0x0000000000000000 in ?? ()
+
+310	in pthread_mutex_unlock.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffea68
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: __GI__dl_addr
+symbol name: mapp
+symbol filename: dl-addr.c
+symbol line: 125
+value: 0x0
+value address: 0x7fffffffea68
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-25 22:02:55]
+Fault Injection Successful after 0.631939888s
+[INFO -- 2017-03-25 22:03:15]
+event type: exit
+[INFO -- 2017-03-25 22:03:15]
+exit code: 0

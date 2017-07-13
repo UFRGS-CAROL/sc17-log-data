@@ -1,0 +1,63 @@
+[INFO -- 2017-02-26 18:46:51]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 18:46:51]
+Initialization strings:
+[INFO -- 2017-02-26 18:46:51]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-26 18:46:51]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 18:46:51]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 18:46:51]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 18:46:51]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 18:46:51]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-26 18:46:51]
+initSignal:0
+[INFO -- 2017-02-26 18:46:51]
+endSignal:2
+[INFO -- 2017-02-26 18:46:51]
+seqSignal:30
+[INFO -- 2017-02-26 18:46:51]
+faultMode:0
+[INFO -- 2017-02-26 18:46:53]
+Backtrace BEGIN:
+#0  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:548
+#1  __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7ffff7ee2b00) at pthread_create.c:524
+#2  0x00007ffff790d323 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+543	in allocatestack.c
+
+Backtrace END
+Fliping value of field: prev
+Fliping a bit of the pointer
+Memory content before bitflip:0xc00x690xff0xf70xff0x7f0x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7ffff76462f8 
+address max offset: 8
+Memory content after  bitflip:0xc00x690xff0xf70x7f0x7f0x000x00
+frame name: __pthread_create_2_1
+symbol name: __GI___stack_user
+symbol filename: allocatestack.c
+symbol line: 124
+value: {next = 0x7ffff7ff69c0, prev = 0x7f7ff7ff69c0}
+value address: 0x7ffff76462f0 <__stack_user>
+Type: The type is a structure.
+Type sizeof: 16
+Field name: next
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: prev
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2017-02-26 18:46:53]
+Fault Injection Successful after 2.20269989967s
+[INFO -- 2017-02-26 18:47:06]
+event type: exit
+[INFO -- 2017-02-26 18:47:06]
+exit code: 0

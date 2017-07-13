@@ -1,0 +1,79 @@
+2017-02-21 17:38:10:Starting flip_value script
+2017-02-21 17:38:10:Initialization strings:
+2017-02-21 17:38:10:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-21 17:38:10:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 17:38:10:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 17:38:10:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-21 17:38:10:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-21 17:38:10:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-21 17:38:10:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-21 17:38:10:initSignal:20
+2017-02-21 17:38:10:endSignal:25
+2017-02-21 17:38:10:seqSignal:20
+2017-02-21 17:38:31:Backtrace BEGIN:
+2017-02-21 17:38:31:#0  0x00007ffff78ab31f in ?? ()
+#1  0x00007fffffffddd0 in ?? ()
+#2  0x00007ffff6b9ff79 in __GI___mempcpy (dest=<optimized out>, src=src@entry=0x7ffff6b9ff79 <__GI___mempcpy+9>, len=12, len@entry=256) at ../string/mempcpy.c:35
+#3  0x00007ffff6b6b0ae in ___printf_fp (fp=<optimized out>, info=<optimized out>, args=<optimized out>) at printf_fp.c:1210
+#4  0x00007ffff78af0b1 in ?? ()
+#5  0x0000000000000000 in ?? ()
+
+2017-02-21 17:38:31:171	static double H_sum_initial = 0.0;
+172	static double cpu_time_graphics = 0.0;
+173	static double cpu_time_calcs    = 0.0;
+174	static double cpu_time_partmeas = 0.0;
+175	//static double cpu_time_check    = 0.0;
+176	
+177	static int     ncycle  = 0;
+178	static double  simTime = 0.0;
+179	static double  deltaT = 0.0;
+180	char total_sim_time_log[] = {"total_execution_time.log"};
+
+2017-02-21 17:38:31:Backtrace END
+2017-02-21 17:38:37:Type: The type is an integer type.
+2017-02-21 17:38:37:Type sizeof: 1
+2017-02-21 17:38:37:Mem contents(hex):0x72
+2017-02-21 17:38:37:Fault Mode: Zero bit-flip
+2017-02-21 17:38:37:base address to flip value: 0x7fffffffddf8 
+2017-02-21 17:38:37:address max offset: 1
+2017-02-21 17:38:37:Memory content before bitflip:0x72
+2017-02-21 17:38:37:Backtrace BEGIN:
+2017-02-21 17:38:37:#0  0x00007ffff78ab31f in ?? ()
+#1  0x00007fffffffddd0 in ?? ()
+#2  0x00007ffff6b9ff79 in __GI___mempcpy (dest=<optimized out>, src=src@entry=0x7ffff6b9ff79 <__GI___mempcpy+9>, len=12, len@entry=256) at ../string/mempcpy.c:35
+#3  0x00007ffff6b6b0ae in ___printf_fp (fp=<optimized out>, info=<optimized out>, args=<optimized out>) at printf_fp.c:1210
+#4  0x00007ffff78af0b1 in ?? ()
+#5  0x0000000000000000 in ?? ()
+
+2017-02-21 17:38:37:181	struct timeval total_exec;
+182	
+183	int main(int argc, char **argv) {
+184	
+185	   cpu_timer_start(&total_exec);
+186	   // Needed for code to compile correctly on the Mac
+187	   int mype=0;
+188	   int numpe=-1;
+189	
+190	   //  Process command-line arguments, if any.
+
+2017-02-21 17:38:37:Backtrace END
+2017-02-21 17:38:41:Type: The type is an integer type.
+2017-02-21 17:38:41:Type sizeof: 4
+2017-02-21 17:38:41:Mem contents(hex):0x300x780xc40xf6
+2017-02-21 17:38:41:Fault Mode: Single bit-flip
+2017-02-21 17:38:41:base address to flip value: 0x7fffffffde30
+2017-02-21 17:38:41:address max offset: 4
+2017-02-21 17:38:41:Memory content before bitflip:0x300x780xc40xf6
+2017-02-21 17:38:41:Memory content after  bitflip:0x300x7c0xc40xf6
+2017-02-21 17:38:41:Mem contents(hex):0x300x7c0xc40xf6
+2017-02-21 17:38:41:frame name: ___printf_fp
+2017-02-21 17:38:41:symbol name: done
+2017-02-21 17:38:41:symbol filename: printf_fp.c
+2017-02-21 17:38:41:symbol line: 248
+2017-02-21 17:38:41:value: -154895312
+2017-02-21 17:38:41:value address: 0x7fffffffde30
+2017-02-21 17:38:41:Type: The type is an integer type.
+2017-02-21 17:38:41:Type sizeof: 4
+2017-02-21 17:38:41:Fault Injection Successful after 31.2023301125s
+2017-02-21 17:39:11:event type: exit
+2017-02-21 17:39:11:exit code: 0

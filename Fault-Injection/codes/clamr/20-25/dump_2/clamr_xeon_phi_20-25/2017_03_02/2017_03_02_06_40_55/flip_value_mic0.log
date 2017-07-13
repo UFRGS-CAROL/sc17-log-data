@@ -1,0 +1,88 @@
+2017-03-02 06:39:34:Starting flip_value script
+2017-03-02 06:39:34:Initialization strings:
+2017-03-02 06:39:34:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 06:39:34:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 06:39:34:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 06:39:34:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 06:39:34:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 06:39:34:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-02 06:39:34:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-02 06:39:34:initSignal:20
+2017-03-02 06:39:34:endSignal:25
+2017-03-02 06:39:34:seqSignal:20
+2017-03-02 06:39:55:Backtrace BEGIN:
+2017-03-02 06:39:55:#0  0x00007ffff6be6b70 in __close_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6b92ee0 in _IO_new_file_close_it (fp=fp@entry=0x1920e80) at fileops.c:171
+#2  0x00007ffff6b87c17 in _IO_new_fclose (fp=0x1920e80) at iofclose.c:59
+#3  0x000000000054c1c6 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:503
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-03-02 06:39:55:76	in ../sysdeps/unix/syscall-template.S
+
+2017-03-02 06:39:55:Backtrace END
+2017-03-02 06:40:01:Type: The type is a structure.
+2017-03-02 06:40:01:Type sizeof: 16
+2017-03-02 06:40:01:Fliping value of field: tv_sec
+2017-03-02 06:40:01:Type: The type is an integer type.
+2017-03-02 06:40:01:Type sizeof: 8
+2017-03-02 06:40:01:Mem contents(hex):0x630x030xb80x580x000x000x000x00
+2017-03-02 06:40:01:Fault Mode: Zero bit-flip
+2017-03-02 06:40:01:base address to flip value: 0x7fffffffe9d8
+2017-03-02 06:40:01:address max offset: 8
+2017-03-02 06:40:01:Memory content before bitflip:0x630x030xb80x580x000x000x000x00
+2017-03-02 06:40:01:Backtrace BEGIN:
+2017-03-02 06:40:01:#0  0x00007ffff6be6b70 in __close_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6b92ee0 in _IO_new_file_close_it (fp=fp@entry=0x1920e80) at fileops.c:171
+#2  0x00007ffff6b87c17 in _IO_new_fclose (fp=0x1920e80) at iofclose.c:59
+#3  0x000000000054c1c6 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:503
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-03-02 06:40:01:76	in ../sysdeps/unix/syscall-template.S
+
+2017-03-02 06:40:01:Backtrace END
+2017-03-02 06:40:06:Type: The type is a structure.
+2017-03-02 06:40:06:Type sizeof: 168
+2017-03-02 06:40:06:Fliping value of field: __stat
+2017-03-02 06:40:06:Type: The type is a pointer.
+2017-03-02 06:40:06:Type sizeof: 8
+2017-03-02 06:40:06:Fliping a bit of the value pointed by a pointer
+2017-03-02 06:40:06:Type: The type is a function.
+2017-03-02 06:40:06:Type sizeof: 1
+2017-03-02 06:40:06:Mem contents(hex):0x48
+2017-03-02 06:40:06:Fault Mode: Zero bit-flip
+2017-03-02 06:40:06:base address to flip value: 0x7ffff6b926d0 
+2017-03-02 06:40:06:address max offset: 1
+2017-03-02 06:40:06:Memory content before bitflip:0x48
+2017-03-02 06:40:07:Backtrace BEGIN:
+2017-03-02 06:40:07:#0  0x00007ffff6be6b70 in __close_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6b92ee0 in _IO_new_file_close_it (fp=fp@entry=0x1920e80) at fileops.c:171
+#2  0x00007ffff6b87c17 in _IO_new_fclose (fp=0x1920e80) at iofclose.c:59
+#3  0x000000000054c1c6 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:503
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-03-02 06:40:07:76	in ../sysdeps/unix/syscall-template.S
+
+2017-03-02 06:40:07:Backtrace END
+2017-03-02 06:40:12:Type: The type is an integer type.
+2017-03-02 06:40:12:Type sizeof: 4
+2017-03-02 06:40:12:Mem contents(hex):0x000x000x000x00
+2017-03-02 06:40:12:Fault Mode: Single bit-flip
+2017-03-02 06:40:12:base address to flip value: 0x7d06d0 
+2017-03-02 06:40:12:address max offset: 4
+2017-03-02 06:40:12:Memory content before bitflip:0x000x000x000x00
+2017-03-02 06:40:12:Memory content after  bitflip:0x000x200x000x00
+2017-03-02 06:40:12:Mem contents(hex):0x000x200x000x00
+2017-03-02 06:40:12:frame name: main
+2017-03-02 06:40:12:symbol name: next_graphics_cycle
+2017-03-02 06:40:12:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-03-02 06:40:12:symbol line: 165
+2017-03-02 06:40:12:value: 8192
+2017-03-02 06:40:12:value address: 0x7d06d0 <next_graphics_cycle>
+2017-03-02 06:40:12:Type: The type is an integer type.
+2017-03-02 06:40:12:Type sizeof: 4
+2017-03-02 06:40:12:Fault Injection Successful after 38.5644309521s
+2017-03-02 06:40:47:event type: exit
+2017-03-02 06:40:47:exit code: 0

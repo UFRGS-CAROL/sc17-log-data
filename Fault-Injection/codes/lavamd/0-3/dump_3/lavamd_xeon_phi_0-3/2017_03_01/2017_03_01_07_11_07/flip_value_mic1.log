@@ -1,0 +1,87 @@
+2017-03-01 07:10:58:Starting flip_value script
+2017-03-01 07:10:58:Initialization strings:
+2017-03-01 07:10:59:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-01 07:10:59:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 07:10:59:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 07:10:59:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 07:10:59:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 07:10:59:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-03-01 07:10:59:initSignal:0
+2017-03-01 07:10:59:endSignal:3
+2017-03-01 07:10:59:seqSignal:30
+2017-03-01 07:10:59:Backtrace BEGIN:
+2017-03-01 07:10:59:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebc0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebc0) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffebc0) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000007 in ?? ()
+#7  0x00007fffffffedb7 in ?? ()
+#8  0x00007fffffffedf4 in ?? ()
+#9  0x00007fffffffedf8 in ?? ()
+#10 0x00007fffffffedfb in ?? ()
+#11 0x00007fffffffee41 in ?? ()
+#12 0x00007fffffffee86 in ?? ()
+#13 0x00007fffffffeec9 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2017-03-01 07:10:59:69	in dl-debug.c
+
+2017-03-01 07:10:59:Backtrace END
+2017-03-01 07:10:59:Type: The type is an integer type.
+2017-03-01 07:10:59:Type sizeof: 8
+2017-03-01 07:10:59:Mem contents(hex):0x000x400xc30x340xe00x780x010x00
+2017-03-01 07:10:59:Fault Mode: One bit-flip
+2017-03-01 07:10:59:base address to flip value: 0x7ffff7ffcc80 
+2017-03-01 07:10:59:address max offset: 8
+2017-03-01 07:10:59:Memory content before bitflip:0x000x400xc30x340xe00x780x010x00
+2017-03-01 07:10:59:Backtrace BEGIN:
+2017-03-01 07:10:59:#0  0x00007ffff71505d6 in __GI_memcpy (dstpp=dstpp@entry=0x7ffff61f2d60, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#3  0x0000000000402245 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:150
+
+2017-03-01 07:10:59:54	in ../string/memcpy.c
+
+2017-03-01 07:10:59:Backtrace END
+2017-03-01 07:10:59:Type: The type is a structure.
+2017-03-01 07:10:59:Type sizeof: 168
+2017-03-01 07:10:59:Fliping value of field: __close
+2017-03-01 07:10:59:Type: The type is a pointer.
+2017-03-01 07:10:59:Type sizeof: 8
+2017-03-01 07:10:59:Fliping a bit of the value pointed by a pointer
+2017-03-01 07:10:59:Type: The type is a function.
+2017-03-01 07:10:59:Type sizeof: 1
+2017-03-01 07:10:59:Mem contents(hex):0x53
+2017-03-01 07:10:59:Fault Mode: Random bit-flip
+2017-03-01 07:10:59:base address to flip value: 0x7ffff7142290 
+2017-03-01 07:10:59:address max offset: 1
+2017-03-01 07:10:59:Memory content before bitflip:0x53
+2017-03-01 07:11:00:Backtrace BEGIN:
+2017-03-01 07:11:00:#0  __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:44
+#1  0x00000000004021c3 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:148
+
+2017-03-01 07:11:00:39	in iofread.c
+
+2017-03-01 07:11:00:Backtrace END
+2017-03-01 07:11:00:Type: The type is an integer type.
+2017-03-01 07:11:00:Type sizeof: 4
+2017-03-01 07:11:00:Mem contents(hex):0x6c0x080x030x00
+2017-03-01 07:11:00:Fault Mode: Single bit-flip
+2017-03-01 07:11:00:base address to flip value: 0x7fffffffe720
+2017-03-01 07:11:00:address max offset: 4
+2017-03-01 07:11:00:Memory content before bitflip:0x6c0x080x030x00
+2017-03-01 07:11:00:Memory content after  bitflip:0x6c0x080x030x80
+2017-03-01 07:11:00:Mem contents(hex):0x6c0x080x030x80
+2017-03-01 07:11:00:frame name: main
+2017-03-01 07:11:00:symbol name: i
+2017-03-01 07:11:00:symbol filename: main_check.c
+2017-03-01 07:11:00:symbol line: 53
+2017-03-01 07:11:00:value: -2147284884
+2017-03-01 07:11:00:value address: 0x7fffffffe720
+2017-03-01 07:11:00:Type: The type is an integer type.
+2017-03-01 07:11:00:Type sizeof: 4
+2017-03-01 07:11:00:Fault Injection Successful after 1.22632694244s
+2017-03-01 07:11:00:event type: exit
+2017-03-01 07:11:00:exit code: no exit code available

@@ -1,0 +1,53 @@
+2016-10-14 02:28:45:Initialization strings:
+2016-10-14 02:28:46:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-14 02:28:46:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-14 02:28:46:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-14 02:28:46:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-14 02:28:46:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-14 02:28:46:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-14 02:28:46:Trying Fault Injection
+2016-10-14 02:28:46:Backtrace BEGIN:
+2016-10-14 02:28:46:#0  __GI___xstat (vers=<optimized out>, name=0x608d40 <full_log_file_name> "/micNfs/carol/logs/2016_10_14_06_38_52_openMPHotspot_carolxeon1-mic0.log", buf=0x7fffffffe3c0) at ../sysdeps/unix/sysv/linux/wordsize-64/xstat.c:35
+#1  0x000000000040613d in stat (__path=<optimized out>, __statbuf=<optimized out>) at /usr/linux-k1om-4.7/linux-k1om/usr/include/sys/stat.h:454
+#2  start_log_file (benchmark_name=0x608d40 <full_log_file_name> "/micNfs/carol/logs/2016_10_14_06_38_52_openMPHotspot_carolxeon1-mic0.log", test_info=0x7fffffffe3c0 "2016_10_14_06_38_52_openMPHotspot_carolxeon1-mic0.log") at ../../include/log_helper.c:253
+#3  0x0000000000401681 in main (argc=6327616, argv=0x7fffffffe3c0) at hotspot_check.c:254
+
+2016-10-14 02:28:46:30	in ../sysdeps/unix/sysv/linux/wordsize-64/xstat.c
+
+2016-10-14 02:28:46:Backtrace END
+2016-10-14 02:28:46:Type: The type is an array.
+2016-10-14 02:28:46:Type sizeof: 7
+2016-10-14 02:28:46:Fliping array at pos: 3
+2016-10-14 02:28:46:Type: The type is an integer type.
+2016-10-14 02:28:46:Type sizeof: 1
+2016-10-14 02:28:46:Mem contents(hex):0x64
+2016-10-14 02:28:46:base address to flip value: 0x608bb7  
+2016-10-14 02:28:46:address max offset: 1
+2016-10-14 02:28:46:Memory content before bitflip:0x64
+2016-10-14 02:28:46:Memory content after  bitflip:0x24
+2016-10-14 02:28:46:Mem contents(hex):0x24
+2016-10-14 02:28:46:frame name: stat
+2016-10-14 02:28:46:symbol name: logdir_key
+2016-10-14 02:28:46:symbol filename: ../../include/log_helper.c
+2016-10-14 02:28:46:symbol line: 43
+2016-10-14 02:28:46:value: "log$ir"
+2016-10-14 02:28:46:value address: 0x608bb4 <logdir_key>
+2016-10-14 02:28:46:Type: The type is an array.
+2016-10-14 02:28:46:Type sizeof: 7
+2016-10-14 02:28:46:Field name: None
+2016-10-14 02:28:46:Field Type:
+2016-10-14 02:28:46:Type: A range type, that is, an integer type with bounds.
+2016-10-14 02:28:46:Type sizeof: 1
+2016-10-14 02:28:46:Type range: (0L, 6L)
+2016-10-14 02:28:46:Fault Injection Successful after 0.642991065979s
+2016-10-14 02:28:47:Fault Already Injected
+2016-10-14 02:28:48:Fault Already Injected
+2016-10-14 02:28:49:Fault Already Injected
+2016-10-14 02:28:49:Fault Already Injected
+2016-10-14 02:28:56:Fault Already Injected
+2016-10-14 02:28:57:Fault Already Injected
+2016-10-14 02:28:58:Fault Already Injected
+2016-10-14 02:28:58:Fault Already Injected
+2016-10-14 02:28:59:Fault Already Injected
+2016-10-14 02:29:00:event type: exit
+2016-10-14 02:29:00:exit code: 0

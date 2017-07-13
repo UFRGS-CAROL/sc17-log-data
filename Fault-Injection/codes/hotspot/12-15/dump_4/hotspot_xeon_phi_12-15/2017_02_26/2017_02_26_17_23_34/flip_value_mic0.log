@@ -1,0 +1,62 @@
+[INFO -- 2017-02-26 17:22:52]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 17:22:52]
+Initialization strings:
+[INFO -- 2017-02-26 17:22:52]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-26 17:22:52]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 17:22:52]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 17:22:52]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 17:22:52]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 17:22:52]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 17:22:52]
+initSignal:12
+[INFO -- 2017-02-26 17:22:52]
+endSignal:15
+[INFO -- 2017-02-26 17:22:52]
+seqSignal:15
+[INFO -- 2017-02-26 17:22:52]
+faultMode:3
+[EXCEPTION -- 2017-02-26 17:23:05]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-02-26 17:23:06]
+Backtrace BEGIN:
+#0  str_to_mpn (str=0x7fffffffe056 "1517", str@entry=0x7fffffffe053 ".211517", digcnt=4, digcnt@entry=6, n=n@entry=0x7fffffffdf70, nsize=nsize@entry=0x7fffffffdf58, exponent=exponent@entry=0x7fffffffdf60, decimal_len=decimal_len@entry=1, thousands=0x0, decimal=<optimized out>) at strtod_l.c:369
+#1  0x00007ffff71092a0 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe050 "323.211517", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1449
+#2  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe050 "323.211517", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0) at strtod.c:54
+#3  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2332
+#4  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "323.211517\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#5  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#6  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#7  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+364	in strtod_l.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x600xdf0xff0xff0xff0x7f0x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffdea8
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: str_to_mpn
+symbol name: exponent
+symbol filename: strtod_l.c
+symbol line: 353
+value: 0x7fffffffdf60
+value address: 0x7fffffffdea8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-26 17:23:06]
+Fault Injection Successful after 14.2369689941s
+[INFO -- 2017-02-26 17:23:06]
+event type: exit
+[EXCEPTION -- 2017-02-26 17:23:06]
+exit code: no exit code available

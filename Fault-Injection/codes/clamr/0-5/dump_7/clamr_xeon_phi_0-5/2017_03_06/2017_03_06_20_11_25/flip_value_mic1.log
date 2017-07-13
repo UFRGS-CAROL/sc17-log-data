@@ -1,0 +1,99 @@
+[INFO -- 2017-03-06 20:10:10]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 20:10:10]
+Initialization strings:
+[INFO -- 2017-03-06 20:10:10]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-06 20:10:10]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 20:10:10]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 20:10:10]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 20:10:10]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 20:10:10]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-06 20:10:10]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-06 20:10:10]
+initSignal:0
+[INFO -- 2017-03-06 20:10:10]
+endSignal:5
+[INFO -- 2017-03-06 20:10:10]
+seqSignal:20
+[INFO -- 2017-03-06 20:10:10]
+faultMode:1
+[INFO -- 2017-03-06 20:10:19]
+Backtrace BEGIN:
+#0  0x000000000053a1e0 in ui2comp (I1=0x7ffcc81a6560, I2=0x7ffcc81a6590) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:65
+#1  0x00007ffff6b551aa in msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc81a6530, n=n@entry=16) at msort.c:142
+#2  0x00007ffff6b55011 in msort_with_tmp (n=16, b=<optimized out>, p=<optimized out>) at msort.c:45
+#3  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc81a6530, n=n@entry=32) at msort.c:53
+#4  0x00007ffff6b55011 in msort_with_tmp (n=32, b=<optimized out>, p=<optimized out>) at msort.c:45
+#5  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc81a6530, n=n@entry=65) at msort.c:53
+#6  0x00007ffff6b55027 in msort_with_tmp (n=65, b=0x7ffcc81a6530, p=<optimized out>) at msort.c:45
+#7  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc81a6230, n=n@entry=129) at msort.c:54
+#8  0x00007ffff6b55011 in msort_with_tmp (n=129, b=<optimized out>, p=<optimized out>) at msort.c:45
+#9  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc81a6230, n=n@entry=258) at msort.c:53
+#10 0x00007ffff6b55011 in msort_with_tmp (n=258, b=<optimized out>, p=<optimized out>) at msort.c:45
+#11 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc81a6230, n=n@entry=516) at msort.c:53
+#12 0x00007ffff6b55011 in msort_with_tmp (n=516, b=<optimized out>, p=<optimized out>) at msort.c:45
+#13 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc81a6230, n=n@entry=1032) at msort.c:53
+#14 0x00007ffff6b55027 in msort_with_tmp (n=1032, b=0x7ffcc81a6230, p=<optimized out>) at msort.c:45
+#15 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc81a31d0, n=n@entry=2064) at msort.c:54
+#16 0x00007ffff6b55027 in msort_with_tmp (n=2064, b=0x7ffcc81a31d0, p=<optimized out>) at msort.c:45
+#17 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc819d110, n=n@entry=4128) at msort.c:54
+#18 0x00007ffff6b55011 in msort_with_tmp (n=4128, b=<optimized out>, p=<optimized out>) at msort.c:45
+#19 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc819d110, n=n@entry=8256) at msort.c:53
+#20 0x00007ffff6b55027 in msort_with_tmp (n=8256, b=0x7ffcc819d110, p=<optimized out>) at msort.c:45
+#21 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc8184e10, n=n@entry=16512) at msort.c:54
+#22 0x00007ffff6b55027 in msort_with_tmp (n=16512, b=0x7ffcc8184e10, p=<optimized out>) at msort.c:45
+#23 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc8154810, n=n@entry=33024) at msort.c:54
+#24 0x00007ffff6b55011 in msort_with_tmp (n=33024, b=<optimized out>, p=<optimized out>) at msort.c:45
+#25 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc8154810, n=n@entry=66048) at msort.c:53
+#26 0x00007ffff6b55027 in msort_with_tmp (n=66048, b=0x7ffcc8154810, p=<optimized out>) at msort.c:45
+#27 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc8093010, n=n@entry=132096) at msort.c:54
+#28 0x00007ffff6b55011 in msort_with_tmp (n=132096, b=<optimized out>, p=<optimized out>) at msort.c:45
+#29 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc8093010, n=n@entry=264192) at msort.c:53
+#30 0x00007ffff6b55537 in msort_with_tmp (n=3170304, b=0x7ffcc8093010, p=0x7fffffffdf28) at msort.c:45
+#31 __GI___qsort_r (b=0x7ffcc8093010, n=264192, s=12, cmp=<optimized out>, arg=<optimized out>) at msort.c:297
+#32 0x000000000053a863 in hsfc2sort (N=264192, X=0x7ffd881b0010, Y=0x7ffd481a2010, ibase=0, Info=0x7ffd0809f010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:161
+#33 0x0000000000536b19 in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#34 0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#35 0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+60	}
+61	
+62	static int ui2comp( const void * const I1 , const void * const I2 )
+63	{
+64	  return (
+65	    ( ((const unsigned *)I1)[0] != ((const unsigned *)I2)[0] ) ? (
+66	    ( ((const unsigned *)I1)[0] <  ((const unsigned *)I2)[0] ) ? -1 : 1 ) : (
+67	    ( ((const unsigned *)I1)[1] != ((const unsigned *)I2)[1] ) ? (
+68	    ( ((const unsigned *)I1)[1] <  ((const unsigned *)I2)[1] ) ? -1 : 1 ) : (
+69	       0 )));
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x280xdf0xff0xff0xff0x7f0x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffd878
+address max offset: 8
+Memory content after  bitflip:0x280xdf0xff0xff0x5f0x7f0x000x00
+frame name: msort_with_tmp
+symbol name: p
+symbol filename: msort.c
+symbol line: 40
+value: 0x7fffffffdf28
+value address: 0x7fffffffd878
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-06 20:10:19]
+Fault Injection Successful after 9.96073508263s
+[INFO -- 2017-03-06 20:10:20]
+event type: exit
+[EXCEPTION -- 2017-03-06 20:10:20]
+exit code: no exit code available

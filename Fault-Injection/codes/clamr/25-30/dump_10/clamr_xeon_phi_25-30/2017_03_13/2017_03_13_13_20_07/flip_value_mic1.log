@@ -1,0 +1,73 @@
+[INFO -- 2017-03-13 13:17:25]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-13 13:17:25]
+Initialization strings:
+[INFO -- 2017-03-13 13:17:26]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-13 13:17:26]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-13 13:17:26]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-13 13:17:26]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-13 13:17:26]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-13 13:17:26]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-13 13:17:26]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-13 13:17:26]
+initSignal:25
+[INFO -- 2017-03-13 13:17:26]
+endSignal:30
+[INFO -- 2017-03-13 13:17:26]
+seqSignal:20
+[INFO -- 2017-03-13 13:17:26]
+faultMode:2
+[INFO -- 2017-03-13 13:17:58]
+Backtrace BEGIN:
+#0  std::__fill_n_a<int*, unsigned long, int> (__first=0x1541814, __n=265608, __value=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:766
+#1  0x000000000044ac9e in std::fill_n<int*, unsigned long, int> (__first=0x1517f40, __n=265608, __value=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:801
+#2  0x0000000000448bba in std::__uninitialized_fill_n<true>::__uninit_fill_n<int*, unsigned long, int> (__first=0x1517f40, __n=265608, __x=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:220
+#3  0x000000000044ac56 in std::uninitialized_fill_n<int*, unsigned long, int> (__first=0x1517f40, __n=265608, __x=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:246
+#4  0x000000000044ac1a in std::__uninitialized_fill_n_a<int*, unsigned long, int, int> (__first=0x1517f40, __n=265608, __x=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:358
+#5  0x0000000000449f81 in std::vector<int, std::allocator<int> >::_M_fill_insert (this=0x7fffffffe510, __position=..., __n=265608, __x=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/vector.tcc:496
+#6  0x0000000000449a69 in std::vector<int, std::allocator<int> >::insert (this=0x7fffffffe510, __position=..., __n=265608, __x=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:1073
+#7  0x00000000004499c4 in std::vector<int, std::allocator<int> >::resize (this=0x7fffffffe510, __new_size=265608, __x=0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:716
+#8  0x0000000000445f9e in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:457
+#9  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+761	    __fill_n_a(_OutputIterator __first, _Size __n, const _Tp& __value)
+762	    {
+763	      const _Tp __tmp = __value;
+764	      for (__decltype(__n + 0) __niter = __n;
+765		   __niter > 0; --__niter, ++__first)
+766		*__first = __tmp;
+767	      return __first;
+768	    }
+769	
+770	  template<typename _Size, typename _Tp>
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0xe00xb90x7f0x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7d0680 
+address max offset: 8
+Memory content after  bitflip:0xbb0x620x990xcc0x5f0x720x100xb9
+frame name: std::__uninitialized_fill_n_a<int*, unsigned long, int, int>
+symbol name: state
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 159
+value: 0x7fb9e0
+value address: 0x7d0680 <state>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-13 13:17:58]
+Fault Injection Successful after 32.9720249176s
+[INFO -- 2017-03-13 13:18:00]
+event type: exit
+[EXCEPTION -- 2017-03-13 13:18:00]
+exit code: no exit code available

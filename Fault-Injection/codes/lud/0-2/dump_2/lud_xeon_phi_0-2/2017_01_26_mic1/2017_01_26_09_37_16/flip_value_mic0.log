@@ -1,0 +1,143 @@
+2017-01-26 09:36:35:Starting flip_value script
+2017-01-26 09:36:35:Initialization strings:
+2017-01-26 09:36:35:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-26 09:36:35:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-26 09:36:35:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-26 09:36:35:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-26 09:36:35:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-26 09:36:35:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-26 09:36:35:initSignal:0
+2017-01-26 09:36:35:endSignal:2
+2017-01-26 09:36:35:seqSignal:30
+2017-01-26 09:36:36:Trying Fault Injection
+2017-01-26 09:36:36:Inferior PID: 119221
+2017-01-26 09:36:36:Inferior is valid: True
+2017-01-26 09:36:36:Inferior #threads: 189
+2017-01-26 09:36:36:Backtrace BEGIN:
+2017-01-26 09:36:36:#0  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:548
+#1  __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fff602c9600) at pthread_create.c:524
+#2  0x00007ffff790d323 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-01-26 09:36:36:543	in allocatestack.c
+
+2017-01-26 09:36:36:Backtrace END
+2017-01-26 09:36:39:Trying Fault Injection
+2017-01-26 09:36:39:Inferior PID: 119221
+2017-01-26 09:36:39:Inferior is valid: True
+2017-01-26 09:36:39:Inferior #threads: 189
+2017-01-26 09:36:39:Backtrace BEGIN:
+2017-01-26 09:36:39:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd2d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff7fd2df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff7fd2d14 in ?? ()
+#8  0x00007ffff7fd2de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+2017-01-26 09:36:39:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-01-26 09:36:39:Backtrace END
+2017-01-26 09:36:43:Thread name: None
+2017-01-26 09:36:43:Thread num: 1
+2017-01-26 09:36:43:Thread ptid: (119221, 119221, 0)
+2017-01-26 09:36:43:bitFlip function
+2017-01-26 09:36:43:Type: The type is an array.
+2017-01-26 09:36:43:Type sizeof: 12
+2017-01-26 09:36:43:Fliping array at pos: 1
+2017-01-26 09:36:43:bitFlip function
+2017-01-26 09:36:43:Type: The type is an integer type.
+2017-01-26 09:36:43:Type sizeof: 4
+2017-01-26 09:36:43:Mem contents(hex):0x010x000x000x00
+2017-01-26 09:36:43:base address to flip value: 0x7ffff743c354 
+2017-01-26 09:36:43:address max offset: 4
+2017-01-26 09:36:43:Memory content before bitflip:0x010x000x000x00
+2017-01-26 09:36:43:Memory content after  bitflip:0x010x000x040x00
+2017-01-26 09:36:43:Mem contents(hex):0x010x000x040x00
+2017-01-26 09:36:43:frame name: allocate_stack
+2017-01-26 09:36:43:symbol name: _thread_db_pthread_schedparam_sched_priority
+2017-01-26 09:36:43:symbol filename: ../nptl_db/structs.def
+2017-01-26 09:36:43:symbol line: 33
+2017-01-26 09:36:43:value: {32, 262145, 1592}
+2017-01-26 09:36:43:value address: 0x7ffff743c350 <_thread_db_pthread_schedparam_sched_priority>
+2017-01-26 09:36:43:Type: The type is an array.
+2017-01-26 09:36:43:Type sizeof: 12
+2017-01-26 09:36:43:Field name: None
+2017-01-26 09:36:43:Field Type:
+2017-01-26 09:36:43:Type: A range type, that is, an integer type with bounds.
+2017-01-26 09:36:43:Type sizeof: 8
+2017-01-26 09:36:43:Type range: (0L, 2L)
+2017-01-26 09:36:43:Fault Injection Successful after 8.19997310638s
+2017-01-26 09:36:43:Thread name: None
+2017-01-26 09:36:43:Thread num: 1
+2017-01-26 09:36:43:Thread ptid: (119221, 119221, 0)
+2017-01-26 09:36:43:bitFlip function
+2017-01-26 09:36:43:Type: The type is an integer type.
+2017-01-26 09:36:43:Type sizeof: 8
+2017-01-26 09:36:43:Mem contents(hex):0x000x960x2c0x600xff0x7f0x000x00
+2017-01-26 09:36:43:base address to flip value: 0x7fffffffd138
+2017-01-26 09:36:43:address max offset: 8
+2017-01-26 09:36:43:Memory content before bitflip:0x000x960x2c0x600xff0x7f0x000x00
+2017-01-26 09:36:43:Memory content after  bitflip:0x000x960xac0x600xff0x7f0x000x00
+2017-01-26 09:36:43:Mem contents(hex):0x000x960xac0x600xff0x7f0x000x00
+2017-01-26 09:36:43:frame name: allocate_stack
+2017-01-26 09:36:43:symbol name: size
+2017-01-26 09:36:43:symbol filename: allocatestack.c
+2017-01-26 09:36:43:symbol line: 353
+2017-01-26 09:36:43:value: 140734815311360
+2017-01-26 09:36:43:value address: 0x7fffffffd138
+2017-01-26 09:36:43:Type: The type is an integer type.
+2017-01-26 09:36:43:Type sizeof: 8
+2017-01-26 09:36:43:Fault Injection Successful after 8.49005389214s
+2017-01-26 09:36:43:Fault Already Injected
+2017-01-26 09:36:43:Fault Already Injected
+2017-01-26 09:36:43:Fault Already Injected
+2017-01-26 09:36:43:Fault Already Injected
+2017-01-26 09:36:44:Fault Already Injected
+2017-01-26 09:36:44:Fault Already Injected
+2017-01-26 09:36:44:Fault Already Injected
+2017-01-26 09:36:44:Fault Already Injected
+2017-01-26 09:36:44:Fault Already Injected
+2017-01-26 09:36:44:Fault Already Injected
+2017-01-26 09:36:44:Fault Already Injected
+2017-01-26 09:36:44:Fault Already Injected
+2017-01-26 09:36:44:Fault Already Injected
+2017-01-26 09:36:44:Fault Already Injected
+2017-01-26 09:36:45:Fault Already Injected
+2017-01-26 09:36:45:Fault Already Injected
+2017-01-26 09:36:45:Fault Already Injected
+2017-01-26 09:36:45:Fault Already Injected
+2017-01-26 09:36:46:Fault Already Injected
+2017-01-26 09:36:46:Fault Already Injected
+2017-01-26 09:36:46:Fault Already Injected
+2017-01-26 09:36:46:Fault Already Injected
+2017-01-26 09:36:46:Fault Already Injected
+2017-01-26 09:36:46:Fault Already Injected
+2017-01-26 09:36:46:Fault Already Injected
+2017-01-26 09:36:46:Fault Already Injected
+2017-01-26 09:36:47:Fault Already Injected
+2017-01-26 09:36:47:Fault Already Injected
+2017-01-26 09:36:47:Fault Already Injected
+2017-01-26 09:36:47:Fault Already Injected
+2017-01-26 09:36:47:Fault Already Injected
+2017-01-26 09:36:47:Fault Already Injected
+2017-01-26 09:36:47:Fault Already Injected
+2017-01-26 09:36:48:Fault Already Injected
+2017-01-26 09:36:48:Fault Already Injected
+2017-01-26 09:36:48:Fault Already Injected
+2017-01-26 09:36:48:Fault Already Injected
+2017-01-26 09:36:48:Fault Already Injected
+2017-01-26 09:36:48:Fault Already Injected
+2017-01-26 09:36:48:Fault Already Injected
+2017-01-26 09:36:49:Fault Already Injected
+2017-01-26 09:36:49:Fault Already Injected
+2017-01-26 09:36:49:Fault Already Injected
+2017-01-26 09:36:49:Fault Already Injected
+2017-01-26 09:36:49:Fault Already Injected
+2017-01-26 09:36:49:Fault Already Injected
+2017-01-26 09:36:50:Fault Already Injected

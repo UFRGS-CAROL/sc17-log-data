@@ -1,0 +1,81 @@
+2016-10-16 17:13:13:Initialization strings:
+2016-10-16 17:13:13:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-16 17:13:13:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-16 17:13:13:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-16 17:13:13:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-16 17:13:13:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-16 17:13:13:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-16 17:13:13:Trying Fault Injection
+2016-10-16 17:13:13:Inferior PID: 136339
+2016-10-16 17:13:13:Inferior is valid: True
+2016-10-16 17:13:13:Inferior #threads: 1
+2016-10-16 17:13:13:Backtrace BEGIN:
+2016-10-16 17:13:13:#0  __GI___strtoul_internal (nptr=nptr@entry=0x7fffffffdb50 "2048", endptr=endptr@entry=0x7fffffffdd80, base=base@entry=10, group=group@entry=0) at ../stdlib/strtol.c:101
+#1  0x00007ffff7127367 in _IO_vfscanf_internal (s=s@entry=0x7fffffffdf40, format=format@entry=0x7ffff793ce1c "Hugepagesize: %llu kB", argptr=argptr@entry=0x7fffffffe068, errp=errp@entry=0x0) at vfscanf.c:1796
+#2  0x00007ffff713a845 in _IO_vsscanf (string=0x7fffffffe140 "Hugepagesize:       2048 kB\n", format=0x7ffff793ce1c "Hugepagesize: %llu kB", args=args@entry=0x7fffffffe068) at iovsscanf.c:44
+#3  0x00007ffff7135309 in __sscanf (s=<optimized out>, format=<optimized out>) at sscanf.c:32
+#4  0x00007ffff791dd8a in ?? ()
+#5  0x6567617065677548 in ?? ()
+#6  0x2020203a657a6973 in ?? ()
+#7  0x3834303220202020 in ?? ()
+#8  0x000a42000a426b20 in ?? ()
+#9  0x00007fffffffe1c0 in ?? ()
+#10 0x0000000000000000 in ?? ()
+
+2016-10-16 17:13:13:96	in ../stdlib/strtol.c
+
+2016-10-16 17:13:13:Backtrace END
+2016-10-16 17:13:13:Thread name: None
+2016-10-16 17:13:13:Thread num: 1
+2016-10-16 17:13:13:Thread ptid: (136339, 136339, 0)
+2016-10-16 17:13:13:bitFlip function
+2016-10-16 17:13:13:Type: The type is an array.
+2016-10-16 17:13:13:Type sizeof: 24
+2016-10-16 17:13:13:Fliping array at pos: 0
+2016-10-16 17:13:13:bitFlip function
+2016-10-16 17:13:13:Type: The type is a structure.
+2016-10-16 17:13:13:Type sizeof: 24
+2016-10-16 17:13:13:Fliping value of field: overflow_arg_area
+2016-10-16 17:13:13:bitFlip function
+2016-10-16 17:13:13:Type: The type is a pointer.
+2016-10-16 17:13:13:Type sizeof: 8
+2016-10-16 17:13:13:Error gdbException(frameFlip): Attempt to dereference a generic pointer.
+2016-10-16 17:13:13:Fault Injection Failed after 0.862942934036s
+2016-10-16 17:13:14:Trying Fault Injection
+2016-10-16 17:13:14:Inferior PID: 136339
+2016-10-16 17:13:14:Inferior is valid: True
+2016-10-16 17:13:14:Inferior #threads: 1
+2016-10-16 17:13:14:Backtrace BEGIN:
+2016-10-16 17:13:14:#0  0x00007ffff71505d0 in __GI_memcpy (dstpp=dstpp@entry=0x7ffff49cda50, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#3  0x00000000004025ad in main (argc=7, argv=0x7fffffffec08) at main_check.c:179
+
+2016-10-16 17:13:14:54	in ../string/memcpy.c
+
+2016-10-16 17:13:14:Backtrace END
+2016-10-16 17:13:14:Thread name: None
+2016-10-16 17:13:14:Thread num: 1
+2016-10-16 17:13:14:Thread ptid: (136339, 136339, 0)
+2016-10-16 17:13:14:bitFlip function
+2016-10-16 17:13:14:Type: The type is a pointer.
+2016-10-16 17:13:14:Type sizeof: 8
+2016-10-16 17:13:14:Fliping a bit of the pointer
+2016-10-16 17:13:14:Mem contents(hex):0x100x200x380xf50xff0x7f0x000x00
+2016-10-16 17:13:14:base address to flip value: 0x7fffffffe9f8
+2016-10-16 17:13:14:address max offset: 8
+2016-10-16 17:13:14:Memory content before bitflip:0x100x200x380xf50xff0x7f0x000x00
+2016-10-16 17:13:14:Memory content after  bitflip:0x100x200x380xf50xff0x7f0x000x40
+2016-10-16 17:13:14:Mem contents(hex):0x100x200x380xf50xff0x7f0x000x40
+2016-10-16 17:13:14:frame name: main
+2016-10-16 17:13:14:symbol name: fv_cpu
+2016-10-16 17:13:14:symbol filename: main_check.c
+2016-10-16 17:13:14:symbol line: 60
+2016-10-16 17:13:14:value: 0x7ffff5382010
+2016-10-16 17:13:14:value address: 0x7fffffffe9f8
+2016-10-16 17:13:14:Type: The type is a pointer.
+2016-10-16 17:13:14:Type sizeof: 8
+2016-10-16 17:13:14:Fault Injection Successful after 1.52292704582s
+2016-10-16 17:13:14:Fault Already Injected
+2016-10-16 17:13:14:event type: exit
+2016-10-16 17:13:14:exit code: no exit code available

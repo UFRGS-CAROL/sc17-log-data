@@ -1,0 +1,66 @@
+[INFO -- 2017-03-05 21:11:47]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-05 21:11:47]
+Initialization strings:
+[INFO -- 2017-03-05 21:11:47]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-05 21:11:47]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 21:11:47]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 21:11:47]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 21:11:47]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 21:11:47]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-05 21:11:47]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-05 21:11:47]
+initSignal:5
+[INFO -- 2017-03-05 21:11:47]
+endSignal:10
+[INFO -- 2017-03-05 21:11:47]
+seqSignal:20
+[INFO -- 2017-03-05 21:11:47]
+faultMode:3
+[INFO -- 2017-03-05 21:11:58]
+Backtrace BEGIN:
+#0  0x000000000053d07a in KDTree_CreateTree (t=0x7f9d50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:255
+#1  0x000000000053d3f4 in KDTree_QueryCircleIntersect_Double (t=0x7f9d50, result_num=0x7fffffffe5dc, result_indicies=0x181ae10, circ_radius=24, ncells=264192, x=0x7fff0c0d6010, dx=0x7ffecc1ce010, y=0x7ffe8c1cc010, dy=0x7ffe4c1bf010) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:329
+#2  0x00000000005080fe in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1535
+#3  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+250	         stack[stack_ptr++] = next_node;  /* Node Number in the Tree */
+251	         stack[stack_ptr++] = mid + 1;    /* Element Span Minimum */
+252	         stack[stack_ptr++] = max;        /* Element Span Maximum */
+253	         Bounds_Infinite(&(t->tree_safety_boxes[next_node]));
+254	         for (i = min + 1; (int)i <= max; i++) {
+255	            Bounds_AddBounds(&(t->tree_safety_boxes[next_node]),
+256	                             &(t->elements[idx[i]]));
+257	         }
+258	         next_node++;
+259	      }
+
+Backtrace END
+Memory content before bitflip:0x020x020x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe578
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: Mesh::init
+symbol name: nyy
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+symbol line: 1439
+value: 0
+value address: 0x7fffffffe578
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-05 21:11:58]
+Fault Injection Successful after 11.9228389263s
+[INFO -- 2017-03-05 21:12:46]
+event type: exit
+[INFO -- 2017-03-05 21:12:46]
+exit code: 0

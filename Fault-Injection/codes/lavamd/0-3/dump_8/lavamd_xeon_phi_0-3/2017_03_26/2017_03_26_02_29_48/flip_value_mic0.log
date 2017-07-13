@@ -1,0 +1,67 @@
+[INFO -- 2017-03-26 02:29:23]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 02:29:23]
+Initialization strings:
+[INFO -- 2017-03-26 02:29:23]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 02:29:23]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 02:29:23]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 02:29:23]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 02:29:23]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 02:29:23]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 02:29:23]
+initSignal:0
+[INFO -- 2017-03-26 02:29:23]
+endSignal:3
+[INFO -- 2017-03-26 02:29:23]
+seqSignal:30
+[INFO -- 2017-03-26 02:29:23]
+faultMode:2
+[INFO -- 2017-03-26 02:29:24]
+Backtrace BEGIN:
+#0  0x0000000000401600 in fread@plt ()
+#1  0x0000000000402670 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:182
+
+50	    char * input_charges;
+51	    char * output_gold;
+52	
+53	    int i, j, k, l, m, n;
+54	
+55	    par_str par_cpu;
+56	    dim_str dim_cpu;
+57	    box_str* box_cpu;
+58	    FOUR_VECTOR* rv_cpu;
+59	    fp* qv_cpu;
+
+Backtrace END
+Fliping array at pos: 10
+Memory content before bitflip:0x0d
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe652 
+address max offset: 1
+Memory content after  bitflip:0x5a
+frame name: main
+symbol name: test_info
+symbol filename: main_check.c
+symbol line: 188
+value: ",]\336\367\377\177\000\000\070LZ\367\377\177\000\000p\b\000\000\000\000\000\000\004L\r\367\377\177\000\000\240\231\377\367\377\177\000\000\070L\r\367\377\177\000\000\020`\336\367\377\177\000\000p\b\000\000\000\000\000\000\330\027\016\367\377\177\000\000\240\231\377\367\377\177\000\000(\347\377\377\377\177\000\000$\347\377\377\377\177\000\000[\362\001"
+value address: 0x7fffffffe648
+Type: The type is an array.
+Type sizeof: 100
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 99L)
+
+[INFO -- 2017-03-26 02:29:24]
+Fault Injection Successful after 1.29507899284s
+[INFO -- 2017-03-26 02:29:41]
+event type: exit
+[INFO -- 2017-03-26 02:29:41]
+exit code: 0

@@ -1,0 +1,89 @@
+2017-03-01 21:22:06:Starting flip_value script
+2017-03-01 21:22:06:Initialization strings:
+2017-03-01 21:22:07:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 21:22:07:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 21:22:07:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 21:22:07:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 21:22:07:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 21:22:07:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 21:22:07:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 21:22:07:initSignal:5
+2017-03-01 21:22:07:endSignal:10
+2017-03-01 21:22:07:seqSignal:20
+2017-03-01 21:22:13:Backtrace BEGIN:
+2017-03-01 21:22:13:#0  0x000000000055742f in MallocPlus::memory_reorder_all (this=0x7f9a58, iorder=0x7fff140d4010) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/MallocPlus/MallocPlus.cpp:575
+#1  0x0000000000536d47 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:508
+#2  0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#3  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-03-01 21:22:13:570	      } else {
+571	         float *ptr;
+572	         float *malloc_mem_ptr = (float *)memory_item_old->mem_ptr;
+573	         float *tmp = (float *)malloc(memory_item_old->mem_nelem[0]*memory_item_old->mem_elsize);
+574	         for (uint ic = 0; ic < memory_item_old->mem_nelem[0]; ic++){
+575	            tmp[ic] = malloc_mem_ptr[iorder[ic]];
+576	         }
+577	         memory_replace(malloc_mem_ptr, tmp);
+578	         SWAP_PTR(malloc_mem_ptr, tmp, ptr);
+579	         free(tmp);
+
+2017-03-01 21:22:13:Backtrace END
+2017-03-01 21:22:19:Type: The type is a structure.
+2017-03-01 21:22:19:Type sizeof: 24
+2017-03-01 21:22:19:Fliping value of field: std::_Vector_base<int, std::allocator<int> >
+2017-03-01 21:22:19:Type: The type is a structure.
+2017-03-01 21:22:19:Type sizeof: 24
+2017-03-01 21:22:19:Fliping value of field: _M_impl
+2017-03-01 21:22:19:Type: The type is a structure.
+2017-03-01 21:22:19:Type sizeof: 24
+2017-03-01 21:22:19:Fliping value of field: std::allocator<int>
+2017-03-01 21:22:19:Type: The type is a structure.
+2017-03-01 21:22:19:Type sizeof: 1
+2017-03-01 21:22:19:Fliping value of field: __gnu_cxx::new_allocator<int>
+2017-03-01 21:22:19:Type: The type is a structure.
+2017-03-01 21:22:19:Type sizeof: 1
+2017-03-01 21:22:19:Mem contents(hex):0x00
+2017-03-01 21:22:19:Fault Mode: Single bit-flip
+2017-03-01 21:22:19:base address to flip value: 0x7fffffffde80
+2017-03-01 21:22:19:address max offset: 1
+2017-03-01 21:22:19:Memory content before bitflip:0x00
+2017-03-01 21:22:19:Memory content after  bitflip:0x10
+2017-03-01 21:22:19:Mem contents(hex):0x10
+2017-03-01 21:22:19:Backtrace BEGIN:
+2017-03-01 21:22:19:#0  0x000000000055742f in MallocPlus::memory_reorder_all (this=0x7f9a58, iorder=0x7fff140d4010) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/MallocPlus/MallocPlus.cpp:575
+#1  0x0000000000536d47 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:508
+#2  0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#3  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-03-01 21:22:19:570	      } else {
+571	         float *ptr;
+572	         float *malloc_mem_ptr = (float *)memory_item_old->mem_ptr;
+573	         float *tmp = (float *)malloc(memory_item_old->mem_nelem[0]*memory_item_old->mem_elsize);
+574	         for (uint ic = 0; ic < memory_item_old->mem_nelem[0]; ic++){
+575	            tmp[ic] = malloc_mem_ptr[iorder[ic]];
+576	         }
+577	         memory_replace(malloc_mem_ptr, tmp);
+578	         SWAP_PTR(malloc_mem_ptr, tmp, ptr);
+579	         free(tmp);
+
+2017-03-01 21:22:19:Backtrace END
+2017-03-01 21:22:24:Type: The type is an integer type.
+2017-03-01 21:22:24:Type sizeof: 4
+2017-03-01 21:22:24:Mem contents(hex):0x000x000x000x00
+2017-03-01 21:22:24:Fault Mode: Single bit-flip
+2017-03-01 21:22:24:base address to flip value: 0x7d06dc 
+2017-03-01 21:22:24:address max offset: 4
+2017-03-01 21:22:24:Memory content before bitflip:0x000x000x000x00
+2017-03-01 21:22:24:Memory content after  bitflip:0x040x000x000x00
+2017-03-01 21:22:24:Mem contents(hex):0x040x000x000x00
+2017-03-01 21:22:24:frame name: main
+2017-03-01 21:22:24:symbol name: view_mode
+2017-03-01 21:22:24:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-03-01 21:22:24:symbol line: 112
+2017-03-01 21:22:24:value: 4
+2017-03-01 21:22:24:value address: 0x7d06dc <view_mode>
+2017-03-01 21:22:24:Type: The type is an integer type.
+2017-03-01 21:22:24:Type sizeof: 4
+2017-03-01 21:22:24:Fault Injection Successful after 17.7375071049s
+2017-03-01 21:22:25:event type: exit
+2017-03-01 21:22:25:exit code: no exit code available

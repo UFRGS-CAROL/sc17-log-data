@@ -1,0 +1,78 @@
+2017-01-26 05:59:09:Starting flip_value script
+2017-01-26 05:59:09:Initialization strings:
+2017-01-26 05:59:09:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-26 05:59:09:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-26 05:59:09:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-26 05:59:09:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-26 05:59:09:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-26 05:59:09:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-26 05:59:09:initSignal:4
+2017-01-26 05:59:09:endSignal:6
+2017-01-26 05:59:09:seqSignal:30
+2017-01-26 05:59:14:Trying Fault Injection
+2017-01-26 05:59:14:Inferior PID: 97165
+2017-01-26 05:59:14:Inferior is valid: True
+2017-01-26 05:59:15:Inferior #threads: 229
+2017-01-26 05:59:15:Backtrace BEGIN:
+2017-01-26 05:59:15:#0  0x0000000000403c4f in lud_omp (a=0x7ffff5ecc010, size=2048) at lud_omp.c:69
+#1  0x0000000000402c78 in main (argc=9, argv=0x7fffffffec08) at lud_check.c:124
+
+2017-01-26 05:59:15:64	        size_inter = size - offset -  BS;
+65	        chunks_in_inter_row  = size_inter/BS;
+66	        
+67	        // calculate perimeter block matrices
+68	        // 
+69	        #pragma omp parallel for default(none) \
+70	          private(chunk_idx) shared(size, chunks_per_inter, chunks_in_inter_row, offset, a) 
+71	        for ( chunk_idx = 0; chunk_idx < chunks_in_inter_row; chunk_idx++)
+72	        {
+73	            int i, j, k, i_global, j_global, i_here, j_here;
+
+2017-01-26 05:59:15:Backtrace END
+2017-01-26 05:59:18:Thread name: None
+2017-01-26 05:59:18:Thread num: 1
+2017-01-26 05:59:18:Thread ptid: (97165, 97165, 0)
+2017-01-26 05:59:18:bitFlip function
+2017-01-26 05:59:18:Type: The type is an array.
+2017-01-26 05:59:18:Type sizeof: 200
+2017-01-26 05:59:18:Fliping array at pos: 102
+2017-01-26 05:59:18:bitFlip function
+2017-01-26 05:59:18:Type: The type is an integer type.
+2017-01-26 05:59:18:Type sizeof: 1
+2017-01-26 05:59:18:Mem contents(hex):0x00
+2017-01-26 05:59:18:base address to flip value: 0x7fffffffe8ae 
+2017-01-26 05:59:18:address max offset: 1
+2017-01-26 05:59:18:Memory content before bitflip:0x00
+2017-01-26 05:59:18:Memory content after  bitflip:0x01
+2017-01-26 05:59:18:Mem contents(hex):0x01
+2017-01-26 05:59:18:frame name: main
+2017-01-26 05:59:18:symbol name: test_info
+2017-01-26 05:59:18:symbol filename: lud_check.c
+2017-01-26 05:59:18:symbol line: 116
+2017-01-26 05:59:18:value: "matrix_dim:2048 threads:228\000\377\177\000\000\001\000\000\000\000\000\000\000\300\351\377\377\377\177\000\000\370\234\377\367\377\177\000\000\000\000\000\000\000\000\000\000\350\351\377\377\377\177\000\000\000\215\377\367\377\177\000\000\314h\336\367\377\177\000\000\a\000\000\000\000\000\000\000\000\215\377\367\377\177\001\000\001", '\000' <repeats 15 times>, "\001\000\000\000\000\000\000\000,]\336\367\377\177\000\000\070L\r\367\377\177\000\000\001\b\000\000\000\000\000\000HJ\r\367\377\177\000\000\240\231\377\367\377\177\000\000\070L\r\367\377\177\000\000\020`\336\367\377\177\000\000\001\b\000\000\000\000\000\000\330\027\016\367\377\177\000"
+2017-01-26 05:59:18:value address: 0x7fffffffe848
+2017-01-26 05:59:18:Type: The type is an array.
+2017-01-26 05:59:18:Type sizeof: 200
+2017-01-26 05:59:18:Field name: None
+2017-01-26 05:59:18:Field Type:
+2017-01-26 05:59:18:Type: A range type, that is, an integer type with bounds.
+2017-01-26 05:59:18:Type sizeof: 1
+2017-01-26 05:59:18:Type range: (0L, 199L)
+2017-01-26 05:59:18:Fault Injection Successful after 9.27426791191s
+2017-01-26 05:59:18:Fault Already Injected
+2017-01-26 05:59:18:Fault Already Injected
+2017-01-26 05:59:18:Fault Already Injected
+2017-01-26 05:59:18:Fault Already Injected
+2017-01-26 05:59:19:Fault Already Injected
+2017-01-26 05:59:19:Fault Already Injected
+2017-01-26 05:59:19:Fault Already Injected
+2017-01-26 05:59:20:Fault Already Injected
+2017-01-26 05:59:20:Fault Already Injected
+2017-01-26 05:59:20:Fault Already Injected
+2017-01-26 05:59:20:Fault Already Injected
+2017-01-26 05:59:21:Fault Already Injected
+2017-01-26 05:59:21:Fault Already Injected
+2017-01-26 05:59:21:Fault Already Injected
+2017-01-26 05:59:21:Fault Already Injected
+2017-01-26 05:59:21:event type: exit
+2017-01-26 05:59:21:exit code: 0

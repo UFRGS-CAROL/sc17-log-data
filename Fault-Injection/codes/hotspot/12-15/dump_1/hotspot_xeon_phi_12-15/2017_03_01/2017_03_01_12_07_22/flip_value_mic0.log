@@ -1,0 +1,181 @@
+2017-03-01 12:06:43:Starting flip_value script
+2017-03-01 12:06:43:Initialization strings:
+2017-03-01 12:06:43:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 12:06:43:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 12:06:43:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 12:06:43:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-03-01 12:06:43:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-03-01 12:06:43:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-03-01 12:06:43:initSignal:12
+2017-03-01 12:06:43:endSignal:15
+2017-03-01 12:06:43:seqSignal:15
+2017-03-01 12:06:57:Backtrace BEGIN:
+2017-03-01 12:06:57:#0  0x00007ffff78a9843 in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-03-01 12:06:57:221	    fprintf(stderr, "\t<no. of threads>   - number of threads\n");
+222	    fprintf(stderr, "\t<temp_file>  - name of the file containing the initial temperature values of each cell\n");
+223	    fprintf(stderr, "\t<power_file> - name of the file containing the dissipated power values of each cell\n");
+224	    fprintf(stderr, "\t<output_file> - name of the output file\n");
+225	    exit(1);
+226	}
+227	
+228	int main(int argc, char **argv)
+229	{
+230	    int grid_rows, grid_cols, sim_time, i;
+
+2017-03-01 12:06:57:Backtrace END
+2017-03-01 12:06:58:Backtrace BEGIN:
+2017-03-01 12:06:59:#0  0x00007ffff78a9843 in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-03-01 12:06:59:231	    FLOAT *temp, *power, *result, *final_result, *gold;
+232	    char *tfile, *pfile, *ofile;
+233	
+234	    /* check validity of inputs	*/
+235	    if (argc != 8)
+236	        usage(argc, argv);
+237	    if ((grid_rows = atoi(argv[1])) <= 0 ||
+238	            (grid_cols = atoi(argv[2])) <= 0 ||
+239	            (sim_time = atoi(argv[3])) <= 0 ||
+240	            (num_omp_threads = atoi(argv[4])) <= 0
+
+2017-03-01 12:06:59:Backtrace END
+2017-03-01 12:06:59:Backtrace BEGIN:
+2017-03-01 12:06:59:#0  0x00007ffff78a9843 in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-03-01 12:06:59:241	       )
+242	        usage(argc, argv);
+243	
+244	    /* allocate memory for the temperature and power arrays	*/
+245	    temp = (FLOAT *) calloc (grid_rows * grid_cols, sizeof(FLOAT));
+246	    power = (FLOAT *) calloc (grid_rows * grid_cols, sizeof(FLOAT));
+247	    result = (FLOAT *) calloc (grid_rows * grid_cols, sizeof(FLOAT));
+248	    gold = (FLOAT *) calloc (grid_rows * grid_cols, sizeof(FLOAT));
+249	    if(!temp || !power)
+250	        fatal("unable to allocate memory");
+
+2017-03-01 12:06:59:Backtrace END
+2017-03-01 12:07:01:Backtrace BEGIN:
+2017-03-01 12:07:01:#0  0x00007ffff78a9843 in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-03-01 12:07:01:251	
+252	#ifdef LOGS
+253	    char test_info[100];
+254	    snprintf(test_info, 100, "simIter:%d gridSize:%dx%d",sim_time, grid_rows, grid_cols);
+255	    start_log_file((char *)"openMPHotspot", test_info);
+256	    set_max_errors_iter(MAX_ERR_ITER_LOG);
+257	    set_iter_interval_print(10);
+258	#endif /* LOGS */
+259	
+260	    /* read initial temperatures and input power	*/
+
+2017-03-01 12:07:01:Backtrace END
+2017-03-01 12:07:02:Backtrace BEGIN:
+2017-03-01 12:07:02:#0  0x00007ffff78a9843 in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-03-01 12:07:02:261	    tfile = argv[5];
+262	    pfile = argv[6];
+263	    ofile = argv[7];
+264	
+265	    read_input(temp, grid_rows, grid_cols, tfile);
+266	    read_input(power, grid_rows, grid_cols, pfile);
+267	    read_input(gold, grid_rows, grid_cols, ofile);
+268	
+269	#ifdef ERR_INJ
+270	    printf("injecting error, changing input!\n");
+
+2017-03-01 12:07:02:Backtrace END
+2017-03-01 12:07:04:Backtrace BEGIN:
+2017-03-01 12:07:04:#0  0x00007ffff78a9843 in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-03-01 12:07:04:271	    temp[0] =  temp[0]*2;
+272	    power[0] = power[0]*5;
+273	#endif
+274	
+275	    printf("Start computing the transient temperature\n");
+276	
+277	    compute_tran_temp(result,sim_time, temp, power, grid_rows, grid_cols);
+278	
+279	    printf("Ending simulation\n");
+280	
+
+2017-03-01 12:07:04:Backtrace END
+2017-03-01 12:07:15:event type: exit
+2017-03-01 12:07:15:exit code: 0

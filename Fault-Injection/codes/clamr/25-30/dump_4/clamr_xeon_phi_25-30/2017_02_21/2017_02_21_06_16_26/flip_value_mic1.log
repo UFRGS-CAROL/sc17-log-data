@@ -1,0 +1,51 @@
+2017-02-21 06:12:15:Starting flip_value script
+2017-02-21 06:12:15:Initialization strings:
+2017-02-21 06:12:15:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-21 06:12:15:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 06:12:15:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 06:12:15:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-21 06:12:15:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-21 06:12:15:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-21 06:12:15:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-21 06:12:15:initSignal:25
+2017-02-21 06:12:15:endSignal:30
+2017-02-21 06:12:15:seqSignal:20
+2017-02-21 06:12:43:Backtrace BEGIN:
+2017-02-21 06:12:43:#0  0x0000000000470bf3 in State::L__ZN5State21calc_refine_potentialERSt6vectorIiSaIiEERiS4__2618__par_loop0_2_39 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:2695
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe290 in ?? ()
+#3  0x00007fffffffe298 in ?? ()
+#4  0x00007fffffffe230 in ?? ()
+#5  0x00007fffffffe228 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-02-21 06:12:43:2690	      duplus1 = Ht-Hic;
+2691	      //duplus2 = Vt-Vic;
+2692	      duhalf1 = Hic-Hb;
+2693	      //duhalf2 = Vic-Vb;
+2694	
+2695	      qpot = max(fabs(duplus1/Hic), fabs(duhalf1/Hic));
+2696	      if (qpot > qmax) qmax = qpot;
+2697	
+2698	      duminus1 = Hic-Hb;
+2699	      //duminus2 = Vic-Vb;
+
+2017-02-21 06:12:43:Backtrace END
+2017-02-21 06:12:49:Type: A floating point type.
+2017-02-21 06:12:49:Type sizeof: 8
+2017-02-21 06:12:49:Mem contents(hex):0x000x000x000x000x000x000x1c0x40
+2017-02-21 06:12:49:Fault Mode: Double bit-flip
+2017-02-21 06:12:49:base address to flip value: 0x7fffffffdca0
+2017-02-21 06:12:49:address max offset: 8
+2017-02-21 06:12:49:Memory content before bitflip:0x000x000x000x000x000x000x1c0x40
+2017-02-21 06:12:49:Memory content after  bitflip:0x000x000x000x000x000x480x1c0x40
+2017-02-21 06:12:49:Mem contents(hex):0x000x000x000x000x000x480x1c0x40
+2017-02-21 06:12:49:frame name: State::L__ZN5State21calc_refine_potentialERSt6vectorIiSaIiEERiS4__2618__par_loop0_2_39
+2017-02-21 06:12:49:symbol name: Hic
+2017-02-21 06:12:49:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+2017-02-21 06:12:49:symbol line: 2624
+2017-02-21 06:12:49:value: 7.0703125
+2017-02-21 06:12:49:value address: 0x7fffffffdca0
+2017-02-21 06:12:49:Type: A floating point type.
+2017-02-21 06:12:49:Type sizeof: 8
+2017-02-21 06:12:49:Fault Injection Successful after 34.4543700218s

@@ -1,0 +1,78 @@
+[INFO -- 2017-03-09 09:08:14]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-09 09:08:14]
+Initialization strings:
+[INFO -- 2017-03-09 09:08:14]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-09 09:08:14]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-09 09:08:14]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-09 09:08:14]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-09 09:08:14]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-09 09:08:14]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-09 09:08:14]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-09 09:08:14]
+initSignal:25
+[INFO -- 2017-03-09 09:08:14]
+endSignal:30
+[INFO -- 2017-03-09 09:08:14]
+seqSignal:20
+[INFO -- 2017-03-09 09:08:14]
+faultMode:2
+[INFO -- 2017-03-09 09:08:48]
+Backtrace BEGIN:
+#0  0x000000000044ad0a in std::__fill_n_a<int*, unsigned long, int> (__first=0x179bb18, __n=265656, __value=@0x7fffffffdbfc: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:765
+#1  0x000000000044ac9e in std::fill_n<int*, unsigned long, int> (__first=0x171cca0, __n=265656, __value=@0x7fffffffdbfc: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:801
+#2  0x0000000000448bba in std::__uninitialized_fill_n<true>::__uninit_fill_n<int*, unsigned long, int> (__first=0x171cca0, __n=265656, __x=@0x7fffffffdbfc: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:220
+#3  0x000000000044ac56 in std::uninitialized_fill_n<int*, unsigned long, int> (__first=0x171cca0, __n=265656, __x=@0x7fffffffdbfc: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:246
+#4  0x000000000044ac1a in std::__uninitialized_fill_n_a<int*, unsigned long, int, int> (__first=0x171cca0, __n=265656, __x=@0x7fffffffdbfc: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:358
+#5  0x0000000000449b30 in std::vector<int, std::allocator<int> >::_M_fill_initialize (this=0x7fffffffdec8, __n=265656, __value=@0x7fffffffdbfc: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:1301
+#6  0x00000000004496a4 in std::vector<int, std::allocator<int> >::vector (this=0x7fffffffdec8, __n=265656, __value=@0x7fffffffdbfc: 0, __a=...) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:306
+#7  0x000000000051c519 in Mesh::refine_smooth (this=0x7fae50, mpot=..., icount=@0x7fffffffe45c: 24, jcount=@0x7fffffffe460: -108) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1776
+#8  0x000000000046fa22 in State::calc_refine_potential (this=0x7fb9e0, mpot=..., icount=@0x7fffffffe45c: 24, jcount=@0x7fffffffe460: -108) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:2719
+#9  0x0000000000445fcb in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:458
+#10 0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+760	    __gnu_cxx::__enable_if<__is_scalar<_Tp>::__value, _OutputIterator>::__type
+761	    __fill_n_a(_OutputIterator __first, _Size __n, const _Tp& __value)
+762	    {
+763	      const _Tp __tmp = __value;
+764	      for (__decltype(__n + 0) __niter = __n;
+765		   __niter > 0; --__niter, ++__first)
+766		*__first = __tmp;
+767	      return __first;
+768	    }
+769	
+
+Backtrace END
+Fliping array at pos: 2
+Memory content before bitflip:0x74
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ce55e  
+address max offset: 1
+Memory content after  bitflip:0xab
+frame name: std::fill_n<int*, unsigned long, int>
+symbol name: total_sim_time_log
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 180
+value: "to\253al_execution_time.log"
+value address: 0x7ce55c <total_sim_time_log>
+Type: The type is an array.
+Type sizeof: 25
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 24L)
+
+[INFO -- 2017-03-09 09:08:48]
+Fault Injection Successful after 34.3245289326s
+[INFO -- 2017-03-09 09:09:13]
+event type: exit
+[INFO -- 2017-03-09 09:09:13]
+exit code: 0

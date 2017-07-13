@@ -1,0 +1,68 @@
+2016-10-15 00:30:01:Initialization strings:
+2016-10-15 00:30:01:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-15 00:30:01:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-15 00:30:01:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-15 00:30:01:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-15 00:30:01:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-15 00:30:01:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-15 00:30:02:Trying Fault Injection
+2016-10-15 00:30:02:Backtrace BEGIN:
+2016-10-15 00:30:02:#0  __GI__IO_setb (f=f@entry=0x7fffffffe400, b=b@entry=0x7fffffffe77a "323.995815\n", eb=eb@entry=0x7fffffffe785 "", a=a@entry=0) at genops.c:404
+#1  0x00007ffff7145ae3 in _IO_str_init_static_internal (sf=sf@entry=0x7fffffffe400, ptr=ptr@entry=0x7fffffffe77a "323.995815\n", size=size@entry=0, pstart=pstart@entry=0x0) at strops.c:49
+#2  0x00007ffff71365d5 in __GI___isoc99_vsscanf (string=0x7fffffffe77a "323.995815\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:41
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#5  main (argc=0, argv=0x7fffffffe77a) at hotspot_check.c:264
+
+2016-10-15 00:30:02:399	in genops.c
+
+2016-10-15 00:30:02:Backtrace END
+2016-10-15 00:30:02:Type: The type is an array.
+2016-10-15 00:30:02:Type sizeof: 24
+2016-10-15 00:30:02:Fliping array at pos: 0
+2016-10-15 00:30:02:Type: The type is a structure.
+2016-10-15 00:30:02:Type sizeof: 24
+2016-10-15 00:30:02:Fliping value of field: reg_save_area
+2016-10-15 00:30:02:Type: The type is a pointer.
+2016-10-15 00:30:02:Type sizeof: 8
+2016-10-15 00:30:02:Fault Injection Failed after 1.23632192612s
+2016-10-15 00:30:03:Trying Fault Injection
+2016-10-15 00:30:03:Backtrace BEGIN:
+2016-10-15 00:30:03:#0  read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:200
+#1  main (argc=-7552, argv=0x0) at hotspot_check.c:264
+
+2016-10-15 00:30:03:195	
+196	    fp = fopen (file, "r");
+197	    if (!fp)
+198	        fatal ("file could not be opened for reading");
+199	
+200	    for (i=0; i < grid_rows * grid_cols; i++) {
+201	        if (fgets(str, STR_SIZE, fp) == NULL) {
+202	            fatal("fgets error");
+203	        }
+204	        if (feof(fp))
+
+2016-10-15 00:30:03:Backtrace END
+2016-10-15 00:30:03:Type: The type is an integer type.
+2016-10-15 00:30:03:Type sizeof: 4
+2016-10-15 00:30:03:Mem contents(hex):0x640xee0xff0xff
+2016-10-15 00:30:03:base address to flip value: 0x7fffffffe610
+2016-10-15 00:30:03:address max offset: 4
+2016-10-15 00:30:03:Memory content before bitflip:0x640xee0xff0xff
+2016-10-15 00:30:03:Memory content after  bitflip:0x640xee0xfd0xff
+2016-10-15 00:30:03:Mem contents(hex):0x640xee0xfd0xff
+2016-10-15 00:30:03:frame name: main
+2016-10-15 00:30:03:symbol name: errors
+2016-10-15 00:30:03:symbol filename: hotspot_check.c
+2016-10-15 00:30:03:symbol line: 281
+2016-10-15 00:30:03:value: -135580
+2016-10-15 00:30:03:value address: 0x7fffffffe610
+2016-10-15 00:30:03:Type: The type is an integer type.
+2016-10-15 00:30:03:Type sizeof: 4
+2016-10-15 00:30:03:Fault Injection Successful after 2.54208111763s
+2016-10-15 00:30:04:Fault Already Injected
+2016-10-15 00:30:05:Fault Already Injected
+2016-10-15 00:30:05:Fault Already Injected
+2016-10-15 00:30:05:Fault Already Injected
+2016-10-15 00:30:06:event type: exit
+2016-10-15 00:30:06:exit code: 1

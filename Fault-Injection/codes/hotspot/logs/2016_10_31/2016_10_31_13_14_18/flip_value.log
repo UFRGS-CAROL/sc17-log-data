@@ -1,0 +1,55 @@
+2016-10-31 13:13:56:Initialization strings:
+2016-10-31 13:13:57:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-31 13:13:57:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 13:13:57:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 13:13:57:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-31 13:13:57:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-31 13:13:57:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-31 13:13:58:Trying Fault Injection
+2016-10-31 13:13:58:Backtrace BEGIN:
+2016-10-31 13:13:58:#0  __GI__IO_setb (f=f@entry=0x7fffffffe400, b=b@entry=0x7fffffffe77a "332.941524\n", eb=eb@entry=0x7fffffffe785 "", a=a@entry=0) at genops.c:404
+#1  0x00007ffff7145ae3 in _IO_str_init_static_internal (sf=sf@entry=0x7fffffffe400, ptr=ptr@entry=0x7fffffffe77a "332.941524\n", size=size@entry=0, pstart=pstart@entry=0x0) at strops.c:49
+#2  0x00007ffff71365d5 in __GI___isoc99_vsscanf (string=0x7fffffffe77a "332.941524\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:41
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#5  main (argc=0, argv=0x7fffffffe77a) at hotspot_check.c:264
+
+2016-10-31 13:13:58:399	in genops.c
+
+2016-10-31 13:13:58:Backtrace END
+2016-10-31 13:13:58:Type: The type is an array.
+2016-10-31 13:13:58:Type sizeof: 100
+2016-10-31 13:13:58:Fliping array at pos: 54
+2016-10-31 13:13:58:Type: The type is an integer type.
+2016-10-31 13:13:58:Type sizeof: 1
+2016-10-31 13:13:58:Mem contents(hex):0x00
+2016-10-31 13:13:58:base address to flip value: 0x7fffffffe74c 
+2016-10-31 13:13:58:address max offset: 1
+2016-10-31 13:13:58:Memory content before bitflip:0x00
+2016-10-31 13:13:58:Memory content after  bitflip:0x10
+2016-10-31 13:13:58:Mem contents(hex):0x10
+2016-10-31 13:13:58:frame name: read_input
+2016-10-31 13:13:58:symbol name: test_info
+2016-10-31 13:13:58:symbol filename: hotspot_check.c
+2016-10-31 13:13:58:symbol line: 252
+2016-10-31 13:13:58:value: "simIter:2000 gridSize:1024x1024\000\000\000\250\350\377\377", '\000' <repeats 16 times>, "\020", '\000' <repeats 11 times>, ",]\336\367\377\177\000\000 \323\335\367\377\177\000\000\f\000\000\000\000\000\000\000\344\322\335\367\377\177\000\000\330", <incomplete sequence \331>
+2016-10-31 13:13:58:value address: 0x7fffffffe716
+2016-10-31 13:13:58:Type: The type is an array.
+2016-10-31 13:13:58:Type sizeof: 100
+2016-10-31 13:13:58:Field name: None
+2016-10-31 13:13:58:Field Type:
+2016-10-31 13:13:58:Type: A range type, that is, an integer type with bounds.
+2016-10-31 13:13:58:Type sizeof: 1
+2016-10-31 13:13:58:Type range: (0L, 99L)
+2016-10-31 13:13:58:Fault Injection Successful after 1.54812002182s
+2016-10-31 13:14:02:Fault Already Injected
+2016-10-31 13:14:05:Fault Already Injected
+2016-10-31 13:14:05:Fault Already Injected
+2016-10-31 13:14:06:Fault Already Injected
+2016-10-31 13:14:06:Fault Already Injected
+2016-10-31 13:14:08:Fault Already Injected
+2016-10-31 13:14:09:Fault Already Injected
+2016-10-31 13:14:09:Fault Already Injected
+2016-10-31 13:14:11:Fault Already Injected
+2016-10-31 13:14:12:event type: exit
+2016-10-31 13:14:12:exit code: 0

@@ -1,0 +1,61 @@
+[INFO -- 2017-03-26 15:33:39]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 15:33:39]
+Initialization strings:
+[INFO -- 2017-03-26 15:33:39]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 15:33:39]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 15:33:39]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 15:33:39]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 15:33:39]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 15:33:39]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 15:33:39]
+initSignal:0
+[INFO -- 2017-03-26 15:33:39]
+endSignal:3
+[INFO -- 2017-03-26 15:33:39]
+seqSignal:30
+[INFO -- 2017-03-26 15:33:39]
+faultMode:1
+[INFO -- 2017-03-26 15:33:41]
+Backtrace BEGIN:
+#0  __GI___waitpid (pid=139173, stat_loc=stat_loc@entry=0x7fffffffe198, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000406619 in update_timestamp () at ../include/log_helper.c:107
+#3  0x000000000040721e in start_iteration () at ../include/log_helper.c:311
+#4  0x0000000000402875 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:236
+
+26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+Backtrace END
+Fliping value of field: __val
+Fliping array at pos: 12
+Memory content before bitflip:0x180x000x000x000x300x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe218
+address max offset: 8
+Memory content after  bitflip:0x180x000x900x000x300x000x000x00
+frame name: do_system
+symbol name: omask
+symbol filename: ../sysdeps/posix/system.c
+symbol line: 62
+value: {__val = {0, 140733197136456, 140737341699968, 0, 7290818050288069936, 7290893925260092771, 15, 140737488348096, 4200304, 140737488350144, 140737338534777, 0, 206167867416, 140737488347888, 140737488347696, 38}}
+value address: 0x7fffffffe1b8
+Type: The type is a structure.
+Type sizeof: 128
+Field name: __val
+Field Type: The type is an array.
+Field Type sizeof: 128
+
+[INFO -- 2017-03-26 15:33:41]
+Fault Injection Successful after 2.26159405708s
+[INFO -- 2017-03-26 15:34:00]
+event type: exit
+[INFO -- 2017-03-26 15:34:00]
+exit code: 0

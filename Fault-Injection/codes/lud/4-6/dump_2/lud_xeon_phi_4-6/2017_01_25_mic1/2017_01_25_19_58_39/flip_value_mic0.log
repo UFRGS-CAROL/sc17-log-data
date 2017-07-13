@@ -1,0 +1,73 @@
+2017-01-25 19:58:20:Starting flip_value script
+2017-01-25 19:58:20:Initialization strings:
+2017-01-25 19:58:20:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 19:58:20:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 19:58:20:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 19:58:20:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 19:58:20:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 19:58:20:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 19:58:20:initSignal:4
+2017-01-25 19:58:20:endSignal:6
+2017-01-25 19:58:20:seqSignal:30
+2017-01-25 19:58:25:Trying Fault Injection
+2017-01-25 19:58:25:Inferior PID: 92008
+2017-01-25 19:58:25:Inferior is valid: True
+2017-01-25 19:58:25:Inferior #threads: 229
+2017-01-25 19:58:25:Backtrace BEGIN:
+2017-01-25 19:58:25:#0  0x0000000000403966 in lud_diagonal_omp (a=0x7ffff5ecc010, size=2048, offset=896) at lud_omp.c:28
+#1  0x0000000000403af9 in lud_omp (a=0x7ffff5ecc010, size=2048) at lud_omp.c:62
+#2  0x0000000000402c78 in main (argc=9, argv=0x7fffffffec08) at lud_check.c:124
+
+2017-01-25 19:58:25:23	            }
+24	        }
+25	   
+26	        float temp = 1.f/AA(i,i);
+27	        for (j = i+1; j < BS; j++) {
+28	            for (k = 0; k < i ; k++) {
+29	                AA(j,i) = AA(j,i) - AA(j,k) * AA(k,i);
+30	            }
+31	            AA(j,i) = AA(j,i)*temp;
+32	        }
+
+2017-01-25 19:58:25:Backtrace END
+2017-01-25 19:58:28:Thread name: None
+2017-01-25 19:58:28:Thread num: 1
+2017-01-25 19:58:28:Thread ptid: (92008, 92008, 0)
+2017-01-25 19:58:28:bitFlip function
+2017-01-25 19:58:28:Type: The type is a pointer.
+2017-01-25 19:58:28:Type sizeof: 8
+2017-01-25 19:58:28:Fliping a bit of the value pointed by a pointer
+2017-01-25 19:58:28:bitFlip function
+2017-01-25 19:58:28:Type: A floating point type.
+2017-01-25 19:58:28:Type sizeof: 4
+2017-01-25 19:58:28:Mem contents(hex):0x000x000x200x41
+2017-01-25 19:58:28:base address to flip value: 0x7ffff5ecc010
+2017-01-25 19:58:28:address max offset: 4
+2017-01-25 19:58:28:Memory content before bitflip:0x000x000x200x41
+2017-01-25 19:58:28:Memory content after  bitflip:0x000x200x200x41
+2017-01-25 19:58:28:Mem contents(hex):0x000x200x200x41
+2017-01-25 19:58:28:frame name: lud_diagonal_omp
+2017-01-25 19:58:28:symbol name: a
+2017-01-25 19:58:28:symbol filename: lud_omp.c
+2017-01-25 19:58:28:symbol line: 15
+2017-01-25 19:58:28:value: 0x7ffff5ecc010
+2017-01-25 19:58:28:value address: 0x7fffffffd850
+2017-01-25 19:58:28:Type: The type is a pointer.
+2017-01-25 19:58:28:Type sizeof: 8
+2017-01-25 19:58:28:Fault Injection Successful after 8.80365109444s
+2017-01-25 19:58:28:Fault Already Injected
+2017-01-25 19:58:29:Fault Already Injected
+2017-01-25 19:58:29:Fault Already Injected
+2017-01-25 19:58:29:Fault Already Injected
+2017-01-25 19:58:30:Fault Already Injected
+2017-01-25 19:58:30:Fault Already Injected
+2017-01-25 19:58:30:Fault Already Injected
+2017-01-25 19:58:30:Fault Already Injected
+2017-01-25 19:58:31:Fault Already Injected
+2017-01-25 19:58:31:Fault Already Injected
+2017-01-25 19:58:31:Fault Already Injected
+2017-01-25 19:58:32:Fault Already Injected
+2017-01-25 19:58:32:Fault Already Injected
+2017-01-25 19:58:32:Fault Already Injected
+2017-01-25 19:58:32:event type: exit
+2017-01-25 19:58:32:exit code: 0

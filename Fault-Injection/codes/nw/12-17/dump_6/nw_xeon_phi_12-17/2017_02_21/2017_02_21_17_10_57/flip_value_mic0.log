@@ -1,0 +1,96 @@
+2017-02-21 17:10:16:Starting flip_value script
+2017-02-21 17:10:16:Initialization strings:
+2017-02-21 17:10:17:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-21 17:10:17:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 17:10:17:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 17:10:17:(4) file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-02-21 17:10:17:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-02-21 17:10:17:(6) set args 16394 10 228 /micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10 /micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10
+2017-02-21 17:10:17:initSignal:12
+2017-02-21 17:10:17:endSignal:17
+2017-02-21 17:10:17:seqSignal:30
+2017-02-21 17:10:31:Backtrace BEGIN:
+2017-02-21 17:10:31:#0  runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:330
+#1  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-02-21 17:10:31:325	    //}
+326	
+327	
+328	    for (int i = 1 ; i < max_cols; i++){
+329	        for (int j = 1 ; j < max_rows; j++){
+330	            referrence[i*max_cols+j] = blosum62[input_itemsets[i*max_cols]][input_itemsets[j]];
+331	        }
+332	    }
+333	
+334	    for( int i = 1; i< max_rows ; i++)
+
+2017-02-21 17:10:31:Backtrace END
+2017-02-21 17:10:31:Type: The type is an integer type.
+2017-02-21 17:10:31:Type sizeof: 4
+2017-02-21 17:10:31:Mem contents(hex):0x720xb10x130x50
+2017-02-21 17:10:31:Fault Mode: One bit-flip
+2017-02-21 17:10:31:base address to flip value: 0x7fffffffe988
+2017-02-21 17:10:31:address max offset: 4
+2017-02-21 17:10:31:Memory content before bitflip:0x720xb10x130x50
+2017-02-21 17:10:32:Backtrace BEGIN:
+2017-02-21 17:10:32:#0  0x0000000000402c80 in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:330
+#1  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-02-21 17:10:32:325	    //}
+326	
+327	
+328	    for (int i = 1 ; i < max_cols; i++){
+329	        for (int j = 1 ; j < max_rows; j++){
+330	            referrence[i*max_cols+j] = blosum62[input_itemsets[i*max_cols]][input_itemsets[j]];
+331	        }
+332	    }
+333	
+334	    for( int i = 1; i< max_rows ; i++)
+
+2017-02-21 17:10:32:Backtrace END
+2017-02-21 17:10:32:Type: The type is an array.
+2017-02-21 17:10:32:Type sizeof: 20
+2017-02-21 17:10:32:Fliping array at pos: 16
+2017-02-21 17:10:32:Type: The type is an integer type.
+2017-02-21 17:10:32:Type sizeof: 1
+2017-02-21 17:10:32:Mem contents(hex):0x48
+2017-02-21 17:10:32:Fault Mode: One bit-flip
+2017-02-21 17:10:32:base address to flip value: 0x7fffffffe828 
+2017-02-21 17:10:32:address max offset: 1
+2017-02-21 17:10:32:Memory content before bitflip:0x48
+2017-02-21 17:10:32:Backtrace BEGIN:
+2017-02-21 17:10:32:#0  0x0000000000402c87 in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:330
+#1  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-02-21 17:10:32:325	    //}
+326	
+327	
+328	    for (int i = 1 ; i < max_cols; i++){
+329	        for (int j = 1 ; j < max_rows; j++){
+330	            referrence[i*max_cols+j] = blosum62[input_itemsets[i*max_cols]][input_itemsets[j]];
+331	        }
+332	    }
+333	
+334	    for( int i = 1; i< max_rows ; i++)
+
+2017-02-21 17:10:32:Backtrace END
+2017-02-21 17:10:32:Type: The type is an integer type.
+2017-02-21 17:10:32:Type sizeof: 4
+2017-02-21 17:10:32:Mem contents(hex):0x060x000x000x00
+2017-02-21 17:10:32:Fault Mode: Double bit-flip
+2017-02-21 17:10:32:base address to flip value: 0x7fffffffe9e8
+2017-02-21 17:10:32:address max offset: 4
+2017-02-21 17:10:32:Memory content before bitflip:0x060x000x000x00
+2017-02-21 17:10:32:Memory content after  bitflip:0x060x000x0c0x00
+2017-02-21 17:10:32:Mem contents(hex):0x060x000x0c0x00
+2017-02-21 17:10:32:frame name: runTest
+2017-02-21 17:10:32:symbol name: argc
+2017-02-21 17:10:32:symbol filename: needle_check.cpp
+2017-02-21 17:10:32:symbol line: 263
+2017-02-21 17:10:32:value: 786438
+2017-02-21 17:10:32:value address: 0x7fffffffe9e8
+2017-02-21 17:10:32:Type: The type is an integer type.
+2017-02-21 17:10:32:Type sizeof: 4
+2017-02-21 17:10:32:Fault Injection Successful after 15.5202350616s
+2017-02-21 17:10:55:event type: exit
+2017-02-21 17:10:55:exit code: 0

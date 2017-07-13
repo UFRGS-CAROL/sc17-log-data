@@ -1,0 +1,58 @@
+2017-02-20 15:57:40:Starting flip_value script
+2017-02-20 15:57:40:Initialization strings:
+2017-02-20 15:57:40:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-20 15:57:40:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 15:57:40:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 15:57:40:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-20 15:57:40:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-20 15:57:40:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-02-20 15:57:40:initSignal:12
+2017-02-20 15:57:40:endSignal:15
+2017-02-20 15:57:40:seqSignal:15
+2017-02-20 15:57:54:Backtrace BEGIN:
+2017-02-20 15:57:54:#0  0x0000000000402f67 in L_single_iteration_60__par_loop0_2_0 () at hotspot_check.c:72
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe590 in ?? ()
+#3  0x00007fffffffe598 in ?? ()
+#4  0x00007fffffffe5a0 in ?? ()
+#5  0x00007fffffffe5a8 in ?? ()
+#6  0x00007fffffffe580 in ?? ()
+#7  0x00007fffffffe588 in ?? ()
+#8  0x00007fffffffe4d0 in ?? ()
+#9  0x00007fffffffe4d4 in ?? ()
+#10 0x0101010000000000 in ?? ()
+#11 0x00007ffff5ea6b00 in ?? ()
+#12 0x0000000000000000 in ?? ()
+
+2017-02-20 15:57:54:67	        int c_end = c_start + BLOCK_SIZE_C > col ? col : c_start + BLOCK_SIZE_C;
+68	
+69	        if ( r_start == 0 || c_start == 0 || r_end == row || c_end == col )
+70	        {
+71	            for ( r = r_start; r < r_start + BLOCK_SIZE_R; ++r ) {
+72	                for ( c = c_start; c < c_start + BLOCK_SIZE_C; ++c ) {
+73	                    /* Corner 1 */
+74	                    if ( (r == 0) && (c == 0) ) {
+75	                        delta = (Cap_1) * (power[0] +
+76	                                           (temp[1] - temp[0]) * Rx_1 +
+
+2017-02-20 15:57:54:Backtrace END
+2017-02-20 15:58:03:Type: The type is an integer type.
+2017-02-20 15:58:03:Type sizeof: 4
+2017-02-20 15:58:03:Mem contents(hex):0x000x040x000x00
+2017-02-20 15:58:03:Fault Mode: Single bit-flip
+2017-02-20 15:58:03:base address to flip value: 0x7fffffffe580
+2017-02-20 15:58:03:address max offset: 4
+2017-02-20 15:58:03:Memory content before bitflip:0x000x040x000x00
+2017-02-20 15:58:03:Memory content after  bitflip:0x000x060x000x00
+2017-02-20 15:58:03:Mem contents(hex):0x000x060x000x00
+2017-02-20 15:58:03:frame name: L_single_iteration_60__par_loop0_2_0
+2017-02-20 15:58:03:symbol name: row
+2017-02-20 15:58:03:symbol filename: hotspot_check.c
+2017-02-20 15:58:03:symbol line: 60
+2017-02-20 15:58:03:value: 1536
+2017-02-20 15:58:03:value address: 0x7fffffffe580
+2017-02-20 15:58:03:Type: The type is an integer type.
+2017-02-20 15:58:03:Type sizeof: 4
+2017-02-20 15:58:03:Fault Injection Successful after 23.2059340477s
+2017-02-20 15:58:13:event type: exit
+2017-02-20 15:58:13:exit code: 0

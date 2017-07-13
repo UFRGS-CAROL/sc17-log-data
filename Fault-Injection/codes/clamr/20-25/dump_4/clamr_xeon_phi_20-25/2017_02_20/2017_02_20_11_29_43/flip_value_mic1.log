@@ -1,0 +1,68 @@
+2017-02-20 11:28:30:Starting flip_value script
+2017-02-20 11:28:30:Initialization strings:
+2017-02-20 11:28:31:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-20 11:28:31:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 11:28:31:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 11:28:31:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-20 11:28:31:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-20 11:28:31:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-20 11:28:31:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-20 11:28:31:initSignal:20
+2017-02-20 11:28:31:endSignal:25
+2017-02-20 11:28:31:seqSignal:20
+2017-02-20 11:28:51:Backtrace BEGIN:
+2017-02-20 11:28:51:#0  0x00007ffff6b67620 in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1641
+#1  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#2  0x000000000054b8e1 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:476
+#3  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#4  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-20 11:28:51:1636	in vfprintf.c
+
+2017-02-20 11:28:51:Backtrace END
+2017-02-20 11:28:57:Type: The type is a pointer.
+2017-02-20 11:28:57:Type sizeof: 8
+2017-02-20 11:28:57:Fliping a bit of the pointer
+2017-02-20 11:28:57:Mem contents(hex):0x800x0e0x920x010x000x000x000x00
+2017-02-20 11:28:57:Fault Mode: One bit-flip
+2017-02-20 11:28:57:base address to flip value: 0x7fffffffe6a0
+2017-02-20 11:28:57:address max offset: 8
+2017-02-20 11:28:57:Memory content before bitflip:0x800x0e0x920x010x000x000x000x00
+2017-02-20 11:28:57:Backtrace BEGIN:
+2017-02-20 11:28:57:#0  0x00007ffff6b67620 in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1641
+#1  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#2  0x000000000054b8e1 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:476
+#3  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#4  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-20 11:28:57:1636	in vfprintf.c
+
+2017-02-20 11:28:57:Backtrace END
+2017-02-20 11:29:02:Type: The type is an array.
+2017-02-20 11:29:02:Type sizeof: 120
+2017-02-20 11:29:02:Fliping array at pos: 25
+2017-02-20 11:29:02:Type: The type is an integer type.
+2017-02-20 11:29:02:Type sizeof: 4
+2017-02-20 11:29:02:Mem contents(hex):0x4f0x3c0x000x00
+2017-02-20 11:29:02:Fault Mode: Single bit-flip
+2017-02-20 11:29:02:base address to flip value: 0x7ffff6c38ee4 
+2017-02-20 11:29:02:address max offset: 4
+2017-02-20 11:29:02:Memory content before bitflip:0x4f0x3c0x000x00
+2017-02-20 11:29:02:Memory content after  bitflip:0x4f0x3c0x000x04
+2017-02-20 11:29:02:Mem contents(hex):0x4f0x3c0x000x04
+2017-02-20 11:29:02:frame name: _IO_vfprintf_internal
+2017-02-20 11:29:02:symbol name: step1_jumps
+2017-02-20 11:29:02:symbol filename: vfprintf.c
+2017-02-20 11:29:02:symbol line: 1345
+2017-02-20 11:29:02:value: {0, 0, 0, 0, 0, 0, 0, 0, 0, 10702, 11241, 11427, 11515, 7172, 7466, 7747, 14505, 15251, 15266, 12292, 14748, 15690, 13002, 13086, 14646, 67124303, 12622, 7270, 7368, 0}
+2017-02-20 11:29:02:value address: 0x7ffff6c38e80 <step1_jumps>
+2017-02-20 11:29:02:Type: The type is an array.
+2017-02-20 11:29:02:Type sizeof: 120
+2017-02-20 11:29:02:Field name: None
+2017-02-20 11:29:02:Field Type:
+2017-02-20 11:29:02:Type: A range type, that is, an integer type with bounds.
+2017-02-20 11:29:02:Type sizeof: 8
+2017-02-20 11:29:02:Type range: (0L, 29L)
+2017-02-20 11:29:02:Fault Injection Successful after 31.9972579479s
+2017-02-20 11:29:33:event type: exit
+2017-02-20 11:29:33:exit code: 0

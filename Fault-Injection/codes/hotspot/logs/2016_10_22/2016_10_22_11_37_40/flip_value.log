@@ -1,0 +1,51 @@
+2016-10-22 11:37:18:Initialization strings:
+2016-10-22 11:37:18:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-22 11:37:18:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-22 11:37:18:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-22 11:37:18:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-22 11:37:18:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-22 11:37:18:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-22 11:37:19:Trying Fault Injection
+2016-10-22 11:37:19:Backtrace BEGIN:
+2016-10-22 11:37:19:#0  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#1  main (argc=-7552, argv=0x0) at hotspot_check.c:264
+
+2016-10-22 11:37:19:201	        if (fgets(str, STR_SIZE, fp) == NULL) {
+202	            fatal("fgets error");
+203	        }
+204	        if (feof(fp))
+205	            fatal("not enough lines in file");
+206	        if ((sscanf(str, "%f", &val) != 1) )
+207	            fatal("invalid file format");
+208	        vect[i] = val;
+209	    }
+210	
+
+2016-10-22 11:37:19:Backtrace END
+2016-10-22 11:37:19:Type: A floating point type.
+2016-10-22 11:37:19:Type sizeof: 4
+2016-10-22 11:37:19:Mem contents(hex):0x000x000xa00x42
+2016-10-22 11:37:19:base address to flip value: 0x4073a4 
+2016-10-22 11:37:19:address max offset: 4
+2016-10-22 11:37:19:Memory content before bitflip:0x000x000xa00x42
+2016-10-22 11:37:19:Memory content after  bitflip:0x000x000xa00x02
+2016-10-22 11:37:19:Mem contents(hex):0x000x000xa00x02
+2016-10-22 11:37:19:frame name: main
+2016-10-22 11:37:19:symbol name: amb_temp
+2016-10-22 11:37:19:symbol filename: hotspot_check.c
+2016-10-22 11:37:19:symbol line: 37
+2016-10-22 11:37:19:value: 2.3509887e-37
+2016-10-22 11:37:19:value address: 0x4073a4 <amb_temp>
+2016-10-22 11:37:19:Type: A floating point type.
+2016-10-22 11:37:19:Type sizeof: 4
+2016-10-22 11:37:19:Fault Injection Successful after 1.78788900375s
+2016-10-22 11:37:23:Fault Already Injected
+2016-10-22 11:37:26:Fault Already Injected
+2016-10-22 11:37:27:Fault Already Injected
+2016-10-22 11:37:29:Fault Already Injected
+2016-10-22 11:37:30:Fault Already Injected
+2016-10-22 11:37:32:Fault Already Injected
+2016-10-22 11:37:33:Fault Already Injected
+2016-10-22 11:37:33:Fault Already Injected
+2016-10-22 11:37:34:event type: exit
+2016-10-22 11:37:34:exit code: 0

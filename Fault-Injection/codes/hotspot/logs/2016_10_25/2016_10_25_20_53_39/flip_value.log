@@ -1,0 +1,49 @@
+2016-10-25 20:53:24:Initialization strings:
+2016-10-25 20:53:25:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-25 20:53:25:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-25 20:53:25:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-25 20:53:25:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-25 20:53:25:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-25 20:53:25:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-25 20:53:26:Trying Fault Injection
+2016-10-25 20:53:26:Backtrace BEGIN:
+2016-10-25 20:53:26:#0  read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:200
+#1  main (argc=-7552, argv=0x0) at hotspot_check.c:264
+
+2016-10-25 20:53:26:195	
+196	    fp = fopen (file, "r");
+197	    if (!fp)
+198	        fatal ("file could not be opened for reading");
+199	
+200	    for (i=0; i < grid_rows * grid_cols; i++) {
+201	        if (fgets(str, STR_SIZE, fp) == NULL) {
+202	            fatal("fgets error");
+203	        }
+204	        if (feof(fp))
+
+2016-10-25 20:53:26:Backtrace END
+2016-10-25 20:53:26:Type: The type is an integer type.
+2016-10-25 20:53:26:Type sizeof: 4
+2016-10-25 20:53:26:Mem contents(hex):0x000x040x000x00
+2016-10-25 20:53:26:base address to flip value: 0x7fffffffe604
+2016-10-25 20:53:26:address max offset: 4
+2016-10-25 20:53:26:Memory content before bitflip:0x000x040x000x00
+2016-10-25 20:53:26:Memory content after  bitflip:0x000x040x040x00
+2016-10-25 20:53:26:Mem contents(hex):0x000x040x040x00
+2016-10-25 20:53:26:frame name: read_input
+2016-10-25 20:53:26:symbol name: grid_cols
+2016-10-25 20:53:26:symbol filename: hotspot_check.c
+2016-10-25 20:53:26:symbol line: 229
+2016-10-25 20:53:26:value: 263168
+2016-10-25 20:53:26:value address: 0x7fffffffe604
+2016-10-25 20:53:26:Type: The type is an integer type.
+2016-10-25 20:53:26:Type sizeof: 4
+2016-10-25 20:53:26:Fault Injection Successful after 1.25234389305s
+2016-10-25 20:53:27:Fault Already Injected
+2016-10-25 20:53:28:Fault Already Injected
+2016-10-25 20:53:30:Fault Already Injected
+2016-10-25 20:53:30:Fault Already Injected
+2016-10-25 20:53:31:Fault Already Injected
+2016-10-25 20:53:33:Fault Already Injected
+2016-10-25 20:53:33:event type: exit
+2016-10-25 20:53:33:exit code: 1

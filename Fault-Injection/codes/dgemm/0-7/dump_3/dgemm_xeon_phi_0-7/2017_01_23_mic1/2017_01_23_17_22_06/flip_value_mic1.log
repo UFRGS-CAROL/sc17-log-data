@@ -1,0 +1,37 @@
+2017-01-23 17:20:55:Starting flip_value script
+2017-01-23 17:20:55:Initialization strings:
+2017-01-23 17:20:55:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-23 17:20:55:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-23 17:20:55:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-23 17:20:55:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-23 17:20:55:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-23 17:20:55:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-23 17:20:55:initSignal:0
+2017-01-23 17:20:55:endSignal:7
+2017-01-23 17:20:55:seqSignal:15
+2017-01-23 17:20:55:Backtrace BEGIN:
+2017-01-23 17:20:55:#0  0x00007ffff7138897 in __GI__IO_fread (buf=0x7ffff2d2ccf8, size=1, count=8, fp=0x6073f0) at iofread.c:36
+#1  0x0000000000403c08 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:250
+#2  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+2017-01-23 17:20:55:31	in iofread.c
+
+2017-01-23 17:20:55:Backtrace END
+2017-01-23 17:20:55:Type: The type is a pointer.
+2017-01-23 17:20:55:Type sizeof: 8
+2017-01-23 17:20:55:Fliping a bit of the pointer
+2017-01-23 17:20:55:Mem contents(hex):0x3c0xee0xff0xff0xff0x7f0x000x00
+2017-01-23 17:20:55:base address to flip value: 0x7fffffffe6b0
+2017-01-23 17:20:55:address max offset: 8
+2017-01-23 17:20:55:Memory content before bitflip:0x3c0xee0xff0xff0xff0x7f0x000x00
+2017-01-23 17:20:55:Memory content after  bitflip:0x3c0xee0xff0xff0xff0xff0x000x00
+2017-01-23 17:20:55:Mem contents(hex):0x3c0xee0xff0xff0xff0xff0x000x00
+2017-01-23 17:20:55:frame name: read_input
+2017-01-23 17:20:55:symbol name: fileB
+2017-01-23 17:20:55:symbol filename: dgemm.c
+2017-01-23 17:20:55:symbol line: 235
+2017-01-23 17:20:55:value: 0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192"
+2017-01-23 17:20:55:value address: 0x7fffffffe6b0
+2017-01-23 17:20:55:Type: The type is a pointer.
+2017-01-23 17:20:55:Type sizeof: 8
+2017-01-23 17:20:55:Fault Injection Successful after 0.935352087021s

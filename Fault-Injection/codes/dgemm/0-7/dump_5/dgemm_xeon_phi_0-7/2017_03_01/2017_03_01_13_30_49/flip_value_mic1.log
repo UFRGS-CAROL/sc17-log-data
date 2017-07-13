@@ -1,0 +1,70 @@
+2017-03-01 13:29:01:Starting flip_value script
+2017-03-01 13:29:01:Initialization strings:
+2017-03-01 13:29:01:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 13:29:01:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 13:29:01:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 13:29:01:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-01 13:29:01:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-01 13:29:01:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-03-01 13:29:01:initSignal:0
+2017-03-01 13:29:01:endSignal:7
+2017-03-01 13:29:01:seqSignal:15
+2017-03-01 13:29:01:Backtrace BEGIN:
+2017-03-01 13:29:01:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebb0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebb0) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffebb0) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000008 in ?? ()
+#7  0x00007fffffffedb9 in ?? ()
+#8  0x00007fffffffedf4 in ?? ()
+#9  0x00007fffffffedf8 in ?? ()
+#10 0x00007fffffffedfd in ?? ()
+#11 0x00007fffffffee00 in ?? ()
+#12 0x00007fffffffee3c in ?? ()
+#13 0x00007fffffffee78 in ?? ()
+#14 0x00007fffffffeecb in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+2017-03-01 13:29:01:69	in dl-debug.c
+
+2017-03-01 13:29:01:Backtrace END
+2017-03-01 13:29:01:Type: The type is a structure.
+2017-03-01 13:29:01:Type sizeof: 40
+2017-03-01 13:29:01:Fliping value of field: r_brk
+2017-03-01 13:29:01:Type: The type is an integer type.
+2017-03-01 13:29:01:Type sizeof: 8
+2017-03-01 13:29:01:Mem contents(hex):0xc00xc30xde0xf70xff0x7f0x000x00
+2017-03-01 13:29:01:Fault Mode: Zero bit-flip
+2017-03-01 13:29:01:base address to flip value: 0x7ffff7ffe150 
+2017-03-01 13:29:01:address max offset: 8
+2017-03-01 13:29:01:Memory content before bitflip:0xc00xc30xde0xf70xff0x7f0x000x00
+2017-03-01 13:29:02:Backtrace BEGIN:
+2017-03-01 13:29:02:#0  __GI__IO_fread (buf=0x7ffff4e94120, size=1, count=8, fp=0x6071c0) at iofread.c:41
+#1  0x0000000000403bc3 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:249
+#2  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+2017-03-01 13:29:02:36	in iofread.c
+
+2017-03-01 13:29:02:Backtrace END
+2017-03-01 13:29:02:Type: The type is an integer type.
+2017-03-01 13:29:02:Type sizeof: 4
+2017-03-01 13:29:02:Mem contents(hex):0x080x000x000x00
+2017-03-01 13:29:02:Fault Mode: Double bit-flip
+2017-03-01 13:29:02:base address to flip value: 0x7fffffffe940
+2017-03-01 13:29:02:address max offset: 4
+2017-03-01 13:29:02:Memory content before bitflip:0x080x000x000x00
+2017-03-01 13:29:02:Memory content after  bitflip:0x080x220x000x00
+2017-03-01 13:29:02:Mem contents(hex):0x080x220x000x00
+2017-03-01 13:29:02:frame name: main
+2017-03-01 13:29:02:symbol name: j
+2017-03-01 13:29:02:symbol filename: dgemm.c
+2017-03-01 13:29:02:symbol line: 277
+2017-03-01 13:29:02:value: 8712
+2017-03-01 13:29:02:value address: 0x7fffffffe940
+2017-03-01 13:29:02:Type: The type is an integer type.
+2017-03-01 13:29:02:Type sizeof: 4
+2017-03-01 13:29:02:Fault Injection Successful after 1.24990510941s
+2017-03-01 13:29:50:event type: exit
+2017-03-01 13:29:50:exit code: 0

@@ -1,0 +1,43 @@
+2017-02-28 14:48:48:Starting flip_value script
+2017-02-28 14:48:48:Initialization strings:
+2017-02-28 14:48:49:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 14:48:49:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 14:48:49:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 14:48:49:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 14:48:49:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 14:48:49:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 14:48:49:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 14:48:49:initSignal:5
+2017-02-28 14:48:49:endSignal:10
+2017-02-28 14:48:49:seqSignal:20
+2017-02-28 14:48:55:Backtrace BEGIN:
+2017-02-28 14:48:56:#0  0x00007ffff6ba05e2 in __GI_memcpy (dstpp=<optimized out>, srcpp=<optimized out>, len=<optimized out>) at ../string/memcpy.c:62
+#1  0x0000000000542459 in Bounds_Copy (src=0x13d1700, dest=0x1fcba40) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/Bounds.c:65
+#2  0x000000000053cc44 in KDTree_CreateTree (t=0x7fb150) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:217
+#3  0x000000000053d3f4 in KDTree_QueryCircleIntersect_Double (t=0x7fb150, result_num=0x7fffffffe5dc, result_indicies=0x181c210, circ_radius=24, ncells=264192, x=0x7ffe881cb010, dx=0x7ffe481bf010, y=0x7ffe081be010, dy=0x7ffdc81b0010) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:329
+#4  0x00000000005080fe in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1535
+#5  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-28 14:48:56:57	in ../string/memcpy.c
+
+2017-02-28 14:48:56:Backtrace END
+2017-02-28 14:49:01:Type: A floating point type.
+2017-02-28 14:49:01:Type sizeof: 8
+2017-02-28 14:49:01:Mem contents(hex):0x500xe50xff0xff0xff0x7f0x000x00
+2017-02-28 14:49:01:Fault Mode: Double bit-flip
+2017-02-28 14:49:01:base address to flip value: 0x7fffffffe530
+2017-02-28 14:49:01:address max offset: 8
+2017-02-28 14:49:01:Memory content before bitflip:0x500xe50xff0xff0xff0x7f0x000x00
+2017-02-28 14:49:01:Memory content after  bitflip:0x500xe50xff0xff0xff0x7f0x000x21
+2017-02-28 14:49:01:Mem contents(hex):0x500xe50xff0xff0xff0x7f0x000x21
+2017-02-28 14:49:01:frame name: KDTree_QueryCircleIntersect_Double
+2017-02-28 14:49:01:symbol name: rad4
+2017-02-28 14:49:01:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c
+2017-02-28 14:49:01:symbol line: 349
+2017-02-28 14:49:01:value: 1.0081289999533865e-149
+2017-02-28 14:49:01:value address: 0x7fffffffe530
+2017-02-28 14:49:01:Type: A floating point type.
+2017-02-28 14:49:01:Type sizeof: 8
+2017-02-28 14:49:01:Fault Injection Successful after 12.2025458813s
+2017-02-28 14:49:46:event type: exit
+2017-02-28 14:49:46:exit code: 0

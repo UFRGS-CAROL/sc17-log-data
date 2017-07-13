@@ -1,0 +1,167 @@
+2017-02-27 17:20:48:Starting flip_value script
+2017-02-27 17:20:48:Initialization strings:
+2017-02-27 17:20:49:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-27 17:20:49:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 17:20:49:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 17:20:49:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-27 17:20:49:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-27 17:20:49:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-02-27 17:20:49:initSignal:0
+2017-02-27 17:20:49:endSignal:2
+2017-02-27 17:20:49:seqSignal:30
+2017-02-27 17:20:49:Backtrace BEGIN:
+2017-02-27 17:20:49:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142911 in __GI__IO_file_xsgetn (fp=0x60c240, data=<optimized out>, n=16777216) at fileops.c:1422
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=16777216, count=1, fp=0x60c240) at iofread.c:42
+#3  0x0000000000402b9c in main (argc=9, argv=0x7fffffffec08) at lud_check.c:106
+
+2017-02-27 17:20:49:76	in ../sysdeps/unix/syscall-template.S
+
+2017-02-27 17:20:49:Backtrace END
+2017-02-27 17:20:49:Type: The type is a structure.
+2017-02-27 17:20:49:Type sizeof: 168
+2017-02-27 17:20:49:Fliping value of field: __seekoff
+2017-02-27 17:20:49:Type: The type is a pointer.
+2017-02-27 17:20:49:Type sizeof: 8
+2017-02-27 17:20:49:Fliping a bit of the value pointed by a pointer
+2017-02-27 17:20:49:Type: The type is a function.
+2017-02-27 17:20:49:Type sizeof: 1
+2017-02-27 17:20:49:Mem contents(hex):0x41
+2017-02-27 17:20:49:Fault Mode: Random bit-flip
+2017-02-27 17:20:49:base address to flip value: 0x7ffff7141e30 
+2017-02-27 17:20:49:address max offset: 1
+2017-02-27 17:20:49:Memory content before bitflip:0x41
+2017-02-27 17:20:50:Backtrace BEGIN:
+2017-02-27 17:20:50:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd2d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff7fd2df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff7fd2d14 in ?? ()
+#8  0x00007ffff7fd2de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+2017-02-27 17:20:50:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-02-27 17:20:50:Backtrace END
+2017-02-27 17:20:52:Type: The type is an integer type.
+2017-02-27 17:20:52:Type sizeof: 4
+2017-02-27 17:20:52:Mem contents(hex):0x080x000x000x00
+2017-02-27 17:20:52:Fault Mode: Zero bit-flip
+2017-02-27 17:20:52:base address to flip value: 0x7ffff743c244 
+2017-02-27 17:20:52:address max offset: 4
+2017-02-27 17:20:52:Memory content before bitflip:0x080x000x000x00
+2017-02-27 17:20:52:Backtrace BEGIN:
+2017-02-27 17:20:52:#0  malloc (n=15) at dl-minimal.c:93
+#1  <function called from gdb>
+#2  malloc (n=15) at dl-minimal.c:93
+#3  <function called from gdb>
+#4  0x00007ffff719f097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#5  0x00007ffff74321df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:640
+#6  __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffa02e4100) at pthread_create.c:524
+#7  0x00007ffff790d323 in ?? ()
+#8  0x0000000000000000 in ?? ()
+
+2017-02-27 17:20:52:88	in dl-minimal.c
+
+2017-02-27 17:20:52:Backtrace END
+2017-02-27 17:20:55:Backtrace BEGIN:
+2017-02-27 17:20:55:#0  pthread_cond_wait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S:185
+#1  0x00007ffff7911675 in ?? ()
+#2  0x0000000000000000 in ?? ()
+
+2017-02-27 17:20:55:180	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S
+
+2017-02-27 17:20:55:Backtrace END
+2017-02-27 17:20:57:Type: The type is a pointer.
+2017-02-27 17:20:57:Type sizeof: 8
+2017-02-27 17:20:57:Type: The type is a pointer.
+2017-02-27 17:20:57:Type sizeof: 8
+2017-02-27 17:20:57:Backtrace BEGIN:
+2017-02-27 17:20:57:#0  pthread_cond_wait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S:185
+#1  0x00007ffff7911675 in ?? ()
+#2  0x0000000000000000 in ?? ()
+
+2017-02-27 17:20:57:180	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S
+
+2017-02-27 17:20:57:Backtrace END
+2017-02-27 17:21:00:Type: The type is a pointer.
+2017-02-27 17:21:00:Type sizeof: 8
+2017-02-27 17:21:00:Backtrace BEGIN:
+2017-02-27 17:21:00:#0  malloc (n=15) at dl-minimal.c:93
+#1  <function called from gdb>
+#2  malloc (n=15) at dl-minimal.c:93
+#3  <function called from gdb>
+#4  malloc (n=15) at dl-minimal.c:93
+#5  <function called from gdb>
+#6  malloc (n=15) at dl-minimal.c:93
+#7  <function called from gdb>
+#8  malloc (n=15) at dl-minimal.c:93
+#9  <function called from gdb>
+#10 malloc (n=15) at dl-minimal.c:93
+#11 <function called from gdb>
+#12 malloc (n=15) at dl-minimal.c:93
+#13 <function called from gdb>
+#14 0x00007ffff719f097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#15 0x00007ffff74321df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:640
+#16 __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffa02e4100) at pthread_create.c:524
+#17 0x00007ffff790d323 in ?? ()
+#18 0x0000000000000000 in ?? ()
+
+2017-02-27 17:21:00:88	in dl-minimal.c
+
+2017-02-27 17:21:00:Backtrace END
+2017-02-27 17:21:02:Type: The type is a pointer.
+2017-02-27 17:21:02:Type sizeof: 8
+2017-02-27 17:21:02:Backtrace BEGIN:
+2017-02-27 17:21:03:#0  malloc (n=15) at dl-minimal.c:93
+#1  <function called from gdb>
+#2  malloc (n=15) at dl-minimal.c:93
+#3  <function called from gdb>
+#4  malloc (n=15) at dl-minimal.c:93
+#5  <function called from gdb>
+#6  malloc (n=15) at dl-minimal.c:93
+#7  <function called from gdb>
+#8  malloc (n=15) at dl-minimal.c:93
+#9  <function called from gdb>
+#10 malloc (n=15) at dl-minimal.c:93
+#11 <function called from gdb>
+#12 malloc (n=15) at dl-minimal.c:93
+#13 <function called from gdb>
+#14 malloc (n=15) at dl-minimal.c:93
+#15 <function called from gdb>
+#16 malloc (n=15) at dl-minimal.c:93
+#17 <function called from gdb>
+#18 0x00007ffff719f097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#19 0x00007ffff74321df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:640
+#20 __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffa02e4100) at pthread_create.c:524
+#21 0x00007ffff790d323 in ?? ()
+#22 0x0000000000000000 in ?? ()
+
+2017-02-27 17:21:03:88	in dl-minimal.c
+
+2017-02-27 17:21:03:Backtrace END
+2017-02-27 17:21:05:Type: The type is an integer type.
+2017-02-27 17:21:05:Type sizeof: 8
+2017-02-27 17:21:05:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-27 17:21:05:Fault Mode: Double bit-flip
+2017-02-27 17:21:05:base address to flip value: 0x7ffff7646300 
+2017-02-27 17:21:05:address max offset: 8
+2017-02-27 17:21:05:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-27 17:21:05:Memory content after  bitflip:0x000x000x000x000x000x000x110x00
+2017-02-27 17:21:05:Mem contents(hex):0x000x000x000x000x000x000x110x00
+2017-02-27 17:21:05:frame name: __pthread_create_2_1
+2017-02-27 17:21:05:symbol name: in_flight_stack
+2017-02-27 17:21:05:symbol filename: allocatestack.c
+2017-02-27 17:21:05:symbol line: 120
+2017-02-27 17:21:05:value: 4785074604081152
+2017-02-27 17:21:05:value address: 0x7ffff7646300 <in_flight_stack>
+2017-02-27 17:21:05:Type: The type is an integer type.
+2017-02-27 17:21:05:Type sizeof: 8
+2017-02-27 17:21:05:Fault Injection Successful after 16.3972160816s
+2017-02-27 17:21:12:event type: exit
+2017-02-27 17:21:12:exit code: 0

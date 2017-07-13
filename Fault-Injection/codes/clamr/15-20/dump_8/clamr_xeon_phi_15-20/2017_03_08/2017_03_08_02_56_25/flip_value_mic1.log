@@ -1,0 +1,66 @@
+[INFO -- 2017-03-08 02:53:35]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-08 02:53:35]
+Initialization strings:
+[INFO -- 2017-03-08 02:53:35]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-08 02:53:35]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 02:53:35]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 02:53:35]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 02:53:35]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 02:53:35]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-08 02:53:35]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-08 02:53:35]
+initSignal:15
+[INFO -- 2017-03-08 02:53:35]
+endSignal:20
+[INFO -- 2017-03-08 02:53:35]
+seqSignal:20
+[INFO -- 2017-03-08 02:53:35]
+faultMode:0
+[INFO -- 2017-03-08 02:53:58]
+Backtrace BEGIN:
+#0  0x00007ffff6b641b0 in _itoa_word (value=6, value@entry=692, buflim=0x7fffffffe0de "92\360ED", buflim@entry=0x7fffffffe0e0 "\360ED", base=base@entry=10, upper_case=<optimized out>) at _itoa.c:179
+#1  0x00007ffff6b6781a in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1641
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b9dd in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:479
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+174	in _itoa.c
+
+Backtrace END
+Fliping value of field: tv_usec
+Memory content before bitflip:0xd90x640x0d0x000x000x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7d0738 
+address max offset: 8
+Memory content after  bitflip:0xd90x640x0d0x000x000x000x000x01
+frame name: main
+symbol name: total_exec
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 181
+value: {tv_sec = 1488959615, tv_usec = 72057594038805721}
+value address: 0x7d0730 <total_exec>
+Type: The type is a structure.
+Type sizeof: 16
+Field name: tv_sec
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: tv_usec
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-08 02:53:58]
+Fault Injection Successful after 23.6619288921s
+[INFO -- 2017-03-08 02:54:32]
+event type: exit
+[INFO -- 2017-03-08 02:54:32]
+exit code: 0

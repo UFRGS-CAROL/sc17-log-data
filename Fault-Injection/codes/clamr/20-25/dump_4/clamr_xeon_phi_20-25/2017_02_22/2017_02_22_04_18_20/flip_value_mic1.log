@@ -1,0 +1,52 @@
+2017-02-22 04:15:20:Starting flip_value script
+2017-02-22 04:15:20:Initialization strings:
+2017-02-22 04:15:20:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-22 04:15:20:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 04:15:20:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 04:15:20:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-22 04:15:20:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-22 04:15:20:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-22 04:15:20:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-22 04:15:20:initSignal:20
+2017-02-22 04:15:20:endSignal:25
+2017-02-22 04:15:20:seqSignal:20
+2017-02-22 04:15:42:Backtrace BEGIN:
+2017-02-22 04:15:42:#0  __GI___mempcpy (dest=0x7fff481bda90, src=src@entry=0x574743, len=len@entry=1) at ../string/mempcpy.c:35
+#1  0x00007ffff6b92c04 in _IO_new_file_xsputn (f=0x1920c50, data=0x574743, n=1) at fileops.c:1307
+#2  0x00007ffff6b6747d in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe118) at vfprintf.c:1673
+#3  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#4  0x000000000054b5c5 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:470
+#5  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#6  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-22 04:15:42:30	in ../string/mempcpy.c
+
+2017-02-22 04:15:42:Backtrace END
+2017-02-22 04:15:48:Type: The type is an array.
+2017-02-22 04:15:48:Type sizeof: 64
+2017-02-22 04:15:48:Fliping array at pos: 5
+2017-02-22 04:15:48:Type: The type is an integer type.
+2017-02-22 04:15:48:Type sizeof: 1
+2017-02-22 04:15:48:Mem contents(hex):0x00
+2017-02-22 04:15:48:Fault Mode: Single bit-flip
+2017-02-22 04:15:48:base address to flip value: 0x7cfd65  
+2017-02-22 04:15:48:address max offset: 1
+2017-02-22 04:15:48:Memory content before bitflip:0x00
+2017-02-22 04:15:48:Memory content after  bitflip:0x10
+2017-02-22 04:15:48:Mem contents(hex):0x10
+2017-02-22 04:15:48:frame name: DrawSquaresToFile
+2017-02-22 04:15:48:symbol name: PADDING
+2017-02-22 04:15:48:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c
+2017-02-22 04:15:48:symbol line: 1092
+2017-02-22 04:15:48:value: "\200\000\000\000\000\020", '\000' <repeats 57 times>
+2017-02-22 04:15:48:value address: 0x7cfd60 <PADDING>
+2017-02-22 04:15:48:Type: The type is an array.
+2017-02-22 04:15:48:Type sizeof: 64
+2017-02-22 04:15:48:Field name: None
+2017-02-22 04:15:48:Field Type:
+2017-02-22 04:15:48:Type: A range type, that is, an integer type with bounds.
+2017-02-22 04:15:48:Type sizeof: 1
+2017-02-22 04:15:48:Type range: (0L, 63L)
+2017-02-22 04:15:48:Fault Injection Successful after 28.0821080208s
+2017-02-22 04:17:51:event type: exit
+2017-02-22 04:17:51:exit code: 0

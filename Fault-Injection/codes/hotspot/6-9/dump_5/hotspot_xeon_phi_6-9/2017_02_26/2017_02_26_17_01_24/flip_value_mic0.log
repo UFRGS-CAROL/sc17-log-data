@@ -1,0 +1,61 @@
+[INFO -- 2017-02-26 17:00:52]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 17:00:52]
+Initialization strings:
+[INFO -- 2017-02-26 17:00:52]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-26 17:00:52]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 17:00:52]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 17:00:52]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 17:00:52]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 17:00:52]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 17:00:52]
+initSignal:6
+[INFO -- 2017-02-26 17:00:52]
+endSignal:9
+[INFO -- 2017-02-26 17:00:52]
+seqSignal:15
+[INFO -- 2017-02-26 17:00:52]
+faultMode:2
+[INFO -- 2017-02-26 17:00:58]
+Backtrace BEGIN:
+#0  0x00007ffff712753d in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2015
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "0.000008\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000404598 in read_input (vect=0x7ffff66cb010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee43 "/micNfs/gdb-fault-injection/injector/data/hotspot/power_1024") at hotspot_check.c:207
+#4  0x0000000000404ad7 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:266
+
+2010	in vfscanf.c
+
+Backtrace END
+Fliping array at pos: 33
+Memory content before bitflip:0x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe7c1 
+address max offset: 1
+Memory content after  bitflip:0x0a
+frame name: main
+symbol name: test_info
+symbol filename: hotspot_check.c
+symbol line: 253
+value: "simIter:1000 gridSize:1024x1024\000\025\n\000\000\000\000\000\000\340\350\377\377\377\177\000\000\220\325\335\367\377\177\000\000\004\350\377\377\377\177\000\000\320\350\377\377\377\177\000\000\060\206\377\367\377\177\000\000\b\000\000\000\000\000\000\000\034\327\354\366\000\000\000\000.(\274<"
+value address: 0x7fffffffe7a0
+Type: The type is an array.
+Type sizeof: 100
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 99L)
+
+[INFO -- 2017-02-26 17:00:58]
+Fault Injection Successful after 6.99697399139s
+[INFO -- 2017-02-26 17:01:17]
+event type: exit
+[INFO -- 2017-02-26 17:01:17]
+exit code: 0

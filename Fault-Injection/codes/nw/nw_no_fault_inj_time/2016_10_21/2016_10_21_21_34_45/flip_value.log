@@ -1,0 +1,63 @@
+2016-10-21 21:34:20:Initialization strings:
+2016-10-21 21:34:20:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-21 21:34:20:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-21 21:34:20:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-21 21:34:20:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-21 21:34:20:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-21 21:34:20:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-21 21:34:20:Trying Fault Injection
+2016-10-21 21:34:20:Inferior PID: 2571
+2016-10-21 21:34:20:Inferior is valid: True
+2016-10-21 21:34:20:Inferior #threads: 1
+2016-10-21 21:34:20:Backtrace BEGIN:
+2016-10-21 21:34:20:#0  0x00007ffff6df42f8 in __tzfile_read (file=<optimized out>, file@entry=0x7ffff6e7e1ba "/etc/localtime", extra=extra@entry=0, extrap=extrap@entry=0x0) at tzfile.c:314
+#1  0x00007ffff6df3960 in tzset_internal (always=<optimized out>, explicit=explicit@entry=1) at tzset.c:447
+#2  0x00007ffff6df3cab in __tz_convert (timer=0x7fffffffe8f0, use_localtime=0, tp=0x7ffff70b7460 <_tmbuf>) at tzset.c:632
+#3  0x00000000004064f9 in start_log_file (benchmark_name=0xec <error: Cannot access memory at address 0xec>, test_info=0x5 <error: Cannot access memory at address 0x5>) at ../../include/log_helper.c:205
+#4  0x00000000004014df in runTest (argc=<optimized out>, argv=<optimized out>) at needle_check.cpp:294
+#5  main (argc=236, argv=0x5) at needle_check.cpp:114
+
+2016-10-21 21:34:20:309	in tzfile.c
+
+2016-10-21 21:34:20:Backtrace END
+2016-10-21 21:34:21:Thread name: None
+2016-10-21 21:34:21:Thread num: 1
+2016-10-21 21:34:21:Thread ptid: (2571, 2571, 0)
+2016-10-21 21:34:21:bitFlip function
+2016-10-21 21:34:21:Type: The type is an array.
+2016-10-21 21:34:21:Type sizeof: 96
+2016-10-21 21:34:21:Fliping array at pos: 0
+2016-10-21 21:34:21:bitFlip function
+2016-10-21 21:34:21:Type: The type is a structure.
+2016-10-21 21:34:21:Type sizeof: 48
+2016-10-21 21:34:21:Fliping value of field: type
+2016-10-21 21:34:21:bitFlip function
+2016-10-21 21:34:21:Type: The type is an enum.
+2016-10-21 21:34:21:Type sizeof: 4
+2016-10-21 21:34:21:Mem contents(hex):0x000x000x000x00
+2016-10-21 21:34:21:base address to flip value: 0x7ffff70b4a28 
+2016-10-21 21:34:21:address max offset: 4
+2016-10-21 21:34:21:Memory content before bitflip:0x000x000x000x00
+2016-10-21 21:34:21:Memory content after  bitflip:0x000x000x200x00
+2016-10-21 21:34:21:Mem contents(hex):0x000x000x200x00
+2016-10-21 21:34:21:frame name: __tz_convert
+2016-10-21 21:34:21:symbol name: tz_rules
+2016-10-21 21:34:21:symbol filename: tzset.c
+2016-10-21 21:34:21:symbol line: 68
+2016-10-21 21:34:21:value: {{name = 0x0, type = (unknown: 2097152), m = 0, n = 0, d = 0, secs = 0, offset = 0, change = 0, computed_for = 0}, {name = 0x0, type = J0, m = 0, n = 0, d = 0, secs = 0, offset = 0, change = 0, computed_for = 0}}
+2016-10-21 21:34:21:value address: 0x7ffff70b4a20 <tz_rules>
+2016-10-21 21:34:21:Type: The type is an array.
+2016-10-21 21:34:21:Type sizeof: 96
+2016-10-21 21:34:21:Field name: None
+2016-10-21 21:34:21:Field Type:
+2016-10-21 21:34:21:Type: A range type, that is, an integer type with bounds.
+2016-10-21 21:34:21:Type sizeof: 8
+2016-10-21 21:34:21:Type range: (0L, 1L)
+2016-10-21 21:34:21:Fault Injection Successful after 1.06175804138s
+2016-10-21 21:34:26:Fault Already Injected
+2016-10-21 21:34:30:Fault Already Injected
+2016-10-21 21:34:32:Fault Already Injected
+2016-10-21 21:34:33:Fault Already Injected
+2016-10-21 21:34:36:Fault Already Injected
+2016-10-21 21:34:38:event type: exit
+2016-10-21 21:34:38:exit code: 0

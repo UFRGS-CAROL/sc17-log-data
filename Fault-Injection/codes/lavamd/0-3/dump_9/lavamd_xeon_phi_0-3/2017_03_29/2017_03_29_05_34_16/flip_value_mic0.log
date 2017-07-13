@@ -1,0 +1,71 @@
+[INFO -- 2017-03-29 05:33:52]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-29 05:33:52]
+Initialization strings:
+[INFO -- 2017-03-29 05:33:52]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-29 05:33:52]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-29 05:33:52]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-29 05:33:52]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-29 05:33:52]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-29 05:33:52]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-29 05:33:52]
+initSignal:0
+[INFO -- 2017-03-29 05:33:52]
+endSignal:3
+[INFO -- 2017-03-29 05:33:52]
+seqSignal:30
+[INFO -- 2017-03-29 05:33:52]
+faultMode:2
+[INFO -- 2017-03-29 05:33:53]
+Backtrace BEGIN:
+#0  0x00007ffff7de6042 in do_lookup_x (undef_name=undef_name@entry=0x7ffff7866c59 "__kmp_omp_debug_struct_info", new_hash=new_hash@entry=1466602827, old_hash=old_hash@entry=0x7fffffffe7f0, ref=0x7ffff7860818, result=result@entry=0x7fffffffe800, scope=<optimized out>, i=2, version=0x7ffff7ff8808, flags=1, skip=0x0, type_class=0, undef_map=0x7ffff7ffab28) at dl-lookup.c:438
+#1  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x7ffff7866c59 "__kmp_omp_debug_struct_info", undef_map=undef_map@entry=0x7ffff7ffab28, ref=ref@entry=0x7fffffffe950, symbol_scope=symbol_scope@entry=0x7ffff7ffae80, version=0x7ffff7ff8808, type_class=0, flags=1, skip_map=0x0) at dl-lookup.c:775
+#2  0x00007ffff7de854f in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=<optimized out>, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff7873c38, map=0x7ffff7ffab28) at ../sysdeps/x86_64/dl-machine.h:277
+#3  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ffab28) at do-rel.h:137
+#4  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#5  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#6  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebc0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#7  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebc0) at rtld.c:308
+#8  _dl_start (arg=0x7fffffffebc0) at rtld.c:414
+#9  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#10 0x0000000000000007 in ?? ()
+#11 0x00007fffffffedb7 in ?? ()
+#12 0x00007fffffffedf4 in ?? ()
+#13 0x00007fffffffedf8 in ?? ()
+#14 0x00007fffffffedfb in ?? ()
+#15 0x00007fffffffee41 in ?? ()
+#16 0x00007fffffffee86 in ?? ()
+#17 0x00007fffffffeec9 in ?? ()
+#18 0x0000000000000000 in ?? ()
+
+433	in dl-lookup.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff7ffcbe8 
+address max offset: 8
+Memory content after  bitflip:0x800xe10x560xc70xb60x760x970xb8
+frame name: _dl_start
+symbol name: preloadlist
+symbol filename: rtld.c
+symbol line: 733
+value: 0x0
+value address: 0x7ffff7ffcbe8 <preloadlist>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-29 05:33:53]
+Fault Injection Successful after 1.37699508667s
+[INFO -- 2017-03-29 05:34:09]
+event type: exit
+[INFO -- 2017-03-29 05:34:09]
+exit code: 0

@@ -1,0 +1,94 @@
+2017-02-20 17:56:31:Starting flip_value script
+2017-02-20 17:56:31:Initialization strings:
+2017-02-20 17:56:32:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-20 17:56:32:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 17:56:32:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 17:56:32:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-20 17:56:32:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-20 17:56:32:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-20 17:56:32:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-20 17:56:32:initSignal:0
+2017-02-20 17:56:32:endSignal:5
+2017-02-20 17:56:32:seqSignal:20
+2017-02-20 17:56:32:Backtrace BEGIN:
+2017-02-20 17:56:32:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec50, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec50) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec50) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x000000000000000b in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+2017-02-20 17:56:32:69	in dl-debug.c
+
+2017-02-20 17:56:32:Backtrace END
+2017-02-20 17:56:32:Type: The type is an integer type.
+2017-02-20 17:56:32:Type sizeof: 4
+2017-02-20 17:56:32:Mem contents(hex):0x0b0x000x000x00
+2017-02-20 17:56:32:Fault Mode: Random bit-flip
+2017-02-20 17:56:32:base address to flip value: 0x7ffff7ffcca8 
+2017-02-20 17:56:32:address max offset: 4
+2017-02-20 17:56:32:Memory content before bitflip:0x0b0x000x000x00
+2017-02-20 17:56:32:Backtrace BEGIN:
+2017-02-20 17:56:33:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec50, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec50) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec50) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x000000000000000b in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+2017-02-20 17:56:33:69	in dl-debug.c
+
+2017-02-20 17:56:33:Backtrace END
+2017-02-20 17:56:33:Type: The type is a structure.
+2017-02-20 17:56:33:Type sizeof: 24
+2017-02-20 17:56:33:Fliping value of field: name
+2017-02-20 17:56:33:Type: The type is a pointer.
+2017-02-20 17:56:33:Type sizeof: 8
+2017-02-20 17:56:33:Fliping a bit of the pointer
+2017-02-20 17:56:33:Mem contents(hex):0x000x020x400x000x000x000x000x00
+2017-02-20 17:56:33:Fault Mode: Random bit-flip
+2017-02-20 17:56:33:base address to flip value: 0x7ffff7ffe020 
+2017-02-20 17:56:33:address max offset: 8
+2017-02-20 17:56:33:Memory content before bitflip:0x000x020x400x000x000x000x000x00
+2017-02-20 17:56:33:Backtrace BEGIN:
+2017-02-20 17:56:33:#0  __GI___waitpid (pid=32038, stat_loc=stat_loc@entry=0x7fffffffe278, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff6b5f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x000000000047d449 in update_timestamp () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c:111
+#3  0x000000000047d7b7 in start_log_file (benchmark_name=0x569964 "clamr_openmponly", test_info=0x7fffffffe888 "OMP THREADS = 244 ") at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c:200
+#4  0x0000000000444912 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:210
+
+2017-02-20 17:56:33:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-02-20 17:56:33:Backtrace END
+2017-02-20 17:56:33:Type: The type is an array.
+2017-02-20 17:56:33:Type sizeof: 200
+2017-02-20 17:56:33:Fliping array at pos: 131
+2017-02-20 17:56:33:Type: The type is an integer type.
+2017-02-20 17:56:33:Type sizeof: 1
+2017-02-20 17:56:33:Mem contents(hex):0x00
+2017-02-20 17:56:33:Fault Mode: Single bit-flip
+2017-02-20 17:56:33:base address to flip value: 0x7d0863  
+2017-02-20 17:56:33:address max offset: 1
+2017-02-20 17:56:33:Memory content before bitflip:0x00
+2017-02-20 17:56:33:Memory content after  bitflip:0x10
+2017-02-20 17:56:33:Mem contents(hex):0x10
+2017-02-20 17:56:33:frame name: update_timestamp
+2017-02-20 17:56:33:symbol name: log_file_name
+2017-02-20 17:56:33:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/logHelper/logHelper.c
+2017-02-20 17:56:33:symbol line: 52
+2017-02-20 17:56:33:value: '\000' <repeats 131 times>, "\020", '\000' <repeats 67 times>
+2017-02-20 17:56:33:value address: 0x7d07e0 <log_file_name>
+2017-02-20 17:56:33:Type: The type is an array.
+2017-02-20 17:56:33:Type sizeof: 200
+2017-02-20 17:56:33:Field name: None
+2017-02-20 17:56:33:Field Type:
+2017-02-20 17:56:33:Type: A range type, that is, an integer type with bounds.
+2017-02-20 17:56:33:Type sizeof: 1
+2017-02-20 17:56:33:Type range: (0L, 199L)
+2017-02-20 17:56:33:Fault Injection Successful after 1.37660098076s
+2017-02-20 17:57:27:event type: exit
+2017-02-20 17:57:27:exit code: 0

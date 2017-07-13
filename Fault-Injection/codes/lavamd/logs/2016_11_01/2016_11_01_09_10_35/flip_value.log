@@ -1,0 +1,81 @@
+2016-11-01 09:10:16:Initialization strings:
+2016-11-01 09:10:17:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-11-01 09:10:17:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 09:10:17:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 09:10:17:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-11-01 09:10:17:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-11-01 09:10:17:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-11-01 09:10:17:Trying Fault Injection
+2016-11-01 09:10:17:Inferior PID: 155338
+2016-11-01 09:10:17:Inferior is valid: True
+2016-11-01 09:10:17:Inferior #threads: 1
+2016-11-01 09:10:17:Backtrace BEGIN:
+2016-11-01 09:10:17:#0  memset (dstpp=0x7ffff76422b0, c=c@entry=0, len=3408) at ../string/memset.c:57
+#1  0x00007ffff7de3513 in _dl_map_segments (loader=0x7fffffffe3b0, has_holes=<optimized out>, maplength=2213040, nloadcmds=2, loadcmds=0x7fffffffe050, type=<optimized out>, header=0x7ffff7ff94d8, fd=<optimized out>, l=0x7ffff7ff94d0) at ./dl-map-segments.h:127
+#2  _dl_map_object_from_fd (name=name@entry=0x400bbc "libpthread.so.0", fd=<optimized out>, fbp=fbp@entry=0x7fffffffe368, realname=<optimized out>, loader=loader@entry=0x7ffff7ffe168, l_type=l_type@entry=1, mode=0, stack_endp=0x7fffffffe360, nsid=0) at dl-load.c:1222
+#3  0x00007ffff7de52f9 in _dl_map_object (loader=0x7ffff7ffe168, name=0x400bbc "libpthread.so.0", type=1, trace_mode=0, mode=0, nsid=<optimized out>) at dl-load.c:2188
+#4  0x00007ffff7de964f in openaux (a=a@entry=0x7fffffffe9b8) at dl-deps.c:63
+#5  0x00007ffff7deba83 in _dl_catch_error (objname=objname@entry=0x7fffffffe9b0, errstring=errstring@entry=0x7fffffffe9a8, mallocedp=mallocedp@entry=0x7fffffffe9a7, operate=operate@entry=0x7ffff7de9620 <openaux>, args=args@entry=0x7fffffffe9b8) at dl-error.c:187
+#6  0x00007ffff7de98a9 in _dl_map_object_deps (map=map@entry=0x7ffff7ffe168, preloads=<optimized out>, npreloads=npreloads@entry=0, trace_mode=trace_mode@entry=0, open_mode=open_mode@entry=0) at dl-deps.c:254
+#7  0x00007ffff7ddff28 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1612
+#8  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#9  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#10 _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#11 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#12 0x0000000000000007 in ?? ()
+#13 0x00007fffffffedf0 in ?? ()
+#14 0x00007fffffffee1e in ?? ()
+#15 0x00007fffffffee22 in ?? ()
+#16 0x00007fffffffee25 in ?? ()
+#17 0x00007fffffffee62 in ?? ()
+#18 0x00007fffffffee9e in ?? ()
+#19 0x00007fffffffeed8 in ?? ()
+#20 0x0000000000000000 in ?? ()
+
+2016-11-01 09:10:17:52	in ../string/memset.c
+
+2016-11-01 09:10:17:Backtrace END
+2016-11-01 09:10:17:Thread name: None
+2016-11-01 09:10:17:Thread num: 1
+2016-11-01 09:10:17:Thread ptid: (155338, 155338, 0)
+2016-11-01 09:10:17:bitFlip function
+2016-11-01 09:10:17:Type: The type is an array.
+2016-11-01 09:10:17:Type sizeof: 0
+2016-11-01 09:10:17:Fliping array at pos: 0
+2016-11-01 09:10:17:bitFlip function
+2016-11-01 09:10:17:Type: The type is a structure.
+2016-11-01 09:10:17:Type sizeof: 44
+2016-11-01 09:10:17:Fliping value of field: dataend
+2016-11-01 09:10:17:bitFlip function
+2016-11-01 09:10:17:Type: The type is an integer type.
+2016-11-01 09:10:17:Type sizeof: 8
+2016-11-01 09:10:17:Mem contents(hex):0xe00x6f0x010x000x000x000x000x00
+2016-11-01 09:10:17:base address to flip value: 0x7fffffffe060
+2016-11-01 09:10:17:address max offset: 8
+2016-11-01 09:10:17:Memory content before bitflip:0xe00x6f0x010x000x000x000x000x00
+2016-11-01 09:10:17:Memory content after  bitflip:0xe00x6f0x010x000x080x000x000x00
+2016-11-01 09:10:17:Mem contents(hex):0xe00x6f0x010x000x080x000x000x00
+2016-11-01 09:10:17:frame name: _dl_map_segments
+2016-11-01 09:10:17:symbol name: loadcmds
+2016-11-01 09:10:17:symbol filename: dl-load.c
+2016-11-01 09:10:17:symbol line: 1041
+2016-11-01 09:10:17:value: 0x7fffffffe050
+2016-11-01 09:10:17:value address: 0x7fffffffe050
+2016-11-01 09:10:17:Type: The type is an array.
+2016-11-01 09:10:17:Type sizeof: 0
+2016-11-01 09:10:17:Field name: None
+2016-11-01 09:10:17:Field Type:
+2016-11-01 09:10:17:Type: A range type, that is, an integer type with bounds.
+2016-11-01 09:10:17:Type sizeof: 8
+2016-11-01 09:10:17:Type range: (0L, 139762531535904L)
+2016-11-01 09:10:17:Fault Injection Successful after 0.732204914093s
+2016-11-01 09:10:19:Fault Already Injected
+2016-11-01 09:10:21:Fault Already Injected
+2016-11-01 09:10:23:Fault Already Injected
+2016-11-01 09:10:24:Fault Already Injected
+2016-11-01 09:10:24:Fault Already Injected
+2016-11-01 09:10:25:Fault Already Injected
+2016-11-01 09:10:26:Fault Already Injected
+2016-11-01 09:10:26:Fault Already Injected
+2016-11-01 09:10:28:event type: exit
+2016-11-01 09:10:28:exit code: 0

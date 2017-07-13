@@ -1,0 +1,71 @@
+[INFO -- 2017-03-06 13:17:22]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 13:17:22]
+Initialization strings:
+[INFO -- 2017-03-06 13:17:22]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-06 13:17:22]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 13:17:22]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 13:17:22]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 13:17:22]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 13:17:22]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-06 13:17:22]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-06 13:17:22]
+initSignal:10
+[INFO -- 2017-03-06 13:17:22]
+endSignal:15
+[INFO -- 2017-03-06 13:17:22]
+seqSignal:20
+[INFO -- 2017-03-06 13:17:22]
+faultMode:0
+[INFO -- 2017-03-06 13:17:38]
+Backtrace BEGIN:
+#0  0x000000000047a8d5 in std::__fill_n_a<double*, unsigned long, double> (__first=0x3b6d000, __n=264756, __value=@0x7fffffffe6e0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:766
+#1  0x000000000047a842 in std::fill_n<double*, unsigned long, double> (__first=0x3a68020, __n=264756, __value=@0x7fffffffe6e0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:801
+#2  0x000000000047971e in std::__uninitialized_fill_n<true>::__uninit_fill_n<double*, unsigned long, double> (__first=0x3a68020, __n=264756, __x=@0x7fffffffe6e0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:220
+#3  0x000000000047a7fa in std::uninitialized_fill_n<double*, unsigned long, double> (__first=0x3a68020, __n=264756, __x=@0x7fffffffe6e0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:246
+#4  0x000000000047a7be in std::__uninitialized_fill_n_a<double*, unsigned long, double, double> (__first=0x3a68020, __n=264756, __x=@0x7fffffffe6e0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:358
+#5  0x0000000000479bb4 in std::vector<double, std::allocator<double> >::_M_fill_initialize (this=0x7fffffffe6e8, __n=264756, __value=@0x7fffffffe6e0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:1301
+#6  0x0000000000479970 in std::vector<double, std::allocator<double> >::vector (this=0x7fffffffe6e8, __n=264756, __value=@0x7fffffffe6e0: 0, __a=...) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:306
+#7  0x0000000000471d6d in State::fill_circle (this=0x7fa5e0, circ_radius=24, fill_value=100, background=7) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:987
+#8  0x00000000004452cb in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:282
+
+761	    __fill_n_a(_OutputIterator __first, _Size __n, const _Tp& __value)
+762	    {
+763	      const _Tp __tmp = __value;
+764	      for (__decltype(__n + 0) __niter = __n;
+765		   __niter > 0; --__niter, ++__first)
+766		*__first = __tmp;
+767	      return __first;
+768	    }
+769	
+770	  template<typename _Size, typename _Tp>
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7d07a8 
+address max offset: 4
+Memory content after  bitflip:0x000x000x800x00
+frame name: std::__uninitialized_fill_n<true>::__uninit_fill_n<double*, unsigned long, double>
+symbol name: save_ncells
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 162
+value: 8388608
+value address: 0x7d07a8 <save_ncells>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-06 13:17:38]
+Fault Injection Successful after 16.7944369316s
+[INFO -- 2017-03-06 13:18:23]
+event type: exit
+[INFO -- 2017-03-06 13:18:23]
+exit code: 0

@@ -1,0 +1,60 @@
+2016-10-27 04:35:17:Initialization strings:
+2016-10-27 04:35:17:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-27 04:35:17:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-27 04:35:17:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-27 04:35:17:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-27 04:35:17:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-27 04:35:17:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-27 04:35:17:Trying Fault Injection
+2016-10-27 04:35:17:Inferior PID: 130267
+2016-10-27 04:35:17:Inferior is valid: True
+2016-10-27 04:35:17:Inferior #threads: 1
+2016-10-27 04:35:17:Backtrace BEGIN:
+2016-10-27 04:35:17:#0  __GI___waitpid (pid=130274, stat_loc=stat_loc@entry=0x7fffffffe5e8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff6d9d41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x000000000040648c in update_timestamp () at ../../include/log_helper.c:108
+#3  start_log_file (benchmark_name=0x1fce2 <error: Cannot access memory at address 0x1fce2>, test_info=0x7fffffffe5e8 "") at ../../include/log_helper.c:197
+#4  0x00000000004014df in runTest (argc=<optimized out>, argv=<optimized out>) at needle_check.cpp:294
+#5  main (argc=130274, argv=0x7fffffffe5e8) at needle_check.cpp:114
+
+2016-10-27 04:35:17:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-27 04:35:17:Backtrace END
+2016-10-27 04:35:18:Thread name: None
+2016-10-27 04:35:18:Thread num: 1
+2016-10-27 04:35:18:Thread ptid: (130267, 130267, 0)
+2016-10-27 04:35:18:bitFlip function
+2016-10-27 04:35:18:Type: The type is an array.
+2016-10-27 04:35:18:Type sizeof: 15
+2016-10-27 04:35:18:Fliping array at pos: 12
+2016-10-27 04:35:18:bitFlip function
+2016-10-27 04:35:18:Type: The type is an integer type.
+2016-10-27 04:35:18:Type sizeof: 1
+2016-10-27 04:35:18:Mem contents(hex):0x00
+2016-10-27 04:35:18:base address to flip value: 0x7fffffffe8c5 
+2016-10-27 04:35:18:address max offset: 1
+2016-10-27 04:35:18:Memory content before bitflip:0x00
+2016-10-27 04:35:18:Memory content after  bitflip:0x40
+2016-10-27 04:35:18:Mem contents(hex):0x40
+2016-10-27 04:35:18:frame name: update_timestamp
+2016-10-27 04:35:18:symbol name: year
+2016-10-27 04:35:18:symbol filename: ../../include/log_helper.c
+2016-10-27 04:35:18:symbol line: 201
+2016-10-27 04:35:18:value: "\363\326\366\377\177\000\000\344\000\000\000\000@\000"
+2016-10-27 04:35:18:value address: 0x7fffffffe8b9
+2016-10-27 04:35:18:Type: The type is an array.
+2016-10-27 04:35:18:Type sizeof: 15
+2016-10-27 04:35:18:Field name: None
+2016-10-27 04:35:18:Field Type:
+2016-10-27 04:35:18:Type: A range type, that is, an integer type with bounds.
+2016-10-27 04:35:18:Type sizeof: 1
+2016-10-27 04:35:18:Type range: (0L, 14L)
+2016-10-27 04:35:18:Fault Injection Successful after 1.03148293495s
+2016-10-27 04:35:22:Fault Already Injected
+2016-10-27 04:35:27:Fault Already Injected
+2016-10-27 04:35:27:Fault Already Injected
+2016-10-27 04:35:27:Fault Already Injected
+2016-10-27 04:35:30:Fault Already Injected
+2016-10-27 04:35:31:Fault Already Injected
+2016-10-27 04:35:38:event type: exit
+2016-10-27 04:35:38:exit code: 0

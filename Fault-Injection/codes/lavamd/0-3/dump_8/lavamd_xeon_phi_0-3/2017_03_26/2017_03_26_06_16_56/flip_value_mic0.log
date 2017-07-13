@@ -1,0 +1,70 @@
+[INFO -- 2017-03-26 06:16:33]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 06:16:33]
+Initialization strings:
+[INFO -- 2017-03-26 06:16:34]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 06:16:34]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 06:16:34]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 06:16:34]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 06:16:34]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 06:16:34]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 06:16:34]
+initSignal:0
+[INFO -- 2017-03-26 06:16:34]
+endSignal:3
+[INFO -- 2017-03-26 06:16:34]
+seqSignal:30
+[INFO -- 2017-03-26 06:16:34]
+faultMode:3
+[INFO -- 2017-03-26 06:16:34]
+Backtrace BEGIN:
+#0  _dl_lookup_symbol_x (undef_name=0x7ffff786666d "pthread_create", undef_map=undef_map@entry=0x7ffff7ffab28, ref=ref@entry=0x7fffffffe950, symbol_scope=symbol_scope@entry=0x7ffff7ffae80, version=0x7ffff7ff8910, type_class=1, flags=1, skip_map=0x0) at dl-lookup.c:753
+#1  0x00007ffff7de854f in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=<optimized out>, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff7873e90, map=0x7ffff7ffab28) at ../sysdeps/x86_64/dl-machine.h:277
+#2  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ffab28) at do-rel.h:137
+#3  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#4  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#5  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebc0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#6  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebc0) at rtld.c:308
+#7  _dl_start (arg=0x7fffffffebc0) at rtld.c:414
+#8  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#9  0x0000000000000007 in ?? ()
+#10 0x00007fffffffedb7 in ?? ()
+#11 0x00007fffffffedf4 in ?? ()
+#12 0x00007fffffffedf8 in ?? ()
+#13 0x00007fffffffedfb in ?? ()
+#14 0x00007fffffffee41 in ?? ()
+#15 0x00007fffffffee86 in ?? ()
+#16 0x00007fffffffeec9 in ?? ()
+#17 0x0000000000000000 in ?? ()
+
+748	in dl-lookup.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x480xe90xff0xff0xff0x7f0x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe8c0
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: elf_machine_rela
+symbol name: r2
+symbol filename: do-rel.h
+symbol line: 50
+value: 0x7fffffffe948
+value address: 0x7fffffffe8c0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-26 06:16:34]
+Fault Injection Successful after 0.624511957169s
+[INFO -- 2017-03-26 06:16:49]
+event type: exit
+[INFO -- 2017-03-26 06:16:49]
+exit code: 0

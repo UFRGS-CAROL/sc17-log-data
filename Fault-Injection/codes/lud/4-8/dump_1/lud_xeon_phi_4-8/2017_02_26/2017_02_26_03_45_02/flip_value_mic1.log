@@ -1,0 +1,74 @@
+[INFO -- 2017-02-26 03:44:31]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 03:44:31]
+Initialization strings:
+[INFO -- 2017-02-26 03:44:31]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-26 03:44:31]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 03:44:31]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 03:44:31]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 03:44:31]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 03:44:31]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-26 03:44:31]
+initSignal:4
+[INFO -- 2017-02-26 03:44:31]
+endSignal:8
+[INFO -- 2017-02-26 03:44:31]
+seqSignal:30
+[INFO -- 2017-02-26 03:44:31]
+faultMode:1
+[EXCEPTION -- 2017-02-26 03:44:40]
+pythonException: invalid frame
+[INFO -- 2017-02-26 03:44:40]
+Backtrace BEGIN:
+#0  0x0000000000404c54 in L_lud_omp_123__par_loop2_2_5 () at lud_omp.c:148
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+143	            for (i = 0; i < BS; i++)
+144	            {
+145	                for (k=0; k < BS; k++) {
+146	#pragma omp simd 
+147	                    for (j = 0; j < BS; j++) {
+148	                        sum[j] += temp_left[BS*i + k] * temp_top[BS*k + j];
+149	                    }
+150	                }
+151	#pragma omp simd 
+152	                for (j = 0; j < BS; j++) {
+
+Backtrace END
+Fliping array at pos: 6
+Memory content before bitflip:0x6b0xce0x390x3d
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffc858
+address max offset: 4
+Memory content after  bitflip:0x6b0xce0x3f0x3d
+frame name: L_lud_omp_123__par_loop2_2_5
+symbol name: sum
+symbol filename: lud_omp.c
+symbol line: 130
+value: {0.0491962731, 0.0491473116, 0.0490978211, 0.0490488894, 0.0490005463, 0.0489516519, 0.0468277149, 0.045317851, 0.0452728719, 0.0452273823, 0.0451814532, 0.0451365598, 0.0450915694, 0.0450459942, 0.0450015776, 0.0449564233}
+value address: 0x7fffffffc840
+Type: The type is an array.
+Type sizeof: 64
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 15L)
+
+[INFO -- 2017-02-26 03:44:40]
+Fault Injection Successful after 9.39381504059s
+[INFO -- 2017-02-26 03:44:51]
+event type: exit
+[INFO -- 2017-02-26 03:44:51]
+exit code: 0

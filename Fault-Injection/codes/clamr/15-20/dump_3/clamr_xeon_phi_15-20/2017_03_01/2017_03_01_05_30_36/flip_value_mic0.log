@@ -1,0 +1,49 @@
+2017-03-01 05:29:41:Starting flip_value script
+2017-03-01 05:29:41:Initialization strings:
+2017-03-01 05:29:42:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 05:29:42:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 05:29:42:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 05:29:42:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 05:29:42:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 05:29:42:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 05:29:42:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 05:29:42:initSignal:15
+2017-03-01 05:29:42:endSignal:20
+2017-03-01 05:29:42:seqSignal:20
+2017-03-01 05:29:57:Backtrace BEGIN:
+2017-03-01 05:29:57:#0  0x000000000047169b in State::mass_sum (this=0x7fb9e0, enhanced_precision_sum=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:2988
+#1  0x000000000044532f in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:292
+
+2017-03-01 05:29:57:2983	      local.correction = 0.0;
+2984	      int ic;
+2985	      for (ic = 0; ic < (int)ncells; ic++) {
+2986	         if (celltype[ic] == REAL_CELL) {
+2987	            //  Exclude boundary cells.
+2988	            corrected_next_term= H[ic]*mesh->lev_deltax[level[ic]]*mesh->lev_deltay[level[ic]] + local.correction;
+2989	            new_sum            = local.sum + local.correction;
+2990	            local.correction   = corrected_next_term - (new_sum - local.sum);
+2991	            local.sum          = new_sum;
+2992	         }
+
+2017-03-01 05:29:57:Backtrace END
+2017-03-01 05:30:02:Type: A reference type.
+2017-03-01 05:30:02:Type sizeof: 8
+2017-03-01 05:30:02:Fliping a bit of the reference
+2017-03-01 05:30:02:Mem contents(hex):0x340x0a0x040x000x000x000x000x00
+2017-03-01 05:30:02:Fault Mode: Double bit-flip
+2017-03-01 05:30:02:base address to flip value: 0x7fb2c8
+2017-03-01 05:30:02:address max offset: 8
+2017-03-01 05:30:02:Memory content before bitflip:0x340x0a0x040x000x000x000x000x00
+2017-03-01 05:30:02:Memory content after  bitflip:0x340x0a0x040x000x000x000x410x00
+2017-03-01 05:30:02:Mem contents(hex):0x340x0a0x040x000x000x000x410x00
+2017-03-01 05:30:02:frame name: State::mass_sum
+2017-03-01 05:30:02:symbol name: ncells
+2017-03-01 05:30:02:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+2017-03-01 05:30:02:symbol line: 2960
+2017-03-01 05:30:02:value: @0x7fb2c8
+2017-03-01 05:30:02:value address: 0x7fb2c8
+2017-03-01 05:30:02:Type: A reference type.
+2017-03-01 05:30:02:Type sizeof: 8
+2017-03-01 05:30:02:Fault Injection Successful after 20.7986431122s
+2017-03-01 05:30:25:event type: exit
+2017-03-01 05:30:25:exit code: no exit code available

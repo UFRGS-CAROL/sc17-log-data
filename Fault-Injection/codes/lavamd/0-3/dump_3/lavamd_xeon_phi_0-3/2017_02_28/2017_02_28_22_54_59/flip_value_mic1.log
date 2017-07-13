@@ -1,0 +1,39 @@
+2017-02-28 22:54:36:Starting flip_value script
+2017-02-28 22:54:36:Initialization strings:
+2017-02-28 22:54:36:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-28 22:54:36:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 22:54:36:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 22:54:36:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-28 22:54:36:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-28 22:54:36:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-02-28 22:54:36:initSignal:0
+2017-02-28 22:54:36:endSignal:3
+2017-02-28 22:54:36:seqSignal:30
+2017-02-28 22:54:37:Backtrace BEGIN:
+2017-02-28 22:54:37:#0  0x00007ffff7138932 in _IO_acquire_lock_fct (p=<synthetic pointer>) at libioP.h:891
+#1  __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:41
+#2  0x00000000004021c3 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:148
+
+2017-02-28 22:54:37:886	in libioP.h
+
+2017-02-28 22:54:37:Backtrace END
+2017-02-28 22:54:37:Type: The type is an integer type.
+2017-02-28 22:54:37:Type sizeof: 4
+2017-02-28 22:54:37:Mem contents(hex):0x070x000x000x00
+2017-02-28 22:54:37:Fault Mode: Double bit-flip
+2017-02-28 22:54:37:base address to flip value: 0x7fffffffe820
+2017-02-28 22:54:37:address max offset: 4
+2017-02-28 22:54:37:Memory content before bitflip:0x070x000x000x00
+2017-02-28 22:54:37:Memory content after  bitflip:0x070x500x000x00
+2017-02-28 22:54:37:Mem contents(hex):0x070x500x000x00
+2017-02-28 22:54:37:frame name: main
+2017-02-28 22:54:37:symbol name: argc
+2017-02-28 22:54:37:symbol filename: main_check.c
+2017-02-28 22:54:37:symbol line: 43
+2017-02-28 22:54:37:value: 20487
+2017-02-28 22:54:37:value address: 0x7fffffffe820
+2017-02-28 22:54:37:Type: The type is an integer type.
+2017-02-28 22:54:37:Type sizeof: 4
+2017-02-28 22:54:37:Fault Injection Successful after 1.56065201759s
+2017-02-28 22:54:52:event type: exit
+2017-02-28 22:54:52:exit code: 0

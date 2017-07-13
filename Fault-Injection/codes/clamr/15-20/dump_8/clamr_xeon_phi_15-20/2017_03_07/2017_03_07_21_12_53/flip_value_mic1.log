@@ -1,0 +1,67 @@
+[INFO -- 2017-03-07 21:09:44]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-07 21:09:44]
+Initialization strings:
+[INFO -- 2017-03-07 21:09:44]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-07 21:09:44]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 21:09:44]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 21:09:44]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 21:09:44]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 21:09:44]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-07 21:09:44]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-07 21:09:44]
+initSignal:15
+[INFO -- 2017-03-07 21:09:44]
+endSignal:20
+[INFO -- 2017-03-07 21:09:44]
+seqSignal:20
+[INFO -- 2017-03-07 21:09:44]
+faultMode:3
+[INFO -- 2017-03-07 21:10:05]
+Backtrace BEGIN:
+#0  0x000000000053c2a4 in median_sort (t=0x7fb150, cut_direction=1, k=128, num=258, idx=0x4499c18) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:90
+#1  0x000000000053ce2b in KDTree_CreateTree (t=0x7fb150) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:236
+#2  0x00000000005413f6 in KDTree_QueryCircleInterior_Double (t=0x7fb150, result_num=0x7fffffffe65c, result_indicies=0xb02ed0, circ_radius=24, ncells=264756, x=0x1d27cd0, dx=0x212fce0, y=0x2537cf0, dy=0x2c44250) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:625
+#3  0x0000000000471e70 in State::fill_circle (this=0x7fb9e0, circ_radius=24, fill_value=100, background=7) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:990
+#4  0x00000000004452cb in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:282
+
+85	         for (i++;
+86	              Bounds_CenterAxis(&(t->elements[idx[i]]), cut_direction) <
+87	                Bounds_CenterAxis(&(t->elements[a]), cut_direction);
+88	              i++);
+89	         for (j--;
+90	              Bounds_CenterAxis(&(t->elements[idx[j]]), cut_direction) >
+91	              Bounds_CenterAxis(&(t->elements[a]), cut_direction);
+92	              j--);
+93	         if(j < i)
+94	            break;
+
+Backtrace END
+Memory content before bitflip:0x400xe60xff0xff0xff0x7f0x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe620
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: KDTree_QueryCircleInterior_Double
+symbol name: rad4
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c
+symbol line: 645
+value: 0
+value address: 0x7fffffffe620
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-07 21:10:05]
+Fault Injection Successful after 21.7921171188s
+[INFO -- 2017-03-07 21:10:42]
+event type: exit
+[INFO -- 2017-03-07 21:10:42]
+exit code: 0

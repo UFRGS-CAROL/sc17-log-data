@@ -1,0 +1,52 @@
+2017-03-02 01:57:36:Starting flip_value script
+2017-03-02 01:57:36:Initialization strings:
+2017-03-02 01:57:36:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 01:57:36:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 01:57:36:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 01:57:36:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-03-02 01:57:36:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-03-02 01:57:36:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-03-02 01:57:36:initSignal:4
+2017-03-02 01:57:36:endSignal:6
+2017-03-02 01:57:36:seqSignal:30
+2017-03-02 01:57:41:Backtrace BEGIN:
+2017-03-02 01:57:41:#0  0x0000000000404cba in L_lud_omp_123__par_loop2_2_5 () at lud_omp.c:148
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-03-02 01:57:41:143	            for (i = 0; i < BS; i++)
+144	            {
+145	                for (k=0; k < BS; k++) {
+146	#pragma omp simd 
+147	                    for (j = 0; j < BS; j++) {
+148	                        sum[j] += temp_left[BS*i + k] * temp_top[BS*k + j];
+149	                    }
+150	                }
+151	#pragma omp simd 
+152	                for (j = 0; j < BS; j++) {
+
+2017-03-02 01:57:41:Backtrace END
+2017-03-02 01:57:47:Type: The type is an integer type.
+2017-03-02 01:57:47:Type sizeof: 4
+2017-03-02 01:57:47:Mem contents(hex):0x000x190x000x00
+2017-03-02 01:57:47:Fault Mode: Double bit-flip
+2017-03-02 01:57:47:base address to flip value: 0x7fffffffd934
+2017-03-02 01:57:47:address max offset: 4
+2017-03-02 01:57:47:Memory content before bitflip:0x000x190x000x00
+2017-03-02 01:57:47:Memory content after  bitflip:0x280x190x000x00
+2017-03-02 01:57:47:Mem contents(hex):0x280x190x000x00
+2017-03-02 01:57:47:frame name: L_lud_omp_123__par_loop2_2_5
+2017-03-02 01:57:47:symbol name: chunks_per_inter
+2017-03-02 01:57:47:symbol filename: lud_omp.c
+2017-03-02 01:57:47:symbol line: 45
+2017-03-02 01:57:47:value: 6440
+2017-03-02 01:57:47:value address: 0x7fffffffd934
+2017-03-02 01:57:47:Type: The type is an integer type.
+2017-03-02 01:57:47:Type sizeof: 4
+2017-03-02 01:57:47:Fault Injection Successful after 11.7697060108s
+2017-03-02 01:57:52:event type: exit
+2017-03-02 01:57:52:exit code: 0

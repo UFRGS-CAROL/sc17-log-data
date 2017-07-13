@@ -1,0 +1,58 @@
+[INFO -- 2017-02-24 23:39:58]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-24 23:39:58]
+Initialization strings:
+[INFO -- 2017-02-24 23:39:58]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-24 23:39:58]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-24 23:39:58]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-24 23:39:58]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-24 23:39:58]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-24 23:39:58]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-24 23:39:58]
+initSignal:9
+[INFO -- 2017-02-24 23:39:58]
+endSignal:12
+[INFO -- 2017-02-24 23:39:58]
+seqSignal:15
+[INFO -- 2017-02-24 23:39:58]
+faultMode:2
+[INFO -- 2017-02-24 23:40:08]
+Backtrace BEGIN:
+#0  __GI___rawmemchr (s=s@entry=0x7fffffffe640, c_in=c_in@entry=0) at ../string/rawmemchr.c:101
+#1  0x00007ffff7145ad0 in _IO_str_init_static_internal (sf=sf@entry=0x7fffffffe440, ptr=ptr@entry=0x7fffffffe640 "325.086609\n", size=size@entry=0, pstart=pstart@entry=0x0) at strops.c:44
+#2  0x00007ffff71365d5 in __GI___isoc99_vsscanf (string=0x7fffffffe640 "325.086609\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:41
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#5  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+96	in ../string/rawmemchr.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x2f
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffee80 
+address max offset: 1
+Memory content after  bitflip:0xa5
+frame name: main
+symbol name: ofile
+symbol filename: hotspot_check.c
+symbol line: 232
+value: 0x7fffffffee80 "\245micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th"
+value address: 0x7fffffffea10
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-24 23:40:08]
+Fault Injection Successful after 10.1275169849s
+[INFO -- 2017-02-24 23:40:23]
+event type: exit
+[INFO -- 2017-02-24 23:40:23]
+exit code: 0

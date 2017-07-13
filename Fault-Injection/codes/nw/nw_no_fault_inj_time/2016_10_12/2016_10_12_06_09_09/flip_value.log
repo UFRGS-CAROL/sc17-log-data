@@ -1,0 +1,67 @@
+2016-10-12 06:08:53:Initialization strings:
+2016-10-12 06:08:53:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-12 06:08:53:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 06:08:53:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 06:08:53:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-12 06:08:53:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-12 06:08:53:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-12 06:08:53:Trying Fault Injection
+2016-10-12 06:08:53:Inferior PID: 114612
+2016-10-12 06:08:53:Inferior is valid: True
+2016-10-12 06:08:53:Inferior #threads: 1
+2016-10-12 06:08:53:Backtrace BEGIN:
+2016-10-12 06:08:53:#0  __GI___waitpid (pid=114623, stat_loc=stat_loc@entry=0x7fffffffe5e8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff6d9d41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x000000000040648c in update_timestamp () at ../../include/log_helper.c:108
+#3  start_log_file (benchmark_name=0x1bfbf <error: Cannot access memory at address 0x1bfbf>, test_info=0x7fffffffe5e8 "") at ../../include/log_helper.c:197
+#4  0x00000000004014df in runTest (argc=<optimized out>, argv=<optimized out>) at needle_check.cpp:294
+#5  main (argc=114623, argv=0x7fffffffe5e8) at needle_check.cpp:114
+
+2016-10-12 06:08:53:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-12 06:08:53:Backtrace END
+2016-10-12 06:08:54:Thread name: None
+2016-10-12 06:08:54:Thread num: 1
+2016-10-12 06:08:54:Thread ptid: (114612, 114612, 0)
+2016-10-12 06:08:54:bitFlip function
+2016-10-12 06:08:54:Type: The type is a structure.
+2016-10-12 06:08:54:Type sizeof: 152
+2016-10-12 06:08:54:Fliping value of field: sa_flags
+2016-10-12 06:08:54:bitFlip function
+2016-10-12 06:08:54:Type: The type is an integer type.
+2016-10-12 06:08:54:Type sizeof: 4
+2016-10-12 06:08:54:Mem contents(hex):0x000x000x000x00
+2016-10-12 06:08:54:base address to flip value: 0x7fffffffe710
+2016-10-12 06:08:54:address max offset: 4
+2016-10-12 06:08:54:Memory content before bitflip:0x000x000x000x00
+2016-10-12 06:08:54:Memory content after  bitflip:0x800x000x000x00
+2016-10-12 06:08:54:Mem contents(hex):0x800x000x000x00
+2016-10-12 06:08:54:frame name: do_system
+2016-10-12 06:08:54:symbol name: sa
+2016-10-12 06:08:54:symbol filename: ../sysdeps/posix/system.c
+2016-10-12 06:08:54:symbol line: 58
+2016-10-12 06:08:54:value: {__sigaction_handler = {sa_handler = 0x1, sa_sigaction = 0x1}, sa_mask = {__val = {65536, 0 <repeats 15 times>}}, sa_flags = 128, sa_restorer = 0x57fe0c5b}
+2016-10-12 06:08:54:value address: 0x7fffffffe688
+2016-10-12 06:08:54:Type: The type is a structure.
+2016-10-12 06:08:54:Type sizeof: 152
+2016-10-12 06:08:54:Field name: __sigaction_handler
+2016-10-12 06:08:54:Field Type:
+2016-10-12 06:08:54:Type: The type is a union.
+2016-10-12 06:08:54:Type sizeof: 8
+2016-10-12 06:08:54:Field name: sa_mask
+2016-10-12 06:08:54:Field Type:
+2016-10-12 06:08:54:Type: The type is a structure.
+2016-10-12 06:08:54:Type sizeof: 128
+2016-10-12 06:08:54:Field name: sa_flags
+2016-10-12 06:08:54:Field Type:
+2016-10-12 06:08:54:Type: The type is an integer type.
+2016-10-12 06:08:54:Type sizeof: 4
+2016-10-12 06:08:54:Field name: sa_restorer
+2016-10-12 06:08:54:Field Type:
+2016-10-12 06:08:54:Type: The type is a pointer.
+2016-10-12 06:08:54:Type sizeof: 8
+2016-10-12 06:08:54:Fault Injection Successful after 1.02498602867s
+2016-10-12 06:08:54:Fault Already Injected
+2016-10-12 06:09:01:Fault Already Injected
+2016-10-12 06:09:02:event type: exit
+2016-10-12 06:09:02:exit code: 0

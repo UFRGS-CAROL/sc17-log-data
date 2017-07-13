@@ -1,0 +1,60 @@
+[INFO -- 2017-03-05 12:24:17]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-05 12:24:17]
+Initialization strings:
+[INFO -- 2017-03-05 12:24:17]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-05 12:24:17]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 12:24:17]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 12:24:17]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 12:24:17]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 12:24:17]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-05 12:24:17]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-05 12:24:17]
+initSignal:15
+[INFO -- 2017-03-05 12:24:17]
+endSignal:20
+[INFO -- 2017-03-05 12:24:17]
+seqSignal:20
+[INFO -- 2017-03-05 12:24:17]
+faultMode:0
+[INFO -- 2017-03-05 12:24:38]
+Backtrace BEGIN:
+#0  _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe118) at vfprintf.c:1376
+#1  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#2  0x000000000054b5c5 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:470
+#3  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#4  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+1371	in vfprintf.c
+
+Backtrace END
+Fliping array at pos: 0
+Fliping value of field: fp_offset
+Memory content before bitflip:0x300x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffe11c
+address max offset: 4
+Memory content after  bitflip:0x300x800x000x00
+frame name: __fprintf
+symbol name: arg
+symbol filename: fprintf.c
+symbol line: 28
+value: {{gp_offset = 24, fp_offset = 32816, overflow_arg_area = 0x7fffffffe1f0, reg_save_area = 0x7fffffffe130}}
+value address: 0x7fffffffe118
+Type: The type is an array.
+Type sizeof: 24
+
+[INFO -- 2017-03-05 12:24:38]
+Fault Injection Successful after 21.7099270821s
+[INFO -- 2017-03-05 12:25:20]
+event type: exit
+[INFO -- 2017-03-05 12:25:20]
+exit code: 0

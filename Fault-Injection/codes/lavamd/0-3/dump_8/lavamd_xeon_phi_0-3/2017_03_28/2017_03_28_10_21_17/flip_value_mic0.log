@@ -1,0 +1,63 @@
+[INFO -- 2017-03-28 10:20:54]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-28 10:20:54]
+Initialization strings:
+[INFO -- 2017-03-28 10:20:55]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-28 10:20:55]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 10:20:55]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 10:20:55]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 10:20:55]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 10:20:55]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-28 10:20:55]
+initSignal:0
+[INFO -- 2017-03-28 10:20:55]
+endSignal:3
+[INFO -- 2017-03-28 10:20:55]
+seqSignal:30
+[INFO -- 2017-03-28 10:20:55]
+faultMode:1
+[INFO -- 2017-03-28 10:20:55]
+Backtrace BEGIN:
+#0  0x00007ffff7de603f in do_lookup_x (undef_name=undef_name@entry=0x7ffff6ecd76e "__asprintf", new_hash=new_hash@entry=380552394, old_hash=old_hash@entry=0x7fffffffcff0, ref=0x7ffff6ecd448, result=result@entry=0x7fffffffd000, scope=<optimized out>, i=2, version=0x7ffff7ff8d90, flags=1, skip=0x0, type_class=1, undef_map=0x7ffff7ff8000) at dl-lookup.c:438
+#1  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x7ffff6ecd76e "__asprintf", undef_map=0x7ffff7ff8000, ref=ref@entry=0x7fffffffd0b8, symbol_scope=0x7ffff7ff8358, version=0x7ffff7ff8d90, type_class=type_class@entry=1, flags=1, skip_map=0x0) at dl-lookup.c:775
+#2  0x00007ffff7deafea in _dl_fixup (l=<optimized out>, reloc_arg=<optimized out>) at ../elf/dl-runtime.c:111
+#3  0x00007ffff7df1859 in _dl_runtime_resolve () at ../sysdeps/x86_64/dl-trampoline.S:89
+#4  0x00007ffff6ece309 in __dlerror () at dlerror.c:99
+#5  0x00007ffff7909dc8 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+433	in dl-lookup.c
+
+Backtrace END
+Fliping array at pos: 3
+Memory content before bitflip:0x5f
+Fault Mode: Double bit-flip
+base address to flip value: 0x7ffff7df9023  
+address max offset: 1
+Memory content after  bitflip:0x6f
+frame name: _dl_fixup
+symbol name: __PRETTY_FUNCTION__
+symbol filename: ../elf/dl-runtime.c
+symbol line: 0
+value: "_dlofixup"
+value address: 0x7ffff7df9020 <__PRETTY_FUNCTION__.10256>
+Type: The type is an array.
+Type sizeof: 10
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 9L)
+
+[INFO -- 2017-03-28 10:20:55]
+Fault Injection Successful after 0.71967792511s
+[INFO -- 2017-03-28 10:21:10]
+event type: exit
+[INFO -- 2017-03-28 10:21:10]
+exit code: 0

@@ -1,0 +1,77 @@
+2017-03-01 18:04:52:Starting flip_value script
+2017-03-01 18:04:52:Initialization strings:
+2017-03-01 18:04:52:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 18:04:52:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 18:04:52:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 18:04:52:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 18:04:52:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 18:04:52:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 18:04:52:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 18:04:52:initSignal:20
+2017-03-01 18:04:52:endSignal:25
+2017-03-01 18:04:52:seqSignal:20
+2017-03-01 18:05:14:Backtrace BEGIN:
+2017-03-01 18:05:14:#0  0x000000000044e4c3 in State::L__ZN5State25apply_boundary_conditionsEv_702__par_loop0_2_30 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:709
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd8f8 in ?? ()
+#3  0x00007fffffffd8c8 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-03-01 18:05:14:704	   for (uint ic=0; ic<ncells; ic++) {
+705	      if (mesh->is_left_boundary(ic)) {
+706	         int nr = nrht[ic];
+707	         H[ic] =  H[nr];
+708	         U[ic] = -U[nr];
+709	         V[ic] =  V[nr];
+710	      }
+711	      if (mesh->is_right_boundary(ic))  {
+712	         int nl = nlft[ic];
+713	         H[ic] =  H[nl];
+
+2017-03-01 18:05:14:Backtrace END
+2017-03-01 18:05:18:Type: The type is an integer type.
+2017-03-01 18:05:18:Type sizeof: 4
+2017-03-01 18:05:18:Mem contents(hex):0x000x000x000x00
+2017-03-01 18:05:18:Fault Mode: Random bit-flip
+2017-03-01 18:05:18:base address to flip value: 0x7fffffffd354
+2017-03-01 18:05:18:address max offset: 4
+2017-03-01 18:05:18:Memory content before bitflip:0x000x000x000x00
+2017-03-01 18:05:19:Backtrace BEGIN:
+2017-03-01 18:05:19:#0  0x000000000044e4c3 in State::L__ZN5State25apply_boundary_conditionsEv_702__par_loop0_2_30 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:709
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd8f8 in ?? ()
+#3  0x00007fffffffd8c8 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-03-01 18:05:19:704	   for (uint ic=0; ic<ncells; ic++) {
+705	      if (mesh->is_left_boundary(ic)) {
+706	         int nr = nrht[ic];
+707	         H[ic] =  H[nr];
+708	         U[ic] = -U[nr];
+709	         V[ic] =  V[nr];
+710	      }
+711	      if (mesh->is_right_boundary(ic))  {
+712	         int nl = nlft[ic];
+713	         H[ic] =  H[nl];
+
+2017-03-01 18:05:19:Backtrace END
+2017-03-01 18:05:23:Type: The type is an integer type.
+2017-03-01 18:05:23:Type sizeof: 4
+2017-03-01 18:05:23:Mem contents(hex):0x660x000x000x00
+2017-03-01 18:05:23:Fault Mode: Double bit-flip
+2017-03-01 18:05:23:base address to flip value: 0x56ac6c 
+2017-03-01 18:05:23:address max offset: 4
+2017-03-01 18:05:23:Memory content before bitflip:0x660x000x000x00
+2017-03-01 18:05:23:Memory content after  bitflip:0x660x000x000x28
+2017-03-01 18:05:23:Mem contents(hex):0x660x000x000x28
+2017-03-01 18:05:23:frame name: State::L__ZN5State25apply_boundary_conditionsEv_702__par_loop0_2_30
+2017-03-01 18:05:23:symbol name: CRUX_STATE_VERSION
+2017-03-01 18:05:23:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+2017-03-01 18:05:23:symbol line: 3647
+2017-03-01 18:05:23:value: 671088742
+2017-03-01 18:05:23:value address: 0x56ac6c <CRUX_STATE_VERSION>
+2017-03-01 18:05:23:Type: The type is an integer type.
+2017-03-01 18:05:23:Type sizeof: 4
+2017-03-01 18:05:23:Fault Injection Successful after 31.4562079906s
+2017-03-01 18:05:52:event type: exit
+2017-03-01 18:05:52:exit code: 0

@@ -1,0 +1,72 @@
+[INFO -- 2017-03-11 15:45:25]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-11 15:45:25]
+Initialization strings:
+[INFO -- 2017-03-11 15:45:26]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-11 15:45:26]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-11 15:45:26]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-11 15:45:26]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-11 15:45:26]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-11 15:45:26]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-11 15:45:26]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-11 15:45:26]
+initSignal:35
+[INFO -- 2017-03-11 15:45:26]
+endSignal:40
+[INFO -- 2017-03-11 15:45:26]
+seqSignal:20
+[INFO -- 2017-03-11 15:45:26]
+faultMode:1
+[INFO -- 2017-03-11 15:46:07]
+Backtrace BEGIN:
+#0  0x0000000000559238 in std::_Rb_tree<void*, std::pair<void* const, malloc_plus_memory_entry*>, std::_Select1st<std::pair<void* const, malloc_plus_memory_entry*> >, std::less<void*>, std::allocator<std::pair<void* const, malloc_plus_memory_entry*> > >::_S_key (__x=0x7fffffffd7e8) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_tree.h:676
+#1  0x0000000000559331 in std::_Rb_tree<void*, std::pair<void* const, malloc_plus_memory_entry*>, std::_Select1st<std::pair<void* const, malloc_plus_memory_entry*> >, std::less<void*>, std::allocator<std::pair<void* const, malloc_plus_memory_entry*> > >::_M_get_insert_unique_pos (this=0x7f9a88, __k=@0x7fffffffd8d0: 0x304ae60) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_tree.h:1820
+#2  0x0000000000559691 in std::_Rb_tree<void*, std::pair<void* const, malloc_plus_memory_entry*>, std::_Select1st<std::pair<void* const, malloc_plus_memory_entry*> >, std::less<void*>, std::allocator<std::pair<void* const, malloc_plus_memory_entry*> > >::_M_insert_unique (this=0x7f9a88, __v=...) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_tree.h:1874
+#3  0x0000000000559b03 in std::map<void*, malloc_plus_memory_entry*, std::less<void*>, std::allocator<std::pair<void* const, malloc_plus_memory_entry*> > >::insert (this=0x7f9a88, __x=...) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_map.h:610
+#4  0x0000000000554ef4 in MallocPlus::memory_swap (this=0x7f9a58, malloc_mem_ptr_old=0x7f9f78, malloc_mem_ptr_new=0x7fffffffde50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/MallocPlus/MallocPlus.cpp:965
+#5  0x000000000051f7a8 in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2608
+#6  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#7  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#8  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+671	      _S_value(_Const_Link_type __x)
+672	      { return *__x->_M_valptr(); }
+673	
+674	      static const _Key&
+675	      _S_key(_Const_Link_type __x)
+676	      { return _KeyOfValue()(_S_value(__x)); }
+677	
+678	      static _Link_type
+679	      _S_left(_Base_ptr __x) _GLIBCXX_NOEXCEPT
+680	      { return static_cast<_Link_type>(__x->_M_left); }
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00xbd0xc20x010x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffd6e0
+address max offset: 8
+Memory content after  bitflip:0xa00xbd0xc20x010x000x000x840x00
+frame name: std::_Rb_tree<void*, std::pair<void* const, malloc_plus_memory_entry*>, std::_Select1st<std::pair<void* const, malloc_plus_memory_entry*> >, std::less<void*>, std::allocator<std::pair<void* const, malloc_plus_memory_entry*> > >::_M_get_insert_unique_pos
+symbol name: __y
+symbol filename: /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_tree.h
+symbol line: 1815
+value: 0x1c2bda0
+value address: 0x7fffffffd6e0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-11 15:46:07]
+Fault Injection Successful after 41.0233271122s
+[INFO -- 2017-03-11 15:46:28]
+event type: exit
+[INFO -- 2017-03-11 15:46:28]
+exit code: 0

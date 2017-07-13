@@ -1,0 +1,51 @@
+2017-02-28 15:35:03:Starting flip_value script
+2017-02-28 15:35:03:Initialization strings:
+2017-02-28 15:35:03:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-28 15:35:03:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 15:35:03:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 15:35:03:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 15:35:03:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 15:35:03:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 15:35:03:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 15:35:03:initSignal:0
+2017-02-28 15:35:03:endSignal:5
+2017-02-28 15:35:03:seqSignal:20
+2017-02-28 15:35:06:Backtrace BEGIN:
+2017-02-28 15:35:06:#0  0x000000000053b3f5 in hsfc2d (coord=0x7fffffffdfb8, nkey=2, key=0x7ffcc81e9514) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfc.c:128
+#1  0x000000000053a65d in hsfc2sort (N=264192, X=0x7ffd881b0010, Y=0x7ffd481a2010, ibase=0, Info=0x7ffd0809f010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:138
+#2  0x0000000000536b19 in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#3  0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-28 15:35:06:123	    switch( c ) {
+124	    case 3:
+125	      reflect ^= 03 ;
+126	    case 0:
+127	      order[2+0] = order[0] ;
+128	      order[2+1] = order[1] ;
+129	      order[0] = order[2+1] ;
+130	      order[1] = order[2+0] ;
+131	      break ;
+132	    }
+
+2017-02-28 15:35:06:Backtrace END
+2017-02-28 15:35:11:Type: The type is an integer type.
+2017-02-28 15:35:11:Type sizeof: 4
+2017-02-28 15:35:11:Mem contents(hex):0x650x000x000x00
+2017-02-28 15:35:11:Fault Mode: Double bit-flip
+2017-02-28 15:35:11:base address to flip value: 0x56a094 
+2017-02-28 15:35:11:address max offset: 4
+2017-02-28 15:35:11:Memory content before bitflip:0x650x000x000x00
+2017-02-28 15:35:11:Memory content after  bitflip:0x650x060x000x00
+2017-02-28 15:35:11:Mem contents(hex):0x650x060x000x00
+2017-02-28 15:35:11:frame name: main
+2017-02-28 15:35:11:symbol name: CRUX_CLAMR_VERSION
+2017-02-28 15:35:11:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-02-28 15:35:11:symbol line: 676
+2017-02-28 15:35:11:value: 1637
+2017-02-28 15:35:11:value address: 0x56a094 <CRUX_CLAMR_VERSION>
+2017-02-28 15:35:11:Type: The type is an integer type.
+2017-02-28 15:35:11:Type sizeof: 4
+2017-02-28 15:35:11:Fault Injection Successful after 8.55062699318s
+2017-02-28 15:36:32:event type: exit
+2017-02-28 15:36:32:exit code: 0

@@ -1,0 +1,59 @@
+2017-02-28 16:06:35:Starting flip_value script
+2017-02-28 16:06:35:Initialization strings:
+2017-02-28 16:06:36:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 16:06:36:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 16:06:36:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 16:06:36:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 16:06:36:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 16:06:36:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 16:06:36:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 16:06:36:initSignal:35
+2017-02-28 16:06:36:endSignal:40
+2017-02-28 16:06:36:seqSignal:20
+2017-02-28 16:07:15:Backtrace BEGIN:
+2017-02-28 16:07:15:#0  0x000000000044ad0e in std::__fill_n_a<int*, unsigned long, int> (__first=0x1ac8a9c, __n=266052, __value=@0x7fffffffdaa0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:765
+#1  0x000000000044ac9e in std::fill_n<int*, unsigned long, int> (__first=0x1a25cf0, __n=266052, __value=@0x7fffffffdaa0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:801
+#2  0x0000000000448bba in std::__uninitialized_fill_n<true>::__uninit_fill_n<int*, unsigned long, int> (__first=0x1a25cf0, __n=266052, __x=@0x7fffffffdaa0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:220
+#3  0x000000000044ac56 in std::uninitialized_fill_n<int*, unsigned long, int> (__first=0x1a25cf0, __n=266052, __x=@0x7fffffffdaa0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:246
+#4  0x000000000044ac1a in std::__uninitialized_fill_n_a<int*, unsigned long, int, int> (__first=0x1a25cf0, __n=266052, __x=@0x7fffffffdaa0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:358
+#5  0x0000000000449b30 in std::vector<int, std::allocator<int> >::_M_fill_initialize (this=0x7fffffffdd68, __n=266052, __value=@0x7fffffffdaa0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:1301
+#6  0x00000000004496a4 in std::vector<int, std::allocator<int> >::vector (this=0x7fffffffdd68, __n=266052, __value=@0x7fffffffdaa0: 0, __a=...) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:306
+#7  0x000000000051f250 in Mesh::rezone_all (this=0x7fae50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2572
+#8  0x0000000000471447 in State::rezone_all (this=0x7fb9e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#9  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#10 0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 16:07:15:760	    __gnu_cxx::__enable_if<__is_scalar<_Tp>::__value, _OutputIterator>::__type
+761	    __fill_n_a(_OutputIterator __first, _Size __n, const _Tp& __value)
+762	    {
+763	      const _Tp __tmp = __value;
+764	      for (__decltype(__n + 0) __niter = __n;
+765		   __niter > 0; --__niter, ++__first)
+766		*__first = __tmp;
+767	      return __first;
+768	    }
+769	
+
+2017-02-28 16:07:15:Backtrace END
+2017-02-28 16:07:20:Type: The type is an enum.
+2017-02-28 16:07:20:Type sizeof: 4
+2017-02-28 16:07:20:Mem contents(hex):0x010x000x000x00
+2017-02-28 16:07:20:Fault Mode: Double bit-flip
+2017-02-28 16:07:20:base address to flip value: 0x7d0778 
+2017-02-28 16:07:20:address max offset: 4
+2017-02-28 16:07:20:Memory content before bitflip:0x010x000x000x00
+2017-02-28 16:07:20:Memory content after  bitflip:0x010x180x000x00
+2017-02-28 16:07:20:Mem contents(hex):0x010x180x000x00
+2017-02-28 16:07:20:frame name: std::__uninitialized_fill_n_a<int*, unsigned long, int, int>
+2017-02-28 16:07:20:symbol name: initial_order
+2017-02-28 16:07:20:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-02-28 16:07:20:symbol line: 156
+2017-02-28 16:07:20:value: 6145
+2017-02-28 16:07:20:value address: 0x7d0778 <initial_order>
+2017-02-28 16:07:20:Type: The type is an enum.
+2017-02-28 16:07:20:Type sizeof: 4
+2017-02-28 16:07:20:Field name: ORIGINAL_ORDER
+2017-02-28 16:07:20:Field Type:
+2017-02-28 16:07:20:Fault Injection Successful after 44.0789461136s
+2017-02-28 16:07:34:event type: exit
+2017-02-28 16:07:34:exit code: 0

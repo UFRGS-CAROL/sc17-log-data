@@ -1,0 +1,62 @@
+[INFO -- 2017-02-25 08:54:28]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 08:54:28]
+Initialization strings:
+[INFO -- 2017-02-25 08:54:28]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-25 08:54:28]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 08:54:28]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 08:54:28]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 08:54:28]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 08:54:28]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-25 08:54:28]
+initSignal:0
+[INFO -- 2017-02-25 08:54:28]
+endSignal:2
+[INFO -- 2017-02-25 08:54:28]
+seqSignal:30
+[INFO -- 2017-02-25 08:54:28]
+faultMode:3
+[INFO -- 2017-02-25 08:54:29]
+Backtrace BEGIN:
+#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142911 in __GI__IO_file_xsgetn (fp=0x60c240, data=<optimized out>, n=16777216) at fileops.c:1422
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=16777216, count=1, fp=0x60c240) at iofread.c:42
+#3  0x0000000000402b9c in main (argc=9, argv=0x7fffffffec08) at lud_check.c:106
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping array at pos: 1
+Fliping value of field: flag
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x60b530 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: main
+symbol name: long_options
+symbol filename: lud_check.c
+symbol line: 32
+value: {{name = 0x4074dc "input", has_arg = 1, flag = 0x0, val = 105}, {name = 0x4074e4 "gold", has_arg = 1, flag = 0x0, val = 103}, {name = 0x4074ec "size", has_arg = 1, flag = 0x0, val = 115}, {name = 0x0, has_arg = 0, flag = 0x0, val = 0}}
+value address: 0x60b500 <long_options>
+Type: The type is an array.
+Type sizeof: 128
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 3L)
+
+[INFO -- 2017-02-25 08:54:29]
+Fault Injection Successful after 1.53717207909s
+[INFO -- 2017-02-25 08:54:43]
+event type: exit
+[INFO -- 2017-02-25 08:54:43]
+exit code: 0

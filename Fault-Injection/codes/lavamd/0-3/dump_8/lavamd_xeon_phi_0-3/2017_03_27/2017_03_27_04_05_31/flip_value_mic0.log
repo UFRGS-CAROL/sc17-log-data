@@ -1,0 +1,63 @@
+[INFO -- 2017-03-27 04:05:08]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 04:05:08]
+Initialization strings:
+[INFO -- 2017-03-27 04:05:08]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 04:05:08]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 04:05:08]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 04:05:08]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 04:05:08]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 04:05:08]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 04:05:08]
+initSignal:0
+[INFO -- 2017-03-27 04:05:08]
+endSignal:3
+[INFO -- 2017-03-27 04:05:08]
+seqSignal:30
+[INFO -- 2017-03-27 04:05:08]
+faultMode:1
+[INFO -- 2017-03-27 04:05:08]
+Backtrace BEGIN:
+#0  0x000000000040219a in main (argc=7, argv=0x7fffffffebc8) at main_check.c:148
+
+143	        exit(1);
+144	    }
+145	
+146	    rv_cpu = (FOUR_VECTOR*)malloc(dim_cpu.space_mem);
+147	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+148	        fread(&(rv_cpu[i].v), 1, sizeof(double), file);
+149	        fread(&(rv_cpu[i].x), 1, sizeof(double), file);
+150	        fread(&(rv_cpu[i].y), 1, sizeof(double), file);
+151	        fread(&(rv_cpu[i].z), 1, sizeof(double), file);
+152	    }
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: v
+Memory content before bitflip:0x340x330x330x330x330x330xd30x3f
+Fault Mode: Double bit-flip
+base address to flip value: 0x7ffff6063010
+address max offset: 8
+Memory content after  bitflip:0x340x330x360x330x330x330xd30x3f
+frame name: main
+symbol name: rv_cpu
+symbol filename: main_check.c
+symbol line: 58
+value: 0x7ffff6063010
+value address: 0x7fffffffe940
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-27 04:05:08]
+Fault Injection Successful after 0.933739900589s
+[INFO -- 2017-03-27 04:05:25]
+event type: exit
+[INFO -- 2017-03-27 04:05:25]
+exit code: 0

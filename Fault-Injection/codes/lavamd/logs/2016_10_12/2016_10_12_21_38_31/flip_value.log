@@ -1,0 +1,88 @@
+2016-10-12 21:38:14:Initialization strings:
+2016-10-12 21:38:14:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-12 21:38:14:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 21:38:14:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 21:38:14:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-12 21:38:14:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-12 21:38:14:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-12 21:38:14:Trying Fault Injection
+2016-10-12 21:38:14:Inferior PID: 144940
+2016-10-12 21:38:14:Inferior is valid: True
+2016-10-12 21:38:14:Inferior #threads: 1
+2016-10-12 21:38:14:Backtrace BEGIN:
+2016-10-12 21:38:14:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000007 in ?? ()
+#7  0x00007fffffffedf0 in ?? ()
+#8  0x00007fffffffee1e in ?? ()
+#9  0x00007fffffffee22 in ?? ()
+#10 0x00007fffffffee25 in ?? ()
+#11 0x00007fffffffee62 in ?? ()
+#12 0x00007fffffffee9e in ?? ()
+#13 0x00007fffffffeed8 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2016-10-12 21:38:14:69	in dl-debug.c
+
+2016-10-12 21:38:14:Backtrace END
+2016-10-12 21:38:14:Thread name: None
+2016-10-12 21:38:14:Thread num: 1
+2016-10-12 21:38:14:Thread ptid: (144940, 144940, 0)
+2016-10-12 21:38:14:bitFlip function
+2016-10-12 21:38:14:Type: The type is a pointer.
+2016-10-12 21:38:14:Type sizeof: 8
+2016-10-12 21:38:14:Error gdbException(frameFlip): Attempt to dereference a generic pointer.
+2016-10-12 21:38:14:Fault Injection Failed after 0.979043960571s
+2016-10-12 21:38:15:Trying Fault Injection
+2016-10-12 21:38:15:Inferior PID: 144940
+2016-10-12 21:38:15:Inferior is valid: True
+2016-10-12 21:38:15:Inferior #threads: 1
+2016-10-12 21:38:15:Backtrace BEGIN:
+2016-10-12 21:38:15:#0  __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:41
+#1  0x00000000004025ee in main (argc=7, argv=0x7fffffffec08) at main_check.c:180
+
+2016-10-12 21:38:15:36	in iofread.c
+
+2016-10-12 21:38:15:Backtrace END
+2016-10-12 21:38:15:Thread name: None
+2016-10-12 21:38:15:Thread num: 1
+2016-10-12 21:38:15:Thread ptid: (144940, 144940, 0)
+2016-10-12 21:38:15:bitFlip function
+2016-10-12 21:38:15:Type: The type is an array.
+2016-10-12 21:38:15:Type sizeof: 100
+2016-10-12 21:38:15:Fliping array at pos: 90
+2016-10-12 21:38:15:bitFlip function
+2016-10-12 21:38:15:Type: The type is an integer type.
+2016-10-12 21:38:15:Type sizeof: 1
+2016-10-12 21:38:15:Mem contents(hex):0xff
+2016-10-12 21:38:15:base address to flip value: 0x7fffffffe6e2 
+2016-10-12 21:38:15:address max offset: 1
+2016-10-12 21:38:15:Memory content before bitflip:0xff
+2016-10-12 21:38:15:Memory content after  bitflip:0xfb
+2016-10-12 21:38:15:Mem contents(hex):0xfb
+2016-10-12 21:38:15:frame name: main
+2016-10-12 21:38:15:symbol name: test_info
+2016-10-12 21:38:15:symbol filename: main_check.c
+2016-10-12 21:38:15:symbol line: 188
+2016-10-12 21:38:15:value: ",]\336\367\377\177\000\000\070L\r\367\377\177\000\000p\b\000\000\000\000\000\000\004L\r\367\377\177\000\000\240\231\377\367\377\177\000\000\070L\r\367\377\177\000\000\020`\336\367\377\177\000\000p\b\000\000\000\000\000\000\330\027\016\367\377\177\000\000\240\231\377\367\377\177\000\000h\347\377\377\377\177\000\000d\347\373\377\377\177\000\000[\362\001"
+2016-10-12 21:38:15:value address: 0x7fffffffe688
+2016-10-12 21:38:15:Type: The type is an array.
+2016-10-12 21:38:15:Type sizeof: 100
+2016-10-12 21:38:15:Field name: None
+2016-10-12 21:38:15:Field Type:
+2016-10-12 21:38:15:Type: A range type, that is, an integer type with bounds.
+2016-10-12 21:38:15:Type sizeof: 1
+2016-10-12 21:38:15:Type range: (0L, 99L)
+2016-10-12 21:38:15:Fault Injection Successful after 1.81239795685s
+2016-10-12 21:38:16:Fault Already Injected
+2016-10-12 21:38:19:Fault Already Injected
+2016-10-12 21:38:19:Fault Already Injected
+2016-10-12 21:38:21:Fault Already Injected
+2016-10-12 21:38:21:Fault Already Injected
+2016-10-12 21:38:23:Fault Already Injected
+2016-10-12 21:38:25:event type: exit
+2016-10-12 21:38:25:exit code: 0

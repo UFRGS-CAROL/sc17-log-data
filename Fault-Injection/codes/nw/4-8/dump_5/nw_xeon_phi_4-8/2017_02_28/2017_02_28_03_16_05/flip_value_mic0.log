@@ -1,0 +1,121 @@
+2017-02-28 03:15:19:Starting flip_value script
+2017-02-28 03:15:19:Initialization strings:
+2017-02-28 03:15:19:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 03:15:19:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 03:15:19:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 03:15:19:(4) file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-02-28 03:15:19:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-02-28 03:15:19:(6) set args 16394 10 228 /micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10 /micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10
+2017-02-28 03:15:19:initSignal:4
+2017-02-28 03:15:19:endSignal:8
+2017-02-28 03:15:19:seqSignal:30
+2017-02-28 03:15:24:Backtrace BEGIN:
+2017-02-28 03:15:24:#0  0x0000000000402ca8 in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:329
+#1  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-02-28 03:15:24:324	    //    input_itemsets[j] = rand() % 10 + 1;
+325	    //}
+326	
+327	
+328	    for (int i = 1 ; i < max_cols; i++){
+329	        for (int j = 1 ; j < max_rows; j++){
+330	            referrence[i*max_cols+j] = blosum62[input_itemsets[i*max_cols]][input_itemsets[j]];
+331	        }
+332	    }
+333	
+
+2017-02-28 03:15:24:Backtrace END
+2017-02-28 03:15:24:Type: The type is an integer type.
+2017-02-28 03:15:24:Type sizeof: 4
+2017-02-28 03:15:24:Mem contents(hex):0x0b0x400x000x00
+2017-02-28 03:15:24:Fault Mode: Zero bit-flip
+2017-02-28 03:15:24:base address to flip value: 0x7fffffffe928
+2017-02-28 03:15:24:address max offset: 4
+2017-02-28 03:15:24:Memory content before bitflip:0x0b0x400x000x00
+2017-02-28 03:15:24:Backtrace BEGIN:
+2017-02-28 03:15:25:#0  0x0000000000402c53 in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:330
+#1  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-02-28 03:15:25:325	    //}
+326	
+327	
+328	    for (int i = 1 ; i < max_cols; i++){
+329	        for (int j = 1 ; j < max_rows; j++){
+330	            referrence[i*max_cols+j] = blosum62[input_itemsets[i*max_cols]][input_itemsets[j]];
+331	        }
+332	    }
+333	
+334	    for( int i = 1; i< max_rows ; i++)
+
+2017-02-28 03:15:25:Backtrace END
+2017-02-28 03:15:25:Type: The type is an integer type.
+2017-02-28 03:15:25:Type sizeof: 4
+2017-02-28 03:15:25:Mem contents(hex):0x9c0x280x000x00
+2017-02-28 03:15:25:Fault Mode: One bit-flip
+2017-02-28 03:15:25:base address to flip value: 0x7fffffffe96c
+2017-02-28 03:15:25:address max offset: 4
+2017-02-28 03:15:25:Memory content before bitflip:0x9c0x280x000x00
+2017-02-28 03:15:25:Backtrace BEGIN:
+2017-02-28 03:15:25:#0  0x0000000000402c63 in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:330
+#1  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-02-28 03:15:25:325	    //}
+326	
+327	
+328	    for (int i = 1 ; i < max_cols; i++){
+329	        for (int j = 1 ; j < max_rows; j++){
+330	            referrence[i*max_cols+j] = blosum62[input_itemsets[i*max_cols]][input_itemsets[j]];
+331	        }
+332	    }
+333	
+334	    for( int i = 1; i< max_rows ; i++)
+
+2017-02-28 03:15:25:Backtrace END
+2017-02-28 03:15:25:Type: The type is a pointer.
+2017-02-28 03:15:25:Type sizeof: 8
+2017-02-28 03:15:25:Fliping a bit of the value pointed by a pointer
+2017-02-28 03:15:25:Type: The type is a pointer.
+2017-02-28 03:15:25:Type sizeof: 8
+2017-02-28 03:15:25:Fliping a bit of the pointer
+2017-02-28 03:15:25:Mem contents(hex):0xfe0xed0xff0xff0xff0x7f0x000x00
+2017-02-28 03:15:25:Fault Mode: One bit-flip
+2017-02-28 03:15:25:base address to flip value: 0x7fffffffec08
+2017-02-28 03:15:25:address max offset: 8
+2017-02-28 03:15:25:Memory content before bitflip:0xfe0xed0xff0xff0xff0x7f0x000x00
+2017-02-28 03:15:25:Backtrace BEGIN:
+2017-02-28 03:15:25:#0  0x0000000000402c63 in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:330
+#1  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-02-28 03:15:25:325	    //}
+326	
+327	
+328	    for (int i = 1 ; i < max_cols; i++){
+329	        for (int j = 1 ; j < max_rows; j++){
+330	            referrence[i*max_cols+j] = blosum62[input_itemsets[i*max_cols]][input_itemsets[j]];
+331	        }
+332	    }
+333	
+334	    for( int i = 1; i< max_rows ; i++)
+
+2017-02-28 03:15:25:Backtrace END
+2017-02-28 03:15:25:Type: The type is a pointer.
+2017-02-28 03:15:25:Type sizeof: 8
+2017-02-28 03:15:25:Fliping a bit of the pointer
+2017-02-28 03:15:25:Mem contents(hex):0x080xec0xff0xff0xff0x7f0x000x00
+2017-02-28 03:15:25:Fault Mode: Single bit-flip
+2017-02-28 03:15:25:base address to flip value: 0x7fffffffeb18
+2017-02-28 03:15:25:address max offset: 8
+2017-02-28 03:15:25:Memory content before bitflip:0x080xec0xff0xff0xff0x7f0x000x00
+2017-02-28 03:15:25:Memory content after  bitflip:0x080xec0xff0xff0xff0x7f0x000x08
+2017-02-28 03:15:25:Mem contents(hex):0x080xec0xff0xff0xff0x7f0x000x08
+2017-02-28 03:15:25:frame name: main
+2017-02-28 03:15:25:symbol name: argv
+2017-02-28 03:15:25:symbol filename: needle_check.cpp
+2017-02-28 03:15:25:symbol line: 112
+2017-02-28 03:15:25:value: 0x7fffffffec08
+2017-02-28 03:15:25:value address: 0x7fffffffeb18
+2017-02-28 03:15:25:Type: The type is a pointer.
+2017-02-28 03:15:25:Type sizeof: 8
+2017-02-28 03:15:25:Fault Injection Successful after 6.48861908913s
+2017-02-28 03:15:58:event type: exit
+2017-02-28 03:15:58:exit code: 0

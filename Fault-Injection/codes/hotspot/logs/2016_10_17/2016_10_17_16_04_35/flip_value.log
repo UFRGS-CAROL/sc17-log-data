@@ -1,0 +1,65 @@
+2016-10-17 16:03:19:Initialization strings:
+2016-10-17 16:03:19:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-17 16:03:19:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-17 16:03:19:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-17 16:03:19:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-17 16:03:19:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-17 16:03:19:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-17 16:03:20:Trying Fault Injection
+2016-10-17 16:03:20:Backtrace BEGIN:
+2016-10-17 16:03:20:#0  __GI_memcpy (dstpp=dstpp@entry=0x7fffffffdf80, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff7108cde in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe010 "324.043295", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1425
+#2  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe010 "324.043295", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0) at strtod.c:54
+#3  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2332
+#4  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "324.043295\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#5  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#6  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#7  main (argc=-8320, argv=0x7ffff71e5458 <__tens+24>) at hotspot_check.c:264
+
+2016-10-17 16:03:20:54	in ../string/memcpy.c
+
+2016-10-17 16:03:20:Backtrace END
+2016-10-17 16:03:20:Type: The type is an array.
+2016-10-17 16:03:20:Type sizeof: 24
+2016-10-17 16:03:20:Fliping array at pos: 0
+2016-10-17 16:03:20:Type: The type is a structure.
+2016-10-17 16:03:20:Type sizeof: 24
+2016-10-17 16:03:20:Fliping value of field: reg_save_area
+2016-10-17 16:03:20:Type: The type is a pointer.
+2016-10-17 16:03:20:Type sizeof: 8
+2016-10-17 16:03:20:Fault Injection Failed after 1.74339699745s
+2016-10-17 16:03:21:Trying Fault Injection
+2016-10-17 16:03:21:Backtrace BEGIN:
+2016-10-17 16:03:22:#0  _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:345
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "324.600596\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=-7552, argv=0x0) at hotspot_check.c:264
+
+2016-10-17 16:03:22:340	in vfscanf.c
+
+2016-10-17 16:03:22:Backtrace END
+2016-10-17 16:03:22:Type: The type is an integer type.
+2016-10-17 16:03:22:Type sizeof: 4
+2016-10-17 16:03:22:Mem contents(hex):0xe40x000x000x00
+2016-10-17 16:03:22:base address to flip value: 0x608ec0 
+2016-10-17 16:03:22:address max offset: 4
+2016-10-17 16:03:22:Memory content before bitflip:0xe40x000x000x00
+2016-10-17 16:03:22:Memory content after  bitflip:0xe40x000x800x00
+2016-10-17 16:03:22:Mem contents(hex):0xe40x000x800x00
+2016-10-17 16:03:22:frame name: main
+2016-10-17 16:03:22:symbol name: num_omp_threads
+2016-10-17 16:03:22:symbol filename: hotspot_check.c
+2016-10-17 16:03:22:symbol line: 39
+2016-10-17 16:03:22:value: 8388836
+2016-10-17 16:03:22:value address: 0x608ec0 <num_omp_threads>
+2016-10-17 16:03:22:Type: The type is an integer type.
+2016-10-17 16:03:22:Type sizeof: 4
+2016-10-17 16:03:22:Fault Injection Successful after 3.0837059021s
+2016-10-17 16:03:25:Fault Already Injected
+2016-10-17 16:03:25:Fault Already Injected
+2016-10-17 16:03:29:Fault Already Injected
+2016-10-17 16:03:32:Fault Already Injected
+2016-10-17 16:03:33:Fault Already Injected
+2016-10-17 16:03:33:Fault Already Injected
+2016-10-17 16:03:33:Fault Already Injected

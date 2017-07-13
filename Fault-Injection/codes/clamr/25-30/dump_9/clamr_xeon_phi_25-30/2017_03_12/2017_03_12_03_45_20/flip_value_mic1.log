@@ -1,0 +1,60 @@
+[INFO -- 2017-03-12 03:44:34]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-12 03:44:34]
+Initialization strings:
+[INFO -- 2017-03-12 03:44:35]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-12 03:44:35]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-12 03:44:35]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-12 03:44:35]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-12 03:44:35]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-12 03:44:35]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-12 03:44:35]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-12 03:44:35]
+initSignal:25
+[INFO -- 2017-03-12 03:44:35]
+endSignal:30
+[INFO -- 2017-03-12 03:44:35]
+seqSignal:20
+[INFO -- 2017-03-12 03:44:35]
+faultMode:2
+[INFO -- 2017-03-12 03:45:06]
+Backtrace BEGIN:
+#0  0x00007ffff6b641b0 in _itoa_word (value=2, value@entry=235, buflim=0x7fffffffe0ce "35\240U\347\366\377\177", buflim@entry=0x7fffffffe0d0 "\240U\347\366\377\177", base=base@entry=10, upper_case=<optimized out>) at _itoa.c:179
+#1  0x00007ffff6b6781a in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe118) at vfprintf.c:1641
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b5c5 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:470
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+174	in _itoa.c
+
+Backtrace END
+Fliping array at pos: 17
+Memory content before bitflip:0x930x3b0x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff6c38d44 
+address max offset: 4
+Memory content after  bitflip:0x8c0xbb0x370xff
+frame name: _IO_vfprintf_internal
+symbol name: step4_jumps
+symbol filename: vfprintf.c
+symbol line: 1346
+value: {0 <repeats 14 times>, 7466, 7747, 14505, -13124724, 15266, 12292, 14748, 15690, 13002, 13086, 14646, 15439, 12622, 0, 0, 0}
+value address: 0x7ffff6c38d00 <step4_jumps>
+Type: The type is an array.
+Type sizeof: 120
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 29L)
+
+[INFO -- 2017-03-12 03:45:06]
+Fault Injection Successful after 31.7767028809s

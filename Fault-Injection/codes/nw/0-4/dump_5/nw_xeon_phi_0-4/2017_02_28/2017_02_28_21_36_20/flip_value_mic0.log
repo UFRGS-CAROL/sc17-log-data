@@ -1,0 +1,144 @@
+2017-02-28 21:34:54:Starting flip_value script
+2017-02-28 21:34:54:Initialization strings:
+2017-02-28 21:34:55:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 21:34:55:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 21:34:55:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 21:34:55:(4) file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-02-28 21:34:55:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-02-28 21:34:55:(6) set args 16394 10 228 /micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10 /micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10
+2017-02-28 21:34:55:initSignal:0
+2017-02-28 21:34:55:endSignal:4
+2017-02-28 21:34:55:seqSignal:30
+2017-02-28 21:34:55:Backtrace BEGIN:
+2017-02-28 21:34:55:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000006 in ?? ()
+#7  0x00007fffffffedfe in ?? ()
+#8  0x00007fffffffee37 in ?? ()
+#9  0x00007fffffffee3d in ?? ()
+#10 0x00007fffffffee40 in ?? ()
+#11 0x00007fffffffee44 in ?? ()
+#12 0x00007fffffffee8a in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 21:34:55:69	in dl-debug.c
+
+2017-02-28 21:34:55:Backtrace END
+2017-02-28 21:34:55:Type: The type is a pointer.
+2017-02-28 21:34:55:Type sizeof: 8
+2017-02-28 21:34:55:Backtrace BEGIN:
+2017-02-28 21:34:55:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000006 in ?? ()
+#7  0x00007fffffffedfe in ?? ()
+#8  0x00007fffffffee37 in ?? ()
+#9  0x00007fffffffee3d in ?? ()
+#10 0x00007fffffffee40 in ?? ()
+#11 0x00007fffffffee44 in ?? ()
+#12 0x00007fffffffee8a in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 21:34:55:69	in dl-debug.c
+
+2017-02-28 21:34:55:Backtrace END
+2017-02-28 21:34:55:Type: A boolean type.
+2017-02-28 21:34:55:Type sizeof: 1
+2017-02-28 21:34:55:Mem contents(hex):0x01
+2017-02-28 21:34:55:Fault Mode: Zero bit-flip
+2017-02-28 21:34:55:base address to flip value: 0x7ffff7ffdfe8 
+2017-02-28 21:34:55:address max offset: 1
+2017-02-28 21:34:55:Memory content before bitflip:0x01
+2017-02-28 21:34:58:Backtrace BEGIN:
+2017-02-28 21:34:58:#0  0x00007ffff6e245d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6dd0911 in __GI__IO_file_xsgetn (fp=0x619900, data=<optimized out>, n=1075184100) at fileops.c:1422
+#2  0x00007ffff6dc6929 in __GI__IO_fread (buf=<optimized out>, size=1075184100, count=1, fp=0x619900) at iofread.c:42
+#3  0x00000000004014c3 in ReadArrayFromFile (input_itemsets=0x7fff76699010, gold_itemsets=0x7fff36538010, max_rows=16395, filenameinput=0x7fffffffee44 "/micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10", filenamegold=0x7fffffffee8a "/micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10") at needle_check.cpp:49
+#4  0x0000000000402bbc in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:319
+#5  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-02-28 21:34:58:76	in ../sysdeps/unix/syscall-template.S
+
+2017-02-28 21:34:58:Backtrace END
+2017-02-28 21:34:58:Type: The type is a pointer.
+2017-02-28 21:34:58:Type sizeof: 8
+2017-02-28 21:34:58:Fliping a bit of the pointer
+2017-02-28 21:34:58:Mem contents(hex):0x100x800x530x360xff0x7f0x000x00
+2017-02-28 21:34:58:Fault Mode: Random bit-flip
+2017-02-28 21:34:58:base address to flip value: 0x7fffffffe6e8
+2017-02-28 21:34:58:address max offset: 8
+2017-02-28 21:34:58:Memory content before bitflip:0x100x800x530x360xff0x7f0x000x00
+2017-02-28 21:35:00:Backtrace BEGIN:
+2017-02-28 21:35:00:#0  0x00007ffff6e245d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6dd0911 in __GI__IO_file_xsgetn (fp=0x619b30, data=<optimized out>, n=1075184100) at fileops.c:1422
+#2  0x00007ffff6dc6929 in __GI__IO_fread (buf=<optimized out>, size=1075184100, count=1, fp=0x619b30) at iofread.c:42
+#3  0x00000000004014f6 in ReadArrayFromFile (input_itemsets=0x7fff76699010, gold_itemsets=0x7fff36538010, max_rows=16395, filenameinput=0x7fffffffee44 "/micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10", filenamegold=0x7fffffffee8a "/micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10") at needle_check.cpp:50
+#4  0x0000000000402bbc in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:319
+#5  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-02-28 21:35:00:76	in ../sysdeps/unix/syscall-template.S
+
+2017-02-28 21:35:00:Backtrace END
+2017-02-28 21:35:00:Type: The type is an array.
+2017-02-28 21:35:00:Type sizeof: 200
+2017-02-28 21:35:00:Fliping array at pos: 93
+2017-02-28 21:35:00:Type: The type is an integer type.
+2017-02-28 21:35:00:Type sizeof: 1
+2017-02-28 21:35:00:Mem contents(hex):0x00
+2017-02-28 21:35:00:Fault Mode: Double bit-flip
+2017-02-28 21:35:00:base address to flip value: 0x7fffffffe7ad 
+2017-02-28 21:35:00:address max offset: 1
+2017-02-28 21:35:00:Memory content before bitflip:0x00
+2017-02-28 21:35:00:Memory content after  bitflip:0x18
+2017-02-28 21:35:00:Mem contents(hex):0x18
+2017-02-28 21:35:00:frame name: runTest
+2017-02-28 21:35:00:symbol name: test_info
+2017-02-28 21:35:00:symbol filename: needle_check.cpp
+2017-02-28 21:35:00:symbol line: 292
+2017-02-28 21:35:00:Backtrace BEGIN:
+2017-02-28 21:35:00:#0  0x00007ffff6e245d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6dd0911 in __GI__IO_file_xsgetn (fp=0x619b30, data=<optimized out>, n=1075184100) at fileops.c:1422
+#2  0x00007ffff6dc6929 in __GI__IO_fread (buf=<optimized out>, size=1075184100, count=1, fp=0x619b30) at iofread.c:42
+#3  0x00000000004014f6 in ReadArrayFromFile (input_itemsets=0x7fff76699010, gold_itemsets=0x7fff36538010, max_rows=16395, filenameinput=0x7fffffffee44 "/micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10", filenamegold=0x7fffffffee8a "/micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10") at needle_check.cpp:50
+#4  0x0000000000402bbc in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:319
+#5  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-02-28 21:35:00:76	in ../sysdeps/unix/syscall-template.S
+
+2017-02-28 21:35:00:Backtrace END
+2017-02-28 21:35:01:Type: The type is an array.
+2017-02-28 21:35:01:Type sizeof: 2304
+2017-02-28 21:35:01:Fliping array at pos: 0
+2017-02-28 21:35:01:Type: The type is an array.
+2017-02-28 21:35:01:Type sizeof: 96
+2017-02-28 21:35:01:Fliping array at pos: 2
+2017-02-28 21:35:01:Type: The type is an integer type.
+2017-02-28 21:35:01:Type sizeof: 4
+2017-02-28 21:35:01:Mem contents(hex):0xfe0xff0xff0xff
+2017-02-28 21:35:01:Fault Mode: Single bit-flip
+2017-02-28 21:35:01:base address to flip value: 0x605e08 
+2017-02-28 21:35:01:address max offset: 4
+2017-02-28 21:35:01:Memory content before bitflip:0xfe0xff0xff0xff
+2017-02-28 21:35:01:Memory content after  bitflip:0xfe0xff0xff0xf7
+2017-02-28 21:35:01:Mem contents(hex):0xfe0xff0xff0xf7
+2017-02-28 21:35:01:frame name: main
+2017-02-28 21:35:01:symbol name: blosum62
+2017-02-28 21:35:01:symbol filename: needle_check.cpp
+2017-02-28 21:35:01:symbol line: 80
+2017-02-28 21:35:01:value: {{4, -1, -134217730, -2, 0, -1, -1, 0, -2, -1, -1, -1, -1, -2, -1, 1, 0, -3, -2, 0, -2, -1, 0, -4}, {-1, 5, 0, -2, -3, 1, 0, -2, 0, -3, -2, 2, -1, -3, -2, -1, -1, -3, -2, -3, -1, 0, -1, -4}, {-2, 0, 6, 1, -3, 0, 0, 0, 1, -3, -3, 0, -2, -3, -2, 1, 0, -4, -2, -3, 3, 0, -1, -4}, {-2, -2, 1, 6, -3, 0, 2, -1, -1, -3, -4, -1, -3, -3, -1, 0, -1, -4, -3, -3, 4, 1, -1, -4}, {0, -3, -3, -3, 9, -3, -4, -3, -3, -1, -1, -3, -1, -2, -3, -1, -1, -2, -2, -1, -3, -3, -2, -4}, {-1, 1, 0, 0, -3, 5, 2, -2, 0, -3, -2, 1, 0, -3, -1, 0, -1, -2, -1, -2, 0, 3, -1, -4}, {-1, 0, 0, 2, -4, 2, 5, -2, 0, -3, -3, 1, -2, -3, -1, 0, -1, -3, -2, -2, 1, 4, -1, -4}, {0, -2, 0, -1, -3, -2, -2, 6, -2, -4, -4, -2, -3, -3, -2, 0, -2, -2, -3, -3, -1, -2, -1, -4}, {-2, 0, 1, -1, -3, 0, 0, -2, 8, -3, -3, -1, -2, -1, -2, -1, -2, -2, 2, -3, 0, 0, -1, -4}, {-1, -3, -3, -3, -1, -3, -3, -4, -3, 4, 2, -3, 1, 0, -3, -2, -1, -3, -1, 3, -3, -3, -1, -4}, {-1, -2, -3, -4, -1, -2, -3, -4, -3, 2, 4, -2, 2, 0, -3, -2, -1, -2, -1, 1, -4, -3, -1, -4}, {-1, 2, 0, -1, -3, 1, 1, -2, -1, -3, -2, 5, -1, -3, -1, 0, -1, -3, -2, -2, 0, 1, -1, -4}, {-1, -1, -2, -3, -1, 0, -2, -3, -2, 1, 2, -1, 5, 0, -2, -1, -1, -1, -1, 1, -3, -1, -1, -4}, {-2, -3, -3, -3, -2, -3, -3, -3, -1, 0, 0, -3, 0, 6, -4, -2, -2, 1, 3, -1, -3, -3, -1, -4}, {-1, -2, -2, -1, -3, -1, -1, -2, -2, -3, -3, -1, -2, -4, 7, -1, -1, -4, -3, -2, -2, -1, -2, -4}, {1, -1, 1, 0, -1, 0, 0, 0, -1, -2, -2, 0, -1, -2, -1, 4, 1, -3, -2, -2, 0, 0, 0, -4}, {0, -1, 0, -1, -1, -1, -1, -2, -2, -1, -1, -1, -1, -2, -1, 1, 5, -2, -2, 0, -1, -1, 0, -4}, {-3, -3, -4, -4, -2, -2, -3, -2, -2, -3, -2, -3, -1, 1, -4, -3, -2, 11, 2, -3, -4, -3, -2, -4}, {-2, -2, -2, -3, -2, -1, -2, -3, 2, -1, -1, -2, -1, 3, -3, -2, -2, 2, 7, -1, -3, -2, -1, -4}, {0, -3, -3, -3, -1, -2, -2, -3, -3, 3, 1, -2, 1, -1, -2, -2, 0, -3, -1, 4, -3, -2, -1, -4}, {-2, -1, 3, 4, -3, 0, 1, -1, 0, -3, -4, 0, -3, -3, -2, 0, -1, -4, -3, -3, 4, 1, -1, -4}, {-1, 0, 0, 1, -3, 3, 4, -2, 0, -3, -3, 1, -1, -3, -1, 0, -1, -3, -2, -2, 1, 4, -1, -4}, {0, -1, -1, -1, -2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2, 0, 0, -2, -1, -1, -1, -1, -1, -4}, {-4 <repeats 23 times>, 1}}
+2017-02-28 21:35:01:value address: 0x605e00 <blosum62>
+2017-02-28 21:35:01:Type: The type is an array.
+2017-02-28 21:35:01:Type sizeof: 2304
+2017-02-28 21:35:01:Field name: None
+2017-02-28 21:35:01:Field Type:
+2017-02-28 21:35:01:Type: A range type, that is, an integer type with bounds.
+2017-02-28 21:35:01:Type sizeof: 1
+2017-02-28 21:35:01:Type range: (0L, 23L)
+2017-02-28 21:35:01:Fault Injection Successful after 6.05662298203s

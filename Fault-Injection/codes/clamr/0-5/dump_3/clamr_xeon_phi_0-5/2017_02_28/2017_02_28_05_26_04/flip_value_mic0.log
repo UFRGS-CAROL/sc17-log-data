@@ -1,0 +1,51 @@
+2017-02-28 05:24:59:Starting flip_value script
+2017-02-28 05:24:59:Initialization strings:
+2017-02-28 05:24:59:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-28 05:24:59:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 05:24:59:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 05:24:59:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 05:24:59:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 05:24:59:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 05:24:59:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 05:24:59:initSignal:0
+2017-02-28 05:24:59:endSignal:5
+2017-02-28 05:24:59:seqSignal:20
+2017-02-28 05:25:02:Backtrace BEGIN:
+2017-02-28 05:25:02:#0  0x000000000053b341 in hsfc2d (coord=0x7fffffffdfb8, nkey=2, key=0x7ffd4c2c7e4c) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfc.c:108
+#1  0x000000000053a65d in hsfc2sort (N=264192, X=0x7ffe0c1bf010, Y=0x7ffdcc1b0010, ibase=0, Info=0x7ffd8c0ae010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:138
+#2  0x0000000000536b19 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#3  0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-28 05:25:02:103	    const unsigned s = MaxBits - i ;
+104	    const unsigned c = gray_inv[ reflect ^ (
+105	      ( ( ( coord[0] >> s ) & 01 ) << order[0] ) |
+106	      ( ( ( coord[1] >> s ) & 01 ) << order[1] ) ) ];
+107	     
+108	    const unsigned off   = 2 * i ;                   /* Bit offset */
+109	    const unsigned which = off / MaxBits ;           /* Which word to update */
+110	    const unsigned shift = MaxBits - off % MaxBits ; /* Which bits to update */
+111	
+112	    /* Set the two bits */
+
+2017-02-28 05:25:02:Backtrace END
+2017-02-28 05:25:07:Type: A boolean type.
+2017-02-28 05:25:07:Type sizeof: 1
+2017-02-28 05:25:07:Mem contents(hex):0x00
+2017-02-28 05:25:07:Fault Mode: Double bit-flip
+2017-02-28 05:25:07:base address to flip value: 0x7d0abc 
+2017-02-28 05:25:07:address max offset: 1
+2017-02-28 05:25:07:Memory content before bitflip:0x00
+2017-02-28 05:25:07:Memory content after  bitflip:0xc0
+2017-02-28 05:25:07:Mem contents(hex):0xc0
+2017-02-28 05:25:07:frame name: Mesh::init
+2017-02-28 05:25:07:symbol name: dynamic_load_balance_on
+2017-02-28 05:25:07:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+2017-02-28 05:25:07:symbol line: 142
+2017-02-28 05:25:07:value: 192
+2017-02-28 05:25:07:value address: 0x7d0abc <dynamic_load_balance_on>
+2017-02-28 05:25:07:Type: A boolean type.
+2017-02-28 05:25:07:Type sizeof: 1
+2017-02-28 05:25:07:Fault Injection Successful after 8.10850405693s
+2017-02-28 05:25:56:event type: exit
+2017-02-28 05:25:56:exit code: 0

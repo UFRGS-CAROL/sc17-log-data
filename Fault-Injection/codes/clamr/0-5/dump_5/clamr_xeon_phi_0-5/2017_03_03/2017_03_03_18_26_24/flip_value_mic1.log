@@ -1,0 +1,73 @@
+[INFO -- 2017-03-03 18:24:29]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-03 18:24:29]
+Initialization strings:
+[INFO -- 2017-03-03 18:24:30]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-03 18:24:30]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 18:24:30]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 18:24:30]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 18:24:30]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 18:24:30]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-03 18:24:30]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-03 18:24:30]
+initSignal:0
+[INFO -- 2017-03-03 18:24:30]
+endSignal:5
+[INFO -- 2017-03-03 18:24:30]
+seqSignal:20
+[INFO -- 2017-03-03 18:24:30]
+faultMode:3
+[INFO -- 2017-03-03 18:24:38]
+Backtrace BEGIN:
+#0  0x0000000000509e11 in Mesh::kdtree_setup (this=0x7fae50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2364
+#1  0x0000000000507f0a in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1529
+#2  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2359	{
+2360	   KDTree_Initialize(&tree);
+2361	
+2362	   TBounds box;
+2363	   for (uint ic=0; ic<ncells; ic++) {
+2364	     box.min.x = x[ic];
+2365	     box.max.x = x[ic]+dx[ic];
+2366	     box.min.y = y[ic];
+2367	     box.max.y = y[ic]+dy[ic];
+2368	     KDTree_AddElement(&tree, &box);
+
+Backtrace END
+Fliping value of field: max
+Fliping value of field: y
+Memory content before bitflip:0x000x000x000x000x000x000x590x40
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe520
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: Mesh::kdtree_setup
+symbol name: box
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+symbol line: 2362
+value: {min = {x = -197, y = 99}, max = {x = -196, y = 0}}
+value address: 0x7fffffffe508
+Type: The type is a structure.
+Type sizeof: 32
+Field name: min
+Field Type: The type is a structure.
+Field Type sizeof: 16
+Field name: max
+Field Type: The type is a structure.
+Field Type sizeof: 16
+
+[INFO -- 2017-03-03 18:24:38]
+Fault Injection Successful after 8.61863398552s
+[INFO -- 2017-03-03 18:25:26]
+event type: exit
+[INFO -- 2017-03-03 18:25:26]
+exit code: 0

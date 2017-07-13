@@ -1,0 +1,47 @@
+2017-02-21 20:37:22:Starting flip_value script
+2017-02-21 20:37:22:Initialization strings:
+2017-02-21 20:37:22:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-21 20:37:22:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 20:37:22:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 20:37:22:(4) file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-02-21 20:37:22:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-02-21 20:37:22:(6) set args 16394 10 228 /micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10 /micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10
+2017-02-21 20:37:22:initSignal:8
+2017-02-21 20:37:22:endSignal:12
+2017-02-21 20:37:22:seqSignal:30
+2017-02-21 20:37:32:Backtrace BEGIN:
+2017-02-21 20:37:32:#0  0x0000000000402c96 in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:329
+#1  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-02-21 20:37:32:324	    //    input_itemsets[j] = rand() % 10 + 1;
+325	    //}
+326	
+327	
+328	    for (int i = 1 ; i < max_cols; i++){
+329	        for (int j = 1 ; j < max_rows; j++){
+330	            referrence[i*max_cols+j] = blosum62[input_itemsets[i*max_cols]][input_itemsets[j]];
+331	        }
+332	    }
+333	
+
+2017-02-21 20:37:32:Backtrace END
+2017-02-21 20:37:32:Type: The type is an integer type.
+2017-02-21 20:37:32:Type sizeof: 4
+2017-02-21 20:37:32:Mem contents(hex):0x950x150x400x00
+2017-02-21 20:37:32:Fault Mode: Single bit-flip
+2017-02-21 20:37:32:base address to flip value: 0x7fffffffeb08
+2017-02-21 20:37:32:address max offset: 4
+2017-02-21 20:37:32:Memory content before bitflip:0x950x150x400x00
+2017-02-21 20:37:32:Memory content after  bitflip:0x950x150xc00x00
+2017-02-21 20:37:32:Mem contents(hex):0x950x150xc00x00
+2017-02-21 20:37:32:frame name: runTest
+2017-02-21 20:37:32:symbol name: host_errors
+2017-02-21 20:37:32:symbol filename: needle_check.cpp
+2017-02-21 20:37:32:symbol line: 360
+2017-02-21 20:37:32:value: 12588437
+2017-02-21 20:37:32:value address: 0x7fffffffeb08
+2017-02-21 20:37:32:Type: The type is an integer type.
+2017-02-21 20:37:32:Type sizeof: 4
+2017-02-21 20:37:32:Fault Injection Successful after 10.6966040134s
+2017-02-21 20:38:00:event type: exit
+2017-02-21 20:38:00:exit code: no exit code available

@@ -1,0 +1,55 @@
+[INFO -- 2017-02-25 05:19:54]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 05:19:54]
+Initialization strings:
+[INFO -- 2017-02-25 05:19:55]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-25 05:19:55]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 05:19:55]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 05:19:55]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 05:19:55]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 05:19:55]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-25 05:19:55]
+initSignal:12
+[INFO -- 2017-02-25 05:19:55]
+endSignal:15
+[INFO -- 2017-02-25 05:19:55]
+seqSignal:15
+[INFO -- 2017-02-25 05:19:55]
+faultMode:3
+[INFO -- 2017-02-25 05:20:07]
+Backtrace BEGIN:
+#0  0x00007ffff7138317 in _IO_fgets (buf=0x7fffffffe640 "323.571472\n", n=<optimized out>, fp=0x609b40) at iofgets.c:59
+#1  0x0000000000404538 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:202
+#2  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+54	in iofgets.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x4e0xea0xa10x43
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffff5ec9010
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: read_input
+symbol name: vect
+symbol filename: hotspot_check.c
+symbol line: 190
+value: 0x7ffff5ec9010
+value address: 0x7fffffffe758
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-25 05:20:07]
+Fault Injection Successful after 12.214443922s
+[INFO -- 2017-02-25 05:20:21]
+event type: exit
+[INFO -- 2017-02-25 05:20:21]
+exit code: 0

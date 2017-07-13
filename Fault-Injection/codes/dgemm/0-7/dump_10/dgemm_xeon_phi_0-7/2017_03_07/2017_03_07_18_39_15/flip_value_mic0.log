@@ -1,0 +1,63 @@
+[INFO -- 2017-03-07 18:36:02]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-07 18:36:02]
+Initialization strings:
+[INFO -- 2017-03-07 18:36:03]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-07 18:36:03]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 18:36:03]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 18:36:03]
+(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-07 18:36:03]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-07 18:36:03]
+(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+[INFO -- 2017-03-07 18:36:03]
+initSignal:0
+[INFO -- 2017-03-07 18:36:03]
+endSignal:7
+[INFO -- 2017-03-07 18:36:03]
+seqSignal:15
+[INFO -- 2017-03-07 18:36:03]
+faultMode:0
+[INFO -- 2017-03-07 18:36:04]
+Backtrace BEGIN:
+#0  0x0000000000403bde in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:250
+#1  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+245	        exit(1);
+246	    }
+247	
+248	    for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+249	            fread(&A[(i)+(order)*(j)], 1, sizeof(double), file);
+250	            fread(&B[(i)+(order)*(j)], 1, sizeof(double), file2);
+251	        }
+252	    fclose(file);
+253	    fclose(file2);
+254	}
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7ffff0cca040
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x040x00
+frame name: main
+symbol name: C
+symbol filename: dgemm.c
+symbol line: 280
+value: 0x7ffff0cca040
+value address: 0x606b58 <C.1136>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-07 18:36:04]
+Fault Injection Successful after 1.25827288628s
+[INFO -- 2017-03-07 18:36:43]
+event type: exit
+[INFO -- 2017-03-07 18:36:43]
+exit code: 0

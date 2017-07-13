@@ -1,0 +1,231 @@
+2017-01-26 06:42:29:Starting flip_value script
+2017-01-26 06:42:29:Initialization strings:
+2017-01-26 06:42:29:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-26 06:42:29:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-26 06:42:29:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-26 06:42:29:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-26 06:42:29:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-26 06:42:29:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-26 06:42:29:initSignal:0
+2017-01-26 06:42:29:endSignal:2
+2017-01-26 06:42:29:seqSignal:30
+2017-01-26 06:42:30:Trying Fault Injection
+2017-01-26 06:42:30:Inferior PID: 150434
+2017-01-26 06:42:30:Inferior is valid: True
+2017-01-26 06:42:30:Inferior #threads: 1
+2017-01-26 06:42:30:Backtrace BEGIN:
+2017-01-26 06:42:30:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000009 in ?? ()
+#7  0x00007fffffffee08 in ?? ()
+#8  0x00007fffffffee3f in ?? ()
+#9  0x00007fffffffee42 in ?? ()
+#10 0x00007fffffffee47 in ?? ()
+#11 0x00007fffffffee4a in ?? ()
+#12 0x00007fffffffee4e in ?? ()
+#13 0x00007fffffffee51 in ?? ()
+#14 0x00007fffffffee90 in ?? ()
+#15 0x00007fffffffee93 in ?? ()
+#16 0x0000000000000000 in ?? ()
+
+2017-01-26 06:42:30:69	in dl-debug.c
+
+2017-01-26 06:42:30:Backtrace END
+2017-01-26 06:42:30:Thread name: None
+2017-01-26 06:42:30:Thread num: 1
+2017-01-26 06:42:30:Thread ptid: (150434, 150434, 0)
+2017-01-26 06:42:30:bitFlip function
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Error gdbException(frameFlip): Attempt to dereference a generic pointer.
+2017-01-26 06:42:30:Fault Injection Failed after 1.30693292618s
+2017-01-26 06:42:30:Trying Fault Injection
+2017-01-26 06:42:30:Inferior PID: 150434
+2017-01-26 06:42:30:Inferior is valid: True
+2017-01-26 06:42:30:Inferior #threads: 1
+2017-01-26 06:42:30:Backtrace BEGIN:
+2017-01-26 06:42:30:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142911 in __GI__IO_file_xsgetn (fp=0x60c010, data=<optimized out>, n=16777216) at fileops.c:1422
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=16777216, count=1, fp=0x60c010) at iofread.c:42
+#3  0x0000000000402b5a in main (argc=9, argv=0x7fffffffec08) at lud_check.c:105
+
+2017-01-26 06:42:30:76	in ../sysdeps/unix/syscall-template.S
+
+2017-01-26 06:42:30:Backtrace END
+2017-01-26 06:42:30:Thread name: None
+2017-01-26 06:42:30:Thread num: 1
+2017-01-26 06:42:30:Thread ptid: (150434, 150434, 0)
+2017-01-26 06:42:30:bitFlip function
+2017-01-26 06:42:30:Type: The type is a structure.
+2017-01-26 06:42:30:Type sizeof: 168
+2017-01-26 06:42:30:Fliping value of field: __dummy2
+2017-01-26 06:42:30:bitFlip function
+2017-01-26 06:42:30:Type: The type is an integer type.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-01-26 06:42:30:base address to flip value: 0x7ffff74236c8 
+2017-01-26 06:42:30:address max offset: 8
+2017-01-26 06:42:30:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-01-26 06:42:30:Memory content after  bitflip:0x000x000x000x000x000x040x000x00
+2017-01-26 06:42:30:Mem contents(hex):0x000x000x000x000x000x040x000x00
+2017-01-26 06:42:30:frame name: __GI__IO_file_xsgetn
+2017-01-26 06:42:30:symbol name: __GI__IO_file_jumps
+2017-01-26 06:42:30:symbol filename: fileops.c
+2017-01-26 06:42:30:symbol line: 1525
+2017-01-26 06:42:30:value: {__dummy = 0, __dummy2 = 4398046511104, __finish = 0x7ffff7142f30 <_IO_new_file_finish>, __overflow = 0x7ffff71437f0 <_IO_new_file_overflow>, __underflow = 0x7ffff7143570 <_IO_new_file_underflow>, __uflow = 0x7ffff7144590 <__GI__IO_default_uflow>, __pbackfail = 0x7ffff7145450 <__GI__IO_default_pbackfail>, __xsputn = 0x7ffff7142ba0 <_IO_new_file_xsputn>, __xsgetn = 0x7ffff7142860 <__GI__IO_file_xsgetn>, __seekoff = 0x7ffff7141e30 <_IO_new_file_seekoff>, __seekpos = 0x7ffff71447f0 <_IO_default_seekpos>, __setbuf = 0x7ffff7141cb0 <_IO_new_file_setbuf>, __sync = 0x7ffff7141bf0 <_IO_new_file_sync>, __doallocate = 0x7ffff7137990 <__GI__IO_file_doallocate>, __read = 0x7ffff7142b80 <__GI__IO_file_read>, __write = 0x7ffff71426e0 <_IO_new_file_write>, __seek = 0x7ffff71424a0 <__GI__IO_file_seek>, __close = 0x7ffff7141ca0 <__GI__IO_file_close>, __stat = 0x7ffff71426d0 <__GI__IO_file_stat>, __showmanyc = 0x7ffff71455b0 <_IO_default_showmanyc>, __imbue = 0x7ffff71455c0 <_IO_default_imbue>}
+2017-01-26 06:42:30:value address: 0x7ffff74236c0 <_IO_file_jumps>
+2017-01-26 06:42:30:Type: The type is a structure.
+2017-01-26 06:42:30:Type sizeof: 168
+2017-01-26 06:42:30:Field name: __dummy
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is an integer type.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __dummy2
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is an integer type.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __finish
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __overflow
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __underflow
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __uflow
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __pbackfail
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __xsputn
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __xsgetn
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __seekoff
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __seekpos
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __setbuf
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __sync
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __doallocate
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __read
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __write
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __seek
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __close
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __stat
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __showmanyc
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Field name: __imbue
+2017-01-26 06:42:30:Field Type:
+2017-01-26 06:42:30:Type: The type is a pointer.
+2017-01-26 06:42:30:Type sizeof: 8
+2017-01-26 06:42:30:Fault Injection Successful after 1.48467803001s
+2017-01-26 06:42:30:Fault Already Injected
+2017-01-26 06:42:30:Fault Already Injected
+2017-01-26 06:42:31:Fault Already Injected
+2017-01-26 06:42:31:Fault Already Injected
+2017-01-26 06:42:31:Fault Already Injected
+2017-01-26 06:42:31:Fault Already Injected
+2017-01-26 06:42:32:Fault Already Injected
+2017-01-26 06:42:32:Fault Already Injected
+2017-01-26 06:42:32:Fault Already Injected
+2017-01-26 06:42:32:Fault Already Injected
+2017-01-26 06:42:32:Fault Already Injected
+2017-01-26 06:42:33:Fault Already Injected
+2017-01-26 06:42:33:Fault Already Injected
+2017-01-26 06:42:33:Fault Already Injected
+2017-01-26 06:42:33:Fault Already Injected
+2017-01-26 06:42:33:Fault Already Injected
+2017-01-26 06:42:34:Fault Already Injected
+2017-01-26 06:42:34:Fault Already Injected
+2017-01-26 06:42:35:Fault Already Injected
+2017-01-26 06:42:35:Fault Already Injected
+2017-01-26 06:42:35:Fault Already Injected
+2017-01-26 06:42:36:Fault Already Injected
+2017-01-26 06:42:36:Fault Already Injected
+2017-01-26 06:42:36:Fault Already Injected
+2017-01-26 06:42:37:Fault Already Injected
+2017-01-26 06:42:37:Fault Already Injected
+2017-01-26 06:42:37:Fault Already Injected
+2017-01-26 06:42:38:Fault Already Injected
+2017-01-26 06:42:38:Fault Already Injected
+2017-01-26 06:42:38:Fault Already Injected
+2017-01-26 06:42:38:Fault Already Injected
+2017-01-26 06:42:39:Fault Already Injected
+2017-01-26 06:42:39:Fault Already Injected
+2017-01-26 06:42:39:Fault Already Injected
+2017-01-26 06:42:40:Fault Already Injected
+2017-01-26 06:42:40:Fault Already Injected
+2017-01-26 06:42:40:Fault Already Injected
+2017-01-26 06:42:41:Fault Already Injected
+2017-01-26 06:42:41:Fault Already Injected
+2017-01-26 06:42:41:Fault Already Injected
+2017-01-26 06:42:42:Fault Already Injected
+2017-01-26 06:42:42:Fault Already Injected
+2017-01-26 06:42:42:Fault Already Injected
+2017-01-26 06:42:42:Fault Already Injected
+2017-01-26 06:42:42:Fault Already Injected
+2017-01-26 06:42:43:Fault Already Injected
+2017-01-26 06:42:43:Fault Already Injected
+2017-01-26 06:42:43:Fault Already Injected
+2017-01-26 06:42:43:Fault Already Injected
+2017-01-26 06:42:43:Fault Already Injected
+2017-01-26 06:42:44:Fault Already Injected
+2017-01-26 06:42:45:Fault Already Injected
+2017-01-26 06:42:45:Fault Already Injected
+2017-01-26 06:42:46:Fault Already Injected
+2017-01-26 06:42:46:Fault Already Injected
+2017-01-26 06:42:46:Fault Already Injected
+2017-01-26 06:42:46:Fault Already Injected
+2017-01-26 06:42:46:Fault Already Injected
+2017-01-26 06:42:47:Fault Already Injected
+2017-01-26 06:42:47:Fault Already Injected
+2017-01-26 06:42:47:Fault Already Injected
+2017-01-26 06:42:47:Fault Already Injected
+2017-01-26 06:42:49:event type: exit
+2017-01-26 06:42:49:exit code: 1

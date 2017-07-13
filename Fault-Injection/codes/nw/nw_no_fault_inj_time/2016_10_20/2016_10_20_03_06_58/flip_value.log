@@ -1,0 +1,144 @@
+2016-10-20 03:06:36:Initialization strings:
+2016-10-20 03:06:36:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-20 03:06:36:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-20 03:06:36:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-20 03:06:36:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-20 03:06:36:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-20 03:06:36:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-20 03:06:37:Trying Fault Injection
+2016-10-20 03:06:37:Inferior PID: 18043
+2016-10-20 03:06:37:Inferior is valid: True
+2016-10-20 03:06:37:Inferior #threads: 1
+2016-10-20 03:06:37:Backtrace BEGIN:
+2016-10-20 03:06:37:#0  0x00007ffff6e243d0 in __open_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6dd1025 in __GI__IO_file_open (fp=fp@entry=0x61d900, filename=<optimized out>, posix_mode=<optimized out>, prot=prot@entry=438, read_write=4100, is32not64=is32not64@entry=1) at fileops.c:220
+#2  0x00007ffff6dd1130 in _IO_new_file_fopen (fp=fp@entry=0x61d900, filename=filename@entry=0x60a480 <full_log_file_name> "/micNfs/carol/logs/2016_10_20_07_40_38_openmpNW_carolxeon1-mic0.log", mode=<optimized out>, mode@entry=0x407d5c "a", is32not64=is32not64@entry=1) at fileops.c:327
+#3  0x00007ffff6dc64d2 in __fopen_internal (filename=0x60a480 <full_log_file_name> "/micNfs/carol/logs/2016_10_20_07_40_38_openmpNW_carolxeon1-mic0.log", mode=0x407d5c "a", is32=1) at iofopen.c:86
+#4  0x0000000000406910 in start_log_file (benchmark_name=0x60a480 <full_log_file_name> "/micNfs/carol/logs/2016_10_20_07_40_38_openmpNW_carolxeon1-mic0.log", test_info=0x441 <error: Cannot access memory at address 0x441>) at ../../include/log_helper.c:261
+#5  0x00000000004014df in runTest (argc=<optimized out>, argv=<optimized out>) at needle_check.cpp:294
+#6  main (argc=6333568, argv=0x441) at needle_check.cpp:114
+
+2016-10-20 03:06:37:76	in ../sysdeps/unix/syscall-template.S
+
+2016-10-20 03:06:37:Backtrace END
+2016-10-20 03:06:37:Thread name: None
+2016-10-20 03:06:37:Thread num: 1
+2016-10-20 03:06:37:Thread ptid: (18043, 18043, 0)
+2016-10-20 03:06:37:bitFlip function
+2016-10-20 03:06:37:Type: The type is a structure.
+2016-10-20 03:06:37:Type sizeof: 168
+2016-10-20 03:06:37:Fliping value of field: __xsgetn
+2016-10-20 03:06:37:bitFlip function
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Fliping a bit of the value pointed by a pointer
+2016-10-20 03:06:37:bitFlip function
+2016-10-20 03:06:37:Type: The type is a function.
+2016-10-20 03:06:37:Type sizeof: 1
+2016-10-20 03:06:37:Mem contents(hex):0x41
+2016-10-20 03:06:37:base address to flip value: 0x7ffff6dd0860 
+2016-10-20 03:06:37:address max offset: 1
+2016-10-20 03:06:37:Memory content before bitflip:0x41
+2016-10-20 03:06:37:Memory content after  bitflip:0x49
+2016-10-20 03:06:37:Mem contents(hex):0x49
+2016-10-20 03:06:37:frame name: _IO_new_file_fopen
+2016-10-20 03:06:37:symbol name: __GI__IO_file_jumps
+2016-10-20 03:06:37:symbol filename: fileops.c
+2016-10-20 03:06:37:symbol line: 1525
+2016-10-20 03:06:37:value: {__dummy = 0, __dummy2 = 0, __finish = 0x7ffff6dd0f30 <_IO_new_file_finish>, __overflow = 0x7ffff6dd17f0 <_IO_new_file_overflow>, __underflow = 0x7ffff6dd1570 <_IO_new_file_underflow>, __uflow = 0x7ffff6dd2590 <__GI__IO_default_uflow>, __pbackfail = 0x7ffff6dd3450 <__GI__IO_default_pbackfail>, __xsputn = 0x7ffff6dd0ba0 <_IO_new_file_xsputn>, __xsgetn = 0x7ffff6dd0860 <__GI__IO_file_xsgetn>, __seekoff = 0x7ffff6dcfe30 <_IO_new_file_seekoff>, __seekpos = 0x7ffff6dd27f0 <_IO_default_seekpos>, __setbuf = 0x7ffff6dcfcb0 <_IO_new_file_setbuf>, __sync = 0x7ffff6dcfbf0 <_IO_new_file_sync>, __doallocate = 0x7ffff6dc5990 <__GI__IO_file_doallocate>, __read = 0x7ffff6dd0b80 <__GI__IO_file_read>, __write = 0x7ffff6dd06e0 <_IO_new_file_write>, __seek = 0x7ffff6dd04a0 <__GI__IO_file_seek>, __close = 0x7ffff6dcfca0 <__GI__IO_file_close>, __stat = 0x7ffff6dd06d0 <__GI__IO_file_stat>, __showmanyc = 0x7ffff6dd35b0 <_IO_default_showmanyc>, __imbue = 0x7ffff6dd35c0 <_IO_default_imbue>}
+2016-10-20 03:06:37:value address: 0x7ffff70b16c0 <_IO_file_jumps>
+2016-10-20 03:06:37:Type: The type is a structure.
+2016-10-20 03:06:37:Type sizeof: 168
+2016-10-20 03:06:37:Field name: __dummy
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is an integer type.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __dummy2
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is an integer type.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __finish
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __overflow
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __underflow
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __uflow
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __pbackfail
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __xsputn
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __xsgetn
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __seekoff
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __seekpos
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __setbuf
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __sync
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __doallocate
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __read
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __write
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __seek
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __close
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __stat
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __showmanyc
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Field name: __imbue
+2016-10-20 03:06:37:Field Type:
+2016-10-20 03:06:37:Type: The type is a pointer.
+2016-10-20 03:06:37:Type sizeof: 8
+2016-10-20 03:06:37:Fault Injection Successful after 1.37966489792s
+2016-10-20 03:06:37:Fault Already Injected
+2016-10-20 03:06:41:Fault Already Injected
+2016-10-20 03:06:45:Fault Already Injected
+2016-10-20 03:06:49:Fault Already Injected
+2016-10-20 03:06:52:Fault Already Injected
+2016-10-20 03:06:52:Fault Already Injected
+2016-10-20 03:06:52:event type: exit
+2016-10-20 03:06:52:exit code: 0

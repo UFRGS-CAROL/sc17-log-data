@@ -1,0 +1,65 @@
+[INFO -- 2017-03-10 18:17:14]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-10 18:17:14]
+Initialization strings:
+[INFO -- 2017-03-10 18:17:14]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-10 18:17:14]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 18:17:14]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 18:17:14]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-10 18:17:14]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-10 18:17:14]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-10 18:17:14]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-10 18:17:14]
+initSignal:25
+[INFO -- 2017-03-10 18:17:14]
+endSignal:30
+[INFO -- 2017-03-10 18:17:14]
+seqSignal:20
+[INFO -- 2017-03-10 18:17:14]
+faultMode:0
+[INFO -- 2017-03-10 18:17:51]
+Backtrace BEGIN:
+#0  0x0000000000536203 in Mesh::partition_cells (this=0x7f9a50, numpe=0, z_order=..., method=ORIGINAL_ORDER) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:369
+#1  0x00000000004461e3 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:477
+#2  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+364	   //  Partition cells according to one of several possible orderings.
+365	   int have_spatial_variables=0;
+366	   switch (method)
+367	   {   case ORIGINAL_ORDER:
+368	         //  Set z_order to the current cell order.
+369	         for (uint ic = 0; ic < ncells; ++ic)
+370	         {   z_order[ic] = ic; }
+371	
+372	         cpu_timers[MESH_TIMER_PARTITION] += cpu_timer_stop(tstart_cpu);
+373	
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffdf0c
+address max offset: 4
+Memory content after  bitflip:0x000x020x000x00
+frame name: Mesh::partition_cells
+symbol name: jmax
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp
+symbol line: 327
+value: 512
+value address: 0x7fffffffdf0c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-10 18:17:51]
+Fault Injection Successful after 37.9264531136s
+[INFO -- 2017-03-10 18:18:16]
+event type: exit
+[INFO -- 2017-03-10 18:18:16]
+exit code: 0

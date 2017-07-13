@@ -1,0 +1,57 @@
+[INFO -- 2017-03-09 22:32:31]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-09 22:32:31]
+Initialization strings:
+[INFO -- 2017-03-09 22:32:31]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-09 22:32:31]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-09 22:32:31]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-09 22:32:31]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-09 22:32:31]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-09 22:32:31]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-03-09 22:32:31]
+initSignal:6
+[INFO -- 2017-03-09 22:32:31]
+endSignal:8
+[INFO -- 2017-03-09 22:32:31]
+seqSignal:30
+[INFO -- 2017-03-09 22:32:31]
+faultMode:2
+[INFO -- 2017-03-09 22:32:41]
+Backtrace BEGIN:
+#0  0x00007ffff7dec1e2 in _dl_fini () at dl-fini.c:262
+#1  0x00007ffff7105e88 in __run_exit_handlers (status=0, listp=0x7ffff7424588 <__exit_funcs>, run_list_atexit=run_list_atexit@entry=true) at exit.c:82
+#2  0x00007ffff7105ed2 in __GI_exit (status=<optimized out>) at exit.c:104
+#3  0x00007ffff70f0c07 in __libc_start_main (main=0x4026cc <main>, argc=9, argv=0x7fffffffec08, init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, stack_end=0x7fffffffebf8) at libc-start.c:323
+#4  0x0000000000401a49 in _start () at ../sysdeps/x86_64/start.S:118
+
+257	in dl-fini.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x200xea0xff0xff0xff0x7f0x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffea88
+address max offset: 8
+Memory content after  bitflip:0xc80x9a0xc60xb20xb70x2d0x0b0x02
+frame name: _dl_fini
+symbol name: maps
+symbol filename: dl-fini.c
+symbol line: 143
+value: 0x7fffffffea20
+value address: 0x7fffffffea88
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-09 22:32:41]
+Fault Injection Successful after 10.8718700409s
+[INFO -- 2017-03-09 22:32:42]
+event type: exit
+[INFO -- 2017-03-09 22:32:42]
+exit code: 0

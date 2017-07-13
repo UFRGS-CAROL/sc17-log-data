@@ -1,0 +1,62 @@
+[INFO -- 2017-03-28 10:47:39]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-28 10:47:39]
+Initialization strings:
+[INFO -- 2017-03-28 10:47:39]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-28 10:47:39]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 10:47:39]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 10:47:39]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 10:47:39]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 10:47:39]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-28 10:47:39]
+initSignal:0
+[INFO -- 2017-03-28 10:47:39]
+endSignal:3
+[INFO -- 2017-03-28 10:47:39]
+seqSignal:30
+[INFO -- 2017-03-28 10:47:39]
+faultMode:0
+[INFO -- 2017-03-28 10:47:40]
+Backtrace BEGIN:
+#0  0x0000000000401fe5 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:122
+
+117	
+118	                                box_cpu[nh].nei[box_cpu[nh].nn].x = (k+n);
+119	                                box_cpu[nh].nei[box_cpu[nh].nn].y = (j+m);
+120	                                box_cpu[nh].nei[box_cpu[nh].nn].z = (i+l);
+121	                                box_cpu[nh].nei[box_cpu[nh].nn].number = (box_cpu[nh].nei[box_cpu[nh].nn].z * dim_cpu.boxes1d_arg * dim_cpu.boxes1d_arg) + (box_cpu[nh].nei[box_cpu[nh].nn].y * dim_cpu.boxes1d_arg) + box_cpu[nh].nei[box_cpu[nh].nn].x;
+122	                                box_cpu[nh].nei[box_cpu[nh].nn].offset = box_cpu[nh].nei[box_cpu[nh].nn].number * NUMBER_PAR_PER_BOX;
+123	
+124	                                box_cpu[nh].nn = box_cpu[nh].nn + 1;
+125	
+126	                            }
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x680xe90xff0xff0xff0x7f0x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffe910
+address max offset: 8
+Memory content after  bitflip:0x6c0xe90xff0xff0xff0x7f0x000x00
+frame name: main
+symbol name: file
+symbol filename: main_check.c
+symbol line: 139
+value: 0x7fffffffe968
+value address: 0x7fffffffe910
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-28 10:47:40]
+Fault Injection Successful after 1.50476503372s
+[INFO -- 2017-03-28 10:47:58]
+event type: exit
+[INFO -- 2017-03-28 10:47:58]
+exit code: 0

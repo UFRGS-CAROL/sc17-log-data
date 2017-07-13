@@ -1,0 +1,58 @@
+[INFO -- 2017-03-04 04:35:47]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-04 04:35:47]
+Initialization strings:
+[INFO -- 2017-03-04 04:35:47]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-04 04:35:47]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-04 04:35:47]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-04 04:35:47]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-04 04:35:47]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-04 04:35:47]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-04 04:35:47]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-04 04:35:47]
+initSignal:15
+[INFO -- 2017-03-04 04:35:47]
+endSignal:20
+[INFO -- 2017-03-04 04:35:47]
+seqSignal:20
+[INFO -- 2017-03-04 04:35:47]
+faultMode:2
+[INFO -- 2017-03-04 04:36:09]
+Backtrace BEGIN:
+#0  0x00007ffff6b6786f in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1641
+#1  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#2  0x000000000054b98d in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:478
+#3  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#4  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+1636	in vfprintf.c
+
+Backtrace END
+Memory content before bitflip:0x000x800x800x43
+Fault Mode: Random bit-flip
+base address to flip value: 0x7d0bc8 
+address max offset: 4
+Memory content after  bitflip:0xe20xf70x090x05
+frame name: write_graphics_info
+symbol name: graphics_xmax
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c
+symbol line: 188
+value: 6.48723792e-36
+value address: 0x7d0bc8 <graphics_xmax>
+Type: A floating point type.
+Type sizeof: 4
+
+[INFO -- 2017-03-04 04:36:09]
+Fault Injection Successful after 22.9877500534s
+[INFO -- 2017-03-04 04:36:48]
+event type: exit
+[INFO -- 2017-03-04 04:36:48]
+exit code: 0

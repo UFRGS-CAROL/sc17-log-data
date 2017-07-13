@@ -1,0 +1,89 @@
+2017-02-21 20:52:01:Starting flip_value script
+2017-02-21 20:52:01:Initialization strings:
+2017-02-21 20:52:01:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-21 20:52:01:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 20:52:01:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 20:52:01:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-21 20:52:01:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-21 20:52:01:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-21 20:52:01:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-21 20:52:01:initSignal:0
+2017-02-21 20:52:01:endSignal:5
+2017-02-21 20:52:01:seqSignal:20
+2017-02-21 20:52:01:Backtrace BEGIN:
+2017-02-21 20:52:01:#0  0x00007ffff7de5c1f in check_match (undef_name=undef_name@entry=0x7ffff730e233 "_ZNKSt7num_getIwSt19istreambuf_iteratorIwSt11char_traitsIwEEE14_M_extract_intIlEES3_S3_S3_RSt8ios_baseRSt12_Ios_IostateRT_", ref=ref@entry=0x7ffff72d0af8, version=version@entry=0x7ffff7ff6030, flags=flags@entry=1, type_class=type_class@entry=1, sym=sym@entry=0x417a50, symidx=3138, strtab=0x417eb8 "", map=0x7ffff7ffe168, versioned_sym=0x7fffffffe7b8, num_versions=0x7fffffffe7b4) at dl-lookup.c:95
+#1  0x00007ffff7de60e1 in do_lookup_x (undef_name=undef_name@entry=0x7ffff730e233 "_ZNKSt7num_getIwSt19istreambuf_iteratorIwSt11char_traitsIwEEE14_M_extract_intIlEES3_S3_S3_RSt8ios_baseRSt12_Ios_IostateRT_", new_hash=new_hash@entry=2060811736, old_hash=old_hash@entry=0x7fffffffe880, ref=0x7ffff72d0af8, result=result@entry=0x7fffffffe890, scope=<optimized out>, i=<optimized out>, version=0x7ffff7ff6030, flags=1, skip=0x0, type_class=1, undef_map=0x7ffff7ff99b8) at dl-lookup.c:448
+#2  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x7ffff730e233 "_ZNKSt7num_getIwSt19istreambuf_iteratorIwSt11char_traitsIwEEE14_M_extract_intIlEES3_S3_S3_RSt8ios_baseRSt12_Ios_IostateRT_", undef_map=undef_map@entry=0x7ffff7ff99b8, ref=ref@entry=0x7fffffffe9e0, symbol_scope=symbol_scope@entry=0x7ffff7ff9d10, version=0x7ffff7ff6030, type_class=1, flags=1, skip_map=0x0) at dl-lookup.c:775
+#3  0x00007ffff7de854f in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=<optimized out>, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff732ea28, map=0x7ffff7ff99b8) at ../sysdeps/x86_64/dl-machine.h:277
+#4  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ff99b8) at do-rel.h:137
+#5  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#6  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#7  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec50, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#8  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec50) at rtld.c:308
+#9  _dl_start (arg=0x7fffffffec50) at rtld.c:414
+#10 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#11 0x000000000000000b in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+2017-02-21 20:52:01:90	in dl-lookup.c
+
+2017-02-21 20:52:01:Backtrace END
+2017-02-21 20:52:02:Type: The type is a pointer.
+2017-02-21 20:52:02:Type sizeof: 8
+2017-02-21 20:52:02:Backtrace BEGIN:
+2017-02-21 20:52:02:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec50, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec50) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec50) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x000000000000000b in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+2017-02-21 20:52:02:69	in dl-debug.c
+
+2017-02-21 20:52:02:Backtrace END
+2017-02-21 20:52:02:Type: The type is a structure.
+2017-02-21 20:52:02:Type sizeof: 40
+2017-02-21 20:52:02:Fliping value of field: r_state
+2017-02-21 20:52:02:Type: The type is an enum.
+2017-02-21 20:52:02:Type sizeof: 4
+2017-02-21 20:52:02:Mem contents(hex):0x000x000x000x00
+2017-02-21 20:52:02:Fault Mode: Zero bit-flip
+2017-02-21 20:52:02:base address to flip value: 0x7ffff7ffe158 
+2017-02-21 20:52:02:address max offset: 4
+2017-02-21 20:52:02:Memory content before bitflip:0x000x000x000x00
+2017-02-21 20:52:02:Backtrace BEGIN:
+2017-02-21 20:52:02:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec50, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec50) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec50) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x000000000000000b in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+2017-02-21 20:52:02:69	in dl-debug.c
+
+2017-02-21 20:52:02:Backtrace END
+2017-02-21 20:52:02:Type: The type is a pointer.
+2017-02-21 20:52:02:Type sizeof: 8
+2017-02-21 20:52:02:Fliping a bit of the pointer
+2017-02-21 20:52:02:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-21 20:52:02:Fault Mode: Single bit-flip
+2017-02-21 20:52:02:base address to flip value: 0x7ffff7ffe038 
+2017-02-21 20:52:02:address max offset: 8
+2017-02-21 20:52:02:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-21 20:52:02:Memory content after  bitflip:0x000x100x000x000x000x000x000x00
+2017-02-21 20:52:02:Mem contents(hex):0x000x100x000x000x000x000x000x00
+2017-02-21 20:52:02:frame name: _dl_start_final
+2017-02-21 20:52:02:symbol name: audit_list
+2017-02-21 20:52:02:symbol filename: rtld.c
+2017-02-21 20:52:02:symbol line: 108
+2017-02-21 20:52:02:value: 0x0
+2017-02-21 20:52:02:value address: 0x7ffff7ffe038 <audit_list>
+2017-02-21 20:52:02:Type: The type is a pointer.
+2017-02-21 20:52:02:Type sizeof: 8
+2017-02-21 20:52:02:Fault Injection Successful after 1.82295203209s
+2017-02-21 20:52:56:event type: exit
+2017-02-21 20:52:56:exit code: 0

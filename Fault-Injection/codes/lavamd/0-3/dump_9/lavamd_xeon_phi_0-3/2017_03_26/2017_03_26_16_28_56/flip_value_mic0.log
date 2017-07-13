@@ -1,0 +1,57 @@
+[INFO -- 2017-03-26 16:28:39]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 16:28:39]
+Initialization strings:
+[INFO -- 2017-03-26 16:28:40]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 16:28:40]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 16:28:40]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 16:28:40]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 16:28:40]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 16:28:40]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 16:28:40]
+initSignal:0
+[INFO -- 2017-03-26 16:28:40]
+endSignal:3
+[INFO -- 2017-03-26 16:28:40]
+seqSignal:30
+[INFO -- 2017-03-26 16:28:40]
+faultMode:2
+[INFO -- 2017-03-26 16:28:40]
+Backtrace BEGIN:
+#0  0x00007ffff71963d0 in __open_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7143025 in __GI__IO_file_open (fp=fp@entry=0x60e1c0, filename=<optimized out>, posix_mode=<optimized out>, prot=prot@entry=438, read_write=8, is32not64=is32not64@entry=1) at fileops.c:220
+#2  0x00007ffff7143130 in _IO_new_file_fopen (fp=fp@entry=0x60e1c0, filename=filename@entry=0x7fffffffedfb "/micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15", mode=<optimized out>, mode@entry=0x408c18 "rb", is32not64=is32not64@entry=1) at fileops.c:327
+#3  0x00007ffff71384d2 in __fopen_internal (filename=0x7fffffffedfb "/micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15", mode=0x408c18 "rb", is32=1) at iofopen.c:86
+#4  0x00000000004020c8 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:141
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x100x000xab0xf60xff0x7f0x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe8b0
+address max offset: 8
+Memory content after  bitflip:0x000x3f0x080x8a0x0a0x1c0xec0xc2
+frame name: main
+symbol name: box_cpu
+symbol filename: main_check.c
+symbol line: 57
+value: 0x7ffff6ab0010
+value address: 0x7fffffffe8b0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-26 16:28:40]
+Fault Injection Successful after 0.844831943512s
+[INFO -- 2017-03-26 16:28:49]
+event type: exit
+[EXCEPTION -- 2017-03-26 16:28:49]
+exit code: no exit code available

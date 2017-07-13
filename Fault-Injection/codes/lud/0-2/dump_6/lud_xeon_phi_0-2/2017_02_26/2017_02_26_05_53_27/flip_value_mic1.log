@@ -1,0 +1,74 @@
+[INFO -- 2017-02-26 05:52:55]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 05:52:55]
+Initialization strings:
+[INFO -- 2017-02-26 05:52:56]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-26 05:52:56]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 05:52:56]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 05:52:56]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 05:52:56]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 05:52:56]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-26 05:52:56]
+initSignal:0
+[INFO -- 2017-02-26 05:52:56]
+endSignal:2
+[INFO -- 2017-02-26 05:52:56]
+seqSignal:30
+[INFO -- 2017-02-26 05:52:56]
+faultMode:0
+[INFO -- 2017-02-26 05:52:56]
+Backtrace BEGIN:
+#0  0x00007ffff7de5bfb in check_match (undef_name=undef_name@entry=0x7ffff6ecd707 "__pthread_key_create", ref=ref@entry=0x7ffff6ecd2b0, version=version@entry=0x0, flags=flags@entry=1, type_class=type_class@entry=0, sym=sym@entry=0x7ffff742ba18, symidx=124, strtab=0x7ffff742ce40 "", map=0x7ffff7ff94d0, versioned_sym=0x7fffffffe768, num_versions=0x7fffffffe764) at dl-lookup.c:92
+#1  0x00007ffff7de6010 in do_lookup_x (undef_name=undef_name@entry=0x7ffff6ecd707 "__pthread_key_create", new_hash=new_hash@entry=1236821350, old_hash=old_hash@entry=0x7fffffffe830, ref=0x7ffff6ecd2b0, result=result@entry=0x7fffffffe840, scope=<optimized out>, i=4, version=0x0, flags=1, skip=0x0, type_class=0, undef_map=0x7ffff7ff8000) at dl-lookup.c:423
+#2  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x7ffff6ecd707 "__pthread_key_create", undef_map=undef_map@entry=0x7ffff7ff8000, ref=ref@entry=0x7fffffffe990, symbol_scope=symbol_scope@entry=0x7ffff7ff8358, version=0x0, type_class=0, flags=1, skip_map=0x0) at dl-lookup.c:775
+#3  0x00007ffff7de854f in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=<optimized out>, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff6ecd958, map=0x7ffff7ff8000) at ../sysdeps/x86_64/dl-machine.h:277
+#4  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ff8000) at do-rel.h:137
+#5  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#6  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#7  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#8  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#9  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#10 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#11 0x0000000000000009 in ?? ()
+#12 0x00007fffffffee08 in ?? ()
+#13 0x00007fffffffee3f in ?? ()
+#14 0x00007fffffffee42 in ?? ()
+#15 0x00007fffffffee47 in ?? ()
+#16 0x00007fffffffee4a in ?? ()
+#17 0x00007fffffffee4e in ?? ()
+#18 0x00007fffffffee51 in ?? ()
+#19 0x00007fffffffee90 in ?? ()
+#20 0x00007fffffffee93 in ?? ()
+#21 0x0000000000000000 in ?? ()
+
+87	in dl-lookup.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x080xec0xff0xff0xff0x7f0x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7ffff7ffcca0 
+address max offset: 8
+Memory content after  bitflip:0x080xec0xff0xff0xff0x7f0x000x01
+frame name: _dl_start
+symbol name: __GI__dl_argv
+symbol filename: rtld.c
+symbol line: 83
+value: 0x7fffffffec08
+value address: 0x7ffff7ffcca0 <_dl_argv>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-26 05:52:56]
+Fault Injection Successful after 0.655414104462s
+[INFO -- 2017-02-26 05:52:57]
+event type: exit
+[EXCEPTION -- 2017-02-26 05:52:57]
+exit code: no exit code available

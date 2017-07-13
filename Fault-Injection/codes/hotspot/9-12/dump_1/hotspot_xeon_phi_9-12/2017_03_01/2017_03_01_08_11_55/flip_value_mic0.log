@@ -1,0 +1,59 @@
+2017-03-01 08:11:22:Starting flip_value script
+2017-03-01 08:11:22:Initialization strings:
+2017-03-01 08:11:22:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 08:11:22:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 08:11:22:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 08:11:22:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-03-01 08:11:22:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-03-01 08:11:22:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-03-01 08:11:22:initSignal:9
+2017-03-01 08:11:22:endSignal:12
+2017-03-01 08:11:22:seqSignal:15
+2017-03-01 08:11:32:Backtrace BEGIN:
+2017-03-01 08:11:32:#0  0x00007ffff7124d38 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:605
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "323.994446\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#4  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-03-01 08:11:32:600	in vfscanf.c
+
+2017-03-01 08:11:32:Backtrace END
+2017-03-01 08:11:32:Type: A floating point type.
+2017-03-01 08:11:32:Type sizeof: 4
+2017-03-01 08:11:32:Mem contents(hex):0x510xff0xa10x43
+2017-03-01 08:11:32:Fault Mode: One bit-flip
+2017-03-01 08:11:32:base address to flip value: 0x7fffffffe74c
+2017-03-01 08:11:32:address max offset: 4
+2017-03-01 08:11:32:Memory content before bitflip:0x510xff0xa10x43
+2017-03-01 08:11:32:Backtrace BEGIN:
+2017-03-01 08:11:32:#0  __GI__IO_sputbackc (fp=fp@entry=0x7fffffffe440, c=51) at genops.c:726
+#1  0x00007ffff7124d59 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:605
+#2  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "323.982239\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#5  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-03-01 08:11:32:721	in genops.c
+
+2017-03-01 08:11:32:Backtrace END
+2017-03-01 08:11:32:Type: The type is an integer type.
+2017-03-01 08:11:32:Type sizeof: 4
+2017-03-01 08:11:32:Mem contents(hex):0xff0x7f0x000x00
+2017-03-01 08:11:32:Fault Mode: Single bit-flip
+2017-03-01 08:11:32:base address to flip value: 0x7fffffffe934
+2017-03-01 08:11:32:address max offset: 4
+2017-03-01 08:11:32:Memory content before bitflip:0xff0x7f0x000x00
+2017-03-01 08:11:32:Memory content after  bitflip:0x7f0x7f0x000x00
+2017-03-01 08:11:32:Mem contents(hex):0x7f0x7f0x000x00
+2017-03-01 08:11:32:frame name: main
+2017-03-01 08:11:32:symbol name: i
+2017-03-01 08:11:32:symbol filename: hotspot_check.c
+2017-03-01 08:11:32:symbol line: 230
+2017-03-01 08:11:32:value: 32639
+2017-03-01 08:11:32:value address: 0x7fffffffe934
+2017-03-01 08:11:32:Type: The type is an integer type.
+2017-03-01 08:11:32:Type sizeof: 4
+2017-03-01 08:11:32:Fault Injection Successful after 10.9858660698s
+2017-03-01 08:11:49:event type: exit
+2017-03-01 08:11:49:exit code: 0

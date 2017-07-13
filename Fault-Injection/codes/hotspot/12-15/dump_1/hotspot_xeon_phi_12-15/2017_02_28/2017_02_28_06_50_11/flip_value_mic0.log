@@ -1,0 +1,40 @@
+2017-02-28 06:49:03:Starting flip_value script
+2017-02-28 06:49:03:Initialization strings:
+2017-02-28 06:49:03:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 06:49:03:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 06:49:03:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 06:49:03:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 06:49:03:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 06:49:03:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-02-28 06:49:03:initSignal:12
+2017-02-28 06:49:03:endSignal:15
+2017-02-28 06:49:03:seqSignal:15
+2017-02-28 06:49:15:Backtrace BEGIN:
+2017-02-28 06:49:15:#0  _IO_acquire_lock_fct (p=<synthetic pointer>) at libioP.h:892
+#1  _IO_fgets (buf=<optimized out>, n=<optimized out>, fp=0x609b40) at iofgets.c:50
+#2  0x0000000000404538 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:202
+#3  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-02-28 06:49:15:887	in libioP.h
+
+2017-02-28 06:49:15:Backtrace END
+2017-02-28 06:49:15:Type: A floating point type.
+2017-02-28 06:49:15:Type sizeof: 4
+2017-02-28 06:49:15:Mem contents(hex):0x6f0x120x830x3c
+2017-02-28 06:49:15:Fault Mode: Single bit-flip
+2017-02-28 06:49:15:base address to flip value: 0x4074fc 
+2017-02-28 06:49:15:address max offset: 4
+2017-02-28 06:49:15:Memory content before bitflip:0x6f0x120x830x3c
+2017-02-28 06:49:15:Memory content after  bitflip:0x6f0x120xa30x3c
+2017-02-28 06:49:15:Mem contents(hex):0x6f0x120xa30x3c
+2017-02-28 06:49:15:frame name: main
+2017-02-28 06:49:15:symbol name: chip_width
+2017-02-28 06:49:15:symbol filename: hotspot_check.c
+2017-02-28 06:49:15:symbol line: 35
+2017-02-28 06:49:15:value: 0.0199062508
+2017-02-28 06:49:15:value address: 0x4074fc <chip_width>
+2017-02-28 06:49:15:Type: A floating point type.
+2017-02-28 06:49:15:Type sizeof: 4
+2017-02-28 06:49:15:Fault Injection Successful after 12.6070780754s
+2017-02-28 06:49:30:event type: exit
+2017-02-28 06:49:30:exit code: 1

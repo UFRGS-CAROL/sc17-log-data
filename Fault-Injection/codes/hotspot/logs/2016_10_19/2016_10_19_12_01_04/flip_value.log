@@ -1,0 +1,90 @@
+2016-10-19 12:00:42:Initialization strings:
+2016-10-19 12:00:42:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-19 12:00:42:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-19 12:00:42:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-19 12:00:42:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-19 12:00:42:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-19 12:00:42:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-19 12:00:44:Trying Fault Injection
+2016-10-19 12:00:44:Backtrace BEGIN:
+2016-10-19 12:00:44:#0  0x00007ffff7109c48 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe010 "328.624722", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1248
+#1  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe010 "328.624722", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0) at strtod.c:54
+#2  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2332
+#3  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "328.624722\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#4  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#5  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#6  main (argc=0, argv=0x8) at hotspot_check.c:264
+
+2016-10-19 12:00:44:1243	in strtod_l.c
+
+2016-10-19 12:00:44:Backtrace END
+2016-10-19 12:00:44:Type: The type is an array.
+2016-10-19 12:00:44:Type sizeof: 24
+2016-10-19 12:00:44:Fliping array at pos: 0
+2016-10-19 12:00:44:Type: The type is a structure.
+2016-10-19 12:00:44:Type sizeof: 24
+2016-10-19 12:00:44:Fliping value of field: reg_save_area
+2016-10-19 12:00:44:Type: The type is a pointer.
+2016-10-19 12:00:44:Type sizeof: 8
+2016-10-19 12:00:44:Fault Injection Failed after 2.71468997002s
+2016-10-19 12:00:44:Trying Fault Injection
+2016-10-19 12:00:44:Backtrace BEGIN:
+2016-10-19 12:00:44:#0  0x00007ffff7126544 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2084
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "325.694459\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=-7168, argv=0x5) at hotspot_check.c:264
+
+2016-10-19 12:00:44:2079	in vfscanf.c
+
+2016-10-19 12:00:44:Backtrace END
+2016-10-19 12:00:45:Type: The type is a structure.
+2016-10-19 12:00:45:Type sizeof: 240
+2016-10-19 12:00:45:Fliping value of field: _s
+2016-10-19 12:00:45:Type: The type is a structure.
+2016-10-19 12:00:45:Type sizeof: 16
+2016-10-19 12:00:45:Fliping value of field: _free_buffer
+2016-10-19 12:00:45:Type: The type is a pointer.
+2016-10-19 12:00:45:Type sizeof: 8
+2016-10-19 12:00:45:Fliping a bit of the value pointed by a pointer
+2016-10-19 12:00:45:Type: The type is a function.
+2016-10-19 12:00:45:Type sizeof: 1
+2016-10-19 12:00:45:Fault Injection Failed after 3.01103711128s
+2016-10-19 12:00:46:Trying Fault Injection
+2016-10-19 12:00:46:Backtrace BEGIN:
+2016-10-19 12:00:46:#0  __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe010 "323.401845", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1538
+#1  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe010 "323.401845", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0) at strtod.c:54
+#2  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2332
+#3  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "323.401845\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#4  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#5  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#6  main (argc=64, argv=0xf424000000000000) at hotspot_check.c:264
+
+2016-10-19 12:00:46:1533	in strtod_l.c
+
+2016-10-19 12:00:46:Backtrace END
+2016-10-19 12:00:46:Type: A floating point type.
+2016-10-19 12:00:46:Type sizeof: 4
+2016-10-19 12:00:46:Mem contents(hex):0x6f0x120x830x3c
+2016-10-19 12:00:46:base address to flip value: 0x4073a0 
+2016-10-19 12:00:46:address max offset: 4
+2016-10-19 12:00:46:Memory content before bitflip:0x6f0x120x830x3c
+2016-10-19 12:00:46:Memory content after  bitflip:0xef0x120x830x3c
+2016-10-19 12:00:46:Mem contents(hex):0xef0x120x830x3c
+2016-10-19 12:00:46:frame name: main
+2016-10-19 12:00:46:symbol name: chip_width
+2016-10-19 12:00:46:symbol filename: hotspot_check.c
+2016-10-19 12:00:46:symbol line: 34
+2016-10-19 12:00:46:value: 0.0160002392
+2016-10-19 12:00:46:value address: 0x4073a0 <chip_width>
+2016-10-19 12:00:46:Type: A floating point type.
+2016-10-19 12:00:46:Type sizeof: 4
+2016-10-19 12:00:46:Fault Injection Successful after 4.27484607697s
+2016-10-19 12:00:48:Fault Already Injected
+2016-10-19 12:00:48:Fault Already Injected
+2016-10-19 12:00:52:Fault Already Injected
+2016-10-19 12:00:53:Fault Already Injected
+2016-10-19 12:00:55:Fault Already Injected
+2016-10-19 12:00:57:Fault Already Injected
+2016-10-19 12:00:57:event type: exit
+2016-10-19 12:00:57:exit code: 0

@@ -1,0 +1,125 @@
+2017-03-01 13:37:30:Starting flip_value script
+2017-03-01 13:37:30:Initialization strings:
+2017-03-01 13:37:31:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 13:37:31:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 13:37:31:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 13:37:31:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 13:37:31:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 13:37:31:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 13:37:31:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 13:37:31:initSignal:40
+2017-03-01 13:37:31:endSignal:49
+2017-03-01 13:37:31:seqSignal:20
+2017-03-01 13:38:14:Backtrace BEGIN:
+2017-03-01 13:38:14:#0  0x000000000052078c in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3196
+#1  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-01 13:38:14:3191	
+3192	      for (int ic = 0; ic < new_ncells; ic++){
+3193	         nlft_old[ic] = -1;
+3194	         nrht_old[ic] = -1;
+3195	         nbot_old[ic] = -1;
+3196	         ntop_old[ic] = -1;
+3197	      }
+3198	
+3199	      mesh_memory.memory_swap(&nlft,  &nlft_old);
+3200	      mesh_memory.memory_swap(&nrht,  &nrht_old);
+
+2017-03-01 13:38:14:Backtrace END
+2017-03-01 13:38:17:Type: The type is an integer type.
+2017-03-01 13:38:17:Type sizeof: 4
+2017-03-01 13:38:17:Mem contents(hex):0x000x000x000x00
+2017-03-01 13:38:17:Fault Mode: Zero bit-flip
+2017-03-01 13:38:17:base address to flip value: 0x7fffffffe390
+2017-03-01 13:38:17:address max offset: 4
+2017-03-01 13:38:17:Memory content before bitflip:0x000x000x000x00
+2017-03-01 13:38:18:Backtrace BEGIN:
+2017-03-01 13:38:18:#0  0x000000000052078c in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3196
+#1  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-01 13:38:18:3191	
+3192	      for (int ic = 0; ic < new_ncells; ic++){
+3193	         nlft_old[ic] = -1;
+3194	         nrht_old[ic] = -1;
+3195	         nbot_old[ic] = -1;
+3196	         ntop_old[ic] = -1;
+3197	      }
+3198	
+3199	      mesh_memory.memory_swap(&nlft,  &nlft_old);
+3200	      mesh_memory.memory_swap(&nrht,  &nrht_old);
+
+2017-03-01 13:38:18:Backtrace END
+2017-03-01 13:38:22:Type: The type is an integer type.
+2017-03-01 13:38:22:Type sizeof: 4
+2017-03-01 13:38:22:Mem contents(hex):0x000x000x000x00
+2017-03-01 13:38:22:Fault Mode: Zero bit-flip
+2017-03-01 13:38:22:base address to flip value: 0x7fffffffdce0
+2017-03-01 13:38:22:address max offset: 4
+2017-03-01 13:38:22:Memory content before bitflip:0x000x000x000x00
+2017-03-01 13:38:22:Backtrace BEGIN:
+2017-03-01 13:38:22:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd0cd8 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+2017-03-01 13:38:22:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-03-01 13:38:22:Backtrace END
+2017-03-01 13:38:25:Type: A floating point type.
+2017-03-01 13:38:25:Type sizeof: 8
+2017-03-01 13:38:25:Mem contents(hex):0xe00xed0xd10xf90xbf0x7b0x350x3f
+2017-03-01 13:38:25:Fault Mode: Random bit-flip
+2017-03-01 13:38:25:base address to flip value: 0x7d0690 
+2017-03-01 13:38:25:address max offset: 8
+2017-03-01 13:38:25:Memory content before bitflip:0xe00xed0xd10xf90xbf0x7b0x350x3f
+2017-03-01 13:38:25:Backtrace BEGIN:
+2017-03-01 13:38:25:#0  0x000000000052078c in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3196
+#1  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-01 13:38:25:3191	
+3192	      for (int ic = 0; ic < new_ncells; ic++){
+3193	         nlft_old[ic] = -1;
+3194	         nrht_old[ic] = -1;
+3195	         nbot_old[ic] = -1;
+3196	         ntop_old[ic] = -1;
+3197	      }
+3198	
+3199	      mesh_memory.memory_swap(&nlft,  &nlft_old);
+3200	      mesh_memory.memory_swap(&nrht,  &nrht_old);
+
+2017-03-01 13:38:25:Backtrace END
+2017-03-01 13:38:29:Type: The type is a pointer.
+2017-03-01 13:38:29:Type sizeof: 8
+2017-03-01 13:38:29:Fliping a bit of the value pointed by a pointer
+2017-03-01 13:38:29:Type: The type is a structure.
+2017-03-01 13:38:29:Type sizeof: 368
+2017-03-01 13:38:29:Fliping value of field: U
+2017-03-01 13:38:29:Type: The type is a pointer.
+2017-03-01 13:38:29:Type sizeof: 8
+2017-03-01 13:38:29:Fliping a bit of the pointer
+2017-03-01 13:38:29:Mem contents(hex):0x900xed0x200x010x000x000x000x00
+2017-03-01 13:38:29:Fault Mode: Double bit-flip
+2017-03-01 13:38:29:base address to flip value: 0x7fa6b0
+2017-03-01 13:38:29:address max offset: 8
+2017-03-01 13:38:29:Memory content before bitflip:0x900xed0x200x010x000x000x000x00
+2017-03-01 13:38:29:Memory content after  bitflip:0x900xed0x200x010x000x000x000x41
+2017-03-01 13:38:29:Mem contents(hex):0x900xed0x200x010x000x000x000x41
+2017-03-01 13:38:29:frame name: main
+2017-03-01 13:38:29:symbol name: state
+2017-03-01 13:38:29:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-03-01 13:38:29:symbol line: 159
+2017-03-01 13:38:29:value: 0x7fa5e0
+2017-03-01 13:38:29:value address: 0x7d0680 <state>
+2017-03-01 13:38:29:Type: The type is a pointer.
+2017-03-01 13:38:29:Type sizeof: 8
+2017-03-01 13:38:29:Fault Injection Successful after 58.695194006s
+2017-03-01 13:38:40:event type: exit
+2017-03-01 13:38:40:exit code: 0

@@ -1,0 +1,80 @@
+2017-03-02 11:19:31:Starting flip_value script
+2017-03-02 11:19:31:Initialization strings:
+2017-03-02 11:19:31:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-02 11:19:31:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 11:19:31:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 11:19:31:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-03-02 11:19:31:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-03-02 11:19:31:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-03-02 11:19:31:initSignal:0
+2017-03-02 11:19:31:endSignal:3
+2017-03-02 11:19:31:seqSignal:15
+2017-03-02 11:19:32:Backtrace BEGIN:
+2017-03-02 11:19:32:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebb0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebb0) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffebb0) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000008 in ?? ()
+#7  0x00007fffffffedb6 in ?? ()
+#8  0x00007fffffffedf5 in ?? ()
+#9  0x00007fffffffedfa in ?? ()
+#10 0x00007fffffffedff in ?? ()
+#11 0x00007fffffffee04 in ?? ()
+#12 0x00007fffffffee07 in ?? ()
+#13 0x00007fffffffee43 in ?? ()
+#14 0x00007fffffffee80 in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+2017-03-02 11:19:32:69	in dl-debug.c
+
+2017-03-02 11:19:32:Backtrace END
+2017-03-02 11:19:32:Type: The type is an integer type.
+2017-03-02 11:19:32:Type sizeof: 4
+2017-03-02 11:19:32:Mem contents(hex):0x080x000x000x00
+2017-03-02 11:19:32:Fault Mode: One bit-flip
+2017-03-02 11:19:32:base address to flip value: 0x7ffff7ffcca8 
+2017-03-02 11:19:32:address max offset: 4
+2017-03-02 11:19:32:Memory content before bitflip:0x080x000x000x00
+2017-03-02 11:19:32:Backtrace BEGIN:
+2017-03-02 11:19:32:#0  str_to_mpn (str=0x7fffffffe052 "6.290300", str@entry=0x7fffffffe050 "326.290300", digcnt=1, digcnt@entry=3, n=n@entry=0x7fffffffdf70, nsize=nsize@entry=0x7fffffffdf58, exponent=exponent@entry=0x7fffffffdf60, decimal_len=decimal_len@entry=1, thousands=0x0, decimal=<optimized out>) at strtod_l.c:369
+#1  0x00007ffff7109af9 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe050 "326.290300", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1198
+#2  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe050 "326.290300", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0) at strtod.c:54
+#3  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2332
+#4  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "326.290300\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#5  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#6  0x0000000000404598 in read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:207
+#7  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+2017-03-02 11:19:32:364	in strtod_l.c
+
+2017-03-02 11:19:32:Backtrace END
+2017-03-02 11:19:32:Type: The type is an array.
+2017-03-02 11:19:32:Type sizeof: 21
+2017-03-02 11:19:32:Fliping array at pos: 20
+2017-03-02 11:19:32:Type: The type is an integer type.
+2017-03-02 11:19:32:Type sizeof: 1
+2017-03-02 11:19:32:Mem contents(hex):0x00
+2017-03-02 11:19:32:Fault Mode: Single bit-flip
+2017-03-02 11:19:32:base address to flip value: 0x7ffff71f6dc4  
+2017-03-02 11:19:32:address max offset: 1
+2017-03-02 11:19:32:Memory content before bitflip:0x00
+2017-03-02 11:19:32:Memory content after  bitflip:0x80
+2017-03-02 11:19:32:Mem contents(hex):0x80
+2017-03-02 11:19:32:frame name: _IO_vfscanf_internal
+2017-03-02 11:19:32:symbol name: __PRETTY_FUNCTION__
+2017-03-02 11:19:32:symbol filename: vfscanf.c
+2017-03-02 11:19:32:symbol line: 0
+2017-03-02 11:19:32:value: "_IO_vfscanf_internal\200"
+2017-03-02 11:19:32:value address: 0x7ffff71f6db0 <__PRETTY_FUNCTION__.12402>
+2017-03-02 11:19:32:Type: The type is an array.
+2017-03-02 11:19:32:Type sizeof: 21
+2017-03-02 11:19:32:Field name: None
+2017-03-02 11:19:32:Field Type:
+2017-03-02 11:19:32:Type: A range type, that is, an integer type with bounds.
+2017-03-02 11:19:32:Type sizeof: 8
+2017-03-02 11:19:32:Type range: (0L, 20L)
+2017-03-02 11:19:32:Fault Injection Successful after 1.81766700745s
+2017-03-02 11:19:56:event type: exit
+2017-03-02 11:19:56:exit code: 0

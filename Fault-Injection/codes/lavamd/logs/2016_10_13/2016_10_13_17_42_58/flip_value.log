@@ -1,0 +1,45 @@
+2016-10-13 17:42:49:Initialization strings:
+2016-10-13 17:42:50:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-13 17:42:50:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-13 17:42:50:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-13 17:42:50:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-13 17:42:50:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-13 17:42:50:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-13 17:42:51:Trying Fault Injection
+2016-10-13 17:42:51:Inferior PID: 121373
+2016-10-13 17:42:51:Inferior is valid: True
+2016-10-13 17:42:51:Inferior #threads: 1
+2016-10-13 17:42:51:Backtrace BEGIN:
+2016-10-13 17:42:51:#0  0x00007ffff71505ca in __GI_memcpy (dstpp=dstpp@entry=0x7ffff4c5acb8, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#3  0x00000000004025ee in main (argc=7, argv=0x7fffffffec08) at main_check.c:180
+
+2016-10-13 17:42:51:54	in ../string/memcpy.c
+
+2016-10-13 17:42:51:Backtrace END
+2016-10-13 17:42:51:Thread name: None
+2016-10-13 17:42:51:Thread num: 1
+2016-10-13 17:42:51:Thread ptid: (121373, 121373, 0)
+2016-10-13 17:42:51:bitFlip function
+2016-10-13 17:42:51:Type: The type is a pointer.
+2016-10-13 17:42:51:Type sizeof: 8
+2016-10-13 17:42:51:Fliping a bit of the pointer
+2016-10-13 17:42:51:Mem contents(hex):0xc00xe10x600x000x000x000x000x00
+2016-10-13 17:42:51:base address to flip value: 0x7fffffffe950
+2016-10-13 17:42:51:address max offset: 8
+2016-10-13 17:42:51:Memory content before bitflip:0xc00xe10x600x000x000x000x000x00
+2016-10-13 17:42:51:Memory content after  bitflip:0xc80xe10x600x000x000x000x000x00
+2016-10-13 17:42:51:Mem contents(hex):0xc80xe10x600x000x000x000x000x00
+2016-10-13 17:42:51:frame name: main
+2016-10-13 17:42:51:symbol name: file
+2016-10-13 17:42:51:symbol filename: main_check.c
+2016-10-13 17:42:51:symbol line: 139
+2016-10-13 17:42:51:value: 0x60e1c0
+2016-10-13 17:42:51:value address: 0x7fffffffe950
+2016-10-13 17:42:51:Type: The type is a pointer.
+2016-10-13 17:42:51:Type sizeof: 8
+2016-10-13 17:42:51:Fault Injection Successful after 1.40386390686s
+2016-10-13 17:42:51:Fault Already Injected
+2016-10-13 17:42:51:event type: exit
+2016-10-13 17:42:51:exit code: no exit code available

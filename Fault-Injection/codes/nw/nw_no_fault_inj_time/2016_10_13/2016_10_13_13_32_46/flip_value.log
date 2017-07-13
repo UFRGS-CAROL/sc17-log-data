@@ -1,0 +1,54 @@
+2016-10-13 13:32:29:Initialization strings:
+2016-10-13 13:32:30:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-13 13:32:30:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-13 13:32:30:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-13 13:32:30:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-13 13:32:30:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-13 13:32:30:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-13 13:32:37:Trying Fault Injection
+2016-10-13 13:32:37:Inferior PID: 217918
+2016-10-13 13:32:37:Inferior is valid: True
+2016-10-13 13:32:37:Inferior #threads: 27
+2016-10-13 13:32:37:Backtrace BEGIN:
+2016-10-13 13:32:37:#0  0x00007ffff6e2d097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff70c01df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd898) at allocatestack.c:640
+#2  __pthread_create_2_1 (newthread=0x7fffffffd890, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7ffff7f55600) at pthread_create.c:524
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2016-10-13 13:32:37:76	in ../sysdeps/unix/syscall-template.S
+
+2016-10-13 13:32:37:Backtrace END
+2016-10-13 13:32:38:Thread name: None
+2016-10-13 13:32:38:Thread num: 1
+2016-10-13 13:32:38:Thread ptid: (217918, 217918, 0)
+2016-10-13 13:32:38:bitFlip function
+2016-10-13 13:32:38:Type: The type is an array.
+2016-10-13 13:32:38:Type sizeof: 12
+2016-10-13 13:32:38:Fliping array at pos: 0
+2016-10-13 13:32:38:bitFlip function
+2016-10-13 13:32:38:Type: The type is an integer type.
+2016-10-13 13:32:38:Type sizeof: 4
+2016-10-13 13:32:38:Mem contents(hex):0x400x000x000x00
+2016-10-13 13:32:38:base address to flip value: 0x7ffff70ca250 
+2016-10-13 13:32:38:address max offset: 4
+2016-10-13 13:32:38:Memory content before bitflip:0x400x000x000x00
+2016-10-13 13:32:38:Memory content after  bitflip:0x400x000x040x00
+2016-10-13 13:32:38:Mem contents(hex):0x400x000x040x00
+2016-10-13 13:32:38:frame name: __pthread_create_2_1
+2016-10-13 13:32:38:symbol name: _thread_db_pthread_key_struct_destr
+2016-10-13 13:32:38:symbol filename: ../nptl_db/structs.def
+2016-10-13 13:32:38:symbol line: 64
+2016-10-13 13:32:38:value: {262208, 1, 8}
+2016-10-13 13:32:38:value address: 0x7ffff70ca250 <_thread_db_pthread_key_struct_destr>
+2016-10-13 13:32:38:Type: The type is an array.
+2016-10-13 13:32:38:Type sizeof: 12
+2016-10-13 13:32:38:Field name: None
+2016-10-13 13:32:38:Field Type:
+2016-10-13 13:32:38:Type: A range type, that is, an integer type with bounds.
+2016-10-13 13:32:38:Type sizeof: 8
+2016-10-13 13:32:38:Type range: (0L, 2L)
+2016-10-13 13:32:38:Fault Injection Successful after 8.16621303558s
+2016-10-13 13:32:38:Fault Already Injected
+2016-10-13 13:32:40:event type: exit
+2016-10-13 13:32:40:exit code: 0

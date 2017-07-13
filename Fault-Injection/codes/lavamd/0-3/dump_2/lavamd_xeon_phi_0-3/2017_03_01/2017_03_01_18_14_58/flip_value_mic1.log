@@ -1,0 +1,40 @@
+2017-03-01 18:14:50:Starting flip_value script
+2017-03-01 18:14:50:Initialization strings:
+2017-03-01 18:14:50:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-01 18:14:50:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 18:14:50:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 18:14:50:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 18:14:50:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 18:14:50:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-03-01 18:14:50:initSignal:0
+2017-03-01 18:14:50:endSignal:3
+2017-03-01 18:14:50:seqSignal:30
+2017-03-01 18:14:50:Backtrace BEGIN:
+2017-03-01 18:14:50:#0  __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1371
+#1  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#2  0x0000000000402204 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:149
+
+2017-03-01 18:14:50:1366	in fileops.c
+
+2017-03-01 18:14:50:Backtrace END
+2017-03-01 18:14:50:Type: The type is a pointer.
+2017-03-01 18:14:50:Type sizeof: 8
+2017-03-01 18:14:50:Fliping a bit of the pointer
+2017-03-01 18:14:50:Mem contents(hex):0x860xee0xff0xff0xff0x7f0x000x00
+2017-03-01 18:14:50:Fault Mode: Single bit-flip
+2017-03-01 18:14:50:base address to flip value: 0x7fffffffe898
+2017-03-01 18:14:50:address max offset: 8
+2017-03-01 18:14:50:Memory content before bitflip:0x860xee0xff0xff0xff0x7f0x000x00
+2017-03-01 18:14:50:Memory content after  bitflip:0x860xee0xfb0xff0xff0x7f0x000x00
+2017-03-01 18:14:50:Mem contents(hex):0x860xee0xfb0xff0xff0x7f0x000x00
+2017-03-01 18:14:50:frame name: main
+2017-03-01 18:14:50:symbol name: output_gold
+2017-03-01 18:14:50:symbol filename: main_check.c
+2017-03-01 18:14:50:symbol line: 51
+2017-03-01 18:14:50:value: 0x7fffffffee86 "/micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15"
+2017-03-01 18:14:50:value address: 0x7fffffffe898
+2017-03-01 18:14:50:Type: The type is a pointer.
+2017-03-01 18:14:50:Type sizeof: 8
+2017-03-01 18:14:50:Fault Injection Successful after 0.98637008667s
+2017-03-01 18:14:51:event type: exit
+2017-03-01 18:14:51:exit code: 1

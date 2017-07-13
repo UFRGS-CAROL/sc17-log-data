@@ -1,0 +1,62 @@
+[INFO -- 2017-02-26 08:17:04]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 08:17:04]
+Initialization strings:
+[INFO -- 2017-02-26 08:17:05]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-26 08:17:05]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 08:17:05]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 08:17:05]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 08:17:05]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 08:17:05]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 08:17:05]
+initSignal:0
+[INFO -- 2017-02-26 08:17:05]
+endSignal:3
+[INFO -- 2017-02-26 08:17:05]
+seqSignal:15
+[INFO -- 2017-02-26 08:17:05]
+faultMode:2
+[INFO -- 2017-02-26 08:17:06]
+Backtrace BEGIN:
+#0  read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:207
+#1  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+202	        if (fgets(str, STR_SIZE, fp) == NULL) {
+203	            fatal("fgets error");
+204	        }
+205	        if (feof(fp))
+206	            fatal("not enough lines in file");
+207	        if ((sscanf(str, "%f", &val) != 1) )
+208	            fatal("invalid file format");
+209	        vect[i] = val;
+210	    }
+211	
+
+Backtrace END
+Memory content before bitflip:0x330x320x350x2e
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe640
+address max offset: 4
+Memory content after  bitflip:0x1b0x740x630x78
+frame name: read_input
+symbol name: index
+symbol filename: hotspot_check.c
+symbol line: 192
+value: 2019783707
+value address: 0x7fffffffe640
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-02-26 08:17:06]
+Fault Injection Successful after 1.82184910774s
+[INFO -- 2017-02-26 08:17:06]
+event type: exit
+[INFO -- 2017-02-26 08:17:06]
+exit code: 1

@@ -1,0 +1,66 @@
+[INFO -- 2017-03-28 22:26:50]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-28 22:26:50]
+Initialization strings:
+[INFO -- 2017-03-28 22:26:51]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-28 22:26:51]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 22:26:51]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 22:26:51]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 22:26:51]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 22:26:51]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-28 22:26:51]
+initSignal:0
+[INFO -- 2017-03-28 22:26:51]
+endSignal:3
+[INFO -- 2017-03-28 22:26:51]
+seqSignal:30
+[INFO -- 2017-03-28 22:26:51]
+faultMode:3
+[INFO -- 2017-03-28 22:26:51]
+Backtrace BEGIN:
+#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebc0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebc0) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffebc0) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000007 in ?? ()
+#7  0x00007fffffffedb7 in ?? ()
+#8  0x00007fffffffedf4 in ?? ()
+#9  0x00007fffffffedf8 in ?? ()
+#10 0x00007fffffffedfb in ?? ()
+#11 0x00007fffffffee41 in ?? ()
+#12 0x00007fffffffee86 in ?? ()
+#13 0x00007fffffffeec9 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+69	in dl-debug.c
+
+Backtrace END
+Memory content before bitflip:0x01
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffff7ffdfe8 
+address max offset: 1
+Memory content after  bitflip:0x00
+frame name: _dl_start
+symbol name: tls_init_tp_called
+symbol filename: rtld.c
+symbol line: 570
+value: false
+value address: 0x7ffff7ffdfe8 <tls_init_tp_called>
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2017-03-28 22:26:51]
+Fault Injection Successful after 0.627398014069s
+[INFO -- 2017-03-28 22:27:08]
+event type: exit
+[INFO -- 2017-03-28 22:27:08]
+exit code: 0

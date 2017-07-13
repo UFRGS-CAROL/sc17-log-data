@@ -1,0 +1,81 @@
+[INFO -- 2017-02-24 22:51:07]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-24 22:51:07]
+Initialization strings:
+[INFO -- 2017-02-24 22:51:08]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-24 22:51:08]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-24 22:51:08]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-24 22:51:08]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-24 22:51:08]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-24 22:51:08]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-24 22:51:08]
+initSignal:0
+[INFO -- 2017-02-24 22:51:08]
+endSignal:2
+[INFO -- 2017-02-24 22:51:08]
+seqSignal:30
+[INFO -- 2017-02-24 22:51:08]
+faultMode:2
+[INFO -- 2017-02-24 22:51:08]
+Backtrace BEGIN:
+#0  elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=0x352da0, version=0x7ffff7ff8c70, sym=0x7ffff70e0698, reloc=0x7ffff70ef2d8, map=0x7ffff7ff99a0) at ../sysdeps/x86_64/dl-machine.h:277
+#1  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ff99a0) at do-rel.h:137
+#2  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#3  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#4  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#5  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#6  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#7  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#8  0x0000000000000009 in ?? ()
+#9  0x00007fffffffee08 in ?? ()
+#10 0x00007fffffffee3f in ?? ()
+#11 0x00007fffffffee42 in ?? ()
+#12 0x00007fffffffee47 in ?? ()
+#13 0x00007fffffffee4a in ?? ()
+#14 0x00007fffffffee4e in ?? ()
+#15 0x00007fffffffee51 in ?? ()
+#16 0x00007fffffffee90 in ?? ()
+#17 0x00007fffffffee93 in ?? ()
+#18 0x0000000000000000 in ?? ()
+
+272	in ../sysdeps/x86_64/dl-machine.h
+
+Backtrace END
+Fliping value of field: name
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff7ffe000 
+address max offset: 8
+Memory content after  bitflip:0xd90x7d0x160x7b0x2c0x0c0x370xc0
+frame name: _dl_start_final
+symbol name: _dl_rtld_libname2
+symbol filename: rtld.c
+symbol line: 196
+value: {name = 0xc0370c2c7b167dd9 <error: Cannot access memory at address 0xc0370c2c7b167dd9>, next = 0x0, dont_free = 0}
+value address: 0x7ffff7ffe000 <_dl_rtld_libname2>
+Type: The type is a structure.
+Type sizeof: 24
+Field name: name
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: next
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: dont_free
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+
+[INFO -- 2017-02-24 22:51:08]
+Fault Injection Successful after 0.519999980927s
+[INFO -- 2017-02-24 22:51:27]
+event type: exit
+[INFO -- 2017-02-24 22:51:27]
+exit code: 0

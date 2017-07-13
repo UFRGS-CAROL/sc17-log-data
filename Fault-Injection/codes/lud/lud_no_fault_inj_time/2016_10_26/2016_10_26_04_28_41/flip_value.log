@@ -1,0 +1,76 @@
+2016-10-26 04:28:34:Initialization strings:
+2016-10-26 04:28:34:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-26 04:28:34:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-26 04:28:34:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-26 04:28:34:(4) file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-26 04:28:34:(5) set remote exec-file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-10-26 04:28:34:(6) set args -s 8192 -n 228 -i /micNfs/gdb-fault-injection-lud/bin/input_8192_th_228 -g /micNfs/gdb-fault-injection-lud/bin/gold_8192_th_228
+2016-10-26 04:28:34:Trying Fault Injection
+2016-10-26 04:28:34:Inferior PID: 58153
+2016-10-26 04:28:34:Inferior is valid: True
+2016-10-26 04:28:34:Inferior #threads: 1
+2016-10-26 04:28:34:Backtrace BEGIN:
+2016-10-26 04:28:34:#0  0x00007ffff7df436a in mmap64 () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7de3e03 in _dl_map_segments (loader=0x7fffffffe3a0, has_holes=<optimized out>, maplength=3508544, nloadcmds=2, loadcmds=0x7fffffffdfb0, type=<optimized out>, header=0x7ffff7ff99a8, fd=<optimized out>, l=0x7ffff7ff99a0) at ./dl-map-segments.h:90
+#2  _dl_map_object_from_fd (name=name@entry=0x400a90 "libc.so.6", fd=<optimized out>, fbp=fbp@entry=0x7fffffffe358, realname=<optimized out>, loader=loader@entry=0x7ffff7ffe168, l_type=l_type@entry=1, mode=0, stack_endp=0x7fffffffe350, nsid=0) at dl-load.c:1222
+#3  0x00007ffff7de52f9 in _dl_map_object (loader=0x7ffff7ffe168, name=0x400a90 "libc.so.6", type=1, trace_mode=0, mode=0, nsid=<optimized out>) at dl-load.c:2188
+#4  0x00007ffff7de964f in openaux (a=a@entry=0x7fffffffe9d8) at dl-deps.c:63
+#5  0x00007ffff7deba83 in _dl_catch_error (objname=objname@entry=0x7fffffffe9d0, errstring=errstring@entry=0x7fffffffe9c8, mallocedp=mallocedp@entry=0x7fffffffe9c7, operate=operate@entry=0x7ffff7de9620 <openaux>, args=args@entry=0x7fffffffe9d8) at dl-error.c:187
+#6  0x00007ffff7de98a9 in _dl_map_object_deps (map=map@entry=0x7ffff7ffe168, preloads=<optimized out>, npreloads=npreloads@entry=0, trace_mode=trace_mode@entry=0, open_mode=open_mode@entry=0) at dl-deps.c:254
+#7  0x00007ffff7ddff28 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1612
+#8  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec20, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#9  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec20) at rtld.c:308
+#10 _dl_start (arg=0x7fffffffec20) at rtld.c:414
+#11 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#12 0x0000000000000009 in ?? ()
+#13 0x00007fffffffee2c in ?? ()
+#14 0x00007fffffffee5a in ?? ()
+#15 0x00007fffffffee5d in ?? ()
+#16 0x00007fffffffee62 in ?? ()
+#17 0x00007fffffffee65 in ?? ()
+#18 0x00007fffffffee69 in ?? ()
+#19 0x00007fffffffee6c in ?? ()
+#20 0x00007fffffffeea2 in ?? ()
+#21 0x00007fffffffeea5 in ?? ()
+#22 0x0000000000000000 in ?? ()
+
+2016-10-26 04:28:34:76	in ../sysdeps/unix/syscall-template.S
+
+2016-10-26 04:28:34:Backtrace END
+2016-10-26 04:28:34:Thread name: None
+2016-10-26 04:28:34:Thread num: 1
+2016-10-26 04:28:34:Thread ptid: (58153, 58153, 0)
+2016-10-26 04:28:34:bitFlip function
+2016-10-26 04:28:34:Type: The type is a structure.
+2016-10-26 04:28:34:Type sizeof: 16
+2016-10-26 04:28:34:Fliping value of field: dirs
+2016-10-26 04:28:34:bitFlip function
+2016-10-26 04:28:34:Type: The type is a pointer.
+2016-10-26 04:28:34:Type sizeof: 8
+2016-10-26 04:28:34:Fliping a bit of the pointer
+2016-10-26 04:28:34:Mem contents(hex):0xf80xeb0xff0xf70xff0x7f0x000x00
+2016-10-26 04:28:34:base address to flip value: 0x7ffff7ffcdf0 
+2016-10-26 04:28:34:address max offset: 8
+2016-10-26 04:28:34:Memory content before bitflip:0xf80xeb0xff0xf70xff0x7f0x000x00
+2016-10-26 04:28:34:Memory content after  bitflip:0xf80xcb0xff0xf70xff0x7f0x000x00
+2016-10-26 04:28:34:Mem contents(hex):0xf80xcb0xff0xf70xff0x7f0x000x00
+2016-10-26 04:28:34:frame name: _dl_map_object_from_fd
+2016-10-26 04:28:34:symbol name: rtld_search_dirs
+2016-10-26 04:28:34:symbol filename: dl-load.c
+2016-10-26 04:28:34:symbol line: 423
+2016-10-26 04:28:34:value: {dirs = 0x7ffff7ffcbf8, malloced = 0}
+2016-10-26 04:28:34:value address: 0x7ffff7ffcdf0 <rtld_search_dirs>
+2016-10-26 04:28:34:Type: The type is a structure.
+2016-10-26 04:28:34:Type sizeof: 16
+2016-10-26 04:28:34:Field name: dirs
+2016-10-26 04:28:34:Field Type:
+2016-10-26 04:28:34:Type: The type is a pointer.
+2016-10-26 04:28:34:Type sizeof: 8
+2016-10-26 04:28:34:Field name: malloced
+2016-10-26 04:28:34:Field Type:
+2016-10-26 04:28:34:Type: The type is an integer type.
+2016-10-26 04:28:34:Type sizeof: 4
+2016-10-26 04:28:34:Fault Injection Successful after 0.967298984528s
+2016-10-26 04:28:34:Fault Already Injected
+2016-10-26 04:28:34:event type: exit
+2016-10-26 04:28:34:exit code: no exit code available

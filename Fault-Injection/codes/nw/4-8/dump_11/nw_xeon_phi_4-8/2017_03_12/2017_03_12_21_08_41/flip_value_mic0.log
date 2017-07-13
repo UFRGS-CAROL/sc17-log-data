@@ -1,0 +1,122 @@
+[INFO -- 2017-03-12 21:07:53]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-12 21:07:53]
+Initialization strings:
+[INFO -- 2017-03-12 21:07:53]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-12 21:07:53]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-12 21:07:53]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-12 21:07:53]
+(4) file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+[INFO -- 2017-03-12 21:07:53]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+[INFO -- 2017-03-12 21:07:53]
+(6) set args 16394 10 228 /micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10 /micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10
+[INFO -- 2017-03-12 21:07:53]
+initSignal:4
+[INFO -- 2017-03-12 21:07:54]
+endSignal:8
+[INFO -- 2017-03-12 21:07:54]
+seqSignal:30
+[INFO -- 2017-03-12 21:07:54]
+faultMode:2
+[INFO -- 2017-03-12 21:07:59]
+Backtrace BEGIN:
+#0  0x00007ffff6e245d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6dd0911 in __GI__IO_file_xsgetn (fp=0x619b30, data=<optimized out>, n=1075184100) at fileops.c:1422
+#2  0x00007ffff6dc6929 in __GI__IO_fread (buf=<optimized out>, size=1075184100, count=1, fp=0x619b30) at iofread.c:42
+#3  0x00000000004014f6 in ReadArrayFromFile (input_itemsets=0x7fff76699010, gold_itemsets=0x7fff36538010, max_rows=16395, filenameinput=0x7fffffffee44 "/micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10", filenamegold=0x7fffffffee8a "/micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10") at needle_check.cpp:50
+#4  0x0000000000402bbc in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:319
+#5  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping value of field: __underflow
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x53
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff6dd0670 
+address max offset: 1
+Memory content after  bitflip:0xbc
+frame name: __GI__IO_file_xsgetn
+symbol name: _IO_file_jumps_maybe_mmap
+symbol filename: fileops.c
+symbol line: 1574
+value: {__dummy = 0, __dummy2 = 0, __finish = 0x7ffff6dd0f30 <_IO_new_file_finish>, __overflow = 0x7ffff6dd17f0 <_IO_new_file_overflow>, __underflow = 0x7ffff6dd0670 <_IO_file_underflow_maybe_mmap>, __uflow = 0x7ffff6dd2590 <__GI__IO_default_uflow>, __pbackfail = 0x7ffff6dd3450 <__GI__IO_default_pbackfail>, __xsputn = 0x7ffff6dd0ba0 <_IO_new_file_xsputn>, __xsgetn = 0x7ffff6dd0690 <_IO_file_xsgetn_maybe_mmap>, __seekoff = 0x7ffff6dcfbc0 <_IO_file_seekoff_maybe_mmap>, __seekpos = 0x7ffff6dd27f0 <_IO_default_seekpos>, __setbuf = 0x7ffff6dcfce0 <_IO_file_setbuf_mmap>, __sync = 0x7ffff6dcfbf0 <_IO_new_file_sync>, __doallocate = 0x7ffff6dc5990 <__GI__IO_file_doallocate>, __read = 0x7ffff6dd0b80 <__GI__IO_file_read>, __write = 0x7ffff6dd06e0 <_IO_new_file_write>, __seek = 0x7ffff6dd04a0 <__GI__IO_file_seek>, __close = 0x7ffff6dcfca0 <__GI__IO_file_close>, __stat = 0x7ffff6dd06d0 <__GI__IO_file_stat>, __showmanyc = 0x7ffff6dd35b0 <_IO_default_showmanyc>, __imbue = 0x7ffff6dd35c0 <_IO_default_imbue>}
+value address: 0x7ffff70b1540 <_IO_file_jumps_maybe_mmap>
+Type: The type is a structure.
+Type sizeof: 168
+Field name: __dummy
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: __dummy2
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: __finish
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __overflow
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __underflow
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __uflow
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __pbackfail
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __xsputn
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __xsgetn
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __seekoff
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __seekpos
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __setbuf
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __sync
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __doallocate
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __read
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __write
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __seek
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __close
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __stat
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __showmanyc
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: __imbue
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-12 21:07:59]
+Fault Injection Successful after 5.15388989449s
+[INFO -- 2017-03-12 21:08:35]
+event type: exit
+[INFO -- 2017-03-12 21:08:35]
+exit code: 0

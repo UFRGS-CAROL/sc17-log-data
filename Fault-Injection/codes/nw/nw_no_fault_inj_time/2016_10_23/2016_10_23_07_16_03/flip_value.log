@@ -1,0 +1,71 @@
+2016-10-23 07:15:36:Initialization strings:
+2016-10-23 07:15:37:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-23 07:15:37:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-23 07:15:37:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-23 07:15:37:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-23 07:15:37:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-23 07:15:37:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-23 07:15:37:Trying Fault Injection
+2016-10-23 07:15:37:Inferior PID: 147278
+2016-10-23 07:15:37:Inferior is valid: True
+2016-10-23 07:15:37:Inferior #threads: 1
+2016-10-23 07:15:37:Backtrace BEGIN:
+2016-10-23 07:15:37:#0  check_match (undef_name=undef_name@entry=0x7ffff752a36b "_ZNKSs17find_first_not_ofEcm", ref=ref@entry=0x7ffff74ffbb8, version=version@entry=0x7ffff7ff7030, flags=flags@entry=1, type_class=type_class@entry=1, sym=sym@entry=0x7ffff74ffbb8, symidx=2465, strtab=0x7ffff7511150 "", map=0x7ffff7ff9000, versioned_sym=0x7fffffffe798, num_versions=0x7fffffffe794) at dl-lookup.c:95
+#1  0x00007ffff7de6010 in do_lookup_x (undef_name=undef_name@entry=0x7ffff752a36b "_ZNKSs17find_first_not_ofEcm", new_hash=new_hash@entry=3951962470, old_hash=old_hash@entry=0x7fffffffe860, ref=0x7ffff74ffbb8, result=result@entry=0x7fffffffe870, scope=<optimized out>, i=3, version=0x7ffff7ff7030, flags=1, skip=0x0, type_class=1, undef_map=0x7ffff7ff9000) at dl-lookup.c:423
+#2  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x7ffff752a36b "_ZNKSs17find_first_not_ofEcm", undef_map=undef_map@entry=0x7ffff7ff9000, ref=ref@entry=0x7fffffffe9c0, symbol_scope=symbol_scope@entry=0x7ffff7ff9358, version=0x7ffff7ff7030, type_class=1, flags=1, skip_map=0x0) at dl-lookup.c:775
+#3  0x00007ffff7de854f in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=<optimized out>, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff756b168, map=0x7ffff7ff9000) at ../sysdeps/x86_64/dl-machine.h:277
+#4  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ff9000) at do-rel.h:137
+#5  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#6  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#7  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec30, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#8  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec30) at rtld.c:308
+#9  _dl_start (arg=0x7fffffffec30) at rtld.c:414
+#10 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#11 0x0000000000000006 in ?? ()
+#12 0x00007fffffffee22 in ?? ()
+#13 0x00007fffffffee52 in ?? ()
+#14 0x00007fffffffee58 in ?? ()
+#15 0x00007fffffffee5b in ?? ()
+#16 0x00007fffffffee5f in ?? ()
+#17 0x00007fffffffee9c in ?? ()
+#18 0x0000000000000000 in ?? ()
+
+2016-10-23 07:15:37:90	in dl-lookup.c
+
+2016-10-23 07:15:37:Backtrace END
+2016-10-23 07:15:37:Thread name: None
+2016-10-23 07:15:37:Thread num: 1
+2016-10-23 07:15:37:Thread ptid: (147278, 147278, 0)
+2016-10-23 07:15:37:bitFlip function
+2016-10-23 07:15:37:Type: The type is an array.
+2016-10-23 07:15:37:Type sizeof: 12
+2016-10-23 07:15:37:Fliping array at pos: 8
+2016-10-23 07:15:37:bitFlip function
+2016-10-23 07:15:37:Type: The type is an integer type.
+2016-10-23 07:15:37:Type sizeof: 1
+2016-10-23 07:15:37:Mem contents(hex):0x74
+2016-10-23 07:15:37:base address to flip value: 0x7ffff7df8c78  
+2016-10-23 07:15:37:address max offset: 1
+2016-10-23 07:15:37:Memory content before bitflip:0x74
+2016-10-23 07:15:37:Memory content after  bitflip:0x64
+2016-10-23 07:15:37:Mem contents(hex):0x64
+2016-10-23 07:15:37:frame name: check_match
+2016-10-23 07:15:37:symbol name: __PRETTY_FUNCTION__
+2016-10-23 07:15:37:symbol filename: dl-lookup.c
+2016-10-23 07:15:37:symbol line: 0
+2016-10-23 07:15:37:value: "check_madch"
+2016-10-23 07:15:37:value address: 0x7ffff7df8c70 <__PRETTY_FUNCTION__.9540>
+2016-10-23 07:15:37:Type: The type is an array.
+2016-10-23 07:15:37:Type sizeof: 12
+2016-10-23 07:15:37:Field name: None
+2016-10-23 07:15:37:Field Type:
+2016-10-23 07:15:37:Type: A range type, that is, an integer type with bounds.
+2016-10-23 07:15:37:Type sizeof: 8
+2016-10-23 07:15:37:Type range: (0L, 11L)
+2016-10-23 07:15:37:Fault Injection Successful after 0.599983930588s
+2016-10-23 07:15:37:Fault Already Injected
+2016-10-23 07:15:43:Fault Already Injected
+2016-10-23 07:15:49:Fault Already Injected
+2016-10-23 07:15:50:Fault Already Injected
+2016-10-23 07:15:56:event type: exit
+2016-10-23 07:15:56:exit code: 0

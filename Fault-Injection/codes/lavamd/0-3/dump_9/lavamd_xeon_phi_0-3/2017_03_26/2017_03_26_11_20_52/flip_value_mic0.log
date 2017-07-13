@@ -1,0 +1,65 @@
+[INFO -- 2017-03-26 11:20:23]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 11:20:23]
+Initialization strings:
+[INFO -- 2017-03-26 11:20:24]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 11:20:24]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 11:20:24]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 11:20:24]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 11:20:24]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 11:20:24]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 11:20:24]
+initSignal:0
+[INFO -- 2017-03-26 11:20:24]
+endSignal:3
+[INFO -- 2017-03-26 11:20:24]
+seqSignal:30
+[INFO -- 2017-03-26 11:20:24]
+faultMode:2
+[EXCEPTION -- 2017-03-26 11:20:29]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-03-26 11:20:33]
+Backtrace BEGIN:
+#0  malloc (n=15) at dl-minimal.c:93
+#1  <function called from gdb>
+#2  0x00007ffff719f03a in mmap64 () at ../sysdeps/unix/syscall-template.S:81
+#3  0x00007ffff7431e2c in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffdd18) at allocatestack.c:504
+#4  __pthread_create_2_1 (newthread=0x7fffffffdd10, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fff24371600) at pthread_create.c:524
+#5  0x00007ffff790d323 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+88	in dl-minimal.c
+
+Backtrace END
+Fliping array at pos: 12
+Memory content before bitflip:0x63
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff7df660c  
+address max offset: 1
+Memory content after  bitflip:0x02
+frame name: malloc
+symbol name: _itoa_lower_digits
+symbol filename: dl-minimal.c
+symbol line: 382
+value: "0123456789ab\002def"
+value address: 0x7ffff7df6600 <_itoa_lower_digits>
+Type: The type is an array.
+Type sizeof: 16
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 15L)
+
+[INFO -- 2017-03-26 11:20:33]
+Fault Injection Successful after 9.84089493752s
+[INFO -- 2017-03-26 11:20:45]
+event type: exit
+[INFO -- 2017-03-26 11:20:45]
+exit code: 0

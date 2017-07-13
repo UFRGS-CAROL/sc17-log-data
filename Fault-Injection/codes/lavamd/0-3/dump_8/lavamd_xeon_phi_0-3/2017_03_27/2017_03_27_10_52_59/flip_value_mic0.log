@@ -1,0 +1,69 @@
+[INFO -- 2017-03-27 10:52:35]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 10:52:35]
+Initialization strings:
+[INFO -- 2017-03-27 10:52:35]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 10:52:35]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 10:52:35]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 10:52:35]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 10:52:35]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 10:52:35]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 10:52:35]
+initSignal:0
+[INFO -- 2017-03-27 10:52:35]
+endSignal:3
+[INFO -- 2017-03-27 10:52:35]
+seqSignal:30
+[INFO -- 2017-03-27 10:52:35]
+faultMode:2
+[INFO -- 2017-03-27 10:52:36]
+Backtrace BEGIN:
+#0  __GI___waitpid (pid=82741, stat_loc=stat_loc@entry=0x7fffffffdea8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000406619 in update_timestamp () at ../include/log_helper.c:107
+#3  0x00000000004069fe in start_log_file (benchmark_name=0x408cc0 "openmpLavaMD", test_info=0x7fffffffe648 "box:15 spaceElem:337500 cores:228") at ../include/log_helper.c:196
+#4  0x0000000000402707 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:190
+
+26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+Backtrace END
+Fliping value of field: sa_flags
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff74264c8 
+address max offset: 4
+Memory content after  bitflip:0x530x9f0x080x34
+frame name: do_system
+symbol name: quit
+symbol filename: ../sysdeps/posix/system.c
+symbol line: 34
+value: {__sigaction_handler = {sa_handler = 0x0, sa_sigaction = 0x0}, sa_mask = {__val = {0, 5, 140737354107896, 1, 0, 1, 140737354110160, 18446744073709551615, 140737488347236, 0, 140737354111016, 140737488346768, 4294967296, 140737354110160, 140737488346752, 140737341742530}}, sa_flags = 872980307, sa_restorer = 0x7fda8eaab610}
+value address: 0x7ffff7426440 <quit>
+Type: The type is a structure.
+Type sizeof: 152
+Field name: __sigaction_handler
+Field Type: The type is a union.
+Field Type sizeof: 8
+Field name: sa_mask
+Field Type: The type is a structure.
+Field Type sizeof: 128
+Field name: sa_flags
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: sa_restorer
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-27 10:52:36]
+Fault Injection Successful after 1.84664011002s
+[INFO -- 2017-03-27 10:52:52]
+event type: exit
+[INFO -- 2017-03-27 10:52:52]
+exit code: 0

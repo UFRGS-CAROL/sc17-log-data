@@ -1,0 +1,74 @@
+[INFO -- 2017-03-08 05:23:19]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-08 05:23:19]
+Initialization strings:
+[INFO -- 2017-03-08 05:23:19]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-08 05:23:19]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 05:23:19]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 05:23:19]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 05:23:19]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 05:23:19]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-08 05:23:19]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-08 05:23:19]
+initSignal:0
+[INFO -- 2017-03-08 05:23:19]
+endSignal:5
+[INFO -- 2017-03-08 05:23:19]
+seqSignal:20
+[INFO -- 2017-03-08 05:23:19]
+faultMode:2
+[INFO -- 2017-03-08 05:23:30]
+Backtrace BEGIN:
+#0  0x00007ffff6b551a7 in msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc80c3610, n=n@entry=2064) at msort.c:142
+#1  0x00007ffff6b55011 in msort_with_tmp (n=2064, b=<optimized out>, p=<optimized out>) at msort.c:45
+#2  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc80c3610, n=n@entry=4128) at msort.c:53
+#3  0x00007ffff6b55011 in msort_with_tmp (n=4128, b=<optimized out>, p=<optimized out>) at msort.c:45
+#4  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc80c3610, n=n@entry=8256) at msort.c:53
+#5  0x00007ffff6b55011 in msort_with_tmp (n=8256, b=<optimized out>, p=<optimized out>) at msort.c:45
+#6  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc80c3610, n=n@entry=16512) at msort.c:53
+#7  0x00007ffff6b55027 in msort_with_tmp (n=16512, b=0x7ffcc80c3610, p=<optimized out>) at msort.c:45
+#8  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc8093010, n=n@entry=33024) at msort.c:54
+#9  0x00007ffff6b55011 in msort_with_tmp (n=33024, b=<optimized out>, p=<optimized out>) at msort.c:45
+#10 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc8093010, n=n@entry=66048) at msort.c:53
+#11 0x00007ffff6b55011 in msort_with_tmp (n=66048, b=<optimized out>, p=<optimized out>) at msort.c:45
+#12 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc8093010, n=n@entry=132096) at msort.c:53
+#13 0x00007ffff6b55011 in msort_with_tmp (n=132096, b=<optimized out>, p=<optimized out>) at msort.c:45
+#14 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffcc8093010, n=n@entry=264192) at msort.c:53
+#15 0x00007ffff6b55537 in msort_with_tmp (n=3170304, b=0x7ffcc8093010, p=0x7fffffffdf28) at msort.c:45
+#16 __GI___qsort_r (b=0x7ffcc8093010, n=264192, s=12, cmp=<optimized out>, arg=<optimized out>) at msort.c:297
+#17 0x000000000053a863 in hsfc2sort (N=264192, X=0x7ffd881b0010, Y=0x7ffd481a2010, ibase=0, Info=0x7ffd0809f010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:161
+#18 0x0000000000536b19 in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#19 0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#20 0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+137	in msort.c
+
+Backtrace END
+Memory content before bitflip:0x430x4c0x390xf70xff0x7f0x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffea68
+address max offset: 8
+Memory content after  bitflip:0x440x790x200xa00x5a0xfb0xff0xc0
+frame name: main
+symbol name: H_sum
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 292
+value: -130997.66409346933
+value address: 0x7fffffffea68
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-08 05:23:30]
+Fault Injection Successful after 11.5163509846s
+[INFO -- 2017-03-08 05:24:26]
+event type: exit
+[INFO -- 2017-03-08 05:24:26]
+exit code: 0

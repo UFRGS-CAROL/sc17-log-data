@@ -1,0 +1,109 @@
+2016-10-20 15:14:32:Initialization strings:
+2016-10-20 15:14:32:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-20 15:14:32:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-20 15:14:32:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-20 15:14:32:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-20 15:14:32:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-20 15:14:32:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-20 15:14:32:Trying Fault Injection
+2016-10-20 15:14:32:Backtrace BEGIN:
+2016-10-20 15:14:32:#0  __GI___waitpid (pid=182135, stat_loc=stat_loc@entry=0x7fffffffe268, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000405ccc in update_timestamp () at ../../include/log_helper.c:107
+#3  start_log_file (benchmark_name=0x2c777 <error: Cannot access memory at address 0x2c777>, test_info=0x7fffffffe268 "") at ../../include/log_helper.c:196
+#4  0x0000000000401681 in main (argc=182135, argv=0x7fffffffe268) at hotspot_check.c:254
+
+2016-10-20 15:14:32:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-20 15:14:32:Backtrace END
+2016-10-20 15:14:33:Type: The type is a structure.
+2016-10-20 15:14:33:Type sizeof: 144
+2016-10-20 15:14:33:Fliping value of field: st_nlink
+2016-10-20 15:14:33:Type: The type is an integer type.
+2016-10-20 15:14:33:Type sizeof: 8
+2016-10-20 15:14:33:Mem contents(hex):0x160xe70xff0xff0xff0x7f0x000x00
+2016-10-20 15:14:33:base address to flip value: 0x7fffffffe3d0
+2016-10-20 15:14:33:address max offset: 8
+2016-10-20 15:14:33:Memory content before bitflip:0x160xe70xff0xff0xff0x7f0x000x00
+2016-10-20 15:14:33:Memory content after  bitflip:0x160xe70xff0xfe0xff0x7f0x000x00
+2016-10-20 15:14:33:Mem contents(hex):0x160xe70xff0xfe0xff0x7f0x000x00
+2016-10-20 15:14:33:frame name: update_timestamp
+2016-10-20 15:14:33:symbol name: buf
+2016-10-20 15:14:33:symbol filename: ../../include/log_helper.c
+2016-10-20 15:14:33:symbol line: 252
+2016-10-20 15:14:33:value: {st_dev = 4222451713, st_ino = 140737488348950, st_nlink = 140737471571734, st_mode = 4294960918, st_uid = 32767, st_gid = 4294960918, __pad0 = 32767, st_rdev = 140737488348981, st_size = 140737488349049, st_blksize = 140737488348950, st_blocks = 140737488349049, st_atim = {tv_sec = 0, tv_nsec = 0}, st_mtim = {tv_sec = 0, tv_nsec = 0}, st_ctim = {tv_sec = 0, tv_nsec = 0}, __glibc_reserved = {0, 0, 0}}
+2016-10-20 15:14:33:value address: 0x7fffffffe3c0
+2016-10-20 15:14:33:Type: The type is a structure.
+2016-10-20 15:14:33:Type sizeof: 144
+2016-10-20 15:14:33:Field name: st_dev
+2016-10-20 15:14:33:Field Type:
+2016-10-20 15:14:33:Type: The type is an integer type.
+2016-10-20 15:14:33:Type sizeof: 8
+2016-10-20 15:14:33:Field name: st_ino
+2016-10-20 15:14:33:Field Type:
+2016-10-20 15:14:33:Type: The type is an integer type.
+2016-10-20 15:14:33:Type sizeof: 8
+2016-10-20 15:14:33:Field name: st_nlink
+2016-10-20 15:14:33:Field Type:
+2016-10-20 15:14:33:Type: The type is an integer type.
+2016-10-20 15:14:33:Type sizeof: 8
+2016-10-20 15:14:33:Field name: st_mode
+2016-10-20 15:14:33:Field Type:
+2016-10-20 15:14:33:Type: The type is an integer type.
+2016-10-20 15:14:33:Type sizeof: 4
+2016-10-20 15:14:33:Field name: st_uid
+2016-10-20 15:14:33:Field Type:
+2016-10-20 15:14:33:Type: The type is an integer type.
+2016-10-20 15:14:33:Type sizeof: 4
+2016-10-20 15:14:33:Field name: st_gid
+2016-10-20 15:14:33:Field Type:
+2016-10-20 15:14:33:Type: The type is an integer type.
+2016-10-20 15:14:33:Type sizeof: 4
+2016-10-20 15:14:33:Field name: __pad0
+2016-10-20 15:14:33:Field Type:
+2016-10-20 15:14:33:Type: The type is an integer type.
+2016-10-20 15:14:33:Type sizeof: 4
+2016-10-20 15:14:33:Field name: st_rdev
+2016-10-20 15:14:33:Field Type:
+2016-10-20 15:14:33:Type: The type is an integer type.
+2016-10-20 15:14:33:Type sizeof: 8
+2016-10-20 15:14:33:Field name: st_size
+2016-10-20 15:14:33:Field Type:
+2016-10-20 15:14:33:Type: The type is an integer type.
+2016-10-20 15:14:33:Type sizeof: 8
+2016-10-20 15:14:33:Field name: st_blksize
+2016-10-20 15:14:33:Field Type:
+2016-10-20 15:14:33:Type: The type is an integer type.
+2016-10-20 15:14:33:Type sizeof: 8
+2016-10-20 15:14:33:Field name: st_blocks
+2016-10-20 15:14:33:Field Type:
+2016-10-20 15:14:33:Type: The type is an integer type.
+2016-10-20 15:14:33:Type sizeof: 8
+2016-10-20 15:14:33:Field name: st_atim
+2016-10-20 15:14:33:Field Type:
+2016-10-20 15:14:33:Type: The type is a structure.
+2016-10-20 15:14:33:Type sizeof: 16
+2016-10-20 15:14:33:Field name: st_mtim
+2016-10-20 15:14:33:Field Type:
+2016-10-20 15:14:33:Type: The type is a structure.
+2016-10-20 15:14:33:Type sizeof: 16
+2016-10-20 15:14:33:Field name: st_ctim
+2016-10-20 15:14:33:Field Type:
+2016-10-20 15:14:33:Type: The type is a structure.
+2016-10-20 15:14:33:Type sizeof: 16
+2016-10-20 15:14:33:Field name: __glibc_reserved
+2016-10-20 15:14:33:Field Type:
+2016-10-20 15:14:33:Type: The type is an array.
+2016-10-20 15:14:33:Type sizeof: 24
+2016-10-20 15:14:33:Fault Injection Successful after 1.03612494469s
+2016-10-20 15:14:35:Fault Already Injected
+2016-10-20 15:14:36:Fault Already Injected
+2016-10-20 15:14:36:Fault Already Injected
+2016-10-20 15:14:37:Fault Already Injected
+2016-10-20 15:14:38:Fault Already Injected
+2016-10-20 15:14:41:Fault Already Injected
+2016-10-20 15:14:43:Fault Already Injected
+2016-10-20 15:14:47:Fault Already Injected
+2016-10-20 15:14:47:Fault Already Injected
+2016-10-20 15:14:48:event type: exit
+2016-10-20 15:14:48:exit code: 0

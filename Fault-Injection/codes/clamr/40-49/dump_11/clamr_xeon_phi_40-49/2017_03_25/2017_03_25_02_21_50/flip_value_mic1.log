@@ -1,0 +1,69 @@
+[INFO -- 2017-03-25 02:20:37]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-25 02:20:37]
+Initialization strings:
+[INFO -- 2017-03-25 02:20:38]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-25 02:20:38]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-25 02:20:38]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-25 02:20:38]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-25 02:20:38]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-25 02:20:38]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-25 02:20:38]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-25 02:20:38]
+initSignal:40
+[INFO -- 2017-03-25 02:20:38]
+endSignal:49
+[INFO -- 2017-03-25 02:20:38]
+seqSignal:20
+[INFO -- 2017-03-25 02:20:38]
+faultMode:0
+[EXCEPTION -- 2017-03-25 02:21:33]
+pythonException: empty range for randrange() (0,0, 0)
+[INFO -- 2017-03-25 02:21:43]
+Backtrace BEGIN:
+#0  0x0000000000449a2b in std::vector<int, std::allocator<int> >::operator[] (this=0x0, __n=140737488348624) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x00000000005361c8 in Mesh::partition_cells (this=0x7f9a50, numpe=0, z_order=..., method=ORIGINAL_ORDER) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:370
+#2  0x00000000004461e3 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:477
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x55
+Fault Mode: Single bit-flip
+base address to flip value: 0x54ae8a 
+address max offset: 1
+Memory content after  bitflip:0x57
+frame name: std::vector<int, std::allocator<int> >::operator[]
+symbol name: set_graphics_cell_data
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 117
+value: 0x54ae8a <set_graphics_cell_data_double>
+value address: 0x7ce550 <set_graphics_cell_data>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-25 02:21:43]
+Fault Injection Successful after 65.2860438824s
+[INFO -- 2017-03-25 02:21:43]
+event type: exit
+[EXCEPTION -- 2017-03-25 02:21:43]
+exit code: no exit code available

@@ -1,0 +1,51 @@
+2016-11-02 03:57:00:Initialization strings:
+2016-11-02 03:57:00:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-11-02 03:57:00:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-02 03:57:00:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-02 03:57:00:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-11-02 03:57:00:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-11-02 03:57:00:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-11-02 03:57:01:Trying Fault Injection
+2016-11-02 03:57:01:Inferior PID: 56823
+2016-11-02 03:57:01:Inferior is valid: True
+2016-11-02 03:57:01:Inferior #threads: 1
+2016-11-02 03:57:01:Backtrace BEGIN:
+2016-11-02 03:57:01:#0  0x0000000000402567 in main (argc=7, argv=0x7fffffffec08) at main_check.c:177
+
+2016-11-02 03:57:01:172	    }
+173	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+174	        fv_cpu[i].v = 0;
+175	        fv_cpu[i].x = 0;
+176	        fv_cpu[i].y = 0;
+177	        fv_cpu[i].z = 0;
+178	
+179	        fread(&(fv_cpu_GOLD[i].v), 1, sizeof(double), file);
+180	        fread(&(fv_cpu_GOLD[i].x), 1, sizeof(double), file);
+181	        fread(&(fv_cpu_GOLD[i].y), 1, sizeof(double), file);
+
+2016-11-02 03:57:01:Backtrace END
+2016-11-02 03:57:01:Thread name: None
+2016-11-02 03:57:01:Thread num: 1
+2016-11-02 03:57:01:Thread ptid: (56823, 56823, 0)
+2016-11-02 03:57:01:bitFlip function
+2016-11-02 03:57:01:Type: The type is a pointer.
+2016-11-02 03:57:01:Type sizeof: 8
+2016-11-02 03:57:01:Fliping a bit of the pointer
+2016-11-02 03:57:01:Mem contents(hex):0xc00xe10x600x000x000x000x000x00
+2016-11-02 03:57:01:base address to flip value: 0x7fffffffe950
+2016-11-02 03:57:01:address max offset: 8
+2016-11-02 03:57:01:Memory content before bitflip:0xc00xe10x600x000x000x000x000x00
+2016-11-02 03:57:01:Memory content after  bitflip:0xc00xe10x680x000x000x000x000x00
+2016-11-02 03:57:01:Mem contents(hex):0xc00xe10x680x000x000x000x000x00
+2016-11-02 03:57:01:frame name: main
+2016-11-02 03:57:01:symbol name: file
+2016-11-02 03:57:01:symbol filename: main_check.c
+2016-11-02 03:57:01:symbol line: 139
+2016-11-02 03:57:01:value: 0x60e1c0
+2016-11-02 03:57:01:value address: 0x7fffffffe950
+2016-11-02 03:57:01:Type: The type is a pointer.
+2016-11-02 03:57:01:Type sizeof: 8
+2016-11-02 03:57:01:Fault Injection Successful after 1.59198689461s
+2016-11-02 03:57:01:Fault Already Injected
+2016-11-02 03:57:01:event type: exit
+2016-11-02 03:57:01:exit code: no exit code available

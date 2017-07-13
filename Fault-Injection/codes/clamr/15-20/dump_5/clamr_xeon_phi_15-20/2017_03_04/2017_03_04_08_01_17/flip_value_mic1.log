@@ -1,0 +1,65 @@
+[INFO -- 2017-03-04 08:00:05]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-04 08:00:05]
+Initialization strings:
+[INFO -- 2017-03-04 08:00:05]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-04 08:00:05]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-04 08:00:05]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-04 08:00:05]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-04 08:00:05]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-04 08:00:05]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-04 08:00:05]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-04 08:00:05]
+initSignal:15
+[INFO -- 2017-03-04 08:00:05]
+endSignal:20
+[INFO -- 2017-03-04 08:00:05]
+seqSignal:20
+[INFO -- 2017-03-04 08:00:05]
+faultMode:3
+[EXCEPTION -- 2017-03-04 08:00:28]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-03-04 08:00:34]
+Backtrace BEGIN:
+#0  0x00007ffff6b68fdc in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1641
+#1  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#2  0x000000000054b8e1 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:476
+#3  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#4  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+1636	in vfprintf.c
+
+Backtrace END
+Fliping array at pos: 76
+Memory content before bitflip:0x0b
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffff6c38fcc  
+address max offset: 1
+Memory content after  bitflip:0x00
+frame name: _IO_vfprintf_internal
+symbol name: jump_table
+symbol filename: vfprintf.c
+symbol line: 275
+value: "\001\000\000\004\000\016\000\006\000\000\a\002\000\003\t\000\005\b\b\b\b\b\b\b\b\b\000\000\000\000\000\000\000\032\000\031\000\023\023\023\000\035\000\000\f\000\000\000\000\000\000\025\000\000\000\000\022\000\r\000\000\000\000\000\000\032\000\024\017\023\023\023\n\017\034\000\000\030\027\021\026\f\000\025\033\020\000\000\022\000\r"
+value address: 0x7ffff6c38f80 <jump_table>
+Type: The type is an array.
+Type sizeof: 91
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 90L)
+
+[INFO -- 2017-03-04 08:00:34]
+Fault Injection Successful after 29.7745409012s
+[INFO -- 2017-03-04 08:01:09]
+event type: exit
+[INFO -- 2017-03-04 08:01:09]
+exit code: 0

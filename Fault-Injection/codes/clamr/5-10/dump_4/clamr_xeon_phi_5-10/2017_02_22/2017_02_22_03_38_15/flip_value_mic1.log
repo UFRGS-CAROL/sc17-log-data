@@ -1,0 +1,74 @@
+2017-02-22 03:34:31:Starting flip_value script
+2017-02-22 03:34:31:Initialization strings:
+2017-02-22 03:34:31:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-22 03:34:31:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 03:34:31:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 03:34:32:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-22 03:34:32:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-22 03:34:32:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-22 03:34:32:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-22 03:34:32:initSignal:5
+2017-02-22 03:34:32:endSignal:10
+2017-02-22 03:34:32:seqSignal:20
+2017-02-22 03:34:39:Backtrace BEGIN:
+2017-02-22 03:34:39:#0  Bounds_CenterAxis (b=0x16b2240, axis=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/Bounds.c:126
+#1  0x000000000053c337 in median_sort (t=0x7f9d50, cut_direction=0, k=515, num=1032, idx=0x31aba10) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:91
+#2  0x000000000053ce2b in KDTree_CreateTree (t=0x7f9d50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:236
+#3  0x000000000053d3f4 in KDTree_QueryCircleIntersect_Double (t=0x7f9d50, result_num=0x7fffffffe5dc, result_indicies=0x181ae10, circ_radius=24, ncells=264192, x=0x7fff0c0d6010, dx=0x7ffecc1ce010, y=0x7ffe8c1cc010, dy=0x7ffe4c1bf010) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:329
+#4  0x00000000005080fe in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1535
+#5  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-22 03:34:39:121	      center = (b->min.x + b->max.x) * 0.5;
+122	   else if(axis == YAXIS)
+123	      center = (b->min.y + b->max.y) * 0.5;
+124	   else
+125	      assert(NULL);
+126	   return(center);
+127	}
+
+2017-02-22 03:34:39:Backtrace END
+2017-02-22 03:34:44:Type: The type is a pointer.
+2017-02-22 03:34:44:Type sizeof: 8
+2017-02-22 03:34:44:Fliping a bit of the pointer
+2017-02-22 03:34:44:Mem contents(hex):0x500x9d0x7f0x000x000x000x000x00
+2017-02-22 03:34:44:Fault Mode: Random bit-flip
+2017-02-22 03:34:44:base address to flip value: 0x7fffffffe3d0
+2017-02-22 03:34:44:address max offset: 8
+2017-02-22 03:34:44:Memory content before bitflip:0x500x9d0x7f0x000x000x000x000x00
+2017-02-22 03:34:44:Backtrace BEGIN:
+2017-02-22 03:34:44:#0  Bounds_CenterAxis (b=0x16b2240, axis=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/Bounds.c:126
+#1  0x000000000053c337 in median_sort (t=0x7f9d50, cut_direction=0, k=515, num=1032, idx=0x31aba10) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:91
+#2  0x000000000053ce2b in KDTree_CreateTree (t=0x7f9d50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:236
+#3  0x000000000053d3f4 in KDTree_QueryCircleIntersect_Double (t=0x7f9d50, result_num=0x7fffffffe5dc, result_indicies=0x181ae10, circ_radius=24, ncells=264192, x=0x7fff0c0d6010, dx=0x7ffecc1ce010, y=0x7ffe8c1cc010, dy=0x7ffe4c1bf010) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:329
+#4  0x00000000005080fe in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1535
+#5  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-22 03:34:44:121	      center = (b->min.x + b->max.x) * 0.5;
+122	   else if(axis == YAXIS)
+123	      center = (b->min.y + b->max.y) * 0.5;
+124	   else
+125	      assert(NULL);
+126	   return(center);
+127	}
+
+2017-02-22 03:34:44:Backtrace END
+2017-02-22 03:34:49:Type: The type is an integer type.
+2017-02-22 03:34:49:Type sizeof: 4
+2017-02-22 03:34:49:Mem contents(hex):0x6b0x020x000x00
+2017-02-22 03:34:49:Fault Mode: Double bit-flip
+2017-02-22 03:34:49:base address to flip value: 0x7fffffffe2b4
+2017-02-22 03:34:49:address max offset: 4
+2017-02-22 03:34:49:Memory content before bitflip:0x6b0x020x000x00
+2017-02-22 03:34:49:Memory content after  bitflip:0x6b0x0e0x000x00
+2017-02-22 03:34:49:Mem contents(hex):0x6b0x0e0x000x00
+2017-02-22 03:34:49:frame name: median_sort
+2017-02-22 03:34:49:symbol name: right
+2017-02-22 03:34:49:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c
+2017-02-22 03:34:49:symbol line: 67
+2017-02-22 03:34:49:value: 3691
+2017-02-22 03:34:49:value address: 0x7fffffffe2b4
+2017-02-22 03:34:49:Type: The type is an integer type.
+2017-02-22 03:34:49:Type sizeof: 4
+2017-02-22 03:34:49:Fault Injection Successful after 17.9895339012s
+2017-02-22 03:35:38:event type: exit
+2017-02-22 03:35:38:exit code: 0

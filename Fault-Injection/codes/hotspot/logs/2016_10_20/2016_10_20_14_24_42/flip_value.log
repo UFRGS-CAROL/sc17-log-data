@@ -1,0 +1,67 @@
+2016-10-20 14:24:20:Initialization strings:
+2016-10-20 14:24:21:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-20 14:24:21:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-20 14:24:21:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-20 14:24:21:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-20 14:24:21:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-20 14:24:21:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-20 14:24:25:Trying Fault Injection
+2016-10-20 14:24:25:Backtrace BEGIN:
+2016-10-20 14:24:25:#0  __mpn_lshift () at ../sysdeps/x86_64/lshift.S:51
+#1  0x00007ffff7109ece in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe010 "323.346878", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1538
+#2  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe010 "323.346878", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0) at strtod.c:54
+#3  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2332
+#4  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "323.346878\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#5  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#6  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#7  main (argc=-8408, argv=0x7fffffffdf28) at hotspot_check.c:264
+
+2016-10-20 14:24:25:46	in ../sysdeps/x86_64/lshift.S
+
+2016-10-20 14:24:25:Backtrace END
+2016-10-20 14:24:25:Type: The type is an array.
+2016-10-20 14:24:25:Type sizeof: 24
+2016-10-20 14:24:25:Fliping array at pos: 0
+2016-10-20 14:24:25:Type: The type is a structure.
+2016-10-20 14:24:25:Type sizeof: 24
+2016-10-20 14:24:25:Fliping value of field: overflow_arg_area
+2016-10-20 14:24:25:Type: The type is a pointer.
+2016-10-20 14:24:25:Type sizeof: 8
+2016-10-20 14:24:25:Fault Injection Failed after 4.37943696976s
+2016-10-20 14:24:26:Trying Fault Injection
+2016-10-20 14:24:26:Backtrace BEGIN:
+2016-10-20 14:24:27:#0  0x00007ffff7144a98 in __GI__IO_sputbackc (fp=fp@entry=0x7fffffffe400, c=48) at genops.c:729
+#1  0x00007ffff7124d59 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:605
+#2  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe87a "0.000313\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000401808 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#5  main (argc=-7168, argv=0x30) at hotspot_check.c:265
+
+2016-10-20 14:24:27:724	in genops.c
+
+2016-10-20 14:24:27:Backtrace END
+2016-10-20 14:24:27:Type: A boolean type.
+2016-10-20 14:24:27:Type sizeof: 1
+2016-10-20 14:24:27:Mem contents(hex):0x00
+2016-10-20 14:24:27:base address to flip value: 0x7ffff74266c8 
+2016-10-20 14:24:27:address max offset: 1
+2016-10-20 14:24:27:Memory content before bitflip:0x00
+2016-10-20 14:24:27:Memory content after  bitflip:0x08
+2016-10-20 14:24:27:Mem contents(hex):0x08
+2016-10-20 14:24:27:frame name: __GI__IO_sputbackc
+2016-10-20 14:24:27:symbol name: dealloc_buffers
+2016-10-20 14:24:27:symbol filename: genops.c
+2016-10-20 14:24:27:symbol line: 943
+2016-10-20 14:24:27:value: 8
+2016-10-20 14:24:27:value address: 0x7ffff74266c8 <dealloc_buffers>
+2016-10-20 14:24:27:Type: A boolean type.
+2016-10-20 14:24:27:Type sizeof: 1
+2016-10-20 14:24:27:Fault Injection Successful after 6.08274888992s
+2016-10-20 14:24:29:Fault Already Injected
+2016-10-20 14:24:30:Fault Already Injected
+2016-10-20 14:24:32:Fault Already Injected
+2016-10-20 14:24:32:Fault Already Injected
+2016-10-20 14:24:33:Fault Already Injected
+2016-10-20 14:24:35:Fault Already Injected
+2016-10-20 14:24:36:event type: exit
+2016-10-20 14:24:36:exit code: 0

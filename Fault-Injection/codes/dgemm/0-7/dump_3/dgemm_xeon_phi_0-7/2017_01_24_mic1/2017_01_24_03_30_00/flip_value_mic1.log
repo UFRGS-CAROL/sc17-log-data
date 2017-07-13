@@ -1,0 +1,40 @@
+2017-01-24 03:27:11:Starting flip_value script
+2017-01-24 03:27:11:Initialization strings:
+2017-01-24 03:27:12:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-24 03:27:12:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 03:27:12:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 03:27:12:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-24 03:27:12:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-24 03:27:12:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-24 03:27:12:initSignal:0
+2017-01-24 03:27:12:endSignal:7
+2017-01-24 03:27:12:seqSignal:15
+2017-01-24 03:27:13:Backtrace BEGIN:
+2017-01-24 03:27:13:#0  0x00007ffff713890a in __GI__IO_fread (buf=0x7ffff3e9cc10, size=1, count=8, fp=0x6073f0) at iofread.c:41
+#1  0x0000000000403c08 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:250
+#2  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+2017-01-24 03:27:13:36	in iofread.c
+
+2017-01-24 03:27:13:Backtrace END
+2017-01-24 03:27:14:Type: The type is a pointer.
+2017-01-24 03:27:14:Type sizeof: 8
+2017-01-24 03:27:14:Fliping a bit of the value pointed by a pointer
+2017-01-24 03:27:14:Type: The type is a pointer.
+2017-01-24 03:27:14:Type sizeof: 8
+2017-01-24 03:27:14:Fliping a bit of the pointer
+2017-01-24 03:27:14:Mem contents(hex):0xcb0xee0xff0xff0xff0x7f0x000x00
+2017-01-24 03:27:14:base address to flip value: 0x7fffffffebf0
+2017-01-24 03:27:14:address max offset: 8
+2017-01-24 03:27:14:Memory content before bitflip:0xcb0xee0xff0xff0xff0x7f0x000x00
+2017-01-24 03:27:14:Memory content after  bitflip:0xcb0xee0xdf0xff0xff0x7f0x000x00
+2017-01-24 03:27:14:Mem contents(hex):0xcb0xee0xdf0xff0xff0x7f0x000x00
+2017-01-24 03:27:14:frame name: main
+2017-01-24 03:27:14:symbol name: argv
+2017-01-24 03:27:14:symbol filename: dgemm.c
+2017-01-24 03:27:14:symbol line: 271
+2017-01-24 03:27:14:value: 0x7fffffffebf0
+2017-01-24 03:27:14:value address: 0x7fffffffe9a0
+2017-01-24 03:27:14:Type: The type is a pointer.
+2017-01-24 03:27:14:Type sizeof: 8
+2017-01-24 03:27:14:Fault Injection Successful after 2.07961606979s

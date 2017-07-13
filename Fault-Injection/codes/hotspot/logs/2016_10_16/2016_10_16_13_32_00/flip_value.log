@@ -1,0 +1,46 @@
+2016-10-16 13:31:39:Initialization strings:
+2016-10-16 13:31:39:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-16 13:31:39:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-16 13:31:39:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-16 13:31:39:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-16 13:31:39:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-16 13:31:39:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-16 13:31:40:Trying Fault Injection
+2016-10-16 13:31:40:Backtrace BEGIN:
+2016-10-16 13:31:40:#0  __sigprocmask (how=how@entry=2, set=set@entry=0x7fffffffe288, oset=oset@entry=0x0) at ../sysdeps/unix/sysv/linux/x86_64/sigprocmask.c:39
+#1  0x00007ffff710f517 in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:161
+#2  0x0000000000405ccc in update_timestamp () at ../../include/log_helper.c:107
+#3  start_log_file (benchmark_name=0x2 <error: Cannot access memory at address 0x2>, test_info=0x7fffffffe288 "") at ../../include/log_helper.c:196
+#4  0x0000000000401681 in main (argc=2, argv=0x7fffffffe288) at hotspot_check.c:254
+
+2016-10-16 13:31:40:34	in ../sysdeps/unix/sysv/linux/x86_64/sigprocmask.c
+
+2016-10-16 13:31:40:Backtrace END
+2016-10-16 13:31:40:Type: The type is an integer type.
+2016-10-16 13:31:40:Type sizeof: 4
+2016-10-16 13:31:40:Mem contents(hex):0x000x000x000x00
+2016-10-16 13:31:40:base address to flip value: 0x7fffffffe268
+2016-10-16 13:31:40:address max offset: 4
+2016-10-16 13:31:40:Memory content before bitflip:0x000x000x000x00
+2016-10-16 13:31:40:Memory content after  bitflip:0x000x000x200x00
+2016-10-16 13:31:40:Mem contents(hex):0x000x000x200x00
+2016-10-16 13:31:40:frame name: do_system
+2016-10-16 13:31:40:symbol name: status
+2016-10-16 13:31:40:symbol filename: ../sysdeps/posix/system.c
+2016-10-16 13:31:40:symbol line: 56
+2016-10-16 13:31:40:value: 2097152
+2016-10-16 13:31:40:value address: 0x7fffffffe268
+2016-10-16 13:31:40:Type: The type is an integer type.
+2016-10-16 13:31:40:Type sizeof: 4
+2016-10-16 13:31:40:Fault Injection Successful after 1.39231204987s
+2016-10-16 13:31:40:Fault Already Injected
+2016-10-16 13:31:42:Fault Already Injected
+2016-10-16 13:31:43:Fault Already Injected
+2016-10-16 13:31:44:Fault Already Injected
+2016-10-16 13:31:45:Fault Already Injected
+2016-10-16 13:31:49:Fault Already Injected
+2016-10-16 13:31:50:Fault Already Injected
+2016-10-16 13:31:52:Fault Already Injected
+2016-10-16 13:31:52:Fault Already Injected
+2016-10-16 13:31:54:event type: exit
+2016-10-16 13:31:54:exit code: 0

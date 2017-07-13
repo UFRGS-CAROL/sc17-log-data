@@ -1,0 +1,61 @@
+[INFO -- 2017-03-27 05:25:20]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 05:25:20]
+Initialization strings:
+[INFO -- 2017-03-27 05:25:20]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 05:25:20]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 05:25:20]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 05:25:20]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 05:25:20]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 05:25:20]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 05:25:20]
+initSignal:0
+[INFO -- 2017-03-27 05:25:20]
+endSignal:3
+[INFO -- 2017-03-27 05:25:20]
+seqSignal:30
+[INFO -- 2017-03-27 05:25:20]
+faultMode:3
+[INFO -- 2017-03-27 05:25:21]
+Backtrace BEGIN:
+#0  0x00007ffff71963d0 in __open_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7143025 in __GI__IO_file_open (fp=fp@entry=0x60e1c0, filename=<optimized out>, posix_mode=<optimized out>, prot=prot@entry=438, read_write=8, is32not64=is32not64@entry=1) at fileops.c:220
+#2  0x00007ffff7143130 in _IO_new_file_fopen (fp=fp@entry=0x60e1c0, filename=filename@entry=0x7fffffffedfb "/micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15", mode=<optimized out>, mode@entry=0x408c18 "rb", is32not64=is32not64@entry=1) at fileops.c:327
+#3  0x00007ffff71384d2 in __fopen_internal (filename=0x7fffffffedfb "/micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15", mode=0x408c18 "rb", is32=1) at iofopen.c:86
+#4  0x00000000004020c8 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:141
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping array at pos: 18
+Memory content before bitflip:0x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffff71f6e52  
+address max offset: 1
+Memory content after  bitflip:0x00
+frame name: _IO_new_file_fopen
+symbol name: __PRETTY_FUNCTION__
+symbol filename: fileops.c
+symbol line: 0
+value: "_IO_new_file_fopen"
+value address: 0x7ffff71f6e40 <__PRETTY_FUNCTION__.11205>
+Type: The type is an array.
+Type sizeof: 19
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 18L)
+
+[INFO -- 2017-03-27 05:25:21]
+Fault Injection Successful after 1.19870305061s
+[INFO -- 2017-03-27 05:25:35]
+event type: exit
+[INFO -- 2017-03-27 05:25:35]
+exit code: 0

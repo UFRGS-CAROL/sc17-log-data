@@ -1,0 +1,76 @@
+[INFO -- 2017-03-10 12:18:40]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-10 12:18:40]
+Initialization strings:
+[INFO -- 2017-03-10 12:18:40]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-10 12:18:40]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 12:18:40]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 12:18:40]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-10 12:18:40]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-10 12:18:40]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-10 12:18:40]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-10 12:18:40]
+initSignal:35
+[INFO -- 2017-03-10 12:18:40]
+endSignal:40
+[INFO -- 2017-03-10 12:18:40]
+seqSignal:20
+[INFO -- 2017-03-10 12:18:40]
+faultMode:2
+[INFO -- 2017-03-10 12:19:26]
+Backtrace BEGIN:
+#0  0x00000000004707f9 in State::L__ZN5State21calc_refine_potentialERSt6vectorIiSaIiEERiS4__2618__par_loop0_2_39 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:2687
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe290 in ?? ()
+#3  0x00007fffffffe298 in ?? ()
+#4  0x00007fffffffe230 in ?? ()
+#5  0x00007fffffffe228 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2682	      duminus1 = Hic-Hl;
+2683	      //duminus2 = Uic-Ul;
+2684	      duhalf1 = Hr-Hic;
+2685	      //duhalf2 = Ur-Uic;
+2686	
+2687	      qpot = max(fabs(duminus1/Hic), fabs(duhalf1/Hic));
+2688	      if (qpot > qmax) qmax = qpot;
+2689	
+2690	      duplus1 = Ht-Hic;
+2691	      //duplus2 = Vt-Vic;
+
+Backtrace END
+Fliping value of field: tv_usec
+Memory content before bitflip:0x080x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffdc58
+address max offset: 8
+Memory content after  bitflip:0xc70xdf0xc80xcc0xb30xbc0xf20x91
+frame name: State::L__ZN5State21calc_refine_potentialERSt6vectorIiSaIiEERiS4__2618__par_loop0_2_39
+symbol name: tstart_cpu
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 2581
+value: {tv_sec = 140737488347424, tv_usec = -7930068513425137721}
+value address: 0x7fffffffdc50
+Type: The type is a structure.
+Type sizeof: 16
+Field name: tv_sec
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: tv_usec
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-10 12:19:26]
+Fault Injection Successful after 46.1463060379s
+[INFO -- 2017-03-10 12:19:51]
+event type: exit
+[INFO -- 2017-03-10 12:19:51]
+exit code: 0

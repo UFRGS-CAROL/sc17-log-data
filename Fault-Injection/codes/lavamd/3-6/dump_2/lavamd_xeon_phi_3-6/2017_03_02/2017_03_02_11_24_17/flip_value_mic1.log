@@ -1,0 +1,66 @@
+2017-03-02 11:23:38:Starting flip_value script
+2017-03-02 11:23:38:Initialization strings:
+2017-03-02 11:23:38:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 11:23:38:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 11:23:38:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 11:23:38:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-02 11:23:38:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-02 11:23:38:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-03-02 11:23:38:initSignal:3
+2017-03-02 11:23:38:endSignal:6
+2017-03-02 11:23:38:seqSignal:30
+2017-03-02 11:23:42:Backtrace BEGIN:
+2017-03-02 11:23:42:#0  __GI___waitpid (pid=167615, stat_loc=stat_loc@entry=0x7fffffffdea8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000406619 in update_timestamp () at ../include/log_helper.c:107
+#3  0x00000000004069fe in start_log_file (benchmark_name=0x408cc0 "openmpLavaMD", test_info=0x7fffffffe648 "box:15 spaceElem:337500 cores:228") at ../include/log_helper.c:196
+#4  0x0000000000402707 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:190
+
+2017-03-02 11:23:42:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-03-02 11:23:42:Backtrace END
+2017-03-02 11:23:42:Type: The type is an integer type.
+2017-03-02 11:23:42:Type sizeof: 4
+2017-03-02 11:23:42:Mem contents(hex):0x000x000x000x00
+2017-03-02 11:23:42:Fault Mode: Zero bit-flip
+2017-03-02 11:23:42:base address to flip value: 0x60d0a0 
+2017-03-02 11:23:42:address max offset: 4
+2017-03-02 11:23:42:Memory content before bitflip:0x000x000x000x00
+2017-03-02 11:23:43:Backtrace BEGIN:
+2017-03-02 11:23:43:#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff7430125 in create_thread (pd=pd@entry=0x7fff2c7e3500, attr=attr@entry=0x7fffffffdd18, stopped_start=<optimized out>, stopped_start@entry=false, stackaddr=<optimized out>, thread_ran=0x7fffffffdab7) at ../sysdeps/unix/sysv/linux/createthread.c:102
+#2  0x00007ffff7431adf in __pthread_create_2_1 (newthread=<optimized out>, attr=<optimized out>, start_routine=<optimized out>, arg=<optimized out>) at pthread_create.c:664
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-03-02 11:23:43:76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+2017-03-02 11:23:43:Backtrace END
+2017-03-02 11:23:44:Type: The type is an array.
+2017-03-02 11:23:44:Type sizeof: 12
+2017-03-02 11:23:44:Fliping array at pos: 1
+2017-03-02 11:23:44:Type: The type is an integer type.
+2017-03-02 11:23:44:Type sizeof: 4
+2017-03-02 11:23:44:Mem contents(hex):0x010x000x000x00
+2017-03-02 11:23:44:Fault Mode: Double bit-flip
+2017-03-02 11:23:44:base address to flip value: 0x7ffff743c254 
+2017-03-02 11:23:44:address max offset: 4
+2017-03-02 11:23:44:Memory content before bitflip:0x010x000x000x00
+2017-03-02 11:23:44:Memory content after  bitflip:0x010x000x000x42
+2017-03-02 11:23:44:Mem contents(hex):0x010x000x000x42
+2017-03-02 11:23:44:frame name: create_thread
+2017-03-02 11:23:44:symbol name: _thread_db_pthread_dtvp
+2017-03-02 11:23:44:symbol filename: ../nptl_db/structs.def
+2017-03-02 11:23:44:symbol line: 78
+2017-03-02 11:23:44:value: {64, 1107296257, 8}
+2017-03-02 11:23:44:value address: 0x7ffff743c250 <_thread_db_pthread_key_struct_destr>
+2017-03-02 11:23:44:Type: The type is an array.
+2017-03-02 11:23:44:Type sizeof: 12
+2017-03-02 11:23:44:Field name: None
+2017-03-02 11:23:44:Field Type:
+2017-03-02 11:23:44:Type: A range type, that is, an integer type with bounds.
+2017-03-02 11:23:44:Type sizeof: 8
+2017-03-02 11:23:44:Type range: (0L, 2L)
+2017-03-02 11:23:44:Fault Injection Successful after 6.93320703506s
+2017-03-02 11:24:10:event type: exit
+2017-03-02 11:24:10:exit code: 0

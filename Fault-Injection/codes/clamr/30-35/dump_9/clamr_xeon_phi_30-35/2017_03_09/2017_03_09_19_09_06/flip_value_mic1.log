@@ -1,0 +1,58 @@
+[INFO -- 2017-03-09 19:06:15]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-09 19:06:15]
+Initialization strings:
+[INFO -- 2017-03-09 19:06:16]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-09 19:06:16]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-09 19:06:16]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-09 19:06:16]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-09 19:06:16]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-09 19:06:16]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-09 19:06:16]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-09 19:06:16]
+initSignal:30
+[INFO -- 2017-03-09 19:06:16]
+endSignal:35
+[INFO -- 2017-03-09 19:06:16]
+seqSignal:20
+[INFO -- 2017-03-09 19:06:16]
+faultMode:2
+[INFO -- 2017-03-09 19:06:57]
+Backtrace BEGIN:
+#0  _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1641
+#1  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#2  0x000000000054b9dd in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:479
+#3  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#4  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+1636	in vfprintf.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7d0744 
+address max offset: 4
+Memory content after  bitflip:0x5c0x8b0x3d0xc5
+frame name: main
+symbol name: crux_type
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 134
+value: -985822372
+value address: 0x7d0744 <crux_type>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-09 19:06:57]
+Fault Injection Successful after 41.513078928s
+[INFO -- 2017-03-09 19:08:57]
+event type: exit
+[INFO -- 2017-03-09 19:08:57]
+exit code: 0

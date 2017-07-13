@@ -1,0 +1,48 @@
+2016-10-12 22:26:33:Initialization strings:
+2016-10-12 22:26:33:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-12 22:26:33:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 22:26:33:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 22:26:33:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-12 22:26:33:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-12 22:26:33:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-12 22:26:35:Trying Fault Injection
+2016-10-12 22:26:35:Backtrace BEGIN:
+2016-10-12 22:26:35:#0  _IO_old_init (fp=fp@entry=0x7fffffffe400, flags=flags@entry=32768) at genops.c:631
+#1  0x00007ffff714492b in _IO_no_init (fp=fp@entry=0x7fffffffe400, flags=flags@entry=32768, orientation=orientation@entry=-1, wd=wd@entry=0x0, jmp=jmp@entry=0x0) at genops.c:644
+#2  0x00007ffff71365b7 in __GI___isoc99_vsscanf (string=0x7fffffffe77a "323.895154\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:39
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#5  main (argc=-7168, argv=0x8000) at hotspot_check.c:264
+
+2016-10-12 22:26:35:626	in genops.c
+
+2016-10-12 22:26:35:Backtrace END
+2016-10-12 22:26:36:Type: The type is a pointer.
+2016-10-12 22:26:36:Type sizeof: 8
+2016-10-12 22:26:36:Fliping a bit of the pointer
+2016-10-12 22:26:36:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-10-12 22:26:36:base address to flip value: 0x7ffff74266d0 
+2016-10-12 22:26:36:address max offset: 8
+2016-10-12 22:26:36:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-10-12 22:26:36:Memory content after  bitflip:0x400x000x000x000x000x000x000x00
+2016-10-12 22:26:36:Mem contents(hex):0x400x000x000x000x000x000x000x00
+2016-10-12 22:26:36:frame name: _IO_old_init
+2016-10-12 22:26:36:symbol name: run_fp
+2016-10-12 22:26:36:symbol filename: genops.c
+2016-10-12 22:26:36:symbol line: 45
+2016-10-12 22:26:36:value: 0x0
+2016-10-12 22:26:36:value address: 0x7ffff74266d0 <run_fp>
+2016-10-12 22:26:36:Type: The type is a pointer.
+2016-10-12 22:26:36:Type sizeof: 8
+2016-10-12 22:26:36:Fault Injection Successful after 3.0309419632s
+2016-10-12 22:26:36:Fault Already Injected
+2016-10-12 22:26:39:Fault Already Injected
+2016-10-12 22:26:39:Fault Already Injected
+2016-10-12 22:26:40:Fault Already Injected
+2016-10-12 22:26:42:Fault Already Injected
+2016-10-12 22:26:43:Fault Already Injected
+2016-10-12 22:26:45:Fault Already Injected
+2016-10-12 22:26:46:Fault Already Injected
+2016-10-12 22:26:48:Fault Already Injected
+2016-10-12 22:26:48:event type: exit
+2016-10-12 22:26:48:exit code: 0

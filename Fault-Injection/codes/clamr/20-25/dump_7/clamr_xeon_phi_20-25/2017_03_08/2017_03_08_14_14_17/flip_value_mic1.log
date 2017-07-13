@@ -1,0 +1,65 @@
+[INFO -- 2017-03-08 14:09:39]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-08 14:09:39]
+Initialization strings:
+[INFO -- 2017-03-08 14:09:39]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-08 14:09:39]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 14:09:39]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 14:09:39]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 14:09:39]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 14:09:39]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-08 14:09:39]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-08 14:09:39]
+initSignal:20
+[INFO -- 2017-03-08 14:09:39]
+endSignal:25
+[INFO -- 2017-03-08 14:09:39]
+seqSignal:20
+[INFO -- 2017-03-08 14:09:39]
+faultMode:0
+[INFO -- 2017-03-08 14:10:06]
+Backtrace BEGIN:
+#0  0x000000000054b6b4 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:473
+#1  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#2  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+468	                    color = graphics_proc[i]*step;
+469	                    //fprintf(fp,"%d,%d,%d,%d,%f\n",xloc,yloc,xwid,ywid,data[i]);
+470	                    fprintf(fp,"%d,%d,%d,%d,%d\n",xloc,yloc,xwid,ywid,color);
+471	
+472	                    xloc1 = (int)((x_double[i]-graphics_xmin)*xconversion);
+473	                    xloc2 = (int)((x_double[i]+dx_double[i]-graphics_xmin)*xconversion);
+474	                    yloc1 = (int)((graphics_ymax-y_double[i])*yconversion);
+475	                    yloc2 = (int)((graphics_ymax-(y_double[i]+dy_double[i]))*yconversion);
+476	                    fprintf(fp2,"%d,%d,%d,%d\n",xloc1,yloc2,xloc2,yloc2);
+477	                    fprintf(fp2,"%d,%d,%d,%d\n",xloc1,yloc1,xloc2,yloc1);
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7cfd44 
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x02
+frame name: write_graphics_info
+symbol name: spatial_type
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c
+symbol line: 195
+value: 33554432
+value address: 0x7cfd44 <spatial_type>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-08 14:10:06]
+Fault Injection Successful after 27.2306120396s
+[INFO -- 2017-03-08 14:10:57]
+event type: exit
+[INFO -- 2017-03-08 14:10:57]
+exit code: 0

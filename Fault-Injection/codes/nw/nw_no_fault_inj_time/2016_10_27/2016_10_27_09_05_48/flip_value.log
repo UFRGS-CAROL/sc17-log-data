@@ -1,0 +1,64 @@
+2016-10-27 09:05:22:Initialization strings:
+2016-10-27 09:05:23:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-27 09:05:23:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-27 09:05:23:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-27 09:05:23:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-27 09:05:23:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-27 09:05:23:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-27 09:05:23:Trying Fault Injection
+2016-10-27 09:05:23:Inferior PID: 33558
+2016-10-27 09:05:23:Inferior is valid: True
+2016-10-27 09:05:23:Inferior #threads: 1
+2016-10-27 09:05:23:Backtrace BEGIN:
+2016-10-27 09:05:23:#0  __GI___waitpid (pid=33565, stat_loc=stat_loc@entry=0x7fffffffe5e8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff6d9d41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x000000000040648c in update_timestamp () at ../../include/log_helper.c:108
+#3  start_log_file (benchmark_name=0x831d <error: Cannot access memory at address 0x831d>, test_info=0x7fffffffe5e8 "") at ../../include/log_helper.c:197
+#4  0x00000000004014df in runTest (argc=<optimized out>, argv=<optimized out>) at needle_check.cpp:294
+#5  main (argc=33565, argv=0x7fffffffe5e8) at needle_check.cpp:114
+
+2016-10-27 09:05:23:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-27 09:05:23:Backtrace END
+2016-10-27 09:05:23:Thread name: None
+2016-10-27 09:05:23:Thread num: 1
+2016-10-27 09:05:23:Thread ptid: (33558, 33558, 0)
+2016-10-27 09:05:23:bitFlip function
+2016-10-27 09:05:23:Type: The type is a structure.
+2016-10-27 09:05:23:Type sizeof: 128
+2016-10-27 09:05:23:Fliping value of field: __val
+2016-10-27 09:05:23:bitFlip function
+2016-10-27 09:05:23:Type: The type is an array.
+2016-10-27 09:05:23:Type sizeof: 128
+2016-10-27 09:05:23:Fliping array at pos: 13
+2016-10-27 09:05:23:bitFlip function
+2016-10-27 09:05:23:Type: The type is an integer type.
+2016-10-27 09:05:23:Type sizeof: 8
+2016-10-27 09:05:23:Mem contents(hex):0x010x000x000x000x000x000x000x00
+2016-10-27 09:05:23:base address to flip value: 0x7fffffffe670
+2016-10-27 09:05:23:address max offset: 8
+2016-10-27 09:05:23:Memory content before bitflip:0x010x000x000x000x000x000x000x00
+2016-10-27 09:05:23:Memory content after  bitflip:0x010x000x000x000x000x000x010x00
+2016-10-27 09:05:23:Mem contents(hex):0x010x000x000x000x000x000x010x00
+2016-10-27 09:05:23:frame name: do_system
+2016-10-27 09:05:23:symbol name: omask
+2016-10-27 09:05:23:symbol filename: ../sysdeps/posix/system.c
+2016-10-27 09:05:23:symbol line: 62
+2016-10-27 09:05:23:value: {__val = {0, 0, 140737338087296, 0, 137438953472, 0, 140737340309640, 10, 140737488349576, 0, 4225412, 0, 140737351954410, 281474976710657, 0, 2126}}
+2016-10-27 09:05:23:value address: 0x7fffffffe608
+2016-10-27 09:05:23:Type: The type is a structure.
+2016-10-27 09:05:23:Type sizeof: 128
+2016-10-27 09:05:23:Field name: __val
+2016-10-27 09:05:23:Field Type:
+2016-10-27 09:05:23:Type: The type is an array.
+2016-10-27 09:05:23:Type sizeof: 128
+2016-10-27 09:05:23:Fault Injection Successful after 0.761389017105s
+2016-10-27 09:05:27:Fault Already Injected
+2016-10-27 09:05:31:Fault Already Injected
+2016-10-27 09:05:35:Fault Already Injected
+2016-10-27 09:05:36:Fault Already Injected
+2016-10-27 09:05:36:Fault Already Injected
+2016-10-27 09:05:40:Fault Already Injected
+2016-10-27 09:05:40:Fault Already Injected
+2016-10-27 09:05:41:event type: exit
+2016-10-27 09:05:41:exit code: 0

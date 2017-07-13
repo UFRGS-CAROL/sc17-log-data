@@ -1,0 +1,37 @@
+2016-11-02 00:16:20:Initialization strings:
+2016-11-02 00:16:20:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-11-02 00:16:20:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-02 00:16:20:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-02 00:16:20:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-02 00:16:20:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-02 00:16:20:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-11-02 00:16:22:Trying Fault Injection
+2016-11-02 00:16:22:Backtrace BEGIN:
+2016-11-02 00:16:22:#0  0x00007ffff713838b in _IO_acquire_lock_fct (p=<synthetic pointer>) at libioP.h:892
+#1  _IO_fgets (buf=<optimized out>, n=<optimized out>, fp=0x609b40) at iofgets.c:50
+#2  0x0000000000401712 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:201
+#3  main (argc=-6267, argv=0xfffffffff7f77437) at hotspot_check.c:264
+
+2016-11-02 00:16:22:887	in libioP.h
+
+2016-11-02 00:16:22:Backtrace END
+2016-11-02 00:16:22:Type: The type is an integer type.
+2016-11-02 00:16:22:Type sizeof: 4
+2016-11-02 00:16:22:Mem contents(hex):0x640xee0xff0xff
+2016-11-02 00:16:22:base address to flip value: 0x7fffffffe610
+2016-11-02 00:16:22:address max offset: 4
+2016-11-02 00:16:22:Memory content before bitflip:0x640xee0xff0xff
+2016-11-02 00:16:22:Memory content after  bitflip:0x640xee0xff0xef
+2016-11-02 00:16:22:Mem contents(hex):0x640xee0xff0xef
+2016-11-02 00:16:22:frame name: read_input
+2016-11-02 00:16:22:symbol name: errors
+2016-11-02 00:16:22:symbol filename: hotspot_check.c
+2016-11-02 00:16:22:symbol line: 281
+2016-11-02 00:16:22:value: -268439964
+2016-11-02 00:16:22:value address: 0x7fffffffe610
+2016-11-02 00:16:22:Type: The type is an integer type.
+2016-11-02 00:16:22:Type sizeof: 4
+2016-11-02 00:16:22:Fault Injection Successful after 2.56862592697s
+2016-11-02 00:16:24:Fault Already Injected
+2016-11-02 00:16:25:event type: exit
+2016-11-02 00:16:25:exit code: 1

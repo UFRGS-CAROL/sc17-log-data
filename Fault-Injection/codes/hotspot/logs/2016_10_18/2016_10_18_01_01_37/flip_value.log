@@ -1,0 +1,52 @@
+2016-10-18 01:01:16:Initialization strings:
+2016-10-18 01:01:16:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-18 01:01:16:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-18 01:01:16:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-18 01:01:16:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-18 01:01:16:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-18 01:01:16:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-18 01:01:17:Trying Fault Injection
+2016-10-18 01:01:17:Backtrace BEGIN:
+2016-10-18 01:01:17:#0  read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:200
+#1  main (argc=-7552, argv=0x0) at hotspot_check.c:264
+
+2016-10-18 01:01:17:195	
+196	    fp = fopen (file, "r");
+197	    if (!fp)
+198	        fatal ("file could not be opened for reading");
+199	
+200	    for (i=0; i < grid_rows * grid_cols; i++) {
+201	        if (fgets(str, STR_SIZE, fp) == NULL) {
+202	            fatal("fgets error");
+203	        }
+204	        if (feof(fp))
+
+2016-10-18 01:01:17:Backtrace END
+2016-10-18 01:01:17:Type: A floating point type.
+2016-10-18 01:01:17:Type sizeof: 4
+2016-10-18 01:01:17:Mem contents(hex):0x000x000xa00x42
+2016-10-18 01:01:17:base address to flip value: 0x4073a4 
+2016-10-18 01:01:17:address max offset: 4
+2016-10-18 01:01:17:Memory content before bitflip:0x000x000xa00x42
+2016-10-18 01:01:17:Memory content after  bitflip:0x040x000xa00x42
+2016-10-18 01:01:17:Mem contents(hex):0x040x000xa00x42
+2016-10-18 01:01:17:frame name: main
+2016-10-18 01:01:17:symbol name: amb_temp
+2016-10-18 01:01:17:symbol filename: hotspot_check.c
+2016-10-18 01:01:17:symbol line: 37
+2016-10-18 01:01:17:value: 80.0000305
+2016-10-18 01:01:17:value address: 0x4073a4 <amb_temp>
+2016-10-18 01:01:17:Type: A floating point type.
+2016-10-18 01:01:17:Type sizeof: 4
+2016-10-18 01:01:17:Fault Injection Successful after 1.23917198181s
+2016-10-18 01:01:18:Fault Already Injected
+2016-10-18 01:01:20:Fault Already Injected
+2016-10-18 01:01:20:Fault Already Injected
+2016-10-18 01:01:23:Fault Already Injected
+2016-10-18 01:01:25:Fault Already Injected
+2016-10-18 01:01:26:Fault Already Injected
+2016-10-18 01:01:26:Fault Already Injected
+2016-10-18 01:01:28:Fault Already Injected
+2016-10-18 01:01:29:Fault Already Injected
+2016-10-18 01:01:31:event type: exit
+2016-10-18 01:01:31:exit code: 0

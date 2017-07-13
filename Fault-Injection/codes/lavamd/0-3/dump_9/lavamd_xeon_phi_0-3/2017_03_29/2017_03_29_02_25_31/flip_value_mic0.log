@@ -1,0 +1,59 @@
+[INFO -- 2017-03-29 02:24:40]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-29 02:24:40]
+Initialization strings:
+[INFO -- 2017-03-29 02:24:40]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-29 02:24:40]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-29 02:24:40]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-29 02:24:40]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-29 02:24:40]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-29 02:24:40]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-29 02:24:40]
+initSignal:0
+[INFO -- 2017-03-29 02:24:40]
+endSignal:3
+[INFO -- 2017-03-29 02:24:40]
+seqSignal:30
+[INFO -- 2017-03-29 02:24:40]
+faultMode:1
+[INFO -- 2017-03-29 02:24:41]
+Backtrace BEGIN:
+#0  __dcigettext (domainname=0x7ffff71eeccd <_libc_intl_domainname> "libc", msgid1=0x7ffff71ef067 "No such file or directory", msgid2=msgid2@entry=0x0, plural=plural@entry=0, n=n@entry=0, category=category@entry=5) at dcigettext.c:527
+#1  0x00007ffff70fcdcf in __GI___dcgettext (domainname=<optimized out>, msgid=<optimized out>, category=category@entry=5) at dcgettext.c:47
+#2  0x00007ffff714e2ca in __GI___strerror_r (errnum=errnum@entry=2, buf=buf@entry=0x0, buflen=buflen@entry=0) at _strerror.c:71
+#3  0x00007ffff714e1ff in strerror (errnum=2) at strerror.c:32
+#4  0x00007ffff6ece2bd in __dlerror () at dlerror.c:99
+#5  0x00007ffff7909dc8 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+522	in dcigettext.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7ffff74256c0 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x440x000x00
+frame name: strerror
+symbol name: buf
+symbol filename: strerror.c
+symbol line: 26
+value: 0x0
+value address: 0x7ffff74256c0 <buf>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-29 02:24:41]
+Fault Injection Successful after 1.25367903709s
+[INFO -- 2017-03-29 02:24:59]
+event type: exit
+[INFO -- 2017-03-29 02:24:59]
+exit code: 0

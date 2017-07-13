@@ -1,0 +1,86 @@
+2016-10-22 13:19:30:Initialization strings:
+2016-10-22 13:19:31:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-22 13:19:31:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-22 13:19:31:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-22 13:19:31:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-22 13:19:31:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-22 13:19:31:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-22 13:19:33:Trying Fault Injection
+2016-10-22 13:19:33:Backtrace BEGIN:
+2016-10-22 13:19:33:#0  __GI___rawmemchr (s=s@entry=0x7fffffffe77a, c_in=c_in@entry=0) at ../string/rawmemchr.c:69
+#1  0x00007ffff7145ad0 in _IO_str_init_static_internal (sf=sf@entry=0x7fffffffe400, ptr=ptr@entry=0x7fffffffe77a "331.804173\n", size=size@entry=0, pstart=pstart@entry=0x0) at strops.c:44
+#2  0x00007ffff71365d5 in __GI___isoc99_vsscanf (string=0x7fffffffe77a "331.804173\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:41
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#5  main (argc=-6276, argv=0x0) at hotspot_check.c:264
+
+2016-10-22 13:19:33:64	in ../string/rawmemchr.c
+
+2016-10-22 13:19:33:Backtrace END
+2016-10-22 13:19:33:Type: The type is an array.
+2016-10-22 13:19:33:Type sizeof: 24
+2016-10-22 13:19:33:Fliping array at pos: 0
+2016-10-22 13:19:33:Type: The type is a structure.
+2016-10-22 13:19:33:Type sizeof: 24
+2016-10-22 13:19:33:Fliping value of field: overflow_arg_area
+2016-10-22 13:19:33:Type: The type is a pointer.
+2016-10-22 13:19:33:Type sizeof: 8
+2016-10-22 13:19:33:Fault Injection Failed after 2.32561993599s
+2016-10-22 13:19:33:Trying Fault Injection
+2016-10-22 13:19:33:Backtrace BEGIN:
+2016-10-22 13:19:33:#0  0x00007ffff7126544 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2084
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "327.200114\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=-7168, argv=0x9) at hotspot_check.c:264
+
+2016-10-22 13:19:33:2079	in vfscanf.c
+
+2016-10-22 13:19:33:Backtrace END
+2016-10-22 13:19:33:Type: The type is a structure.
+2016-10-22 13:19:33:Type sizeof: 240
+2016-10-22 13:19:33:Fliping value of field: _sbf
+2016-10-22 13:19:33:Type: The type is a structure.
+2016-10-22 13:19:33:Type sizeof: 224
+2016-10-22 13:19:33:Fliping value of field: vtable
+2016-10-22 13:19:33:Type: The type is a pointer.
+2016-10-22 13:19:33:Type sizeof: 8
+2016-10-22 13:19:33:Fliping a bit of the value pointed by a pointer
+2016-10-22 13:19:33:Type: The type is a structure.
+2016-10-22 13:19:33:Type sizeof: 168
+2016-10-22 13:19:33:Fliping value of field: __xsputn
+2016-10-22 13:19:33:Type: The type is a pointer.
+2016-10-22 13:19:33:Type sizeof: 8
+2016-10-22 13:19:33:Fliping a bit of the pointer
+2016-10-22 13:19:33:Mem contents(hex):0xc00x450x140xf70xff0x7f0x000x00
+2016-10-22 13:19:33:base address to flip value: 0x7ffff74237b8 
+2016-10-22 13:19:33:address max offset: 8
+2016-10-22 13:19:33:Memory content before bitflip:0xc00x450x140xf70xff0x7f0x000x00
+2016-10-22 13:19:33:Memory content after  bitflip:0xc00x450x1c0xf70xff0x7f0x000x00
+2016-10-22 13:19:33:Mem contents(hex):0xc00x450x1c0xf70xff0x7f0x000x00
+2016-10-22 13:19:33:frame name: __GI___isoc99_vsscanf
+2016-10-22 13:19:33:symbol name: sf
+2016-10-22 13:19:33:symbol filename: isoc99_vsscanf.c
+2016-10-22 13:19:33:symbol line: 35
+2016-10-22 13:19:33:value: {_sbf = {_f = {_flags = -72515583, _IO_read_ptr = 0x7fffffffe783 "4\n", _IO_read_end = 0x7fffffffe785 "", _IO_read_base = 0x7fffffffe77a "327.200114\n", _IO_write_base = 0x7fffffffe77a "327.200114\n", _IO_write_ptr = 0x7fffffffe77a "327.200114\n", _IO_write_end = 0x7fffffffe77a "327.200114\n", _IO_buf_base = 0x7fffffffe77a "327.200114\n", _IO_buf_end = 0x7fffffffe785 "", _IO_save_base = 0x0, _IO_backup_base = 0x0, _IO_save_end = 0x0, _markers = 0x0, _chain = 0x0, _fileno = 4196942, _flags2 = 16, _old_offset = 1273442592, _cur_column = 0, _vtable_offset = 12 '\f', _shortbuf = "\006", _lock = 0x0, _offset = 140737338238248, _codecvt = 0x7ffff7ff99a0, _wide_data = 0xffffffffffffffff, _freeres_list = 0x0, _freeres_buf = 0x3e8, _freeres_size = 0, _mode = -1, _unused2 = "\000\000\000\000\000\000\020\000\000\000\000\000\000X\000\000\000\000\000"}, vtable = 0x7ffff7423780 <_IO_str_jumps>}, _s = {_allocate_buffer = 0x0, _free_buffer = 0x57dc48ad}}
+2016-10-22 13:19:33:value address: 0x7fffffffe400
+2016-10-22 13:19:33:Type: The type is a structure.
+2016-10-22 13:19:33:Type sizeof: 240
+2016-10-22 13:19:33:Field name: _sbf
+2016-10-22 13:19:33:Field Type:
+2016-10-22 13:19:33:Type: The type is a structure.
+2016-10-22 13:19:33:Type sizeof: 224
+2016-10-22 13:19:33:Field name: _s
+2016-10-22 13:19:33:Field Type:
+2016-10-22 13:19:33:Type: The type is a structure.
+2016-10-22 13:19:33:Type sizeof: 16
+2016-10-22 13:19:33:Fault Injection Successful after 2.63934206963s
+2016-10-22 13:19:34:Fault Already Injected
+2016-10-22 13:19:37:Fault Already Injected
+2016-10-22 13:19:37:Fault Already Injected
+2016-10-22 13:19:42:Fault Already Injected
+2016-10-22 13:19:43:Fault Already Injected
+2016-10-22 13:19:43:Fault Already Injected
+2016-10-22 13:19:44:Fault Already Injected
+2016-10-22 13:19:44:event type: exit
+2016-10-22 13:19:44:exit code: no exit code available

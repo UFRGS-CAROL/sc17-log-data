@@ -1,0 +1,50 @@
+2017-02-20 11:08:29:Starting flip_value script
+2017-02-20 11:08:29:Initialization strings:
+2017-02-20 11:08:29:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-20 11:08:29:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 11:08:29:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 11:08:29:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-20 11:08:29:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-20 11:08:29:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-20 11:08:29:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-20 11:08:29:initSignal:10
+2017-02-20 11:08:29:endSignal:15
+2017-02-20 11:08:29:seqSignal:20
+2017-02-20 11:08:39:Backtrace BEGIN:
+2017-02-20 11:08:39:#0  0x000000000053c915 in KDTree_AddElement (t=0x22a9cc8, add=0x26b1cd8) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:175
+#1  0x0000000000509f88 in Mesh::kdtree_setup (this=0x7f9a50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2368
+#2  0x0000000000471c62 in State::fill_circle (this=0x7fa5e0, circ_radius=24, fill_value=100, background=7) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:983
+#3  0x00000000004452cb in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:282
+
+2017-02-20 11:08:39:170	   }
+171	   /* Add the new element to the overall extent and the element list */
+172	   Bounds_AddBounds(&(t->extent), add);
+173	   Bounds_Copy(add, &(t->elements[t->elements_num]));
+174	   t->elements_num++;
+175	}
+176	
+177	void KDTree_CreateTree(TKDTree* t)
+178	{
+179	   unsigned int i;
+
+2017-02-20 11:08:39:Backtrace END
+2017-02-20 11:08:45:Type: The type is an integer type.
+2017-02-20 11:08:45:Type sizeof: 4
+2017-02-20 11:08:45:Mem contents(hex):0x660x000x000x00
+2017-02-20 11:08:45:Fault Mode: Single bit-flip
+2017-02-20 11:08:45:base address to flip value: 0x56ac6c 
+2017-02-20 11:08:45:address max offset: 4
+2017-02-20 11:08:45:Memory content before bitflip:0x660x000x000x00
+2017-02-20 11:08:45:Memory content after  bitflip:0x660x000x000x80
+2017-02-20 11:08:45:Mem contents(hex):0x660x000x000x80
+2017-02-20 11:08:45:frame name: State::fill_circle
+2017-02-20 11:08:45:symbol name: CRUX_STATE_VERSION
+2017-02-20 11:08:45:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+2017-02-20 11:08:45:symbol line: 3647
+2017-02-20 11:08:45:value: -2147483546
+2017-02-20 11:08:45:value address: 0x56ac6c <CRUX_STATE_VERSION>
+2017-02-20 11:08:45:Type: The type is an integer type.
+2017-02-20 11:08:45:Type sizeof: 4
+2017-02-20 11:08:45:Fault Injection Successful after 16.3234410286s
+2017-02-20 11:09:29:event type: exit
+2017-02-20 11:09:29:exit code: 0

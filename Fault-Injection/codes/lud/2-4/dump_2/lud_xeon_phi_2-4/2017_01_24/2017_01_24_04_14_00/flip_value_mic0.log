@@ -1,0 +1,130 @@
+2017-01-24 04:13:32:Starting flip_value script
+2017-01-24 04:13:32:Initialization strings:
+2017-01-24 04:13:33:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-24 04:13:33:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 04:13:33:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 04:13:33:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 04:13:33:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 04:13:33:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-24 04:13:33:initSignal:2
+2017-01-24 04:13:33:endSignal:4
+2017-01-24 04:13:33:seqSignal:30
+2017-01-24 04:13:36:Trying Fault Injection
+2017-01-24 04:13:36:Inferior PID: 32098
+2017-01-24 04:13:36:Inferior is valid: True
+2017-01-24 04:13:36:Inferior #threads: 229
+2017-01-24 04:13:36:Backtrace BEGIN:
+2017-01-24 04:13:36:#0  0x000000000040429b in L_lud_omp_69__par_loop0_2_4 () at lud_omp.c:93
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-01-24 04:13:36:88	            j_global += BS * (chunk_idx+1);
+89	            for (j = 0; j < BS; j++) {
+90	                for (i = 0; i < BS; i++) {
+91	                    sum = 0.f;
+92	                    for (k=0; k < i; k++) {
+93	                        sum += temp[BS*i +k] * BB((i_global+k),(j_global+j));
+94	                    }
+95	                    i_here = i_global + i;
+96	                    j_here = j_global + j;
+97	                    BB(i_here, j_here) = BB(i_here,j_here) - sum;
+
+2017-01-24 04:13:36:Backtrace END
+2017-01-24 04:13:40:Thread name: None
+2017-01-24 04:13:40:Thread num: 1
+2017-01-24 04:13:40:Thread ptid: (32098, 32098, 0)
+2017-01-24 04:13:40:bitFlip function
+2017-01-24 04:13:40:Type: The type is a pointer.
+2017-01-24 04:13:40:Type sizeof: 8
+2017-01-24 04:13:40:Fliping a bit of the value pointed by a pointer
+2017-01-24 04:13:40:bitFlip function
+2017-01-24 04:13:40:Type: A floating point type.
+2017-01-24 04:13:40:Type sizeof: 4
+2017-01-24 04:13:40:Error gdbException(frameFlip): Cannot access memory at address 0x1
+2017-01-24 04:13:40:Error Exception(frameFlip): invalid frame
+2017-01-24 04:13:40:Fault Injection Failed after 7.30426311493s
+2017-01-24 04:13:40:Trying Fault Injection
+2017-01-24 04:13:40:Inferior PID: 32098
+2017-01-24 04:13:40:Inferior is valid: True
+2017-01-24 04:13:40:Inferior #threads: 229
+2017-01-24 04:13:40:Backtrace BEGIN:
+2017-01-24 04:13:40:#0  0x000000000040429b in L_lud_omp_69__par_loop0_2_4 () at lud_omp.c:93
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-01-24 04:13:40:88	            j_global += BS * (chunk_idx+1);
+89	            for (j = 0; j < BS; j++) {
+90	                for (i = 0; i < BS; i++) {
+91	                    sum = 0.f;
+92	                    for (k=0; k < i; k++) {
+93	                        sum += temp[BS*i +k] * BB((i_global+k),(j_global+j));
+94	                    }
+95	                    i_here = i_global + i;
+96	                    j_here = j_global + j;
+97	                    BB(i_here, j_here) = BB(i_here,j_here) - sum;
+
+2017-01-24 04:13:40:Backtrace END
+2017-01-24 04:13:44:Thread name: None
+2017-01-24 04:13:44:Thread num: 1
+2017-01-24 04:13:44:Thread ptid: (32098, 32098, 0)
+2017-01-24 04:13:44:bitFlip function
+2017-01-24 04:13:44:Type: The type is an integer type.
+2017-01-24 04:13:44:Type sizeof: 4
+2017-01-24 04:13:44:Mem contents(hex):0xe30x510x100xf7
+2017-01-24 04:13:44:base address to flip value: 0x7fffffffc678
+2017-01-24 04:13:44:address max offset: 4
+2017-01-24 04:13:44:Memory content before bitflip:0xe30x510x100xf7
+2017-01-24 04:13:44:Memory content after  bitflip:0xe10x510x100xf7
+2017-01-24 04:13:44:Mem contents(hex):0xe10x510x100xf7
+2017-01-24 04:13:44:frame name: L_lud_omp_69__par_loop0_2_4
+2017-01-24 04:13:44:symbol name: offset
+2017-01-24 04:13:44:symbol filename: lud_omp.c
+2017-01-24 04:13:44:symbol line: 45
+2017-01-24 04:13:44:value: -149925407
+2017-01-24 04:13:44:value address: 0x7fffffffc678
+2017-01-24 04:13:44:Type: The type is an integer type.
+2017-01-24 04:13:44:Type sizeof: 4
+2017-01-24 04:13:44:Fault Injection Successful after 11.042632103s
+2017-01-24 04:13:44:Fault Already Injected
+2017-01-24 04:13:44:Fault Already Injected
+2017-01-24 04:13:44:Fault Already Injected
+2017-01-24 04:13:44:Fault Already Injected
+2017-01-24 04:13:45:Fault Already Injected
+2017-01-24 04:13:45:Fault Already Injected
+2017-01-24 04:13:46:Fault Already Injected
+2017-01-24 04:13:46:Fault Already Injected
+2017-01-24 04:13:46:Fault Already Injected
+2017-01-24 04:13:47:Fault Already Injected
+2017-01-24 04:13:47:Fault Already Injected
+2017-01-24 04:13:47:Fault Already Injected
+2017-01-24 04:13:47:Fault Already Injected
+2017-01-24 04:13:48:Fault Already Injected
+2017-01-24 04:13:48:Fault Already Injected
+2017-01-24 04:13:48:Fault Already Injected
+2017-01-24 04:13:49:Fault Already Injected
+2017-01-24 04:13:49:Fault Already Injected
+2017-01-24 04:13:49:Fault Already Injected
+2017-01-24 04:13:50:Fault Already Injected
+2017-01-24 04:13:50:Fault Already Injected
+2017-01-24 04:13:50:Fault Already Injected
+2017-01-24 04:13:50:Fault Already Injected
+2017-01-24 04:13:51:Fault Already Injected
+2017-01-24 04:13:51:Fault Already Injected
+2017-01-24 04:13:51:Fault Already Injected
+2017-01-24 04:13:52:Fault Already Injected
+2017-01-24 04:13:52:Fault Already Injected
+2017-01-24 04:13:52:Fault Already Injected
+2017-01-24 04:13:52:Fault Already Injected
+2017-01-24 04:13:52:Fault Already Injected
+2017-01-24 04:13:53:Fault Already Injected
+2017-01-24 04:13:53:Fault Already Injected
+2017-01-24 04:13:53:event type: exit
+2017-01-24 04:13:53:exit code: 0

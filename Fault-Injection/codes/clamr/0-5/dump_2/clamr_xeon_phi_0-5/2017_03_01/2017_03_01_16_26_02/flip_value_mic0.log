@@ -1,0 +1,55 @@
+2017-03-01 16:24:57:Starting flip_value script
+2017-03-01 16:24:57:Initialization strings:
+2017-03-01 16:24:57:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-01 16:24:57:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 16:24:57:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 16:24:58:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 16:24:58:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 16:24:58:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 16:24:58:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 16:24:58:initSignal:0
+2017-03-01 16:24:58:endSignal:5
+2017-03-01 16:24:58:seqSignal:20
+2017-03-01 16:25:02:Backtrace BEGIN:
+2017-03-01 16:25:02:#0  std::__fill_n_a<int*, unsigned long, int> (__first=0x18c1d0c, __n=264192, __value=@0x7fffffffe5b4: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:766
+#1  0x000000000044ac9e in std::fill_n<int*, unsigned long, int> (__first=0x181c210, __n=264192, __value=@0x7fffffffe5b4: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:801
+#2  0x0000000000448bba in std::__uninitialized_fill_n<true>::__uninit_fill_n<int*, unsigned long, int> (__first=0x181c210, __n=264192, __x=@0x7fffffffe5b4: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:220
+#3  0x000000000044ac56 in std::uninitialized_fill_n<int*, unsigned long, int> (__first=0x181c210, __n=264192, __x=@0x7fffffffe5b4: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:246
+#4  0x000000000044ac1a in std::__uninitialized_fill_n_a<int*, unsigned long, int, int> (__first=0x181c210, __n=264192, __x=@0x7fffffffe5b4: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:358
+#5  0x0000000000449b30 in std::vector<int, std::allocator<int> >::_M_fill_initialize (this=0x7fffffffe670, __n=264192, __value=@0x7fffffffe5b4: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:1301
+#6  0x00000000004496a4 in std::vector<int, std::allocator<int> >::vector (this=0x7fffffffe670, __n=264192, __value=@0x7fffffffe5b4: 0, __a=...) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:306
+#7  0x0000000000507f57 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1532
+#8  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-03-01 16:25:02:761	    __fill_n_a(_OutputIterator __first, _Size __n, const _Tp& __value)
+762	    {
+763	      const _Tp __tmp = __value;
+764	      for (__decltype(__n + 0) __niter = __n;
+765		   __niter > 0; --__niter, ++__first)
+766		*__first = __tmp;
+767	      return __first;
+768	    }
+769	
+770	  template<typename _Size, typename _Tp>
+
+2017-03-01 16:25:02:Backtrace END
+2017-03-01 16:25:06:Type: A floating point type.
+2017-03-01 16:25:06:Type sizeof: 8
+2017-03-01 16:25:06:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-03-01 16:25:06:Fault Mode: Double bit-flip
+2017-03-01 16:25:06:base address to flip value: 0x7d06f8 
+2017-03-01 16:25:06:address max offset: 8
+2017-03-01 16:25:06:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-03-01 16:25:06:Memory content after  bitflip:0x000x000x000x000x840x000x000x00
+2017-03-01 16:25:06:Mem contents(hex):0x000x000x000x000x840x000x000x00
+2017-03-01 16:25:06:frame name: std::fill_n<int*, unsigned long, int>
+2017-03-01 16:25:06:symbol name: cpu_time_partmeas
+2017-03-01 16:25:06:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-03-01 16:25:06:symbol line: 174
+2017-03-01 16:25:06:value: 2.8010344440741595e-312
+2017-03-01 16:25:06:value address: 0x7d06f8 <cpu_time_partmeas>
+2017-03-01 16:25:06:Type: A floating point type.
+2017-03-01 16:25:06:Type sizeof: 8
+2017-03-01 16:25:06:Fault Injection Successful after 8.44697904587s
+2017-03-01 16:25:54:event type: exit
+2017-03-01 16:25:54:exit code: 0

@@ -1,0 +1,66 @@
+2017-01-25 07:09:51:Starting flip_value script
+2017-01-25 07:09:51:Initialization strings:
+2017-01-25 07:09:51:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 07:09:51:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 07:09:51:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 07:09:51:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 07:09:51:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 07:09:51:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 07:09:51:initSignal:6
+2017-01-25 07:09:51:endSignal:8
+2017-01-25 07:09:51:seqSignal:30
+2017-01-25 07:09:58:Trying Fault Injection
+2017-01-25 07:09:58:Inferior PID: 220071
+2017-01-25 07:09:58:Inferior is valid: True
+2017-01-25 07:09:58:Inferior #threads: 229
+2017-01-25 07:09:58:Backtrace BEGIN:
+2017-01-25 07:09:58:#0  __GI___waitpid (pid=220309, stat_loc=stat_loc@entry=0x7fffffffe4d8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:40
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405f16 in log_error_count (kernel_errors=0) at ../include/log_helper.c:369
+#4  0x0000000000402def in main (argc=9, argv=0x7fffffffec08) at lud_check.c:149
+
+2017-01-25 07:09:58:35	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-01-25 07:09:58:Backtrace END
+2017-01-25 07:10:01:Thread name: None
+2017-01-25 07:10:01:Thread num: 1
+2017-01-25 07:10:01:Thread ptid: (220071, 220071, 0)
+2017-01-25 07:10:01:bitFlip function
+2017-01-25 07:10:01:Type: The type is an array.
+2017-01-25 07:10:01:Type sizeof: 31
+2017-01-25 07:10:01:Fliping array at pos: 6
+2017-01-25 07:10:01:bitFlip function
+2017-01-25 07:10:01:Type: The type is an integer type.
+2017-01-25 07:10:01:Type sizeof: 1
+2017-01-25 07:10:01:Mem contents(hex):0x61
+2017-01-25 07:10:01:base address to flip value: 0x60ba61  
+2017-01-25 07:10:01:address max offset: 1
+2017-01-25 07:10:01:Memory content before bitflip:0x61
+2017-01-25 07:10:01:Memory content after  bitflip:0x69
+2017-01-25 07:10:01:Mem contents(hex):0x69
+2017-01-25 07:10:01:frame name: log_error_count
+2017-01-25 07:10:01:symbol name: config_file
+2017-01-25 07:10:01:symbol filename: ../include/log_helper.c
+2017-01-25 07:10:01:symbol line: 44
+2017-01-25 07:10:01:value: "/etc/ridiation-benchmarks.conf"
+2017-01-25 07:10:01:value address: 0x60ba5b <config_file>
+2017-01-25 07:10:01:Type: The type is an array.
+2017-01-25 07:10:01:Type sizeof: 31
+2017-01-25 07:10:01:Field name: None
+2017-01-25 07:10:01:Field Type:
+2017-01-25 07:10:01:Type: A range type, that is, an integer type with bounds.
+2017-01-25 07:10:01:Type sizeof: 1
+2017-01-25 07:10:01:Type range: (0L, 30L)
+2017-01-25 07:10:01:Fault Injection Successful after 10.8898539543s
+2017-01-25 07:10:02:Fault Already Injected
+2017-01-25 07:10:02:Fault Already Injected
+2017-01-25 07:10:02:Fault Already Injected
+2017-01-25 07:10:02:Fault Already Injected
+2017-01-25 07:10:02:Fault Already Injected
+2017-01-25 07:10:02:Fault Already Injected
+2017-01-25 07:10:02:Fault Already Injected
+2017-01-25 07:10:03:Fault Already Injected
+2017-01-25 07:10:03:Fault Already Injected
+2017-01-25 07:10:03:event type: exit
+2017-01-25 07:10:03:exit code: 0

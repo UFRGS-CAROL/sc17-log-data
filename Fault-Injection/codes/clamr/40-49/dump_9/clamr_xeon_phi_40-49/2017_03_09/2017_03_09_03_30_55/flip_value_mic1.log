@@ -1,0 +1,60 @@
+[INFO -- 2017-03-09 03:28:58]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-09 03:28:58]
+Initialization strings:
+[INFO -- 2017-03-09 03:28:58]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-09 03:28:58]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-09 03:28:58]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-09 03:28:58]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-09 03:28:58]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-09 03:28:58]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-09 03:28:58]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-09 03:28:58]
+initSignal:40
+[INFO -- 2017-03-09 03:28:58]
+endSignal:49
+[INFO -- 2017-03-09 03:28:58]
+seqSignal:20
+[INFO -- 2017-03-09 03:28:58]
+faultMode:3
+[INFO -- 2017-03-09 03:29:47]
+Backtrace BEGIN:
+#0  0x00007ffff6b641bf in _itoa_word (value=2, value@entry=240, buflim=0x7fffffffe0ce "40\240U\347\366\377\177", buflim@entry=0x7fffffffe0d0 "\240U\347\366\377\177", base=base@entry=10, upper_case=<optimized out>) at _itoa.c:179
+#1  0x00007ffff6b6781a in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe118) at vfprintf.c:1641
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b5c5 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:470
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+174	in _itoa.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7d0c20 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: write_graphics_info
+symbol name: y_float
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c
+symbol line: 198
+value: 0x0
+value address: 0x7d0c20 <y_float>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-09 03:29:47]
+Fault Injection Successful after 49.2699530125s
+[INFO -- 2017-03-09 03:30:44]
+event type: exit
+[INFO -- 2017-03-09 03:30:44]
+exit code: 0

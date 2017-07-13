@@ -1,0 +1,67 @@
+[INFO -- 2017-03-05 14:53:00]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-05 14:53:00]
+Initialization strings:
+[INFO -- 2017-03-05 14:53:01]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-05 14:53:01]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 14:53:01]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 14:53:01]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 14:53:01]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 14:53:01]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-05 14:53:01]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-05 14:53:01]
+initSignal:0
+[INFO -- 2017-03-05 14:53:01]
+endSignal:5
+[INFO -- 2017-03-05 14:53:01]
+seqSignal:20
+[INFO -- 2017-03-05 14:53:01]
+faultMode:1
+[INFO -- 2017-03-05 14:53:09]
+Backtrace BEGIN:
+#0  0x000000000053a69a in hsfc2sort (N=264192, X=0x7ffd881b0010, Y=0x7ffd481a2010, ibase=0, Info=0x7ffd0809f010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:128
+#1  0x0000000000536b19 in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#2  0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#3  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+123	  int i , ix , iy , ii , it ;
+124	
+125	  /* Fill SFC table */
+126	
+127	  for ( i = it = ix = iy = 0 ; (unsigned long long)i < npt ;
+128	        ++i , ix++ , iy++ , it += ldT ) {
+129	    double xy[2] ;
+130	    unsigned coord[2] ;
+131	
+132	    xy[0] = X[ix] ;
+
+Backtrace END
+Memory content before bitflip:0x010x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe0f8
+address max offset: 4
+Memory content after  bitflip:0x010x420x000x00
+frame name: Mesh::partition_cells
+symbol name: method
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp
+symbol line: 321
+value: 16897
+value address: 0x7fffffffe0f8
+Type: The type is an enum.
+Type sizeof: 4
+Field name: ORIGINAL_ORDER
+
+[INFO -- 2017-03-05 14:53:09]
+Fault Injection Successful after 8.38757896423s
+[INFO -- 2017-03-05 14:53:59]
+event type: exit
+[INFO -- 2017-03-05 14:53:59]
+exit code: 0

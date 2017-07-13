@@ -1,0 +1,62 @@
+[INFO -- 2017-03-27 14:22:22]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 14:22:22]
+Initialization strings:
+[INFO -- 2017-03-27 14:22:22]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 14:22:22]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 14:22:22]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 14:22:22]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 14:22:22]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 14:22:22]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 14:22:22]
+initSignal:0
+[INFO -- 2017-03-27 14:22:22]
+endSignal:3
+[INFO -- 2017-03-27 14:22:22]
+seqSignal:30
+[INFO -- 2017-03-27 14:22:22]
+faultMode:1
+[INFO -- 2017-03-27 14:22:23]
+Backtrace BEGIN:
+#0  0x000000000040282a in main (argc=7, argv=0x7fffffffebc8) at main_check.c:208
+
+203	
+204		for(i=0; i<dim_cpu.space_elem; i=i+1) {
+205	            fv_cpu[i].v = 0;
+206	            fv_cpu[i].x = 0;
+207	            fv_cpu[i].y = 0;
+208	            fv_cpu[i].z = 0;
+209		}
+210	
+211	#ifdef ERR_INJ
+212		if(loop == 2){
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x100xf00xdc0xf50xff0x7f0x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe9a0
+address max offset: 8
+Memory content after  bitflip:0x100xf00xdc0xf50xff0xfb0x000x00
+frame name: main
+symbol name: qv_cpu
+symbol filename: main_check.c
+symbol line: 59
+value: 0x7ffff5dcf010
+value address: 0x7fffffffe9a0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-27 14:22:23]
+Fault Injection Successful after 1.81068110466s
+[INFO -- 2017-03-27 14:22:31]
+event type: exit
+[EXCEPTION -- 2017-03-27 14:22:31]
+exit code: no exit code available

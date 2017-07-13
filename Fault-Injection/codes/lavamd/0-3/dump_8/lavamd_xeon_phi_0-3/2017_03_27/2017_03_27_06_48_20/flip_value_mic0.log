@@ -1,0 +1,56 @@
+[INFO -- 2017-03-27 06:48:05]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 06:48:05]
+Initialization strings:
+[INFO -- 2017-03-27 06:48:05]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 06:48:05]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 06:48:05]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 06:48:05]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 06:48:05]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 06:48:05]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 06:48:05]
+initSignal:0
+[INFO -- 2017-03-27 06:48:05]
+endSignal:3
+[INFO -- 2017-03-27 06:48:05]
+seqSignal:30
+[INFO -- 2017-03-27 06:48:05]
+faultMode:2
+[INFO -- 2017-03-27 06:48:06]
+Backtrace BEGIN:
+#0  0x00007ffff71505d6 in __GI_memcpy (dstpp=dstpp@entry=0x7ffff677c6e8, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#3  0x0000000000402286 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:151
+
+54	in ../string/memcpy.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x100x000xab0xf60xff0x7f0x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe8b0
+address max offset: 8
+Memory content after  bitflip:0x6b0x850xef0x2e0x190xa50x510xd4
+frame name: main
+symbol name: box_cpu
+symbol filename: main_check.c
+symbol line: 57
+value: 0x7ffff6ab0010
+value address: 0x7fffffffe8b0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-27 06:48:06]
+Fault Injection Successful after 1.3324611187s
+[INFO -- 2017-03-27 06:48:14]
+event type: exit
+[EXCEPTION -- 2017-03-27 06:48:14]
+exit code: no exit code available

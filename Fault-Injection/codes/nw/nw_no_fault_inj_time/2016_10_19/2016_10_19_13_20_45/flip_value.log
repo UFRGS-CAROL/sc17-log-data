@@ -1,0 +1,55 @@
+2016-10-19 13:20:26:Initialization strings:
+2016-10-19 13:20:26:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-19 13:20:26:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-19 13:20:26:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-19 13:20:26:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-19 13:20:26:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-19 13:20:26:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-19 13:20:27:Trying Fault Injection
+2016-10-19 13:20:27:Inferior PID: 33853
+2016-10-19 13:20:27:Inferior is valid: True
+2016-10-19 13:20:27:Inferior #threads: 1
+2016-10-19 13:20:27:Backtrace BEGIN:
+2016-10-19 13:20:27:#0  do_system (line=0x7fffffffe800 "echo 1476899531 > /micNfs/carol/logs/timestamp.txt") at ../sysdeps/posix/system.c:116
+#1  0x000000000040648c in update_timestamp () at ../../include/log_helper.c:108
+#2  start_log_file (benchmark_name=0x100011 <error: Cannot access memory at address 0x100011>, test_info=0x0) at ../../include/log_helper.c:197
+#3  0x00000000004014df in runTest (argc=<optimized out>, argv=<optimized out>) at needle_check.cpp:294
+#4  main (argc=1048593, argv=0x0) at needle_check.cpp:114
+
+2016-10-19 13:20:27:111	in ../sysdeps/posix/system.c
+
+2016-10-19 13:20:27:Backtrace END
+2016-10-19 13:20:27:Thread name: None
+2016-10-19 13:20:27:Thread num: 1
+2016-10-19 13:20:27:Thread ptid: (33853, 33853, 0)
+2016-10-19 13:20:27:bitFlip function
+2016-10-19 13:20:27:Type: The type is an array.
+2016-10-19 13:20:27:Type sizeof: 200
+2016-10-19 13:20:27:Fliping array at pos: 84
+2016-10-19 13:20:27:bitFlip function
+2016-10-19 13:20:27:Type: The type is an integer type.
+2016-10-19 13:20:27:Type sizeof: 1
+2016-10-19 13:20:27:Mem contents(hex):0x00
+2016-10-19 13:20:27:base address to flip value: 0x7fffffffe9dc 
+2016-10-19 13:20:27:address max offset: 1
+2016-10-19 13:20:27:Memory content before bitflip:0x00
+2016-10-19 13:20:27:Memory content after  bitflip:0x40
+2016-10-19 13:20:27:Mem contents(hex):0x40
+2016-10-19 13:20:27:frame name: runTest
+2016-10-19 13:20:27:symbol name: test_info
+2016-10-19 13:20:27:symbol filename: needle_check.cpp
+2016-10-19 13:20:27:symbol line: 292
+2016-10-19 13:20:27:value: "max_rows:16384 max_cols:16384 penalty:10 omp_num_threads:228\000\000\000\000\000\200\377\367\000\000\000\000\024\353\377\377\000\000\000\000\000\000\000\000@", '\000' <repeats 11 times>, "\001\000\000\000\000\000\000\000@\353\377\377\377\177\000\000\300\344\377\367\377\177\000\000\000\000\000\000\000\000\000\000h\353\377\377\377\177\000\000\360\213\377\367\377\177\000\000\314h\336\367\377\177\000\000\006\000\000\000\000\000\000\000\360\213\377\367\377\177\000\000\001", '\000' <repeats 15 times>, "\001\000\000\000\000\000\000\000h\341\377\367\377\177\000"
+2016-10-19 13:20:27:value address: 0x7fffffffe988
+2016-10-19 13:20:27:Type: The type is an array.
+2016-10-19 13:20:27:Type sizeof: 200
+2016-10-19 13:20:27:Field name: None
+2016-10-19 13:20:27:Field Type:
+2016-10-19 13:20:27:Type: A range type, that is, an integer type with bounds.
+2016-10-19 13:20:27:Type sizeof: 1
+2016-10-19 13:20:27:Type range: (0L, 199L)
+2016-10-19 13:20:27:Fault Injection Successful after 1.54738211632s
+2016-10-19 13:20:30:Fault Already Injected
+2016-10-19 13:20:33:Fault Already Injected
+2016-10-19 13:20:39:event type: exit
+2016-10-19 13:20:39:exit code: 0

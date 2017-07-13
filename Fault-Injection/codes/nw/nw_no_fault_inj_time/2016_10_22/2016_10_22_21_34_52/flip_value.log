@@ -1,0 +1,78 @@
+2016-10-22 21:34:31:Initialization strings:
+2016-10-22 21:34:31:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-22 21:34:31:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-22 21:34:31:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-22 21:34:31:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-22 21:34:31:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-22 21:34:31:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-22 21:34:31:Trying Fault Injection
+2016-10-22 21:34:31:Inferior PID: 61335
+2016-10-22 21:34:31:Inferior is valid: True
+2016-10-22 21:34:31:Inferior #threads: 1
+2016-10-22 21:34:31:Backtrace BEGIN:
+2016-10-22 21:34:31:#0  0x00007ffff7de6686 in _dl_elf_hash (name_arg=<optimized out>) at ../sysdeps/generic/dl-hash.h:62
+#1  do_lookup_x (undef_name=undef_name@entry=0x7ffff75129df "_ZN10__cxxabiv117__class_type_infoD1Ev", new_hash=new_hash@entry=2103849609, old_hash=old_hash@entry=0x7fffffffe860, ref=0x7ffff7505ba0, result=result@entry=0x7fffffffe870, scope=<optimized out>, i=<optimized out>, version=0x7ffff7ff7240, flags=1, skip=0x0, type_class=0, undef_map=0x7ffff7ff9000) at dl-lookup.c:439
+#2  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x7ffff75129df "_ZN10__cxxabiv117__class_type_infoD1Ev", undef_map=undef_map@entry=0x7ffff7ff9000, ref=ref@entry=0x7fffffffe9c0, symbol_scope=symbol_scope@entry=0x7ffff7ff9358, version=0x7ffff7ff7240, type_class=0, flags=1, skip_map=0x0) at dl-lookup.c:775
+#3  0x00007ffff7de854f in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=<optimized out>, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff755aa70, map=0x7ffff7ff9000) at ../sysdeps/x86_64/dl-machine.h:277
+#4  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ff9000) at do-rel.h:137
+#5  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#6  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#7  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec30, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#8  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec30) at rtld.c:308
+#9  _dl_start (arg=0x7fffffffec30) at rtld.c:414
+#10 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#11 0x0000000000000006 in ?? ()
+#12 0x00007fffffffee22 in ?? ()
+#13 0x00007fffffffee52 in ?? ()
+#14 0x00007fffffffee58 in ?? ()
+#15 0x00007fffffffee5b in ?? ()
+#16 0x00007fffffffee5f in ?? ()
+#17 0x00007fffffffee9c in ?? ()
+#18 0x0000000000000000 in ?? ()
+
+2016-10-22 21:34:31:57	in ../sysdeps/generic/dl-hash.h
+
+2016-10-22 21:34:31:Backtrace END
+2016-10-22 21:34:31:Thread name: None
+2016-10-22 21:34:31:Thread num: 1
+2016-10-22 21:34:31:Thread ptid: (61335, 61335, 0)
+2016-10-22 21:34:31:bitFlip function
+2016-10-22 21:34:31:Type: The type is an array.
+2016-10-22 21:34:31:Type sizeof: 64
+2016-10-22 21:34:31:Fliping array at pos: 1
+2016-10-22 21:34:31:bitFlip function
+2016-10-22 21:34:31:Type: The type is a structure.
+2016-10-22 21:34:31:Type sizeof: 32
+2016-10-22 21:34:31:Fliping value of field: start
+2016-10-22 21:34:31:bitFlip function
+2016-10-22 21:34:31:Type: The type is an integer type.
+2016-10-22 21:34:31:Type sizeof: 8
+2016-10-22 21:34:31:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-10-22 21:34:31:base address to flip value: 0x7fffffffe9f0
+2016-10-22 21:34:31:address max offset: 8
+2016-10-22 21:34:31:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-10-22 21:34:31:Memory content after  bitflip:0x000x000x000x000x000x000x000x20
+2016-10-22 21:34:31:Mem contents(hex):0x000x000x000x000x000x000x000x20
+2016-10-22 21:34:31:frame name: _dl_relocate_object
+2016-10-22 21:34:31:symbol name: ranges
+2016-10-22 21:34:31:symbol filename: dl-reloc.c
+2016-10-22 21:34:31:symbol line: 264
+2016-10-22 21:34:31:value: {{start = 140737342946880, size = 113304, nrelative = 798, lazy = 0}, {start = 2305843009213693952, size = 0, nrelative = 0, lazy = 0}}
+2016-10-22 21:34:31:value address: 0x7fffffffe9d0
+2016-10-22 21:34:31:Type: The type is an array.
+2016-10-22 21:34:31:Type sizeof: 64
+2016-10-22 21:34:31:Field name: None
+2016-10-22 21:34:31:Field Type:
+2016-10-22 21:34:31:Type: A range type, that is, an integer type with bounds.
+2016-10-22 21:34:31:Type sizeof: 8
+2016-10-22 21:34:31:Type range: (0L, 1L)
+2016-10-22 21:34:31:Fault Injection Successful after 0.880512952805s
+2016-10-22 21:34:35:Fault Already Injected
+2016-10-22 21:34:39:Fault Already Injected
+2016-10-22 21:34:39:Fault Already Injected
+2016-10-22 21:34:40:Fault Already Injected
+2016-10-22 21:34:41:Fault Already Injected
+2016-10-22 21:34:44:Fault Already Injected
+2016-10-22 21:34:46:Fault Already Injected
+2016-10-22 21:34:46:event type: exit
+2016-10-22 21:34:46:exit code: 0

@@ -1,0 +1,60 @@
+2016-10-31 19:24:47:Initialization strings:
+2016-10-31 19:24:47:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-31 19:24:47:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 19:24:47:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 19:24:47:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-31 19:24:47:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-31 19:24:47:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-31 19:24:48:Trying Fault Injection
+2016-10-31 19:24:48:Backtrace BEGIN:
+2016-10-31 19:24:48:#0  read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:208
+#1  main (argc=-6278, argv=0x0) at hotspot_check.c:264
+
+2016-10-31 19:24:48:203	        }
+204	        if (feof(fp))
+205	            fatal("not enough lines in file");
+206	        if ((sscanf(str, "%f", &val) != 1) )
+207	            fatal("invalid file format");
+208	        vect[i] = val;
+209	    }
+210	
+211	    fclose(fp);
+212	}
+
+2016-10-31 19:24:48:Backtrace END
+2016-10-31 19:24:48:Type: The type is an array.
+2016-10-31 19:24:48:Type sizeof: 100
+2016-10-31 19:24:48:Fliping array at pos: 70
+2016-10-31 19:24:48:Type: The type is an integer type.
+2016-10-31 19:24:48:Type sizeof: 1
+2016-10-31 19:24:48:Mem contents(hex):0xff
+2016-10-31 19:24:48:base address to flip value: 0x7fffffffe75c 
+2016-10-31 19:24:48:address max offset: 1
+2016-10-31 19:24:48:Memory content before bitflip:0xff
+2016-10-31 19:24:48:Memory content after  bitflip:0xfe
+2016-10-31 19:24:48:Mem contents(hex):0xfe
+2016-10-31 19:24:48:frame name: read_input
+2016-10-31 19:24:48:symbol name: test_info
+2016-10-31 19:24:48:symbol filename: hotspot_check.c
+2016-10-31 19:24:48:symbol line: 252
+2016-10-31 19:24:48:value: "simIter:2000 gridSize:1024x1024\000\000\000\250\350\377\377", '\000' <repeats 28 times>, ",]\336\367\376\177\000\000 \323\335\367\377\177\000\000\f\000\000\000\000\000\000\000\344\322\335\367\377\177\000\000\330", <incomplete sequence \331>
+2016-10-31 19:24:48:value address: 0x7fffffffe716
+2016-10-31 19:24:48:Type: The type is an array.
+2016-10-31 19:24:48:Type sizeof: 100
+2016-10-31 19:24:48:Field name: None
+2016-10-31 19:24:48:Field Type:
+2016-10-31 19:24:48:Type: A range type, that is, an integer type with bounds.
+2016-10-31 19:24:48:Type sizeof: 1
+2016-10-31 19:24:48:Type range: (0L, 99L)
+2016-10-31 19:24:48:Fault Injection Successful after 1.29801702499s
+2016-10-31 19:24:48:Fault Already Injected
+2016-10-31 19:24:49:Fault Already Injected
+2016-10-31 19:24:49:Fault Already Injected
+2016-10-31 19:24:53:Fault Already Injected
+2016-10-31 19:24:54:Fault Already Injected
+2016-10-31 19:24:55:Fault Already Injected
+2016-10-31 19:24:55:Fault Already Injected
+2016-10-31 19:24:57:Fault Already Injected
+2016-10-31 19:24:58:Fault Already Injected
+2016-10-31 19:25:02:event type: exit
+2016-10-31 19:25:02:exit code: 0

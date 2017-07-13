@@ -1,0 +1,63 @@
+[INFO -- 2017-02-25 02:38:12]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 02:38:12]
+Initialization strings:
+[INFO -- 2017-02-25 02:38:12]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-25 02:38:12]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 02:38:12]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 02:38:12]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 02:38:12]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 02:38:12]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-25 02:38:12]
+initSignal:0
+[INFO -- 2017-02-25 02:38:12]
+endSignal:2
+[INFO -- 2017-02-25 02:38:12]
+seqSignal:30
+[INFO -- 2017-02-25 02:38:12]
+faultMode:2
+[INFO -- 2017-02-25 02:38:13]
+Backtrace BEGIN:
+#0  __GI___waitpid (pid=132408, stat_loc=stat_loc@entry=0x7fffffffe528, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405bb2 in start_iteration () at ../include/log_helper.c:311
+#4  0x0000000000402c5b in main (argc=9, argv=0x7fffffffec08) at lud_check.c:122
+
+26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+Backtrace END
+Fliping array at pos: 3
+Fliping value of field: name
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x60b560 
+address max offset: 8
+Memory content after  bitflip:0x120x4d0x810x390x790x9f0xe40x78
+frame name: main
+symbol name: long_options
+symbol filename: lud_check.c
+symbol line: 32
+value: {{name = 0x4074dc "input", has_arg = 1, flag = 0x0, val = 105}, {name = 0x4074e4 "gold", has_arg = 1, flag = 0x0, val = 103}, {name = 0x4074ec "size", has_arg = 1, flag = 0x0, val = 115}, {name = 0x78e49f7939814d12 <error: Cannot access memory at address 0x78e49f7939814d12>, has_arg = 0, flag = 0x0, val = 0}}
+value address: 0x60b500 <long_options>
+Type: The type is an array.
+Type sizeof: 128
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 3L)
+
+[INFO -- 2017-02-25 02:38:13]
+Fault Injection Successful after 1.08656811714s
+[INFO -- 2017-02-25 02:38:32]
+event type: exit
+[INFO -- 2017-02-25 02:38:32]
+exit code: 0

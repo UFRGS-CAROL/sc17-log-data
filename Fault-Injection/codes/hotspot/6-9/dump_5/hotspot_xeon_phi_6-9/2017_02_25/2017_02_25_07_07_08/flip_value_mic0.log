@@ -1,0 +1,57 @@
+[INFO -- 2017-02-25 07:06:26]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 07:06:26]
+Initialization strings:
+[INFO -- 2017-02-25 07:06:26]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-25 07:06:27]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 07:06:27]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 07:06:27]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 07:06:27]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 07:06:27]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-25 07:06:27]
+initSignal:6
+[INFO -- 2017-02-25 07:06:27]
+endSignal:9
+[INFO -- 2017-02-25 07:06:27]
+seqSignal:15
+[INFO -- 2017-02-25 07:06:27]
+faultMode:2
+[EXCEPTION -- 2017-02-25 07:06:33]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-02-25 07:06:33]
+Backtrace BEGIN:
+#0  0x00007ffff713f583 in _IO_feof (fp=0x609b40) at feof.c:36
+#1  0x000000000040455e in read_input (vect=0x7ffff66cb010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee43 "/micNfs/gdb-fault-injection/injector/data/hotspot/power_1024") at hotspot_check.c:205
+#2  0x0000000000404ad7 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:266
+
+31	in feof.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0xb80xeb0xff0xff0xff0x7f0x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe998
+address max offset: 8
+Memory content after  bitflip:0x360xb80x680x050xb60xd70xed0xb0
+frame name: main
+symbol name: argv
+symbol filename: hotspot_check.c
+symbol line: 228
+value: 0x7fffffffebb8
+value address: 0x7fffffffe998
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-25 07:06:33]
+Fault Injection Successful after 6.90597510338s
+[INFO -- 2017-02-25 07:06:51]
+event type: exit
+[INFO -- 2017-02-25 07:06:51]
+exit code: 0

@@ -1,0 +1,71 @@
+2017-02-22 11:24:46:Starting flip_value script
+2017-02-22 11:24:46:Initialization strings:
+2017-02-22 11:24:46:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-22 11:24:46:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 11:24:46:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 11:24:46:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-22 11:24:46:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-22 11:24:46:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-22 11:24:46:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-22 11:24:46:initSignal:20
+2017-02-22 11:24:46:endSignal:25
+2017-02-22 11:24:46:seqSignal:20
+2017-02-22 11:25:08:Backtrace BEGIN:
+2017-02-22 11:25:08:#0  0x00007ffff6b641bf in _itoa_word (value=0, value@entry=580, buflim=0x7fffffffe0dd "580\360ED", buflim@entry=0x7fffffffe0e0 "\360ED", base=base@entry=10, upper_case=<optimized out>) at _itoa.c:179
+#1  0x00007ffff6b6781a in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1641
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b9dd in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:479
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-22 11:25:08:174	in _itoa.c
+
+2017-02-22 11:25:08:Backtrace END
+2017-02-22 11:25:14:Type: The type is an array.
+2017-02-22 11:25:14:Type sizeof: 24
+2017-02-22 11:25:14:Fliping array at pos: 0
+2017-02-22 11:25:14:Type: The type is a structure.
+2017-02-22 11:25:14:Type sizeof: 24
+2017-02-22 11:25:14:Fliping value of field: gp_offset
+2017-02-22 11:25:14:Type: The type is an integer type.
+2017-02-22 11:25:14:Type sizeof: 4
+2017-02-22 11:25:14:Mem contents(hex):0x180x000x000x00
+2017-02-22 11:25:14:Fault Mode: One bit-flip
+2017-02-22 11:25:14:base address to flip value: 0x7fffffffe128
+2017-02-22 11:25:14:address max offset: 4
+2017-02-22 11:25:14:Memory content before bitflip:0x180x000x000x00
+2017-02-22 11:25:14:Backtrace BEGIN:
+2017-02-22 11:25:14:#0  0x00007ffff6b641bf in _itoa_word (value=0, value@entry=580, buflim=0x7fffffffe0dd "580\360ED", buflim@entry=0x7fffffffe0e0 "\360ED", base=base@entry=10, upper_case=<optimized out>) at _itoa.c:179
+#1  0x00007ffff6b6781a in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1641
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b9dd in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:479
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-22 11:25:14:174	in _itoa.c
+
+2017-02-22 11:25:14:Backtrace END
+2017-02-22 11:25:19:Type: The type is an array.
+2017-02-22 11:25:19:Type sizeof: 24
+2017-02-22 11:25:19:Fliping array at pos: 0
+2017-02-22 11:25:19:Type: The type is a structure.
+2017-02-22 11:25:19:Type sizeof: 24
+2017-02-22 11:25:19:Fliping value of field: gp_offset
+2017-02-22 11:25:19:Type: The type is an integer type.
+2017-02-22 11:25:19:Type sizeof: 4
+2017-02-22 11:25:19:Mem contents(hex):0x180x000x000x00
+2017-02-22 11:25:19:Fault Mode: Double bit-flip
+2017-02-22 11:25:19:base address to flip value: 0x7fffffffe128
+2017-02-22 11:25:19:address max offset: 4
+2017-02-22 11:25:19:Memory content before bitflip:0x180x000x000x00
+2017-02-22 11:25:19:Memory content after  bitflip:0x180x000x000x09
+2017-02-22 11:25:19:Mem contents(hex):0x180x000x000x09
+2017-02-22 11:25:19:frame name: __fprintf
+2017-02-22 11:25:19:symbol name: arg
+2017-02-22 11:25:19:symbol filename: fprintf.c
+2017-02-22 11:25:19:symbol line: 28
+2017-02-22 11:25:19:value: {{gp_offset = 150994968, fp_offset = 48, overflow_arg_area = 0x7fffffffe200, reg_save_area = 0x7fffffffe140}}
+2017-02-22 11:25:19:value address: 0x7fffffffe128
+2017-02-22 11:25:19:Type: The type is an array.
+2017-02-22 11:25:19:Type sizeof: 24
+2017-02-22 11:25:19:Fault Injection Successful after 33.8267869949s

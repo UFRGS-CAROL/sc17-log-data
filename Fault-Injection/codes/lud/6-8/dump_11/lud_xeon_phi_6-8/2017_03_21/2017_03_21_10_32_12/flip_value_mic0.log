@@ -1,0 +1,61 @@
+[INFO -- 2017-03-21 10:31:53]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-21 10:31:53]
+Initialization strings:
+[INFO -- 2017-03-21 10:31:53]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-21 10:31:53]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-21 10:31:53]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-21 10:31:53]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-21 10:31:53]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-21 10:31:53]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-03-21 10:31:53]
+initSignal:6
+[INFO -- 2017-03-21 10:31:53]
+endSignal:8
+[INFO -- 2017-03-21 10:31:53]
+seqSignal:30
+[INFO -- 2017-03-21 10:31:53]
+faultMode:0
+[INFO -- 2017-03-21 10:32:03]
+Backtrace BEGIN:
+#0  __GI___waitpid (pid=202717, stat_loc=stat_loc@entry=0x7fffffffe4f8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:40
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405bee in end_iteration () at ../include/log_helper.c:336
+#4  0x0000000000402c82 in main (argc=9, argv=0x7fffffffec08) at lud_check.c:126
+
+35	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+Backtrace END
+Fliping array at pos: 132
+Memory content before bitflip:0x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x60ba04  
+address max offset: 1
+Memory content after  bitflip:0x40
+frame name: update_timestamp
+symbol name: absolute_path
+symbol filename: ../include/log_helper.c
+symbol line: 34
+value: "/micNfs/carol/logs/", '\000' <repeats 113 times>, "@", '\000' <repeats 66 times>
+value address: 0x60b980 <absolute_path>
+Type: The type is an array.
+Type sizeof: 200
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 199L)
+
+[INFO -- 2017-03-21 10:32:03]
+Fault Injection Successful after 10.7876210213s
+[INFO -- 2017-03-21 10:32:05]
+event type: exit
+[INFO -- 2017-03-21 10:32:05]
+exit code: 0

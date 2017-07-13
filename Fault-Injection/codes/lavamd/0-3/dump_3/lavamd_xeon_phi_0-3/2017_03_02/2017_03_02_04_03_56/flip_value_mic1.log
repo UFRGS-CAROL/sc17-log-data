@@ -1,0 +1,90 @@
+2017-03-02 04:03:32:Starting flip_value script
+2017-03-02 04:03:32:Initialization strings:
+2017-03-02 04:03:32:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-02 04:03:32:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 04:03:32:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 04:03:32:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-02 04:03:32:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-02 04:03:32:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-03-02 04:03:32:initSignal:0
+2017-03-02 04:03:32:endSignal:3
+2017-03-02 04:03:32:seqSignal:30
+2017-03-02 04:03:32:Backtrace BEGIN:
+2017-03-02 04:03:33:#0  memset (dstpp=0x7ffff7b70b60, c=c@entry=0, len=1184) at ../string/memset.c:57
+#1  0x00007ffff7de3513 in _dl_map_segments (loader=0x7fffffffe3d0, has_holes=<optimized out>, maplength=3416768, nloadcmds=2, loadcmds=0x7fffffffe070, type=<optimized out>, header=0x7ffff7ffab30, fd=<optimized out>, l=0x7ffff7ffab28) at ./dl-map-segments.h:127
+#2  _dl_map_object_from_fd (name=name@entry=0x400a65 "libiomp5.so", fd=<optimized out>, fbp=fbp@entry=0x7fffffffe388, realname=<optimized out>, loader=loader@entry=0x7ffff7ffe168, l_type=l_type@entry=1, mode=0, stack_endp=0x7fffffffe380, nsid=0) at dl-load.c:1222
+#3  0x00007ffff7de52f9 in _dl_map_object (loader=0x7ffff7ffe168, name=0x400a65 "libiomp5.so", type=1, trace_mode=0, mode=0, nsid=<optimized out>) at dl-load.c:2188
+#4  0x00007ffff7de964f in openaux (a=a@entry=0x7fffffffe978) at dl-deps.c:63
+#5  0x00007ffff7deba83 in _dl_catch_error (objname=objname@entry=0x7fffffffe970, errstring=errstring@entry=0x7fffffffe968, mallocedp=mallocedp@entry=0x7fffffffe967, operate=operate@entry=0x7ffff7de9620 <openaux>, args=args@entry=0x7fffffffe978) at dl-error.c:187
+#6  0x00007ffff7de98a9 in _dl_map_object_deps (map=map@entry=0x7ffff7ffe168, preloads=<optimized out>, npreloads=npreloads@entry=0, trace_mode=trace_mode@entry=0, open_mode=open_mode@entry=0) at dl-deps.c:254
+#7  0x00007ffff7ddff28 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1612
+#8  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebc0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#9  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebc0) at rtld.c:308
+#10 _dl_start (arg=0x7fffffffebc0) at rtld.c:414
+#11 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#12 0x0000000000000007 in ?? ()
+#13 0x00007fffffffedb7 in ?? ()
+#14 0x00007fffffffedf4 in ?? ()
+#15 0x00007fffffffedf8 in ?? ()
+#16 0x00007fffffffedfb in ?? ()
+#17 0x00007fffffffee41 in ?? ()
+#18 0x00007fffffffee86 in ?? ()
+#19 0x00007fffffffeec9 in ?? ()
+#20 0x0000000000000000 in ?? ()
+
+2017-03-02 04:03:33:52	in ../string/memset.c
+
+2017-03-02 04:03:33:Backtrace END
+2017-03-02 04:03:33:Type: A boolean type.
+2017-03-02 04:03:33:Type sizeof: 1
+2017-03-02 04:03:33:Mem contents(hex):0x00
+2017-03-02 04:03:33:Fault Mode: Zero bit-flip
+2017-03-02 04:03:33:base address to flip value: 0x7ffff7ffdfe8 
+2017-03-02 04:03:33:address max offset: 1
+2017-03-02 04:03:33:Memory content before bitflip:0x00
+2017-03-02 04:03:33:Backtrace BEGIN:
+2017-03-02 04:03:33:#0  memset (dstpp=0x7ffff7b70b60, c=c@entry=0, len=1184) at ../string/memset.c:57
+#1  0x00007ffff7de3513 in _dl_map_segments (loader=0x7fffffffe3d0, has_holes=<optimized out>, maplength=3416768, nloadcmds=2, loadcmds=0x7fffffffe070, type=<optimized out>, header=0x7ffff7ffab30, fd=<optimized out>, l=0x7ffff7ffab28) at ./dl-map-segments.h:127
+#2  _dl_map_object_from_fd (name=name@entry=0x400a65 "libiomp5.so", fd=<optimized out>, fbp=fbp@entry=0x7fffffffe388, realname=<optimized out>, loader=loader@entry=0x7ffff7ffe168, l_type=l_type@entry=1, mode=0, stack_endp=0x7fffffffe380, nsid=0) at dl-load.c:1222
+#3  0x00007ffff7de52f9 in _dl_map_object (loader=0x7ffff7ffe168, name=0x400a65 "libiomp5.so", type=1, trace_mode=0, mode=0, nsid=<optimized out>) at dl-load.c:2188
+#4  0x00007ffff7de964f in openaux (a=a@entry=0x7fffffffe978) at dl-deps.c:63
+#5  0x00007ffff7deba83 in _dl_catch_error (objname=objname@entry=0x7fffffffe970, errstring=errstring@entry=0x7fffffffe968, mallocedp=mallocedp@entry=0x7fffffffe967, operate=operate@entry=0x7ffff7de9620 <openaux>, args=args@entry=0x7fffffffe978) at dl-error.c:187
+#6  0x00007ffff7de98a9 in _dl_map_object_deps (map=map@entry=0x7ffff7ffe168, preloads=<optimized out>, npreloads=npreloads@entry=0, trace_mode=trace_mode@entry=0, open_mode=open_mode@entry=0) at dl-deps.c:254
+#7  0x00007ffff7ddff28 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1612
+#8  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebc0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#9  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebc0) at rtld.c:308
+#10 _dl_start (arg=0x7fffffffebc0) at rtld.c:414
+#11 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#12 0x0000000000000007 in ?? ()
+#13 0x00007fffffffedb7 in ?? ()
+#14 0x00007fffffffedf4 in ?? ()
+#15 0x00007fffffffedf8 in ?? ()
+#16 0x00007fffffffedfb in ?? ()
+#17 0x00007fffffffee41 in ?? ()
+#18 0x00007fffffffee86 in ?? ()
+#19 0x00007fffffffeec9 in ?? ()
+#20 0x0000000000000000 in ?? ()
+
+2017-03-02 04:03:33:52	in ../string/memset.c
+
+2017-03-02 04:03:33:Backtrace END
+2017-03-02 04:03:33:Type: The type is an integer type.
+2017-03-02 04:03:33:Type sizeof: 8
+2017-03-02 04:03:33:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-03-02 04:03:33:Fault Mode: Double bit-flip
+2017-03-02 04:03:33:base address to flip value: 0x7fffffffe9e0
+2017-03-02 04:03:33:address max offset: 8
+2017-03-02 04:03:33:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-03-02 04:03:33:Memory content after  bitflip:0x000x000x000x000x000x000x000x18
+2017-03-02 04:03:33:Mem contents(hex):0x000x000x000x000x000x000x000x18
+2017-03-02 04:03:33:frame name: dl_main
+2017-03-02 04:03:33:symbol name: count_modids
+2017-03-02 04:03:33:symbol filename: rtld.c
+2017-03-02 04:03:33:symbol line: 1441
+2017-03-02 04:03:33:value: 1729382256910270464
+2017-03-02 04:03:33:value address: 0x7fffffffe9e0
+2017-03-02 04:03:33:Type: The type is an integer type.
+2017-03-02 04:03:33:Type sizeof: 8
+2017-03-02 04:03:33:Fault Injection Successful after 1.97075009346s
+2017-03-02 04:03:50:event type: exit
+2017-03-02 04:03:50:exit code: 0

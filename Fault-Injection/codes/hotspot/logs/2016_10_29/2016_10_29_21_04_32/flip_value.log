@@ -1,0 +1,54 @@
+2016-10-29 21:04:11:Initialization strings:
+2016-10-29 21:04:11:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-29 21:04:11:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-29 21:04:11:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-29 21:04:11:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-29 21:04:11:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-29 21:04:11:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-29 21:04:12:Trying Fault Injection
+2016-10-29 21:04:12:Backtrace BEGIN:
+2016-10-29 21:04:12:#0  __GI___waitpid (pid=77450, stat_loc=stat_loc@entry=0x7fffffffe268, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000405ccc in update_timestamp () at ../../include/log_helper.c:107
+#3  start_log_file (benchmark_name=0x12e8a <error: Cannot access memory at address 0x12e8a>, test_info=0x7fffffffe268 "") at ../../include/log_helper.c:196
+#4  0x0000000000401681 in main (argc=77450, argv=0x7fffffffe268) at hotspot_check.c:254
+
+2016-10-29 21:04:12:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-29 21:04:12:Backtrace END
+2016-10-29 21:04:12:Type: The type is an array.
+2016-10-29 21:04:12:Type sizeof: 300
+2016-10-29 21:04:12:Fliping array at pos: 253
+2016-10-29 21:04:12:Type: The type is an integer type.
+2016-10-29 21:04:12:Type sizeof: 1
+2016-10-29 21:04:12:Mem contents(hex):0x00
+2016-10-29 21:04:12:base address to flip value: 0x608e3d  
+2016-10-29 21:04:12:address max offset: 1
+2016-10-29 21:04:12:Memory content before bitflip:0x00
+2016-10-29 21:04:12:Memory content after  bitflip:0x10
+2016-10-29 21:04:12:Mem contents(hex):0x10
+2016-10-29 21:04:12:frame name: update_timestamp
+2016-10-29 21:04:12:symbol name: full_log_file_name
+2016-10-29 21:04:12:symbol filename: ../../include/log_helper.c
+2016-10-29 21:04:12:symbol line: 53
+2016-10-29 21:04:12:value: '\000' <repeats 253 times>...
+2016-10-29 21:04:12:value address: 0x608d40 <full_log_file_name>
+2016-10-29 21:04:12:Type: The type is an array.
+2016-10-29 21:04:12:Type sizeof: 300
+2016-10-29 21:04:12:Field name: None
+2016-10-29 21:04:12:Field Type:
+2016-10-29 21:04:12:Type: A range type, that is, an integer type with bounds.
+2016-10-29 21:04:12:Type sizeof: 1
+2016-10-29 21:04:12:Type range: (0L, 299L)
+2016-10-29 21:04:12:Fault Injection Successful after 1.47022104263s
+2016-10-29 21:04:14:Fault Already Injected
+2016-10-29 21:04:14:Fault Already Injected
+2016-10-29 21:04:16:Fault Already Injected
+2016-10-29 21:04:17:Fault Already Injected
+2016-10-29 21:04:17:Fault Already Injected
+2016-10-29 21:04:19:Fault Already Injected
+2016-10-29 21:04:20:Fault Already Injected
+2016-10-29 21:04:21:Fault Already Injected
+2016-10-29 21:04:25:Fault Already Injected
+2016-10-29 21:04:26:event type: exit
+2016-10-29 21:04:26:exit code: 0

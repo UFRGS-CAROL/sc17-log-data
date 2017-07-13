@@ -1,0 +1,55 @@
+[INFO -- 2017-02-27 08:26:38]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 08:26:38]
+Initialization strings:
+[INFO -- 2017-02-27 08:26:38]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-27 08:26:38]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 08:26:38]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 08:26:38]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 08:26:38]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-27 08:26:38]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-27 08:26:38]
+initSignal:6
+[INFO -- 2017-02-27 08:26:38]
+endSignal:9
+[INFO -- 2017-02-27 08:26:38]
+seqSignal:15
+[INFO -- 2017-02-27 08:26:38]
+faultMode:3
+[INFO -- 2017-02-27 08:26:47]
+Backtrace BEGIN:
+#0  0x00007ffff71383a9 in _IO_fgets (buf=<optimized out>, n=<optimized out>, fp=<optimized out>) at iofgets.c:70
+#1  0x0000000000404538 in read_input (vect=0x7ffff66cb010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee43 "/micNfs/gdb-fault-injection/injector/data/hotspot/power_1024") at hotspot_check.c:202
+#2  0x0000000000404ad7 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:266
+
+65	in iofgets.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x430xee0xff0xff0xff0x7f0x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe770
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: read_input
+symbol name: file
+symbol filename: hotspot_check.c
+symbol line: 190
+value: 0x7fffffffee43 "/micNfs/gdb-fault-injection/injector/data/hotspot/power_1024"
+value address: 0x7fffffffe770
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-27 08:26:47]
+Fault Injection Successful after 9.10324597359s
+[INFO -- 2017-02-27 08:27:03]
+event type: exit
+[INFO -- 2017-02-27 08:27:03]
+exit code: 0

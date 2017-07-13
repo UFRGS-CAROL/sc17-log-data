@@ -1,0 +1,48 @@
+2017-01-19 19:47:26:Starting flip_value script
+2017-01-19 19:47:26:Initialization strings:
+2017-01-19 19:47:26:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-19 19:47:26:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-19 19:47:26:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-19 19:47:26:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-19 19:47:26:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-19 19:47:26:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-19 19:47:26:initSignal:0
+2017-01-19 19:47:26:endSignal:7
+2017-01-19 19:47:26:seqSignal:15
+2017-01-19 19:47:30:Backtrace BEGIN:
+2017-01-19 19:47:30:#0  0x000000000040440b in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:367
+
+2017-01-19 19:47:30:362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+371	        kernel_start = timing_get_time();
+
+2017-01-19 19:47:30:Backtrace END
+2017-01-19 19:47:30:Type: The type is a pointer.
+2017-01-19 19:47:30:Type sizeof: 8
+2017-01-19 19:47:30:Fliping a bit of the value pointed by a pointer
+2017-01-19 19:47:30:Type: A floating point type.
+2017-01-19 19:47:30:Type sizeof: 8
+2017-01-19 19:47:30:Mem contents(hex):0x600xb20xd50x850xaf0xe70x160x43
+2017-01-19 19:47:30:base address to flip value: 0x7ffff4ccc040
+2017-01-19 19:47:30:address max offset: 8
+2017-01-19 19:47:30:Memory content before bitflip:0x600xb20xd50x850xaf0xe70x160x43
+2017-01-19 19:47:30:Memory content after  bitflip:0x600xa20xd50x850xaf0xe70x160x43
+2017-01-19 19:47:30:Mem contents(hex):0x600xa20xd50x850xaf0xe70x160x43
+2017-01-19 19:47:30:frame name: main
+2017-01-19 19:47:30:symbol name: A
+2017-01-19 19:47:30:symbol filename: dgemm.c
+2017-01-19 19:47:30:symbol line: 280
+2017-01-19 19:47:30:value: 0x7ffff4ccc040
+2017-01-19 19:47:30:value address: 0x606b48 <A.1136>
+2017-01-19 19:47:30:Type: The type is a pointer.
+2017-01-19 19:47:30:Type sizeof: 8
+2017-01-19 19:47:30:Fault Injection Successful after 4.78518104553s
+2017-01-19 19:48:08:event type: exit
+2017-01-19 19:48:08:exit code: 0

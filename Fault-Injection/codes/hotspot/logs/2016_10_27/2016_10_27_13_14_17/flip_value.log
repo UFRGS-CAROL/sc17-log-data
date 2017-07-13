@@ -1,0 +1,64 @@
+2016-10-27 13:14:06:Initialization strings:
+2016-10-27 13:14:06:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-27 13:14:06:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-27 13:14:06:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-27 13:14:06:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-27 13:14:06:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-27 13:14:06:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-27 13:14:08:Trying Fault Injection
+2016-10-27 13:14:08:Backtrace BEGIN:
+2016-10-27 13:14:08:#0  0x00007ffff7151e47 in __GI___rawmemchr (s=s@entry=0x7fffffffe77a, c_in=c_in@entry=0) at ../string/rawmemchr.c:69
+#1  0x00007ffff7145ad0 in _IO_str_init_static_internal (sf=sf@entry=0x7fffffffe400, ptr=ptr@entry=0x7fffffffe77a "324.043564\n", size=size@entry=0, pstart=pstart@entry=0x0) at strops.c:44
+#2  0x00007ffff71365d5 in __GI___isoc99_vsscanf (string=0x7fffffffe77a "324.043564\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:41
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#5  main (argc=-6278, argv=0x0) at hotspot_check.c:264
+
+2016-10-27 13:14:08:64	in ../string/rawmemchr.c
+
+2016-10-27 13:14:08:Backtrace END
+2016-10-27 13:14:08:Type: The type is an array.
+2016-10-27 13:14:08:Type sizeof: 24
+2016-10-27 13:14:08:Fliping array at pos: 0
+2016-10-27 13:14:08:Type: The type is a structure.
+2016-10-27 13:14:08:Type sizeof: 24
+2016-10-27 13:14:08:Fliping value of field: overflow_arg_area
+2016-10-27 13:14:08:Type: The type is a pointer.
+2016-10-27 13:14:08:Type sizeof: 8
+2016-10-27 13:14:08:Fault Injection Failed after 2.98694491386s
+2016-10-27 13:14:10:Trying Fault Injection
+2016-10-27 13:14:10:Backtrace BEGIN:
+2016-10-27 13:14:10:#0  0x000000000040173f in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#1  main (argc=-6278, argv=0x407198) at hotspot_check.c:264
+
+2016-10-27 13:14:10:201	        if (fgets(str, STR_SIZE, fp) == NULL) {
+202	            fatal("fgets error");
+203	        }
+204	        if (feof(fp))
+205	            fatal("not enough lines in file");
+206	        if ((sscanf(str, "%f", &val) != 1) )
+207	            fatal("invalid file format");
+208	        vect[i] = val;
+209	    }
+210	
+
+2016-10-27 13:14:10:Backtrace END
+2016-10-27 13:14:10:Type: The type is an integer type.
+2016-10-27 13:14:10:Type sizeof: 4
+2016-10-27 13:14:10:Mem contents(hex):0x640xee0xff0xff
+2016-10-27 13:14:10:base address to flip value: 0x7fffffffe610
+2016-10-27 13:14:10:address max offset: 4
+2016-10-27 13:14:10:Memory content before bitflip:0x640xee0xff0xff
+2016-10-27 13:14:10:Memory content after  bitflip:0x640xee0xfe0xff
+2016-10-27 13:14:10:Mem contents(hex):0x640xee0xfe0xff
+2016-10-27 13:14:10:frame name: read_input
+2016-10-27 13:14:10:symbol name: errors
+2016-10-27 13:14:10:symbol filename: hotspot_check.c
+2016-10-27 13:14:10:symbol line: 281
+2016-10-27 13:14:10:value: -70044
+2016-10-27 13:14:10:value address: 0x7fffffffe610
+2016-10-27 13:14:10:Type: The type is an integer type.
+2016-10-27 13:14:10:Type sizeof: 4
+2016-10-27 13:14:10:Fault Injection Successful after 4.72941088676s
+2016-10-27 13:14:11:event type: exit
+2016-10-27 13:14:11:exit code: 1

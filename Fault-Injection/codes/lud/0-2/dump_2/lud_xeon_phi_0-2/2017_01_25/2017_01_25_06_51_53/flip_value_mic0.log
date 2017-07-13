@@ -1,0 +1,129 @@
+2017-01-25 06:51:32:Starting flip_value script
+2017-01-25 06:51:32:Initialization strings:
+2017-01-25 06:51:32:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 06:51:32:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 06:51:32:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 06:51:32:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 06:51:32:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 06:51:32:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 06:51:32:initSignal:0
+2017-01-25 06:51:32:endSignal:2
+2017-01-25 06:51:32:seqSignal:30
+2017-01-25 06:51:32:Trying Fault Injection
+2017-01-25 06:51:32:Inferior PID: 198844
+2017-01-25 06:51:32:Inferior is valid: True
+2017-01-25 06:51:32:Inferior #threads: 1
+2017-01-25 06:51:32:Backtrace BEGIN:
+2017-01-25 06:51:32:#0  0x00007ffff7dddbc0 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#1  0x0000000000000009 in ?? ()
+#2  0x00007fffffffee08 in ?? ()
+#3  0x00007fffffffee3f in ?? ()
+#4  0x00007fffffffee42 in ?? ()
+#5  0x00007fffffffee47 in ?? ()
+#6  0x00007fffffffee4a in ?? ()
+#7  0x00007fffffffee4e in ?? ()
+#8  0x00007fffffffee51 in ?? ()
+#9  0x00007fffffffee90 in ?? ()
+#10 0x00007fffffffee93 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+2017-01-25 06:51:32:32	static struct option long_options[] = {
+33	  /* name, has_arg, flag, val */
+34	  {"input", 1, NULL, 'i'},
+35	  {"gold", 1, NULL, 'g'},
+36	  {"size", 1, NULL, 's'},
+37	  {0,0,0,0}
+38	};
+39	
+40	extern void
+41	lud_omp(float *m, int matrix_dim);
+
+2017-01-25 06:51:32:Backtrace END
+2017-01-25 06:51:32:Error(threadFlip): No Threads with symbols
+2017-01-25 06:51:32:Fault Injection Failed after 0.748307943344s
+2017-01-25 06:51:33:Trying Fault Injection
+2017-01-25 06:51:33:Inferior PID: 198844
+2017-01-25 06:51:33:Inferior is valid: True
+2017-01-25 06:51:33:Inferior #threads: 1
+2017-01-25 06:51:33:Backtrace BEGIN:
+2017-01-25 06:51:33:#0  0x00007ffff719f03a in mmap64 () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7137a0a in __GI__IO_file_doallocate (fp=0x60c010) at filedoalloc.c:128
+#2  0x00007ffff7144558 in __GI__IO_doallocbuf (fp=fp@entry=0x60c010) at genops.c:418
+#3  0x00007ffff7142a2d in __GI__IO_file_xsgetn (fp=0x60c010, data=0x7ffff5ecc010, n=16777216) at fileops.c:1363
+#4  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=16777216, count=1, fp=0x60c010) at iofread.c:42
+#5  0x0000000000402b5a in main (argc=9, argv=0x7fffffffec08) at lud_check.c:105
+
+2017-01-25 06:51:33:76	in ../sysdeps/unix/syscall-template.S
+
+2017-01-25 06:51:33:Backtrace END
+2017-01-25 06:51:33:Thread name: None
+2017-01-25 06:51:33:Thread num: 1
+2017-01-25 06:51:33:Thread ptid: (198844, 198844, 0)
+2017-01-25 06:51:33:bitFlip function
+2017-01-25 06:51:33:Type: The type is a pointer.
+2017-01-25 06:51:33:Type sizeof: 8
+2017-01-25 06:51:33:Fliping a bit of the pointer
+2017-01-25 06:51:33:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-01-25 06:51:33:base address to flip value: 0x7ffff74266c0 
+2017-01-25 06:51:33:address max offset: 8
+2017-01-25 06:51:33:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-01-25 06:51:33:Memory content after  bitflip:0x000x000x000x000x000x000x000x20
+2017-01-25 06:51:33:Mem contents(hex):0x000x000x000x000x000x000x000x20
+2017-01-25 06:51:33:frame name: __GI__IO_doallocbuf
+2017-01-25 06:51:33:symbol name: freeres_list
+2017-01-25 06:51:33:symbol filename: genops.c
+2017-01-25 06:51:33:symbol line: 944
+2017-01-25 06:51:33:value: 0x0
+2017-01-25 06:51:33:value address: 0x7ffff74266c0 <freeres_list>
+2017-01-25 06:51:33:Type: The type is a pointer.
+2017-01-25 06:51:33:Type sizeof: 8
+2017-01-25 06:51:33:Fault Injection Successful after 1.28411889076s
+2017-01-25 06:51:33:Fault Already Injected
+2017-01-25 06:51:33:Fault Already Injected
+2017-01-25 06:51:33:Fault Already Injected
+2017-01-25 06:51:34:Fault Already Injected
+2017-01-25 06:51:34:Fault Already Injected
+2017-01-25 06:51:35:Fault Already Injected
+2017-01-25 06:51:35:Fault Already Injected
+2017-01-25 06:51:35:Fault Already Injected
+2017-01-25 06:51:36:Fault Already Injected
+2017-01-25 06:51:36:Fault Already Injected
+2017-01-25 06:51:36:Fault Already Injected
+2017-01-25 06:51:37:Fault Already Injected
+2017-01-25 06:51:37:Fault Already Injected
+2017-01-25 06:51:37:Fault Already Injected
+2017-01-25 06:51:38:Fault Already Injected
+2017-01-25 06:51:38:Fault Already Injected
+2017-01-25 06:51:38:Fault Already Injected
+2017-01-25 06:51:39:Fault Already Injected
+2017-01-25 06:51:39:Fault Already Injected
+2017-01-25 06:51:39:Fault Already Injected
+2017-01-25 06:51:40:Fault Already Injected
+2017-01-25 06:51:40:Fault Already Injected
+2017-01-25 06:51:40:Fault Already Injected
+2017-01-25 06:51:41:Fault Already Injected
+2017-01-25 06:51:41:Fault Already Injected
+2017-01-25 06:51:41:Fault Already Injected
+2017-01-25 06:51:42:Fault Already Injected
+2017-01-25 06:51:42:Fault Already Injected
+2017-01-25 06:51:42:Fault Already Injected
+2017-01-25 06:51:42:Fault Already Injected
+2017-01-25 06:51:42:Fault Already Injected
+2017-01-25 06:51:43:Fault Already Injected
+2017-01-25 06:51:43:Fault Already Injected
+2017-01-25 06:51:43:Fault Already Injected
+2017-01-25 06:51:43:Fault Already Injected
+2017-01-25 06:51:44:Fault Already Injected
+2017-01-25 06:51:44:Fault Already Injected
+2017-01-25 06:51:44:Fault Already Injected
+2017-01-25 06:51:45:Fault Already Injected
+2017-01-25 06:51:45:Fault Already Injected
+2017-01-25 06:51:45:Fault Already Injected
+2017-01-25 06:51:45:Fault Already Injected
+2017-01-25 06:51:45:Fault Already Injected
+2017-01-25 06:51:46:Fault Already Injected
+2017-01-25 06:51:46:Fault Already Injected
+2017-01-25 06:51:46:Fault Already Injected
+2017-01-25 06:51:46:Fault Already Injected
+2017-01-25 06:51:46:event type: exit
+2017-01-25 06:51:46:exit code: 0

@@ -1,0 +1,66 @@
+[INFO -- 2017-03-02 20:01:17]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-02 20:01:17]
+Initialization strings:
+[INFO -- 2017-03-02 20:01:17]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-02 20:01:17]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-02 20:01:17]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-02 20:01:17]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-02 20:01:17]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-02 20:01:17]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-02 20:01:17]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-02 20:01:17]
+initSignal:25
+[INFO -- 2017-03-02 20:01:17]
+endSignal:30
+[INFO -- 2017-03-02 20:01:17]
+seqSignal:20
+[INFO -- 2017-03-02 20:01:17]
+faultMode:3
+[INFO -- 2017-03-02 20:01:49]
+Backtrace BEGIN:
+#0  0x00007ffff6b97cf2 in _int_malloc (av=av@entry=0x7ffff6e74aa0 <main_arena>, bytes=bytes@entry=1062528) at malloc.c:3293
+#1  0x00007ffff6b9a07b in __GI___libc_malloc (bytes=1062528) at malloc.c:2892
+#2  0x00007ffff7338ac6 in operator new (sz=1062528) at /sandbox/build/tmp/tmp/work/k1om-mpss-linux/gcc-runtime-5.1.1+mpss3.7-1/gcc-5.1.1+mpss3.7/libstdc++-v3/libsupc++/new_op.cc:50
+#3  0x000000000044a93e in __gnu_cxx::new_allocator<int>::allocate (this=0x7fffffffe3b0, __n=265632) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/ext/new_allocator.h:104
+#4  0x000000000044a9af in __gnu_cxx::__alloc_traits<std::allocator<int> >::allocate (__a=..., __n=265632) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/ext/alloc_traits.h:182
+#5  0x0000000000449492 in std::_Vector_base<int, std::allocator<int> >::_M_allocate (this=0x7fffffffe3b0, __n=265632) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:170
+#6  0x0000000000449503 in std::_Vector_base<int, std::allocator<int> >::_M_create_storage (this=0x7fffffffe3b0, __n=265632) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:185
+#7  0x0000000000449376 in std::_Vector_base<int, std::allocator<int> >::_Vector_base (this=0x7fffffffe3b0, __n=265632, __a=...) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:136
+#8  0x00000000004493ca in std::_Vector_base<int, std::allocator<int> >::_Vector_base (this=0x7fffffffe3b0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:134
+#9  0x0000000000449726 in std::vector<int, std::allocator<int> >::vector (this=0x7fffffffe3b0, __x=...) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:320
+#10 0x0000000000471406 in State::rezone_all (this=0x7fa5e0, icount=0, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#11 0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#12 0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+3288	in malloc.c
+
+Backtrace END
+Memory content before bitflip:0xff0xff0xff0x7f
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7d0768 
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: __gnu_cxx::new_allocator<int>::allocate
+symbol name: checkpoint_outputInterval
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 144
+value: 0
+value address: 0x7d0768 <checkpoint_outputInterval>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-02 20:01:49]
+Fault Injection Successful after 32.3575980663s
+[INFO -- 2017-03-02 20:02:21]
+event type: exit
+[INFO -- 2017-03-02 20:02:21]
+exit code: 0

@@ -1,0 +1,103 @@
+2017-01-12 05:59:47:Starting flip_value script
+2017-01-12 05:59:47:Initialization strings:
+2017-01-12 05:59:47:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-12 05:59:47:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-12 05:59:47:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-12 05:59:47:(4) file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-01-12 05:59:47:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-01-12 05:59:47:(6) set args 16394 10 228 /micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10 /micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10
+2017-01-12 05:59:47:initSignal:0
+2017-01-12 05:59:47:endSignal:4
+2017-01-12 05:59:47:seqSignal:30
+2017-01-12 05:59:48:Trying Fault Injection
+2017-01-12 05:59:48:Inferior PID: 49395
+2017-01-12 05:59:48:Inferior is valid: True
+2017-01-12 05:59:48:Inferior #threads: 1
+2017-01-12 05:59:48:Backtrace BEGIN:
+2017-01-12 05:59:48:#0  malloc_hook_ini (sz=72704, caller=0x7ffff7572cdd <_GLOBAL__sub_I_eh_alloc.cc(void)+77>) at hooks.c:30
+#1  0x00007ffff7572cdd in pool (this=0x7ffff78573e0 <(anonymous namespace)::emergency_pool>) at /sandbox/build/tmp/tmp/work/k1om-mpss-linux/gcc-runtime-5.1.1+mpss3.7-1/gcc-5.1.1+mpss3.7/libstdc++-v3/libsupc++/eh_alloc.cc:117
+#2  __static_initialization_and_destruction_0 (__priority=65535, __initialize_p=1) at /sandbox/build/tmp/tmp/work/k1om-mpss-linux/gcc-runtime-5.1.1+mpss3.7-1/gcc-5.1.1+mpss3.7/libstdc++-v3/libsupc++/eh_alloc.cc:244
+#3  _GLOBAL__sub_I_eh_alloc.cc(void) () at /sandbox/build/tmp/tmp/work/k1om-mpss-linux/gcc-runtime-5.1.1+mpss3.7-1/gcc-5.1.1+mpss3.7/libstdc++-v3/libsupc++/eh_alloc.cc:307
+#4  0x00007ffff760f74c in __do_global_ctors_aux () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/usr/lib64/libstdc++.so.6
+#5  0x00007ffff756f8f7 in _init () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/usr/lib64/libstdc++.so.6
+#6  0x00007fffffffec40 in ?? ()
+#7  0x00007ffff7debb98 in call_init (l=0x7ffff784ba58, argc=argc@entry=6, argv=argv@entry=0x7fffffffec08, env=env@entry=0x7fffffffec40) at dl-init.c:58
+#8  0x00007ffff7debd37 in call_init (env=0x7fffffffec40, argv=0x7fffffffec08, argc=6, l=<optimized out>) at dl-init.c:126
+#9  _dl_init (main_map=0x7ffff7ffe168, argc=6, argv=0x7fffffffec08, env=0x7fffffffec40) at dl-init.c:120
+#10 0x00007ffff7dddbfa in _dl_start_user () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#11 0x0000000000000006 in ?? ()
+#12 0x00007fffffffedfe in ?? ()
+#13 0x00007fffffffee37 in ?? ()
+#14 0x00007fffffffee3d in ?? ()
+#15 0x00007fffffffee40 in ?? ()
+#16 0x00007fffffffee44 in ?? ()
+#17 0x00007fffffffee8a in ?? ()
+#18 0x0000000000000000 in ?? ()
+
+2017-01-12 05:59:48:25	in hooks.c
+
+2017-01-12 05:59:48:Backtrace END
+2017-01-12 05:59:48:Thread name: None
+2017-01-12 05:59:48:Thread num: 1
+2017-01-12 05:59:48:Thread ptid: (49395, 49395, 0)
+2017-01-12 05:59:48:bitFlip function
+2017-01-12 05:59:48:Type: The type is a structure.
+2017-01-12 05:59:48:Type sizeof: 64
+2017-01-12 05:59:48:Fliping value of field: arena
+2017-01-12 05:59:48:bitFlip function
+2017-01-12 05:59:48:Type: The type is a pointer.
+2017-01-12 05:59:48:Type sizeof: 8
+2017-01-12 05:59:48:Fliping a bit of the pointer
+2017-01-12 05:59:48:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-01-12 05:59:48:base address to flip value: 0x7ffff7857410 
+2017-01-12 05:59:48:address max offset: 8
+2017-01-12 05:59:48:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-01-12 05:59:48:Memory content after  bitflip:0x000x000x000x000x200x000x000x00
+2017-01-12 05:59:48:Mem contents(hex):0x000x000x000x000x200x000x000x00
+2017-01-12 05:59:48:frame name: _GLOBAL__sub_I_eh_alloc.cc(void)
+2017-01-12 05:59:48:symbol name: (anonymous namespace)::emergency_pool
+2017-01-12 05:59:48:symbol filename: /sandbox/build/tmp/tmp/work/k1om-mpss-linux/gcc-runtime-5.1.1+mpss3.7-1/gcc-5.1.1+mpss3.7/libstdc++-v3/libsupc++/eh_alloc.cc
+2017-01-12 05:59:48:symbol line: 244
+2017-01-12 05:59:48:value: {emergency_mutex = {_M_mutex = {__data = {__lock = 0, __count = 0, __owner = 0, __nusers = 0, __kind = 0, __spins = 0, __elision = 0, __list = {__prev = 0x0, __next = 0x0}}, __size = '\000' <repeats 39 times>, __align = 0}}, first_free_entry = 0x0, arena = 0x2000000000 <error: Cannot access memory at address 0x2000000000>, arena_size = 72704}
+2017-01-12 05:59:48:value address: 0x7ffff78573e0 <(anonymous namespace)::emergency_pool>
+2017-01-12 05:59:48:Type: The type is a structure.
+2017-01-12 05:59:48:Type sizeof: 64
+2017-01-12 05:59:48:Field name: emergency_mutex
+2017-01-12 05:59:48:Field Type:
+2017-01-12 05:59:48:Type: The type is a structure.
+2017-01-12 05:59:48:Type sizeof: 40
+2017-01-12 05:59:48:Field name: first_free_entry
+2017-01-12 05:59:48:Field Type:
+2017-01-12 05:59:48:Type: The type is a pointer.
+2017-01-12 05:59:48:Type sizeof: 8
+2017-01-12 05:59:48:Field name: arena
+2017-01-12 05:59:48:Field Type:
+2017-01-12 05:59:48:Type: The type is a pointer.
+2017-01-12 05:59:48:Type sizeof: 8
+2017-01-12 05:59:48:Field name: arena_size
+2017-01-12 05:59:48:Field Type:
+2017-01-12 05:59:48:Type: The type is an integer type.
+2017-01-12 05:59:48:Type sizeof: 8
+2017-01-12 05:59:48:Fault Injection Successful after 1.5964910984s
+2017-01-12 05:59:53:Fault Already Injected
+2017-01-12 05:59:59:Fault Already Injected
+2017-01-12 05:59:59:Fault Already Injected
+2017-01-12 06:00:00:Fault Already Injected
+2017-01-12 06:00:00:Fault Already Injected
+2017-01-12 06:00:00:Fault Already Injected
+2017-01-12 06:00:00:Fault Already Injected
+2017-01-12 06:00:00:Fault Already Injected
+2017-01-12 06:00:00:Fault Already Injected
+2017-01-12 06:00:00:Fault Already Injected
+2017-01-12 06:00:00:Fault Already Injected
+2017-01-12 06:00:01:Fault Already Injected
+2017-01-12 06:00:01:Fault Already Injected
+2017-01-12 06:00:01:Fault Already Injected
+2017-01-12 06:00:01:Fault Already Injected
+2017-01-12 06:00:01:Fault Already Injected
+2017-01-12 06:00:01:Fault Already Injected
+2017-01-12 06:00:02:Fault Already Injected
+2017-01-12 06:00:02:Fault Already Injected
+2017-01-12 06:00:02:Fault Already Injected
+2017-01-12 06:00:36:event type: exit
+2017-01-12 06:00:36:exit code: 0

@@ -1,0 +1,57 @@
+[INFO -- 2017-03-27 02:20:40]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 02:20:40]
+Initialization strings:
+[INFO -- 2017-03-27 02:20:41]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 02:20:41]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 02:20:41]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 02:20:41]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 02:20:41]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 02:20:41]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 02:20:41]
+initSignal:0
+[INFO -- 2017-03-27 02:20:41]
+endSignal:3
+[INFO -- 2017-03-27 02:20:41]
+seqSignal:30
+[INFO -- 2017-03-27 02:20:41]
+faultMode:3
+[INFO -- 2017-03-27 02:20:41]
+Backtrace BEGIN:
+#0  0x0000000000401f37 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:121
+
+116	                            if((((i+l)>=0 && (j+m)>=0 && (k+n)>=0)==true && ((i+l)<dim_cpu.boxes1d_arg && (j+m)<dim_cpu.boxes1d_arg && (k+n)<dim_cpu.boxes1d_arg)==true) && (l==0 && m==0 && n==0)==false) {
+117	
+118	                                box_cpu[nh].nei[box_cpu[nh].nn].x = (k+n);
+119	                                box_cpu[nh].nei[box_cpu[nh].nn].y = (j+m);
+120	                                box_cpu[nh].nei[box_cpu[nh].nn].z = (i+l);
+121	                                box_cpu[nh].nei[box_cpu[nh].nn].number = (box_cpu[nh].nei[box_cpu[nh].nn].z * dim_cpu.boxes1d_arg * dim_cpu.boxes1d_arg) + (box_cpu[nh].nei[box_cpu[nh].nn].y * dim_cpu.boxes1d_arg) + box_cpu[nh].nei[box_cpu[nh].nn].x;
+122	                                box_cpu[nh].nei[box_cpu[nh].nn].offset = box_cpu[nh].nei[box_cpu[nh].nn].number * NUMBER_PAR_PER_BOX;
+123	
+124	                                box_cpu[nh].nn = box_cpu[nh].nn + 1;
+125	
+
+Backtrace END
+Memory content before bitflip:0x380x070x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe71c
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: main
+symbol name: nh
+symbol filename: main_check.c
+symbol line: 62
+value: 0
+value address: 0x7fffffffe71c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-27 02:20:41]
+Fault Injection Successful after 0.564174890518s

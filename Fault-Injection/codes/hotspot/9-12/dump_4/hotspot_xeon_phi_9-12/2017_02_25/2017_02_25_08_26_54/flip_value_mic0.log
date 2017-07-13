@@ -1,0 +1,60 @@
+[INFO -- 2017-02-25 08:26:14]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 08:26:14]
+Initialization strings:
+[INFO -- 2017-02-25 08:26:14]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-25 08:26:14]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 08:26:14]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 08:26:14]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 08:26:14]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 08:26:14]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-25 08:26:14]
+initSignal:9
+[INFO -- 2017-02-25 08:26:14]
+endSignal:12
+[INFO -- 2017-02-25 08:26:14]
+seqSignal:15
+[INFO -- 2017-02-25 08:26:14]
+faultMode:3
+[INFO -- 2017-02-25 08:26:23]
+Backtrace BEGIN:
+#0  0x00007ffff7138373 in _IO_acquire_lock_fct (p=<synthetic pointer>) at libioP.h:892
+#1  _IO_fgets (buf=<optimized out>, n=<optimized out>, fp=0x609b40) at iofgets.c:50
+#2  0x0000000000404538 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:202
+#3  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+887	in libioP.h
+
+Backtrace END
+Fliping array at pos: 170
+Memory content before bitflip:0x0e
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe6ea 
+address max offset: 1
+Memory content after  bitflip:0x00
+frame name: read_input
+symbol name: str
+symbol filename: hotspot_check.c
+symbol line: 194
+value: "326.455688\n\000\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\240\211`\000\000\000\000\000\023\000\000\000\000\000\000\000\023\000\000\000\000\000\000\000\240\211`", '\000' <repeats 13 times>, "\060\000\000\000\060\000\000\000\240\347\377\377\377\177\000\000\340\346\377\377\377\177\000\000\377\017\000\000\000\000\000\000\210\023\000\367\377\177\000\000\350\003\000\000\000\000\000\000\350\003\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000"...
+value address: 0x7fffffffe640
+Type: The type is an array.
+Type sizeof: 256
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 255L)
+
+[INFO -- 2017-02-25 08:26:23]
+Fault Injection Successful after 9.77307391167s
+[INFO -- 2017-02-25 08:26:39]
+event type: exit
+[INFO -- 2017-02-25 08:26:39]
+exit code: 0

@@ -1,0 +1,61 @@
+[INFO -- 2017-02-25 13:50:38]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 13:50:38]
+Initialization strings:
+[INFO -- 2017-02-25 13:50:38]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-25 13:50:38]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 13:50:38]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 13:50:38]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 13:50:38]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 13:50:38]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-25 13:50:38]
+initSignal:6
+[INFO -- 2017-02-25 13:50:38]
+endSignal:9
+[INFO -- 2017-02-25 13:50:38]
+seqSignal:15
+[INFO -- 2017-02-25 13:50:38]
+faultMode:3
+[INFO -- 2017-02-25 13:50:45]
+Backtrace BEGIN:
+#0  __mpn_lshift () at ../sysdeps/x86_64/lshift.S:48
+#1  0x00007ffff71092d4 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe050 "0.000008", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1472
+#2  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe050 "0.000008", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0) at strtod.c:54
+#3  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2332
+#4  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "0.000008\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#5  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#6  0x0000000000404598 in read_input (vect=0x7ffff66cb010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee43 "/micNfs/gdb-fault-injection/injector/data/hotspot/power_1024") at hotspot_check.c:207
+#7  0x0000000000404ad7 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:266
+
+43	in ../sysdeps/x86_64/lshift.S
+
+Backtrace END
+Fliping array at pos: 0
+Fliping value of field: gp_offset
+Memory content before bitflip:0x100x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe2a8
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: _IO_vfscanf_internal
+symbol name: arg
+symbol filename: vfscanf.c
+symbol line: 208
+value: {{gp_offset = 0, fp_offset = 48, overflow_arg_area = 0x7fffffffe640, reg_save_area = 0x7fffffffe580}}
+value address: 0x7fffffffe2a8
+Type: The type is an array.
+Type sizeof: 24
+
+[INFO -- 2017-02-25 13:50:45]
+Fault Injection Successful after 7.50288009644s
+[INFO -- 2017-02-25 13:50:45]
+event type: exit
+[INFO -- 2017-02-25 13:50:45]
+exit code: 1

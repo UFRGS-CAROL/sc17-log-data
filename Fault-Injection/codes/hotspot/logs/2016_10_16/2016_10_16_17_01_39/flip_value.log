@@ -1,0 +1,55 @@
+2016-10-16 17:01:18:Initialization strings:
+2016-10-16 17:01:18:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-16 17:01:18:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-16 17:01:18:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-16 17:01:18:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-16 17:01:18:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-16 17:01:18:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-16 17:01:23:Trying Fault Injection
+2016-10-16 17:01:23:Backtrace BEGIN:
+2016-10-16 17:01:24:#0  0x00007ffff71505d0 in __GI_memcpy (dstpp=dstpp@entry=0x7fffffffe87a, srcpp=srcpp@entry=0x7ffff7f798f2, len=<optimized out>, len@entry=9) at ../string/memcpy.c:59
+#1  0x00007ffff713940b in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe87a "0.000163\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:105
+#2  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe87a "0.000163\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#3  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe87a "0.000163\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#4  0x00000000004017d6 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:201
+#5  main (argc=-6020, argv=0xfffffffff7f7b078) at hotspot_check.c:265
+
+2016-10-16 17:01:24:54	in ../string/memcpy.c
+
+2016-10-16 17:01:24:Backtrace END
+2016-10-16 17:01:24:Type: The type is an array.
+2016-10-16 17:01:24:Type sizeof: 256
+2016-10-16 17:01:24:Fliping array at pos: 203
+2016-10-16 17:01:24:Type: The type is an integer type.
+2016-10-16 17:01:24:Type sizeof: 1
+2016-10-16 17:01:24:Mem contents(hex):0x7f
+2016-10-16 17:01:24:base address to flip value: 0x7fffffffe945 
+2016-10-16 17:01:24:address max offset: 1
+2016-10-16 17:01:24:Memory content before bitflip:0x7f
+2016-10-16 17:01:24:Memory content after  bitflip:0xff
+2016-10-16 17:01:24:Mem contents(hex):0xff
+2016-10-16 17:01:24:frame name: read_input
+2016-10-16 17:01:24:symbol name: str
+2016-10-16 17:01:24:symbol filename: hotspot_check.c
+2016-10-16 17:01:24:symbol line: 193
+2016-10-16 17:01:24:value: "0.000163\n\000\000\000\000\000\000\215\377\367\377\177\000\000\001", '\000' <repeats 15 times>, "\001\000\000\000\000\000\000\000,]\336\367\377\177\000\000\070L\r\367\377\177\000\000\001\b\000\000\000\000\000\000HJ\r\367\377\177\000\000\240\231\377\367\377\177\000\000\070L\r\367\377\177\000\000\020`\336\367\377\177\000\000\001\b\000\000\000\000\000\000\330\027\016\367\377\177\000\000\240\231\377\367\377\177\000\000\210\351\377\377\377\177\000\000\204\351\377\377\377\177\000\000\365\330\003\000\000\000\000\000@\324\335\367\377\177\000\000\356\n@\000\000\000\000\000.N=\366\000\000\000\000h\a@\000\000\000\000\000\210\351\377\377\377\177\000\000\070\365\330\003\000\000\000\000.\000\000\000"...
+2016-10-16 17:01:24:value address: 0x7fffffffe87a
+2016-10-16 17:01:24:Type: The type is an array.
+2016-10-16 17:01:24:Type sizeof: 256
+2016-10-16 17:01:24:Field name: None
+2016-10-16 17:01:24:Field Type:
+2016-10-16 17:01:24:Type: A range type, that is, an integer type with bounds.
+2016-10-16 17:01:24:Type sizeof: 1
+2016-10-16 17:01:24:Type range: (0L, 255L)
+2016-10-16 17:01:24:Fault Injection Successful after 6.07590389252s
+2016-10-16 17:01:25:Fault Already Injected
+2016-10-16 17:01:27:Fault Already Injected
+2016-10-16 17:01:28:Fault Already Injected
+2016-10-16 17:01:28:Fault Already Injected
+2016-10-16 17:01:28:Fault Already Injected
+2016-10-16 17:01:30:Fault Already Injected
+2016-10-16 17:01:30:Fault Already Injected
+2016-10-16 17:01:31:Fault Already Injected
+2016-10-16 17:01:32:Fault Already Injected
+2016-10-16 17:01:33:event type: exit
+2016-10-16 17:01:33:exit code: 0

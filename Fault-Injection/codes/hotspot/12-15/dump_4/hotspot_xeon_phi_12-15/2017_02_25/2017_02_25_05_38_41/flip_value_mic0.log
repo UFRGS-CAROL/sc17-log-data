@@ -1,0 +1,75 @@
+[INFO -- 2017-02-25 05:38:13]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 05:38:13]
+Initialization strings:
+[INFO -- 2017-02-25 05:38:13]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-25 05:38:13]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 05:38:13]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 05:38:13]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 05:38:13]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 05:38:13]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-25 05:38:13]
+initSignal:12
+[INFO -- 2017-02-25 05:38:13]
+endSignal:15
+[INFO -- 2017-02-25 05:38:13]
+seqSignal:15
+[INFO -- 2017-02-25 05:38:13]
+faultMode:2
+[INFO -- 2017-02-25 05:38:27]
+Backtrace BEGIN:
+#0  msort_with_tmp (p=p@entry=0x7fffffffdc58, b=b@entry=0x60a498, n=n@entry=2) at msort.c:51
+#1  0x00007ffff7105011 in msort_with_tmp (n=2, b=<optimized out>, p=<optimized out>) at msort.c:45
+#2  msort_with_tmp (p=p@entry=0x7fffffffdc58, b=b@entry=0x60a498, n=n@entry=4) at msort.c:53
+#3  0x00007ffff7105027 in msort_with_tmp (n=4, b=0x60a498, p=<optimized out>) at msort.c:45
+#4  msort_with_tmp (p=p@entry=0x7fffffffdc58, b=b@entry=0x60a478, n=n@entry=8) at msort.c:54
+#5  0x00007ffff7105011 in msort_with_tmp (n=8, b=<optimized out>, p=<optimized out>) at msort.c:45
+#6  msort_with_tmp (p=p@entry=0x7fffffffdc58, b=b@entry=0x60a478, n=n@entry=16) at msort.c:53
+#7  0x00007ffff7105027 in msort_with_tmp (n=16, b=0x60a478, p=<optimized out>) at msort.c:45
+#8  msort_with_tmp (p=p@entry=0x7fffffffdc58, b=b@entry=0x60a400, n=n@entry=31) at msort.c:54
+#9  0x00007ffff7105027 in msort_with_tmp (n=31, b=0x60a400, p=<optimized out>) at msort.c:45
+#10 msort_with_tmp (p=p@entry=0x7fffffffdc58, b=b@entry=0x60a310, n=n@entry=61) at msort.c:54
+#11 0x00007ffff7105011 in msort_with_tmp (n=61, b=<optimized out>, p=<optimized out>) at msort.c:45
+#12 msort_with_tmp (p=p@entry=0x7fffffffdc58, b=b@entry=0x60a310, n=n@entry=122) at msort.c:53
+#13 0x00007ffff7105011 in msort_with_tmp (n=122, b=<optimized out>, p=<optimized out>) at msort.c:45
+#14 msort_with_tmp (p=p@entry=0x7fffffffdc58, b=0x60a310, n=n@entry=244) at msort.c:53
+#15 0x00007ffff71053da in msort_with_tmp (n=6333200, b=<optimized out>, p=0x7fffffffdc58) at msort.c:45
+#16 __GI___qsort_r (b=0x7ffff5df5240, n=244, s=268, cmp=<optimized out>, arg=<optimized out>) at msort.c:254
+#17 0x00007ffff787af7d in ?? ()
+#18 0x00000000000000f3 in ?? ()
+#19 0x00007fff00000004 in ?? ()
+#20 0x0000000000000003 in ?? ()
+#21 0x00007ffff714ff79 in __GI___mempcpy (dest=<optimized out>, src=src@entry=0x7fffffffddc0, len=140737488346672, len@entry=21) at ../string/mempcpy.c:35
+#22 0x00007ffff714465b in __GI__IO_default_xsputn (f=0xf3, data=<optimized out>, n=140737318441536) at genops.c:463
+#23 0x0000000000000000 in ?? ()
+
+46	in msort.c
+
+Backtrace END
+Memory content before bitflip:0x100x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffda18
+address max offset: 8
+Memory content after  bitflip:0xf60xa80xc50xcc0x950x400xc40xd7
+frame name: msort_with_tmp
+symbol name: n
+symbol filename: msort.c
+symbol line: 40
+value: 15547622825719605494
+value address: 0x7fffffffda18
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2017-02-25 05:38:27]
+Fault Injection Successful after 14.1299540997s
+[INFO -- 2017-02-25 05:38:27]
+event type: exit
+[EXCEPTION -- 2017-02-25 05:38:27]
+exit code: no exit code available

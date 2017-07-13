@@ -1,0 +1,129 @@
+2017-03-02 05:04:37:Starting flip_value script
+2017-03-02 05:04:37:Initialization strings:
+2017-03-02 05:04:38:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 05:04:38:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 05:04:38:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 05:04:38:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-03-02 05:04:38:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-03-02 05:04:38:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-03-02 05:04:38:initSignal:0
+2017-03-02 05:04:38:endSignal:2
+2017-03-02 05:04:38:seqSignal:30
+2017-03-02 05:04:38:Backtrace BEGIN:
+2017-03-02 05:04:38:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000009 in ?? ()
+#7  0x00007fffffffee08 in ?? ()
+#8  0x00007fffffffee3f in ?? ()
+#9  0x00007fffffffee42 in ?? ()
+#10 0x00007fffffffee47 in ?? ()
+#11 0x00007fffffffee4a in ?? ()
+#12 0x00007fffffffee4e in ?? ()
+#13 0x00007fffffffee51 in ?? ()
+#14 0x00007fffffffee90 in ?? ()
+#15 0x00007fffffffee93 in ?? ()
+#16 0x0000000000000000 in ?? ()
+
+2017-03-02 05:04:38:69	in dl-debug.c
+
+2017-03-02 05:04:38:Backtrace END
+2017-03-02 05:04:38:Type: The type is an integer type.
+2017-03-02 05:04:38:Type sizeof: 8
+2017-03-02 05:04:38:Mem contents(hex):0x7a0xeb0x120x000x000x000x000x00
+2017-03-02 05:04:38:Fault Mode: Random bit-flip
+2017-03-02 05:04:38:base address to flip value: 0x7ffff7ffcc88 
+2017-03-02 05:04:38:address max offset: 8
+2017-03-02 05:04:38:Memory content before bitflip:0x7a0xeb0x120x000x000x000x000x00
+2017-03-02 05:04:38:Backtrace BEGIN:
+2017-03-02 05:04:38:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142911 in __GI__IO_file_xsgetn (fp=0x60c010, data=<optimized out>, n=16777216) at fileops.c:1422
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=16777216, count=1, fp=0x60c010) at iofread.c:42
+#3  0x0000000000402b5a in main (argc=9, argv=0x7fffffffec08) at lud_check.c:105
+
+2017-03-02 05:04:38:76	in ../sysdeps/unix/syscall-template.S
+
+2017-03-02 05:04:38:Backtrace END
+2017-03-02 05:04:38:Type: The type is an integer type.
+2017-03-02 05:04:38:Type sizeof: 4
+2017-03-02 05:04:38:Mem contents(hex):0x000x000x000x00
+2017-03-02 05:04:38:Fault Mode: Zero bit-flip
+2017-03-02 05:04:38:base address to flip value: 0x7fffffffe93c
+2017-03-02 05:04:38:address max offset: 4
+2017-03-02 05:04:38:Memory content before bitflip:0x000x000x000x00
+2017-03-02 05:04:39:Backtrace BEGIN:
+2017-03-02 05:04:39:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142911 in __GI__IO_file_xsgetn (fp=0x60c240, data=<optimized out>, n=16777216) at fileops.c:1422
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=16777216, count=1, fp=0x60c240) at iofread.c:42
+#3  0x0000000000402b9c in main (argc=9, argv=0x7fffffffec08) at lud_check.c:106
+
+2017-03-02 05:04:39:76	in ../sysdeps/unix/syscall-template.S
+
+2017-03-02 05:04:39:Backtrace END
+2017-03-02 05:04:39:Type: The type is a structure.
+2017-03-02 05:04:39:Type sizeof: 168
+2017-03-02 05:04:39:Fliping value of field: __underflow
+2017-03-02 05:04:39:Type: The type is a pointer.
+2017-03-02 05:04:39:Type sizeof: 8
+2017-03-02 05:04:39:Fliping a bit of the pointer
+2017-03-02 05:04:39:Mem contents(hex):0x700x350x140xf70xff0x7f0x000x00
+2017-03-02 05:04:39:Fault Mode: One bit-flip
+2017-03-02 05:04:39:base address to flip value: 0x7ffff74236e0 
+2017-03-02 05:04:39:address max offset: 8
+2017-03-02 05:04:39:Memory content before bitflip:0x700x350x140xf70xff0x7f0x000x00
+2017-03-02 05:04:39:Backtrace BEGIN:
+2017-03-02 05:04:39:#0  __GI___waitpid (pid=35827, stat_loc=stat_loc@entry=0x7fffffffe528, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405bb2 in start_iteration () at ../include/log_helper.c:311
+#4  0x0000000000402c5b in main (argc=9, argv=0x7fffffffec08) at lud_check.c:122
+
+2017-03-02 05:04:39:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-03-02 05:04:39:Backtrace END
+2017-03-02 05:04:39:Type: The type is a structure.
+2017-03-02 05:04:39:Type sizeof: 152
+2017-03-02 05:04:39:Fliping value of field: __sigaction_handler
+2017-03-02 05:04:39:Type: The type is a union.
+2017-03-02 05:04:39:Type sizeof: 8
+2017-03-02 05:04:39:Fliping value of field name: sa_handler
+2017-03-02 05:04:39:Type: The type is a pointer.
+2017-03-02 05:04:39:Type sizeof: 8
+2017-03-02 05:04:39:Fliping a bit of the pointer
+2017-03-02 05:04:39:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-03-02 05:04:39:Fault Mode: Double bit-flip
+2017-03-02 05:04:39:base address to flip value: 0x7ffff74264e0 
+2017-03-02 05:04:39:address max offset: 8
+2017-03-02 05:04:39:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-03-02 05:04:39:Memory content after  bitflip:0x000x000x000x000x000x000x0c0x00
+2017-03-02 05:04:39:Mem contents(hex):0x000x000x000x000x000x000x0c0x00
+2017-03-02 05:04:39:frame name: do_system
+2017-03-02 05:04:39:symbol name: intr
+2017-03-02 05:04:39:symbol filename: ../sysdeps/posix/system.c
+2017-03-02 05:04:39:symbol line: 34
+2017-03-02 05:04:39:value: {__sigaction_handler = {sa_handler = 0xc000000000000, sa_sigaction = 0xc000000000000}, sa_mask = {__val = {0, 7954887943085981697, 140737488348900, 140737488348900, 140737488348900, 140737488348900, 140737488348910, 18446744073709551615, 140737488348900, 18446744073709551615, 0, 0, 0, 0, 0, 0}}, sa_flags = 67108864, sa_restorer = 0x7ffff7103610 <__restore_rt>}
+2017-03-02 05:04:39:value address: 0x7ffff74264e0 <intr>
+2017-03-02 05:04:39:Type: The type is a structure.
+2017-03-02 05:04:39:Type sizeof: 152
+2017-03-02 05:04:39:Field name: __sigaction_handler
+2017-03-02 05:04:39:Field Type:
+2017-03-02 05:04:39:Type: The type is a union.
+2017-03-02 05:04:39:Type sizeof: 8
+2017-03-02 05:04:39:Field name: sa_mask
+2017-03-02 05:04:39:Field Type:
+2017-03-02 05:04:39:Type: The type is a structure.
+2017-03-02 05:04:39:Type sizeof: 128
+2017-03-02 05:04:39:Field name: sa_flags
+2017-03-02 05:04:39:Field Type:
+2017-03-02 05:04:39:Type: The type is an integer type.
+2017-03-02 05:04:39:Type sizeof: 4
+2017-03-02 05:04:39:Field name: sa_restorer
+2017-03-02 05:04:39:Field Type:
+2017-03-02 05:04:39:Type: The type is a pointer.
+2017-03-02 05:04:39:Type sizeof: 8
+2017-03-02 05:04:39:Fault Injection Successful after 1.30682492256s
+2017-03-02 05:04:57:event type: exit
+2017-03-02 05:04:57:exit code: 0

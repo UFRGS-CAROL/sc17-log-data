@@ -1,0 +1,56 @@
+2017-02-22 01:32:42:Starting flip_value script
+2017-02-22 01:32:42:Initialization strings:
+2017-02-22 01:32:42:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-22 01:32:42:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 01:32:42:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 01:32:42:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-22 01:32:42:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-22 01:32:42:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-02-22 01:32:42:initSignal:0
+2017-02-22 01:32:42:endSignal:3
+2017-02-22 01:32:42:seqSignal:15
+2017-02-22 01:32:43:Backtrace BEGIN:
+2017-02-22 01:32:43:#0  _IO_str_init_static_internal (sf=sf@entry=0x7fffffffe440, ptr=ptr@entry=0x7fffffffe640 "325.199002\n", size=size@entry=0, pstart=pstart@entry=0x0) at strops.c:51
+#1  0x00007ffff71365d5 in __GI___isoc99_vsscanf (string=0x7fffffffe640 "325.199002\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:41
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000404598 in read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:207
+#4  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+2017-02-22 01:32:43:46	in strops.c
+
+2017-02-22 01:32:43:Backtrace END
+2017-02-22 01:32:44:Type: The type is a structure.
+2017-02-22 01:32:44:Type sizeof: 240
+2017-02-22 01:32:44:Fliping value of field: _sbf
+2017-02-22 01:32:44:Type: The type is a structure.
+2017-02-22 01:32:44:Type sizeof: 224
+2017-02-22 01:32:44:Fliping value of field: vtable
+2017-02-22 01:32:44:Type: The type is a pointer.
+2017-02-22 01:32:44:Type sizeof: 8
+2017-02-22 01:32:44:Fliping a bit of the pointer
+2017-02-22 01:32:44:Mem contents(hex):0x800x370x420xf70xff0x7f0x000x00
+2017-02-22 01:32:44:Fault Mode: Double bit-flip
+2017-02-22 01:32:44:base address to flip value: 0x7fffffffe518
+2017-02-22 01:32:44:address max offset: 8
+2017-02-22 01:32:44:Memory content before bitflip:0x800x370x420xf70xff0x7f0x000x00
+2017-02-22 01:32:44:Memory content after  bitflip:0x800x370x480xf70xff0x7f0x000x00
+2017-02-22 01:32:44:Mem contents(hex):0x800x370x480xf70xff0x7f0x000x00
+2017-02-22 01:32:44:frame name: __GI___isoc99_vsscanf
+2017-02-22 01:32:44:symbol name: sf
+2017-02-22 01:32:44:symbol filename: isoc99_vsscanf.c
+2017-02-22 01:32:44:symbol line: 35
+2017-02-22 01:32:44:value: {_sbf = {_f = {_flags = -72515583, _IO_read_ptr = 0x0, _IO_read_end = 0x0, _IO_read_base = 0x0, _IO_write_base = 0x0, _IO_write_ptr = 0x0, _IO_write_end = 0x0, _IO_buf_base = 0x7fffffffe640 "325.199002\n", _IO_buf_end = 0x7fffffffe64b "", _IO_save_base = 0x0, _IO_backup_base = 0x0, _IO_save_end = 0x0, _markers = 0x0, _chain = 0x0, _fileno = 4196954, _flags2 = 0, _old_offset = 1273442592, _cur_column = 0, _vtable_offset = 12 '\f', _shortbuf = "\006", _lock = 0x0, _offset = 140737338238248, _codecvt = 0x7ffff7ff99a0, _wide_data = 0xffffffffffffffff, _freeres_list = 0x0, _freeres_buf = 0x3e8, _freeres_size = 0, _mode = -1, _unused2 = "\000\000\000\000\000\000\020\000\000\000\000\000\000X\000\000\000\000\000"}, vtable = 0x7ffff7483780}, _s = {_allocate_buffer = 0x0, _free_buffer = 0x5841ea96}}
+2017-02-22 01:32:44:value address: 0x7fffffffe440
+2017-02-22 01:32:44:Type: The type is a structure.
+2017-02-22 01:32:44:Type sizeof: 240
+2017-02-22 01:32:44:Field name: _sbf
+2017-02-22 01:32:44:Field Type:
+2017-02-22 01:32:44:Type: The type is a structure.
+2017-02-22 01:32:44:Type sizeof: 224
+2017-02-22 01:32:44:Field name: _s
+2017-02-22 01:32:44:Field Type:
+2017-02-22 01:32:44:Type: The type is a structure.
+2017-02-22 01:32:44:Type sizeof: 16
+2017-02-22 01:32:44:Fault Injection Successful after 2.05363488197s
+2017-02-22 01:33:07:event type: exit
+2017-02-22 01:33:07:exit code: 0

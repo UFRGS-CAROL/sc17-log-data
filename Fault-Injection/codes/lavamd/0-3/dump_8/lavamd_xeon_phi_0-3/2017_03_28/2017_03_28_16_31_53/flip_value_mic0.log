@@ -1,0 +1,62 @@
+[INFO -- 2017-03-28 16:31:29]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-28 16:31:29]
+Initialization strings:
+[INFO -- 2017-03-28 16:31:29]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-28 16:31:29]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 16:31:29]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 16:31:29]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 16:31:29]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 16:31:29]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-28 16:31:29]
+initSignal:0
+[INFO -- 2017-03-28 16:31:29]
+endSignal:3
+[INFO -- 2017-03-28 16:31:29]
+seqSignal:30
+[INFO -- 2017-03-28 16:31:29]
+faultMode:1
+[EXCEPTION -- 2017-03-28 16:31:29]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-03-28 16:31:30]
+Backtrace BEGIN:
+#0  0x00007ffff71505d6 in __GI_memcpy (dstpp=dstpp@entry=0x7ffff63f31a0, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#3  0x0000000000402245 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:150
+
+54	in ../string/memcpy.c
+
+Backtrace END
+Fliping array at pos: 72
+Memory content before bitflip:0xa0
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe690 
+address max offset: 1
+Memory content after  bitflip:0xe8
+frame name: main
+symbol name: test_info
+symbol filename: main_check.c
+symbol line: 188
+value: ",]\336\367\377\177\000\000\070L\r\367\377\177\000\000p\b\000\000\000\000\000\000\004L\r\367\377\177\000\000\240\231\377\367\377\177\000\000\070L\r\367\377\177\000\000\020`\336\367\377\177\000\000p\b\000\000\000\000\000\000\330\027\016\367\377\177\000\000\350\231\377\367\377\177\000\000(\347\377\377\377\177\000\000$\347\377\377\377\177\000\000[\362\001"
+value address: 0x7fffffffe648
+Type: The type is an array.
+Type sizeof: 100
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 99L)
+
+[INFO -- 2017-03-28 16:31:30]
+Fault Injection Successful after 1.20305609703s
+[INFO -- 2017-03-28 16:31:46]
+event type: exit
+[INFO -- 2017-03-28 16:31:46]
+exit code: 0

@@ -1,0 +1,118 @@
+2017-01-24 23:57:50:Starting flip_value script
+2017-01-24 23:57:50:Initialization strings:
+2017-01-24 23:57:51:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-24 23:57:51:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 23:57:51:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 23:57:51:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 23:57:51:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 23:57:51:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-24 23:57:51:initSignal:0
+2017-01-24 23:57:51:endSignal:2
+2017-01-24 23:57:51:seqSignal:30
+2017-01-24 23:57:51:Trying Fault Injection
+2017-01-24 23:57:51:Inferior PID: 78920
+2017-01-24 23:57:51:Inferior is valid: True
+2017-01-24 23:57:51:Inferior #threads: 1
+2017-01-24 23:57:51:Backtrace BEGIN:
+2017-01-24 23:57:51:#0  0x00007ffff7df436a in mmap64 () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7de3e03 in _dl_map_segments (loader=0x7fffffffe440, has_holes=<optimized out>, maplength=2351256, nloadcmds=2, loadcmds=0x7fffffffe0e0, type=<optimized out>, header=0x7ffff7ffa660, fd=<optimized out>, l=0x7ffff7ffa658) at ./dl-map-segments.h:90
+#2  _dl_map_object_from_fd (name=name@entry=0x400b39 "libm.so.6", fd=<optimized out>, fbp=fbp@entry=0x7fffffffe3f8, realname=<optimized out>, loader=loader@entry=0x7ffff7ffe168, l_type=l_type@entry=1, mode=0, stack_endp=0x7fffffffe3f0, nsid=0) at dl-load.c:1222
+#3  0x00007ffff7de52f9 in _dl_map_object (loader=0x7ffff7ffe168, name=0x400b39 "libm.so.6", type=1, trace_mode=0, mode=0, nsid=<optimized out>) at dl-load.c:2188
+#4  0x00007ffff7de964f in openaux (a=a@entry=0x7fffffffe9b8) at dl-deps.c:63
+#5  0x00007ffff7deba83 in _dl_catch_error (objname=objname@entry=0x7fffffffe9b0, errstring=errstring@entry=0x7fffffffe9a8, mallocedp=mallocedp@entry=0x7fffffffe9a7, operate=operate@entry=0x7ffff7de9620 <openaux>, args=args@entry=0x7fffffffe9b8) at dl-error.c:187
+#6  0x00007ffff7de98a9 in _dl_map_object_deps (map=map@entry=0x7ffff7ffe168, preloads=<optimized out>, npreloads=npreloads@entry=0, trace_mode=trace_mode@entry=0, open_mode=open_mode@entry=0) at dl-deps.c:254
+#7  0x00007ffff7ddff28 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1612
+#8  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#9  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#10 _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#11 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#12 0x0000000000000009 in ?? ()
+#13 0x00007fffffffee08 in ?? ()
+#14 0x00007fffffffee3f in ?? ()
+#15 0x00007fffffffee42 in ?? ()
+#16 0x00007fffffffee47 in ?? ()
+#17 0x00007fffffffee4a in ?? ()
+#18 0x00007fffffffee4e in ?? ()
+#19 0x00007fffffffee51 in ?? ()
+#20 0x00007fffffffee90 in ?? ()
+#21 0x00007fffffffee93 in ?? ()
+#22 0x0000000000000000 in ?? ()
+
+2017-01-24 23:57:51:76	in ../sysdeps/unix/syscall-template.S
+
+2017-01-24 23:57:51:Backtrace END
+2017-01-24 23:57:51:Thread name: None
+2017-01-24 23:57:51:Thread num: 1
+2017-01-24 23:57:51:Thread ptid: (78920, 78920, 0)
+2017-01-24 23:57:51:bitFlip function
+2017-01-24 23:57:51:Type: The type is a pointer.
+2017-01-24 23:57:51:Type sizeof: 8
+2017-01-24 23:57:51:Fliping a bit of the pointer
+2017-01-24 23:57:51:Mem contents(hex):0x020x000x000x000x000x000x000x00
+2017-01-24 23:57:51:base address to flip value: 0x7fffffffe960
+2017-01-24 23:57:51:address max offset: 8
+2017-01-24 23:57:51:Memory content before bitflip:0x020x000x000x000x000x000x000x00
+2017-01-24 23:57:51:Memory content after  bitflip:0x020x000x020x000x000x000x000x00
+2017-01-24 23:57:51:Mem contents(hex):0x020x000x020x000x000x000x000x00
+2017-01-24 23:57:51:frame name: _dl_map_object_deps
+2017-01-24 23:57:51:symbol name: tail
+2017-01-24 23:57:51:symbol filename: dl-deps.c
+2017-01-24 23:57:51:symbol line: 162
+2017-01-24 23:57:51:value: 0x2
+2017-01-24 23:57:51:value address: 0x7fffffffe960
+2017-01-24 23:57:51:Type: The type is a pointer.
+2017-01-24 23:57:51:Type sizeof: 8
+2017-01-24 23:57:51:Fault Injection Successful after 0.987324953079s
+2017-01-24 23:57:52:Fault Already Injected
+2017-01-24 23:57:52:Fault Already Injected
+2017-01-24 23:57:52:Fault Already Injected
+2017-01-24 23:57:52:Fault Already Injected
+2017-01-24 23:57:52:Fault Already Injected
+2017-01-24 23:57:52:Fault Already Injected
+2017-01-24 23:57:53:Fault Already Injected
+2017-01-24 23:57:53:Fault Already Injected
+2017-01-24 23:57:54:Fault Already Injected
+2017-01-24 23:57:54:Fault Already Injected
+2017-01-24 23:57:54:Fault Already Injected
+2017-01-24 23:57:54:Fault Already Injected
+2017-01-24 23:57:55:Fault Already Injected
+2017-01-24 23:57:55:Fault Already Injected
+2017-01-24 23:57:55:Fault Already Injected
+2017-01-24 23:57:56:Fault Already Injected
+2017-01-24 23:57:56:Fault Already Injected
+2017-01-24 23:57:56:Fault Already Injected
+2017-01-24 23:57:57:Fault Already Injected
+2017-01-24 23:57:57:Fault Already Injected
+2017-01-24 23:57:57:Fault Already Injected
+2017-01-24 23:57:57:Fault Already Injected
+2017-01-24 23:57:58:Fault Already Injected
+2017-01-24 23:57:58:Fault Already Injected
+2017-01-24 23:57:58:Fault Already Injected
+2017-01-24 23:57:58:Fault Already Injected
+2017-01-24 23:57:59:Fault Already Injected
+2017-01-24 23:57:59:Fault Already Injected
+2017-01-24 23:57:59:Fault Already Injected
+2017-01-24 23:57:59:Fault Already Injected
+2017-01-24 23:57:59:Fault Already Injected
+2017-01-24 23:58:00:Fault Already Injected
+2017-01-24 23:58:00:Fault Already Injected
+2017-01-24 23:58:01:Fault Already Injected
+2017-01-24 23:58:01:Fault Already Injected
+2017-01-24 23:58:01:Fault Already Injected
+2017-01-24 23:58:01:Fault Already Injected
+2017-01-24 23:58:01:Fault Already Injected
+2017-01-24 23:58:02:Fault Already Injected
+2017-01-24 23:58:02:Fault Already Injected
+2017-01-24 23:58:02:Fault Already Injected
+2017-01-24 23:58:02:Fault Already Injected
+2017-01-24 23:58:03:Fault Already Injected
+2017-01-24 23:58:03:Fault Already Injected
+2017-01-24 23:58:03:Fault Already Injected
+2017-01-24 23:58:03:Fault Already Injected
+2017-01-24 23:58:03:Fault Already Injected
+2017-01-24 23:58:04:Fault Already Injected
+2017-01-24 23:58:04:Fault Already Injected
+2017-01-24 23:58:04:Fault Already Injected
+2017-01-24 23:58:04:Fault Already Injected
+2017-01-24 23:58:04:event type: exit
+2017-01-24 23:58:04:exit code: 0

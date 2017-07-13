@@ -1,0 +1,61 @@
+[INFO -- 2017-02-26 14:56:52]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 14:56:52]
+Initialization strings:
+[INFO -- 2017-02-26 14:56:52]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-26 14:56:52]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 14:56:52]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 14:56:52]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 14:56:52]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 14:56:52]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-26 14:56:52]
+initSignal:0
+[INFO -- 2017-02-26 14:56:52]
+endSignal:2
+[INFO -- 2017-02-26 14:56:52]
+seqSignal:30
+[INFO -- 2017-02-26 14:56:52]
+faultMode:2
+[INFO -- 2017-02-26 14:56:54]
+Backtrace BEGIN:
+#0  0x00007ffff719f097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff74321df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:640
+#2  __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffed1f9600) at pthread_create.c:524
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping array at pos: 17
+Memory content before bitflip:0x32
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff743c211  
+address max offset: 1
+Memory content after  bitflip:0x7d
+frame name: allocate_stack
+symbol name: __PRETTY_FUNCTION__
+symbol filename: pthread_create.c
+symbol line: 0
+value: "__pthread_create_}_1"
+value address: 0x7ffff743c200 <__PRETTY_FUNCTION__.11616>
+Type: The type is an array.
+Type sizeof: 21
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 20L)
+
+[INFO -- 2017-02-26 14:56:54]
+Fault Injection Successful after 2.71683907509s
+[INFO -- 2017-02-26 14:57:09]
+event type: exit
+[INFO -- 2017-02-26 14:57:09]
+exit code: 0

@@ -1,0 +1,82 @@
+[INFO -- 2017-03-24 03:24:05]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-24 03:24:05]
+Initialization strings:
+[INFO -- 2017-03-24 03:24:06]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-24 03:24:06]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-24 03:24:06]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-24 03:24:06]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-24 03:24:06]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-24 03:24:06]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-24 03:24:06]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-24 03:24:06]
+initSignal:30
+[INFO -- 2017-03-24 03:24:06]
+endSignal:35
+[INFO -- 2017-03-24 03:24:06]
+seqSignal:20
+[INFO -- 2017-03-24 03:24:06]
+faultMode:2
+[EXCEPTION -- 2017-03-24 03:25:05]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-24 03:25:05]
+pythonException: invalid frame
+[INFO -- 2017-03-24 03:25:05]
+Backtrace BEGIN:
+#0  0x0000000000478faa in w_corrector (deltaT=0.00035247246344680767, dr=1, U_eigen=8.2825116963394638, grad_half=0, grad_minus=0, grad_plus=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:233
+#1  0x000000000045f39f in State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1676
+#2  0x00007ffff790ba1f in ?? ()
+#3  0x00007fffffffdac0 in ?? ()
+#4  0x00007fffffffdab8 in ?? ()
+#5  0x00007fffffffdad0 in ?? ()
+#6  0x00007fffffffdad8 in ?? ()
+#7  0x00007fffffffda38 in ?? ()
+#8  0x00007fffffffda70 in ?? ()
+#9  0x00007fffffffda68 in ?? ()
+#10 0x00007fffffffdba8 in ?? ()
+#11 0x00007fffffffdbc8 in ?? ()
+#12 0x00007fffffffdbe8 in ?? ()
+#13 0x00007fffffffda30 in ?? ()
+#14 0x00000000000000e4 in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+228	
+229	   real_t rdenom = ONE / max(SQR(grad_half), EPSILON);
+230	   real_t rplus  = (grad_plus  * grad_half) * rdenom;
+231	   real_t rminus = (grad_minus * grad_half) * rdenom;
+232	
+233	   return HALF*nu*(ONE- max(MIN3(ONE, rplus, rminus), ZERO));
+234	}
+235	
+236	State::State(Mesh *mesh_in)
+237	{
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffcff8
+address max offset: 8
+Memory content after  bitflip:0x970x8a0x9d0x230xa70xb20x2e0xbc
+frame name: State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37
+symbol name: Vyminus2
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 1470
+value: -8.3206723956146017e-19
+value address: 0x7fffffffcff8
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-24 03:25:05]
+Fault Injection Successful after 59.1367659569s
+[INFO -- 2017-03-24 03:25:24]
+event type: exit
+[INFO -- 2017-03-24 03:25:24]
+exit code: 0

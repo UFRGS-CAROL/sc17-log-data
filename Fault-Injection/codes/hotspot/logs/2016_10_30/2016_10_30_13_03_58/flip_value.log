@@ -1,0 +1,45 @@
+2016-10-30 13:03:37:Initialization strings:
+2016-10-30 13:03:37:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-30 13:03:37:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-30 13:03:37:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-30 13:03:37:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-30 13:03:37:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-30 13:03:37:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-30 13:03:39:Trying Fault Injection
+2016-10-30 13:03:39:Backtrace BEGIN:
+2016-10-30 13:03:39:#0  __GI___isoc99_vsscanf (string=0x7fffffffe77a "324.062363\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:39
+#1  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#2  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#3  main (argc=-6278, argv=0x407198) at hotspot_check.c:264
+
+2016-10-30 13:03:39:34	in isoc99_vsscanf.c
+
+2016-10-30 13:03:39:Backtrace END
+2016-10-30 13:03:39:Type: A floating point type.
+2016-10-30 13:03:39:Type sizeof: 4
+2016-10-30 13:03:39:Mem contents(hex):0x000x000xa00x42
+2016-10-30 13:03:39:base address to flip value: 0x4073a4 
+2016-10-30 13:03:39:address max offset: 4
+2016-10-30 13:03:39:Memory content before bitflip:0x000x000xa00x42
+2016-10-30 13:03:39:Memory content after  bitflip:0x000x000xa00x46
+2016-10-30 13:03:39:Mem contents(hex):0x000x000xa00x46
+2016-10-30 13:03:39:frame name: read_input
+2016-10-30 13:03:39:symbol name: amb_temp
+2016-10-30 13:03:39:symbol filename: hotspot_check.c
+2016-10-30 13:03:39:symbol line: 37
+2016-10-30 13:03:39:value: 20480
+2016-10-30 13:03:39:value address: 0x4073a4 <amb_temp>
+2016-10-30 13:03:39:Type: A floating point type.
+2016-10-30 13:03:39:Type sizeof: 4
+2016-10-30 13:03:39:Fault Injection Successful after 2.31087899208s
+2016-10-30 13:03:41:Fault Already Injected
+2016-10-30 13:03:42:Fault Already Injected
+2016-10-30 13:03:44:Fault Already Injected
+2016-10-30 13:03:44:Fault Already Injected
+2016-10-30 13:03:46:Fault Already Injected
+2016-10-30 13:03:46:Fault Already Injected
+2016-10-30 13:03:50:Fault Already Injected
+2016-10-30 13:03:50:Fault Already Injected
+2016-10-30 13:03:51:Fault Already Injected
+2016-10-30 13:03:52:event type: exit
+2016-10-30 13:03:52:exit code: 0

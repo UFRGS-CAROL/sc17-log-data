@@ -1,0 +1,80 @@
+2017-02-28 07:21:21:Starting flip_value script
+2017-02-28 07:21:21:Initialization strings:
+2017-02-28 07:21:21:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-28 07:21:21:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 07:21:21:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 07:21:21:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-28 07:21:21:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-28 07:21:21:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-02-28 07:21:21:initSignal:0
+2017-02-28 07:21:21:endSignal:3
+2017-02-28 07:21:21:seqSignal:30
+2017-02-28 07:21:22:Backtrace BEGIN:
+2017-02-28 07:21:22:#0  __GI__IO_fread (buf=0x7ffff4feea20, size=1, count=8, fp=0x60e1c0) at iofread.c:41
+#1  0x000000000040262f in main (argc=7, argv=0x7fffffffebc8) at main_check.c:181
+
+2017-02-28 07:21:22:36	in iofread.c
+
+2017-02-28 07:21:22:Backtrace END
+2017-02-28 07:21:22:Type: The type is an integer type.
+2017-02-28 07:21:22:Type sizeof: 4
+2017-02-28 07:21:22:Mem contents(hex):0x2f0x0d0x000x00
+2017-02-28 07:21:22:Fault Mode: One bit-flip
+2017-02-28 07:21:22:base address to flip value: 0x7fffffffe71c
+2017-02-28 07:21:22:address max offset: 4
+2017-02-28 07:21:22:Memory content before bitflip:0x2f0x0d0x000x00
+2017-02-28 07:21:23:Backtrace BEGIN:
+2017-02-28 07:21:23:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff4933d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff4933df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff4933d14 in ?? ()
+#8  0x00007ffff4933de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+2017-02-28 07:21:23:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-02-28 07:21:23:Backtrace END
+2017-02-28 07:21:24:Type: The type is a structure.
+2017-02-28 07:21:24:Type sizeof: 16
+2017-02-28 07:21:24:Fliping value of field: next
+2017-02-28 07:21:24:Type: The type is a pointer.
+2017-02-28 07:21:24:Type sizeof: 8
+2017-02-28 07:21:24:Fliping a bit of the value pointed by a pointer
+2017-02-28 07:21:24:Type: The type is a structure.
+2017-02-28 07:21:24:Type sizeof: 16
+2017-02-28 07:21:24:Fliping value of field: prev
+2017-02-28 07:21:24:Type: The type is a pointer.
+2017-02-28 07:21:24:Type sizeof: 8
+2017-02-28 07:21:24:Fliping a bit of the pointer
+2017-02-28 07:21:24:Mem contents(hex):0xf00x620x640xf70xff0x7f0x000x00
+2017-02-28 07:21:24:Fault Mode: Single bit-flip
+2017-02-28 07:21:24:base address to flip value: 0x7ffff7ff69c8
+2017-02-28 07:21:24:address max offset: 8
+2017-02-28 07:21:24:Memory content before bitflip:0xf00x620x640xf70xff0x7f0x000x00
+2017-02-28 07:21:24:Memory content after  bitflip:0xf00x620x640xf70xfd0x7f0x000x00
+2017-02-28 07:21:24:Mem contents(hex):0xf00x620x640xf70xfd0x7f0x000x00
+2017-02-28 07:21:24:frame name: allocate_stack
+2017-02-28 07:21:24:symbol name: __GI___stack_user
+2017-02-28 07:21:24:symbol filename: allocatestack.c
+2017-02-28 07:21:24:symbol line: 124
+2017-02-28 07:21:24:value: {next = 0x7ffff7ff69c0, prev = 0x7ffff7ff69c0}
+2017-02-28 07:21:24:value address: 0x7ffff76462f0 <__stack_user>
+2017-02-28 07:21:24:Type: The type is a structure.
+2017-02-28 07:21:24:Type sizeof: 16
+2017-02-28 07:21:24:Field name: next
+2017-02-28 07:21:24:Field Type:
+2017-02-28 07:21:24:Type: The type is a pointer.
+2017-02-28 07:21:24:Type sizeof: 8
+2017-02-28 07:21:24:Field name: prev
+2017-02-28 07:21:24:Field Type:
+2017-02-28 07:21:24:Type: The type is a pointer.
+2017-02-28 07:21:24:Type sizeof: 8
+2017-02-28 07:21:24:Fault Injection Successful after 3.56290602684s
+2017-02-28 07:21:38:event type: exit
+2017-02-28 07:21:38:exit code: 0

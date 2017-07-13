@@ -1,0 +1,62 @@
+[INFO -- 2017-03-04 06:32:45]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-04 06:32:45]
+Initialization strings:
+[INFO -- 2017-03-04 06:32:46]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-04 06:32:46]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-04 06:32:46]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-04 06:32:46]
+(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-04 06:32:46]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-04 06:32:46]
+(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+[INFO -- 2017-03-04 06:32:46]
+initSignal:7
+[INFO -- 2017-03-04 06:32:46]
+endSignal:14
+[INFO -- 2017-03-04 06:32:46]
+seqSignal:15
+[INFO -- 2017-03-04 06:32:46]
+faultMode:2
+[INFO -- 2017-03-04 06:32:53]
+Backtrace BEGIN:
+#0  0x000000000040440b in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:367
+
+362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+371	        kernel_start = timing_get_time();
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x400xb00xcc0xf20xff0x7f0x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x606b50 
+address max offset: 8
+Memory content after  bitflip:0xbf0x6a0xc40x4b0x050xbd0x1d0xfd
+frame name: main
+symbol name: B
+symbol filename: dgemm.c
+symbol line: 280
+value: 0x7ffff2ccb040
+value address: 0x606b50 <B.1136>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-04 06:32:53]
+Fault Injection Successful after 7.83698511124s
+[INFO -- 2017-03-04 06:32:59]
+event type: exit
+[EXCEPTION -- 2017-03-04 06:32:59]
+exit code: no exit code available

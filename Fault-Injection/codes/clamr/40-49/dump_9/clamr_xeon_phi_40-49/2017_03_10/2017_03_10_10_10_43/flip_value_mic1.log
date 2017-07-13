@@ -1,0 +1,68 @@
+[INFO -- 2017-03-10 10:08:01]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-10 10:08:01]
+Initialization strings:
+[INFO -- 2017-03-10 10:08:01]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-10 10:08:01]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 10:08:01]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 10:08:02]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-10 10:08:02]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-10 10:08:02]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-10 10:08:02]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-10 10:08:02]
+initSignal:40
+[INFO -- 2017-03-10 10:08:02]
+endSignal:49
+[INFO -- 2017-03-10 10:08:02]
+seqSignal:20
+[INFO -- 2017-03-10 10:08:02]
+faultMode:1
+[INFO -- 2017-03-10 10:09:00]
+Backtrace BEGIN:
+#0  0x000000000055092d in MD5Update (mdContext=0x7fffffffe308, inBuf=0x7fffffffe2a0 "\276\001", inLen=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:1166
+#1  0x000000000054ea92 in check_md5 (graph_num=1, ncycle=100, simTime=0.043339572768126222) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:877
+#2  0x000000000054db32 in write_graphics_info (graph_num=1, ncycle=100, simTime=0.043339572768126222, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:754
+#3  0x0000000000446e91 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:579
+#4  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+1161	    if ((mdContext->i[0] + ((UINT4)inLen << 3)) < mdContext->i[0])
+1162	        mdContext->i[1]++;
+1163	    mdContext->i[0] += ((UINT4)inLen << 3);
+1164	    mdContext->i[1] += ((UINT4)inLen >> 29);
+1165	
+1166	    while (inLen--) {
+1167	        /* add new character to buffer, increment mdi */
+1168	        mdContext->in[mdi++] = *inBuf++;
+1169	
+1170	        /* transform if necessary */
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x100x4c0x570x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7cfda0 
+address max offset: 8
+Memory content after  bitflip:0x100x4c0x570x000x000x000x000x03
+frame name: write_graphics_info
+symbol name: graphics_directory
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c
+symbol line: 180
+value: 0x574c10 "/micNfs/gdb-fault-injection/injector/bin/clamr/graphics_output"
+value address: 0x7cfda0 <graphics_directory>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-10 10:09:00]
+Fault Injection Successful after 58.5677709579s
+[INFO -- 2017-03-10 10:09:01]
+event type: exit
+[EXCEPTION -- 2017-03-10 10:09:01]
+exit code: no exit code available

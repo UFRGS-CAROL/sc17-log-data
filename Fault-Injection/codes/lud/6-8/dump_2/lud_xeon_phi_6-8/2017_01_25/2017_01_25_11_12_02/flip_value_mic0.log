@@ -1,0 +1,63 @@
+2017-01-25 11:11:43:Starting flip_value script
+2017-01-25 11:11:43:Initialization strings:
+2017-01-25 11:11:43:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 11:11:43:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 11:11:43:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 11:11:43:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 11:11:43:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 11:11:43:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 11:11:43:initSignal:6
+2017-01-25 11:11:43:endSignal:8
+2017-01-25 11:11:43:seqSignal:30
+2017-01-25 11:11:50:Trying Fault Injection
+2017-01-25 11:11:50:Inferior PID: 22525
+2017-01-25 11:11:50:Inferior is valid: True
+2017-01-25 11:11:50:Inferior #threads: 229
+2017-01-25 11:11:50:Backtrace BEGIN:
+2017-01-25 11:11:50:#0  __GI___waitpid (pid=22767, stat_loc=stat_loc@entry=0x7fffffffe4d8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:40
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405f16 in log_error_count (kernel_errors=0) at ../include/log_helper.c:369
+#4  0x0000000000402def in main (argc=9, argv=0x7fffffffec08) at lud_check.c:149
+
+2017-01-25 11:11:50:35	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-01-25 11:11:50:Backtrace END
+2017-01-25 11:11:54:Thread name: None
+2017-01-25 11:11:54:Thread num: 1
+2017-01-25 11:11:54:Thread ptid: (22525, 22525, 0)
+2017-01-25 11:11:54:bitFlip function
+2017-01-25 11:11:54:Type: The type is an array.
+2017-01-25 11:11:54:Type sizeof: 200
+2017-01-25 11:11:54:Fliping array at pos: 118
+2017-01-25 11:11:54:bitFlip function
+2017-01-25 11:11:54:Type: The type is an integer type.
+2017-01-25 11:11:54:Type sizeof: 1
+2017-01-25 11:11:54:Mem contents(hex):0x00
+2017-01-25 11:11:54:base address to flip value: 0x60bb76  
+2017-01-25 11:11:54:address max offset: 1
+2017-01-25 11:11:54:Memory content before bitflip:0x00
+2017-01-25 11:11:54:Memory content after  bitflip:0x10
+2017-01-25 11:11:54:Mem contents(hex):0x10
+2017-01-25 11:11:54:frame name: update_timestamp
+2017-01-25 11:11:54:symbol name: log_file_name
+2017-01-25 11:11:54:symbol filename: ../include/log_helper.c
+2017-01-25 11:11:54:symbol line: 52
+2017-01-25 11:11:54:value: '\000' <repeats 118 times>, "\020", '\000' <repeats 80 times>
+2017-01-25 11:11:54:value address: 0x60bb00 <log_file_name>
+2017-01-25 11:11:54:Type: The type is an array.
+2017-01-25 11:11:54:Type sizeof: 200
+2017-01-25 11:11:54:Field name: None
+2017-01-25 11:11:54:Field Type:
+2017-01-25 11:11:54:Type: A range type, that is, an integer type with bounds.
+2017-01-25 11:11:54:Type sizeof: 1
+2017-01-25 11:11:54:Type range: (0L, 199L)
+2017-01-25 11:11:54:Fault Injection Successful after 11.4897389412s
+2017-01-25 11:11:54:Fault Already Injected
+2017-01-25 11:11:54:Fault Already Injected
+2017-01-25 11:11:54:Fault Already Injected
+2017-01-25 11:11:55:Fault Already Injected
+2017-01-25 11:11:55:Fault Already Injected
+2017-01-25 11:11:55:Fault Already Injected
+2017-01-25 11:11:55:event type: exit
+2017-01-25 11:11:55:exit code: 0

@@ -1,0 +1,66 @@
+[INFO -- 2017-03-03 22:04:41]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-03 22:04:41]
+Initialization strings:
+[INFO -- 2017-03-03 22:04:41]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-03 22:04:41]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 22:04:41]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 22:04:41]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 22:04:41]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 22:04:41]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-03 22:04:41]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-03 22:04:41]
+initSignal:5
+[INFO -- 2017-03-03 22:04:41]
+endSignal:10
+[INFO -- 2017-03-03 22:04:41]
+seqSignal:20
+[INFO -- 2017-03-03 22:04:41]
+faultMode:0
+[INFO -- 2017-03-03 22:04:54]
+Backtrace BEGIN:
+#0  0x000000000053cdc0 in KDTree_CreateTree (t=0x7f9d50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:235
+#1  0x000000000053d3f4 in KDTree_QueryCircleIntersect_Double (t=0x7f9d50, result_num=0x7fffffffe5dc, result_indicies=0x181ae10, circ_radius=24, ncells=264192, x=0x7fff0c0d6010, dx=0x7ffecc1ce010, y=0x7ffe8c1cc010, dy=0x7ffe4c1bf010) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:329
+#2  0x00000000005080fe in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1535
+#3  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+230	         }
+231	         assert(cut_direction >= 0);
+232	         /* Do a median sort of the elements under the parent node. The sort key
+233	            is the center point of the element bounding boxes along the selected
+234	            cutting direction. */
+235	         mid = (min + max) /2;
+236	         median_sort(t, (unsigned int)cut_direction, mid - min, max - min + 1, &(idx[min]));
+237	         /* Give the parent a reference to its two children */
+238	         t->tree_link[parent] = next_node;
+239	         /* Add the "left" child to the tree and the stack */
+
+Backtrace END
+Memory content before bitflip:0xc10xc70x010x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffe3a4
+address max offset: 4
+Memory content after  bitflip:0xc10xc70x030x00
+frame name: KDTree_CreateTree
+symbol name: min
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c
+symbol line: 180
+value: 247745
+value address: 0x7fffffffe3a4
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-03 22:04:54]
+Fault Injection Successful after 13.7525100708s
+[INFO -- 2017-03-03 22:04:55]
+event type: exit
+[EXCEPTION -- 2017-03-03 22:04:55]
+exit code: no exit code available

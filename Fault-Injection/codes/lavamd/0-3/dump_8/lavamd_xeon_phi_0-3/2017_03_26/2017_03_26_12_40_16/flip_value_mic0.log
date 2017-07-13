@@ -1,0 +1,58 @@
+[INFO -- 2017-03-26 12:39:54]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 12:39:54]
+Initialization strings:
+[INFO -- 2017-03-26 12:39:54]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 12:39:54]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 12:39:54]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 12:39:54]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 12:39:54]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 12:39:54]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 12:39:54]
+initSignal:0
+[INFO -- 2017-03-26 12:39:54]
+endSignal:3
+[INFO -- 2017-03-26 12:39:54]
+seqSignal:30
+[INFO -- 2017-03-26 12:39:54]
+faultMode:1
+[INFO -- 2017-03-26 12:39:56]
+Backtrace BEGIN:
+#0  __GI___waitpid (pid=78312, stat_loc=stat_loc@entry=0x7fffffffe198, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000406619 in update_timestamp () at ../include/log_helper.c:107
+#3  0x000000000040721e in start_iteration () at ../include/log_helper.c:311
+#4  0x0000000000402875 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:236
+
+26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: y
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7ffff5382020
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000xa00x00
+frame name: main
+symbol name: fv_cpu
+symbol filename: main_check.c
+symbol line: 60
+value: 0x7ffff5382010
+value address: 0x7fffffffe9b8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-26 12:39:56]
+Fault Injection Successful after 2.22983908653s
+[INFO -- 2017-03-26 12:40:09]
+event type: exit
+[INFO -- 2017-03-26 12:40:09]
+exit code: 0

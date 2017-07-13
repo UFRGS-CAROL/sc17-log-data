@@ -1,0 +1,57 @@
+[INFO -- 2017-03-06 06:53:25]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 06:53:25]
+Initialization strings:
+[INFO -- 2017-03-06 06:53:25]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-06 06:53:25]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 06:53:25]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 06:53:25]
+(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-06 06:53:25]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-06 06:53:25]
+(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+[INFO -- 2017-03-06 06:53:25]
+initSignal:0
+[INFO -- 2017-03-06 06:53:25]
+endSignal:7
+[INFO -- 2017-03-06 06:53:25]
+seqSignal:15
+[INFO -- 2017-03-06 06:53:25]
+faultMode:0
+[INFO -- 2017-03-06 06:53:26]
+Backtrace BEGIN:
+#0  0x00007ffff71505d6 in __GI_memcpy (dstpp=dstpp@entry=0x7ffff30eff98, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x6073f0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x6073f0) at iofread.c:42
+#3  0x0000000000403c08 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:250
+#4  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+54	in ../string/memcpy.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x2f
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffee00 
+address max offset: 1
+Memory content after  bitflip:0x2d
+frame name: main
+symbol name: inputA
+symbol filename: dgemm.c
+symbol line: 283
+value: 0x7fffffffee00 "-micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192"
+value address: 0x7fffffffe9f8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-06 06:53:26]
+Fault Injection Successful after 1.83784198761s
+[INFO -- 2017-03-06 06:54:10]
+event type: exit
+[INFO -- 2017-03-06 06:54:10]
+exit code: 0

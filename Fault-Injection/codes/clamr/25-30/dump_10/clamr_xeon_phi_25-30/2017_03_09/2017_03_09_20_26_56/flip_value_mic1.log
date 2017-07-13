@@ -1,0 +1,59 @@
+[INFO -- 2017-03-09 20:19:29]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-09 20:19:29]
+Initialization strings:
+[INFO -- 2017-03-09 20:19:29]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-09 20:19:29]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-09 20:19:29]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-09 20:19:29]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-09 20:19:29]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-09 20:19:29]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-09 20:19:29]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-09 20:19:29]
+initSignal:25
+[INFO -- 2017-03-09 20:19:29]
+endSignal:30
+[INFO -- 2017-03-09 20:19:29]
+seqSignal:20
+[INFO -- 2017-03-09 20:19:29]
+faultMode:3
+[INFO -- 2017-03-09 20:19:59]
+Backtrace BEGIN:
+#0  __GI_memset (dstpp=0x40819a0, c=0, len=16908552) at ../string/memset.c:61
+#1  0x0000000000552f8a in genvector_p (inum=4227136, elsize=4, file=0x5742c0 "/micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c", line=135) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/genmalloc/genmalloc.c:87
+#2  0x000000000054571b in compact_hash_init (ncells=265584, isize=2056, jsize=2056, report_level=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c:135
+#3  0x0000000000513572 in Mesh::calc_neighbors (this=0x7fae50, ncells=265584) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3626
+#4  0x0000000000445e6e in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:434
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+56	in ../string/memset.c
+
+Backtrace END
+Memory content before bitflip:0xfb0xac0xae0x4c0x360x570x3c0x3f
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7d0690 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: do_calc
+symbol name: deltaT
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 179
+value: 0
+value address: 0x7d0690 <deltaT>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-09 20:19:59]
+Fault Injection Successful after 30.5468449593s
+[INFO -- 2017-03-09 20:20:29]
+event type: exit
+[INFO -- 2017-03-09 20:20:29]
+exit code: 0

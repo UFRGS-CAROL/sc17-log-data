@@ -1,0 +1,109 @@
+[INFO -- 2017-02-26 09:39:37]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 09:39:37]
+Initialization strings:
+[INFO -- 2017-02-26 09:39:38]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-26 09:39:38]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 09:39:38]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 09:39:38]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 09:39:38]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 09:39:38]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-26 09:39:38]
+initSignal:0
+[INFO -- 2017-02-26 09:39:38]
+endSignal:2
+[INFO -- 2017-02-26 09:39:38]
+seqSignal:30
+[INFO -- 2017-02-26 09:39:38]
+faultMode:2
+[EXCEPTION -- 2017-02-26 09:39:55]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 09:39:55]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 09:39:55]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 09:39:55]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 09:39:55]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 09:39:55]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 09:39:55]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 09:39:55]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 09:39:55]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 09:39:55]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 09:39:55]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 09:39:55]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 09:39:55]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 09:39:55]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 09:39:55]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 09:39:55]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 09:39:55]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 09:39:55]
+pythonException: invalid frame
+[INFO -- 2017-02-26 09:39:55]
+Backtrace BEGIN:
+#0  0x00007ffff78b56f0 in ?? ()
+#1  0x0000000000404848 in L_lud_omp_123__par_loop2_2_5 () at lud_omp.c:123
+#2  0x00007ffff790ba1f in ?? ()
+#3  0x00007fffffffd9c0 in ?? ()
+#4  0x00007ffff4ea0100 in ?? ()
+#5  0x0000000000000001 in ?? ()
+#6  0x0000000000000003 in ?? ()
+#7  0x0000000000000000 in ?? ()
+
+32	static struct option long_options[] = {
+33	  /* name, has_arg, flag, val */
+34	  {"input", 1, NULL, 'i'},
+35	  {"gold", 1, NULL, 'g'},
+36	  {"size", 1, NULL, 's'},
+37	  {0,0,0,0}
+38	};
+39	
+40	extern void
+41	lud_omp(float *m, int matrix_dim);
+
+Backtrace END
+Fliping array at pos: 254
+Memory content before bitflip:0x000x6b0xea0xf4
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffd478
+address max offset: 4
+Memory content after  bitflip:0x290x240xc20xe4
+frame name: L_lud_omp_123__par_loop2_2_5
+symbol name: temp_left
+symbol filename: lud_omp.c
+symbol line: 129
+value: {0, 0, 1.44421433e+20, 4.59121429e-41, 2.24207754e-44, 0, -1.0361776e+34, 4.59163468e-41, 1.68155816e-43, 0, -9.05907251e+33, 4.59163468e-41, 2.24207754e-44, 0, -9.04257016e+33, 4.59163468e-41, 1.40129846e-45, 0, 0, 0, 1.44422559e+20, 4.59121429e-41, -3.95516055e+33, 4.59163468e-41, 1.44428892e+20, 4.59121429e-41, 1.44406796e+20, 4.59121429e-41, 0, 0, 5.91818788e-39, 0, -nan(0x7fd1e0), 4.59163468e-41, -nan(0x7fd3d8), 4.59163468e-41, 1.44422559e+20, 4.59121429e-41, -3.95719882e+33, 4.59163468e-41, 4.59177481e-41, 0, -5.92072492e+33, 4.59163468e-41, 1.44428751e+20, 4.59121429e-41, 1.36445096e-19, 4.59163468e-41, -5.8709752e+33, 4.59163468e-41, -nan(0x7fd3d0), 4.59163468e-41, 4.20389539e-45, 4.59163468e-41, 5.73971851e-42, 0, 1.07293758e+20, 4.59121429e-41, 5.91818788e-39, 0, -nan(0x7fd250), 2.36017197e-38, -5.93843489e+33, 4.59163468e-41, 1.63704045e-32, 0, -5.91689844e+33, 4.59163468e-41, -1.49891018e+32, 4.59163468e-41, -1.49891018e+32, 4.59163468e-41, 3.04922546e-42, 0, 1.3573703e-19, 4.59163468e-41, 1.40129846e-45, 0, -7.42963827e+33, 4.59163468e-41, 5.91818788e-39, 0, 1.36445096e-19, 4.59163468e-41, 0, 0, -3.95855405e+33, 4.59163468e-41, 1.44422559e+20, 4.59121429e-41, -5.87495147e+33, 4.59163468e-41, 0, 0, -7.45303286e+33, 4.59163468e-41, 0, 0, -5.92318099e+33, 4.59163468e-41, 1.40129846e-45, 0, -7.53739105e+33, 4.59163468e-41, 3.04922546e-42, 0, -7.45291402e+33, 4.59163468e-41, 3.04922546e-42, 0, 3.04782416e-42, 0, 1.40129846e-45, 0, 1.40129846e-45, 0, -7.53738857e+33, 4.59163468e-41, -5.90365868e+33, 4.59163468e-41, -7.45292392e+33, 4.59163468e-41, 5.00263552e-43, 0, 1.35313513e-19, 4.59163468e-41, -5.93843489e+33, 4.59163468e-41, 1.71407765e-32, 0, -5.91689844e+33, 4.59163468e-41, -7.42910596e+33, 4.59163468e-41, -5.88995282e+33, 4.59163468e-41, 8.96831017e-44, 0, 2.69049305e-43, 0, -nan(0x7fffc0), -nan(0x7fffff), 0, 0, -7.53771786e+33, 4.59163468e-41, -7.45291402e+33, 4.59163468e-41, -7.45292392e+33, 4.59163468e-41, 3.22298647e-44, 0, 1.73333695e-32, 1.71407765e-32, -5.90728708e+33, 4.59163468e-41, -nan(0x7fd430), 4.59163468e-41, 2.69049305e-43, 0, 1.35455788e-19, 4.59163468e-41, -nan(0x7fd450), 4.59163468e-41, 0, 0, -5.90365868e+33, 4.59163468e-41, 0, 0, 0, 0, -nan(0x7fd450), 4.59163468e-41, -5.74935812e+33, 4.59163468e-41, 2.80259693e-45, 6.72623263e-44, 1.40129846e-45, 0, -nan(0x7fd7c0), 4.59163468e-41, -1.48580039e+32, 4.59163468e-41, 3.58732407e-43, 0, 1.40129846e-45, 0, -1.48463054e+32, 4.59163468e-41, -1.48456245e+32, 4.59163468e-41, -7.53771786e+33, 4.59163468e-41, -5.91689844e+33, 4.59163468e-41, -1.49891018e+32, 4.59163468e-41, -nan(0x7fd550), 4.59163468e-41...}
+value address: 0x7fffffffd080
+Type: The type is an array.
+Type sizeof: 1024
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 255L)
+
+[INFO -- 2017-02-26 09:39:55]
+Fault Injection Successful after 17.6734650135s
+[INFO -- 2017-02-26 09:40:01]
+event type: exit
+[INFO -- 2017-02-26 09:40:01]
+exit code: 0

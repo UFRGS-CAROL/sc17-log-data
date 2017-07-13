@@ -1,0 +1,93 @@
+2017-03-01 14:27:01:Starting flip_value script
+2017-03-01 14:27:01:Initialization strings:
+2017-03-01 14:27:01:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 14:27:01:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 14:27:01:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 14:27:01:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 14:27:01:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 14:27:01:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 14:27:01:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 14:27:01:initSignal:25
+2017-03-01 14:27:01:endSignal:30
+2017-03-01 14:27:01:seqSignal:20
+2017-03-01 14:27:29:Backtrace BEGIN:
+2017-03-01 14:27:29:#0  State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1388
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffdac0 in ?? ()
+#3  0x00007fffffffdab8 in ?? ()
+#4  0x00007fffffffdad0 in ?? ()
+#5  0x00007fffffffdad8 in ?? ()
+#6  0x00007fffffffda38 in ?? ()
+#7  0x00007fffffffda70 in ?? ()
+#8  0x00007fffffffda68 in ?? ()
+#9  0x00007fffffffdba8 in ?? ()
+#10 0x00007fffffffdbc8 in ?? ()
+#11 0x00007fffffffdbe8 in ?? ()
+#12 0x00007fffffffda30 in ?? ()
+#13 0x00000000000000f4 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2017-03-01 14:27:29:1383	         Htt2 = H[ntrt];
+1384	         Vtt2 = V[ntrt];
+1385	      }
+1386	
+1387	
+1388	      real_t Hxminus = U_halfstep(deltaT, Hl, Hic, HXFLUXNL, HXFLUXIC,
+1389	                           dxl, dxic, dxl, dxic, SQR(dxl), SQR(dxic));
+1390	      real_t Uxminus = U_halfstep(deltaT, Ul, Uic, UXFLUXNL, UXFLUXIC,
+1391	                           dxl, dxic, dxl, dxic, SQR(dxl), SQR(dxic));
+1392	      real_t Vxminus = U_halfstep(deltaT, Vl, Vic, UVFLUXNL, UVFLUXIC,
+
+2017-03-01 14:27:29:Backtrace END
+2017-03-01 14:28:36:Type: A reference type.
+2017-03-01 14:28:36:Type sizeof: 8
+2017-03-01 14:28:36:Fliping a bit of the reference
+2017-03-01 14:28:37:Backtrace BEGIN:
+2017-03-01 14:28:37:#0  State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1388
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffdac0 in ?? ()
+#3  0x00007fffffffdab8 in ?? ()
+#4  0x00007fffffffdad0 in ?? ()
+#5  0x00007fffffffdad8 in ?? ()
+#6  0x00007fffffffda38 in ?? ()
+#7  0x00007fffffffda70 in ?? ()
+#8  0x00007fffffffda68 in ?? ()
+#9  0x00007fffffffdba8 in ?? ()
+#10 0x00007fffffffdbc8 in ?? ()
+#11 0x00007fffffffdbe8 in ?? ()
+#12 0x00007fffffffda30 in ?? ()
+#13 0x00000000000000f4 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2017-03-01 14:28:37:1383	         Htt2 = H[ntrt];
+1384	         Vtt2 = V[ntrt];
+1385	      }
+1386	
+1387	
+1388	      real_t Hxminus = U_halfstep(deltaT, Hl, Hic, HXFLUXNL, HXFLUXIC,
+1389	                           dxl, dxic, dxl, dxic, SQR(dxl), SQR(dxic));
+1390	      real_t Uxminus = U_halfstep(deltaT, Ul, Uic, UXFLUXNL, UXFLUXIC,
+1391	                           dxl, dxic, dxl, dxic, SQR(dxl), SQR(dxic));
+1392	      real_t Vxminus = U_halfstep(deltaT, Vl, Vic, UVFLUXNL, UVFLUXIC,
+
+2017-03-01 14:28:37:Backtrace END
+2017-03-01 14:28:40:Type: A floating point type.
+2017-03-01 14:28:40:Type sizeof: 8
+2017-03-01 14:28:40:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-03-01 14:28:40:Fault Mode: Double bit-flip
+2017-03-01 14:28:40:base address to flip value: 0x7fffffffce48
+2017-03-01 14:28:40:address max offset: 8
+2017-03-01 14:28:40:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-03-01 14:28:40:Memory content after  bitflip:0x000x000x140x000x000x000x000x00
+2017-03-01 14:28:40:Mem contents(hex):0x000x000x140x000x000x000x000x00
+2017-03-01 14:28:40:frame name: State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37
+2017-03-01 14:28:40:symbol name: Vbb2
+2017-03-01 14:28:40:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+2017-03-01 14:28:40:symbol line: 1352
+2017-03-01 14:28:41:value: 6.4758172331703867e-318
+2017-03-01 14:28:41:value address: 0x7fffffffce48
+2017-03-01 14:28:41:Type: A floating point type.
+2017-03-01 14:28:41:Type sizeof: 8
+2017-03-01 14:28:41:Fault Injection Successful after 100.001174927s
+2017-03-01 14:29:02:event type: exit
+2017-03-01 14:29:02:exit code: 0

@@ -1,0 +1,57 @@
+2016-10-31 12:27:58:Initialization strings:
+2016-10-31 12:27:58:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-31 12:27:58:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 12:27:58:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-31 12:27:58:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-31 12:27:58:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-31 12:27:58:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-31 12:27:59:Trying Fault Injection
+2016-10-31 12:27:59:Inferior PID: 184698
+2016-10-31 12:27:59:Inferior is valid: True
+2016-10-31 12:27:59:Inferior #threads: 1
+2016-10-31 12:27:59:Backtrace BEGIN:
+2016-10-31 12:27:59:#0  0x0000000000402214 in main (argc=7, argv=0x7fffffffec08) at main_check.c:150
+
+2016-10-31 12:27:59:145	
+146	    rv_cpu = (FOUR_VECTOR*)malloc(dim_cpu.space_mem);
+147	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+148	        fread(&(rv_cpu[i].v), 1, sizeof(double), file);
+149	        fread(&(rv_cpu[i].x), 1, sizeof(double), file);
+150	        fread(&(rv_cpu[i].y), 1, sizeof(double), file);
+151	        fread(&(rv_cpu[i].z), 1, sizeof(double), file);
+152	    }
+153	
+154	    fclose(file);
+
+2016-10-31 12:27:59:Backtrace END
+2016-10-31 12:27:59:Thread name: None
+2016-10-31 12:27:59:Thread num: 1
+2016-10-31 12:27:59:Thread ptid: (184698, 184698, 0)
+2016-10-31 12:27:59:bitFlip function
+2016-10-31 12:27:59:Type: The type is an integer type.
+2016-10-31 12:27:59:Type sizeof: 4
+2016-10-31 12:27:59:Mem contents(hex):0x020x000x000x00
+2016-10-31 12:27:59:base address to flip value: 0x7fffffffe778
+2016-10-31 12:27:59:address max offset: 4
+2016-10-31 12:27:59:Memory content before bitflip:0x020x000x000x00
+2016-10-31 12:27:59:Memory content after  bitflip:0x020x000x000x40
+2016-10-31 12:27:59:Mem contents(hex):0x020x000x000x40
+2016-10-31 12:27:59:frame name: main
+2016-10-31 12:27:59:symbol name: m
+2016-10-31 12:27:59:symbol filename: main_check.c
+2016-10-31 12:27:59:symbol line: 53
+2016-10-31 12:27:59:value: 1073741826
+2016-10-31 12:27:59:value address: 0x7fffffffe778
+2016-10-31 12:27:59:Type: The type is an integer type.
+2016-10-31 12:27:59:Type sizeof: 4
+2016-10-31 12:27:59:Fault Injection Successful after 1.15000295639s
+2016-10-31 12:28:00:Fault Already Injected
+2016-10-31 12:28:00:Fault Already Injected
+2016-10-31 12:28:02:Fault Already Injected
+2016-10-31 12:28:02:Fault Already Injected
+2016-10-31 12:28:03:Fault Already Injected
+2016-10-31 12:28:04:Fault Already Injected
+2016-10-31 12:28:06:Fault Already Injected
+2016-10-31 12:28:08:Fault Already Injected
+2016-10-31 12:28:09:event type: exit
+2016-10-31 12:28:09:exit code: 0

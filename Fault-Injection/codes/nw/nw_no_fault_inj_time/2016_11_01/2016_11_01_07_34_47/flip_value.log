@@ -1,0 +1,62 @@
+2016-11-01 07:34:15:Initialization strings:
+2016-11-01 07:34:15:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-11-01 07:34:15:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 07:34:15:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 07:34:15:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-11-01 07:34:15:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-11-01 07:34:15:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-11-01 07:34:15:Trying Fault Injection
+2016-11-01 07:34:15:Inferior PID: 95152
+2016-11-01 07:34:15:Inferior is valid: True
+2016-11-01 07:34:15:Inferior #threads: 1
+2016-11-01 07:34:15:Backtrace BEGIN:
+2016-11-01 07:34:15:#0  do_system (line=0x7fffffffe800 "echo 1478005000 > /micNfs/carol/logs/timestamp.txt") at ../sysdeps/posix/system.c:116
+#1  0x000000000040648c in update_timestamp () at ../../include/log_helper.c:108
+#2  start_log_file (benchmark_name=0x100011 <error: Cannot access memory at address 0x100011>, test_info=0x0) at ../../include/log_helper.c:197
+#3  0x00000000004014df in runTest (argc=<optimized out>, argv=<optimized out>) at needle_check.cpp:294
+#4  main (argc=1048593, argv=0x0) at needle_check.cpp:114
+
+2016-11-01 07:34:15:111	in ../sysdeps/posix/system.c
+
+2016-11-01 07:34:15:Backtrace END
+2016-11-01 07:34:15:Thread name: None
+2016-11-01 07:34:15:Thread num: 1
+2016-11-01 07:34:15:Thread ptid: (95152, 95152, 0)
+2016-11-01 07:34:15:bitFlip function
+2016-11-01 07:34:15:Type: The type is an array.
+2016-11-01 07:34:15:Type sizeof: 2304
+2016-11-01 07:34:15:Fliping array at pos: 7
+2016-11-01 07:34:15:bitFlip function
+2016-11-01 07:34:15:Type: The type is an array.
+2016-11-01 07:34:15:Type sizeof: 96
+2016-11-01 07:34:15:Fliping array at pos: 11
+2016-11-01 07:34:15:bitFlip function
+2016-11-01 07:34:15:Type: The type is an integer type.
+2016-11-01 07:34:15:Type sizeof: 4
+2016-11-01 07:34:15:Mem contents(hex):0xfe0xff0xff0xff
+2016-11-01 07:34:15:base address to flip value: 0x6098ec 
+2016-11-01 07:34:15:address max offset: 4
+2016-11-01 07:34:15:Memory content before bitflip:0xfe0xff0xff0xff
+2016-11-01 07:34:15:Memory content after  bitflip:0xfe0xfb0xff0xff
+2016-11-01 07:34:15:Mem contents(hex):0xfe0xfb0xff0xff
+2016-11-01 07:34:15:frame name: main
+2016-11-01 07:34:15:symbol name: blosum62
+2016-11-01 07:34:15:symbol filename: needle_check.cpp
+2016-11-01 07:34:15:symbol line: 80
+2016-11-01 07:34:15:value: {{4, -1, -2, -2, 0, -1, -1, 0, -2, -1, -1, -1, -1, -2, -1, 1, 0, -3, -2, 0, -2, -1, 0, -4}, {-1, 5, 0, -2, -3, 1, 0, -2, 0, -3, -2, 2, -1, -3, -2, -1, -1, -3, -2, -3, -1, 0, -1, -4}, {-2, 0, 6, 1, -3, 0, 0, 0, 1, -3, -3, 0, -2, -3, -2, 1, 0, -4, -2, -3, 3, 0, -1, -4}, {-2, -2, 1, 6, -3, 0, 2, -1, -1, -3, -4, -1, -3, -3, -1, 0, -1, -4, -3, -3, 4, 1, -1, -4}, {0, -3, -3, -3, 9, -3, -4, -3, -3, -1, -1, -3, -1, -2, -3, -1, -1, -2, -2, -1, -3, -3, -2, -4}, {-1, 1, 0, 0, -3, 5, 2, -2, 0, -3, -2, 1, 0, -3, -1, 0, -1, -2, -1, -2, 0, 3, -1, -4}, {-1, 0, 0, 2, -4, 2, 5, -2, 0, -3, -3, 1, -2, -3, -1, 0, -1, -3, -2, -2, 1, 4, -1, -4}, {0, -2, 0, -1, -3, -2, -2, 6, -2, -4, -4, -1026, -3, -3, -2, 0, -2, -2, -3, -3, -1, -2, -1, -4}, {-2, 0, 1, -1, -3, 0, 0, -2, 8, -3, -3, -1, -2, -1, -2, -1, -2, -2, 2, -3, 0, 0, -1, -4}, {-1, -3, -3, -3, -1, -3, -3, -4, -3, 4, 2, -3, 1, 0, -3, -2, -1, -3, -1, 3, -3, -3, -1, -4}, {-1, -2, -3, -4, -1, -2, -3, -4, -3, 2, 4, -2, 2, 0, -3, -2, -1, -2, -1, 1, -4, -3, -1, -4}, {-1, 2, 0, -1, -3, 1, 1, -2, -1, -3, -2, 5, -1, -3, -1, 0, -1, -3, -2, -2, 0, 1, -1, -4}, {-1, -1, -2, -3, -1, 0, -2, -3, -2, 1, 2, -1, 5, 0, -2, -1, -1, -1, -1, 1, -3, -1, -1, -4}, {-2, -3, -3, -3, -2, -3, -3, -3, -1, 0, 0, -3, 0, 6, -4, -2, -2, 1, 3, -1, -3, -3, -1, -4}, {-1, -2, -2, -1, -3, -1, -1, -2, -2, -3, -3, -1, -2, -4, 7, -1, -1, -4, -3, -2, -2, -1, -2, -4}, {1, -1, 1, 0, -1, 0, 0, 0, -1, -2, -2, 0, -1, -2, -1, 4, 1, -3, -2, -2, 0, 0, 0, -4}, {0, -1, 0, -1, -1, -1, -1, -2, -2, -1, -1, -1, -1, -2, -1, 1, 5, -2, -2, 0, -1, -1, 0, -4}, {-3, -3, -4, -4, -2, -2, -3, -2, -2, -3, -2, -3, -1, 1, -4, -3, -2, 11, 2, -3, -4, -3, -2, -4}, {-2, -2, -2, -3, -2, -1, -2, -3, 2, -1, -1, -2, -1, 3, -3, -2, -2, 2, 7, -1, -3, -2, -1, -4}, {0, -3, -3, -3, -1, -2, -2, -3, -3, 3, 1, -2, 1, -1, -2, -2, 0, -3, -1, 4, -3, -2, -1, -4}, {-2, -1, 3, 4, -3, 0, 1, -1, 0, -3, -4, 0, -3, -3, -2, 0, -1, -4, -3, -3, 4, 1, -1, -4}, {-1, 0, 0, 1, -3, 3, 4, -2, 0, -3, -3, 1, -1, -3, -1, 0, -1, -3, -2, -2, 1, 4, -1, -4}, {0, -1, -1, -1, -2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2, 0, 0, -2, -1, -1, -1, -1, -1, -4}, {-4 <repeats 23 times>, 1}}
+2016-11-01 07:34:15:value address: 0x609620 <blosum62>
+2016-11-01 07:34:15:Type: The type is an array.
+2016-11-01 07:34:15:Type sizeof: 2304
+2016-11-01 07:34:15:Field name: None
+2016-11-01 07:34:15:Field Type:
+2016-11-01 07:34:15:Type: A range type, that is, an integer type with bounds.
+2016-11-01 07:34:15:Type sizeof: 1
+2016-11-01 07:34:15:Type range: (0L, 23L)
+2016-11-01 07:34:15:Fault Injection Successful after 0.940762996674s
+2016-11-01 07:34:21:Fault Already Injected
+2016-11-01 07:34:26:Fault Already Injected
+2016-11-01 07:34:28:Fault Already Injected
+2016-11-01 07:34:29:Fault Already Injected
+2016-11-01 07:34:29:Fault Already Injected
+2016-11-01 07:34:40:event type: exit
+2016-11-01 07:34:40:exit code: 1

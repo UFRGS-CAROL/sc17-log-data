@@ -1,0 +1,62 @@
+2017-01-25 07:43:53:Starting flip_value script
+2017-01-25 07:43:53:Initialization strings:
+2017-01-25 07:43:54:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 07:43:54:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 07:43:54:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 07:43:54:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 07:43:54:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 07:43:54:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 07:43:54:initSignal:6
+2017-01-25 07:43:54:endSignal:8
+2017-01-25 07:43:54:seqSignal:30
+2017-01-25 07:44:01:Trying Fault Injection
+2017-01-25 07:44:01:Inferior PID: 25847
+2017-01-25 07:44:01:Inferior is valid: True
+2017-01-25 07:44:01:Inferior #threads: 229
+2017-01-25 07:44:01:Backtrace BEGIN:
+2017-01-25 07:44:01:#0  __GI___waitpid (pid=26087, stat_loc=stat_loc@entry=0x7fffffffe4d8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:40
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405f16 in log_error_count (kernel_errors=0) at ../include/log_helper.c:369
+#4  0x0000000000402def in main (argc=9, argv=0x7fffffffec08) at lud_check.c:149
+
+2017-01-25 07:44:01:35	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-01-25 07:44:01:Backtrace END
+2017-01-25 07:44:04:Thread name: None
+2017-01-25 07:44:04:Thread num: 1
+2017-01-25 07:44:04:Thread ptid: (25847, 25847, 0)
+2017-01-25 07:44:04:bitFlip function
+2017-01-25 07:44:04:Type: The type is a structure.
+2017-01-25 07:44:04:Type sizeof: 128
+2017-01-25 07:44:04:Fliping value of field: __val
+2017-01-25 07:44:04:bitFlip function
+2017-01-25 07:44:04:Type: The type is an array.
+2017-01-25 07:44:04:Type sizeof: 128
+2017-01-25 07:44:04:Fliping array at pos: 0
+2017-01-25 07:44:04:bitFlip function
+2017-01-25 07:44:04:Type: The type is an integer type.
+2017-01-25 07:44:04:Type sizeof: 8
+2017-01-25 07:44:04:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-01-25 07:44:04:base address to flip value: 0x7fffffffe4f8
+2017-01-25 07:44:04:address max offset: 8
+2017-01-25 07:44:04:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-01-25 07:44:04:Memory content after  bitflip:0x020x000x000x000x000x000x000x00
+2017-01-25 07:44:04:Mem contents(hex):0x020x000x000x000x000x000x000x00
+2017-01-25 07:44:04:frame name: do_system
+2017-01-25 07:44:04:symbol name: omask
+2017-01-25 07:44:04:symbol filename: ../sysdeps/posix/system.c
+2017-01-25 07:44:04:symbol line: 62
+2017-01-25 07:44:04:value: {__val = {2, 140737302478656, 140737341699968, 0, 0, 140737488348512, 140737488349496, 140737488348928, 4200992, 140737488350208, 140737338534777, 140737302378752, 206158430232, 140737488348720, 140737488348528, 140737302391552}}
+2017-01-25 07:44:04:value address: 0x7fffffffe4f8
+2017-01-25 07:44:04:Type: The type is a structure.
+2017-01-25 07:44:04:Type sizeof: 128
+2017-01-25 07:44:04:Field name: __val
+2017-01-25 07:44:04:Field Type:
+2017-01-25 07:44:04:Type: The type is an array.
+2017-01-25 07:44:04:Type sizeof: 128
+2017-01-25 07:44:04:Fault Injection Successful after 10.7648749352s
+2017-01-25 07:44:04:Fault Already Injected
+2017-01-25 07:44:05:Fault Already Injected
+2017-01-25 07:44:05:event type: exit
+2017-01-25 07:44:05:exit code: 0

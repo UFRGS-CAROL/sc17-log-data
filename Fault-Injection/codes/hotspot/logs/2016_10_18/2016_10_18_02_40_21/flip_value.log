@@ -1,0 +1,47 @@
+2016-10-18 02:40:07:Initialization strings:
+2016-10-18 02:40:07:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-18 02:40:07:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-18 02:40:07:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-18 02:40:07:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-18 02:40:07:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-18 02:40:07:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-18 02:40:08:Trying Fault Injection
+2016-10-18 02:40:08:Backtrace BEGIN:
+2016-10-18 02:40:08:#0  0x0000000000401712 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:201
+#1  main (argc=-6267, argv=0xfffffffff7f6456e) at hotspot_check.c:264
+
+2016-10-18 02:40:08:196	    fp = fopen (file, "r");
+197	    if (!fp)
+198	        fatal ("file could not be opened for reading");
+199	
+200	    for (i=0; i < grid_rows * grid_cols; i++) {
+201	        if (fgets(str, STR_SIZE, fp) == NULL) {
+202	            fatal("fgets error");
+203	        }
+204	        if (feof(fp))
+205	            fatal("not enough lines in file");
+
+2016-10-18 02:40:08:Backtrace END
+2016-10-18 02:40:08:Type: The type is a pointer.
+2016-10-18 02:40:08:Type sizeof: 8
+2016-10-18 02:40:08:Fliping a bit of the pointer
+2016-10-18 02:40:08:Mem contents(hex):0x970xee0xff0xff0xff0x7f0x000x00
+2016-10-18 02:40:08:base address to flip value: 0x7fffffffe608
+2016-10-18 02:40:08:address max offset: 8
+2016-10-18 02:40:08:Memory content before bitflip:0x970xee0xff0xff0xff0x7f0x000x00
+2016-10-18 02:40:08:Memory content after  bitflip:0x970xee0xff0xff0xdf0x7f0x000x00
+2016-10-18 02:40:08:Mem contents(hex):0x970xee0xff0xff0xdf0x7f0x000x00
+2016-10-18 02:40:08:frame name: read_input
+2016-10-18 02:40:08:symbol name: final_result
+2016-10-18 02:40:08:symbol filename: hotspot_check.c
+2016-10-18 02:40:08:symbol line: 230
+2016-10-18 02:40:08:value: 0x7fffffffee97
+2016-10-18 02:40:08:value address: 0x7fffffffe608
+2016-10-18 02:40:08:Type: The type is a pointer.
+2016-10-18 02:40:08:Type sizeof: 8
+2016-10-18 02:40:08:Fault Injection Successful after 1.10060095787s
+2016-10-18 02:40:10:Fault Already Injected
+2016-10-18 02:40:14:Fault Already Injected
+2016-10-18 02:40:15:Fault Already Injected
+2016-10-18 02:40:15:event type: exit
+2016-10-18 02:40:15:exit code: 1

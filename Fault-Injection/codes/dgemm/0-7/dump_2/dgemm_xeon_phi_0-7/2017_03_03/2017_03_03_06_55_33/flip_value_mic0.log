@@ -1,0 +1,55 @@
+[INFO -- 2017-03-03 06:54:23]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-03 06:54:23]
+Initialization strings:
+[INFO -- 2017-03-03 06:54:23]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-03 06:54:23]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 06:54:23]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 06:54:23]
+(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-03 06:54:23]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-03 06:54:23]
+(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+[INFO -- 2017-03-03 06:54:23]
+initSignal:0
+[INFO -- 2017-03-03 06:54:23]
+endSignal:7
+[INFO -- 2017-03-03 06:54:23]
+seqSignal:15
+[INFO -- 2017-03-03 06:54:23]
+faultMode:3
+[INFO -- 2017-03-03 06:54:26]
+Backtrace BEGIN:
+#0  __GI__IO_fread (buf=0x7fffef328da0, size=1, count=8, fp=0x6071c0) at iofread.c:35
+#1  0x0000000000403d42 in read_gold (gold=0x7fffeecc9040, fileGold=0x7fffffffee78 "/micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks", order=2048) at dgemm.c:266
+#2  0x00000000004041e3 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:329
+
+30	in iofread.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x2f
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffee3c 
+address max offset: 1
+Memory content after  bitflip:0x00
+frame name: main
+symbol name: inputB
+symbol filename: dgemm.c
+symbol line: 283
+value: 0x7fffffffee3c ""
+value address: 0x7fffffffea08
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-03 06:54:26]
+Fault Injection Successful after 3.97104501724s
+[INFO -- 2017-03-03 06:55:05]
+event type: exit
+[INFO -- 2017-03-03 06:55:05]
+exit code: 0

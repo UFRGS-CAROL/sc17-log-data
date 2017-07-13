@@ -1,0 +1,84 @@
+2017-02-21 18:18:43:Starting flip_value script
+2017-02-21 18:18:43:Initialization strings:
+2017-02-21 18:18:44:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-21 18:18:44:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 18:18:44:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 18:18:44:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-21 18:18:44:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-21 18:18:44:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-02-21 18:18:44:initSignal:0
+2017-02-21 18:18:44:endSignal:2
+2017-02-21 18:18:44:seqSignal:30
+2017-02-21 18:18:44:Backtrace BEGIN:
+2017-02-21 18:18:44:#0  __GI___waitpid (pid=5983, stat_loc=stat_loc@entry=0x7fffffffe528, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405bb2 in start_iteration () at ../include/log_helper.c:311
+#4  0x0000000000402c5b in main (argc=9, argv=0x7fffffffec08) at lud_check.c:122
+
+2017-02-21 18:18:44:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-02-21 18:18:44:Backtrace END
+2017-02-21 18:18:44:Type: The type is a structure.
+2017-02-21 18:18:44:Type sizeof: 32
+2017-02-21 18:18:44:Fliping value of field: begin
+2017-02-21 18:18:44:Type: The type is a structure.
+2017-02-21 18:18:44:Type sizeof: 16
+2017-02-21 18:18:44:Fliping value of field: tv_sec
+2017-02-21 18:18:44:Type: The type is an integer type.
+2017-02-21 18:18:44:Type sizeof: 8
+2017-02-21 18:18:44:Mem contents(hex):0x200xd30xdd0xf70xff0x7f0x000x00
+2017-02-21 18:18:44:Fault Mode: Zero bit-flip
+2017-02-21 18:18:44:base address to flip value: 0x7fffffffe780
+2017-02-21 18:18:44:address max offset: 8
+2017-02-21 18:18:44:Memory content before bitflip:0x200xd30xdd0xf70xff0x7f0x000x00
+2017-02-21 18:18:44:Backtrace BEGIN:
+2017-02-21 18:18:44:#0  __GI___waitpid (pid=5983, stat_loc=stat_loc@entry=0x7fffffffe528, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405bb2 in start_iteration () at ../include/log_helper.c:311
+#4  0x0000000000402c5b in main (argc=9, argv=0x7fffffffec08) at lud_check.c:122
+
+2017-02-21 18:18:44:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-02-21 18:18:44:Backtrace END
+2017-02-21 18:18:45:Type: The type is a structure.
+2017-02-21 18:18:45:Type sizeof: 32
+2017-02-21 18:18:45:Fliping value of field: __routine
+2017-02-21 18:18:45:Type: The type is a pointer.
+2017-02-21 18:18:45:Type sizeof: 8
+2017-02-21 18:18:45:Fliping a bit of the pointer
+2017-02-21 18:18:45:Mem contents(hex):0x200xf70x100xf70xff0x7f0x000x00
+2017-02-21 18:18:45:Fault Mode: Single bit-flip
+2017-02-21 18:18:45:base address to flip value: 0x7fffffffe508
+2017-02-21 18:18:45:address max offset: 8
+2017-02-21 18:18:45:Memory content before bitflip:0x200xf70x100xf70xff0x7f0x000x00
+2017-02-21 18:18:45:Memory content after  bitflip:0x200xf70x100xf70xff0x7f0x000x80
+2017-02-21 18:18:45:Mem contents(hex):0x200xf70x100xf70xff0x7f0x000x80
+2017-02-21 18:18:45:frame name: do_system
+2017-02-21 18:18:45:symbol name: _buffer
+2017-02-21 18:18:45:symbol filename: ../sysdeps/posix/system.c
+2017-02-21 18:18:45:symbol line: 112
+2017-02-21 18:18:45:value: {__routine = 0x80007ffff710f720, __arg = 0x7fffffffe504, __canceltype = 0, __prev = 0x0}
+2017-02-21 18:18:45:value address: 0x7fffffffe508
+2017-02-21 18:18:45:Type: The type is a structure.
+2017-02-21 18:18:45:Type sizeof: 32
+2017-02-21 18:18:45:Field name: __routine
+2017-02-21 18:18:45:Field Type:
+2017-02-21 18:18:45:Type: The type is a pointer.
+2017-02-21 18:18:45:Type sizeof: 8
+2017-02-21 18:18:45:Field name: __arg
+2017-02-21 18:18:45:Field Type:
+2017-02-21 18:18:45:Type: The type is a pointer.
+2017-02-21 18:18:45:Type sizeof: 8
+2017-02-21 18:18:45:Field name: __canceltype
+2017-02-21 18:18:45:Field Type:
+2017-02-21 18:18:45:Type: The type is an integer type.
+2017-02-21 18:18:45:Type sizeof: 4
+2017-02-21 18:18:45:Field name: __prev
+2017-02-21 18:18:45:Field Type:
+2017-02-21 18:18:45:Type: The type is a pointer.
+2017-02-21 18:18:45:Type sizeof: 8
+2017-02-21 18:18:45:Fault Injection Successful after 1.08403205872s
+2017-02-21 18:18:58:event type: exit
+2017-02-21 18:18:58:exit code: 0

@@ -1,0 +1,46 @@
+2016-11-01 00:02:58:Initialization strings:
+2016-11-01 00:02:58:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-11-01 00:02:58:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 00:02:58:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 00:02:58:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-01 00:02:58:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-01 00:02:58:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-11-01 00:02:59:Trying Fault Injection
+2016-11-01 00:02:59:Backtrace BEGIN:
+2016-11-01 00:02:59:#0  0x00007ffff7151e47 in __GI___rawmemchr (s=s@entry=0x7fffffffe77a, c_in=c_in@entry=0) at ../string/rawmemchr.c:69
+#1  0x00007ffff7145ad0 in _IO_str_init_static_internal (sf=sf@entry=0x7fffffffe400, ptr=ptr@entry=0x7fffffffe77a "323.815993\n", size=size@entry=0, pstart=pstart@entry=0x0) at strops.c:44
+#2  0x00007ffff71365d5 in __GI___isoc99_vsscanf (string=0x7fffffffe77a "323.815993\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:41
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#5  main (argc=-6278, argv=0x0) at hotspot_check.c:264
+
+2016-11-01 00:02:59:64	in ../string/rawmemchr.c
+
+2016-11-01 00:02:59:Backtrace END
+2016-11-01 00:02:59:Type: The type is an integer type.
+2016-11-01 00:02:59:Type sizeof: 4
+2016-11-01 00:02:59:Mem contents(hex):0xe40x000x000x00
+2016-11-01 00:02:59:base address to flip value: 0x608ec0 
+2016-11-01 00:02:59:address max offset: 4
+2016-11-01 00:02:59:Memory content before bitflip:0xe40x000x000x00
+2016-11-01 00:02:59:Memory content after  bitflip:0xe40x000x000x40
+2016-11-01 00:02:59:Mem contents(hex):0xe40x000x000x40
+2016-11-01 00:02:59:frame name: main
+2016-11-01 00:02:59:symbol name: num_omp_threads
+2016-11-01 00:02:59:symbol filename: hotspot_check.c
+2016-11-01 00:02:59:symbol line: 39
+2016-11-01 00:02:59:value: 1073742052
+2016-11-01 00:02:59:value address: 0x608ec0 <num_omp_threads>
+2016-11-01 00:02:59:Type: The type is an integer type.
+2016-11-01 00:02:59:Type sizeof: 4
+2016-11-01 00:02:59:Fault Injection Successful after 1.81031394005s
+2016-11-01 00:03:00:Fault Already Injected
+2016-11-01 00:03:01:Fault Already Injected
+2016-11-01 00:03:02:Fault Already Injected
+2016-11-01 00:03:04:Fault Already Injected
+2016-11-01 00:03:08:Fault Already Injected
+2016-11-01 00:03:10:Fault Already Injected
+2016-11-01 00:03:10:Fault Already Injected
+2016-11-01 00:03:11:Fault Already Injected
+2016-11-01 00:03:11:event type: exit
+2016-11-01 00:03:11:exit code: no exit code available

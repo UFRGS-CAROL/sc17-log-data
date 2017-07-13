@@ -1,0 +1,61 @@
+[INFO -- 2017-03-26 07:28:41]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 07:28:41]
+Initialization strings:
+[INFO -- 2017-03-26 07:28:41]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 07:28:41]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 07:28:41]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 07:28:41]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 07:28:41]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 07:28:41]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 07:28:41]
+initSignal:0
+[INFO -- 2017-03-26 07:28:41]
+endSignal:3
+[INFO -- 2017-03-26 07:28:41]
+seqSignal:30
+[INFO -- 2017-03-26 07:28:41]
+faultMode:1
+[INFO -- 2017-03-26 07:28:42]
+Backtrace BEGIN:
+#0  0x0000000000402014 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:122
+
+117	
+118	                                box_cpu[nh].nei[box_cpu[nh].nn].x = (k+n);
+119	                                box_cpu[nh].nei[box_cpu[nh].nn].y = (j+m);
+120	                                box_cpu[nh].nei[box_cpu[nh].nn].z = (i+l);
+121	                                box_cpu[nh].nei[box_cpu[nh].nn].number = (box_cpu[nh].nei[box_cpu[nh].nn].z * dim_cpu.boxes1d_arg * dim_cpu.boxes1d_arg) + (box_cpu[nh].nei[box_cpu[nh].nn].y * dim_cpu.boxes1d_arg) + box_cpu[nh].nei[box_cpu[nh].nn].x;
+122	                                box_cpu[nh].nei[box_cpu[nh].nn].offset = box_cpu[nh].nei[box_cpu[nh].nn].number * NUMBER_PAR_PER_BOX;
+123	
+124	                                box_cpu[nh].nn = box_cpu[nh].nn + 1;
+125	
+126	                            }
+
+Backtrace END
+Memory content before bitflip:0x900xd50xdd0xf7
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe778
+address max offset: 4
+Memory content after  bitflip:0x900xd50xbd0xf7
+frame name: main
+symbol name: loop
+symbol filename: main_check.c
+symbol line: 198
+value: -138553968
+value address: 0x7fffffffe778
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-26 07:28:42]
+Fault Injection Successful after 1.22533297539s
+[INFO -- 2017-03-26 07:28:59]
+event type: exit
+[INFO -- 2017-03-26 07:28:59]
+exit code: 0

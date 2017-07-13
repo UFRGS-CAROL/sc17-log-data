@@ -1,0 +1,67 @@
+[INFO -- 2017-03-08 09:26:15]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-08 09:26:15]
+Initialization strings:
+[INFO -- 2017-03-08 09:26:15]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-08 09:26:15]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 09:26:15]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 09:26:16]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 09:26:16]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 09:26:16]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-08 09:26:16]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-08 09:26:16]
+initSignal:10
+[INFO -- 2017-03-08 09:26:16]
+endSignal:15
+[INFO -- 2017-03-08 09:26:16]
+seqSignal:20
+[INFO -- 2017-03-08 09:26:16]
+faultMode:3
+[INFO -- 2017-03-08 09:26:36]
+Backtrace BEGIN:
+#0  0x0000000000509f58 in Mesh::kdtree_setup (this=0x7f9a50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2367
+#1  0x0000000000471c62 in State::fill_circle (this=0x7fa5e0, circ_radius=24, fill_value=100, background=7) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:983
+#2  0x00000000004452cb in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:282
+
+2362	   TBounds box;
+2363	   for (uint ic=0; ic<ncells; ic++) {
+2364	     box.min.x = x[ic];
+2365	     box.max.x = x[ic]+dx[ic];
+2366	     box.min.y = y[ic];
+2367	     box.max.y = y[ic]+dy[ic];
+2368	     KDTree_AddElement(&tree, &box);
+2369	   }
+2370	}
+2371	
+
+Backtrace END
+Fliping array at pos: 16
+Fliping a bit of the pointer
+Memory content before bitflip:0x2c0x210x570x000x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ceea0 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: Mesh::kdtree_setup
+symbol name: mesh_timer_descriptor
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+symbol line: 149
+value: {0x571f98 "mesh_timer_count_BCs", 0x571fb0 "mesh_timer_calc_neighbors", 0x571fcc "mesh_timer_hash_setup", 0x571fe4 "mesh_timer_hash_query", 0x571ffc "mesh_timer_find_boundary", 0x572018 "mesh_timer_push_setup", 0x572030 "mesh_timer_push_boundary", 0x57204c "mesh_timer_local_list", 0x572064 "mesh_timer_layer1", 0x572078 "mesh_timer_layer2", 0x57208c "mesh_timer_layer_list", 0x5720a4 "mesh_timer_copy_mesh_data", 0x5720c0 "mesh_timer_fill_mesh_ghost", 0x5720dc "mesh_timer_fill_neigh_ghost", 0x5720f8 "mesh_timer_set_corner_neigh", 0x572114 "mesh_timer_neigh_adjust", 0x0, 0x572144 "mesh_timer_kdtree_setup", 0x57215c "mesh_timer_kdtree_query", 0x572174 "mesh_timer_refine_smooth", 0x572190 "mesh_timer_rezone_all", 0x5721a8 "mesh_timer_partition", 0x5721c0 "mesh_timer_calc_spatial_coordinates", 0x5721e4 "mesh_timer_load_balance"}
+value address: 0x7cee20 <mesh_timer_descriptor>
+Type: The type is an array.
+Type sizeof: 192
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 23L)
+
+[INFO -- 2017-03-08 09:26:36]
+Fault Injection Successful after 20.8351500034s

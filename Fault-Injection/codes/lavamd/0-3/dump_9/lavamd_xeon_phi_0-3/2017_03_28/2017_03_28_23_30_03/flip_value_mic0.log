@@ -1,0 +1,56 @@
+[INFO -- 2017-03-28 23:29:38]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-28 23:29:38]
+Initialization strings:
+[INFO -- 2017-03-28 23:29:39]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-28 23:29:39]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 23:29:39]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 23:29:39]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 23:29:39]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 23:29:39]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-28 23:29:39]
+initSignal:0
+[INFO -- 2017-03-28 23:29:39]
+endSignal:3
+[INFO -- 2017-03-28 23:29:39]
+seqSignal:30
+[INFO -- 2017-03-28 23:29:39]
+faultMode:1
+[INFO -- 2017-03-28 23:29:40]
+Backtrace BEGIN:
+#0  __GI___waitpid (pid=77658, stat_loc=stat_loc@entry=0x7fffffffdea8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000406619 in update_timestamp () at ../include/log_helper.c:107
+#3  0x00000000004069fe in start_log_file (benchmark_name=0x408cc0 "openmpLavaMD", test_info=0x7fffffffe648 "box:15 spaceElem:337500 cores:228") at ../include/log_helper.c:196
+#4  0x0000000000402707 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:190
+
+26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x60d090 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x84
+frame name: update_timestamp
+symbol name: kernel_time_acc
+symbol filename: ../include/log_helper.c
+symbol line: 62
+value: -2.0522684006491881e-289
+value address: 0x60d090 <kernel_time_acc>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-28 23:29:40]
+Fault Injection Successful after 1.5545270443s
+[INFO -- 2017-03-28 23:29:56]
+event type: exit
+[INFO -- 2017-03-28 23:29:56]
+exit code: 0

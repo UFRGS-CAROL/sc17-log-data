@@ -1,0 +1,132 @@
+[INFO -- 2017-03-25 12:38:52]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-25 12:38:52]
+Initialization strings:
+[INFO -- 2017-03-25 12:38:52]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-25 12:38:52]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-25 12:38:52]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-25 12:38:52]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-25 12:38:52]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-25 12:38:52]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-25 12:38:52]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-25 12:38:52]
+initSignal:30
+[INFO -- 2017-03-25 12:38:52]
+endSignal:35
+[INFO -- 2017-03-25 12:38:52]
+seqSignal:20
+[INFO -- 2017-03-25 12:38:52]
+faultMode:1
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-25 12:40:43]
+pythonException: invalid frame
+[INFO -- 2017-03-25 12:40:43]
+Backtrace BEGIN:
+#0  0x00000000004780a4 in U_halfstep (deltaT=0.00034722049504055653, U_i=0, U_n=0, F_i=240.10000000000002, F_n=240.10000000000002, r_i=1, r_n=1, A_i=1, A_n=1, V_i=1, V_n=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:198
+#1  0x0000000000455bee in State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1413
+#2  0x00007ffff790ba1f in ?? ()
+#3  0x00007fffffffdac0 in ?? ()
+#4  0x00007fffffffdab8 in ?? ()
+#5  0x00007fffffffdad0 in ?? ()
+#6  0x00007fffffffdad8 in ?? ()
+#7  0x00007fffffffda38 in ?? ()
+#8  0x00007fffffffda70 in ?? ()
+#9  0x00007fffffffda68 in ?? ()
+#10 0x00007fffffffdba8 in ?? ()
+#11 0x00007fffffffdbc8 in ?? ()
+#12 0x00007fffffffdbe8 in ?? ()
+#13 0x00007fffffffda30 in ?? ()
+#14 0x00000000000000e4 in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+193	        real_t    A_i,        // Cell's            face surface area
+194	        real_t    A_n,        // Cell's neighbor's face surface area
+195	        real_t    V_i,        // Cell's            volume
+196	        real_t    V_n) {      // Cell's neighbor's volume
+197	
+198	   return (( r_i*U_n + r_n*U_i ) / ( r_i + r_n )) 
+199	          - HALF*deltaT*(( F_n*A_n*min(ONE, A_i/A_n) - F_i*A_i*min(ONE, A_n/A_i) )
+200	                    / ( V_n*min(HALF, V_i/V_n) + V_i*min(HALF, V_n/V_i) ));
+201	
+202	}
+
+Backtrace END
+Memory content before bitflip:0x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7d07ac 
+address max offset: 1
+Memory content after  bitflip:0x81
+frame name: U_halfstep
+symbol name: iversion_flag
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 130
+value: 129
+value address: 0x7d07ac <iversion_flag>
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2017-03-25 12:40:43]
+Fault Injection Successful after 111.403928995s
+[INFO -- 2017-03-25 12:41:02]
+event type: exit
+[INFO -- 2017-03-25 12:41:02]
+exit code: 0

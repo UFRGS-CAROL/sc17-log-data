@@ -1,0 +1,57 @@
+[INFO -- 2017-02-26 07:30:55]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 07:30:55]
+Initialization strings:
+[INFO -- 2017-02-26 07:30:55]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-26 07:30:56]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 07:30:56]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 07:30:56]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 07:30:56]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 07:30:56]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 07:30:56]
+initSignal:3
+[INFO -- 2017-02-26 07:30:56]
+endSignal:6
+[INFO -- 2017-02-26 07:30:56]
+seqSignal:15
+[INFO -- 2017-02-26 07:30:56]
+faultMode:3
+[INFO -- 2017-02-26 07:30:59]
+Backtrace BEGIN:
+#0  _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2017
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "324.192715\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000404598 in read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:207
+#4  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+2012	in vfscanf.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe220
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: _IO_vfscanf_internal
+symbol name: ptrs_to_free
+symbol filename: vfscanf.c
+symbol line: 243
+value: 0x0
+value address: 0x7fffffffe220
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-26 07:30:59]
+Fault Injection Successful after 3.50926804543s
+[INFO -- 2017-02-26 07:31:20]
+event type: exit
+[INFO -- 2017-02-26 07:31:20]
+exit code: 0

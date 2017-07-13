@@ -1,0 +1,123 @@
+2017-02-28 19:16:35:Starting flip_value script
+2017-02-28 19:16:35:Initialization strings:
+2017-02-28 19:16:35:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-28 19:16:35:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 19:16:35:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 19:16:35:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-28 19:16:35:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-28 19:16:35:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-02-28 19:16:35:initSignal:0
+2017-02-28 19:16:35:endSignal:3
+2017-02-28 19:16:35:seqSignal:30
+2017-02-28 19:16:36:Backtrace BEGIN:
+2017-02-28 19:16:36:#0  0x0000000000402255 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:151
+
+2017-02-28 19:16:36:146	    rv_cpu = (FOUR_VECTOR*)malloc(dim_cpu.space_mem);
+147	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+148	        fread(&(rv_cpu[i].v), 1, sizeof(double), file);
+149	        fread(&(rv_cpu[i].x), 1, sizeof(double), file);
+150	        fread(&(rv_cpu[i].y), 1, sizeof(double), file);
+151	        fread(&(rv_cpu[i].z), 1, sizeof(double), file);
+152	    }
+153	
+154	    fclose(file);
+155	
+
+2017-02-28 19:16:36:Backtrace END
+2017-02-28 19:16:36:Type: The type is a pointer.
+2017-02-28 19:16:36:Type sizeof: 8
+2017-02-28 19:16:36:Fliping a bit of the pointer
+2017-02-28 19:16:36:Mem contents(hex):0xfb0xed0xff0xff0xff0x7f0x000x00
+2017-02-28 19:16:36:Fault Mode: Zero bit-flip
+2017-02-28 19:16:36:base address to flip value: 0x7fffffffe888
+2017-02-28 19:16:36:address max offset: 8
+2017-02-28 19:16:36:Memory content before bitflip:0xfb0xed0xff0xff0xff0x7f0x000x00
+2017-02-28 19:16:36:Backtrace BEGIN:
+2017-02-28 19:16:36:#0  0x00007ffff7142865 in __GI__IO_file_xsgetn (fp=0x60e1c0, data=0x7ffff5f338c8, n=8) at fileops.c:1348
+#1  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#2  0x00000000004023b2 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:163
+
+2017-02-28 19:16:36:1343	in fileops.c
+
+2017-02-28 19:16:36:Backtrace END
+2017-02-28 19:16:36:Type: The type is an integer type.
+2017-02-28 19:16:36:Type sizeof: 4
+2017-02-28 19:16:36:Mem contents(hex):0x020x000x000x00
+2017-02-28 19:16:36:Fault Mode: Random bit-flip
+2017-02-28 19:16:36:base address to flip value: 0x7fffffffe73c
+2017-02-28 19:16:36:address max offset: 4
+2017-02-28 19:16:36:Memory content before bitflip:0x020x000x000x00
+2017-02-28 19:16:36:Backtrace BEGIN:
+2017-02-28 19:16:36:#0  0x000000000040250c in main (argc=7, argv=0x7fffffffebc8) at main_check.c:175
+
+2017-02-28 19:16:36:170	        printf( "The file 'output_forces' was not opened\n" );
+171	        exit(1);
+172	    }
+173	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+174	        fv_cpu[i].v = 0;
+175	        fv_cpu[i].x = 0;
+176	        fv_cpu[i].y = 0;
+177	        fv_cpu[i].z = 0;
+178	
+179	        fread(&(fv_cpu_GOLD[i].v), 1, sizeof(double), file);
+
+2017-02-28 19:16:36:Backtrace END
+2017-02-28 19:16:36:Type: The type is a structure.
+2017-02-28 19:16:36:Type sizeof: 56
+2017-02-28 19:16:36:Fliping value of field: space_mem2
+2017-02-28 19:16:36:Type: The type is an integer type.
+2017-02-28 19:16:36:Type sizeof: 8
+2017-02-28 19:16:36:Mem contents(hex):0xe00x320x290x000x000x000x000x00
+2017-02-28 19:16:36:Fault Mode: Double bit-flip
+2017-02-28 19:16:36:base address to flip value: 0x7fffffffe880
+2017-02-28 19:16:36:address max offset: 8
+2017-02-28 19:16:36:Memory content before bitflip:0xe00x320x290x000x000x000x000x00
+2017-02-28 19:16:36:Memory content after  bitflip:0xe00x320x290x000x000x000x500x00
+2017-02-28 19:16:36:Mem contents(hex):0xe00x320x290x000x000x000x500x00
+2017-02-28 19:16:36:frame name: main
+2017-02-28 19:16:36:symbol name: dim_cpu
+2017-02-28 19:16:36:symbol filename: main_check.c
+2017-02-28 19:16:36:symbol line: 56
+2017-02-28 19:16:36:value: {cur_arg = -134247168, arch_arg = 32767, cores_arg = 228, boxes1d_arg = 15, number_boxes = 3375, box_mem = 2214000, space_elem = 337500, space_mem = 10800000, space_mem2 = 22517998139552480}
+2017-02-28 19:16:36:value address: 0x7fffffffe850
+2017-02-28 19:16:36:Type: The type is a structure.
+2017-02-28 19:16:36:Type sizeof: 56
+2017-02-28 19:16:36:Field name: cur_arg
+2017-02-28 19:16:36:Field Type:
+2017-02-28 19:16:36:Type: The type is an integer type.
+2017-02-28 19:16:36:Type sizeof: 4
+2017-02-28 19:16:36:Field name: arch_arg
+2017-02-28 19:16:36:Field Type:
+2017-02-28 19:16:36:Type: The type is an integer type.
+2017-02-28 19:16:36:Type sizeof: 4
+2017-02-28 19:16:36:Field name: cores_arg
+2017-02-28 19:16:36:Field Type:
+2017-02-28 19:16:36:Type: The type is an integer type.
+2017-02-28 19:16:36:Type sizeof: 4
+2017-02-28 19:16:36:Field name: boxes1d_arg
+2017-02-28 19:16:36:Field Type:
+2017-02-28 19:16:36:Type: The type is an integer type.
+2017-02-28 19:16:36:Type sizeof: 4
+2017-02-28 19:16:36:Field name: number_boxes
+2017-02-28 19:16:36:Field Type:
+2017-02-28 19:16:36:Type: The type is an integer type.
+2017-02-28 19:16:36:Type sizeof: 8
+2017-02-28 19:16:36:Field name: box_mem
+2017-02-28 19:16:36:Field Type:
+2017-02-28 19:16:36:Type: The type is an integer type.
+2017-02-28 19:16:36:Type sizeof: 8
+2017-02-28 19:16:36:Field name: space_elem
+2017-02-28 19:16:36:Field Type:
+2017-02-28 19:16:36:Type: The type is an integer type.
+2017-02-28 19:16:36:Type sizeof: 8
+2017-02-28 19:16:36:Field name: space_mem
+2017-02-28 19:16:36:Field Type:
+2017-02-28 19:16:36:Type: The type is an integer type.
+2017-02-28 19:16:36:Type sizeof: 8
+2017-02-28 19:16:36:Field name: space_mem2
+2017-02-28 19:16:36:Field Type:
+2017-02-28 19:16:36:Type: The type is an integer type.
+2017-02-28 19:16:36:Type sizeof: 8
+2017-02-28 19:16:36:Fault Injection Successful after 1.92880296707s
+2017-02-28 19:16:51:event type: exit
+2017-02-28 19:16:51:exit code: 0

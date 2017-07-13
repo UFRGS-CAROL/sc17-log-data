@@ -1,0 +1,54 @@
+[INFO -- 2017-02-26 00:04:11]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 00:04:11]
+Initialization strings:
+[INFO -- 2017-02-26 00:04:11]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-26 00:04:11]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 00:04:11]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 00:04:11]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 00:04:11]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 00:04:11]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 00:04:11]
+initSignal:6
+[INFO -- 2017-02-26 00:04:11]
+endSignal:9
+[INFO -- 2017-02-26 00:04:11]
+seqSignal:15
+[INFO -- 2017-02-26 00:04:11]
+faultMode:3
+[INFO -- 2017-02-26 00:04:18]
+Backtrace BEGIN:
+#0  0x00007ffff71382e5 in _IO_fgets (buf=0x7fffffffe640 "0.000163\n", n=256, fp=0x609b40) at iofgets.c:50
+#1  0x0000000000404538 in read_input (vect=0x7ffff66cb010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee43 "/micNfs/gdb-fault-injection/injector/data/hotspot/power_1024") at hotspot_check.c:202
+#2  0x0000000000404ad7 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:266
+
+45	in iofgets.c
+
+Backtrace END
+Memory content before bitflip:0x6f0x120x030x3a
+Fault Mode: Zero bit-flip
+base address to flip value: 0x4074f4 
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: read_input
+symbol name: t_chip
+symbol filename: hotspot_check.c
+symbol line: 33
+value: 0
+value address: 0x4074f4 <t_chip>
+Type: A floating point type.
+Type sizeof: 4
+
+[INFO -- 2017-02-26 00:04:18]
+Fault Injection Successful after 7.20483398438s
+[INFO -- 2017-02-26 00:04:36]
+event type: exit
+[INFO -- 2017-02-26 00:04:36]
+exit code: 0

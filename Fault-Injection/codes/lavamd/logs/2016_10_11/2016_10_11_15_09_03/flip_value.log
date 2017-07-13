@@ -1,0 +1,63 @@
+2016-10-11 15:08:57:Initialization strings:
+2016-10-11 15:08:58:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-11 15:08:58:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-11 15:08:58:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-11 15:08:58:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-11 15:08:58:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-11 15:08:58:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-11 15:08:59:Trying Fault Injection
+2016-10-11 15:08:59:Inferior PID: 58833
+2016-10-11 15:08:59:Inferior is valid: True
+2016-10-11 15:08:59:Inferior #threads: 87
+2016-10-11 15:08:59:Backtrace BEGIN:
+2016-10-11 15:08:59:#0  0x00007ffff719f097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff74321df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffdd58) at allocatestack.c:640
+#2  __pthread_create_2_1 (newthread=0x7fffffffdd50, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffecca1600) at pthread_create.c:524
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2016-10-11 15:08:59:76	in ../sysdeps/unix/syscall-template.S
+
+2016-10-11 15:08:59:Backtrace END
+2016-10-11 15:09:00:Trying Fault Injection
+2016-10-11 15:09:00:Inferior PID: 58833
+2016-10-11 15:09:00:Inferior is valid: True
+2016-10-11 15:09:01:Inferior #threads: 87
+2016-10-11 15:09:01:Backtrace BEGIN:
+2016-10-11 15:09:01:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff4933d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff4933df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff4933d14 in ?? ()
+#8  0x00007ffff4933de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+2016-10-11 15:09:01:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2016-10-11 15:09:01:Backtrace END
+2016-10-11 15:09:02:Thread name: None
+2016-10-11 15:09:02:Thread num: 1
+2016-10-11 15:09:02:Thread ptid: (58833, 58833, 0)
+2016-10-11 15:09:02:bitFlip function
+2016-10-11 15:09:02:Type: The type is an integer type.
+2016-10-11 15:09:02:Type sizeof: 8
+2016-10-11 15:09:02:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-10-11 15:09:02:base address to flip value: 0x7ffff7646300 
+2016-10-11 15:09:02:address max offset: 8
+2016-10-11 15:09:02:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-10-11 15:09:02:Memory content after  bitflip:0x000x000x800x000x000x000x000x00
+2016-10-11 15:09:02:Mem contents(hex):0x000x000x800x000x000x000x000x00
+2016-10-11 15:09:02:frame name: __pthread_create_2_1
+2016-10-11 15:09:02:symbol name: in_flight_stack
+2016-10-11 15:09:02:symbol filename: allocatestack.c
+2016-10-11 15:09:02:symbol line: 120
+2016-10-11 15:09:02:value: 8388608
+2016-10-11 15:09:02:value address: 0x7ffff7646300 <in_flight_stack>
+2016-10-11 15:09:02:Type: The type is an integer type.
+2016-10-11 15:09:02:Type sizeof: 8
+2016-10-11 15:09:02:Fault Injection Successful after 4.5090239048s

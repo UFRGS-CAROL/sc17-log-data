@@ -1,0 +1,191 @@
+2017-02-21 17:15:02:Starting flip_value script
+2017-02-21 17:15:02:Initialization strings:
+2017-02-21 17:15:02:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-21 17:15:02:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 17:15:02:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 17:15:02:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-02-21 17:15:02:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-02-21 17:15:02:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-02-21 17:15:02:initSignal:0
+2017-02-21 17:15:02:endSignal:7
+2017-02-21 17:15:02:seqSignal:15
+2017-02-21 17:15:04:Backtrace BEGIN:
+2017-02-21 17:15:04:#0  0x0000000000403bb5 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:249
+#1  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+2017-02-21 17:15:04:244	        printf( "The inputB file was not opened\n" );
+245	        exit(1);
+246	    }
+247	
+248	    for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+249	            fread(&A[(i)+(order)*(j)], 1, sizeof(double), file);
+250	            fread(&B[(i)+(order)*(j)], 1, sizeof(double), file2);
+251	        }
+252	    fclose(file);
+253	    fclose(file2);
+
+2017-02-21 17:15:04:Backtrace END
+2017-02-21 17:15:04:Type: The type is a pointer.
+2017-02-21 17:15:04:Type sizeof: 8
+2017-02-21 17:15:04:Fliping a bit of the value pointed by a pointer
+2017-02-21 17:15:04:Type: A floating point type.
+2017-02-21 17:15:04:Type sizeof: 8
+2017-02-21 17:15:04:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-21 17:15:04:Fault Mode: Zero bit-flip
+2017-02-21 17:15:04:base address to flip value: 0x7ffff0cca040
+2017-02-21 17:15:04:address max offset: 8
+2017-02-21 17:15:04:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-21 17:15:04:Backtrace BEGIN:
+2017-02-21 17:15:05:#0  __GI__IO_file_xsgetn (fp=0x6073f0, data=0x7ffff3fef9a8, n=8) at fileops.c:1355
+#1  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x6073f0) at iofread.c:42
+#2  0x0000000000403c08 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:250
+#3  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+2017-02-21 17:15:05:1350	in fileops.c
+
+2017-02-21 17:15:05:Backtrace END
+2017-02-21 17:15:05:Type: The type is a structure.
+2017-02-21 17:15:05:Type sizeof: 168
+2017-02-21 17:15:05:Fliping value of field: __dummy
+2017-02-21 17:15:05:Type: The type is an integer type.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-21 17:15:05:Fault Mode: Random bit-flip
+2017-02-21 17:15:05:base address to flip value: 0x7ffff74236c0 
+2017-02-21 17:15:05:address max offset: 8
+2017-02-21 17:15:05:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-21 17:15:05:Backtrace BEGIN:
+2017-02-21 17:15:05:#0  0x00007ffff7138897 in __GI__IO_fread (buf=0x7ffff63b7958, size=1, count=8, fp=0x6071c0) at iofread.c:36
+#1  0x0000000000403bc3 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:249
+#2  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+2017-02-21 17:15:05:31	in iofread.c
+
+2017-02-21 17:15:05:Backtrace END
+2017-02-21 17:15:05:Type: The type is an integer type.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Mem contents(hex):0x000x080x000x000x000x000x000x00
+2017-02-21 17:15:05:Fault Mode: Zero bit-flip
+2017-02-21 17:15:05:base address to flip value: 0x7fffffffe6b8
+2017-02-21 17:15:05:address max offset: 8
+2017-02-21 17:15:05:Memory content before bitflip:0x000x080x000x000x000x000x000x00
+2017-02-21 17:15:05:Backtrace BEGIN:
+2017-02-21 17:15:05:#0  __GI_memcpy (dstpp=dstpp@entry=0x7ffff43f6c58, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:62
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x6073f0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x6073f0) at iofread.c:42
+#3  0x0000000000403c08 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:250
+#4  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+2017-02-21 17:15:05:57	in ../string/memcpy.c
+
+2017-02-21 17:15:05:Backtrace END
+2017-02-21 17:15:05:Type: The type is a structure.
+2017-02-21 17:15:05:Type sizeof: 168
+2017-02-21 17:15:05:Fliping value of field: __pbackfail
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Fliping a bit of the value pointed by a pointer
+2017-02-21 17:15:05:Type: The type is a function.
+2017-02-21 17:15:05:Type sizeof: 1
+2017-02-21 17:15:05:Mem contents(hex):0x41
+2017-02-21 17:15:05:Fault Mode: Single bit-flip
+2017-02-21 17:15:05:base address to flip value: 0x7ffff7145450 
+2017-02-21 17:15:05:address max offset: 1
+2017-02-21 17:15:05:Memory content before bitflip:0x41
+2017-02-21 17:15:05:Memory content after  bitflip:0x61
+2017-02-21 17:15:05:Mem contents(hex):0x61
+2017-02-21 17:15:05:frame name: __GI__IO_file_xsgetn
+2017-02-21 17:15:05:symbol name: _IO_file_jumps_maybe_mmap
+2017-02-21 17:15:05:symbol filename: fileops.c
+2017-02-21 17:15:05:symbol line: 1574
+2017-02-21 17:15:05:value: {__dummy = 0, __dummy2 = 0, __finish = 0x7ffff7142f30 <_IO_new_file_finish>, __overflow = 0x7ffff71437f0 <_IO_new_file_overflow>, __underflow = 0x7ffff7142670 <_IO_file_underflow_maybe_mmap>, __uflow = 0x7ffff7144590 <__GI__IO_default_uflow>, __pbackfail = 0x7ffff7145450 <__GI__IO_default_pbackfail>, __xsputn = 0x7ffff7142ba0 <_IO_new_file_xsputn>, __xsgetn = 0x7ffff7142690 <_IO_file_xsgetn_maybe_mmap>, __seekoff = 0x7ffff7141bc0 <_IO_file_seekoff_maybe_mmap>, __seekpos = 0x7ffff71447f0 <_IO_default_seekpos>, __setbuf = 0x7ffff7141ce0 <_IO_file_setbuf_mmap>, __sync = 0x7ffff7141bf0 <_IO_new_file_sync>, __doallocate = 0x7ffff7137990 <__GI__IO_file_doallocate>, __read = 0x7ffff7142b80 <__GI__IO_file_read>, __write = 0x7ffff71426e0 <_IO_new_file_write>, __seek = 0x7ffff71424a0 <__GI__IO_file_seek>, __close = 0x7ffff7141ca0 <__GI__IO_file_close>, __stat = 0x7ffff71426d0 <__GI__IO_file_stat>, __showmanyc = 0x7ffff71455b0 <_IO_default_showmanyc>, __imbue = 0x7ffff71455c0 <_IO_default_imbue>}
+2017-02-21 17:15:05:value address: 0x7ffff7423540 <_IO_file_jumps_maybe_mmap>
+2017-02-21 17:15:05:Type: The type is a structure.
+2017-02-21 17:15:05:Type sizeof: 168
+2017-02-21 17:15:05:Field name: __dummy
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is an integer type.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __dummy2
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is an integer type.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __finish
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __overflow
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __underflow
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __uflow
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __pbackfail
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __xsputn
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __xsgetn
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __seekoff
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __seekpos
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __setbuf
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __sync
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __doallocate
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __read
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __write
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __seek
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __close
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __stat
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __showmanyc
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Field name: __imbue
+2017-02-21 17:15:05:Field Type:
+2017-02-21 17:15:05:Type: The type is a pointer.
+2017-02-21 17:15:05:Type sizeof: 8
+2017-02-21 17:15:05:Fault Injection Successful after 3.63956904411s
+2017-02-21 17:15:46:event type: exit
+2017-02-21 17:15:46:exit code: 0

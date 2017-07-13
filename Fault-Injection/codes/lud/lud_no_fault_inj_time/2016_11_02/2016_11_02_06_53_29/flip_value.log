@@ -1,0 +1,49 @@
+2016-11-02 06:53:04:Initialization strings:
+2016-11-02 06:53:04:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-11-02 06:53:04:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-02 06:53:04:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-02 06:53:04:(4) file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-11-02 06:53:04:(5) set remote exec-file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-11-02 06:53:04:(6) set args -s 8192 -n 228 -i /micNfs/gdb-fault-injection-lud/bin/input_8192_th_228 -g /micNfs/gdb-fault-injection-lud/bin/gold_8192_th_228
+2016-11-02 06:53:05:Trying Fault Injection
+2016-11-02 06:53:05:Inferior PID: 157807
+2016-11-02 06:53:05:Inferior is valid: True
+2016-11-02 06:53:05:Inferior #threads: 1
+2016-11-02 06:53:05:Backtrace BEGIN:
+2016-11-02 06:53:05:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142911 in __GI__IO_file_xsgetn (fp=0x615240, data=<optimized out>, n=268435456) at fileops.c:1422
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=268435456, count=1, fp=0x615240) at iofread.c:42
+#3  0x0000000000402c1f in main (argc=4, argv=0x7fffd6ecb010) at lud_check.c:105
+
+2016-11-02 06:53:05:76	in ../sysdeps/unix/syscall-template.S
+
+2016-11-02 06:53:05:Backtrace END
+2016-11-02 06:53:05:Thread name: None
+2016-11-02 06:53:05:Thread num: 1
+2016-11-02 06:53:05:Thread ptid: (157807, 157807, 0)
+2016-11-02 06:53:05:bitFlip function
+2016-11-02 06:53:05:Type: The type is an integer type.
+2016-11-02 06:53:05:Type sizeof: 4
+2016-11-02 06:53:05:Mem contents(hex):0xe40x000x000x00
+2016-11-02 06:53:05:base address to flip value: 0x613560 
+2016-11-02 06:53:05:address max offset: 4
+2016-11-02 06:53:05:Memory content before bitflip:0xe40x000x000x00
+2016-11-02 06:53:05:Memory content after  bitflip:0xe40x020x000x00
+2016-11-02 06:53:05:Mem contents(hex):0xe40x020x000x00
+2016-11-02 06:53:05:frame name: main
+2016-11-02 06:53:05:symbol name: omp_num_threads
+2016-11-02 06:53:05:symbol filename: lud_check.c
+2016-11-02 06:53:05:symbol line: 29
+2016-11-02 06:53:05:value: 740
+2016-11-02 06:53:05:value address: 0x613560 <omp_num_threads>
+2016-11-02 06:53:05:Type: The type is an integer type.
+2016-11-02 06:53:05:Type sizeof: 4
+2016-11-02 06:53:05:Fault Injection Successful after 1.99927997589s
+2016-11-02 06:53:09:Fault Already Injected
+2016-11-02 06:53:10:Fault Already Injected
+2016-11-02 06:53:10:Fault Already Injected
+2016-11-02 06:53:11:Fault Already Injected
+2016-11-02 06:53:12:Fault Already Injected
+2016-11-02 06:53:13:Fault Already Injected
+2016-11-02 06:53:23:event type: exit
+2016-11-02 06:53:23:exit code: 0

@@ -1,0 +1,72 @@
+[INFO -- 2017-03-05 08:51:38]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-05 08:51:38]
+Initialization strings:
+[INFO -- 2017-03-05 08:51:38]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-05 08:51:38]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 08:51:38]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 08:51:38]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 08:51:38]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 08:51:38]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-05 08:51:38]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-05 08:51:38]
+initSignal:5
+[INFO -- 2017-03-05 08:51:38]
+endSignal:10
+[INFO -- 2017-03-05 08:51:38]
+seqSignal:20
+[INFO -- 2017-03-05 08:51:38]
+faultMode:3
+[INFO -- 2017-03-05 08:51:52]
+Backtrace BEGIN:
+#0  std::__fill_n_a<int*, unsigned long, int> (__first=0x16fda8c, __n=264192, __value=@0x7fffffffdd5c: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:766
+#1  0x000000000044ac9e in std::fill_n<int*, unsigned long, int> (__first=0x16194e0, __n=264192, __value=@0x7fffffffdd5c: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:801
+#2  0x0000000000448bba in std::__uninitialized_fill_n<true>::__uninit_fill_n<int*, unsigned long, int> (__first=0x16194e0, __n=264192, __x=@0x7fffffffdd5c: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:220
+#3  0x000000000044ac56 in std::uninitialized_fill_n<int*, unsigned long, int> (__first=0x16194e0, __n=264192, __x=@0x7fffffffdd5c: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:246
+#4  0x000000000044ac1a in std::__uninitialized_fill_n_a<int*, unsigned long, int, int> (__first=0x16194e0, __n=264192, __x=@0x7fffffffdd5c: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:358
+#5  0x0000000000449b30 in std::vector<int, std::allocator<int> >::_M_fill_initialize (this=0x7fffffffe138, __n=264192, __value=@0x7fffffffdd5c: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:1301
+#6  0x00000000004496a4 in std::vector<int, std::allocator<int> >::vector (this=0x7fffffffe138, __n=264192, __value=@0x7fffffffdd5c: 0, __a=...) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:306
+#7  0x000000000051fa38 in Mesh::rezone_all (this=0x7f9a50, icount=564, jcount=0, mpot=..., have_state=0, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2905
+#8  0x00000000005083a4 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1553
+#9  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+761	    __fill_n_a(_OutputIterator __first, _Size __n, const _Tp& __value)
+762	    {
+763	      const _Tp __tmp = __value;
+764	      for (__decltype(__n + 0) __niter = __n;
+765		   __niter > 0; --__niter, ++__first)
+766		*__first = __tmp;
+767	      return __first;
+768	    }
+769	
+770	  template<typename _Size, typename _Tp>
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7d0700 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: std::__uninitialized_fill_n_a<int*, unsigned long, int, int>
+symbol name: cpu_time_calcs
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 173
+value: 0
+value address: 0x7d0700 <cpu_time_calcs>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-05 08:51:52]
+Fault Injection Successful after 14.4129021168s
+[INFO -- 2017-03-05 08:52:38]
+event type: exit
+[INFO -- 2017-03-05 08:52:38]
+exit code: 0

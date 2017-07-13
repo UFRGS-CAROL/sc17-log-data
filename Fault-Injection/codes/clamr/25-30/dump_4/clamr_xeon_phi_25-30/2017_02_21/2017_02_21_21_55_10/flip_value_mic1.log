@@ -1,0 +1,53 @@
+2017-02-21 21:53:57:Starting flip_value script
+2017-02-21 21:53:57:Initialization strings:
+2017-02-21 21:53:57:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-21 21:53:57:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 21:53:57:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 21:53:58:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-21 21:53:58:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-21 21:53:58:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-21 21:53:58:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-21 21:53:58:initSignal:25
+2017-02-21 21:53:58:endSignal:30
+2017-02-21 21:53:58:seqSignal:20
+2017-02-21 21:54:24:Backtrace BEGIN:
+2017-02-21 21:54:24:#0  State::L__ZN5State21calc_refine_potentialERSt6vectorIiSaIiEERiS4__2618__par_loop0_2_39 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:2672
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe290 in ?? ()
+#3  0x00007fffffffe298 in ?? ()
+#4  0x00007fffffffe230 in ?? ()
+#5  0x00007fffffffe228 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-02-21 21:54:24:2667	
+2668	      state_t duplus1; //, duplus2;
+2669	      state_t duhalf1; //, duhalf2;
+2670	      state_t duminus1; //, duminus2;
+2671	
+2672	      duplus1 = Hr-Hic;
+2673	      //duplus2 = Ur-Uic;
+2674	      duhalf1 = Hic-Hl;
+2675	      //duhalf2 = Uic-Ul;
+2676	
+
+2017-02-21 21:54:24:Backtrace END
+2017-02-21 21:54:29:Type: A floating point type.
+2017-02-21 21:54:29:Type sizeof: 8
+2017-02-21 21:54:29:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-21 21:54:29:Fault Mode: Double bit-flip
+2017-02-21 21:54:29:base address to flip value: 0x7fffffffdd28
+2017-02-21 21:54:29:address max offset: 8
+2017-02-21 21:54:29:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-21 21:54:29:Memory content after  bitflip:0x000x000x000x000x000x140x000x00
+2017-02-21 21:54:29:Mem contents(hex):0x000x000x000x000x000x140x000x00
+2017-02-21 21:54:29:frame name: State::L__ZN5State21calc_refine_potentialERSt6vectorIiSaIiEERiS4__2618__par_loop0_2_39
+2017-02-21 21:54:29:symbol name: duminus1
+2017-02-21 21:54:29:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+2017-02-21 21:54:29:symbol line: 2670
+2017-02-21 21:54:29:value: 1.0864618449742194e-310
+2017-02-21 21:54:29:value address: 0x7fffffffdd28
+2017-02-21 21:54:29:Type: A floating point type.
+2017-02-21 21:54:29:Type sizeof: 8
+2017-02-21 21:54:29:Fault Injection Successful after 31.5651140213s
+2017-02-21 21:55:00:event type: exit
+2017-02-21 21:55:00:exit code: 0

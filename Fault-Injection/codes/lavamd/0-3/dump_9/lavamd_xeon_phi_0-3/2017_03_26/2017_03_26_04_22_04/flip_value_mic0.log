@@ -1,0 +1,63 @@
+[INFO -- 2017-03-26 04:21:40]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 04:21:40]
+Initialization strings:
+[INFO -- 2017-03-26 04:21:40]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 04:21:40]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 04:21:40]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 04:21:40]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 04:21:40]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 04:21:40]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 04:21:40]
+initSignal:0
+[INFO -- 2017-03-26 04:21:40]
+endSignal:3
+[INFO -- 2017-03-26 04:21:40]
+seqSignal:30
+[INFO -- 2017-03-26 04:21:40]
+faultMode:0
+[INFO -- 2017-03-26 04:21:41]
+Backtrace BEGIN:
+#0  0x0000000000402163 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:147
+
+142	        printf( "The file 'input_distances' was not opened\n" );
+143	        exit(1);
+144	    }
+145	
+146	    rv_cpu = (FOUR_VECTOR*)malloc(dim_cpu.space_mem);
+147	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+148	        fread(&(rv_cpu[i].v), 1, sizeof(double), file);
+149	        fread(&(rv_cpu[i].x), 1, sizeof(double), file);
+150	        fread(&(rv_cpu[i].y), 1, sizeof(double), file);
+151	        fread(&(rv_cpu[i].z), 1, sizeof(double), file);
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: z
+Memory content before bitflip:0x340x330x330x330x330x330xd30x3f
+Fault Mode: Single bit-flip
+base address to flip value: 0x7ffff6063028
+address max offset: 8
+Memory content after  bitflip:0x340x730x330x330x330x330xd30x3f
+frame name: main
+symbol name: rv_cpu
+symbol filename: main_check.c
+symbol line: 58
+value: 0x7ffff6063010
+value address: 0x7fffffffe940
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-26 04:21:41]
+Fault Injection Successful after 1.17356801033s
+[INFO -- 2017-03-26 04:21:57]
+event type: exit
+[INFO -- 2017-03-26 04:21:57]
+exit code: 0

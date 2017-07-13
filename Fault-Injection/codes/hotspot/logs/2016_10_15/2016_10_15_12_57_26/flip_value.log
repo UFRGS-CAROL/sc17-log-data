@@ -1,0 +1,64 @@
+2016-10-15 12:57:15:Initialization strings:
+2016-10-15 12:57:15:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-15 12:57:15:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-15 12:57:15:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-15 12:57:15:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-15 12:57:15:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-15 12:57:15:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-15 12:57:15:Trying Fault Injection
+2016-10-15 12:57:15:Backtrace BEGIN:
+2016-10-15 12:57:15:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffebe0, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffebe0) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffebe0) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000008 in ?? ()
+#7  0x00007fffffffede9 in ?? ()
+#8  0x00007fffffffee1f in ?? ()
+#9  0x00007fffffffee24 in ?? ()
+#10 0x00007fffffffee29 in ?? ()
+#11 0x00007fffffffee2e in ?? ()
+#12 0x00007fffffffee32 in ?? ()
+#13 0x00007fffffffee64 in ?? ()
+#14 0x00007fffffffee97 in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+2016-10-15 12:57:15:69	in dl-debug.c
+
+2016-10-15 12:57:15:Backtrace END
+2016-10-15 12:57:15:Type: The type is a pointer.
+2016-10-15 12:57:15:Type sizeof: 8
+2016-10-15 12:57:15:Fault Injection Failed after 0.977646112442s
+2016-10-15 12:57:16:Trying Fault Injection
+2016-10-15 12:57:16:Backtrace BEGIN:
+2016-10-15 12:57:16:#0  _IO_str_init_static_internal (sf=sf@entry=0x7fffffffe400, ptr=ptr@entry=0x7fffffffe77a "324.469967\n", size=size@entry=0, pstart=pstart@entry=0x0) at strops.c:67
+#1  0x00007ffff71365d5 in __GI___isoc99_vsscanf (string=0x7fffffffe77a "324.469967\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:41
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=0, argv=0x7fffffffe77a) at hotspot_check.c:264
+
+2016-10-15 12:57:16:62	in strops.c
+
+2016-10-15 12:57:16:Backtrace END
+2016-10-15 12:57:16:Type: The type is an integer type.
+2016-10-15 12:57:16:Type sizeof: 4
+2016-10-15 12:57:16:Mem contents(hex):0x640xee0xff0xff
+2016-10-15 12:57:16:base address to flip value: 0x7fffffffe610
+2016-10-15 12:57:16:address max offset: 4
+2016-10-15 12:57:16:Memory content before bitflip:0x640xee0xff0xff
+2016-10-15 12:57:16:Memory content after  bitflip:0x640x6e0xff0xff
+2016-10-15 12:57:16:Mem contents(hex):0x640x6e0xff0xff
+2016-10-15 12:57:16:frame name: read_input
+2016-10-15 12:57:16:symbol name: errors
+2016-10-15 12:57:16:symbol filename: hotspot_check.c
+2016-10-15 12:57:16:symbol line: 281
+2016-10-15 12:57:16:value: -37276
+2016-10-15 12:57:16:value address: 0x7fffffffe610
+2016-10-15 12:57:16:Type: The type is an integer type.
+2016-10-15 12:57:16:Type sizeof: 4
+2016-10-15 12:57:16:Fault Injection Successful after 1.41986894608s
+2016-10-15 12:57:18:Fault Already Injected
+2016-10-15 12:57:19:Fault Already Injected
+2016-10-15 12:57:20:event type: exit
+2016-10-15 12:57:20:exit code: 1

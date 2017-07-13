@@ -1,0 +1,61 @@
+[INFO -- 2017-03-29 03:53:33]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-29 03:53:33]
+Initialization strings:
+[INFO -- 2017-03-29 03:53:34]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-29 03:53:34]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-29 03:53:34]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-29 03:53:34]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-29 03:53:34]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-29 03:53:34]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-29 03:53:34]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-29 03:53:34]
+initSignal:40
+[INFO -- 2017-03-29 03:53:34]
+endSignal:49
+[INFO -- 2017-03-29 03:53:34]
+seqSignal:20
+[INFO -- 2017-03-29 03:53:34]
+faultMode:2
+[INFO -- 2017-03-29 03:54:22]
+Backtrace BEGIN:
+#0  0x00000000005361f5 in Mesh::partition_cells (this=0x7fae50, numpe=0, z_order=..., method=ORIGINAL_ORDER) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:369
+#1  0x00000000004461e3 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:477
+#2  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+364	   //  Partition cells according to one of several possible orderings.
+365	   int have_spatial_variables=0;
+366	   switch (method)
+367	   {   case ORIGINAL_ORDER:
+368	         //  Set z_order to the current cell order.
+369	         for (uint ic = 0; ic < ncells; ++ic)
+370	         {   z_order[ic] = ic; }
+371	
+372	         cpu_timers[MESH_TIMER_PARTITION] += cpu_timer_stop(tstart_cpu);
+373	
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7d0ac0 
+address max offset: 8
+Memory content after  bitflip:0x060xf30x840x800x090xec0xce0x73
+frame name: Mesh::partition_cells
+symbol name: meas_sum_average
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp
+symbol line: 82
+value: 6.9185371831487708e+249
+value address: 0x7d0ac0 <meas_sum_average>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-29 03:54:22]
+Fault Injection Successful after 48.0750899315s

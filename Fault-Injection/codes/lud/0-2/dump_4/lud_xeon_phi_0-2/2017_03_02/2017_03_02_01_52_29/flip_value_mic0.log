@@ -1,0 +1,62 @@
+2017-03-02 01:52:06:Starting flip_value script
+2017-03-02 01:52:06:Initialization strings:
+2017-03-02 01:52:07:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 01:52:07:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 01:52:07:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 01:52:07:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-03-02 01:52:07:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-03-02 01:52:07:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-03-02 01:52:07:initSignal:0
+2017-03-02 01:52:07:endSignal:2
+2017-03-02 01:52:07:seqSignal:30
+2017-03-02 01:52:07:Backtrace BEGIN:
+2017-03-02 01:52:07:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142911 in __GI__IO_file_xsgetn (fp=0x60c240, data=<optimized out>, n=16777216) at fileops.c:1422
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=16777216, count=1, fp=0x60c240) at iofread.c:42
+#3  0x0000000000402b9c in main (argc=9, argv=0x7fffffffec08) at lud_check.c:106
+
+2017-03-02 01:52:07:76	in ../sysdeps/unix/syscall-template.S
+
+2017-03-02 01:52:07:Backtrace END
+2017-03-02 01:52:07:Type: The type is a structure.
+2017-03-02 01:52:07:Type sizeof: 168
+2017-03-02 01:52:07:Fliping value of field: __xsputn
+2017-03-02 01:52:07:Type: The type is a pointer.
+2017-03-02 01:52:07:Type sizeof: 8
+2017-03-02 01:52:07:Fliping a bit of the value pointed by a pointer
+2017-03-02 01:52:07:Type: The type is a function.
+2017-03-02 01:52:07:Type sizeof: 1
+2017-03-02 01:52:07:Mem contents(hex):0x31
+2017-03-02 01:52:07:Fault Mode: Random bit-flip
+2017-03-02 01:52:07:base address to flip value: 0x7ffff7142ba0 
+2017-03-02 01:52:07:address max offset: 1
+2017-03-02 01:52:07:Memory content before bitflip:0x31
+2017-03-02 01:52:08:Backtrace BEGIN:
+2017-03-02 01:52:08:#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff74312d0 in ?? () at pthread_create.c:237 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libpthread.so.0
+#2  0x00007ffde33f3680 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-02 01:52:08:76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+2017-03-02 01:52:08:Backtrace END
+2017-03-02 01:52:10:Type: The type is an integer type.
+2017-03-02 01:52:10:Type sizeof: 4
+2017-03-02 01:52:10:Mem contents(hex):0x180x000x000x00
+2017-03-02 01:52:10:Fault Mode: Double bit-flip
+2017-03-02 01:52:10:base address to flip value: 0x7ffff743c240 
+2017-03-02 01:52:10:address max offset: 4
+2017-03-02 01:52:10:Memory content before bitflip:0x180x000x000x00
+2017-03-02 01:52:10:Memory content after  bitflip:0x180x000x000x22
+2017-03-02 01:52:10:Mem contents(hex):0x180x000x000x22
+2017-03-02 01:52:10:frame name: create_thread
+2017-03-02 01:52:10:symbol name: _thread_db_sizeof_td_eventbuf_t
+2017-03-02 01:52:10:symbol filename: ../nptl_db/structs.def
+2017-03-02 01:52:10:symbol line: 47
+2017-03-02 01:52:10:value: 570425368
+2017-03-02 01:52:10:value address: 0x7ffff743c240 <_thread_db_sizeof_td_eventbuf_t>
+2017-03-02 01:52:10:Type: The type is an integer type.
+2017-03-02 01:52:10:Type sizeof: 4
+2017-03-02 01:52:10:Fault Injection Successful after 3.34379696846s
+2017-03-02 01:52:23:event type: exit
+2017-03-02 01:52:23:exit code: 0

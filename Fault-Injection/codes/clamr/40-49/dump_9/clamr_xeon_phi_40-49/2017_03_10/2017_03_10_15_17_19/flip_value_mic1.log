@@ -1,0 +1,66 @@
+[INFO -- 2017-03-10 15:12:50]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-10 15:12:50]
+Initialization strings:
+[INFO -- 2017-03-10 15:12:51]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-10 15:12:51]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 15:12:51]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 15:12:51]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-10 15:12:51]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-10 15:12:51]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-10 15:12:51]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-10 15:12:51]
+initSignal:40
+[INFO -- 2017-03-10 15:12:51]
+endSignal:49
+[INFO -- 2017-03-10 15:12:51]
+seqSignal:20
+[INFO -- 2017-03-10 15:12:51]
+faultMode:3
+[INFO -- 2017-03-10 15:13:49]
+Backtrace BEGIN:
+#0  0x000000000054e6bd in check_md5 (graph_num=1, ncycle=100, simTime=0.043339572768126222) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:865
+#1  0x000000000054db32 in write_graphics_info (graph_num=1, ncycle=100, simTime=0.043339572768126222, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:754
+#2  0x0000000000446e91 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:579
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+860	
+861	        if (data_type == DATA_DOUBLE) {
+862	            xloc = (int)((x_double[i]-graphics_xmin)*xconversion);
+863	            xwid = (int)((x_double[i]+dx_double[i]-graphics_xmin)*xconversion-xloc);
+864	            yloc = (int)((graphics_ymax-(y_double[i]+dy_double[i]))*yconversion);
+865	            ywid = (int)((graphics_ymax-y_double[i])*yconversion);
+866	            ywid -= yloc;
+867	        } else {
+868	            xloc = (int)((x_float[i]-graphics_xmin)*xconversion);
+869	            xwid = (int)((x_float[i]+dx_float[i]-graphics_xmin)*xconversion-xloc);
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x380x40
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7d0670 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: main
+symbol name: circ_radius
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 163
+value: 0
+value address: 0x7d0670 <circ_radius>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-10 15:13:49]
+Fault Injection Successful after 58.9590339661s
+[INFO -- 2017-03-10 15:13:50]
+event type: exit
+[INFO -- 2017-03-10 15:13:50]
+exit code: 0

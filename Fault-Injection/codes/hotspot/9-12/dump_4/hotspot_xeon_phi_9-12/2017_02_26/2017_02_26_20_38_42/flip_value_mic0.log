@@ -1,0 +1,60 @@
+[INFO -- 2017-02-26 20:38:11]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 20:38:11]
+Initialization strings:
+[INFO -- 2017-02-26 20:38:11]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-26 20:38:11]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 20:38:11]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 20:38:11]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 20:38:11]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 20:38:11]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 20:38:11]
+initSignal:9
+[INFO -- 2017-02-26 20:38:11]
+endSignal:12
+[INFO -- 2017-02-26 20:38:11]
+seqSignal:15
+[INFO -- 2017-02-26 20:38:11]
+faultMode:3
+[INFO -- 2017-02-26 20:38:21]
+Backtrace BEGIN:
+#0  0x00007ffff7136593 in __GI___isoc99_vsscanf (string=0x7fffffffe640 "326.704346\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:33
+#1  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#2  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#3  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+28	in isoc99_vsscanf.c
+
+Backtrace END
+Fliping array at pos: 66
+Memory content before bitflip:0xff
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe7e2 
+address max offset: 1
+Memory content after  bitflip:0x00
+frame name: main
+symbol name: test_info
+symbol filename: hotspot_check.c
+symbol line: 253
+value: "simIter:1000 gridSize:1024x1024\000\025\000\000\000\000\000\000\000\340\350\377\377\377\177\000\000\220\325\335\367\377\177\000\000\004\350\377\377\377\177\000\000\320\350\000\377\377\177\000\000\060\206\377\367\377\177\000\000\b\000\000\000\000\000\000\000\034\327\354\366\000\000\000\000.(\274<"
+value address: 0x7fffffffe7a0
+Type: The type is an array.
+Type sizeof: 100
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 99L)
+
+[INFO -- 2017-02-26 20:38:21]
+Fault Injection Successful after 10.177891016s
+[INFO -- 2017-02-26 20:38:36]
+event type: exit
+[INFO -- 2017-02-26 20:38:36]
+exit code: 0

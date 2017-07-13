@@ -1,0 +1,62 @@
+[INFO -- 2017-03-26 23:57:54]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 23:57:54]
+Initialization strings:
+[INFO -- 2017-03-26 23:57:54]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-26 23:57:54]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 23:57:54]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 23:57:54]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-26 23:57:54]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-26 23:57:54]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-26 23:57:54]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-26 23:57:54]
+initSignal:25
+[INFO -- 2017-03-26 23:57:54]
+endSignal:30
+[INFO -- 2017-03-26 23:57:54]
+seqSignal:20
+[INFO -- 2017-03-26 23:57:54]
+faultMode:2
+[INFO -- 2017-03-26 23:58:24]
+Backtrace BEGIN:
+#0  Mesh::rezone_all (this=0x7fae50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2906
+#1  0x0000000000471447 in State::rezone_all (this=0x7fb9e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2901	   }
+2902	#else
+2903	   // Data parallel optimizations for thread parallel -- slows down serial
+2904	   // code by about 25%
+2905	   vector<int> add_count(ncells);
+2906	   vector<int> new_ic(ncells+1);
+2907	#ifdef _OPENMP
+2908	#pragma omp parallel
+2909	   {
+2910	#pragma omp for
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe92c
+address max offset: 4
+Memory content after  bitflip:0x490xed0x930x33
+frame name: main
+symbol name: parallel_in
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 252
+value: 865332553
+value address: 0x7fffffffe92c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-26 23:58:24]
+Fault Injection Successful after 30.513479948s

@@ -1,0 +1,103 @@
+2017-03-01 12:12:52:Starting flip_value script
+2017-03-01 12:12:52:Initialization strings:
+2017-03-01 12:12:52:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-01 12:12:52:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 12:12:52:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 12:12:52:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 12:12:52:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 12:12:52:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 12:12:52:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 12:12:52:initSignal:0
+2017-03-01 12:12:52:endSignal:5
+2017-03-01 12:12:52:seqSignal:20
+2017-03-01 12:12:54:Backtrace BEGIN:
+2017-03-01 12:12:54:#0  0x000000000053b3a8 in hsfc2d (coord=0x7fffffffdfb8, nkey=2, key=0x7ffccc16afa4) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfc.c:118
+#1  0x000000000053a65d in hsfc2sort (N=264192, X=0x7ffd881b0010, Y=0x7ffd481a2010, ibase=0, Info=0x7ffd1009f010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:138
+#2  0x0000000000536b19 in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#3  0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-03-01 12:12:54:113	
+114	    if ( shift == MaxBits ) { /* Word boundary */
+115	      key[ which - 1 ] |= c ;
+116	    }
+117	    else {
+118	      key[ which ] |= c << shift ;
+119	    }
+120	
+121	    /* Determine the recursive quadrant */
+122	
+
+2017-03-01 12:12:54:Backtrace END
+2017-03-01 12:12:59:Type: The type is an integer type.
+2017-03-01 12:12:59:Type sizeof: 4
+2017-03-01 12:12:59:Mem contents(hex):0x200x000x000x00
+2017-03-01 12:12:59:Fault Mode: One bit-flip
+2017-03-01 12:12:59:base address to flip value: 0x7fffffffdf24
+2017-03-01 12:12:59:address max offset: 4
+2017-03-01 12:12:59:Memory content before bitflip:0x200x000x000x00
+2017-03-01 12:12:59:Backtrace BEGIN:
+2017-03-01 12:13:00:#0  0x000000000053b3a8 in hsfc2d (coord=0x7fffffffdfb8, nkey=2, key=0x7ffccc16afa4) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfc.c:118
+#1  0x000000000053a65d in hsfc2sort (N=264192, X=0x7ffd881b0010, Y=0x7ffd481a2010, ibase=0, Info=0x7ffd1009f010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:138
+#2  0x0000000000536b19 in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#3  0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-03-01 12:13:00:113	
+114	    if ( shift == MaxBits ) { /* Word boundary */
+115	      key[ which - 1 ] |= c ;
+116	    }
+117	    else {
+118	      key[ which ] |= c << shift ;
+119	    }
+120	
+121	    /* Determine the recursive quadrant */
+122	
+
+2017-03-01 12:13:00:Backtrace END
+2017-03-01 12:13:05:Type: The type is an integer type.
+2017-03-01 12:13:05:Type sizeof: 4
+2017-03-01 12:13:05:Mem contents(hex):0x000x000x000x00
+2017-03-01 12:13:05:Fault Mode: Zero bit-flip
+2017-03-01 12:13:05:base address to flip value: 0x7d0ad0 
+2017-03-01 12:13:05:address max offset: 4
+2017-03-01 12:13:05:Memory content before bitflip:0x000x000x000x00
+2017-03-01 12:13:05:Backtrace BEGIN:
+2017-03-01 12:13:05:#0  0x000000000053b3a8 in hsfc2d (coord=0x7fffffffdfb8, nkey=2, key=0x7ffccc16afa4) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfc.c:118
+#1  0x000000000053a65d in hsfc2sort (N=264192, X=0x7ffd881b0010, Y=0x7ffd481a2010, ibase=0, Info=0x7ffd1009f010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:138
+#2  0x0000000000536b19 in Mesh::partition_cells (this=0x7fae50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#3  0x0000000000507e48 in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-03-01 12:13:05:113	
+114	    if ( shift == MaxBits ) { /* Word boundary */
+115	      key[ which - 1 ] |= c ;
+116	    }
+117	    else {
+118	      key[ which ] |= c << shift ;
+119	    }
+120	
+121	    /* Determine the recursive quadrant */
+122	
+
+2017-03-01 12:13:05:Backtrace END
+2017-03-01 12:13:10:Type: A floating point type.
+2017-03-01 12:13:10:Type sizeof: 8
+2017-03-01 12:13:10:Mem contents(hex):0x000x000x000x000x000x000x380x40
+2017-03-01 12:13:10:Fault Mode: Double bit-flip
+2017-03-01 12:13:10:base address to flip value: 0x7fffffffe610
+2017-03-01 12:13:10:address max offset: 8
+2017-03-01 12:13:10:Memory content before bitflip:0x000x000x000x000x000x000x380x40
+2017-03-01 12:13:10:Memory content after  bitflip:0x000x000x000x000x000x000x380x52
+2017-03-01 12:13:10:Mem contents(hex):0x000x000x000x000x000x000x380x52
+2017-03-01 12:13:10:frame name: Mesh::init
+2017-03-01 12:13:10:symbol name: circ_radius
+2017-03-01 12:13:10:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+2017-03-01 12:13:10:symbol line: 1361
+2017-03-01 12:13:10:value: 1.1935757673834879e+88
+2017-03-01 12:13:10:value address: 0x7fffffffe610
+2017-03-01 12:13:10:Type: A floating point type.
+2017-03-01 12:13:10:Type sizeof: 8
+2017-03-01 12:13:10:Fault Injection Successful after 18.214042902s
+2017-03-01 12:14:00:event type: exit
+2017-03-01 12:14:00:exit code: 0

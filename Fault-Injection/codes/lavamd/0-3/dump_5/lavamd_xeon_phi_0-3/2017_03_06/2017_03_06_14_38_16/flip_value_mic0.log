@@ -1,0 +1,74 @@
+[INFO -- 2017-03-06 14:37:51]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 14:37:51]
+Initialization strings:
+[INFO -- 2017-03-06 14:37:52]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-06 14:37:52]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 14:37:52]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 14:37:52]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-06 14:37:52]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-06 14:37:52]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-06 14:37:52]
+initSignal:0
+[INFO -- 2017-03-06 14:37:52]
+endSignal:3
+[INFO -- 2017-03-06 14:37:52]
+seqSignal:30
+[INFO -- 2017-03-06 14:37:52]
+faultMode:0
+[INFO -- 2017-03-06 14:37:52]
+Backtrace BEGIN:
+#0  do_lookup_x (undef_name=undef_name@entry=0x7ffff742ced0 "__getrlimit", new_hash=new_hash@entry=4025794932, old_hash=old_hash@entry=0x7fffffffe8f0, ref=0x7ffff742aef0, result=result@entry=0x7fffffffe900, scope=<optimized out>, i=5, version=0x7ffff7ff8bf8, flags=1, skip=0x0, type_class=1, undef_map=0x7ffff7ff94d0) at dl-lookup.c:420
+#1  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x7ffff742ced0 "__getrlimit", undef_map=0x7ffff7ff94d0, ref=ref@entry=0x7fffffffe9b8, symbol_scope=0x7ffff7ff9828, version=0x7ffff7ff8bf8, type_class=type_class@entry=1, flags=1, skip_map=0x0) at dl-lookup.c:775
+#2  0x00007ffff7deafea in _dl_fixup (l=<optimized out>, reloc_arg=<optimized out>) at ../elf/dl-runtime.c:111
+#3  0x00007ffff7df1859 in _dl_runtime_resolve () at ../sysdeps/x86_64/dl-trampoline.S:89
+#4  0x00007ffff742fe7c in __pthread_initialize_minimal_internal () at nptl-init.c:438
+#5  0x00007ffff742f529 in _init () at ../sysdeps/x86_64/crti.S:72
+#6  0x00007ffff7ddd380 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#7  0x00007ffff7debb98 in call_init (l=0x7ffff7ff94d0, argc=7, argv=0x7fffffffebc8, env=0x7fffffffec08) at dl-init.c:58
+#8  0x00007ffff7debd57 in call_init (env=0x7fffffffec08, argv=0x7fffffffebc8, argc=7, l=<optimized out>) at dl-init.c:88
+#9  _dl_init (main_map=0x7ffff7ffe168, argc=7, argv=0x7fffffffebc8, env=0x7fffffffec08) at dl-init.c:87
+#10 0x00007ffff7dddbfa in _dl_start_user () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#11 0x0000000000000007 in ?? ()
+#12 0x00007fffffffedb7 in ?? ()
+#13 0x00007fffffffedf4 in ?? ()
+#14 0x00007fffffffedf8 in ?? ()
+#15 0x00007fffffffedfb in ?? ()
+#16 0x00007fffffffee41 in ?? ()
+#17 0x00007fffffffee86 in ?? ()
+#18 0x00007fffffffeec9 in ?? ()
+#19 0x0000000000000000 in ?? ()
+
+415	in dl-lookup.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: s
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffe900
+address max offset: 8
+Memory content after  bitflip:0x000x100x000x000x000x000x000x00
+frame name: do_lookup_x
+symbol name: result
+symbol filename: dl-lookup.c
+symbol line: 352
+value: 0x7fffffffe900
+value address: 0x7fffffffe7e8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-06 14:37:52]
+Fault Injection Successful after 0.857012033463s
+[INFO -- 2017-03-06 14:38:09]
+event type: exit
+[INFO -- 2017-03-06 14:38:09]
+exit code: 0

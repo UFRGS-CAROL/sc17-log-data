@@ -1,0 +1,113 @@
+2017-02-20 17:55:26:Starting flip_value script
+2017-02-20 17:55:26:Initialization strings:
+2017-02-20 17:55:26:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-20 17:55:26:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 17:55:26:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 17:55:27:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-20 17:55:27:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-20 17:55:27:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-20 17:55:27:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-20 17:55:27:initSignal:0
+2017-02-20 17:55:27:endSignal:5
+2017-02-20 17:55:27:seqSignal:20
+2017-02-20 17:55:27:Backtrace BEGIN:
+2017-02-20 17:55:27:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec50, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec50) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec50) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x000000000000000b in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+2017-02-20 17:55:27:69	in dl-debug.c
+
+2017-02-20 17:55:27:Backtrace END
+2017-02-20 17:55:27:Type: The type is a structure.
+2017-02-20 17:55:27:Type sizeof: 3968
+2017-02-20 17:55:27:Fliping value of field: _dl_tls_generation
+2017-02-20 17:55:27:Type: The type is an integer type.
+2017-02-20 17:55:27:Type sizeof: 8
+2017-02-20 17:55:27:Mem contents(hex):0x010x000x000x000x000x000x000x00
+2017-02-20 17:55:27:Fault Mode: One bit-flip
+2017-02-20 17:55:27:base address to flip value: 0x7ffff7ffdfa0 
+2017-02-20 17:55:27:address max offset: 8
+2017-02-20 17:55:27:Memory content before bitflip:0x010x000x000x000x000x000x000x00
+2017-02-20 17:55:27:Backtrace BEGIN:
+2017-02-20 17:55:27:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd0cd8 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+2017-02-20 17:55:27:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-02-20 17:55:27:Backtrace END
+2017-02-20 17:55:28:Type: The type is an integer type.
+2017-02-20 17:55:28:Type sizeof: 4
+2017-02-20 17:55:28:Mem contents(hex):0x190x000x000x00
+2017-02-20 17:55:28:Fault Mode: One bit-flip
+2017-02-20 17:55:28:base address to flip value: 0x7ffff6e8c234 
+2017-02-20 17:55:28:address max offset: 4
+2017-02-20 17:55:28:Memory content before bitflip:0x190x000x000x00
+2017-02-20 17:55:28:Backtrace BEGIN:
+2017-02-20 17:55:28:#0  0x00007ffff6bef097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6e821df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffe318) at allocatestack.c:640
+#2  __pthread_create_2_1 (newthread=0x7fffffffe310, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7ffff7ecd600) at pthread_create.c:524
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-02-20 17:55:28:88	in dl-minimal.c
+
+2017-02-20 17:55:28:Backtrace END
+2017-02-20 17:55:29:Type: The type is an array.
+2017-02-20 17:55:29:Type sizeof: 12
+2017-02-20 17:55:29:Fliping array at pos: 2
+2017-02-20 17:55:29:Type: The type is an integer type.
+2017-02-20 17:55:29:Type sizeof: 4
+2017-02-20 17:55:29:Mem contents(hex):0x000x000x000x00
+2017-02-20 17:55:29:Fault Mode: One bit-flip
+2017-02-20 17:55:29:base address to flip value: 0x7ffff6e8c268 
+2017-02-20 17:55:29:address max offset: 4
+2017-02-20 17:55:29:Memory content before bitflip:0x000x000x000x00
+2017-02-20 17:55:29:Backtrace BEGIN:
+2017-02-20 17:55:29:#0  malloc (n=15) at dl-minimal.c:93
+#1  <function called from gdb>
+#2  0x00007ffff6bef097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#3  0x00007ffff6e821df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffe318) at allocatestack.c:640
+#4  __pthread_create_2_1 (newthread=0x7fffffffe310, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7ffff7ecd600) at pthread_create.c:524
+#5  0x00007ffff790d323 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-02-20 17:55:29:88	in dl-minimal.c
+
+2017-02-20 17:55:29:Backtrace END
+2017-02-20 17:55:30:Type: The type is an array.
+2017-02-20 17:55:30:Type sizeof: 12
+2017-02-20 17:55:30:Fliping array at pos: 0
+2017-02-20 17:55:30:Type: The type is an integer type.
+2017-02-20 17:55:30:Type sizeof: 4
+2017-02-20 17:55:30:Mem contents(hex):0x400x000x000x00
+2017-02-20 17:55:30:Fault Mode: Double bit-flip
+2017-02-20 17:55:30:base address to flip value: 0x7ffff6e8c260 
+2017-02-20 17:55:30:address max offset: 4
+2017-02-20 17:55:30:Memory content before bitflip:0x400x000x000x00
+2017-02-20 17:55:30:Memory content after  bitflip:0x400x000x0a0x00
+2017-02-20 17:55:30:Mem contents(hex):0x400x000x0a0x00
+2017-02-20 17:55:30:frame name: allocate_stack
+2017-02-20 17:55:30:symbol name: _thread_db_list_t_next
+2017-02-20 17:55:30:symbol filename: ../nptl_db/structs.def
+2017-02-20 17:55:30:symbol line: 41
+2017-02-20 17:55:30:value: {655424, 1, 0}
+2017-02-20 17:55:30:value address: 0x7ffff6e8c260 <_thread_db_pthread_key_struct_seq>
+2017-02-20 17:55:30:Type: The type is an array.
+2017-02-20 17:55:30:Type sizeof: 12
+2017-02-20 17:55:30:Field name: None
+2017-02-20 17:55:30:Field Type:
+2017-02-20 17:55:30:Type: A range type, that is, an integer type with bounds.
+2017-02-20 17:55:30:Type sizeof: 8
+2017-02-20 17:55:30:Type range: (0L, 2L)
+2017-02-20 17:55:30:Fault Injection Successful after 3.37242007256s
+2017-02-20 17:56:23:event type: exit
+2017-02-20 17:56:23:exit code: 0

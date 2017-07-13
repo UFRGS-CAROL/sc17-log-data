@@ -1,0 +1,68 @@
+2017-03-01 00:01:51:Starting flip_value script
+2017-03-01 00:01:51:Initialization strings:
+2017-03-01 00:01:52:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 00:01:52:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 00:01:52:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 00:01:52:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-03-01 00:01:52:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-03-01 00:01:52:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-03-01 00:01:52:initSignal:12
+2017-03-01 00:01:52:endSignal:15
+2017-03-01 00:01:52:seqSignal:15
+2017-03-01 00:02:04:Backtrace BEGIN:
+2017-03-01 00:02:04:#0  0x00007ffff714f848 in __memchr (s=s@entry=0x7ffff7fdd7d3, c_in=c_in@entry=10, n=<optimized out>, n@entry=255) at ../string/memchr.c:153
+#1  0x00007ffff7139361 in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "323.169373\n", n=255, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:94
+#2  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "323.169373\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#3  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe640 "323.169373\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#4  0x0000000000404538 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:202
+#5  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-03-01 00:02:04:148	in ../string/memchr.c
+
+2017-03-01 00:02:04:Backtrace END
+2017-03-01 00:02:04:Type: The type is an integer type.
+2017-03-01 00:02:04:Type sizeof: 4
+2017-03-01 00:02:04:Mem contents(hex):0xff0x7f0x000x00
+2017-03-01 00:02:04:Fault Mode: One bit-flip
+2017-03-01 00:02:04:base address to flip value: 0x7fffffffe934
+2017-03-01 00:02:04:address max offset: 4
+2017-03-01 00:02:04:Memory content before bitflip:0xff0x7f0x000x00
+2017-03-01 00:02:04:Backtrace BEGIN:
+2017-03-01 00:02:04:#0  0x00007ffff714f848 in __memchr (s=s@entry=0x7ffff7fdd7d3, c_in=c_in@entry=10, n=<optimized out>, n@entry=255) at ../string/memchr.c:153
+#1  0x00007ffff7139361 in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "323.169373\n", n=255, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:94
+#2  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "323.169373\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#3  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe640 "323.169373\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#4  0x0000000000404538 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:202
+#5  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-03-01 00:02:04:148	in ../string/memchr.c
+
+2017-03-01 00:02:04:Backtrace END
+2017-03-01 00:02:05:Type: The type is an array.
+2017-03-01 00:02:05:Type sizeof: 256
+2017-03-01 00:02:05:Fliping array at pos: 125
+2017-03-01 00:02:05:Type: The type is an integer type.
+2017-03-01 00:02:05:Type sizeof: 1
+2017-03-01 00:02:05:Mem contents(hex):0x00
+2017-03-01 00:02:05:Fault Mode: Double bit-flip
+2017-03-01 00:02:05:base address to flip value: 0x7fffffffe6bd 
+2017-03-01 00:02:05:address max offset: 1
+2017-03-01 00:02:05:Memory content before bitflip:0x00
+2017-03-01 00:02:05:Memory content after  bitflip:0x11
+2017-03-01 00:02:05:Mem contents(hex):0x11
+2017-03-01 00:02:05:frame name: read_input
+2017-03-01 00:02:05:symbol name: str
+2017-03-01 00:02:05:symbol filename: hotspot_check.c
+2017-03-01 00:02:05:symbol line: 194
+2017-03-01 00:02:05:value: "323.169373\n\000\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\240\211`\000\000\000\000\000\023\000\000\000\000\000\000\000\023\000\000\000\000\000\000\000\240\211`\000\000\021\000\000\000\000\000\000\000\000\000\000\060\000\000\000\060\000\000\000\240\347\377\377\377\177\000\000\340\346\377\377\377\177\000\000\377\017\000\000\000\000\000\000\210\023\016\367\377\177\000\000\350\003\000\000\000\000\000\000\350\003\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000"...
+2017-03-01 00:02:05:value address: 0x7fffffffe640
+2017-03-01 00:02:05:Type: The type is an array.
+2017-03-01 00:02:05:Type sizeof: 256
+2017-03-01 00:02:05:Field name: None
+2017-03-01 00:02:05:Field Type:
+2017-03-01 00:02:05:Type: A range type, that is, an integer type with bounds.
+2017-03-01 00:02:05:Type sizeof: 1
+2017-03-01 00:02:05:Type range: (0L, 255L)
+2017-03-01 00:02:05:Fault Injection Successful after 13.067950964s
+2017-03-01 00:02:17:event type: exit
+2017-03-01 00:02:17:exit code: 0

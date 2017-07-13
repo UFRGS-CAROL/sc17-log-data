@@ -1,0 +1,56 @@
+[INFO -- 2017-03-26 22:30:57]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 22:30:57]
+Initialization strings:
+[INFO -- 2017-03-26 22:30:57]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 22:30:57]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 22:30:57]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 22:30:57]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 22:30:57]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 22:30:57]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 22:30:57]
+initSignal:6
+[INFO -- 2017-03-26 22:30:57]
+endSignal:10
+[INFO -- 2017-03-26 22:30:57]
+seqSignal:30
+[INFO -- 2017-03-26 22:30:57]
+faultMode:1
+[INFO -- 2017-03-26 22:31:10]
+Backtrace BEGIN:
+#0  __GI___waitpid (pid=132071, stat_loc=stat_loc@entry=0x7fffffffe148, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:40
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000406619 in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000407582 in log_error_count (kernel_errors=0) at ../include/log_helper.c:369
+#4  0x0000000000402bf0 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:323
+
+35	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+Backtrace END
+Memory content before bitflip:0xcc0xd20x4e0xcd0xe50x160x200x40
+Fault Mode: Double bit-flip
+base address to flip value: 0x60d098 
+address max offset: 8
+Memory content after  bitflip:0xcc0xd20x4e0xef0xe50x160x200x40
+frame name: log_error_count
+symbol name: kernel_time
+symbol filename: ../include/log_helper.c
+symbol line: 63
+value: 8.0447230132789613
+value address: 0x60d098 <kernel_time>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-26 22:31:10]
+Fault Injection Successful after 13.4936439991s
+[INFO -- 2017-03-26 22:31:11]
+event type: exit
+[INFO -- 2017-03-26 22:31:11]
+exit code: 0

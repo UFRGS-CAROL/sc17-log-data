@@ -1,0 +1,58 @@
+2016-10-24 01:32:26:Initialization strings:
+2016-10-24 01:32:26:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-24 01:32:26:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 01:32:26:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 01:32:26:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-24 01:32:26:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-24 01:32:26:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-24 01:32:28:Trying Fault Injection
+2016-10-24 01:32:28:Backtrace BEGIN:
+2016-10-24 01:32:28:#0  __mpn_mul_1 () at ../sysdeps/x86_64/mul_1.S:39
+#1  0x00007ffff7112b70 in __mpn_mul (prodp=prodp@entry=0x7fffffffdf30, up=0x7ffff71e5468 <__tens+40>, usize=1, vp=vp@entry=0x7fffffffdf80, vsize=vsize@entry=1) at mul.c:90
+#2  0x00007ffff7108d1e in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe010 "335.413770", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1430
+#3  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe010 "335.413770", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0) at strtod.c:54
+#4  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2332
+#5  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "335.413770\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#6  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#7  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#8  main (argc=-8400, argv=0x7ffff71e5468 <__tens+40>) at hotspot_check.c:264
+
+2016-10-24 01:32:28:34	in ../sysdeps/x86_64/mul_1.S
+
+2016-10-24 01:32:28:Backtrace END
+2016-10-24 01:32:28:Type: The type is an array.
+2016-10-24 01:32:28:Type sizeof: 22
+2016-10-24 01:32:28:Fliping array at pos: 10
+2016-10-24 01:32:28:Type: The type is an integer type.
+2016-10-24 01:32:28:Type sizeof: 1
+2016-10-24 01:32:28:Mem contents(hex):0x5f
+2016-10-24 01:32:28:base address to flip value: 0x7ffff71f6d3a  
+2016-10-24 01:32:28:address max offset: 1
+2016-10-24 01:32:28:Memory content before bitflip:0x5f
+2016-10-24 01:32:28:Memory content after  bitflip:0x57
+2016-10-24 01:32:28:Mem contents(hex):0x57
+2016-10-24 01:32:28:frame name: __GI_____strtof_l_internal
+2016-10-24 01:32:28:symbol name: __PRETTY_FUNCTION__
+2016-10-24 01:32:28:symbol filename: strtof_l.c
+2016-10-24 01:32:28:symbol line: 0
+2016-10-24 01:32:28:value: "____strtofWl_internal"
+2016-10-24 01:32:28:value address: 0x7ffff71f6d30 <__PRETTY_FUNCTION__.10420>
+2016-10-24 01:32:28:Type: The type is an array.
+2016-10-24 01:32:28:Type sizeof: 22
+2016-10-24 01:32:28:Field name: None
+2016-10-24 01:32:28:Field Type:
+2016-10-24 01:32:28:Type: A range type, that is, an integer type with bounds.
+2016-10-24 01:32:28:Type sizeof: 8
+2016-10-24 01:32:28:Type range: (0L, 21L)
+2016-10-24 01:32:28:Fault Injection Successful after 2.28242897987s
+2016-10-24 01:32:29:Fault Already Injected
+2016-10-24 01:32:29:Fault Already Injected
+2016-10-24 01:32:30:Fault Already Injected
+2016-10-24 01:32:30:Fault Already Injected
+2016-10-24 01:32:32:Fault Already Injected
+2016-10-24 01:32:32:Fault Already Injected
+2016-10-24 01:32:34:Fault Already Injected
+2016-10-24 01:32:36:Fault Already Injected
+2016-10-24 01:32:40:Fault Already Injected
+2016-10-24 01:32:41:event type: exit
+2016-10-24 01:32:41:exit code: 0

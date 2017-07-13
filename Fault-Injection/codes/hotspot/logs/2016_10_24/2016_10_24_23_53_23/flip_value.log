@@ -1,0 +1,78 @@
+2016-10-24 23:53:02:Initialization strings:
+2016-10-24 23:53:02:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-24 23:53:02:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 23:53:02:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 23:53:02:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-24 23:53:02:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-24 23:53:02:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-24 23:53:02:Trying Fault Injection
+2016-10-24 23:53:02:Backtrace BEGIN:
+2016-10-24 23:53:02:#0  0x00007ffff7dddbc0 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#1  0x0000000000000008 in ?? ()
+#2  0x00007fffffffede9 in ?? ()
+#3  0x00007fffffffee1f in ?? ()
+#4  0x00007fffffffee24 in ?? ()
+#5  0x00007fffffffee29 in ?? ()
+#6  0x00007fffffffee2e in ?? ()
+#7  0x00007fffffffee32 in ?? ()
+#8  0x00007fffffffee64 in ?? ()
+#9  0x00007fffffffee97 in ?? ()
+#10 0x0000000000000000 in ?? ()
+
+2016-10-24 23:53:02:220	    fprintf(stderr, "\t<no. of threads>   - number of threads\n");
+221	    fprintf(stderr, "\t<temp_file>  - name of the file containing the initial temperature values of each cell\n");
+222	    fprintf(stderr, "\t<power_file> - name of the file containing the dissipated power values of each cell\n");
+223	    fprintf(stderr, "\t<output_file> - name of the output file\n");
+224	    exit(1);
+225	}
+226	
+227	int main(int argc, char **argv)
+228	{
+229	    int grid_rows, grid_cols, sim_time, i;
+
+2016-10-24 23:53:02:Backtrace END
+2016-10-24 23:53:02:Fault Injection Failed after 0.935277938843s
+2016-10-24 23:53:05:Trying Fault Injection
+2016-10-24 23:53:05:Backtrace BEGIN:
+2016-10-24 23:53:05:#0  0x00007ffff7128247 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:1977
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "323.735733\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=-7168, argv=0x33) at hotspot_check.c:264
+
+2016-10-24 23:53:05:1972	in vfscanf.c
+
+2016-10-24 23:53:05:Backtrace END
+2016-10-24 23:53:05:Type: The type is an array.
+2016-10-24 23:53:05:Type sizeof: 24
+2016-10-24 23:53:05:Fliping array at pos: 0
+2016-10-24 23:53:05:Type: The type is a structure.
+2016-10-24 23:53:05:Type sizeof: 24
+2016-10-24 23:53:05:Fliping value of field: fp_offset
+2016-10-24 23:53:05:Type: The type is an integer type.
+2016-10-24 23:53:05:Type sizeof: 4
+2016-10-24 23:53:05:Mem contents(hex):0x300x000x000x00
+2016-10-24 23:53:05:base address to flip value: 0x7fffffffe52c
+2016-10-24 23:53:05:address max offset: 4
+2016-10-24 23:53:05:Memory content before bitflip:0x300x000x000x00
+2016-10-24 23:53:05:Memory content after  bitflip:0x300x800x000x00
+2016-10-24 23:53:05:Mem contents(hex):0x300x800x000x00
+2016-10-24 23:53:05:frame name: __isoc99_sscanf
+2016-10-24 23:53:05:symbol name: arg
+2016-10-24 23:53:05:symbol filename: isoc99_sscanf.c
+2016-10-24 23:53:05:symbol line: 27
+2016-10-24 23:53:05:value: {{gp_offset = 16, fp_offset = 32816, overflow_arg_area = 0x7fffffffe600, reg_save_area = 0x7fffffffe540}}
+2016-10-24 23:53:05:value address: 0x7fffffffe528
+2016-10-24 23:53:05:Type: The type is an array.
+2016-10-24 23:53:05:Type sizeof: 24
+2016-10-24 23:53:05:Fault Injection Successful after 3.77728199959s
+2016-10-24 23:53:07:Fault Already Injected
+2016-10-24 23:53:08:Fault Already Injected
+2016-10-24 23:53:08:Fault Already Injected
+2016-10-24 23:53:09:Fault Already Injected
+2016-10-24 23:53:12:Fault Already Injected
+2016-10-24 23:53:13:Fault Already Injected
+2016-10-24 23:53:13:Fault Already Injected
+2016-10-24 23:53:14:Fault Already Injected
+2016-10-24 23:53:17:event type: exit
+2016-10-24 23:53:17:exit code: 0

@@ -1,0 +1,77 @@
+2016-10-13 18:35:39:Initialization strings:
+2016-10-13 18:35:40:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-13 18:35:40:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-13 18:35:40:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-13 18:35:40:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-13 18:35:40:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-13 18:35:40:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-13 18:35:41:Trying Fault Injection
+2016-10-13 18:35:41:Inferior PID: 148139
+2016-10-13 18:35:41:Inferior is valid: True
+2016-10-13 18:35:41:Inferior #threads: 1
+2016-10-13 18:35:41:Backtrace BEGIN:
+2016-10-13 18:35:41:#0  __sigprocmask (how=how@entry=2, set=set@entry=0x7fffffffe1f8, oset=oset@entry=0x0) at ../sysdeps/unix/sysv/linux/x86_64/sigprocmask.c:39
+#1  0x00007ffff710f517 in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:161
+#2  0x0000000000406619 in update_timestamp () at ../../include/log_helper.c:107
+#3  0x000000000040721e in start_iteration () at ../../include/log_helper.c:311
+#4  0x0000000000402875 in main (argc=7, argv=0x7fffffffec08) at main_check.c:236
+
+2016-10-13 18:35:41:34	in ../sysdeps/unix/sysv/linux/x86_64/sigprocmask.c
+
+2016-10-13 18:35:41:Backtrace END
+2016-10-13 18:35:41:Thread name: None
+2016-10-13 18:35:41:Thread num: 1
+2016-10-13 18:35:41:Thread ptid: (148139, 148139, 0)
+2016-10-13 18:35:41:bitFlip function
+2016-10-13 18:35:41:Type: The type is a structure.
+2016-10-13 18:35:41:Type sizeof: 152
+2016-10-13 18:35:41:Fliping value of field: __sigaction_handler
+2016-10-13 18:35:41:bitFlip function
+2016-10-13 18:35:41:Type: The type is a union.
+2016-10-13 18:35:41:Type sizeof: 8
+2016-10-13 18:35:41:Fliping value of field name: sa_sigaction
+2016-10-13 18:35:41:bitFlip function
+2016-10-13 18:35:41:Type: The type is a pointer.
+2016-10-13 18:35:41:Type sizeof: 8
+2016-10-13 18:35:41:Fliping a bit of the pointer
+2016-10-13 18:35:41:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-10-13 18:35:41:base address to flip value: 0x7ffff7426440 
+2016-10-13 18:35:41:address max offset: 8
+2016-10-13 18:35:41:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-10-13 18:35:41:Memory content after  bitflip:0x800x000x000x000x000x000x000x00
+2016-10-13 18:35:41:Mem contents(hex):0x800x000x000x000x000x000x000x00
+2016-10-13 18:35:41:frame name: do_system
+2016-10-13 18:35:41:symbol name: quit
+2016-10-13 18:35:41:symbol filename: ../sysdeps/posix/system.c
+2016-10-13 18:35:41:symbol line: 34
+2016-10-13 18:35:41:value: {__sigaction_handler = {sa_handler = 0x80, sa_sigaction = 0x80}, sa_mask = {__val = {0, 7954887943085981697, 140737488348052, 140737488348052, 140737488348052, 140737488348052, 140737488348062, 18446744073709551615, 140737488348052, 18446744073709551615, 0, 0, 0, 0, 0, 0}}, sa_flags = 67108864, sa_restorer = 0x7ffff7103610 <__restore_rt>}
+2016-10-13 18:35:41:value address: 0x7ffff7426440 <quit>
+2016-10-13 18:35:41:Type: The type is a structure.
+2016-10-13 18:35:41:Type sizeof: 152
+2016-10-13 18:35:41:Field name: __sigaction_handler
+2016-10-13 18:35:41:Field Type:
+2016-10-13 18:35:41:Type: The type is a union.
+2016-10-13 18:35:41:Type sizeof: 8
+2016-10-13 18:35:41:Field name: sa_mask
+2016-10-13 18:35:41:Field Type:
+2016-10-13 18:35:41:Type: The type is a structure.
+2016-10-13 18:35:41:Type sizeof: 128
+2016-10-13 18:35:41:Field name: sa_flags
+2016-10-13 18:35:41:Field Type:
+2016-10-13 18:35:41:Type: The type is an integer type.
+2016-10-13 18:35:41:Type sizeof: 4
+2016-10-13 18:35:41:Field name: sa_restorer
+2016-10-13 18:35:41:Field Type:
+2016-10-13 18:35:41:Type: The type is a pointer.
+2016-10-13 18:35:41:Type sizeof: 8
+2016-10-13 18:35:41:Fault Injection Successful after 1.69160699844s
+2016-10-13 18:35:44:Fault Already Injected
+2016-10-13 18:35:44:Fault Already Injected
+2016-10-13 18:35:44:Fault Already Injected
+2016-10-13 18:35:44:Fault Already Injected
+2016-10-13 18:35:44:Fault Already Injected
+2016-10-13 18:35:45:Fault Already Injected
+2016-10-13 18:35:49:Fault Already Injected
+2016-10-13 18:35:49:Fault Already Injected
+2016-10-13 18:35:50:event type: exit
+2016-10-13 18:35:50:exit code: 0

@@ -1,0 +1,40 @@
+2017-01-16 10:48:38:Starting flip_value script
+2017-01-16 10:48:38:Initialization strings:
+2017-01-16 10:48:39:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-16 10:48:39:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-16 10:48:39:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-16 10:48:39:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-16 10:48:39:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-16 10:48:39:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-16 10:48:39:initSignal:0
+2017-01-16 10:48:39:endSignal:7
+2017-01-16 10:48:39:seqSignal:15
+2017-01-16 10:48:43:Backtrace BEGIN:
+2017-01-16 10:48:43:#0  __GI___waitpid (pid=52043, stat_loc=stat_loc@entry=0x7fffffffe1d8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x00000000004015a5 in update_timestamp () at ../include/log_helper.c:107
+#3  0x000000000040198a in start_log_file (benchmark_name=0x405830 "openmpDGEMM", test_info=0x7fffffffe7e8 "matrix_dim:2048 threads:228 block_size:16 block_offset:12") at ../include/log_helper.c:196
+#4  0x0000000000404320 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:343
+
+2017-01-16 10:48:43:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-01-16 10:48:43:Backtrace END
+2017-01-16 10:48:43:Type: A floating point type.
+2017-01-16 10:48:43:Type sizeof: 8
+2017-01-16 10:48:43:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-01-16 10:48:43:base address to flip value: 0x606b18 
+2017-01-16 10:48:43:address max offset: 8
+2017-01-16 10:48:43:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-01-16 10:48:43:Memory content after  bitflip:0x000x200x000x000x000x000x000x00
+2017-01-16 10:48:43:Mem contents(hex):0x000x200x000x000x000x000x000x00
+2017-01-16 10:48:43:frame name: start_log_file
+2017-01-16 10:48:43:symbol name: kernel_time
+2017-01-16 10:48:43:symbol filename: ../include/log_helper.c
+2017-01-16 10:48:43:symbol line: 63
+2017-01-16 10:48:43:value: 4.0473857707314917e-320
+2017-01-16 10:48:43:value address: 0x606b18 <kernel_time>
+2017-01-16 10:48:43:Type: A floating point type.
+2017-01-16 10:48:43:Type sizeof: 8
+2017-01-16 10:48:43:Fault Injection Successful after 4.20562791824s
+2017-01-16 10:49:25:event type: exit
+2017-01-16 10:49:25:exit code: 0

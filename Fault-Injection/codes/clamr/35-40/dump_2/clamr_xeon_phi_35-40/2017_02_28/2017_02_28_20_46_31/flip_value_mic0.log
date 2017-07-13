@@ -1,0 +1,66 @@
+2017-02-28 20:45:10:Starting flip_value script
+2017-02-28 20:45:10:Initialization strings:
+2017-02-28 20:45:10:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 20:45:10:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 20:45:10:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 20:45:11:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 20:45:11:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 20:45:11:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 20:45:11:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 20:45:11:initSignal:35
+2017-02-28 20:45:11:endSignal:40
+2017-02-28 20:45:11:seqSignal:20
+2017-02-28 20:45:48:Backtrace BEGIN:
+2017-02-28 20:45:48:#0  0x0000000000449a24 in std::vector<int, std::allocator<int> >::operator[] (this=0x7f9f58, __n=201921) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x0000000000520af8 in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3212
+#2  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#3  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#4  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 20:45:48:775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+2017-02-28 20:45:48:Backtrace END
+2017-02-28 20:45:58:Type: A floating point type.
+2017-02-28 20:45:58:Type sizeof: 8
+2017-02-28 20:45:58:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-28 20:45:58:Fault Mode: Zero bit-flip
+2017-02-28 20:45:58:base address to flip value: 0x7d0700 
+2017-02-28 20:45:58:address max offset: 8
+2017-02-28 20:45:58:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-28 20:45:58:Backtrace BEGIN:
+2017-02-28 20:45:58:#0  0x0000000000449a24 in std::vector<int, std::allocator<int> >::operator[] (this=0x7f9f58, __n=201921) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x0000000000520af8 in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3212
+#2  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#3  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#4  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 20:45:58:775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+2017-02-28 20:45:58:Backtrace END
+2017-02-28 20:46:07:Type: The type is an integer type.
+2017-02-28 20:46:07:Type sizeof: 4
+2017-02-28 20:46:07:Mem contents(hex):0x640x000x000x00
+2017-02-28 20:46:07:Fault Mode: One bit-flip
+2017-02-28 20:46:07:base address to flip value: 0x7d0740 
+2017-02-28 20:46:07:address max offset: 4
+2017-02-28 20:46:07:Memory content before bitflip:0x640x000x000x00
+2017-02-28 20:46:24:event type: exit
+2017-02-28 20:46:24:exit code: 0

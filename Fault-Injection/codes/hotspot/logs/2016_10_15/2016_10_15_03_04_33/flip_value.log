@@ -1,0 +1,50 @@
+2016-10-15 03:04:13:Initialization strings:
+2016-10-15 03:04:13:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-15 03:04:13:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-15 03:04:13:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-15 03:04:13:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-15 03:04:13:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-15 03:04:13:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-15 03:04:14:Trying Fault Injection
+2016-10-15 03:04:14:Backtrace BEGIN:
+2016-10-15 03:04:14:#0  0x00007ffff71505e6 in __GI_memcpy (dstpp=dstpp@entry=0x7fffffffdf80, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:62
+#1  0x00007ffff7108cde in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe010 "331.099288", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1425
+#2  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe010 "331.099288", endptr=endptr@entry=0x7fffffffe240, group=group@entry=0) at strtod.c:54
+#3  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe400, format=format@entry=0x407198 "%f", argptr=argptr@entry=0x7fffffffe528, errp=errp@entry=0x0) at vfscanf.c:2332
+#4  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe77a "331.099288\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:43
+#5  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#6  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#7  main (argc=-8312, argv=0xfffffffff71e74d8) at hotspot_check.c:264
+
+2016-10-15 03:04:14:57	in ../string/memcpy.c
+
+2016-10-15 03:04:14:Backtrace END
+2016-10-15 03:04:14:Type: The type is a pointer.
+2016-10-15 03:04:14:Type sizeof: 8
+2016-10-15 03:04:14:Fliping a bit of the value pointed by a pointer
+2016-10-15 03:04:14:Type: The type is an integer type.
+2016-10-15 03:04:14:Type sizeof: 1
+2016-10-15 03:04:14:Mem contents(hex):0x00
+2016-10-15 03:04:14:base address to flip value: 0x7fffffffe01a 
+2016-10-15 03:04:14:address max offset: 1
+2016-10-15 03:04:14:Memory content before bitflip:0x00
+2016-10-15 03:04:14:Memory content after  bitflip:0x01
+2016-10-15 03:04:14:Mem contents(hex):0x01
+2016-10-15 03:04:14:frame name: _IO_vfscanf_internal
+2016-10-15 03:04:14:symbol name: tw
+2016-10-15 03:04:14:symbol filename: vfscanf.c
+2016-10-15 03:04:14:symbol line: 264
+2016-10-15 03:04:14:value: 0x7fffffffe01a "\001"
+2016-10-15 03:04:14:value address: 0x7fffffffe240
+2016-10-15 03:04:14:Type: The type is a pointer.
+2016-10-15 03:04:14:Type sizeof: 8
+2016-10-15 03:04:14:Fault Injection Successful after 1.97772502899s
+2016-10-15 03:04:15:Fault Already Injected
+2016-10-15 03:04:16:Fault Already Injected
+2016-10-15 03:04:21:Fault Already Injected
+2016-10-15 03:04:22:Fault Already Injected
+2016-10-15 03:04:23:Fault Already Injected
+2016-10-15 03:04:24:Fault Already Injected
+2016-10-15 03:04:25:Fault Already Injected
+2016-10-15 03:04:27:event type: exit
+2016-10-15 03:04:27:exit code: 0

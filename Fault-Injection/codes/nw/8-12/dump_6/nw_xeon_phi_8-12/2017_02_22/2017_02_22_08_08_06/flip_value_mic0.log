@@ -1,0 +1,48 @@
+2017-02-22 08:07:20:Starting flip_value script
+2017-02-22 08:07:20:Initialization strings:
+2017-02-22 08:07:20:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-22 08:07:20:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 08:07:20:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 08:07:20:(4) file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-02-22 08:07:20:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-02-22 08:07:20:(6) set args 16394 10 228 /micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10 /micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10
+2017-02-22 08:07:20:initSignal:8
+2017-02-22 08:07:20:endSignal:12
+2017-02-22 08:07:20:seqSignal:30
+2017-02-22 08:07:29:Backtrace BEGIN:
+2017-02-22 08:07:29:#0  0x0000000000402c63 in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:330
+#1  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-02-22 08:07:29:325	    //}
+326	
+327	
+328	    for (int i = 1 ; i < max_cols; i++){
+329	        for (int j = 1 ; j < max_rows; j++){
+330	            referrence[i*max_cols+j] = blosum62[input_itemsets[i*max_cols]][input_itemsets[j]];
+331	        }
+332	    }
+333	
+334	    for( int i = 1; i< max_rows ; i++)
+
+2017-02-22 08:07:29:Backtrace END
+2017-02-22 08:07:29:Type: The type is a pointer.
+2017-02-22 08:07:29:Type sizeof: 8
+2017-02-22 08:07:29:Fliping a bit of the pointer
+2017-02-22 08:07:29:Mem contents(hex):0x080xec0xff0xff0xff0x7f0x000x00
+2017-02-22 08:07:29:Fault Mode: Double bit-flip
+2017-02-22 08:07:29:base address to flip value: 0x7fffffffeb18
+2017-02-22 08:07:29:address max offset: 8
+2017-02-22 08:07:29:Memory content before bitflip:0x080xec0xff0xff0xff0x7f0x000x00
+2017-02-22 08:07:29:Memory content after  bitflip:0x080xec0xff0xff0xbb0x7f0x000x00
+2017-02-22 08:07:29:Mem contents(hex):0x080xec0xff0xff0xbb0x7f0x000x00
+2017-02-22 08:07:29:frame name: main
+2017-02-22 08:07:29:symbol name: argv
+2017-02-22 08:07:29:symbol filename: needle_check.cpp
+2017-02-22 08:07:29:symbol line: 112
+2017-02-22 08:07:29:value: 0x7fffffffec08
+2017-02-22 08:07:29:value address: 0x7fffffffeb18
+2017-02-22 08:07:29:Type: The type is a pointer.
+2017-02-22 08:07:29:Type sizeof: 8
+2017-02-22 08:07:29:Fault Injection Successful after 9.70804691315s
+2017-02-22 08:07:59:event type: exit
+2017-02-22 08:07:59:exit code: 0

@@ -1,0 +1,67 @@
+2017-03-01 15:00:24:Starting flip_value script
+2017-03-01 15:00:24:Initialization strings:
+2017-03-01 15:00:24:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 15:00:24:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 15:00:24:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 15:00:24:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 15:00:24:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 15:00:24:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 15:00:24:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 15:00:24:initSignal:40
+2017-03-01 15:00:24:endSignal:49
+2017-03-01 15:00:24:seqSignal:20
+2017-03-01 15:01:13:Backtrace BEGIN:
+2017-03-01 15:01:13:#0  0x0000000000550a66 in MD5Update (mdContext=0x7fffffffe308, inBuf=0x7fffffffe2a8 "\b\343\377\377\377\177", inLen=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:1173
+#1  0x000000000054eab8 in check_md5 (graph_num=1, ncycle=100, simTime=0.043339572768126222) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:878
+#2  0x000000000054db32 in write_graphics_info (graph_num=1, ncycle=100, simTime=0.043339572768126222, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:754
+#3  0x0000000000446e91 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:579
+#4  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-01 15:01:13:1168	        mdContext->in[mdi++] = *inBuf++;
+1169	
+1170	        /* transform if necessary */
+1171	        if (mdi == 0x40) {
+1172	            for (i = 0, ii = 0; i < 16; i++, ii += 4)
+1173	                in[i] = (((UINT4)mdContext->in[ii+3]) << 24) |
+1174	                        (((UINT4)mdContext->in[ii+2]) << 16) |
+1175	                        (((UINT4)mdContext->in[ii+1]) << 8) |
+1176	                        ((UINT4)mdContext->in[ii]);
+1177	            Transform (mdContext->buf, in);
+
+2017-03-01 15:01:13:Backtrace END
+2017-03-01 15:01:23:Type: The type is a pointer.
+2017-03-01 15:01:23:Type sizeof: 8
+2017-03-01 15:01:23:Fliping a bit of the pointer
+2017-03-01 15:01:23:Mem contents(hex):0x100x4c0x570x000x000x000x000x00
+2017-03-01 15:01:23:Fault Mode: Random bit-flip
+2017-03-01 15:01:23:base address to flip value: 0x7cfda0 
+2017-03-01 15:01:23:address max offset: 8
+2017-03-01 15:01:23:Memory content before bitflip:0x100x4c0x570x000x000x000x000x00
+2017-03-01 15:01:23:Backtrace BEGIN:
+2017-03-01 15:01:23:#0  0x0000000000550a66 in MD5Update (mdContext=0x7fffffffe308, inBuf=0x7fffffffe2a8 "\b\343\377\377\377\177", inLen=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:1173
+#1  0x000000000054eab8 in check_md5 (graph_num=1, ncycle=100, simTime=0.043339572768126222) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:878
+#2  0x000000000054db32 in write_graphics_info (graph_num=1, ncycle=100, simTime=0.043339572768126222, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:754
+#3  0x0000000000446e91 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:579
+#4  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-01 15:01:23:1168	        mdContext->in[mdi++] = *inBuf++;
+1169	
+1170	        /* transform if necessary */
+1171	        if (mdi == 0x40) {
+1172	            for (i = 0, ii = 0; i < 16; i++, ii += 4)
+1173	                in[i] = (((UINT4)mdContext->in[ii+3]) << 24) |
+1174	                        (((UINT4)mdContext->in[ii+2]) << 16) |
+1175	                        (((UINT4)mdContext->in[ii+1]) << 8) |
+1176	                        ((UINT4)mdContext->in[ii]);
+1177	            Transform (mdContext->buf, in);
+
+2017-03-01 15:01:23:Backtrace END
+2017-03-01 15:01:32:Type: The type is an enum.
+2017-03-01 15:01:32:Type sizeof: 4
+2017-03-01 15:01:32:Mem contents(hex):0x010x000x000x00
+2017-03-01 15:01:32:Fault Mode: One bit-flip
+2017-03-01 15:01:32:base address to flip value: 0x7d0778 
+2017-03-01 15:01:32:address max offset: 4
+2017-03-01 15:01:32:Memory content before bitflip:0x010x000x000x00
+2017-03-01 15:01:32:event type: exit
+2017-03-01 15:01:32:exit code: 0

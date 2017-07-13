@@ -1,0 +1,86 @@
+2017-03-02 00:20:52:Starting flip_value script
+2017-03-02 00:20:52:Initialization strings:
+2017-03-02 00:20:53:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-02 00:20:53:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 00:20:53:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 00:20:53:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-02 00:20:53:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-02 00:20:53:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-03-02 00:20:53:initSignal:7
+2017-03-02 00:20:53:endSignal:14
+2017-03-02 00:20:53:seqSignal:15
+2017-03-02 00:21:02:Backtrace BEGIN:
+2017-03-02 00:21:02:#0  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffdfd8) at allocatestack.c:548
+#1  __pthread_create_2_1 (newthread=0x7fffffffdfd0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7ffff7f4c100) at pthread_create.c:524
+#2  0x00007ffff790d323 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-02 00:21:02:543	in allocatestack.c
+
+2017-03-02 00:21:02:Backtrace END
+2017-03-02 00:21:03:Type: The type is an array.
+2017-03-02 00:21:03:Type sizeof: 12
+2017-03-02 00:21:03:Fliping array at pos: 0
+2017-03-02 00:21:03:Type: The type is an integer type.
+2017-03-02 00:21:03:Type sizeof: 4
+2017-03-02 00:21:03:Mem contents(hex):0x080x000x000x00
+2017-03-02 00:21:03:Fault Mode: Zero bit-flip
+2017-03-02 00:21:03:base address to flip value: 0x7ffff743c2b0 
+2017-03-02 00:21:03:address max offset: 4
+2017-03-02 00:21:03:Memory content before bitflip:0x080x000x000x00
+2017-03-02 00:21:03:Backtrace BEGIN:
+2017-03-02 00:21:03:#0  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffdfd8) at allocatestack.c:548
+#1  __pthread_create_2_1 (newthread=0x7fffffffdfd0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7ffff7f4c100) at pthread_create.c:524
+#2  0x00007ffff790d323 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-02 00:21:03:88	in dl-minimal.c
+
+2017-03-02 00:21:03:Backtrace END
+2017-03-02 00:21:04:Type: The type is an array.
+2017-03-02 00:21:04:Type sizeof: 12
+2017-03-02 00:21:04:Fliping array at pos: 2
+2017-03-02 00:21:04:Type: The type is an integer type.
+2017-03-02 00:21:04:Type sizeof: 4
+2017-03-02 00:21:04:Mem contents(hex):0x000x000x000x00
+2017-03-02 00:21:04:Fault Mode: Random bit-flip
+2017-03-02 00:21:04:base address to flip value: 0x7ffff743c2b8 
+2017-03-02 00:21:04:address max offset: 4
+2017-03-02 00:21:04:Memory content before bitflip:0x000x000x000x00
+2017-03-02 00:21:04:Backtrace BEGIN:
+2017-03-02 00:21:04:#0  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffdfd8) at allocatestack.c:548
+#1  __pthread_create_2_1 (newthread=0x7fffffffdfd0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7ffff7f4c100) at pthread_create.c:524
+#2  0x00007ffff790d323 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-02 00:21:04:88	in dl-minimal.c
+
+2017-03-02 00:21:04:Backtrace END
+2017-03-02 00:21:06:Type: The type is an array.
+2017-03-02 00:21:06:Type sizeof: 12
+2017-03-02 00:21:06:Fliping array at pos: 1
+2017-03-02 00:21:06:Type: The type is an integer type.
+2017-03-02 00:21:06:Type sizeof: 4
+2017-03-02 00:21:06:Mem contents(hex):0x010x000x000x00
+2017-03-02 00:21:06:Fault Mode: Single bit-flip
+2017-03-02 00:21:06:base address to flip value: 0x7ffff743c264 
+2017-03-02 00:21:06:address max offset: 4
+2017-03-02 00:21:06:Memory content before bitflip:0x010x000x000x00
+2017-03-02 00:21:06:Memory content after  bitflip:0x010x400x000x00
+2017-03-02 00:21:06:Mem contents(hex):0x010x400x000x00
+2017-03-02 00:21:06:frame name: allocate_stack
+2017-03-02 00:21:06:symbol name: _thread_db_pthread_key_struct_seq
+2017-03-02 00:21:06:symbol filename: ../nptl_db/structs.def
+2017-03-02 00:21:06:symbol line: 63
+2017-03-02 00:21:06:value: {64, 16385, 0}
+2017-03-02 00:21:06:value address: 0x7ffff743c260 <_thread_db_pthread_key_struct_seq>
+2017-03-02 00:21:06:Type: The type is an array.
+2017-03-02 00:21:06:Type sizeof: 12
+2017-03-02 00:21:06:Field name: None
+2017-03-02 00:21:06:Field Type:
+2017-03-02 00:21:06:Type: A range type, that is, an integer type with bounds.
+2017-03-02 00:21:06:Type sizeof: 8
+2017-03-02 00:21:06:Type range: (0L, 2L)
+2017-03-02 00:21:06:Fault Injection Successful after 13.0730879307s
+2017-03-02 00:21:52:event type: exit
+2017-03-02 00:21:52:exit code: 0

@@ -1,0 +1,44 @@
+2016-10-16 09:57:44:Initialization strings:
+2016-10-16 09:57:45:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-16 09:57:45:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-16 09:57:45:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-16 09:57:45:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-16 09:57:45:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-16 09:57:45:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-16 09:57:45:Trying Fault Injection
+2016-10-16 09:57:45:Backtrace BEGIN:
+2016-10-16 09:57:45:#0  __GI___waitpid (pid=115930, stat_loc=stat_loc@entry=0x7fffffffe268, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000405ccc in update_timestamp () at ../../include/log_helper.c:107
+#3  start_log_file (benchmark_name=0x1c4da <error: Cannot access memory at address 0x1c4da>, test_info=0x7fffffffe268 "") at ../../include/log_helper.c:196
+#4  0x0000000000401681 in main (argc=115930, argv=0x7fffffffe268) at hotspot_check.c:254
+
+2016-10-16 09:57:45:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-16 09:57:45:Backtrace END
+2016-10-16 09:57:45:Type: The type is an integer type.
+2016-10-16 09:57:45:Type sizeof: 4
+2016-10-16 09:57:45:Mem contents(hex):0xe40x000x000x00
+2016-10-16 09:57:45:base address to flip value: 0x608ec0 
+2016-10-16 09:57:45:address max offset: 4
+2016-10-16 09:57:45:Memory content before bitflip:0xe40x000x000x00
+2016-10-16 09:57:45:Memory content after  bitflip:0xe40x000x080x00
+2016-10-16 09:57:45:Mem contents(hex):0xe40x000x080x00
+2016-10-16 09:57:45:frame name: main
+2016-10-16 09:57:45:symbol name: num_omp_threads
+2016-10-16 09:57:45:symbol filename: hotspot_check.c
+2016-10-16 09:57:45:symbol line: 39
+2016-10-16 09:57:45:value: 524516
+2016-10-16 09:57:45:value address: 0x608ec0 <num_omp_threads>
+2016-10-16 09:57:45:Type: The type is an integer type.
+2016-10-16 09:57:45:Type sizeof: 4
+2016-10-16 09:57:45:Fault Injection Successful after 0.521446943283s
+2016-10-16 09:57:46:Fault Already Injected
+2016-10-16 09:57:46:Fault Already Injected
+2016-10-16 09:57:48:Fault Already Injected
+2016-10-16 09:57:50:Fault Already Injected
+2016-10-16 09:57:51:Fault Already Injected
+2016-10-16 09:57:51:Fault Already Injected
+2016-10-16 09:57:52:Fault Already Injected
+2016-10-16 09:57:57:Fault Already Injected
+2016-10-16 09:57:58:Fault Already Injected

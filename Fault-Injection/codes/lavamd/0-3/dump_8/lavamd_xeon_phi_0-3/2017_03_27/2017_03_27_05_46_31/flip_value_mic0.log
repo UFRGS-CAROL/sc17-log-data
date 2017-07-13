@@ -1,0 +1,89 @@
+[INFO -- 2017-03-27 05:46:09]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 05:46:09]
+Initialization strings:
+[INFO -- 2017-03-27 05:46:09]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 05:46:09]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 05:46:09]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 05:46:09]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 05:46:09]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 05:46:09]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 05:46:09]
+initSignal:0
+[INFO -- 2017-03-27 05:46:09]
+endSignal:3
+[INFO -- 2017-03-27 05:46:09]
+seqSignal:30
+[INFO -- 2017-03-27 05:46:09]
+faultMode:2
+[INFO -- 2017-03-27 05:46:10]
+Backtrace BEGIN:
+#0  0x0000000000402218 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:150
+
+145	
+146	    rv_cpu = (FOUR_VECTOR*)malloc(dim_cpu.space_mem);
+147	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+148	        fread(&(rv_cpu[i].v), 1, sizeof(double), file);
+149	        fread(&(rv_cpu[i].x), 1, sizeof(double), file);
+150	        fread(&(rv_cpu[i].y), 1, sizeof(double), file);
+151	        fread(&(rv_cpu[i].z), 1, sizeof(double), file);
+152	    }
+153	
+154	    fclose(file);
+
+Backtrace END
+Fliping value of field: space_elem
+Memory content before bitflip:0x5c0x260x050x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe870
+address max offset: 8
+Memory content after  bitflip:0x5c0xd70x6d0xa30x560x350x8b0xcf
+frame name: main
+symbol name: dim_cpu
+symbol filename: main_check.c
+symbol line: 56
+value: {cur_arg = -134247168, arch_arg = 32767, cores_arg = 228, boxes1d_arg = 15, number_boxes = 3375, box_mem = 2214000, space_elem = -3491638439870343332, space_mem = 10800000, space_mem2 = 2700000}
+value address: 0x7fffffffe850
+Type: The type is a structure.
+Type sizeof: 56
+Field name: cur_arg
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: arch_arg
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: cores_arg
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: boxes1d_arg
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: number_boxes
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: box_mem
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: space_elem
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: space_mem
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: space_mem2
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-27 05:46:10]
+Fault Injection Successful after 1.37281489372s
+[INFO -- 2017-03-27 05:46:24]
+event type: exit
+[INFO -- 2017-03-27 05:46:24]
+exit code: 0

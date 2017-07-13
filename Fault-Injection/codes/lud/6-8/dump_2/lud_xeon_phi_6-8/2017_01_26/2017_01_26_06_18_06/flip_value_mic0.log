@@ -1,0 +1,71 @@
+2017-01-26 06:17:48:Starting flip_value script
+2017-01-26 06:17:48:Initialization strings:
+2017-01-26 06:17:48:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-26 06:17:48:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-26 06:17:48:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-26 06:17:48:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-26 06:17:48:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-26 06:17:48:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-26 06:17:48:initSignal:6
+2017-01-26 06:17:48:endSignal:8
+2017-01-26 06:17:48:seqSignal:30
+2017-01-26 06:17:55:Trying Fault Injection
+2017-01-26 06:17:55:Inferior PID: 141852
+2017-01-26 06:17:55:Inferior is valid: True
+2017-01-26 06:17:55:Inferior #threads: 229
+2017-01-26 06:17:55:Backtrace BEGIN:
+2017-01-26 06:17:55:#0  __GI___waitpid (pid=142090, stat_loc=stat_loc@entry=0x7fffffffe4d8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:40
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405f16 in log_error_count (kernel_errors=0) at ../include/log_helper.c:369
+#4  0x0000000000402def in main (argc=9, argv=0x7fffffffec08) at lud_check.c:149
+
+2017-01-26 06:17:55:35	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-01-26 06:17:55:Backtrace END
+2017-01-26 06:17:59:Thread name: None
+2017-01-26 06:17:59:Thread num: 1
+2017-01-26 06:17:59:Thread ptid: (141852, 141852, 0)
+2017-01-26 06:17:59:bitFlip function
+2017-01-26 06:17:59:Type: The type is a structure.
+2017-01-26 06:17:59:Type sizeof: 32
+2017-01-26 06:17:59:Fliping value of field: end
+2017-01-26 06:17:59:bitFlip function
+2017-01-26 06:17:59:Type: The type is a structure.
+2017-01-26 06:17:59:Type sizeof: 16
+2017-01-26 06:17:59:Fliping value of field: tv_usec
+2017-01-26 06:17:59:bitFlip function
+2017-01-26 06:17:59:Type: The type is an integer type.
+2017-01-26 06:17:59:Type sizeof: 8
+2017-01-26 06:17:59:Mem contents(hex):0xd80xd90xff0xf70xff0x7f0x000x00
+2017-01-26 06:17:59:base address to flip value: 0x7fffffffe798
+2017-01-26 06:17:59:address max offset: 8
+2017-01-26 06:17:59:Memory content before bitflip:0xd80xd90xff0xf70xff0x7f0x000x00
+2017-01-26 06:17:59:Memory content after  bitflip:0xd80xd90xff0xf70xff0x7f0x020x00
+2017-01-26 06:17:59:Mem contents(hex):0xd80xd90xff0xf70xff0x7f0x020x00
+2017-01-26 06:17:59:frame name: main
+2017-01-26 06:17:59:symbol name: sw
+2017-01-26 06:17:59:symbol filename: lud_check.c
+2017-01-26 06:17:59:symbol line: 52
+2017-01-26 06:17:59:value: {begin = {tv_sec = 140737351897888, tv_usec = 12}, end = {tv_sec = 140737351897828, tv_usec = 703687307549144}}
+2017-01-26 06:17:59:value address: 0x7fffffffe780
+2017-01-26 06:17:59:Type: The type is a structure.
+2017-01-26 06:17:59:Type sizeof: 32
+2017-01-26 06:17:59:Field name: begin
+2017-01-26 06:17:59:Field Type:
+2017-01-26 06:17:59:Type: The type is a structure.
+2017-01-26 06:17:59:Type sizeof: 16
+2017-01-26 06:17:59:Field name: end
+2017-01-26 06:17:59:Field Type:
+2017-01-26 06:17:59:Type: The type is a structure.
+2017-01-26 06:17:59:Type sizeof: 16
+2017-01-26 06:17:59:Fault Injection Successful after 11.3340609074s
+2017-01-26 06:17:59:Fault Already Injected
+2017-01-26 06:17:59:Fault Already Injected
+2017-01-26 06:17:59:Fault Already Injected
+2017-01-26 06:17:59:Fault Already Injected
+2017-01-26 06:18:00:Fault Already Injected
+2017-01-26 06:18:00:Fault Already Injected
+2017-01-26 06:18:00:Fault Already Injected
+2017-01-26 06:18:00:event type: exit
+2017-01-26 06:18:00:exit code: 0

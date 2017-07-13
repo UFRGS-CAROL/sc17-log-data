@@ -1,0 +1,60 @@
+2017-03-01 17:19:48:Starting flip_value script
+2017-03-01 17:19:48:Initialization strings:
+2017-03-01 17:19:48:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 17:19:48:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 17:19:48:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 17:19:48:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-03-01 17:19:48:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-03-01 17:19:48:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-03-01 17:19:48:initSignal:3
+2017-03-01 17:19:48:endSignal:6
+2017-03-01 17:19:48:seqSignal:15
+2017-03-01 17:19:53:Backtrace BEGIN:
+2017-03-01 17:19:53:#0  _IO_old_init (fp=fp@entry=0x7fffffffe440, flags=flags@entry=32768) at genops.c:612
+#1  0x00007ffff714492b in _IO_no_init (fp=fp@entry=0x7fffffffe440, flags=flags@entry=32768, orientation=orientation@entry=-1, wd=wd@entry=0x0, jmp=jmp@entry=0x0) at genops.c:644
+#2  0x00007ffff71365b7 in __GI___isoc99_vsscanf (string=0x7fffffffe640 "323.552373\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:39
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000404598 in read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:207
+#5  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+2017-03-01 17:19:53:607	in genops.c
+
+2017-03-01 17:19:53:Backtrace END
+2017-03-01 17:19:53:Type: A floating point type.
+2017-03-01 17:19:53:Type sizeof: 4
+2017-03-01 17:19:53:Mem contents(hex):0x6f0x120x830x3c
+2017-03-01 17:19:53:Fault Mode: Random bit-flip
+2017-03-01 17:19:53:base address to flip value: 0x4074fc 
+2017-03-01 17:19:53:address max offset: 4
+2017-03-01 17:19:53:Memory content before bitflip:0x6f0x120x830x3c
+2017-03-01 17:19:53:Backtrace BEGIN:
+2017-03-01 17:19:53:#0  __memchr (s=s@entry=0x7ffff7fe027b, c_in=c_in@entry=10, n=<optimized out>, n@entry=255) at ../string/memchr.c:153
+#1  0x00007ffff7139361 in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "323.319453\n", n=255, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:94
+#2  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "323.319453\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#3  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe640 "323.319453\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#4  0x0000000000404538 in read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:202
+#5  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+2017-03-01 17:19:53:148	in ../string/memchr.c
+
+2017-03-01 17:19:53:Backtrace END
+2017-03-01 17:19:53:Type: The type is an integer type.
+2017-03-01 17:19:53:Type sizeof: 4
+2017-03-01 17:19:53:Mem contents(hex):0x010x000x000x00
+2017-03-01 17:19:53:Fault Mode: Double bit-flip
+2017-03-01 17:19:53:base address to flip value: 0x7fffffffe5d4
+2017-03-01 17:19:53:address max offset: 4
+2017-03-01 17:19:53:Memory content before bitflip:0x010x000x000x00
+2017-03-01 17:19:53:Memory content after  bitflip:0x070x000x000x00
+2017-03-01 17:19:53:Mem contents(hex):0x070x000x000x00
+2017-03-01 17:19:53:frame name: __GI__IO_getline_info
+2017-03-01 17:19:53:symbol name: extract_delim
+2017-03-01 17:19:53:symbol filename: iogetline.c
+2017-03-01 17:19:53:symbol line: 56
+2017-03-01 17:19:53:value: 7
+2017-03-01 17:19:53:value address: 0x7fffffffe5d4
+2017-03-01 17:19:53:Type: The type is an integer type.
+2017-03-01 17:19:53:Type sizeof: 4
+2017-03-01 17:19:53:Fault Injection Successful after 5.62890601158s
+2017-03-01 17:20:13:event type: exit
+2017-03-01 17:20:13:exit code: 0

@@ -1,0 +1,97 @@
+[INFO -- 2017-03-24 05:47:13]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-24 05:47:13]
+Initialization strings:
+[INFO -- 2017-03-24 05:47:13]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-24 05:47:14]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-24 05:47:14]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-24 05:47:14]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-24 05:47:14]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-24 05:47:14]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-24 05:47:14]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-24 05:47:14]
+initSignal:35
+[INFO -- 2017-03-24 05:47:14]
+endSignal:40
+[INFO -- 2017-03-24 05:47:14]
+seqSignal:20
+[INFO -- 2017-03-24 05:47:14]
+faultMode:3
+[EXCEPTION -- 2017-03-24 05:48:12]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-24 05:48:12]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-24 05:48:12]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-24 05:48:12]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-24 05:48:12]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-24 05:48:12]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-24 05:48:12]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-24 05:48:12]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-24 05:48:12]
+pythonException: invalid frame
+[INFO -- 2017-03-24 05:48:12]
+Backtrace BEGIN:
+#0  0x0000000000478742 in U_halfstep (deltaT=0.00033281855947681831, U_i=0, U_n=0, F_i=240.10000000000002, F_n=240.10000000000002, r_i=1, r_n=1, A_i=1, A_n=1, V_i=1, V_n=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:200
+#1  0x0000000000455bee in State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1413
+#2  0x00007ffff790ba1f in ?? ()
+#3  0x00007fffffffdac0 in ?? ()
+#4  0x00007fffffffdab8 in ?? ()
+#5  0x00007fffffffdad0 in ?? ()
+#6  0x00007fffffffdad8 in ?? ()
+#7  0x00007fffffffda38 in ?? ()
+#8  0x00007fffffffda70 in ?? ()
+#9  0x00007fffffffda68 in ?? ()
+#10 0x00007fffffffdba8 in ?? ()
+#11 0x00007fffffffdbc8 in ?? ()
+#12 0x00007fffffffdbe8 in ?? ()
+#13 0x00007fffffffda30 in ?? ()
+#14 0x00000000000000e4 in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+195	        real_t    V_i,        // Cell's            volume
+196	        real_t    V_n) {      // Cell's neighbor's volume
+197	
+198	   return (( r_i*U_n + r_n*U_i ) / ( r_i + r_n )) 
+199	          - HALF*deltaT*(( F_n*A_n*min(ONE, A_i/A_n) - F_i*A_i*min(ONE, A_n/A_i) )
+200	                    / ( V_n*min(HALF, V_i/V_n) + V_i*min(HALF, V_n/V_i) ));
+201	
+202	}
+203	
+204	inline real_t U_fullstep(
+
+Backtrace END
+Fliping a bit of the reference
+Memory content before bitflip:0x400xa30x7f0x000x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7f9e70
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37
+symbol name: lev_deltay
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 1192
+value: @0x7f9e70
+value address: 0x7f9e70
+Type: A reference type.
+Type sizeof: 8
+
+[INFO -- 2017-03-24 05:48:12]
+Fault Injection Successful after 58.1659231186s
+[INFO -- 2017-03-24 05:48:14]
+event type: exit
+[EXCEPTION -- 2017-03-24 05:48:14]
+exit code: no exit code available

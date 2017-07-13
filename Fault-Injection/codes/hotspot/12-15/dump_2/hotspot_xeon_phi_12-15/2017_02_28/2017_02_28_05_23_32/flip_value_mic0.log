@@ -1,0 +1,241 @@
+2017-02-28 05:22:16:Starting flip_value script
+2017-02-28 05:22:16:Initialization strings:
+2017-02-28 05:22:16:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 05:22:16:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 05:22:16:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 05:22:16:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 05:22:16:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 05:22:16:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-02-28 05:22:16:initSignal:12
+2017-02-28 05:22:16:endSignal:15
+2017-02-28 05:22:16:seqSignal:15
+2017-02-28 05:22:29:Backtrace BEGIN:
+2017-02-28 05:22:29:#0  0x00007ffff7109c48 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe050 "323.394775", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1248
+#1  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe050 "323.394775", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0) at strtod.c:54
+#2  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2332
+#3  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "323.394775\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#4  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#5  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#6  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-02-28 05:22:29:1243	in strtod_l.c
+
+2017-02-28 05:22:29:Backtrace END
+2017-02-28 05:22:29:Type: The type is an integer type.
+2017-02-28 05:22:29:Type sizeof: 4
+2017-02-28 05:22:29:Mem contents(hex):0x000x000x000x00
+2017-02-28 05:22:29:Fault Mode: Zero bit-flip
+2017-02-28 05:22:29:base address to flip value: 0x7fffffffe1e4
+2017-02-28 05:22:29:address max offset: 4
+2017-02-28 05:22:29:Memory content before bitflip:0x000x000x000x00
+2017-02-28 05:22:29:Backtrace BEGIN:
+2017-02-28 05:22:29:#0  _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2031
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "323.163116\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#4  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-02-28 05:22:29:2026	in vfscanf.c
+
+2017-02-28 05:22:29:Backtrace END
+2017-02-28 05:22:29:Type: A floating point type.
+2017-02-28 05:22:29:Type sizeof: 4
+2017-02-28 05:22:29:Mem contents(hex):0xe40x940xa10x43
+2017-02-28 05:22:29:Fault Mode: One bit-flip
+2017-02-28 05:22:29:base address to flip value: 0x7fffffffe74c
+2017-02-28 05:22:29:address max offset: 4
+2017-02-28 05:22:29:Memory content before bitflip:0xe40x940xa10x43
+2017-02-28 05:22:30:Backtrace BEGIN:
+2017-02-28 05:22:30:#0  0x00007ffff7109c48 in __GI_____strtof_l_internal (nptr=nptr@entry=0x7fffffffe050 "323.141266", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0, loc=<optimized out>) at strtod_l.c:1248
+#1  0x00007ffff7107c00 in __GI___strtof_internal (nptr=nptr@entry=0x7fffffffe050 "323.141266", endptr=endptr@entry=0x7fffffffe280, group=group@entry=0) at strtod.c:54
+#2  0x00007ffff7128bec in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2332
+#3  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "323.141266\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#4  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#5  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#6  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-02-28 05:22:30:1243	in strtod_l.c
+
+2017-02-28 05:22:30:Backtrace END
+2017-02-28 05:22:30:Type: The type is a structure.
+2017-02-28 05:22:30:Type sizeof: 240
+2017-02-28 05:22:30:Fliping value of field: _s
+2017-02-28 05:22:30:Type: The type is a structure.
+2017-02-28 05:22:30:Type sizeof: 16
+2017-02-28 05:22:30:Fliping value of field: _allocate_buffer
+2017-02-28 05:22:30:Type: The type is a pointer.
+2017-02-28 05:22:30:Type sizeof: 8
+2017-02-28 05:22:30:Fliping a bit of the pointer
+2017-02-28 05:22:30:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-02-28 05:22:30:Fault Mode: Random bit-flip
+2017-02-28 05:22:30:base address to flip value: 0x7fffffffe520
+2017-02-28 05:22:30:address max offset: 8
+2017-02-28 05:22:30:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-02-28 05:22:30:Backtrace BEGIN:
+2017-02-28 05:22:30:#0  __GI___waitpid (pid=156614, stat_loc=stat_loc@entry=0x7fffffffe408, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000405b29 in update_timestamp () at ../include/log_helper.c:107
+#3  0x000000000040672e in start_iteration () at ../include/log_helper.c:311
+#4  0x0000000000404359 in compute_tran_temp (result=0x7ffff62ca010, num_iterations=1000, temp=0x7ffff6acc010, power=0x7ffff66cb010, row=1024, col=1024) at hotspot_check.c:169
+#5  0x0000000000404b67 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:277
+
+2017-02-28 05:22:30:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-02-28 05:22:30:Backtrace END
+2017-02-28 05:22:30:Type: The type is an integer type.
+2017-02-28 05:22:30:Type sizeof: 4
+2017-02-28 05:22:30:Mem contents(hex):0x000x000x000x00
+2017-02-28 05:22:30:Fault Mode: One bit-flip
+2017-02-28 05:22:30:base address to flip value: 0x608b00 
+2017-02-28 05:22:30:address max offset: 4
+2017-02-28 05:22:30:Memory content before bitflip:0x000x000x000x00
+2017-02-28 05:22:30:Backtrace BEGIN:
+2017-02-28 05:22:30:#0  0x00007ffff78a986d in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 05:22:30:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-02-28 05:22:30:Backtrace END
+2017-02-28 05:22:31:Backtrace BEGIN:
+2017-02-28 05:22:31:#0  0x00007ffff78a986d in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 05:22:31:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-02-28 05:22:31:Backtrace END
+2017-02-28 05:22:32:Backtrace BEGIN:
+2017-02-28 05:22:32:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd2d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff7fd2df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff7fd2d14 in ?? ()
+#8  0x00007ffff7fd2de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+2017-02-28 05:22:32:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-02-28 05:22:32:Backtrace END
+2017-02-28 05:22:33:Backtrace BEGIN:
+2017-02-28 05:22:33:#0  0x00007ffff78a986d in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 05:22:33:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-02-28 05:22:33:Backtrace END
+2017-02-28 05:22:34:Backtrace BEGIN:
+2017-02-28 05:22:34:#0  0x00007ffff78a986d in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 05:22:34:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-02-28 05:22:34:Backtrace END
+2017-02-28 05:22:35:Backtrace BEGIN:
+2017-02-28 05:22:36:#0  0x00007ffff78a986d in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007ffff5ea2b00 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fff00000001 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000001 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000004 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x0000000000000001 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 05:22:36:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-02-28 05:22:36:Backtrace END
+2017-02-28 05:22:37:Backtrace BEGIN:
+2017-02-28 05:22:37:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd2d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff7fd2df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff7fd2d14 in ?? ()
+#8  0x00007ffff7fd2de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+2017-02-28 05:22:37:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-02-28 05:22:37:Backtrace END
+2017-02-28 05:22:38:Backtrace BEGIN:
+2017-02-28 05:22:38:#0  0x00007ffff78a981e in ?? ()
+#1  0x0000000000000540 in ?? ()
+#2  0x00007ffff5dd51c0 in ?? ()
+#3  0x00007fffee794100 in ?? ()
+#4  0x0000000000000030 in ?? ()
+#5  0x00007fff00000030 in ?? ()
+#6  0x00007fff00000000 in ?? ()
+#7  0x0000000000000003 in ?? ()
+#8  0x0000000000000001 in ?? ()
+#9  0x0000000000000040 in ?? ()
+#10 0x0000000000000010 in ?? ()
+#11 0x0000000000000010 in ?? ()
+#12 0x00007fffffffe360 in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2017-02-28 05:22:38:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-02-28 05:22:38:Backtrace END
+2017-02-28 05:22:49:event type: exit
+2017-02-28 05:22:49:exit code: 0

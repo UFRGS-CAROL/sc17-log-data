@@ -1,0 +1,84 @@
+[INFO -- 2017-03-28 00:04:41]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-28 00:04:41]
+Initialization strings:
+[INFO -- 2017-03-28 00:04:41]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-28 00:04:41]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 00:04:41]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 00:04:42]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 00:04:42]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 00:04:42]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-28 00:04:42]
+initSignal:0
+[INFO -- 2017-03-28 00:04:42]
+endSignal:3
+[INFO -- 2017-03-28 00:04:42]
+seqSignal:30
+[INFO -- 2017-03-28 00:04:42]
+faultMode:2
+[INFO -- 2017-03-28 00:04:42]
+Backtrace BEGIN:
+#0  0x00007ffff71963d0 in __open_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7143025 in __GI__IO_file_open (fp=fp@entry=0x60e1c0, filename=<optimized out>, posix_mode=<optimized out>, prot=prot@entry=438, read_write=8, is32not64=is32not64@entry=1) at fileops.c:220
+#2  0x00007ffff7143130 in _IO_new_file_fopen (fp=fp@entry=0x60e1c0, filename=filename@entry=0x7fffffffedfb "/micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15", mode=<optimized out>, mode@entry=0x408c18 "rb", is32not64=is32not64@entry=1) at fileops.c:327
+#3  0x00007ffff71384d2 in __fopen_internal (filename=0x7fffffffedfb "/micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15", mode=0x408c18 "rb", is32=1) at iofopen.c:86
+#4  0x00000000004020c8 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:141
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping value of field: number_boxes
+Memory content before bitflip:0x2f0x0d0x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe860
+address max offset: 8
+Memory content after  bitflip:0xbb0xaf0xba0x2b0xbf0x370xa50x08
+frame name: main
+symbol name: dim_cpu
+symbol filename: main_check.c
+symbol line: 56
+value: {cur_arg = -134247168, arch_arg = 32767, cores_arg = 228, boxes1d_arg = 15, number_boxes = 622965417672617915, box_mem = 2214000, space_elem = 337500, space_mem = 10800000, space_mem2 = 2700000}
+value address: 0x7fffffffe850
+Type: The type is a structure.
+Type sizeof: 56
+Field name: cur_arg
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: arch_arg
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: cores_arg
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: boxes1d_arg
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: number_boxes
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: box_mem
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: space_elem
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: space_mem
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: space_mem2
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-28 00:04:42]
+Fault Injection Successful after 0.690463066101s
+[INFO -- 2017-03-28 00:04:51]
+event type: exit
+[EXCEPTION -- 2017-03-28 00:04:51]
+exit code: no exit code available

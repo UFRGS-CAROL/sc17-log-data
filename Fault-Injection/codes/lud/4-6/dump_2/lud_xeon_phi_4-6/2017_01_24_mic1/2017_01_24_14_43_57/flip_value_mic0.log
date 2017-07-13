@@ -1,0 +1,75 @@
+2017-01-24 14:43:38:Starting flip_value script
+2017-01-24 14:43:38:Initialization strings:
+2017-01-24 14:43:38:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-24 14:43:38:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 14:43:38:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 14:43:38:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 14:43:38:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 14:43:38:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-24 14:43:38:initSignal:4
+2017-01-24 14:43:38:endSignal:6
+2017-01-24 14:43:38:seqSignal:30
+2017-01-24 14:43:44:Trying Fault Injection
+2017-01-24 14:43:44:Inferior PID: 130206
+2017-01-24 14:43:44:Inferior is valid: True
+2017-01-24 14:43:44:Inferior #threads: 229
+2017-01-24 14:43:44:Backtrace BEGIN:
+2017-01-24 14:43:44:#0  0x00000000004042b7 in L_lud_omp_69__par_loop0_2_4 () at lud_omp.c:93
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-01-24 14:43:44:88	            j_global += BS * (chunk_idx+1);
+89	            for (j = 0; j < BS; j++) {
+90	                for (i = 0; i < BS; i++) {
+91	                    sum = 0.f;
+92	                    for (k=0; k < i; k++) {
+93	                        sum += temp[BS*i +k] * BB((i_global+k),(j_global+j));
+94	                    }
+95	                    i_here = i_global + i;
+96	                    j_here = j_global + j;
+97	                    BB(i_here, j_here) = BB(i_here,j_here) - sum;
+
+2017-01-24 14:43:44:Backtrace END
+2017-01-24 14:43:47:Thread name: None
+2017-01-24 14:43:47:Thread num: 1
+2017-01-24 14:43:47:Thread ptid: (130206, 130206, 0)
+2017-01-24 14:43:47:bitFlip function
+2017-01-24 14:43:47:Type: The type is an integer type.
+2017-01-24 14:43:47:Type sizeof: 4
+2017-01-24 14:43:47:Mem contents(hex):0x000x000x000x00
+2017-01-24 14:43:47:base address to flip value: 0x7fffffffc600
+2017-01-24 14:43:47:address max offset: 4
+2017-01-24 14:43:47:Memory content before bitflip:0x000x000x000x00
+2017-01-24 14:43:47:Memory content after  bitflip:0x020x000x000x00
+2017-01-24 14:43:47:Mem contents(hex):0x020x000x000x00
+2017-01-24 14:43:47:frame name: L_lud_omp_69__par_loop0_2_4
+2017-01-24 14:43:47:symbol name: chunk_idx
+2017-01-24 14:43:47:symbol filename: lud_omp.c
+2017-01-24 14:43:47:symbol line: 45
+2017-01-24 14:43:47:value: 2
+2017-01-24 14:43:47:value address: 0x7fffffffc600
+2017-01-24 14:43:47:Type: The type is an integer type.
+2017-01-24 14:43:47:Type sizeof: 4
+2017-01-24 14:43:47:Fault Injection Successful after 9.70482397079s
+2017-01-24 14:43:47:Fault Already Injected
+2017-01-24 14:43:48:Fault Already Injected
+2017-01-24 14:43:48:Fault Already Injected
+2017-01-24 14:43:48:Fault Already Injected
+2017-01-24 14:43:48:Fault Already Injected
+2017-01-24 14:43:48:Fault Already Injected
+2017-01-24 14:43:48:Fault Already Injected
+2017-01-24 14:43:49:Fault Already Injected
+2017-01-24 14:43:49:Fault Already Injected
+2017-01-24 14:43:49:Fault Already Injected
+2017-01-24 14:43:49:Fault Already Injected
+2017-01-24 14:43:50:Fault Already Injected
+2017-01-24 14:43:50:Fault Already Injected
+2017-01-24 14:43:50:Fault Already Injected
+2017-01-24 14:43:50:Fault Already Injected
+2017-01-24 14:43:50:Fault Already Injected
+2017-01-24 14:43:50:event type: exit
+2017-01-24 14:43:50:exit code: 0

@@ -1,0 +1,69 @@
+[INFO -- 2017-03-09 02:41:06]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-09 02:41:06]
+Initialization strings:
+[INFO -- 2017-03-09 02:41:07]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-09 02:41:07]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-09 02:41:07]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-09 02:41:07]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-09 02:41:07]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-09 02:41:07]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-09 02:41:07]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-09 02:41:07]
+initSignal:25
+[INFO -- 2017-03-09 02:41:07]
+endSignal:30
+[INFO -- 2017-03-09 02:41:07]
+seqSignal:20
+[INFO -- 2017-03-09 02:41:07]
+faultMode:3
+[EXCEPTION -- 2017-03-09 02:41:39]
+pythonException: invalid frame
+[INFO -- 2017-03-09 02:41:39]
+Backtrace BEGIN:
+#0  0x0000000000545bc5 in L_compact_hash_init_137__par_loop0_2_0 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c:140
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007ffff68f7900 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+135	      hash = (int *)genvector(hashtablesize,sizeof(int));
+136	#ifdef _OPENMP
+137	#pragma omp parallel for
+138	#endif
+139	      for (uint ii = 0; ii<hashtablesize; ii++){
+140	         hash[ii] = -1;
+141	      }
+142	
+143	      read_hash  = read_hash_perfect;
+144	      write_hash = write_hash_perfect;
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x700x820x280x040x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffde00
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: L_compact_hash_init_137__par_loop0_2_0
+symbol name: hash
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c
+symbol line: 55
+value: 0x4288270
+value address: 0x7fffffffde00
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-09 02:41:39]
+Fault Injection Successful after 32.7616550922s
+[INFO -- 2017-03-09 02:41:40]
+event type: exit
+[EXCEPTION -- 2017-03-09 02:41:40]
+exit code: no exit code available

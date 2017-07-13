@@ -1,0 +1,57 @@
+[INFO -- 2017-03-06 17:20:04]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 17:20:04]
+Initialization strings:
+[INFO -- 2017-03-06 17:20:05]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-06 17:20:05]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 17:20:05]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 17:20:05]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-06 17:20:05]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-06 17:20:05]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-03-06 17:20:05]
+initSignal:0
+[INFO -- 2017-03-06 17:20:05]
+endSignal:2
+[INFO -- 2017-03-06 17:20:05]
+seqSignal:30
+[INFO -- 2017-03-06 17:20:05]
+faultMode:1
+[INFO -- 2017-03-06 17:20:06]
+Backtrace BEGIN:
+#0  __GI_memcpy (dstpp=dstpp@entry=0x60decc, srcpp=srcpp@entry=0x7ffff4e9b3b8, len=len@entry=28) at ../string/memcpy.c:31
+#1  0x00007ffff714ff79 in __GI___mempcpy (dest=dest@entry=0x60decc, src=src@entry=0x7ffff4e9b3b8, len=len@entry=28) at ../string/mempcpy.c:35
+#2  0x00007ffff71051be in msort_with_tmp (p=p@entry=0x7fffffffc958, b=b@entry=0x7ffff4e9a040, n=n@entry=228) at msort.c:150
+#3  0x00007ffff7105537 in msort_with_tmp (n=6384, b=0x7ffff4e9a040, p=0x7fffffffc958) at msort.c:45
+#4  __GI___qsort_r (b=0x7ffff4e9a040, n=228, s=28, cmp=<optimized out>, arg=<optimized out>) at msort.c:297
+#5  0x00007ffff7889451 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+26	in ../string/memcpy.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: t
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x01
+Fault Mode: Double bit-flip
+base address to flip value: 0x60cb70 
+address max offset: 1
+Memory content after  bitflip:0x31
+frame name: msort_with_tmp
+symbol name: p
+symbol filename: msort.c
+symbol line: 40
+value: 0x7fffffffc958
+value address: 0x7fffffffc8c8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-06 17:20:06]
+Fault Injection Successful after 1.376527071s

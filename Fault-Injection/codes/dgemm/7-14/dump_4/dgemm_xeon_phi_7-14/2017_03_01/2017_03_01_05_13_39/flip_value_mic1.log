@@ -1,0 +1,77 @@
+2017-03-01 05:12:28:Starting flip_value script
+2017-03-01 05:12:28:Initialization strings:
+2017-03-01 05:12:28:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-01 05:12:28:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 05:12:28:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 05:12:28:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-01 05:12:28:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-01 05:12:28:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-03-01 05:12:28:initSignal:7
+2017-03-01 05:12:28:endSignal:14
+2017-03-01 05:12:28:seqSignal:15
+2017-03-01 05:12:38:Backtrace BEGIN:
+2017-03-01 05:12:38:#0  0x00000000004036c4 in L_dgemm_185__par_region0_2_0 () at dgemm.c:220
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe550 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-01 05:12:38:215	                        for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+216	                            CC_arr(i,j) = 0.0;
+217	
+218	                    for (kg=kk,k=0; kg<MIN(kk+block,order); k++,kg++)
+219	                        for (jg=jj,j=0; jg<MIN(jj+block,order); j++,jg++)
+220	                            for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+221	                                CC_arr(i,j) += AA_arr(i,k)*BB_arr(j,k);
+222	
+223	                    for (jg=jj,j=0; jg<MIN(jj+block,order); j++,jg++)
+224	                        for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+
+2017-03-01 05:12:38:Backtrace END
+2017-03-01 05:12:48:Type: The type is an integer type.
+2017-03-01 05:12:48:Type sizeof: 4
+2017-03-01 05:12:48:Mem contents(hex):0xe00x000x000x00
+2017-03-01 05:12:48:Fault Mode: Zero bit-flip
+2017-03-01 05:12:48:base address to flip value: 0x7fffffffded0
+2017-03-01 05:12:48:address max offset: 4
+2017-03-01 05:12:48:Memory content before bitflip:0xe00x000x000x00
+2017-03-01 05:12:48:Backtrace BEGIN:
+2017-03-01 05:12:48:#0  0x00000000004036c4 in L_dgemm_185__par_region0_2_0 () at dgemm.c:220
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe550 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-01 05:12:48:215	                        for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+216	                            CC_arr(i,j) = 0.0;
+217	
+218	                    for (kg=kk,k=0; kg<MIN(kk+block,order); k++,kg++)
+219	                        for (jg=jj,j=0; jg<MIN(jj+block,order); j++,jg++)
+220	                            for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+221	                                CC_arr(i,j) += AA_arr(i,k)*BB_arr(j,k);
+222	
+223	                    for (jg=jj,j=0; jg<MIN(jj+block,order); j++,jg++)
+224	                        for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+
+2017-03-01 05:12:48:Backtrace END
+2017-03-01 05:12:58:Type: The type is a pointer.
+2017-03-01 05:12:58:Type sizeof: 8
+2017-03-01 05:12:58:Fliping a bit of the value pointed by a pointer
+2017-03-01 05:12:58:Type: A floating point type.
+2017-03-01 05:12:58:Type sizeof: 8
+2017-03-01 05:12:58:Mem contents(hex):0x600xb20xd50x850xaf0xe70x160x43
+2017-03-01 05:12:58:Fault Mode: Double bit-flip
+2017-03-01 05:12:58:base address to flip value: 0x7ffff4ccc040
+2017-03-01 05:12:58:address max offset: 8
+2017-03-01 05:12:58:Memory content before bitflip:0x600xb20xd50x850xaf0xe70x160x43
+2017-03-01 05:12:58:Memory content after  bitflip:0x600xb20xd50x850xaf0xed0x160x43
+2017-03-01 05:12:58:Mem contents(hex):0x600xb20xd50x850xaf0xed0x160x43
+2017-03-01 05:12:58:frame name: L_dgemm_185__par_region0_2_0
+2017-03-01 05:12:58:symbol name: A
+2017-03-01 05:12:58:symbol filename: dgemm.c
+2017-03-01 05:12:58:symbol line: 185
+2017-03-01 05:12:58:value: 0x7ffff4ccc040
+2017-03-01 05:12:58:value address: 0x7fffffffe540
+2017-03-01 05:12:58:Type: The type is a pointer.
+2017-03-01 05:12:58:Type sizeof: 8
+2017-03-01 05:12:58:Fault Injection Successful after 30.033178091s
+2017-03-01 05:13:26:event type: exit
+2017-03-01 05:13:26:exit code: 0

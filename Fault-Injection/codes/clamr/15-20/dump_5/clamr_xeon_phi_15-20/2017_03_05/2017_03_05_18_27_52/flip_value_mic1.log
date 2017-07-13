@@ -1,0 +1,60 @@
+[INFO -- 2017-03-05 18:25:10]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-05 18:25:10]
+Initialization strings:
+[INFO -- 2017-03-05 18:25:10]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-05 18:25:10]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 18:25:10]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 18:25:10]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 18:25:10]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 18:25:10]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-05 18:25:10]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-05 18:25:10]
+initSignal:15
+[INFO -- 2017-03-05 18:25:10]
+endSignal:20
+[INFO -- 2017-03-05 18:25:10]
+seqSignal:20
+[INFO -- 2017-03-05 18:25:10]
+faultMode:2
+[INFO -- 2017-03-05 18:25:31]
+Backtrace BEGIN:
+#0  0x0000000000471798 in State::mass_sum (this=0x7fa5e0, enhanced_precision_sum=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:2990
+#1  0x000000000044532f in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:292
+
+2985	      for (ic = 0; ic < (int)ncells; ic++) {
+2986	         if (celltype[ic] == REAL_CELL) {
+2987	            //  Exclude boundary cells.
+2988	            corrected_next_term= H[ic]*mesh->lev_deltax[level[ic]]*mesh->lev_deltay[level[ic]] + local.correction;
+2989	            new_sum            = local.sum + local.correction;
+2990	            local.correction   = corrected_next_term - (new_sum - local.sum);
+2991	            local.sum          = new_sum;
+2992	         }
+2993	      }
+2994	
+
+Backtrace END
+Memory content before bitflip:0xff0xff0xff0x7f
+Fault Mode: Random bit-flip
+base address to flip value: 0x7d06d4 
+address max offset: 4
+Memory content after  bitflip:0xf10x030x420xc6
+frame name: main
+symbol name: next_cp_cycle
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 164
+value: -968752143
+value address: 0x7d06d4 <next_cp_cycle>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-05 18:25:31]
+Fault Injection Successful after 21.4288868904s

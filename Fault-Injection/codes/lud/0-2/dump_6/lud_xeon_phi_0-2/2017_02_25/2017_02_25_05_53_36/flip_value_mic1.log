@@ -1,0 +1,50 @@
+[INFO -- 2017-02-25 05:53:04]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 05:53:04]
+Initialization strings:
+[INFO -- 2017-02-25 05:53:04]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-25 05:53:04]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 05:53:04]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 05:53:04]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 05:53:04]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 05:53:04]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-25 05:53:04]
+initSignal:0
+[INFO -- 2017-02-25 05:53:04]
+endSignal:2
+[INFO -- 2017-02-25 05:53:04]
+seqSignal:30
+[INFO -- 2017-02-25 05:53:04]
+faultMode:2
+[INFO -- 2017-02-25 05:53:09]
+Backtrace BEGIN:
+#0  pthread_cond_wait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S:185
+#1  0x00007ffff7911675 in ?? ()
+#2  0x0000000000000000 in ?? ()
+
+180	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff7646300 
+address max offset: 8
+Memory content after  bitflip:0x5d0xfe0x560x830x420xcd0x1e0x64
+frame name: allocate_stack
+symbol name: in_flight_stack
+symbol filename: allocatestack.c
+symbol line: 120
+value: 7214429338649165405
+value address: 0x7ffff7646300 <in_flight_stack>
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2017-02-25 05:53:09]
+Fault Injection Successful after 5.16563606262s

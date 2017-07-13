@@ -1,0 +1,56 @@
+[INFO -- 2017-03-28 01:43:28]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-28 01:43:28]
+Initialization strings:
+[INFO -- 2017-03-28 01:43:29]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-28 01:43:29]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 01:43:29]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-28 01:43:29]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 01:43:29]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-28 01:43:29]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-28 01:43:29]
+initSignal:0
+[INFO -- 2017-03-28 01:43:29]
+endSignal:3
+[INFO -- 2017-03-28 01:43:29]
+seqSignal:30
+[INFO -- 2017-03-28 01:43:29]
+faultMode:2
+[INFO -- 2017-03-28 01:43:30]
+Backtrace BEGIN:
+#0  0x00007ffff714286d in __GI__IO_file_xsgetn (fp=0x60e1c0, data=0x7ffff4a37940, n=8) at fileops.c:1348
+#1  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#2  0x000000000040262f in main (argc=7, argv=0x7fffffffebc8) at main_check.c:181
+
+1343	in fileops.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x2f
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffedb7 
+address max offset: 1
+Memory content after  bitflip:0x75
+frame name: main
+symbol name: argv
+symbol filename: main_check.c
+symbol line: 43
+value: 0x7fffffffebc8
+value address: 0x7fffffffe828
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-28 01:43:30]
+Fault Injection Successful after 1.06053709984s
+[INFO -- 2017-03-28 01:43:46]
+event type: exit
+[INFO -- 2017-03-28 01:43:46]
+exit code: 0

@@ -1,0 +1,73 @@
+2017-02-21 20:16:18:Starting flip_value script
+2017-02-21 20:16:18:Initialization strings:
+2017-02-21 20:16:19:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-21 20:16:19:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 20:16:19:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 20:16:19:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-21 20:16:19:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-21 20:16:19:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-02-21 20:16:19:initSignal:0
+2017-02-21 20:16:19:endSignal:2
+2017-02-21 20:16:19:seqSignal:30
+2017-02-21 20:16:19:Backtrace BEGIN:
+2017-02-21 20:16:19:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000009 in ?? ()
+#7  0x00007fffffffee08 in ?? ()
+#8  0x00007fffffffee3f in ?? ()
+#9  0x00007fffffffee42 in ?? ()
+#10 0x00007fffffffee47 in ?? ()
+#11 0x00007fffffffee4a in ?? ()
+#12 0x00007fffffffee4e in ?? ()
+#13 0x00007fffffffee51 in ?? ()
+#14 0x00007fffffffee90 in ?? ()
+#15 0x00007fffffffee93 in ?? ()
+#16 0x0000000000000000 in ?? ()
+
+2017-02-21 20:16:19:69	in dl-debug.c
+
+2017-02-21 20:16:19:Backtrace END
+2017-02-21 20:16:19:Type: The type is a structure.
+2017-02-21 20:16:19:Type sizeof: 24
+2017-02-21 20:16:19:Fliping value of field: dont_free
+2017-02-21 20:16:19:Type: The type is an integer type.
+2017-02-21 20:16:19:Type sizeof: 4
+2017-02-21 20:16:19:Mem contents(hex):0x000x000x000x00
+2017-02-21 20:16:19:Fault Mode: Zero bit-flip
+2017-02-21 20:16:19:base address to flip value: 0x7ffff7ffe010 
+2017-02-21 20:16:19:address max offset: 4
+2017-02-21 20:16:19:Memory content before bitflip:0x000x000x000x00
+2017-02-21 20:16:19:Backtrace BEGIN:
+2017-02-21 20:16:19:#0  __GI___waitpid (pid=47607, stat_loc=stat_loc@entry=0x7fffffffe528, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405bb2 in start_iteration () at ../include/log_helper.c:311
+#4  0x0000000000402c5b in main (argc=9, argv=0x7fffffffec08) at lud_check.c:122
+
+2017-02-21 20:16:19:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-02-21 20:16:19:Backtrace END
+2017-02-21 20:16:20:Type: The type is an integer type.
+2017-02-21 20:16:20:Type sizeof: 4
+2017-02-21 20:16:20:Mem contents(hex):0x000x0c0x0f0xf7
+2017-02-21 20:16:20:Fault Mode: Single bit-flip
+2017-02-21 20:16:20:base address to flip value: 0x7fffffffeb28
+2017-02-21 20:16:20:address max offset: 4
+2017-02-21 20:16:20:Memory content before bitflip:0x000x0c0x0f0xf7
+2017-02-21 20:16:20:Memory content after  bitflip:0x000x0c0x0f0xff
+2017-02-21 20:16:20:Mem contents(hex):0x000x0c0x0f0xff
+2017-02-21 20:16:20:frame name: main
+2017-02-21 20:16:20:symbol name: host_errors
+2017-02-21 20:16:20:symbol filename: lud_check.c
+2017-02-21 20:16:20:symbol line: 129
+2017-02-21 20:16:20:value: -15791104
+2017-02-21 20:16:20:value address: 0x7fffffffeb28
+2017-02-21 20:16:20:Type: The type is an integer type.
+2017-02-21 20:16:20:Type sizeof: 4
+2017-02-21 20:16:20:Fault Injection Successful after 1.05971097946s
+2017-02-21 20:16:33:event type: exit
+2017-02-21 20:16:33:exit code: no exit code available

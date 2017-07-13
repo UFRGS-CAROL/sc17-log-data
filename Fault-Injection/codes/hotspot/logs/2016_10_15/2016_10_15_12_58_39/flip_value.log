@@ -1,0 +1,37 @@
+2016-10-15 12:58:27:Initialization strings:
+2016-10-15 12:58:28:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-15 12:58:28:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-15 12:58:28:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-15 12:58:28:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-15 12:58:28:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-15 12:58:28:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-15 12:58:29:Trying Fault Injection
+2016-10-15 12:58:29:Backtrace BEGIN:
+2016-10-15 12:58:29:#0  _IO_str_init_static_internal (sf=sf@entry=0x7fffffffe400, ptr=ptr@entry=0x7fffffffe77a "330.501784\n", size=size@entry=0, pstart=pstart@entry=0x0) at strops.c:51
+#1  0x00007ffff71365d5 in __GI___isoc99_vsscanf (string=0x7fffffffe77a "330.501784\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:41
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#4  main (argc=0, argv=0x7fffffffe77a) at hotspot_check.c:264
+
+2016-10-15 12:58:29:46	in strops.c
+
+2016-10-15 12:58:29:Backtrace END
+2016-10-15 12:58:29:Type: The type is an integer type.
+2016-10-15 12:58:29:Type sizeof: 4
+2016-10-15 12:58:29:Mem contents(hex):0x640xee0xff0xff
+2016-10-15 12:58:29:base address to flip value: 0x7fffffffe610
+2016-10-15 12:58:29:address max offset: 4
+2016-10-15 12:58:29:Memory content before bitflip:0x640xee0xff0xff
+2016-10-15 12:58:29:Memory content after  bitflip:0x440xee0xff0xff
+2016-10-15 12:58:29:Mem contents(hex):0x440xee0xff0xff
+2016-10-15 12:58:29:frame name: main
+2016-10-15 12:58:29:symbol name: errors
+2016-10-15 12:58:29:symbol filename: hotspot_check.c
+2016-10-15 12:58:29:symbol line: 281
+2016-10-15 12:58:29:value: -4540
+2016-10-15 12:58:29:value address: 0x7fffffffe610
+2016-10-15 12:58:29:Type: The type is an integer type.
+2016-10-15 12:58:29:Type sizeof: 4
+2016-10-15 12:58:29:Fault Injection Successful after 1.92871499062s
+2016-10-15 12:58:32:event type: exit
+2016-10-15 12:58:32:exit code: 1

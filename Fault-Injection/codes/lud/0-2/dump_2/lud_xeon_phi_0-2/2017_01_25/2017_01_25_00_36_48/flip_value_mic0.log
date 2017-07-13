@@ -1,0 +1,114 @@
+2017-01-25 00:36:21:Starting flip_value script
+2017-01-25 00:36:21:Initialization strings:
+2017-01-25 00:36:21:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 00:36:21:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 00:36:21:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 00:36:21:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 00:36:21:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 00:36:21:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 00:36:21:initSignal:0
+2017-01-25 00:36:21:endSignal:2
+2017-01-25 00:36:21:seqSignal:30
+2017-01-25 00:36:22:Trying Fault Injection
+2017-01-25 00:36:22:Inferior PID: 4369
+2017-01-25 00:36:22:Inferior is valid: True
+2017-01-25 00:36:22:Inferior #threads: 162
+2017-01-25 00:36:22:Backtrace BEGIN:
+2017-01-25 00:36:22:#0  0x00007ffff719f097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff74321df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:640
+#2  __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffa0235600) at pthread_create.c:524
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-01-25 00:36:22:76	in ../sysdeps/unix/syscall-template.S
+
+2017-01-25 00:36:22:Backtrace END
+2017-01-25 00:36:25:Thread name: None
+2017-01-25 00:36:25:Thread num: 1
+2017-01-25 00:36:25:Thread ptid: (4369, 4369, 0)
+2017-01-25 00:36:25:bitFlip function
+2017-01-25 00:36:25:Type: The type is a pointer.
+2017-01-25 00:36:25:Type sizeof: 8
+2017-01-25 00:36:25:Error gdbException(frameFlip): Attempt to dereference a generic pointer.
+2017-01-25 00:36:25:Fault Injection Failed after 4.2449529171s
+2017-01-25 00:36:25:Trying Fault Injection
+2017-01-25 00:36:25:Inferior PID: 4369
+2017-01-25 00:36:25:Inferior is valid: True
+2017-01-25 00:36:25:Inferior #threads: 162
+2017-01-25 00:36:25:Backtrace BEGIN:
+2017-01-25 00:36:25:#0  malloc (n=15) at dl-minimal.c:93
+#1  <function called from gdb>
+#2  0x00007ffff719f097 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#3  0x00007ffff74321df in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:640
+#4  __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffa0235600) at pthread_create.c:524
+#5  0x00007ffff790d323 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-01-25 00:36:25:88	in dl-minimal.c
+
+2017-01-25 00:36:25:Backtrace END
+2017-01-25 00:36:28:Thread name: None
+2017-01-25 00:36:28:Thread num: 1
+2017-01-25 00:36:28:Thread ptid: (4369, 4369, 0)
+2017-01-25 00:36:28:bitFlip function
+2017-01-25 00:36:28:Type: The type is an integer type.
+2017-01-25 00:36:28:Type sizeof: 4
+2017-01-25 00:36:28:Mem contents(hex):0x000x090x000x00
+2017-01-25 00:36:28:base address to flip value: 0x7ffff743c248 
+2017-01-25 00:36:28:address max offset: 4
+2017-01-25 00:36:28:Memory content before bitflip:0x000x090x000x00
+2017-01-25 00:36:28:Memory content after  bitflip:0x200x090x000x00
+2017-01-25 00:36:28:Mem contents(hex):0x200x090x000x00
+2017-01-25 00:36:28:frame name: allocate_stack
+2017-01-25 00:36:28:symbol name: _thread_db_sizeof_pthread
+2017-01-25 00:36:28:symbol filename: ../nptl_db/structs.def
+2017-01-25 00:36:28:symbol line: 25
+2017-01-25 00:36:28:value: 2336
+2017-01-25 00:36:28:value address: 0x7ffff743c248 <_thread_db_sizeof_pthread>
+2017-01-25 00:36:28:Type: The type is an integer type.
+2017-01-25 00:36:28:Type sizeof: 4
+2017-01-25 00:36:28:Fault Injection Successful after 7.58517003059s
+2017-01-25 00:36:28:Fault Already Injected
+2017-01-25 00:36:28:Fault Already Injected
+2017-01-25 00:36:28:Fault Already Injected
+2017-01-25 00:36:28:Fault Already Injected
+2017-01-25 00:36:29:Fault Already Injected
+2017-01-25 00:36:29:Fault Already Injected
+2017-01-25 00:36:29:Fault Already Injected
+2017-01-25 00:36:29:Fault Already Injected
+2017-01-25 00:36:29:Fault Already Injected
+2017-01-25 00:36:30:Fault Already Injected
+2017-01-25 00:36:30:Fault Already Injected
+2017-01-25 00:36:31:Fault Already Injected
+2017-01-25 00:36:31:Fault Already Injected
+2017-01-25 00:36:31:Fault Already Injected
+2017-01-25 00:36:32:Fault Already Injected
+2017-01-25 00:36:32:Fault Already Injected
+2017-01-25 00:36:32:Fault Already Injected
+2017-01-25 00:36:33:Fault Already Injected
+2017-01-25 00:36:33:Fault Already Injected
+2017-01-25 00:36:33:Fault Already Injected
+2017-01-25 00:36:34:Fault Already Injected
+2017-01-25 00:36:34:Fault Already Injected
+2017-01-25 00:36:34:Fault Already Injected
+2017-01-25 00:36:35:Fault Already Injected
+2017-01-25 00:36:35:Fault Already Injected
+2017-01-25 00:36:35:Fault Already Injected
+2017-01-25 00:36:36:Fault Already Injected
+2017-01-25 00:36:36:Fault Already Injected
+2017-01-25 00:36:37:Fault Already Injected
+2017-01-25 00:36:37:Fault Already Injected
+2017-01-25 00:36:38:Fault Already Injected
+2017-01-25 00:36:38:Fault Already Injected
+2017-01-25 00:36:38:Fault Already Injected
+2017-01-25 00:36:39:Fault Already Injected
+2017-01-25 00:36:39:Fault Already Injected
+2017-01-25 00:36:39:Fault Already Injected
+2017-01-25 00:36:40:Fault Already Injected
+2017-01-25 00:36:40:Fault Already Injected
+2017-01-25 00:36:40:Fault Already Injected
+2017-01-25 00:36:41:Fault Already Injected
+2017-01-25 00:36:41:Fault Already Injected
+2017-01-25 00:36:42:Fault Already Injected
+2017-01-25 00:36:42:event type: exit
+2017-01-25 00:36:42:exit code: 0

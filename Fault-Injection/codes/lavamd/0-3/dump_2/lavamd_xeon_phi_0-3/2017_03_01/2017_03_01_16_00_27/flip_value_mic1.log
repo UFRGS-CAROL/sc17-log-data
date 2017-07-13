@@ -1,0 +1,47 @@
+2017-03-01 15:59:47:Starting flip_value script
+2017-03-01 15:59:47:Initialization strings:
+2017-03-01 15:59:48:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-01 15:59:48:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 15:59:48:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 15:59:48:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 15:59:48:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 15:59:48:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-03-01 15:59:48:initSignal:0
+2017-03-01 15:59:48:endSignal:3
+2017-03-01 15:59:48:seqSignal:30
+2017-03-01 15:59:48:Backtrace BEGIN:
+2017-03-01 15:59:48:#0  0x00000000004021c3 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:148
+
+2017-03-01 15:59:48:143	        exit(1);
+144	    }
+145	
+146	    rv_cpu = (FOUR_VECTOR*)malloc(dim_cpu.space_mem);
+147	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+148	        fread(&(rv_cpu[i].v), 1, sizeof(double), file);
+149	        fread(&(rv_cpu[i].x), 1, sizeof(double), file);
+150	        fread(&(rv_cpu[i].y), 1, sizeof(double), file);
+151	        fread(&(rv_cpu[i].z), 1, sizeof(double), file);
+152	    }
+
+2017-03-01 15:59:48:Backtrace END
+2017-03-01 15:59:48:Type: The type is a pointer.
+2017-03-01 15:59:48:Type sizeof: 8
+2017-03-01 15:59:48:Fliping a bit of the pointer
+2017-03-01 15:59:48:Mem contents(hex):0x100x000xab0xf60xff0x7f0x000x00
+2017-03-01 15:59:48:Fault Mode: Single bit-flip
+2017-03-01 15:59:48:base address to flip value: 0x7fffffffe8b0
+2017-03-01 15:59:48:address max offset: 8
+2017-03-01 15:59:48:Memory content before bitflip:0x100x000xab0xf60xff0x7f0x000x00
+2017-03-01 15:59:49:Memory content after  bitflip:0x100x000xab0xf60xff0x7f0x000x80
+2017-03-01 15:59:49:Mem contents(hex):0x100x000xab0xf60xff0x7f0x000x80
+2017-03-01 15:59:49:frame name: main
+2017-03-01 15:59:49:symbol name: box_cpu
+2017-03-01 15:59:49:symbol filename: main_check.c
+2017-03-01 15:59:49:symbol line: 57
+2017-03-01 15:59:49:value: 0x7ffff6ab0010
+2017-03-01 15:59:49:value address: 0x7fffffffe8b0
+2017-03-01 15:59:49:Type: The type is a pointer.
+2017-03-01 15:59:49:Type sizeof: 8
+2017-03-01 15:59:49:Fault Injection Successful after 1.01591801643s
+2017-03-01 15:59:56:event type: exit
+2017-03-01 15:59:56:exit code: no exit code available

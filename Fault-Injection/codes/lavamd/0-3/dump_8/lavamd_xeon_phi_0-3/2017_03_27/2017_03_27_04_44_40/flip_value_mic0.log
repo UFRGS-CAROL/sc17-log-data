@@ -1,0 +1,59 @@
+[INFO -- 2017-03-27 04:44:07]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 04:44:07]
+Initialization strings:
+[INFO -- 2017-03-27 04:44:07]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 04:44:07]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 04:44:07]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 04:44:07]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 04:44:07]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 04:44:07]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 04:44:07]
+initSignal:0
+[INFO -- 2017-03-27 04:44:07]
+endSignal:3
+[INFO -- 2017-03-27 04:44:07]
+seqSignal:30
+[INFO -- 2017-03-27 04:44:07]
+faultMode:2
+[INFO -- 2017-03-27 04:44:25]
+Backtrace BEGIN:
+#0  pthread_cond_wait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S:185
+#1  0x00007ffff7911675 in ?? ()
+#2  0x0000000000000000 in ?? ()
+
+180	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S
+
+Backtrace END
+Fliping array at pos: 2
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff743c2f8 
+address max offset: 4
+Memory content after  bitflip:0x0a0x180x740x12
+frame name: __pthread_create_2_1
+symbol name: _thread_db_td_thr_events_t_event_bits
+symbol filename: ../nptl_db/structs.def
+symbol line: 45
+value: {32, 2, 309598218}
+value address: 0x7ffff743c2f0 <_thread_db_td_thr_events_t_event_bits>
+Type: The type is an array.
+Type sizeof: 12
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 2L)
+
+[INFO -- 2017-03-27 04:44:25]
+Fault Injection Successful after 18.6156339645s
+[INFO -- 2017-03-27 04:44:33]
+event type: exit
+[INFO -- 2017-03-27 04:44:33]
+exit code: 0

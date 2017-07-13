@@ -1,0 +1,66 @@
+2017-02-28 12:15:10:Starting flip_value script
+2017-02-28 12:15:10:Initialization strings:
+2017-02-28 12:15:11:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 12:15:11:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 12:15:11:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 12:15:11:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 12:15:11:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 12:15:11:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 12:15:11:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 12:15:11:initSignal:25
+2017-02-28 12:15:11:endSignal:30
+2017-02-28 12:15:11:seqSignal:20
+2017-02-28 12:15:37:Backtrace BEGIN:
+2017-02-28 12:15:37:#0  0x0000000000520ba5 in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3215
+#1  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 12:15:37:3210	            }
+3211	            if (nrht_old[ic] < (int)ncells && nrht_old[ic] >= 0){
+3212	               nrht[nc] = (mpot[nrht_old[ic]] == 0) ? index[nrht_old[ic]] : -1;
+3213	            }
+3214	            if (nbot_old[ic] < (int)ncells && nbot_old[ic] >= 0){
+3215	               nbot[nc] = (mpot[nbot_old[ic]] == 0) ? index[nbot_old[ic]] : -1;
+3216	            }
+3217	            if (ntop_old[ic] < (int)ncells && ntop_old[ic] >= 0){
+3218	               ntop[nc] = (mpot[ntop_old[ic]] == 0) ? index[ntop_old[ic]] : -1;
+3219	            }
+
+2017-02-28 12:15:37:Backtrace END
+2017-02-28 12:15:41:Type: The type is a structure.
+2017-02-28 12:15:41:Type sizeof: 24
+2017-02-28 12:15:41:Fliping value of field: std::_Vector_base<int, std::allocator<int> >
+2017-02-28 12:15:41:Type: The type is a structure.
+2017-02-28 12:15:41:Type sizeof: 24
+2017-02-28 12:15:41:Fliping value of field: _M_impl
+2017-02-28 12:15:41:Type: The type is a structure.
+2017-02-28 12:15:41:Type sizeof: 24
+2017-02-28 12:15:41:Fliping value of field: _M_finish
+2017-02-28 12:15:41:Type: The type is a pointer.
+2017-02-28 12:15:41:Type sizeof: 8
+2017-02-28 12:15:41:Fliping a bit of the value pointed by a pointer
+2017-02-28 12:15:41:Type: The type is an integer type.
+2017-02-28 12:15:41:Type sizeof: 4
+2017-02-28 12:15:41:Mem contents(hex):0x010x000x000x00
+2017-02-28 12:15:41:Fault Mode: Double bit-flip
+2017-02-28 12:15:41:base address to flip value: 0x161a160
+2017-02-28 12:15:41:address max offset: 4
+2017-02-28 12:15:41:Memory content before bitflip:0x010x000x000x00
+2017-02-28 12:15:41:Memory content after  bitflip:0x080x000x000x00
+2017-02-28 12:15:41:Mem contents(hex):0x080x000x000x00
+2017-02-28 12:15:41:frame name: do_calc
+2017-02-28 12:15:41:symbol name: mpot
+2017-02-28 12:15:41:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-02-28 12:15:41:symbol line: 401
+2017-02-28 12:15:41:value: {<std::_Vector_base<int, std::allocator<int> >> = {_M_impl = {<std::allocator<int>> = {<__gnu_cxx::new_allocator<int>> = {<No data fields>}, <No data fields>}, _M_start = 0x1516b40, _M_finish = 0x161a160, _M_end_of_storage = 0x161a160}}, <No data fields>}
+2017-02-28 12:15:41:value address: 0x7fffffffe510
+2017-02-28 12:15:41:Type: The type is a structure.
+2017-02-28 12:15:41:Type sizeof: 24
+2017-02-28 12:15:41:Field name: std::_Vector_base<int, std::allocator<int> >
+2017-02-28 12:15:41:Field Type:
+2017-02-28 12:15:41:Type: The type is a structure.
+2017-02-28 12:15:41:Type sizeof: 24
+2017-02-28 12:15:41:Fault Injection Successful after 30.6204659939s
+2017-02-28 12:16:12:event type: exit
+2017-02-28 12:16:12:exit code: 0

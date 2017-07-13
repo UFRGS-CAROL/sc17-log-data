@@ -1,0 +1,114 @@
+2017-02-28 11:19:23:Starting flip_value script
+2017-02-28 11:19:23:Initialization strings:
+2017-02-28 11:19:23:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 11:19:23:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 11:19:23:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 11:19:23:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 11:19:23:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 11:19:23:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 11:19:23:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 11:19:23:initSignal:30
+2017-02-28 11:19:23:endSignal:35
+2017-02-28 11:19:23:seqSignal:20
+2017-02-28 11:19:55:Backtrace BEGIN:
+2017-02-28 11:19:55:#0  0x000000000051f4a6 in Mesh::rezone_all (this=0x7fae50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2588
+#1  0x0000000000471447 in State::rezone_all (this=0x7fb9e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 11:19:55:2583	
+2584	   int ref_entry_count = 0;
+2585	   if (have_state){
+2586	      for (uint ic=0; ic<ncells; ic++) {
+2587	         if (mpot[ic] > 0) ref_entry_count++;
+2588	         if (mpot[ic] < 0) {
+2589	            // Normal cell coarsening
+2590	            if (is_lower_left(i[ic],j[ic]) ) mpot[ic] = -2;
+2591	            // Boundary cell case
+2592	            if (celltype[ic] != REAL_CELL && is_upper_right(i[ic],j[ic]) ) mpot[ic] = -3;
+
+2017-02-28 11:19:55:Backtrace END
+2017-02-28 11:19:59:Type: The type is an integer type.
+2017-02-28 11:19:59:Type sizeof: 4
+2017-02-28 11:19:59:Mem contents(hex):0x640x000x000x00
+2017-02-28 11:19:59:Fault Mode: Zero bit-flip
+2017-02-28 11:19:59:base address to flip value: 0x7fffffffe414
+2017-02-28 11:19:59:address max offset: 4
+2017-02-28 11:19:59:Memory content before bitflip:0x640x000x000x00
+2017-02-28 11:19:59:Backtrace BEGIN:
+2017-02-28 11:19:59:#0  0x000000000051f4a6 in Mesh::rezone_all (this=0x7fae50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2588
+#1  0x0000000000471447 in State::rezone_all (this=0x7fb9e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 11:19:59:2583	
+2584	   int ref_entry_count = 0;
+2585	   if (have_state){
+2586	      for (uint ic=0; ic<ncells; ic++) {
+2587	         if (mpot[ic] > 0) ref_entry_count++;
+2588	         if (mpot[ic] < 0) {
+2589	            // Normal cell coarsening
+2590	            if (is_lower_left(i[ic],j[ic]) ) mpot[ic] = -2;
+2591	            // Boundary cell case
+2592	            if (celltype[ic] != REAL_CELL && is_upper_right(i[ic],j[ic]) ) mpot[ic] = -3;
+
+2017-02-28 11:19:59:Backtrace END
+2017-02-28 11:20:03:Type: A floating point type.
+2017-02-28 11:20:03:Type sizeof: 8
+2017-02-28 11:20:03:Mem contents(hex):0x750xb20xc20xeb0x340xe20x970x3f
+2017-02-28 11:20:03:Fault Mode: Random bit-flip
+2017-02-28 11:20:03:base address to flip value: 0x7d0698 
+2017-02-28 11:20:03:address max offset: 8
+2017-02-28 11:20:03:Memory content before bitflip:0x750xb20xc20xeb0x340xe20x970x3f
+2017-02-28 11:20:04:Backtrace BEGIN:
+2017-02-28 11:20:04:#0  0x000000000051f4a6 in Mesh::rezone_all (this=0x7fae50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2588
+#1  0x0000000000471447 in State::rezone_all (this=0x7fb9e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 11:20:04:2583	
+2584	   int ref_entry_count = 0;
+2585	   if (have_state){
+2586	      for (uint ic=0; ic<ncells; ic++) {
+2587	         if (mpot[ic] > 0) ref_entry_count++;
+2588	         if (mpot[ic] < 0) {
+2589	            // Normal cell coarsening
+2590	            if (is_lower_left(i[ic],j[ic]) ) mpot[ic] = -2;
+2591	            // Boundary cell case
+2592	            if (celltype[ic] != REAL_CELL && is_upper_right(i[ic],j[ic]) ) mpot[ic] = -3;
+
+2017-02-28 11:20:04:Backtrace END
+2017-02-28 11:20:13:Type: The type is an integer type.
+2017-02-28 11:20:13:Type sizeof: 4
+2017-02-28 11:20:13:Mem contents(hex):0x660x000x000x00
+2017-02-28 11:20:13:Fault Mode: Zero bit-flip
+2017-02-28 11:20:13:base address to flip value: 0x56ac6c 
+2017-02-28 11:20:13:address max offset: 4
+2017-02-28 11:20:13:Memory content before bitflip:0x660x000x000x00
+2017-02-28 11:20:13:Backtrace BEGIN:
+2017-02-28 11:20:13:#0  0x000000000051f4a6 in Mesh::rezone_all (this=0x7fae50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2588
+#1  0x0000000000471447 in State::rezone_all (this=0x7fb9e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 11:20:13:2583	
+2584	   int ref_entry_count = 0;
+2585	   if (have_state){
+2586	      for (uint ic=0; ic<ncells; ic++) {
+2587	         if (mpot[ic] > 0) ref_entry_count++;
+2588	         if (mpot[ic] < 0) {
+2589	            // Normal cell coarsening
+2590	            if (is_lower_left(i[ic],j[ic]) ) mpot[ic] = -2;
+2591	            // Boundary cell case
+2592	            if (celltype[ic] != REAL_CELL && is_upper_right(i[ic],j[ic]) ) mpot[ic] = -3;
+
+2017-02-28 11:20:13:Backtrace END
+2017-02-28 11:20:23:Type: The type is an integer type.
+2017-02-28 11:20:23:Type sizeof: 4
+2017-02-28 11:20:23:Mem contents(hex):0x010x000x000x00
+2017-02-28 11:20:23:Fault Mode: Zero bit-flip
+2017-02-28 11:20:23:base address to flip value: 0x7d06dc 
+2017-02-28 11:20:23:address max offset: 4
+2017-02-28 11:20:23:Memory content before bitflip:0x010x000x000x00
+2017-02-28 11:20:40:event type: exit
+2017-02-28 11:20:40:exit code: 0

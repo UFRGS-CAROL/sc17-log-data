@@ -1,0 +1,88 @@
+2017-02-22 03:25:59:Starting flip_value script
+2017-02-22 03:25:59:Initialization strings:
+2017-02-22 03:25:59:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-22 03:25:59:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 03:25:59:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 03:26:00:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-22 03:26:00:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-22 03:26:00:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-22 03:26:00:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-22 03:26:00:initSignal:0
+2017-02-22 03:26:00:endSignal:5
+2017-02-22 03:26:00:seqSignal:20
+2017-02-22 03:26:00:Backtrace BEGIN:
+2017-02-22 03:26:00:#0  0x00007ffff7930c40 in ?? ()
+#1  0x00007ffff788c60a in ?? ()
+#2  0x0000000000000000 in ?? ()
+
+2017-02-22 03:26:00:171	static double H_sum_initial = 0.0;
+172	static double cpu_time_graphics = 0.0;
+173	static double cpu_time_calcs    = 0.0;
+174	static double cpu_time_partmeas = 0.0;
+175	//static double cpu_time_check    = 0.0;
+176	
+177	static int     ncycle  = 0;
+178	static double  simTime = 0.0;
+179	static double  deltaT = 0.0;
+180	char total_sim_time_log[] = {"total_execution_time.log"};
+
+2017-02-22 03:26:00:Backtrace END
+2017-02-22 03:26:01:Backtrace BEGIN:
+2017-02-22 03:26:01:#0  0x0000000000507d9b in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1489
+#1  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-22 03:26:01:1484	         if (ic >= (int)noffset && ic < (int)(ncells+noffset)){
+1485	            int iclocal = ic-noffset;
+1486	            index[iclocal] = ic;
+1487	            i[iclocal]     = ii;
+1488	            j[iclocal]     = jj;
+1489	            level[iclocal] = 0;
+1490	         }
+1491	         ic++;
+1492	      }
+1493	   }
+
+2017-02-22 03:26:01:Backtrace END
+2017-02-22 03:26:05:Type: The type is an integer type.
+2017-02-22 03:26:05:Type sizeof: 4
+2017-02-22 03:26:05:Mem contents(hex):0xb60x0f0x000x00
+2017-02-22 03:26:05:Fault Mode: One bit-flip
+2017-02-22 03:26:05:base address to flip value: 0x7fffffffe580
+2017-02-22 03:26:05:address max offset: 4
+2017-02-22 03:26:05:Memory content before bitflip:0xb60x0f0x000x00
+2017-02-22 03:26:05:Backtrace BEGIN:
+2017-02-22 03:26:05:#0  0x0000000000507d9b in Mesh::init (this=0x7fae50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1489
+#1  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-22 03:26:05:1484	         if (ic >= (int)noffset && ic < (int)(ncells+noffset)){
+1485	            int iclocal = ic-noffset;
+1486	            index[iclocal] = ic;
+1487	            i[iclocal]     = ii;
+1488	            j[iclocal]     = jj;
+1489	            level[iclocal] = 0;
+1490	         }
+1491	         ic++;
+1492	      }
+1493	   }
+
+2017-02-22 03:26:05:Backtrace END
+2017-02-22 03:26:09:Type: The type is an integer type.
+2017-02-22 03:26:09:Type sizeof: 4
+2017-02-22 03:26:09:Mem contents(hex):0x000x000x000x00
+2017-02-22 03:26:09:Fault Mode: Double bit-flip
+2017-02-22 03:26:09:base address to flip value: 0x7d06e0 
+2017-02-22 03:26:09:address max offset: 4
+2017-02-22 03:26:09:Memory content before bitflip:0x000x000x000x00
+2017-02-22 03:26:09:Memory content after  bitflip:0x000x000x000x14
+2017-02-22 03:26:09:Mem contents(hex):0x000x000x000x14
+2017-02-22 03:26:09:frame name: main
+2017-02-22 03:26:09:symbol name: it
+2017-02-22 03:26:09:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-02-22 03:26:09:symbol line: 154
+2017-02-22 03:26:09:value: 335544320
+2017-02-22 03:26:09:value address: 0x7d06e0 <it>
+2017-02-22 03:26:09:Type: The type is an integer type.
+2017-02-22 03:26:09:Type sizeof: 4
+2017-02-22 03:26:09:Fault Injection Successful after 9.32786798477s
+2017-02-22 03:26:58:event type: exit
+2017-02-22 03:26:58:exit code: 0

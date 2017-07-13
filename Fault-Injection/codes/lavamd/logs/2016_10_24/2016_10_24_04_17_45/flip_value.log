@@ -1,0 +1,70 @@
+2016-10-24 04:17:27:Initialization strings:
+2016-10-24 04:17:27:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-24 04:17:27:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 04:17:27:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-24 04:17:27:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-24 04:17:27:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-24 04:17:27:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-24 04:17:27:Trying Fault Injection
+2016-10-24 04:17:27:Inferior PID: 133611
+2016-10-24 04:17:27:Inferior is valid: True
+2016-10-24 04:17:28:Inferior #threads: 1
+2016-10-24 04:17:28:Backtrace BEGIN:
+2016-10-24 04:17:28:#0  0x00007ffff7df436a in mmap64 () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7de3c56 in _dl_map_segments (loader=0x7fffffffe410, has_holes=<optimized out>, maplength=3416768, nloadcmds=2, loadcmds=0x7fffffffe0b0, type=<optimized out>, header=0x7ffff7ffab30, fd=<optimized out>, l=0x7ffff7ffab28) at ./dl-map-segments.h:137
+#2  _dl_map_object_from_fd (name=name@entry=0x400a65 "libiomp5.so", fd=<optimized out>, fbp=fbp@entry=0x7fffffffe3c8, realname=<optimized out>, loader=loader@entry=0x7ffff7ffe168, l_type=l_type@entry=1, mode=0, stack_endp=0x7fffffffe3c0, nsid=0) at dl-load.c:1222
+#3  0x00007ffff7de52f9 in _dl_map_object (loader=0x7ffff7ffe168, name=0x400a65 "libiomp5.so", type=1, trace_mode=0, mode=0, nsid=<optimized out>) at dl-load.c:2188
+#4  0x00007ffff7de964f in openaux (a=a@entry=0x7fffffffe9b8) at dl-deps.c:63
+#5  0x00007ffff7deba83 in _dl_catch_error (objname=objname@entry=0x7fffffffe9b0, errstring=errstring@entry=0x7fffffffe9a8, mallocedp=mallocedp@entry=0x7fffffffe9a7, operate=operate@entry=0x7ffff7de9620 <openaux>, args=args@entry=0x7fffffffe9b8) at dl-error.c:187
+#6  0x00007ffff7de98a9 in _dl_map_object_deps (map=map@entry=0x7ffff7ffe168, preloads=<optimized out>, npreloads=npreloads@entry=0, trace_mode=trace_mode@entry=0, open_mode=open_mode@entry=0) at dl-deps.c:254
+#7  0x00007ffff7ddff28 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1612
+#8  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#9  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#10 _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#11 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#12 0x0000000000000007 in ?? ()
+#13 0x00007fffffffedf0 in ?? ()
+#14 0x00007fffffffee1e in ?? ()
+#15 0x00007fffffffee22 in ?? ()
+#16 0x00007fffffffee25 in ?? ()
+#17 0x00007fffffffee62 in ?? ()
+#18 0x00007fffffffee9e in ?? ()
+#19 0x00007fffffffeed8 in ?? ()
+#20 0x0000000000000000 in ?? ()
+
+2016-10-24 04:17:28:76	in ../sysdeps/unix/syscall-template.S
+
+2016-10-24 04:17:28:Backtrace END
+2016-10-24 04:17:28:Thread name: None
+2016-10-24 04:17:28:Thread num: 1
+2016-10-24 04:17:28:Thread ptid: (133611, 133611, 0)
+2016-10-24 04:17:28:bitFlip function
+2016-10-24 04:17:28:Type: The type is a pointer.
+2016-10-24 04:17:28:Type sizeof: 8
+2016-10-24 04:17:28:Fliping a bit of the pointer
+2016-10-24 04:17:28:Mem contents(hex):0xa80xe90xff0xff0xff0x7f0x000x00
+2016-10-24 04:17:28:base address to flip value: 0x7fffffffe778
+2016-10-24 04:17:28:address max offset: 8
+2016-10-24 04:17:28:Memory content before bitflip:0xa80xe90xff0xff0xff0x7f0x000x00
+2016-10-24 04:17:28:Memory content after  bitflip:0xa80xe90xff0xf70xff0x7f0x000x00
+2016-10-24 04:17:28:Mem contents(hex):0xa80xe90xff0xf70xff0x7f0x000x00
+2016-10-24 04:17:28:frame name: _dl_catch_error
+2016-10-24 04:17:28:symbol name: errstring
+2016-10-24 04:17:28:symbol filename: dl-error.c
+2016-10-24 04:17:28:symbol line: 161
+2016-10-24 04:17:28:value: 0x7fffffffe9a8
+2016-10-24 04:17:28:value address: 0x7fffffffe778
+2016-10-24 04:17:28:Type: The type is a pointer.
+2016-10-24 04:17:28:Type sizeof: 8
+2016-10-24 04:17:28:Fault Injection Successful after 1.5005800724s
+2016-10-24 04:17:29:Fault Already Injected
+2016-10-24 04:17:29:Fault Already Injected
+2016-10-24 04:17:29:Fault Already Injected
+2016-10-24 04:17:31:Fault Already Injected
+2016-10-24 04:17:32:Fault Already Injected
+2016-10-24 04:17:32:Fault Already Injected
+2016-10-24 04:17:33:Fault Already Injected
+2016-10-24 04:17:33:Fault Already Injected
+2016-10-24 04:17:36:Fault Already Injected
+2016-10-24 04:17:38:event type: exit
+2016-10-24 04:17:38:exit code: 0

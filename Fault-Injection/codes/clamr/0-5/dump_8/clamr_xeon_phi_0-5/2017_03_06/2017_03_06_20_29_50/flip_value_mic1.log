@@ -1,0 +1,66 @@
+[INFO -- 2017-03-06 20:28:45]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 20:28:45]
+Initialization strings:
+[INFO -- 2017-03-06 20:28:46]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-06 20:28:46]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 20:28:46]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 20:28:46]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 20:28:46]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 20:28:46]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-06 20:28:46]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-06 20:28:46]
+initSignal:0
+[INFO -- 2017-03-06 20:28:46]
+endSignal:5
+[INFO -- 2017-03-06 20:28:46]
+seqSignal:20
+[INFO -- 2017-03-06 20:28:46]
+faultMode:1
+[INFO -- 2017-03-06 20:28:51]
+Backtrace BEGIN:
+#0  0x0000000000449a27 in std::vector<int, std::allocator<int> >::operator[] (this=0x7f9f58, __n=202682) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:780
+#1  0x0000000000507d24 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1486
+#2  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+775	       *  out_of_range lookups are not defined. (For checked lookups
+776	       *  see at().)
+777	       */
+778	      reference
+779	      operator[](size_type __n) _GLIBCXX_NOEXCEPT
+780	      { return *(this->_M_impl._M_start + __n); }
+781	
+782	      /**
+783	       *  @brief  Subscript access to the data contained in the %vector.
+784	       *  @param __n The index of the element for which data should be
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x900x550x7f0x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7d0660 
+address max offset: 8
+Memory content after  bitflip:0x900x550x7f0x000x000x000x440x00
+frame name: std::vector<int, std::allocator<int> >::operator[]
+symbol name: parse
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 161
+value: 0x7f5590
+value address: 0x7d0660 <parse>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-06 20:28:51]
+Fault Injection Successful after 5.66123199463s
+[INFO -- 2017-03-06 20:29:43]
+event type: exit
+[EXCEPTION -- 2017-03-06 20:29:43]
+exit code: no exit code available

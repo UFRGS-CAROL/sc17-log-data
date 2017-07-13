@@ -1,0 +1,53 @@
+2016-10-12 15:38:00:Initialization strings:
+2016-10-12 15:38:00:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-12 15:38:00:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 15:38:00:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 15:38:00:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-12 15:38:00:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-12 15:38:00:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-12 15:38:01:Trying Fault Injection
+2016-10-12 15:38:01:Inferior PID: 177904
+2016-10-12 15:38:01:Inferior is valid: True
+2016-10-12 15:38:01:Inferior #threads: 1
+2016-10-12 15:38:01:Backtrace BEGIN:
+2016-10-12 15:38:01:#0  0x00007ffff714a055 in __GI___libc_malloc (bytes=15) at malloc.c:2888
+#1  0x00007ffff714e187 in __GI___strdup (s=s@entry=0x7ffff71f01ba "/etc/localtime") at strdup.c:42
+#2  0x00007ffff716594d in tzset_internal (always=<optimized out>, explicit=explicit@entry=1) at tzset.c:444
+#3  0x00007ffff7165cab in __tz_convert (timer=0x7fffffffe298, use_localtime=0, tp=0x7ffff7429460 <_tmbuf>) at tzset.c:632
+#4  0x0000000000406a62 in start_log_file (benchmark_name=0x408cc0 "openmpLavaMD", test_info=0x7fffffffe688 "box:15 spaceElem:337500 cores:228") at ../../include/log_helper.c:204
+#5  0x0000000000402707 in main (argc=7, argv=0x7fffffffec08) at main_check.c:190
+
+2016-10-12 15:38:01:2883	in malloc.c
+
+2016-10-12 15:38:01:Backtrace END
+2016-10-12 15:38:01:Thread name: None
+2016-10-12 15:38:01:Thread num: 1
+2016-10-12 15:38:01:Thread ptid: (177904, 177904, 0)
+2016-10-12 15:38:01:bitFlip function
+2016-10-12 15:38:01:Type: The type is an integer type.
+2016-10-12 15:38:01:Type sizeof: 4
+2016-10-12 15:38:01:Mem contents(hex):0x000x000x000x00
+2016-10-12 15:38:01:base address to flip value: 0x7ffff7426a08 
+2016-10-12 15:38:01:address max offset: 4
+2016-10-12 15:38:01:Memory content before bitflip:0x000x000x000x00
+2016-10-12 15:38:01:Memory content after  bitflip:0x000x000x010x00
+2016-10-12 15:38:01:Mem contents(hex):0x000x000x010x00
+2016-10-12 15:38:01:frame name: __tz_convert
+2016-10-12 15:38:01:symbol name: daylight
+2016-10-12 15:38:01:symbol filename: tzset.c
+2016-10-12 15:38:01:symbol line: 36
+2016-10-12 15:38:01:value: 65536
+2016-10-12 15:38:01:value address: 0x7ffff7426a08 <daylight>
+2016-10-12 15:38:01:Type: The type is an integer type.
+2016-10-12 15:38:01:Type sizeof: 4
+2016-10-12 15:38:01:Fault Injection Successful after 1.88360691071s
+2016-10-12 15:38:04:Fault Already Injected
+2016-10-12 15:38:04:Fault Already Injected
+2016-10-12 15:38:05:Fault Already Injected
+2016-10-12 15:38:05:Fault Already Injected
+2016-10-12 15:38:06:Fault Already Injected
+2016-10-12 15:38:06:Fault Already Injected
+2016-10-12 15:38:08:Fault Already Injected
+2016-10-12 15:38:09:Fault Already Injected
+2016-10-12 15:38:11:event type: exit
+2016-10-12 15:38:11:exit code: 0

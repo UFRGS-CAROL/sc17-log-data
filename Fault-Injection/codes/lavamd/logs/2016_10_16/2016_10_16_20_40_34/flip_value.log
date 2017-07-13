@@ -1,0 +1,97 @@
+2016-10-16 20:40:17:Initialization strings:
+2016-10-16 20:40:18:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-16 20:40:18:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-16 20:40:18:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-16 20:40:18:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-16 20:40:18:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-16 20:40:18:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-16 20:40:18:Trying Fault Injection
+2016-10-16 20:40:18:Inferior PID: 16078
+2016-10-16 20:40:18:Inferior is valid: True
+2016-10-16 20:40:18:Inferior #threads: 1
+2016-10-16 20:40:18:Backtrace BEGIN:
+2016-10-16 20:40:18:#0  0x000000000040219a in main (argc=7, argv=0x7fffffffec08) at main_check.c:148
+
+2016-10-16 20:40:18:143	        exit(1);
+144	    }
+145	
+146	    rv_cpu = (FOUR_VECTOR*)malloc(dim_cpu.space_mem);
+147	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+148	        fread(&(rv_cpu[i].v), 1, sizeof(double), file);
+149	        fread(&(rv_cpu[i].x), 1, sizeof(double), file);
+150	        fread(&(rv_cpu[i].y), 1, sizeof(double), file);
+151	        fread(&(rv_cpu[i].z), 1, sizeof(double), file);
+152	    }
+
+2016-10-16 20:40:18:Backtrace END
+2016-10-16 20:40:18:Thread name: None
+2016-10-16 20:40:18:Thread num: 1
+2016-10-16 20:40:18:Thread ptid: (16078, 16078, 0)
+2016-10-16 20:40:18:bitFlip function
+2016-10-16 20:40:18:Type: The type is a structure.
+2016-10-16 20:40:18:Type sizeof: 56
+2016-10-16 20:40:18:Fliping value of field: box_mem
+2016-10-16 20:40:18:bitFlip function
+2016-10-16 20:40:18:Type: The type is an integer type.
+2016-10-16 20:40:18:Type sizeof: 8
+2016-10-16 20:40:18:Mem contents(hex):0x700xc80x210x000x000x000x000x00
+2016-10-16 20:40:18:base address to flip value: 0x7fffffffe8a8
+2016-10-16 20:40:18:address max offset: 8
+2016-10-16 20:40:18:Memory content before bitflip:0x700xc80x210x000x000x000x000x00
+2016-10-16 20:40:18:Memory content after  bitflip:0x700xc80x210x000x020x000x000x00
+2016-10-16 20:40:18:Mem contents(hex):0x700xc80x210x000x020x000x000x00
+2016-10-16 20:40:18:frame name: main
+2016-10-16 20:40:18:symbol name: dim_cpu
+2016-10-16 20:40:18:symbol filename: main_check.c
+2016-10-16 20:40:18:symbol line: 56
+2016-10-16 20:40:18:value: {cur_arg = -134247168, arch_arg = 32767, cores_arg = 228, boxes1d_arg = 15, number_boxes = 3375, box_mem = 8592148592, space_elem = 337500, space_mem = 10800000, space_mem2 = 2700000}
+2016-10-16 20:40:18:value address: 0x7fffffffe890
+2016-10-16 20:40:18:Type: The type is a structure.
+2016-10-16 20:40:18:Type sizeof: 56
+2016-10-16 20:40:18:Field name: cur_arg
+2016-10-16 20:40:18:Field Type:
+2016-10-16 20:40:18:Type: The type is an integer type.
+2016-10-16 20:40:18:Type sizeof: 4
+2016-10-16 20:40:18:Field name: arch_arg
+2016-10-16 20:40:18:Field Type:
+2016-10-16 20:40:18:Type: The type is an integer type.
+2016-10-16 20:40:18:Type sizeof: 4
+2016-10-16 20:40:18:Field name: cores_arg
+2016-10-16 20:40:18:Field Type:
+2016-10-16 20:40:18:Type: The type is an integer type.
+2016-10-16 20:40:18:Type sizeof: 4
+2016-10-16 20:40:18:Field name: boxes1d_arg
+2016-10-16 20:40:18:Field Type:
+2016-10-16 20:40:18:Type: The type is an integer type.
+2016-10-16 20:40:18:Type sizeof: 4
+2016-10-16 20:40:18:Field name: number_boxes
+2016-10-16 20:40:18:Field Type:
+2016-10-16 20:40:18:Type: The type is an integer type.
+2016-10-16 20:40:18:Type sizeof: 8
+2016-10-16 20:40:18:Field name: box_mem
+2016-10-16 20:40:18:Field Type:
+2016-10-16 20:40:18:Type: The type is an integer type.
+2016-10-16 20:40:18:Type sizeof: 8
+2016-10-16 20:40:18:Field name: space_elem
+2016-10-16 20:40:18:Field Type:
+2016-10-16 20:40:18:Type: The type is an integer type.
+2016-10-16 20:40:18:Type sizeof: 8
+2016-10-16 20:40:18:Field name: space_mem
+2016-10-16 20:40:18:Field Type:
+2016-10-16 20:40:18:Type: The type is an integer type.
+2016-10-16 20:40:18:Type sizeof: 8
+2016-10-16 20:40:18:Field name: space_mem2
+2016-10-16 20:40:18:Field Type:
+2016-10-16 20:40:18:Type: The type is an integer type.
+2016-10-16 20:40:18:Type sizeof: 8
+2016-10-16 20:40:18:Fault Injection Successful after 0.653724908829s
+2016-10-16 20:40:19:Fault Already Injected
+2016-10-16 20:40:21:Fault Already Injected
+2016-10-16 20:40:22:Fault Already Injected
+2016-10-16 20:40:22:Fault Already Injected
+2016-10-16 20:40:25:Fault Already Injected
+2016-10-16 20:40:25:Fault Already Injected
+2016-10-16 20:40:25:Fault Already Injected
+2016-10-16 20:40:26:Fault Already Injected
+2016-10-16 20:40:28:event type: exit
+2016-10-16 20:40:28:exit code: 0

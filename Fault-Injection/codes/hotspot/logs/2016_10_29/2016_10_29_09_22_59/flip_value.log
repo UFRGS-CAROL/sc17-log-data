@@ -1,0 +1,47 @@
+2016-10-29 09:22:37:Initialization strings:
+2016-10-29 09:22:37:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-29 09:22:37:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-29 09:22:37:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-29 09:22:37:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-29 09:22:37:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-29 09:22:37:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-29 09:22:38:Trying Fault Injection
+2016-10-29 09:22:38:Backtrace BEGIN:
+2016-10-29 09:22:38:#0  0x00007ffff7de5bfb in check_match (undef_name=undef_name@entry=0x400a89 "calloc", ref=ref@entry=0x4007b0, version=version@entry=0x7ffff7ff86a0, flags=flags@entry=1, type_class=type_class@entry=1, sym=sym@entry=0x7ffff70d92a0, symidx=751, strtab=0x7ffff70e17d8 "", map=0x7ffff7ff99a0, versioned_sym=0x7fffffffe3b8, num_versions=0x7fffffffe3b4) at dl-lookup.c:92
+#1  0x00007ffff7de6010 in do_lookup_x (undef_name=undef_name@entry=0x400a89 "calloc", new_hash=new_hash@entry=4125497075, old_hash=old_hash@entry=0x7fffffffe480, ref=0x4007b0, result=result@entry=0x7fffffffe490, scope=<optimized out>, i=5, version=0x7ffff7ff86a0, flags=1, skip=0x0, type_class=1, undef_map=0x7ffff7ffe168) at dl-lookup.c:423
+#2  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x400a89 "calloc", undef_map=0x7ffff7ffe168, ref=ref@entry=0x7fffffffe548, symbol_scope=0x7ffff7ffe4c0, version=0x7ffff7ff86a0, type_class=type_class@entry=1, flags=1, skip_map=0x0) at dl-lookup.c:775
+#3  0x00007ffff7deafea in _dl_fixup (l=<optimized out>, reloc_arg=<optimized out>) at ../elf/dl-runtime.c:111
+#4  0x00007ffff7df1859 in _dl_runtime_resolve () at ../sysdeps/x86_64/dl-trampoline.S:89
+#5  0x00000000004015e2 in main (argc=4197001, argv=0x4007b0) at hotspot_check.c:244
+
+2016-10-29 09:22:38:87	in dl-lookup.c
+
+2016-10-29 09:22:38:Backtrace END
+2016-10-29 09:22:38:Type: The type is an integer type.
+2016-10-29 09:22:38:Type sizeof: 8
+2016-10-29 09:22:38:Mem contents(hex):0x530x330x980x060x000x000x000x00
+2016-10-29 09:22:38:base address to flip value: 0x7fffffffe480
+2016-10-29 09:22:38:address max offset: 8
+2016-10-29 09:22:38:Memory content before bitflip:0x530x330x980x060x000x000x000x00
+2016-10-29 09:22:38:Memory content after  bitflip:0x530x330x980x060x000x000x000x40
+2016-10-29 09:22:38:Mem contents(hex):0x530x330x980x060x000x000x000x40
+2016-10-29 09:22:38:frame name: _dl_lookup_symbol_x
+2016-10-29 09:22:38:symbol name: old_hash
+2016-10-29 09:22:38:symbol filename: dl-lookup.c
+2016-10-29 09:22:38:symbol line: 754
+2016-10-29 09:22:38:value: 4611686018538025811
+2016-10-29 09:22:38:value address: 0x7fffffffe480
+2016-10-29 09:22:38:Type: The type is an integer type.
+2016-10-29 09:22:38:Type sizeof: 8
+2016-10-29 09:22:38:Fault Injection Successful after 1.46637105942s
+2016-10-29 09:22:43:Fault Already Injected
+2016-10-29 09:22:44:Fault Already Injected
+2016-10-29 09:22:45:Fault Already Injected
+2016-10-29 09:22:45:Fault Already Injected
+2016-10-29 09:22:45:Fault Already Injected
+2016-10-29 09:22:45:Fault Already Injected
+2016-10-29 09:22:45:Fault Already Injected
+2016-10-29 09:22:47:Fault Already Injected
+2016-10-29 09:22:52:Fault Already Injected
+2016-10-29 09:22:53:event type: exit
+2016-10-29 09:22:53:exit code: 0

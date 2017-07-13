@@ -1,0 +1,174 @@
+2017-01-12 04:45:00:Starting flip_value script
+2017-01-12 04:45:00:Initialization strings:
+2017-01-12 04:45:00:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-12 04:45:00:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-12 04:45:00:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-12 04:45:00:(4) file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-01-12 04:45:00:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-01-12 04:45:00:(6) set args 16394 10 228 /micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10 /micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10
+2017-01-12 04:45:00:initSignal:4
+2017-01-12 04:45:00:endSignal:8
+2017-01-12 04:45:00:seqSignal:30
+2017-01-12 04:45:05:Trying Fault Injection
+2017-01-12 04:45:05:Inferior PID: 38299
+2017-01-12 04:45:05:Inferior is valid: True
+2017-01-12 04:45:05:Inferior #threads: 1
+2017-01-12 04:45:05:Backtrace BEGIN:
+2017-01-12 04:45:05:#0  0x00007ffff6e245d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6dd0911 in __GI__IO_file_xsgetn (fp=0x619b30, data=<optimized out>, n=1075184100) at fileops.c:1422
+#2  0x00007ffff6dc6929 in __GI__IO_fread (buf=<optimized out>, size=1075184100, count=1, fp=0x619b30) at iofread.c:42
+#3  0x00000000004014f6 in ReadArrayFromFile (input_itemsets=0x7fff76699010, gold_itemsets=0x7fff36538010, max_rows=16395, filenameinput=0x7fffffffee44 "/micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10", filenamegold=0x7fffffffee8a "/micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10") at needle_check.cpp:50
+#4  0x0000000000402bbc in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:319
+#5  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-01-12 04:45:05:76	in ../sysdeps/unix/syscall-template.S
+
+2017-01-12 04:45:05:Backtrace END
+2017-01-12 04:45:05:Thread name: None
+2017-01-12 04:45:05:Thread num: 1
+2017-01-12 04:45:05:Thread ptid: (38299, 38299, 0)
+2017-01-12 04:45:05:bitFlip function
+2017-01-12 04:45:05:Type: The type is an array.
+2017-01-12 04:45:05:Type sizeof: 200
+2017-01-12 04:45:05:Fliping array at pos: 52
+2017-01-12 04:45:05:bitFlip function
+2017-01-12 04:45:05:Type: The type is an integer type.
+2017-01-12 04:45:05:Type sizeof: 1
+2017-01-12 04:45:05:Mem contents(hex):0x65
+2017-01-12 04:45:05:base address to flip value: 0x7fffffffe784 
+2017-01-12 04:45:05:address max offset: 1
+2017-01-12 04:45:05:Memory content before bitflip:0x65
+2017-01-12 04:45:05:Memory content after  bitflip:0x25
+2017-01-12 04:45:05:Mem contents(hex):0x25
+2017-01-12 04:45:05:frame name: runTest
+2017-01-12 04:45:05:symbol name: test_info
+2017-01-12 04:45:05:symbol filename: needle_check.cpp
+2017-01-12 04:45:05:symbol line: 292
+2017-01-12 04:45:05:Error pythonException(frameFlip): 'ascii' codec can't encode character u'\u0485' in position 423: ordinal not in range(128)
+2017-01-12 04:45:05:Fault Injection Failed after 5.90685606003s
+2017-01-12 04:45:05:Trying Fault Injection
+2017-01-12 04:45:05:Inferior PID: 38299
+2017-01-12 04:45:05:Inferior is valid: True
+2017-01-12 04:45:05:Inferior #threads: 1
+2017-01-12 04:45:05:Backtrace BEGIN:
+2017-01-12 04:45:05:#0  0x00007ffff6e245d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6dd0911 in __GI__IO_file_xsgetn (fp=0x619b30, data=<optimized out>, n=1075184100) at fileops.c:1422
+#2  0x00007ffff6dc6929 in __GI__IO_fread (buf=<optimized out>, size=1075184100, count=1, fp=0x619b30) at iofread.c:42
+#3  0x00000000004014f6 in ReadArrayFromFile (input_itemsets=0x7fff76699010, gold_itemsets=0x7fff36538010, max_rows=16395, filenameinput=0x7fffffffee44 "/micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10", filenamegold=0x7fffffffee8a "/micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10") at needle_check.cpp:50
+#4  0x0000000000402bbc in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:319
+#5  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-01-12 04:45:05:76	in ../sysdeps/unix/syscall-template.S
+
+2017-01-12 04:45:05:Backtrace END
+2017-01-12 04:45:06:Thread name: None
+2017-01-12 04:45:06:Thread num: 1
+2017-01-12 04:45:06:Thread ptid: (38299, 38299, 0)
+2017-01-12 04:45:06:bitFlip function
+2017-01-12 04:45:06:Type: The type is a pointer.
+2017-01-12 04:45:06:Type sizeof: 8
+2017-01-12 04:45:06:Fliping a bit of the value pointed by a pointer
+2017-01-12 04:45:06:bitFlip function
+2017-01-12 04:45:06:Type: The type is an integer type.
+2017-01-12 04:45:06:Type sizeof: 4
+2017-01-12 04:45:06:Mem contents(hex):0x000x000x000x00
+2017-01-12 04:45:06:base address to flip value: 0x7fff76699010
+2017-01-12 04:45:06:address max offset: 4
+2017-01-12 04:45:06:Memory content before bitflip:0x000x000x000x00
+2017-01-12 04:45:06:Memory content after  bitflip:0x800x000x000x00
+2017-01-12 04:45:06:Mem contents(hex):0x800x000x000x00
+2017-01-12 04:45:06:frame name: runTest
+2017-01-12 04:45:06:symbol name: input_itemsets
+2017-01-12 04:45:06:symbol filename: needle_check.cpp
+2017-01-12 04:45:06:symbol line: 266
+2017-01-12 04:45:06:value: 0x7fff76699010
+2017-01-12 04:45:06:value address: 0x7fffffffea28
+2017-01-12 04:45:06:Type: The type is a pointer.
+2017-01-12 04:45:06:Type sizeof: 8
+2017-01-12 04:45:06:Fault Injection Successful after 6.0976369381s
+2017-01-12 04:45:06:Fault Already Injected
+2017-01-12 04:45:06:Fault Already Injected
+2017-01-12 04:45:06:Fault Already Injected
+2017-01-12 04:45:06:Fault Already Injected
+2017-01-12 04:45:06:Fault Already Injected
+2017-01-12 04:45:07:Fault Already Injected
+2017-01-12 04:45:07:Fault Already Injected
+2017-01-12 04:45:07:Fault Already Injected
+2017-01-12 04:45:07:Fault Already Injected
+2017-01-12 04:45:07:Fault Already Injected
+2017-01-12 04:45:07:Fault Already Injected
+2017-01-12 04:45:07:Fault Already Injected
+2017-01-12 04:45:07:Fault Already Injected
+2017-01-12 04:45:08:Fault Already Injected
+2017-01-12 04:45:08:Fault Already Injected
+2017-01-12 04:45:08:Fault Already Injected
+2017-01-12 04:45:08:Fault Already Injected
+2017-01-12 04:45:08:Fault Already Injected
+2017-01-12 04:45:08:Fault Already Injected
+2017-01-12 04:45:08:Fault Already Injected
+2017-01-12 04:45:09:Fault Already Injected
+2017-01-12 04:45:09:Fault Already Injected
+2017-01-12 04:45:09:Fault Already Injected
+2017-01-12 04:45:09:Fault Already Injected
+2017-01-12 04:45:09:Fault Already Injected
+2017-01-12 04:45:09:Fault Already Injected
+2017-01-12 04:45:09:Fault Already Injected
+2017-01-12 04:45:10:Fault Already Injected
+2017-01-12 04:45:10:Fault Already Injected
+2017-01-12 04:45:10:Fault Already Injected
+2017-01-12 04:45:10:Fault Already Injected
+2017-01-12 04:45:10:Fault Already Injected
+2017-01-12 04:45:10:Fault Already Injected
+2017-01-12 04:45:10:Fault Already Injected
+2017-01-12 04:45:10:Fault Already Injected
+2017-01-12 04:45:11:Fault Already Injected
+2017-01-12 04:45:11:Fault Already Injected
+2017-01-12 04:45:11:Fault Already Injected
+2017-01-12 04:45:11:Fault Already Injected
+2017-01-12 04:45:11:Fault Already Injected
+2017-01-12 04:45:11:Fault Already Injected
+2017-01-12 04:45:12:Fault Already Injected
+2017-01-12 04:45:12:Fault Already Injected
+2017-01-12 04:45:12:Fault Already Injected
+2017-01-12 04:45:12:Fault Already Injected
+2017-01-12 04:45:12:Fault Already Injected
+2017-01-12 04:45:12:Fault Already Injected
+2017-01-12 04:45:12:Fault Already Injected
+2017-01-12 04:45:13:Fault Already Injected
+2017-01-12 04:45:13:Fault Already Injected
+2017-01-12 04:45:13:Fault Already Injected
+2017-01-12 04:45:13:Fault Already Injected
+2017-01-12 04:45:13:Fault Already Injected
+2017-01-12 04:45:13:Fault Already Injected
+2017-01-12 04:45:13:Fault Already Injected
+2017-01-12 04:45:13:Fault Already Injected
+2017-01-12 04:45:14:Fault Already Injected
+2017-01-12 04:45:14:Fault Already Injected
+2017-01-12 04:45:14:Fault Already Injected
+2017-01-12 04:45:14:Fault Already Injected
+2017-01-12 04:45:14:Fault Already Injected
+2017-01-12 04:45:14:Fault Already Injected
+2017-01-12 04:45:14:Fault Already Injected
+2017-01-12 04:45:15:Fault Already Injected
+2017-01-12 04:45:15:Fault Already Injected
+2017-01-12 04:45:15:Fault Already Injected
+2017-01-12 04:45:15:Fault Already Injected
+2017-01-12 04:45:15:Fault Already Injected
+2017-01-12 04:45:15:Fault Already Injected
+2017-01-12 04:45:15:Fault Already Injected
+2017-01-12 04:45:15:Fault Already Injected
+2017-01-12 04:45:16:Fault Already Injected
+2017-01-12 04:45:16:Fault Already Injected
+2017-01-12 04:45:16:Fault Already Injected
+2017-01-12 04:45:16:Fault Already Injected
+2017-01-12 04:45:16:Fault Already Injected
+2017-01-12 04:45:16:Fault Already Injected
+2017-01-12 04:45:16:Fault Already Injected
+2017-01-12 04:45:17:Fault Already Injected
+2017-01-12 04:45:17:Fault Already Injected
+2017-01-12 04:45:17:Fault Already Injected
+2017-01-12 04:45:17:Fault Already Injected
+2017-01-12 04:45:17:Fault Already Injected
+2017-01-12 04:45:18:Fault Already Injected
+2017-01-12 04:45:18:Fault Already Injected
+2017-01-12 04:45:18:Fault Already Injected

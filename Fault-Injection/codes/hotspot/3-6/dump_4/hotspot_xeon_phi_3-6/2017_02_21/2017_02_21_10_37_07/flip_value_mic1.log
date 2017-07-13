@@ -1,0 +1,70 @@
+2017-02-21 10:36:34:Starting flip_value script
+2017-02-21 10:36:34:Initialization strings:
+2017-02-21 10:36:34:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-21 10:36:34:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 10:36:34:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 10:36:34:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-21 10:36:34:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-21 10:36:34:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-02-21 10:36:34:initSignal:3
+2017-02-21 10:36:34:endSignal:6
+2017-02-21 10:36:34:seqSignal:15
+2017-02-21 10:36:38:Backtrace BEGIN:
+2017-02-21 10:36:38:#0  _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:461
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "323.447704\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000404598 in read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:207
+#4  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+2017-02-21 10:36:38:456	in vfscanf.c
+
+2017-02-21 10:36:38:Backtrace END
+2017-02-21 10:36:38:Type: The type is a structure.
+2017-02-21 10:36:38:Type sizeof: 240
+2017-02-21 10:36:38:Fliping value of field: _sbf
+2017-02-21 10:36:38:Type: The type is a structure.
+2017-02-21 10:36:38:Type sizeof: 224
+2017-02-21 10:36:38:Fliping value of field: _f
+2017-02-21 10:36:38:Type: The type is a structure.
+2017-02-21 10:36:38:Type sizeof: 216
+2017-02-21 10:36:38:Fliping value of field: _IO_read_base
+2017-02-21 10:36:38:Type: The type is a pointer.
+2017-02-21 10:36:38:Type sizeof: 8
+2017-02-21 10:36:38:Fliping a bit of the value pointed by a pointer
+2017-02-21 10:36:38:Type: The type is an integer type.
+2017-02-21 10:36:38:Type sizeof: 1
+2017-02-21 10:36:38:Mem contents(hex):0x33
+2017-02-21 10:36:38:Fault Mode: One bit-flip
+2017-02-21 10:36:38:base address to flip value: 0x7fffffffe640 
+2017-02-21 10:36:38:address max offset: 1
+2017-02-21 10:36:38:Memory content before bitflip:0x33
+2017-02-21 10:36:39:Backtrace BEGIN:
+2017-02-21 10:36:39:#0  0x00007ffff712823e in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:1977
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "323.496198\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000404598 in read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:207
+#4  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+2017-02-21 10:36:39:1972	in vfscanf.c
+
+2017-02-21 10:36:39:Backtrace END
+2017-02-21 10:36:39:Type: A floating point type.
+2017-02-21 10:36:39:Type sizeof: 4
+2017-02-21 10:36:39:Mem contents(hex):0x000x000xa00x42
+2017-02-21 10:36:39:Fault Mode: Double bit-flip
+2017-02-21 10:36:39:base address to flip value: 0x407500 
+2017-02-21 10:36:39:address max offset: 4
+2017-02-21 10:36:39:Memory content before bitflip:0x000x000xa00x42
+2017-02-21 10:36:39:Memory content after  bitflip:0x000xa00xa00x42
+2017-02-21 10:36:39:Mem contents(hex):0x000xa00xa00x42
+2017-02-21 10:36:39:frame name: read_input
+2017-02-21 10:36:39:symbol name: amb_temp
+2017-02-21 10:36:39:symbol filename: hotspot_check.c
+2017-02-21 10:36:39:symbol line: 38
+2017-02-21 10:36:39:value: 80.3125
+2017-02-21 10:36:39:value address: 0x407500 <amb_temp>
+2017-02-21 10:36:39:Type: A floating point type.
+2017-02-21 10:36:39:Type sizeof: 4
+2017-02-21 10:36:39:Fault Injection Successful after 5.18504309654s
+2017-02-21 10:37:00:event type: exit
+2017-02-21 10:37:00:exit code: 1

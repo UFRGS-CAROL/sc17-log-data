@@ -1,0 +1,82 @@
+[INFO -- 2017-02-26 02:55:57]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 02:55:57]
+Initialization strings:
+[INFO -- 2017-02-26 02:55:57]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-26 02:55:57]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 02:55:57]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 02:55:57]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 02:55:57]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 02:55:57]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-26 02:55:57]
+initSignal:0
+[INFO -- 2017-02-26 02:55:57]
+endSignal:2
+[INFO -- 2017-02-26 02:55:57]
+seqSignal:30
+[INFO -- 2017-02-26 02:55:57]
+faultMode:0
+[EXCEPTION -- 2017-02-26 02:55:59]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-02-26 02:56:03]
+Backtrace BEGIN:
+#0  pthread_cond_wait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S:185
+#1  0x00007ffff7911675 in ?? ()
+#2  0x0000000000000000 in ?? ()
+
+180	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S
+
+Backtrace END
+Memory content before bitflip:0x510x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7ffff7642268 
+address max offset: 4
+Memory content after  bitflip:0x510x000x010x00
+frame name: __pthread_create_2_1
+symbol name: __nptl_nthreads
+symbol filename: pthread_create.c
+symbol line: 50
+value: 65617
+value address: 0x7ffff7642268 <__nptl_nthreads>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-02-26 02:56:03]
+Fault Injection Successful after 6.07528209686s
+[INFO -- 2017-02-26 02:56:03]
+Backtrace BEGIN:
+#0  pthread_cond_wait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S:185
+#1  0x00007ffff7911675 in ?? ()
+#2  0x0000000000000000 in ?? ()
+
+180	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7ffff7646318 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x080x000x000x000x00
+frame name: __pthread_create_2_1
+symbol name: __nptl_last_event
+symbol filename: pthread_create.c
+symbol line: 47
+value: 0x0
+value address: 0x7ffff7646318 <__nptl_last_event>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-26 02:56:03]
+Fault Injection Successful after 6.33464598656s
+[INFO -- 2017-02-26 02:56:16]
+event type: exit
+[INFO -- 2017-02-26 02:56:16]
+exit code: 0

@@ -1,0 +1,59 @@
+[INFO -- 2017-03-04 18:54:41]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-04 18:54:41]
+Initialization strings:
+[INFO -- 2017-03-04 18:54:41]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-04 18:54:41]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-04 18:54:41]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-04 18:54:42]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-04 18:54:42]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-04 18:54:42]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-04 18:54:42]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-04 18:54:42]
+initSignal:20
+[INFO -- 2017-03-04 18:54:42]
+endSignal:25
+[INFO -- 2017-03-04 18:54:42]
+seqSignal:20
+[INFO -- 2017-03-04 18:54:42]
+faultMode:2
+[INFO -- 2017-03-04 18:55:08]
+Backtrace BEGIN:
+#0  0x00007ffff6be6b70 in __close_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6b92ee0 in _IO_new_file_close_it (fp=fp@entry=0x1920e80) at fileops.c:171
+#2  0x00007ffff6b87c17 in _IO_new_fclose (fp=0x1920e80) at iofclose.c:59
+#3  0x000000000054c1c6 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:503
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe60c
+address max offset: 4
+Memory content after  bitflip:0xc50x2c0xf70xff
+frame name: DrawSquaresToFile
+symbol name: xloc
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c
+symbol line: 445
+value: -578363
+value address: 0x7fffffffe60c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-04 18:55:08]
+Fault Injection Successful after 26.6622319221s
+[INFO -- 2017-03-04 18:55:45]
+event type: exit
+[INFO -- 2017-03-04 18:55:45]
+exit code: 0

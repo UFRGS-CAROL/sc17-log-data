@@ -1,0 +1,75 @@
+[INFO -- 2017-03-10 05:37:42]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-10 05:37:42]
+Initialization strings:
+[INFO -- 2017-03-10 05:37:42]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-10 05:37:42]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 05:37:42]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-10 05:37:42]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-10 05:37:42]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-10 05:37:42]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-10 05:37:42]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-10 05:37:42]
+initSignal:30
+[INFO -- 2017-03-10 05:37:42]
+endSignal:35
+[INFO -- 2017-03-10 05:37:42]
+seqSignal:20
+[INFO -- 2017-03-10 05:37:42]
+faultMode:3
+[EXCEPTION -- 2017-03-10 05:38:17]
+pythonException: invalid frame
+[INFO -- 2017-03-10 05:38:17]
+Backtrace BEGIN:
+#0  0x0000000000451292 in State::L__ZN5State12set_timestepEdd_844__par_loop0_2_33 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:852
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe2e0 in ?? ()
+#3  0x00007fffffffe2d0 in ?? ()
+#4  0x00007fffffffe308 in ?? ()
+#5  0x00000000000000f4 in ?? ()
+#6  0x00007ffff68f7bc0 in ?? ()
+#7  0x00007fff000000f4 in ?? ()
+#8  0x00007ffff68f43f0 in ?? ()
+#9  0x00007fff00000001 in ?? ()
+#10 0x0000000000000000 in ?? ()
+
+847	      if (celltype[ic] == REAL_CELL) {
+848	         int lev = level[ic];
+849	         double wavespeed = sqrt(g*H[ic]);
+850	         double xspeed = (fabs(U[ic])+wavespeed)/mesh->lev_deltax[lev];
+851	         double yspeed = (fabs(V[ic])+wavespeed)/mesh->lev_deltay[lev];
+852	         double deltaT=sigma/(xspeed+yspeed);
+853	         if (deltaT < mindeltaT) mindeltaT = deltaT;
+854	      }
+855	   }
+856	
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7d07a8 
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: State::L__ZN5State12set_timestepEdd_844__par_loop0_2_33
+symbol name: save_ncells
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 162
+value: 0
+value address: 0x7d07a8 <save_ncells>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-10 05:38:17]
+Fault Injection Successful after 35.7611351013s
+[INFO -- 2017-03-10 05:38:52]
+event type: exit
+[INFO -- 2017-03-10 05:38:52]
+exit code: 0

@@ -1,0 +1,59 @@
+[INFO -- 2017-02-25 01:40:23]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 01:40:23]
+Initialization strings:
+[INFO -- 2017-02-25 01:40:23]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-25 01:40:23]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 01:40:23]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 01:40:23]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 01:40:23]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 01:40:23]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-25 01:40:23]
+initSignal:3
+[INFO -- 2017-02-25 01:40:23]
+endSignal:6
+[INFO -- 2017-02-25 01:40:23]
+seqSignal:15
+[INFO -- 2017-02-25 01:40:23]
+faultMode:2
+[EXCEPTION -- 2017-02-25 01:40:27]
+gdbException: Cannot access memory at address 0x583f68de
+[INFO -- 2017-02-25 01:40:27]
+Backtrace BEGIN:
+#0  _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2028
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "323.788565\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000404598 in read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:207
+#4  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+2023	in vfscanf.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe220
+address max offset: 8
+Memory content after  bitflip:0x5e0x2b0xaf0x7e0x500x650x330xee
+frame name: _IO_vfscanf_internal
+symbol name: ptrs_to_free
+symbol filename: vfscanf.c
+symbol line: 243
+value: 0x0
+value address: 0x7fffffffe220
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-25 01:40:27]
+Fault Injection Successful after 4.46670389175s
+[INFO -- 2017-02-25 01:40:48]
+event type: exit
+[INFO -- 2017-02-25 01:40:48]
+exit code: 0

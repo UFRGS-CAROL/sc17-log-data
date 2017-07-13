@@ -1,0 +1,62 @@
+[INFO -- 2017-03-13 19:16:35]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-13 19:16:35]
+Initialization strings:
+[INFO -- 2017-03-13 19:16:36]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-13 19:16:36]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-13 19:16:36]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-13 19:16:36]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-13 19:16:36]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-13 19:16:36]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-13 19:16:36]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-13 19:16:36]
+initSignal:35
+[INFO -- 2017-03-13 19:16:36]
+endSignal:40
+[INFO -- 2017-03-13 19:16:36]
+seqSignal:20
+[INFO -- 2017-03-13 19:16:36]
+faultMode:0
+[EXCEPTION -- 2017-03-13 19:17:20]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-03-13 19:17:27]
+Backtrace BEGIN:
+#0  0x00007ffff6ba1f4a in __strchrnul (s=s@entry=0x574746 "\n", c_in=c_in@entry=37) at ../string/strchrnul.c:52
+#1  0x00007ffff6b67453 in __find_specmb (format=0x574746 "\n") at printf-parse.h:108
+#2  _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe118) at vfprintf.c:1669
+#3  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#4  0x000000000054b5c5 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:470
+#5  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#6  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+47	in ../string/strchrnul.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffe790
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x200x00
+frame name: write_graphics_info
+symbol name: simTime
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c
+symbol line: 749
+value: 4.4501477170144028e-308
+value address: 0x7fffffffe790
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-13 19:17:27]
+Fault Injection Successful after 51.3963189125s
+[INFO -- 2017-03-13 19:18:34]
+event type: exit
+[INFO -- 2017-03-13 19:18:34]
+exit code: 0

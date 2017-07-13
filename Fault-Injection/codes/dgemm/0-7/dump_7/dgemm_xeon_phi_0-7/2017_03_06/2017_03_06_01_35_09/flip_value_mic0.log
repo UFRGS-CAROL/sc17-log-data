@@ -1,0 +1,67 @@
+[INFO -- 2017-03-06 01:34:15]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 01:34:15]
+Initialization strings:
+[INFO -- 2017-03-06 01:34:15]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-06 01:34:15]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 01:34:15]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 01:34:15]
+(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-06 01:34:15]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-06 01:34:15]
+(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+[INFO -- 2017-03-06 01:34:15]
+initSignal:0
+[INFO -- 2017-03-06 01:34:15]
+endSignal:7
+[INFO -- 2017-03-06 01:34:15]
+seqSignal:15
+[INFO -- 2017-03-06 01:34:15]
+faultMode:0
+[INFO -- 2017-03-06 01:34:16]
+Backtrace BEGIN:
+#0  0x0000000000403bc3 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:249
+#1  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+244	        printf( "The inputB file was not opened\n" );
+245	        exit(1);
+246	    }
+247	
+248	    for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+249	            fread(&A[(i)+(order)*(j)], 1, sizeof(double), file);
+250	            fread(&B[(i)+(order)*(j)], 1, sizeof(double), file2);
+251	        }
+252	    fclose(file);
+253	    fclose(file2);
+
+Backtrace END
+Fliping array at pos: 141
+Memory content before bitflip:0x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffe875 
+address max offset: 1
+Memory content after  bitflip:0x02
+frame name: main
+symbol name: test_info
+symbol filename: dgemm.c
+symbol line: 341
+value: "0\206\377\367\377\177\000\000\b\000\000\000\000\000\000\000\034\327\354\366\000\000\000\000.(\274<", '\000' <repeats 12 times>, "h\350\377\377\377\177\000\000\001\000\000\000\000\000\000\000p\351\377\377\377\177\000\000\370\234\377\367\377\177\000\000\000\000\000\000\000\000\000\000\230\351\377\377\377\177\000\000\000\215\377\367\377\177\000\000\314h\336\367\377\177\000\000\a\000\000\000\000\000\000\000\000\215\377\367\377\177\000\000\001", '\000' <repeats 15 times>, "\001\000\000\000\000\002\000\000,]\336\367\377\177\000\000\070L\r\367\377\177\000\000\001\b\000\000\000\000\000\000HJ\r\367\377\177\000\000\240\231\377\367\377\177\000\000\070L\r\367\377\177\000\000\020`\336\367\377\177\000"
+value address: 0x7fffffffe7e8
+Type: The type is an array.
+Type sizeof: 200
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 199L)
+
+[INFO -- 2017-03-06 01:34:16]
+Fault Injection Successful after 1.66166305542s
+[INFO -- 2017-03-06 01:35:00]
+event type: exit
+[INFO -- 2017-03-06 01:35:00]
+exit code: 0

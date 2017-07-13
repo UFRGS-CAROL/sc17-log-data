@@ -1,0 +1,69 @@
+2016-10-13 21:06:39:Initialization strings:
+2016-10-13 21:06:39:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-13 21:06:39:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-13 21:06:39:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-13 21:06:39:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-13 21:06:39:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-13 21:06:39:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-13 21:06:39:Trying Fault Injection
+2016-10-13 21:06:39:Inferior PID: 230526
+2016-10-13 21:06:39:Inferior is valid: True
+2016-10-13 21:06:39:Inferior #threads: 1
+2016-10-13 21:06:39:Backtrace BEGIN:
+2016-10-13 21:06:40:#0  _dl_setup_hash (map=map@entry=0x7ffff7ffab28) at dl-lookup.c:926
+#1  0x00007ffff7de38f7 in _dl_map_object_from_fd (name=name@entry=0x400a65 "libiomp5.so", fd=-1, fbp=fbp@entry=0x7fffffffe3c8, realname=<optimized out>, loader=loader@entry=0x7ffff7ffe168, l_type=l_type@entry=1, mode=0, stack_endp=0x7fffffffe3c0, nsid=0) at dl-load.c:1367
+#2  0x00007ffff7de52f9 in _dl_map_object (loader=0x7ffff7ffe168, name=0x400a65 "libiomp5.so", type=1, trace_mode=0, mode=0, nsid=<optimized out>) at dl-load.c:2188
+#3  0x00007ffff7de964f in openaux (a=a@entry=0x7fffffffe9b8) at dl-deps.c:63
+#4  0x00007ffff7deba83 in _dl_catch_error (objname=objname@entry=0x7fffffffe9b0, errstring=errstring@entry=0x7fffffffe9a8, mallocedp=mallocedp@entry=0x7fffffffe9a7, operate=operate@entry=0x7ffff7de9620 <openaux>, args=args@entry=0x7fffffffe9b8) at dl-error.c:187
+#5  0x00007ffff7de98a9 in _dl_map_object_deps (map=map@entry=0x7ffff7ffe168, preloads=<optimized out>, npreloads=npreloads@entry=0, trace_mode=trace_mode@entry=0, open_mode=open_mode@entry=0) at dl-deps.c:254
+#6  0x00007ffff7ddff28 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1612
+#7  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#8  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#9  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#10 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#11 0x0000000000000007 in ?? ()
+#12 0x00007fffffffedf0 in ?? ()
+#13 0x00007fffffffee1e in ?? ()
+#14 0x00007fffffffee22 in ?? ()
+#15 0x00007fffffffee25 in ?? ()
+#16 0x00007fffffffee62 in ?? ()
+#17 0x00007fffffffee9e in ?? ()
+#18 0x00007fffffffeed8 in ?? ()
+#19 0x0000000000000000 in ?? ()
+
+2016-10-13 21:06:40:921	in dl-lookup.c
+
+2016-10-13 21:06:40:Backtrace END
+2016-10-13 21:06:40:Thread name: None
+2016-10-13 21:06:40:Thread num: 1
+2016-10-13 21:06:40:Thread ptid: (230526, 230526, 0)
+2016-10-13 21:06:40:bitFlip function
+2016-10-13 21:06:40:Type: The type is a pointer.
+2016-10-13 21:06:40:Type sizeof: 8
+2016-10-13 21:06:40:Fliping a bit of the pointer
+2016-10-13 21:06:40:Mem contents(hex):0xa70xe90xff0xff0xff0x7f0x000x00
+2016-10-13 21:06:40:base address to flip value: 0x7fffffffe780
+2016-10-13 21:06:40:address max offset: 8
+2016-10-13 21:06:40:Memory content before bitflip:0xa70xe90xff0xff0xff0x7f0x000x00
+2016-10-13 21:06:40:Memory content after  bitflip:0x270xe90xff0xff0xff0x7f0x000x00
+2016-10-13 21:06:40:Mem contents(hex):0x270xe90xff0xff0xff0x7f0x000x00
+2016-10-13 21:06:40:frame name: _dl_catch_error
+2016-10-13 21:06:40:symbol name: mallocedp
+2016-10-13 21:06:40:symbol filename: dl-error.c
+2016-10-13 21:06:40:symbol line: 162
+2016-10-13 21:06:40:value: 0x7fffffffe9a7
+2016-10-13 21:06:40:value address: 0x7fffffffe780
+2016-10-13 21:06:40:Type: The type is a pointer.
+2016-10-13 21:06:40:Type sizeof: 8
+2016-10-13 21:06:40:Fault Injection Successful after 1.38510704041s
+2016-10-13 21:06:40:Fault Already Injected
+2016-10-13 21:06:41:Fault Already Injected
+2016-10-13 21:06:43:Fault Already Injected
+2016-10-13 21:06:46:Fault Already Injected
+2016-10-13 21:06:46:Fault Already Injected
+2016-10-13 21:06:47:Fault Already Injected
+2016-10-13 21:06:47:Fault Already Injected
+2016-10-13 21:06:48:Fault Already Injected
+2016-10-13 21:06:48:Fault Already Injected
+2016-10-13 21:06:50:event type: exit
+2016-10-13 21:06:50:exit code: 0

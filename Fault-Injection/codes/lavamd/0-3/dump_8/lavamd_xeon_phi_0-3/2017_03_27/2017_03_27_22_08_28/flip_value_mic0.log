@@ -1,0 +1,60 @@
+[INFO -- 2017-03-27 22:08:02]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 22:08:02]
+Initialization strings:
+[INFO -- 2017-03-27 22:08:02]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 22:08:02]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 22:08:02]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 22:08:02]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 22:08:02]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 22:08:02]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 22:08:02]
+initSignal:0
+[INFO -- 2017-03-27 22:08:02]
+endSignal:3
+[INFO -- 2017-03-27 22:08:02]
+seqSignal:30
+[INFO -- 2017-03-27 22:08:02]
+faultMode:2
+[INFO -- 2017-03-27 22:08:07]
+Backtrace BEGIN:
+#0  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffdd18) at allocatestack.c:548
+#1  __pthread_create_2_1 (newthread=0x7fffffffdd10, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fffecf11600) at pthread_create.c:524
+#2  0x00007ffff790d323 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+543	in allocatestack.c
+
+Backtrace END
+Fliping array at pos: 2
+Memory content before bitflip:0xd00x020x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff743c3a8 
+address max offset: 4
+Memory content after  bitflip:0x540x490x5c0xf1
+frame name: allocate_stack
+symbol name: _thread_db_pthread_tid
+symbol filename: ../nptl_db/structs.def
+symbol line: 28
+value: {32, 1, 4049357140}
+value address: 0x7ffff743c3a0 <_thread_db_pthread_tid>
+Type: The type is an array.
+Type sizeof: 12
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 2L)
+
+[INFO -- 2017-03-27 22:08:07]
+Fault Injection Successful after 5.06320905685s
+[INFO -- 2017-03-27 22:08:22]
+event type: exit
+[INFO -- 2017-03-27 22:08:22]
+exit code: 0

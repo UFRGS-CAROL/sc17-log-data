@@ -1,0 +1,132 @@
+2017-01-26 09:56:49:Starting flip_value script
+2017-01-26 09:56:49:Initialization strings:
+2017-01-26 09:56:50:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-26 09:56:50:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-26 09:56:50:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-26 09:56:50:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-26 09:56:50:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-26 09:56:50:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-26 09:56:50:initSignal:0
+2017-01-26 09:56:50:endSignal:2
+2017-01-26 09:56:50:seqSignal:30
+2017-01-26 09:56:50:Trying Fault Injection
+2017-01-26 09:56:50:Inferior PID: 144513
+2017-01-26 09:56:50:Inferior is valid: True
+2017-01-26 09:56:50:Inferior #threads: 1
+2017-01-26 09:56:50:Backtrace BEGIN:
+2017-01-26 09:56:50:#0  0x00007ffff7defed2 in dl_open_worker (a=a@entry=0x7fffffffd4d8) at dl-open.c:242
+#1  0x00007ffff7deba83 in _dl_catch_error (objname=objname@entry=0x7fffffffd4c8, errstring=errstring@entry=0x7fffffffd4d0, mallocedp=mallocedp@entry=0x7fffffffd4c7, operate=operate@entry=0x7ffff7defe00 <dl_open_worker>, args=args@entry=0x7fffffffd4d8) at dl-error.c:187
+#2  0x00007ffff7def9b3 in _dl_open (file=0x7ffff6ece92b "", mode=-2147483647, caller_dlopen=<optimized out>, nsid=0, argc=9, argv=<optimized out>, env=0x7fffffffec58) at dl-open.c:652
+#3  0x00007ffff6ecdeb7 in dlopen_doit (a=a@entry=0x7fffffffd6f0) at dlopen.c:66
+#4  0x00007ffff7deba83 in _dl_catch_error (objname=0x60c0e0, errstring=0x60c0e8, mallocedp=0x60c0d8, operate=0x7ffff6ecde60 <dlopen_doit>, args=0x7fffffffd6f0) at dl-error.c:187
+#5  0x00007ffff6ece4b5 in _dlerror_run (operate=operate@entry=0x7ffff6ecde60 <dlopen_doit>, args=args@entry=0x7fffffffd6f0) at dlerror.c:163
+#6  0x00007ffff6ecdf41 in __dlopen (file=<optimized out>, mode=<optimized out>) at dlopen.c:87
+#7  0x00007ffff7909a2b in ?? ()
+#8  0x0000000000000000 in ?? ()
+
+2017-01-26 09:56:50:237	in dl-open.c
+
+2017-01-26 09:56:50:Backtrace END
+2017-01-26 09:56:50:Thread name: None
+2017-01-26 09:56:50:Thread num: 1
+2017-01-26 09:56:50:Thread ptid: (144513, 144513, 0)
+2017-01-26 09:56:50:bitFlip function
+2017-01-26 09:56:50:Type: The type is a structure.
+2017-01-26 09:56:50:Type sizeof: 72
+2017-01-26 09:56:50:Fliping value of field: mode
+2017-01-26 09:56:50:bitFlip function
+2017-01-26 09:56:50:Type: The type is an integer type.
+2017-01-26 09:56:50:Type sizeof: 4
+2017-01-26 09:56:50:Mem contents(hex):0x010x000x000x80
+2017-01-26 09:56:50:base address to flip value: 0x7fffffffd4e0
+2017-01-26 09:56:50:address max offset: 4
+2017-01-26 09:56:50:Memory content before bitflip:0x010x000x000x80
+2017-01-26 09:56:50:Memory content after  bitflip:0x010x000x000xa0
+2017-01-26 09:56:51:Mem contents(hex):0x010x000x000xa0
+2017-01-26 09:56:51:frame name: _dl_open
+2017-01-26 09:56:51:symbol name: args
+2017-01-26 09:56:51:symbol filename: dl-open.c
+2017-01-26 09:56:51:symbol line: 638
+2017-01-26 09:56:51:value: {file = 0x7ffff6ece92b "", mode = -1610612735, caller_dlopen = 0x7ffff7909a2b, caller_dl_open = 0x7ffff6ecdeb7 <dlopen_doit+87>, map = 0x7ffff7ffe168, nsid = 0, argc = 9, argv = 0x7fffffffec08, env = 0x7fffffffec58}
+2017-01-26 09:56:51:value address: 0x7fffffffd4d8
+2017-01-26 09:56:51:Type: The type is a structure.
+2017-01-26 09:56:51:Type sizeof: 72
+2017-01-26 09:56:51:Field name: file
+2017-01-26 09:56:51:Field Type:
+2017-01-26 09:56:51:Type: The type is a pointer.
+2017-01-26 09:56:51:Type sizeof: 8
+2017-01-26 09:56:51:Field name: mode
+2017-01-26 09:56:51:Field Type:
+2017-01-26 09:56:51:Type: The type is an integer type.
+2017-01-26 09:56:51:Type sizeof: 4
+2017-01-26 09:56:51:Field name: caller_dlopen
+2017-01-26 09:56:51:Field Type:
+2017-01-26 09:56:51:Type: The type is a pointer.
+2017-01-26 09:56:51:Type sizeof: 8
+2017-01-26 09:56:51:Field name: caller_dl_open
+2017-01-26 09:56:51:Field Type:
+2017-01-26 09:56:51:Type: The type is a pointer.
+2017-01-26 09:56:51:Type sizeof: 8
+2017-01-26 09:56:51:Field name: map
+2017-01-26 09:56:51:Field Type:
+2017-01-26 09:56:51:Type: The type is a pointer.
+2017-01-26 09:56:51:Type sizeof: 8
+2017-01-26 09:56:51:Field name: nsid
+2017-01-26 09:56:51:Field Type:
+2017-01-26 09:56:51:Type: The type is an integer type.
+2017-01-26 09:56:51:Type sizeof: 8
+2017-01-26 09:56:51:Field name: argc
+2017-01-26 09:56:51:Field Type:
+2017-01-26 09:56:51:Type: The type is an integer type.
+2017-01-26 09:56:51:Type sizeof: 4
+2017-01-26 09:56:51:Field name: argv
+2017-01-26 09:56:51:Field Type:
+2017-01-26 09:56:51:Type: The type is a pointer.
+2017-01-26 09:56:51:Type sizeof: 8
+2017-01-26 09:56:51:Field name: env
+2017-01-26 09:56:51:Field Type:
+2017-01-26 09:56:51:Type: The type is a pointer.
+2017-01-26 09:56:51:Type sizeof: 8
+2017-01-26 09:56:51:Fault Injection Successful after 1.0171918869s
+2017-01-26 09:56:51:Fault Already Injected
+2017-01-26 09:56:51:Fault Already Injected
+2017-01-26 09:56:52:Fault Already Injected
+2017-01-26 09:56:52:Fault Already Injected
+2017-01-26 09:56:52:Fault Already Injected
+2017-01-26 09:56:53:Fault Already Injected
+2017-01-26 09:56:53:Fault Already Injected
+2017-01-26 09:56:53:Fault Already Injected
+2017-01-26 09:56:54:Fault Already Injected
+2017-01-26 09:56:54:Fault Already Injected
+2017-01-26 09:56:54:Fault Already Injected
+2017-01-26 09:56:55:Fault Already Injected
+2017-01-26 09:56:55:Fault Already Injected
+2017-01-26 09:56:56:Fault Already Injected
+2017-01-26 09:56:56:Fault Already Injected
+2017-01-26 09:56:56:Fault Already Injected
+2017-01-26 09:56:56:Fault Already Injected
+2017-01-26 09:56:56:Fault Already Injected
+2017-01-26 09:56:57:Fault Already Injected
+2017-01-26 09:56:57:Fault Already Injected
+2017-01-26 09:56:58:Fault Already Injected
+2017-01-26 09:56:58:Fault Already Injected
+2017-01-26 09:56:58:Fault Already Injected
+2017-01-26 09:56:58:Fault Already Injected
+2017-01-26 09:56:58:Fault Already Injected
+2017-01-26 09:56:59:Fault Already Injected
+2017-01-26 09:56:59:Fault Already Injected
+2017-01-26 09:56:59:Fault Already Injected
+2017-01-26 09:56:59:Fault Already Injected
+2017-01-26 09:57:00:Fault Already Injected
+2017-01-26 09:57:00:Fault Already Injected
+2017-01-26 09:57:00:Fault Already Injected
+2017-01-26 09:57:00:Fault Already Injected
+2017-01-26 09:57:01:Fault Already Injected
+2017-01-26 09:57:01:Fault Already Injected
+2017-01-26 09:57:01:Fault Already Injected
+2017-01-26 09:57:02:Fault Already Injected
+2017-01-26 09:57:02:Fault Already Injected
+2017-01-26 09:57:02:Fault Already Injected
+2017-01-26 09:57:02:Fault Already Injected
+2017-01-26 09:57:02:event type: exit
+2017-01-26 09:57:02:exit code: 0

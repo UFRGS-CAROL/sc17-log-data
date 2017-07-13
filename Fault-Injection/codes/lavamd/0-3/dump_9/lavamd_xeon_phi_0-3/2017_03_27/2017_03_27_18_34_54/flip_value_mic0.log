@@ -1,0 +1,77 @@
+[INFO -- 2017-03-27 18:34:45]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 18:34:45]
+Initialization strings:
+[INFO -- 2017-03-27 18:34:46]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 18:34:46]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 18:34:46]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 18:34:46]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 18:34:46]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 18:34:46]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 18:34:46]
+initSignal:0
+[INFO -- 2017-03-27 18:34:46]
+endSignal:3
+[INFO -- 2017-03-27 18:34:46]
+seqSignal:30
+[INFO -- 2017-03-27 18:34:46]
+faultMode:0
+[EXCEPTION -- 2017-03-27 18:34:47]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2017-03-27 18:34:47]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-03-27 18:34:48]
+Backtrace BEGIN:
+#0  0x00007ffff71505c7 in __GI_memcpy (dstpp=dstpp@entry=0x60f9b8, srcpp=<optimized out>, len=<optimized out>) at ../string/memcpy.c:59
+#1  0x00007ffff7105164 in msort_with_tmp (p=p@entry=0x7fffffffd9d8, b=b@entry=0x60f9b8, n=n@entry=4) at msort.c:160
+#2  0x00007ffff7105027 in msort_with_tmp (n=4, b=0x60f9b8, p=<optimized out>) at msort.c:45
+#3  msort_with_tmp (p=p@entry=0x7fffffffd9d8, b=b@entry=0x60f9a0, n=n@entry=7) at msort.c:54
+#4  0x00007ffff7105027 in msort_with_tmp (n=7, b=0x60f9a0, p=<optimized out>) at msort.c:45
+#5  msort_with_tmp (p=p@entry=0x7fffffffd9d8, b=b@entry=0x60f968, n=n@entry=14) at msort.c:54
+#6  0x00007ffff7105011 in msort_with_tmp (n=14, b=<optimized out>, p=<optimized out>) at msort.c:45
+#7  msort_with_tmp (p=p@entry=0x7fffffffd9d8, b=b@entry=0x60f968, n=n@entry=28) at msort.c:53
+#8  0x00007ffff7105011 in msort_with_tmp (n=28, b=<optimized out>, p=<optimized out>) at msort.c:45
+#9  msort_with_tmp (p=p@entry=0x7fffffffd9d8, b=b@entry=0x60f968, n=n@entry=57) at msort.c:53
+#10 0x00007ffff7105027 in msort_with_tmp (n=57, b=0x60f968, p=<optimized out>) at msort.c:45
+#11 msort_with_tmp (p=p@entry=0x7fffffffd9d8, b=b@entry=0x60f7a0, n=n@entry=114) at msort.c:54
+#12 0x00007ffff7105027 in msort_with_tmp (n=114, b=0x60f7a0, p=<optimized out>) at msort.c:45
+#13 msort_with_tmp (p=p@entry=0x7fffffffd9d8, b=0x60f410, n=n@entry=228) at msort.c:54
+#14 0x00007ffff71053da in msort_with_tmp (n=6353936, b=<optimized out>, p=0x7fffffffd9d8) at msort.c:45
+#15 __GI___qsort_r (b=0x7ffff6df7240, n=228, s=268, cmp=<optimized out>, arg=<optimized out>) at msort.c:254
+#16 0x00007ffff787af7d in ?? ()
+#17 0x00007fff000000e3 in ?? ()
+#18 0x00007fff00000004 in ?? ()
+#19 0x0000000000000003 in ?? ()
+#20 0x0000000000000000 in ?? ()
+
+54	in ../string/memcpy.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0xd80xd90xff0xff0xff0x7f0x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffd7f8
+address max offset: 8
+Memory content after  bitflip:0xd80xd90xfb0xff0xff0x7f0x000x00
+frame name: msort_with_tmp
+symbol name: p
+symbol filename: msort.c
+symbol line: 40
+value: 0x7fffffffd9d8
+value address: 0x7fffffffd7f8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-27 18:34:48]
+Fault Injection Successful after 2.27054190636s
+[INFO -- 2017-03-27 18:34:48]
+event type: exit
+[EXCEPTION -- 2017-03-27 18:34:48]
+exit code: no exit code available

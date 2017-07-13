@@ -1,0 +1,58 @@
+[INFO -- 2017-02-25 15:45:48]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 15:45:48]
+Initialization strings:
+[INFO -- 2017-02-25 15:45:49]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-25 15:45:49]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 15:45:49]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 15:45:49]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 15:45:49]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 15:45:49]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-25 15:45:49]
+initSignal:9
+[INFO -- 2017-02-25 15:45:49]
+endSignal:12
+[INFO -- 2017-02-25 15:45:49]
+seqSignal:15
+[INFO -- 2017-02-25 15:45:49]
+faultMode:2
+[INFO -- 2017-02-25 15:45:59]
+Backtrace BEGIN:
+#0  0x00007ffff714f7a8 in __memchr (s=s@entry=0x7ffff7fc8118, c_in=c_in@entry=10, n=n@entry=255) at ../string/memchr.c:158
+#1  0x00007ffff7139361 in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "329.348419\n", n=255, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:94
+#2  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "329.348419\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#3  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe640 "329.348419\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#4  0x0000000000404538 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:202
+#5  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+153	in ../string/memchr.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe5d8
+address max offset: 8
+Memory content after  bitflip:0xcc0x180xfb0xba0x990x330x0e0xde
+frame name: __GI__IO_getline_info
+symbol name: eof
+symbol filename: iogetline.c
+symbol line: 57
+value: 0x0
+value address: 0x7fffffffe5d8
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-25 15:45:59]
+Fault Injection Successful after 10.7005898952s
+[INFO -- 2017-02-25 15:46:14]
+event type: exit
+[INFO -- 2017-02-25 15:46:14]
+exit code: 0

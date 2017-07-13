@@ -1,0 +1,294 @@
+2017-01-26 05:19:27:Starting flip_value script
+2017-01-26 05:19:27:Initialization strings:
+2017-01-26 05:19:27:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-26 05:19:27:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-26 05:19:27:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-26 05:19:27:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-26 05:19:27:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-26 05:19:27:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-26 05:19:27:initSignal:4
+2017-01-26 05:19:27:endSignal:6
+2017-01-26 05:19:27:seqSignal:30
+2017-01-26 05:19:32:Trying Fault Injection
+2017-01-26 05:19:32:Inferior PID: 46490
+2017-01-26 05:19:32:Inferior is valid: True
+2017-01-26 05:19:32:Inferior #threads: 229
+2017-01-26 05:19:32:Backtrace BEGIN:
+2017-01-26 05:19:32:#0  0x000000000040452b in L_lud_omp_69__par_loop0_2_4 () at lud_omp.c:109
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-01-26 05:19:32:104	            i_global += BS * (chunk_idx + 1);
+105	            for (i = 0; i < BS; i++) {
+106	                for (j = 0; j < BS; j++) {
+107	                    sum = 0.f;
+108	                    for (k=0; k < j; k++) {
+109	                        sum += BB((i_global+i),(j_global+k)) * temp[BS*k + j];
+110	                    }
+111	                    i_here = i_global + i;
+112	                    j_here = j_global + j;
+113	                    a[size*i_here + j_here] = ( a[size*i_here+j_here] - sum ) / a[size*(offset+j) + offset+j];
+
+2017-01-26 05:19:32:Backtrace END
+2017-01-26 05:19:35:Thread name: None
+2017-01-26 05:19:35:Thread num: 1
+2017-01-26 05:19:35:Thread ptid: (46490, 46490, 0)
+2017-01-26 05:19:35:bitFlip function
+2017-01-26 05:19:35:Type: The type is an integer type.
+2017-01-26 05:19:35:Type sizeof: 4
+2017-01-26 05:19:35:Mem contents(hex):0x460x000x000x00
+2017-01-26 05:19:35:base address to flip value: 0x7fffffffd90c
+2017-01-26 05:19:35:address max offset: 4
+2017-01-26 05:19:35:Memory content before bitflip:0x460x000x000x00
+2017-01-26 05:19:35:Memory content after  bitflip:0x460x400x000x00
+2017-01-26 05:19:35:Mem contents(hex):0x460x400x000x00
+2017-01-26 05:19:35:frame name: L_lud_omp_69__par_loop0_2_4
+2017-01-26 05:19:35:symbol name: chunks_in_inter_row
+2017-01-26 05:19:35:symbol filename: lud_omp.c
+2017-01-26 05:19:35:symbol line: 45
+2017-01-26 05:19:35:value: 16454
+2017-01-26 05:19:35:value address: 0x7fffffffd90c
+2017-01-26 05:19:35:Type: The type is an integer type.
+2017-01-26 05:19:35:Type sizeof: 4
+2017-01-26 05:19:35:Fault Injection Successful after 8.67353200912s
+2017-01-26 05:19:35:Fault Already Injected
+2017-01-26 05:19:35:Fault Already Injected
+2017-01-26 05:19:36:Fault Already Injected
+2017-01-26 05:19:36:Fault Already Injected
+2017-01-26 05:19:36:Fault Already Injected
+2017-01-26 05:19:36:Fault Already Injected
+2017-01-26 05:19:36:Fault Already Injected
+2017-01-26 05:19:36:Fault Already Injected
+2017-01-26 05:19:36:Fault Already Injected
+2017-01-26 05:19:36:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:37:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:38:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:39:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:40:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:41:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:42:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:43:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:44:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:45:Fault Already Injected
+2017-01-26 05:19:46:Fault Already Injected
+2017-01-26 05:19:46:Fault Already Injected
+2017-01-26 05:19:46:Fault Already Injected
+2017-01-26 05:19:46:event type: exit
+2017-01-26 05:19:46:exit code: no exit code available

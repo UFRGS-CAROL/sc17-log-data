@@ -1,0 +1,53 @@
+2017-01-26 02:23:15:Starting flip_value script
+2017-01-26 02:23:15:Initialization strings:
+2017-01-26 02:23:15:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-26 02:23:15:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-26 02:23:15:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-26 02:23:15:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-26 02:23:15:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-26 02:23:15:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-26 02:23:15:initSignal:6
+2017-01-26 02:23:15:endSignal:8
+2017-01-26 02:23:15:seqSignal:30
+2017-01-26 02:23:22:Trying Fault Injection
+2017-01-26 02:23:22:Inferior PID: 110564
+2017-01-26 02:23:22:Inferior is valid: True
+2017-01-26 02:23:22:Inferior #threads: 229
+2017-01-26 02:23:22:Backtrace BEGIN:
+2017-01-26 02:23:22:#0  do_system (line=0x7fffffffe650 "echo 1485415073 > /micNfs/carol/logs/timestamp.txt") at ../sysdeps/posix/system.c:116
+#1  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#2  0x0000000000405bee in end_iteration () at ../include/log_helper.c:336
+#3  0x0000000000402c82 in main (argc=9, argv=0x7fffffffec08) at lud_check.c:126
+
+2017-01-26 02:23:22:111	in ../sysdeps/posix/system.c
+
+2017-01-26 02:23:22:Backtrace END
+2017-01-26 02:23:25:Thread name: None
+2017-01-26 02:23:25:Thread num: 1
+2017-01-26 02:23:25:Thread ptid: (110564, 110564, 0)
+2017-01-26 02:23:25:bitFlip function
+2017-01-26 02:23:25:Type: The type is an integer type.
+2017-01-26 02:23:25:Type sizeof: 8
+2017-01-26 02:23:25:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-01-26 02:23:25:base address to flip value: 0x60bd20 
+2017-01-26 02:23:25:address max offset: 8
+2017-01-26 02:23:25:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-01-26 02:23:25:Memory content after  bitflip:0x000x000x000x000x000x000x000x40
+2017-01-26 02:23:25:Mem contents(hex):0x000x000x000x000x000x000x000x40
+2017-01-26 02:23:25:frame name: update_timestamp
+2017-01-26 02:23:25:symbol name: kernels_total_errors
+2017-01-26 02:23:25:symbol filename: ../include/log_helper.c
+2017-01-26 02:23:25:symbol line: 60
+2017-01-26 02:23:25:value: 4611686018427387904
+2017-01-26 02:23:25:value address: 0x60bd20 <kernels_total_errors>
+2017-01-26 02:23:25:Type: The type is an integer type.
+2017-01-26 02:23:25:Type sizeof: 8
+2017-01-26 02:23:25:Fault Injection Successful after 10.6740319729s
+2017-01-26 02:23:25:Fault Already Injected
+2017-01-26 02:23:25:Fault Already Injected
+2017-01-26 02:23:26:Fault Already Injected
+2017-01-26 02:23:26:Fault Already Injected
+2017-01-26 02:23:26:Fault Already Injected
+2017-01-26 02:23:26:Fault Already Injected
+2017-01-26 02:23:26:event type: exit
+2017-01-26 02:23:26:exit code: 0

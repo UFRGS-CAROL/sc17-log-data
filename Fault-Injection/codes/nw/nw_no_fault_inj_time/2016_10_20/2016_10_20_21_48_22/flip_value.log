@@ -1,0 +1,49 @@
+2016-10-20 21:48:04:Initialization strings:
+2016-10-20 21:48:05:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-20 21:48:05:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-20 21:48:05:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-20 21:48:05:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-20 21:48:05:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-20 21:48:05:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-20 21:48:05:Trying Fault Injection
+2016-10-20 21:48:05:Inferior PID: 164864
+2016-10-20 21:48:05:Inferior is valid: True
+2016-10-20 21:48:05:Inferior #threads: 1
+2016-10-20 21:48:05:Backtrace BEGIN:
+2016-10-20 21:48:05:#0  __GI___waitpid (pid=164871, stat_loc=stat_loc@entry=0x7fffffffe5e8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff6d9d41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x000000000040648c in update_timestamp () at ../../include/log_helper.c:108
+#3  start_log_file (benchmark_name=0x28407 <error: Cannot access memory at address 0x28407>, test_info=0x7fffffffe5e8 "") at ../../include/log_helper.c:197
+#4  0x00000000004014df in runTest (argc=<optimized out>, argv=<optimized out>) at needle_check.cpp:294
+#5  main (argc=164871, argv=0x7fffffffe5e8) at needle_check.cpp:114
+
+2016-10-20 21:48:05:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-10-20 21:48:05:Backtrace END
+2016-10-20 21:48:05:Thread name: None
+2016-10-20 21:48:05:Thread num: 1
+2016-10-20 21:48:05:Thread ptid: (164864, 164864, 0)
+2016-10-20 21:48:05:bitFlip function
+2016-10-20 21:48:05:Type: The type is an integer type.
+2016-10-20 21:48:05:Type sizeof: 8
+2016-10-20 21:48:05:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-10-20 21:48:05:base address to flip value: 0x60a660 
+2016-10-20 21:48:05:address max offset: 8
+2016-10-20 21:48:05:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-10-20 21:48:05:Memory content after  bitflip:0x000x000x000x000x020x000x000x00
+2016-10-20 21:48:05:Mem contents(hex):0x000x000x000x000x020x000x000x00
+2016-10-20 21:48:05:frame name: update_timestamp
+2016-10-20 21:48:05:symbol name: it_time_start
+2016-10-20 21:48:05:symbol filename: ../../include/log_helper.c
+2016-10-20 21:48:05:symbol line: 65
+2016-10-20 21:48:05:value: 8589934592
+2016-10-20 21:48:05:value address: 0x60a660 <it_time_start>
+2016-10-20 21:48:05:Type: The type is an integer type.
+2016-10-20 21:48:05:Type sizeof: 8
+2016-10-20 21:48:05:Fault Injection Successful after 0.730643033981s
+2016-10-20 21:48:07:Fault Already Injected
+2016-10-20 21:48:10:Fault Already Injected
+2016-10-20 21:48:11:Fault Already Injected
+2016-10-20 21:48:14:Fault Already Injected
+2016-10-20 21:48:15:event type: exit
+2016-10-20 21:48:15:exit code: 0

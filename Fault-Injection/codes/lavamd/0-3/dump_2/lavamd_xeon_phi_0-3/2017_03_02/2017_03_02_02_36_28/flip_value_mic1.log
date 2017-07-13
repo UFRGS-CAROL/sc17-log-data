@@ -1,0 +1,97 @@
+2017-03-02 02:36:03:Starting flip_value script
+2017-03-02 02:36:03:Initialization strings:
+2017-03-02 02:36:03:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-02 02:36:03:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 02:36:03:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 02:36:03:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-02 02:36:03:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-02 02:36:03:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-03-02 02:36:03:initSignal:0
+2017-03-02 02:36:03:endSignal:3
+2017-03-02 02:36:03:seqSignal:30
+2017-03-02 02:36:04:Backtrace BEGIN:
+2017-03-02 02:36:04:#0  0x00000000004021d0 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:149
+
+2017-03-02 02:36:04:144	    }
+145	
+146	    rv_cpu = (FOUR_VECTOR*)malloc(dim_cpu.space_mem);
+147	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+148	        fread(&(rv_cpu[i].v), 1, sizeof(double), file);
+149	        fread(&(rv_cpu[i].x), 1, sizeof(double), file);
+150	        fread(&(rv_cpu[i].y), 1, sizeof(double), file);
+151	        fread(&(rv_cpu[i].z), 1, sizeof(double), file);
+152	    }
+153	
+
+2017-03-02 02:36:04:Backtrace END
+2017-03-02 02:36:04:Type: The type is a pointer.
+2017-03-02 02:36:04:Type sizeof: 8
+2017-03-02 02:36:04:Fliping a bit of the value pointed by a pointer
+2017-03-02 02:36:04:Type: The type is an integer type.
+2017-03-02 02:36:04:Type sizeof: 1
+2017-03-02 02:36:04:Mem contents(hex):0x2f
+2017-03-02 02:36:04:Fault Mode: One bit-flip
+2017-03-02 02:36:04:base address to flip value: 0x7fffffffee86 
+2017-03-02 02:36:04:address max offset: 1
+2017-03-02 02:36:04:Memory content before bitflip:0x2f
+2017-03-02 02:36:04:Backtrace BEGIN:
+2017-03-02 02:36:04:#0  0x00000000004024b1 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:173
+
+2017-03-02 02:36:04:168	    fv_cpu_GOLD = (FOUR_VECTOR*)malloc(dim_cpu.space_mem);
+169	    if( (file = fopen(output_gold, "rb" )) == 0 ) {
+170	        printf( "The file 'output_forces' was not opened\n" );
+171	        exit(1);
+172	    }
+173	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+174	        fv_cpu[i].v = 0;
+175	        fv_cpu[i].x = 0;
+176	        fv_cpu[i].y = 0;
+177	        fv_cpu[i].z = 0;
+
+2017-03-02 02:36:04:Backtrace END
+2017-03-02 02:36:04:Type: The type is a structure.
+2017-03-02 02:36:04:Type sizeof: 56
+2017-03-02 02:36:04:Fliping value of field: box_mem
+2017-03-02 02:36:04:Type: The type is an integer type.
+2017-03-02 02:36:04:Type sizeof: 8
+2017-03-02 02:36:04:Mem contents(hex):0x700xc80x210x000x000x000x000x00
+2017-03-02 02:36:04:Fault Mode: Random bit-flip
+2017-03-02 02:36:04:base address to flip value: 0x7fffffffe868
+2017-03-02 02:36:04:address max offset: 8
+2017-03-02 02:36:04:Memory content before bitflip:0x700xc80x210x000x000x000x000x00
+2017-03-02 02:36:04:Backtrace BEGIN:
+2017-03-02 02:36:04:#0  0x00007ffff7138945 in _IO_acquire_lock_fct (p=<synthetic pointer>) at libioP.h:892
+#1  __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:41
+#2  0x0000000000402670 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:182
+
+2017-03-02 02:36:04:887	in libioP.h
+
+2017-03-02 02:36:04:Backtrace END
+2017-03-02 02:36:04:Type: The type is an array.
+2017-03-02 02:36:04:Type sizeof: 100
+2017-03-02 02:36:04:Fliping array at pos: 41
+2017-03-02 02:36:04:Type: The type is an integer type.
+2017-03-02 02:36:04:Type sizeof: 1
+2017-03-02 02:36:04:Mem contents(hex):0x4c
+2017-03-02 02:36:04:Fault Mode: Double bit-flip
+2017-03-02 02:36:04:base address to flip value: 0x7fffffffe671 
+2017-03-02 02:36:04:address max offset: 1
+2017-03-02 02:36:04:Memory content before bitflip:0x4c
+2017-03-02 02:36:04:Memory content after  bitflip:0x4a
+2017-03-02 02:36:04:Mem contents(hex):0x4a
+2017-03-02 02:36:04:frame name: main
+2017-03-02 02:36:04:symbol name: test_info
+2017-03-02 02:36:04:symbol filename: main_check.c
+2017-03-02 02:36:04:symbol line: 188
+2017-03-02 02:36:04:value: ",]\336\367\377\177\000\000\070L\r\367\377\177\000\000p\b\000\000\000\000\000\000\004L\r\367\377\177\000\000\240\231\377\367\377\177\000\000\070J\r\367\377\177\000\000\020`\336\367\377\177\000\000p\b\000\000\000\000\000\000\330\027\016\367\377\177\000\000\240\231\377\367\377\177\000\000(\347\377\377\377\177\000\000$\347\377\377\377\177\000\000[\362\001"
+2017-03-02 02:36:04:value address: 0x7fffffffe648
+2017-03-02 02:36:04:Type: The type is an array.
+2017-03-02 02:36:04:Type sizeof: 100
+2017-03-02 02:36:04:Field name: None
+2017-03-02 02:36:04:Field Type:
+2017-03-02 02:36:04:Type: A range type, that is, an integer type with bounds.
+2017-03-02 02:36:04:Type sizeof: 1
+2017-03-02 02:36:04:Type range: (0L, 99L)
+2017-03-02 02:36:04:Fault Injection Successful after 1.93093299866s
+2017-03-02 02:36:20:event type: exit
+2017-03-02 02:36:20:exit code: 0

@@ -1,0 +1,75 @@
+2016-10-12 18:11:07:Initialization strings:
+2016-10-12 18:11:08:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-12 18:11:08:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 18:11:08:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 18:11:08:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-12 18:11:08:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-12 18:11:08:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-12 18:11:08:Trying Fault Injection
+2016-10-12 18:11:08:Inferior PID: 28882
+2016-10-12 18:11:08:Inferior is valid: True
+2016-10-12 18:11:08:Inferior #threads: 1
+2016-10-12 18:11:08:Backtrace BEGIN:
+2016-10-12 18:11:08:#0  0x00007ffff71963d0 in __open_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142fd2 in __GI__IO_file_open (fp=fp@entry=0x60e1c0, filename=<optimized out>, posix_mode=<optimized out>, prot=prot@entry=438, read_write=8, is32not64=is32not64@entry=1) at fileops.c:217
+#2  0x00007ffff7143130 in _IO_new_file_fopen (fp=fp@entry=0x60e1c0, filename=filename@entry=0x7ffff71f09e0 "/proc/meminfo", mode=<optimized out>, mode@entry=0x7ffff71ee80e "rce", is32not64=is32not64@entry=1) at fileops.c:327
+#3  0x00007ffff71384d2 in __fopen_internal (filename=0x7ffff71f09e0 "/proc/meminfo", mode=0x7ffff71ee80e "rce", is32=1) at iofopen.c:86
+#4  0x00007ffff713850a in _IO_new_fopen (filename=<optimized out>, mode=<optimized out>) at iofopen.c:97
+#5  0x00007ffff71a17ec in phys_pages_info (format=format@entry=0x7ffff71f0a29 "MemTotal: %ld kB") at ../sysdeps/unix/sysv/linux/getsysstats.c:291
+#6  0x00007ffff71a1bec in __get_phys_pages () at ../sysdeps/unix/sysv/linux/getsysstats.c:335
+#7  0x00007ffff71755fe in posix_sysconf (name=85) at ../sysdeps/posix/sysconf.c:634
+#8  linux_sysconf (name=85) at ../sysdeps/unix/sysv/linux/x86_64/../sysconf.c:140
+#9  __GI___sysconf (name=name@entry=85) at ../sysdeps/unix/sysv/linux/x86_64/sysconf.c:36
+#10 0x00007ffff710555a in __GI___qsort_r (b=0x7ffff7b6f280, n=65, s=40, cmp=0x7ffff78f1cb0, arg=0x0) at msort.c:187
+#11 0x00007ffff78f457f in ?? ()
+#12 0x00007ffff6ecbc80 in ?? ()
+#13 0x00007ffff791a393 in ?? ()
+#14 0x0000003000000000 in ?? ()
+#15 0x00007fffffffe350 in ?? ()
+#16 0x00007fffffffeb20 in ?? ()
+#17 0x0000000000000000 in ?? ()
+
+2016-10-12 18:11:08:76	in ../sysdeps/unix/syscall-template.S
+
+2016-10-12 18:11:08:Backtrace END
+2016-10-12 18:11:08:Thread name: None
+2016-10-12 18:11:08:Thread num: 1
+2016-10-12 18:11:08:Thread ptid: (28882, 28882, 0)
+2016-10-12 18:11:08:bitFlip function
+2016-10-12 18:11:08:Type: The type is an array.
+2016-10-12 18:11:08:Type sizeof: 19
+2016-10-12 18:11:08:Fliping array at pos: 1
+2016-10-12 18:11:08:bitFlip function
+2016-10-12 18:11:08:Type: The type is an integer type.
+2016-10-12 18:11:08:Type sizeof: 1
+2016-10-12 18:11:08:Mem contents(hex):0x49
+2016-10-12 18:11:08:base address to flip value: 0x7ffff71f6e41  
+2016-10-12 18:11:08:address max offset: 1
+2016-10-12 18:11:08:Memory content before bitflip:0x49
+2016-10-12 18:11:08:Memory content after  bitflip:0x59
+2016-10-12 18:11:08:Mem contents(hex):0x59
+2016-10-12 18:11:08:frame name: _IO_new_file_fopen
+2016-10-12 18:11:08:symbol name: __PRETTY_FUNCTION__
+2016-10-12 18:11:08:symbol filename: fileops.c
+2016-10-12 18:11:08:symbol line: 0
+2016-10-12 18:11:08:value: "_YO_new_file_fopen"
+2016-10-12 18:11:08:value address: 0x7ffff71f6e40 <__PRETTY_FUNCTION__.11205>
+2016-10-12 18:11:08:Type: The type is an array.
+2016-10-12 18:11:08:Type sizeof: 19
+2016-10-12 18:11:08:Field name: None
+2016-10-12 18:11:08:Field Type:
+2016-10-12 18:11:08:Type: A range type, that is, an integer type with bounds.
+2016-10-12 18:11:08:Type sizeof: 8
+2016-10-12 18:11:08:Type range: (0L, 18L)
+2016-10-12 18:11:08:Fault Injection Successful after 0.799176931381s
+2016-10-12 18:11:09:Fault Already Injected
+2016-10-12 18:11:09:Fault Already Injected
+2016-10-12 18:11:10:Fault Already Injected
+2016-10-12 18:11:10:Fault Already Injected
+2016-10-12 18:11:13:Fault Already Injected
+2016-10-12 18:11:13:Fault Already Injected
+2016-10-12 18:11:14:Fault Already Injected
+2016-10-12 18:11:16:Fault Already Injected
+2016-10-12 18:11:17:Fault Already Injected
+2016-10-12 18:11:18:event type: exit
+2016-10-12 18:11:18:exit code: 0

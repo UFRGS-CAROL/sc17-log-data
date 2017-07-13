@@ -1,0 +1,42 @@
+2017-02-28 15:26:51:Starting flip_value script
+2017-02-28 15:26:51:Initialization strings:
+2017-02-28 15:26:51:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 15:26:51:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 15:26:51:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 15:26:51:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 15:26:51:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 15:26:51:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-02-28 15:26:51:initSignal:9
+2017-02-28 15:26:51:endSignal:12
+2017-02-28 15:26:51:seqSignal:15
+2017-02-28 15:27:00:Backtrace BEGIN:
+2017-02-28 15:27:00:#0  __memchr (s=s@entry=0x7ffff7fef2ab, c_in=c_in@entry=10, n=250, n@entry=255) at ../string/memchr.c:83
+#1  0x00007ffff7139361 in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "324.061310\n", n=255, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:94
+#2  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "324.061310\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#3  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe640 "324.061310\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#4  0x0000000000404538 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:202
+#5  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-02-28 15:27:00:78	in ../string/memchr.c
+
+2017-02-28 15:27:00:Backtrace END
+2017-02-28 15:27:00:Type: The type is an integer type.
+2017-02-28 15:27:00:Type sizeof: 4
+2017-02-28 15:27:00:Mem contents(hex):0x330x320x340x2e
+2017-02-28 15:27:00:Fault Mode: Double bit-flip
+2017-02-28 15:27:00:base address to flip value: 0x7fffffffe640
+2017-02-28 15:27:00:address max offset: 4
+2017-02-28 15:27:00:Memory content before bitflip:0x330x320x340x2e
+2017-02-28 15:27:00:Memory content after  bitflip:0x330x320x940x2e
+2017-02-28 15:27:00:Mem contents(hex):0x330x320x940x2e
+2017-02-28 15:27:00:frame name: read_input
+2017-02-28 15:27:00:symbol name: index
+2017-02-28 15:27:00:symbol filename: hotspot_check.c
+2017-02-28 15:27:00:symbol line: 192
+2017-02-28 15:27:00:value: 781464115
+2017-02-28 15:27:00:value address: 0x7fffffffe640
+2017-02-28 15:27:00:Type: The type is an integer type.
+2017-02-28 15:27:00:Type sizeof: 4
+2017-02-28 15:27:00:Fault Injection Successful after 9.52471709251s
+2017-02-28 15:27:16:event type: exit
+2017-02-28 15:27:16:exit code: 0

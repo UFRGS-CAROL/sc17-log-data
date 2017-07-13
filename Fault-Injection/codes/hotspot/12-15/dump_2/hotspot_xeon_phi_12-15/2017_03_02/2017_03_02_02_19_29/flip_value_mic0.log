@@ -1,0 +1,69 @@
+2017-03-02 02:18:51:Starting flip_value script
+2017-03-02 02:18:51:Initialization strings:
+2017-03-02 02:18:52:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 02:18:52:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 02:18:52:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 02:18:52:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-03-02 02:18:52:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-03-02 02:18:52:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-03-02 02:18:52:initSignal:12
+2017-03-02 02:18:52:endSignal:15
+2017-03-02 02:18:52:seqSignal:15
+2017-03-02 02:19:05:Backtrace BEGIN:
+2017-03-02 02:19:05:#0  syscall () at ../sysdeps/unix/sysv/linux/x86_64/syscall.S:38
+#1  0x00007ffff7916c8d in ?? ()
+#2  0x0000000000000040 in ?? ()
+#3  0x0000000000001ab0 in ?? ()
+#4  0x000000000000003f in ?? ()
+#5  0x0000000000000000 in ?? ()
+
+2017-03-02 02:19:05:33	in ../sysdeps/unix/sysv/linux/x86_64/syscall.S
+
+2017-03-02 02:19:05:Backtrace END
+2017-03-02 02:19:05:Backtrace BEGIN:
+2017-03-02 02:19:05:#0  0x0000000000402f6c in L_single_iteration_60__par_loop0_2_0 () at hotspot_check.c:72
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe590 in ?? ()
+#3  0x00007fffffffe598 in ?? ()
+#4  0x00007fffffffe5a0 in ?? ()
+#5  0x00007fffffffe5a8 in ?? ()
+#6  0x00007fffffffe580 in ?? ()
+#7  0x00007fffffffe588 in ?? ()
+#8  0x00007fffffffe4d0 in ?? ()
+#9  0x00007fffffffe4d4 in ?? ()
+#10 0x0101010000000000 in ?? ()
+#11 0x00007ffff5ea6b00 in ?? ()
+#12 0x0000000000000000 in ?? ()
+
+2017-03-02 02:19:05:67	        int c_end = c_start + BLOCK_SIZE_C > col ? col : c_start + BLOCK_SIZE_C;
+68	
+69	        if ( r_start == 0 || c_start == 0 || r_end == row || c_end == col )
+70	        {
+71	            for ( r = r_start; r < r_start + BLOCK_SIZE_R; ++r ) {
+72	                for ( c = c_start; c < c_start + BLOCK_SIZE_C; ++c ) {
+73	                    /* Corner 1 */
+74	                    if ( (r == 0) && (c == 0) ) {
+75	                        delta = (Cap_1) * (power[0] +
+76	                                           (temp[1] - temp[0]) * Rx_1 +
+
+2017-03-02 02:19:05:Backtrace END
+2017-03-02 02:19:12:Type: A floating point type.
+2017-03-02 02:19:12:Type sizeof: 4
+2017-03-02 02:19:12:Mem contents(hex):0xcd0xcc0x4c0x38
+2017-03-02 02:19:12:Fault Mode: Single bit-flip
+2017-03-02 02:19:12:base address to flip value: 0x7fffffffe5a8
+2017-03-02 02:19:12:address max offset: 4
+2017-03-02 02:19:12:Memory content before bitflip:0xcd0xcc0x4c0x38
+2017-03-02 02:19:12:Memory content after  bitflip:0x8d0xcc0x4c0x38
+2017-03-02 02:19:12:Mem contents(hex):0x8d0xcc0x4c0x38
+2017-03-02 02:19:12:frame name: L_single_iteration_60__par_loop0_2_0
+2017-03-02 02:19:12:symbol name: Rz_1
+2017-03-02 02:19:12:symbol filename: hotspot_check.c
+2017-03-02 02:19:12:symbol line: 60
+2017-03-02 02:19:12:value: 4.88278929e-05
+2017-03-02 02:19:12:value address: 0x7fffffffe5a8
+2017-03-02 02:19:12:Type: A floating point type.
+2017-03-02 02:19:12:Type sizeof: 4
+2017-03-02 02:19:12:Fault Injection Successful after 20.7812860012s
+2017-03-02 02:19:22:event type: exit
+2017-03-02 02:19:22:exit code: 0

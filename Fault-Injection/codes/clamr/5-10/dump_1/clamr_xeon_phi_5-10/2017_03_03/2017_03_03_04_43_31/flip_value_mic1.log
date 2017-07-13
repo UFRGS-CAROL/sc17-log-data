@@ -1,0 +1,67 @@
+[INFO -- 2017-03-03 04:42:19]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-03 04:42:19]
+Initialization strings:
+[INFO -- 2017-03-03 04:42:19]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-03 04:42:19]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 04:42:19]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 04:42:19]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 04:42:19]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-03 04:42:19]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-03 04:42:19]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-03 04:42:19]
+initSignal:5
+[INFO -- 2017-03-03 04:42:19]
+endSignal:10
+[INFO -- 2017-03-03 04:42:19]
+seqSignal:20
+[INFO -- 2017-03-03 04:42:19]
+faultMode:2
+[INFO -- 2017-03-03 04:42:30]
+Backtrace BEGIN:
+#0  0x00000000005426c7 in Bounds_AddBounds (b=0x1aedc80, add=0x14b2180) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/Bounds.c:79
+#1  0x000000000053cf5f in KDTree_CreateTree (t=0x7f9d50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:245
+#2  0x000000000053d3f4 in KDTree_QueryCircleIntersect_Double (t=0x7f9d50, result_num=0x7fffffffe5dc, result_indicies=0x181ae10, circ_radius=24, ncells=264192, x=0x7fff0c0d6010, dx=0x7ffecc1ce010, y=0x7ffe8c1cc010, dy=0x7ffe4c1bf010) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:329
+#3  0x00000000005080fe in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1535
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+74	}
+75	
+76	void Bounds_AddBounds(TBounds* b, TBounds* add) {
+77	   assert(b && add);
+78	   b->min.x = MIN(b->min.x, add->min.x);
+79	   b->min.y = MIN(b->min.y, add->min.y);
+80	   b->max.x = MAX(b->max.x, add->max.x);
+81	   b->max.y = MAX(b->max.y, add->max.y);
+82	}
+83	
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7d0774 
+address max offset: 4
+Memory content after  bitflip:0x490x6c0xae0xe8
+frame name: main
+symbol name: numpe
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 147
+value: -391222199
+value address: 0x7d0774 <numpe>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-03 04:42:30]
+Fault Injection Successful after 11.2651309967s
+[INFO -- 2017-03-03 04:43:21]
+event type: exit
+[INFO -- 2017-03-03 04:43:21]
+exit code: 0

@@ -1,0 +1,71 @@
+[INFO -- 2017-02-25 10:57:23]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 10:57:23]
+Initialization strings:
+[INFO -- 2017-02-25 10:57:23]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-25 10:57:23]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 10:57:23]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 10:57:23]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 10:57:23]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-25 10:57:23]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-25 10:57:23]
+initSignal:12
+[INFO -- 2017-02-25 10:57:23]
+endSignal:15
+[INFO -- 2017-02-25 10:57:23]
+seqSignal:15
+[INFO -- 2017-02-25 10:57:23]
+faultMode:2
+[INFO -- 2017-02-25 10:57:37]
+Backtrace BEGIN:
+#0  0x00007ffff719f03a in mmap64 () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7431e2c in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffdfb0) at allocatestack.c:504
+#2  __pthread_create_2_1 (newthread=0x7fffffffdfa8, attr=<optimized out>, start_routine=0x7ffff790c320, arg=0x7ffff7b76900) at pthread_create.c:524
+#3  0x00007ffff790dd94 in ?? ()
+#4  0x00000000000000f4 in ?? ()
+#5  0x00000000000000f4 in ?? ()
+#6  0x00000000000000f4 in ?? ()
+#7  0x00007ffff7b71e60 in ?? ()
+#8  0x00007fffffffde30 in ?? ()
+#9  0x00007ffff788c196 in ?? ()
+#10 0x00000000000000f4 in ?? ()
+#11 0x00007fff00000000 in ?? ()
+#12 0x00007fff00000004 in ?? ()
+#13 0x0000000000000008 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping array at pos: 0
+Memory content before bitflip:0x400x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff743c250 
+address max offset: 4
+Memory content after  bitflip:0x7a0x420x1a0xeb
+frame name: allocate_stack
+symbol name: _thread_db_pthread_dtvp
+symbol filename: ../nptl_db/structs.def
+symbol line: 78
+value: {3944366714, 1, 8}
+value address: 0x7ffff743c250 <_thread_db_pthread_key_struct_destr>
+Type: The type is an array.
+Type sizeof: 12
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 2L)
+
+[INFO -- 2017-02-25 10:57:37]
+Fault Injection Successful after 14.3013958931s
+[INFO -- 2017-02-25 10:57:50]
+event type: exit
+[INFO -- 2017-02-25 10:57:50]
+exit code: 0

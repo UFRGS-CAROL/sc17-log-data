@@ -1,0 +1,78 @@
+[INFO -- 2017-03-25 07:42:38]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-25 07:42:38]
+Initialization strings:
+[INFO -- 2017-03-25 07:42:38]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-25 07:42:38]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-25 07:42:38]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-25 07:42:38]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-25 07:42:38]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-25 07:42:38]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-25 07:42:38]
+initSignal:0
+[INFO -- 2017-03-25 07:42:38]
+endSignal:3
+[INFO -- 2017-03-25 07:42:38]
+seqSignal:30
+[INFO -- 2017-03-25 07:42:38]
+faultMode:2
+[INFO -- 2017-03-25 07:42:38]
+Backtrace BEGIN:
+#0  0x00007ffff743a62d in __libc_sigaction (sig=1, act=<optimized out>, oact=0x7ffff7b79458) at ../sysdeps/unix/sysv/linux/x86_64/sigaction.c:62
+#1  0x00007ffff790ef49 in ?? ()
+#2  0x00007fffffffffff in ?? ()
+#3  0x00007fffffffd160 in ?? ()
+#4  0x0000000000000011 in ?? ()
+#5  0x00007ffff7423780 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#6  0x00007ffff714a010 in ?? () at hooks.c:77 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff714a710 in ?? () at malloc.c:3110 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#8  0x000000000060e010 in ?? ()
+#9  0x0000000000000007 in ?? ()
+#10 0x0000000000000011 in ?? ()
+#11 0x000000000000001c in ?? ()
+#12 0x0000000000000000 in ?? ()
+
+57	in ../sysdeps/unix/sysv/linux/x86_64/sigaction.c
+
+Backtrace END
+Fliping value of field: sa_restorer
+Fliping a bit of the pointer
+Memory content before bitflip:0xa00x4a0x420xf70xff0x7f0x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffcf08
+address max offset: 8
+Memory content after  bitflip:0x4f0x870xbe0x450x340x040x7e0x1e
+frame name: __libc_sigaction
+symbol name: kact
+symbol filename: ../sysdeps/unix/sysv/linux/x86_64/sigaction.c
+symbol line: 49
+value: {k_sa_handler = 0x60e040, sa_flags = 88, sa_restorer = 0x1e7e043445be874f, sa_mask = {__val = {112, 6348848, 96, 140737338714253, 7594230547516253548, 87, 87, 140737488343432, 88, 140737488343192, 140737347039660, 140737338672206, 4222451712, 6348864, 6348864, 6348864}}}
+value address: 0x7fffffffcef8
+Type: The type is a structure.
+Type sizeof: 152
+Field name: k_sa_handler
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: sa_flags
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: sa_restorer
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: sa_mask
+Field Type: The type is a structure.
+Field Type sizeof: 128
+
+[INFO -- 2017-03-25 07:42:38]
+Fault Injection Successful after 0.961062908173s
+[INFO -- 2017-03-25 07:42:56]
+event type: exit
+[INFO -- 2017-03-25 07:42:56]
+exit code: 0

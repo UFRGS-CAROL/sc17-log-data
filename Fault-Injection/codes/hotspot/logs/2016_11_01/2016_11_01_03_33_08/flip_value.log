@@ -1,0 +1,52 @@
+2016-11-01 03:32:46:Initialization strings:
+2016-11-01 03:32:47:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-11-01 03:32:47:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 03:32:47:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 03:32:47:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-01 03:32:47:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-01 03:32:47:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-11-01 03:32:47:Trying Fault Injection
+2016-11-01 03:32:47:Backtrace BEGIN:
+2016-11-01 03:32:47:#0  read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:200
+#1  main (argc=-7552, argv=0x0) at hotspot_check.c:264
+
+2016-11-01 03:32:47:195	
+196	    fp = fopen (file, "r");
+197	    if (!fp)
+198	        fatal ("file could not be opened for reading");
+199	
+200	    for (i=0; i < grid_rows * grid_cols; i++) {
+201	        if (fgets(str, STR_SIZE, fp) == NULL) {
+202	            fatal("fgets error");
+203	        }
+204	        if (feof(fp))
+
+2016-11-01 03:32:47:Backtrace END
+2016-11-01 03:32:47:Type: A floating point type.
+2016-11-01 03:32:47:Type sizeof: 4
+2016-11-01 03:32:47:Mem contents(hex):0x6f0x120x830x3c
+2016-11-01 03:32:47:base address to flip value: 0x40739c 
+2016-11-01 03:32:47:address max offset: 4
+2016-11-01 03:32:47:Memory content before bitflip:0x6f0x120x830x3c
+2016-11-01 03:32:47:Memory content after  bitflip:0x6f0x120x030x3c
+2016-11-01 03:32:47:Mem contents(hex):0x6f0x120x030x3c
+2016-11-01 03:32:47:frame name: main
+2016-11-01 03:32:47:symbol name: chip_height
+2016-11-01 03:32:47:symbol filename: hotspot_check.c
+2016-11-01 03:32:47:symbol line: 33
+2016-11-01 03:32:47:value: 0.00800000038
+2016-11-01 03:32:47:value address: 0x40739c <chip_height>
+2016-11-01 03:32:47:Type: A floating point type.
+2016-11-01 03:32:47:Type sizeof: 4
+2016-11-01 03:32:47:Fault Injection Successful after 0.700371026993s
+2016-11-01 03:32:48:Fault Already Injected
+2016-11-01 03:32:49:Fault Already Injected
+2016-11-01 03:32:53:Fault Already Injected
+2016-11-01 03:32:53:Fault Already Injected
+2016-11-01 03:32:54:Fault Already Injected
+2016-11-01 03:32:54:Fault Already Injected
+2016-11-01 03:32:56:Fault Already Injected
+2016-11-01 03:32:57:Fault Already Injected
+2016-11-01 03:33:01:Fault Already Injected
+2016-11-01 03:33:02:event type: exit
+2016-11-01 03:33:02:exit code: 0

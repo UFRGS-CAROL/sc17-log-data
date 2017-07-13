@@ -1,0 +1,63 @@
+[INFO -- 2017-03-07 07:53:05]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-07 07:53:05]
+Initialization strings:
+[INFO -- 2017-03-07 07:53:05]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-07 07:53:05]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 07:53:05]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 07:53:05]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 07:53:05]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 07:53:05]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-07 07:53:05]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-07 07:53:05]
+initSignal:15
+[INFO -- 2017-03-07 07:53:05]
+endSignal:20
+[INFO -- 2017-03-07 07:53:05]
+seqSignal:20
+[INFO -- 2017-03-07 07:53:05]
+faultMode:0
+[EXCEPTION -- 2017-03-07 07:53:30]
+gdbException: Attempt to dereference a generic pointer.
+[EXCEPTION -- 2017-03-07 07:53:36]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-03-07 07:53:42]
+Backtrace BEGIN:
+#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd0cd8 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7d0bd4 
+address max offset: 4
+Memory content after  bitflip:0x010x000x000x00
+frame name: DrawSquaresToFile
+symbol name: magick_on
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c
+symbol line: 73
+value: 1
+value address: 0x7d0bd4 <magick_on>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-07 07:53:42]
+Fault Injection Successful after 37.1402790546s
+[INFO -- 2017-03-07 07:54:15]
+event type: exit
+[INFO -- 2017-03-07 07:54:15]
+exit code: 0

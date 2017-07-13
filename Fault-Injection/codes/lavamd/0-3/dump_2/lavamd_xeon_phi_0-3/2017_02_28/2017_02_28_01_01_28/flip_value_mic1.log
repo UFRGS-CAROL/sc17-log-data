@@ -1,0 +1,58 @@
+2017-02-28 01:01:12:Starting flip_value script
+2017-02-28 01:01:12:Initialization strings:
+2017-02-28 01:01:12:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-28 01:01:12:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 01:01:12:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 01:01:12:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-28 01:01:12:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-28 01:01:12:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-02-28 01:01:12:initSignal:0
+2017-02-28 01:01:12:endSignal:3
+2017-02-28 01:01:12:seqSignal:30
+2017-02-28 01:01:13:Backtrace BEGIN:
+2017-02-28 01:01:13:#0  __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1368
+#1  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#2  0x0000000000402286 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:151
+
+2017-02-28 01:01:13:1363	in fileops.c
+
+2017-02-28 01:01:13:Backtrace END
+2017-02-28 01:01:13:Type: The type is a structure.
+2017-02-28 01:01:13:Type sizeof: 168
+2017-02-28 01:01:13:Fliping value of field: __setbuf
+2017-02-28 01:01:13:Type: The type is a pointer.
+2017-02-28 01:01:13:Type sizeof: 8
+2017-02-28 01:01:13:Fliping a bit of the pointer
+2017-02-28 01:01:13:Mem contents(hex):0xe00x1c0x140xf70xff0x7f0x000x00
+2017-02-28 01:01:13:Fault Mode: Zero bit-flip
+2017-02-28 01:01:13:base address to flip value: 0x7ffff7423658 
+2017-02-28 01:01:13:address max offset: 8
+2017-02-28 01:01:13:Memory content before bitflip:0xe00x1c0x140xf70xff0x7f0x000x00
+2017-02-28 01:01:13:Backtrace BEGIN:
+2017-02-28 01:01:13:#0  0x00007ffff71388dc in __GI__IO_fread (buf=0x7ffff4bd11a0, size=1, count=8, fp=0x60e1c0) at iofread.c:41
+#1  0x000000000040262f in main (argc=7, argv=0x7fffffffebc8) at main_check.c:181
+
+2017-02-28 01:01:13:36	in iofread.c
+
+2017-02-28 01:01:13:Backtrace END
+2017-02-28 01:01:13:Type: The type is a pointer.
+2017-02-28 01:01:13:Type sizeof: 8
+2017-02-28 01:01:13:Fliping a bit of the pointer
+2017-02-28 01:01:13:Mem contents(hex):0x100xf00xdc0xf50xff0x7f0x000x00
+2017-02-28 01:01:13:Fault Mode: Single bit-flip
+2017-02-28 01:01:13:base address to flip value: 0x7fffffffe9a0
+2017-02-28 01:01:13:address max offset: 8
+2017-02-28 01:01:13:Memory content before bitflip:0x100xf00xdc0xf50xff0x7f0x000x00
+2017-02-28 01:01:13:Memory content after  bitflip:0x110xf00xdc0xf50xff0x7f0x000x00
+2017-02-28 01:01:13:Mem contents(hex):0x110xf00xdc0xf50xff0x7f0x000x00
+2017-02-28 01:01:13:frame name: main
+2017-02-28 01:01:13:symbol name: qv_cpu
+2017-02-28 01:01:13:symbol filename: main_check.c
+2017-02-28 01:01:13:symbol line: 59
+2017-02-28 01:01:13:value: 0x7ffff5dcf010
+2017-02-28 01:01:13:value address: 0x7fffffffe9a0
+2017-02-28 01:01:13:Type: The type is a pointer.
+2017-02-28 01:01:13:Type sizeof: 8
+2017-02-28 01:01:13:Fault Injection Successful after 1.50016498566s
+2017-02-28 01:01:21:event type: exit
+2017-02-28 01:01:21:exit code: no exit code available

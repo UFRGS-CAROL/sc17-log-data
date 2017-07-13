@@ -1,0 +1,72 @@
+[INFO -- 2017-03-14 00:29:43]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-14 00:29:43]
+Initialization strings:
+[INFO -- 2017-03-14 00:29:43]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-14 00:29:43]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-14 00:29:43]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-14 00:29:44]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-14 00:29:44]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-14 00:29:44]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-14 00:29:44]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-14 00:29:44]
+initSignal:35
+[INFO -- 2017-03-14 00:29:44]
+endSignal:40
+[INFO -- 2017-03-14 00:29:44]
+seqSignal:20
+[INFO -- 2017-03-14 00:29:44]
+faultMode:2
+[INFO -- 2017-03-14 00:30:31]
+Backtrace BEGIN:
+#0  0x00000000005361fc in Mesh::partition_cells (this=0x7f9a50, numpe=0, z_order=..., method=ORIGINAL_ORDER) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:369
+#1  0x00000000004461e3 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:477
+#2  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+364	   //  Partition cells according to one of several possible orderings.
+365	   int have_spatial_variables=0;
+366	   switch (method)
+367	   {   case ORIGINAL_ORDER:
+368	         //  Set z_order to the current cell order.
+369	         for (uint ic = 0; ic < ncells; ++ic)
+370	         {   z_order[ic] = ic; }
+371	
+372	         cpu_timers[MESH_TIMER_PARTITION] += cpu_timer_stop(tstart_cpu);
+373	
+
+Backtrace END
+Fliping value of field: tv_sec
+Memory content before bitflip:0xd90x700xc70x580x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7d06e8 
+address max offset: 8
+Memory content after  bitflip:0xa90x3d0x350x450xe80x660x7f0x27
+frame name: main
+symbol name: tstart_partmeas
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 168
+value: {tv_sec = 2846106637301005737, tv_usec = 455856}
+value address: 0x7d06e8 <tstart_partmeas>
+Type: The type is a structure.
+Type sizeof: 16
+Field name: tv_sec
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: tv_usec
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-14 00:30:31]
+Fault Injection Successful after 47.5643439293s
+[INFO -- 2017-03-14 00:31:00]
+event type: exit
+[INFO -- 2017-03-14 00:31:00]
+exit code: 0

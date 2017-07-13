@@ -1,0 +1,106 @@
+[INFO -- 2017-02-26 11:49:55]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 11:49:55]
+Initialization strings:
+[INFO -- 2017-02-26 11:49:55]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-26 11:49:55]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 11:49:55]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 11:49:55]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 11:49:55]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 11:49:55]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-26 11:49:55]
+initSignal:4
+[INFO -- 2017-02-26 11:49:55]
+endSignal:8
+[INFO -- 2017-02-26 11:49:55]
+seqSignal:30
+[INFO -- 2017-02-26 11:49:55]
+faultMode:0
+[EXCEPTION -- 2017-02-26 11:50:08]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 11:50:08]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 11:50:08]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 11:50:08]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 11:50:08]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 11:50:08]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 11:50:08]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 11:50:08]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 11:50:08]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 11:50:08]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 11:50:08]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 11:50:08]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 11:50:08]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 11:50:08]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 11:50:08]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 11:50:08]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-26 11:50:08]
+pythonException: invalid frame
+[INFO -- 2017-02-26 11:50:08]
+Backtrace BEGIN:
+#0  L_lud_omp_123__par_loop2_2_5 () at lud_omp.c:148
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+143	            for (i = 0; i < BS; i++)
+144	            {
+145	                for (k=0; k < BS; k++) {
+146	#pragma omp simd 
+147	                    for (j = 0; j < BS; j++) {
+148	                        sum[j] += temp_left[BS*i + k] * temp_top[BS*k + j];
+149	                    }
+150	                }
+151	#pragma omp simd 
+152	                for (j = 0; j < BS; j++) {
+
+Backtrace END
+Fliping array at pos: 228
+Memory content before bitflip:0x920x9b0xdc0x3e
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffd410
+address max offset: 4
+Memory content after  bitflip:0x920x1b0xdc0x3e
+frame name: L_lud_omp_123__par_loop2_2_5
+symbol name: temp_left
+symbol filename: lud_omp.c
+symbol line: 129
+value: {0.435247958, 0.435536832, 0.436022222, 0.436445087, 0.436974078, 0.43738842, 0.437795371, 0.438176244, 0.438624859, 0.439149439, 0.439567953, 0.439986974, 0.440430999, 0.440828443, 0.44131434, 0.441757798, 0.434810102, 0.43513748, 0.435527742, 0.436026931, 0.436518043, 0.436956376, 0.437360972, 0.437744468, 0.438197881, 0.438649058, 0.439145803, 0.439537615, 0.440002471, 0.440413445, 0.440838248, 0.441384137, 0.43434912, 0.434699982, 0.43513763, 0.43560344, 0.436043531, 0.436482012, 0.436929733, 0.437328726, 0.437782109, 0.438182592, 0.438729286, 0.439100206, 0.439604938, 0.439929813, 0.44043076, 0.440880686, 0.433871001, 0.434208065, 0.434741408, 0.435206801, 0.435596049, 0.436050922, 0.436493456, 0.436873466, 0.4373734, 0.437792957, 0.438212812, 0.438645631, 0.439195812, 0.439492464, 0.439980388, 0.44044584, 0.433510721, 0.43382442, 0.43420887, 0.434779763, 0.435190707, 0.435620755, 0.436013937, 0.436466485, 0.436900198, 0.437360793, 0.437784374, 0.438262284, 0.438684911, 0.439086765, 0.439515084, 0.440047562, 0.433043033, 0.433410078, 0.433761269, 0.434316754, 0.434735775, 0.435227334, 0.43560189, 0.436036587, 0.436434448, 0.4369376, 0.437339485, 0.437820375, 0.43825677, 0.438633382, 0.439086705, 0.439546347, 0.432600677, 0.432957023, 0.433388233, 0.433859795, 0.434305072, 0.434792131, 0.435154051, 0.435587287, 0.436041415, 0.436449885, 0.436940104, 0.437358707, 0.437868923, 0.438126266, 0.438648283, 0.439143568, 0.432174772, 0.432571054, 0.432888597, 0.433448166, 0.433906645, 0.434262574, 0.434723377, 0.435212761, 0.435562611, 0.436077744, 0.436475098, 0.436895549, 0.437384486, 0.437804878, 0.438180387, 0.438662499, 0.431777924, 0.432070255, 0.432489455, 0.433033049, 0.433455229, 0.433882385, 0.434262842, 0.434741467, 0.435173303, 0.435592651, 0.436081707, 0.436420083, 0.436974257, 0.43734923, 0.437747538, 0.438273907, 0.431339324, 0.431672364, 0.43206051, 0.43258515, 0.433006078, 0.433488399, 0.433837026, 0.434267581, 0.434773177, 0.43511799, 0.435661077, 0.436029643, 0.43655023, 0.436870098, 0.437287837, 0.437865198, 0.430909693, 0.431221485, 0.431692034, 0.432088494, 0.432637483, 0.432966679, 0.433434486, 0.43385613, 0.434304088, 0.43470186, 0.435185254, 0.435631365, 0.436092257, 0.436433852, 0.436885923, 0.437374413, 0.430460632, 0.430771381, 0.431257099, 0.43170312, 0.432168931, 0.432614446, 0.432939112, 0.433405906, 0.433865935, 0.434314072, 0.4347471, 0.43518874, 0.435586929, 0.436076254, 0.436432928, 0.436941087, 0.430039942, 0.430362284, 0.430800617, 0.431283474, 0.431739151, 0.432145506, 0.432550192, 0.432968736...}
+value address: 0x7fffffffd080
+Type: The type is an array.
+Type sizeof: 1024
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 255L)
+
+[INFO -- 2017-02-26 11:50:08]
+Fault Injection Successful after 13.4998500347s
+[INFO -- 2017-02-26 11:50:18]
+event type: exit
+[INFO -- 2017-02-26 11:50:18]
+exit code: 1

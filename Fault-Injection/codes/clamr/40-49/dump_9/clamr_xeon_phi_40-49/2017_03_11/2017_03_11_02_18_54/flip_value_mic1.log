@@ -1,0 +1,69 @@
+[INFO -- 2017-03-11 02:14:16]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-11 02:14:16]
+Initialization strings:
+[INFO -- 2017-03-11 02:14:16]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-11 02:14:16]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-11 02:14:16]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-11 02:14:17]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-11 02:14:17]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-11 02:14:17]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-11 02:14:17]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-11 02:14:17]
+initSignal:40
+[INFO -- 2017-03-11 02:14:17]
+endSignal:49
+[INFO -- 2017-03-11 02:14:17]
+seqSignal:20
+[INFO -- 2017-03-11 02:14:17]
+faultMode:0
+[INFO -- 2017-03-11 02:15:15]
+Backtrace BEGIN:
+#0  0x0000000000551054 in Transform (buf=0x7fffffffe318, in=0x7fffffffe000) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:1242
+#1  0x0000000000550aaf in MD5Update (mdContext=0x7fffffffe308, inBuf=0x7fffffffe2a8 "\b\343\377\377\377\177", inLen=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:1177
+#2  0x000000000054eab8 in check_md5 (graph_num=1, ncycle=100, simTime=0.043339572768126222) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:878
+#3  0x000000000054db32 in write_graphics_info (graph_num=1, ncycle=100, simTime=0.043339572768126222, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:754
+#4  0x0000000000446e91 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:579
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+1237	    FF ( c, d, a, b, in[ 2], S13,  606105819); /* 3 */
+1238	    FF ( b, c, d, a, in[ 3], S14, 3250441966); /* 4 */
+1239	    FF ( a, b, c, d, in[ 4], S11, 4118548399); /* 5 */
+1240	    FF ( d, a, b, c, in[ 5], S12, 1200080426); /* 6 */
+1241	    FF ( c, d, a, b, in[ 6], S13, 2821735955); /* 7 */
+1242	    FF ( b, c, d, a, in[ 7], S14, 4249261313); /* 8 */
+1243	    FF ( a, b, c, d, in[ 8], S11, 1770035416); /* 9 */
+1244	    FF ( d, a, b, c, in[ 9], S12, 2336552879); /* 10 */
+1245	    FF ( c, d, a, b, in[10], S13, 4294925233); /* 11 */
+1246	    FF ( b, c, d, a, in[11], S14, 2304563134); /* 12 */
+
+Backtrace END
+Memory content before bitflip:0x020x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7d0d40 
+address max offset: 4
+Memory content after  bitflip:0x020x000x020x00
+frame name: MD5Update
+symbol name: graphics_md5
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c
+symbol line: 182
+value: (GRAPHICS_CHECK_MD5 | unknown: 131072)
+value address: 0x7d0d40 <graphics_md5>
+Type: The type is an enum.
+Type sizeof: 4
+Field name: GRAPHICS_NO_MD5
+
+[INFO -- 2017-03-11 02:15:15]
+Fault Injection Successful after 58.7335519791s
+[INFO -- 2017-03-11 02:15:16]
+event type: exit
+[INFO -- 2017-03-11 02:15:16]
+exit code: 0

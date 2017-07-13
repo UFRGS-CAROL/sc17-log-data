@@ -1,0 +1,49 @@
+2017-03-02 07:20:04:Starting flip_value script
+2017-03-02 07:20:04:Initialization strings:
+2017-03-02 07:20:04:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 07:20:04:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 07:20:04:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 07:20:05:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 07:20:05:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 07:20:05:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-02 07:20:05:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-02 07:20:05:initSignal:35
+2017-03-02 07:20:05:endSignal:40
+2017-03-02 07:20:05:seqSignal:20
+2017-03-02 07:20:41:Backtrace BEGIN:
+2017-03-02 07:20:41:#0  0x000000000051f4bb in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2588
+#1  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-02 07:20:41:2583	
+2584	   int ref_entry_count = 0;
+2585	   if (have_state){
+2586	      for (uint ic=0; ic<ncells; ic++) {
+2587	         if (mpot[ic] > 0) ref_entry_count++;
+2588	         if (mpot[ic] < 0) {
+2589	            // Normal cell coarsening
+2590	            if (is_lower_left(i[ic],j[ic]) ) mpot[ic] = -2;
+2591	            // Boundary cell case
+2592	            if (celltype[ic] != REAL_CELL && is_upper_right(i[ic],j[ic]) ) mpot[ic] = -3;
+
+2017-03-02 07:20:41:Backtrace END
+2017-03-02 07:20:45:Type: The type is a pointer.
+2017-03-02 07:20:45:Type sizeof: 8
+2017-03-02 07:20:45:Fliping a bit of the pointer
+2017-03-02 07:20:45:Mem contents(hex):0x8a0xae0x540x000x000x000x000x00
+2017-03-02 07:20:45:Fault Mode: Single bit-flip
+2017-03-02 07:20:45:base address to flip value: 0x7ce550 
+2017-03-02 07:20:45:address max offset: 8
+2017-03-02 07:20:45:Memory content before bitflip:0x8a0xae0x540x000x000x000x000x00
+2017-03-02 07:20:45:Memory content after  bitflip:0x8a0x8e0x540x000x000x000x000x00
+2017-03-02 07:20:45:Mem contents(hex):0x8a0x8e0x540x000x000x000x000x00
+2017-03-02 07:20:45:frame name: main
+2017-03-02 07:20:45:symbol name: set_graphics_cell_data
+2017-03-02 07:20:45:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-03-02 07:20:45:symbol line: 117
+2017-03-02 07:20:45:value: 0x54ae8a <set_graphics_cell_data_double>
+2017-03-02 07:20:45:value address: 0x7ce550 <set_graphics_cell_data>
+2017-03-02 07:20:45:Type: The type is a pointer.
+2017-03-02 07:20:45:Type sizeof: 8
+2017-03-02 07:20:45:Fault Injection Successful after 40.3939540386s

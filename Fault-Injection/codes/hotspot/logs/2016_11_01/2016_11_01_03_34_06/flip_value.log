@@ -1,0 +1,43 @@
+2016-11-01 03:33:52:Initialization strings:
+2016-11-01 03:33:52:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-11-01 03:33:52:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 03:33:52:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 03:33:52:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-01 03:33:52:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-01 03:33:52:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-11-01 03:33:54:Trying Fault Injection
+2016-11-01 03:33:54:Backtrace BEGIN:
+2016-11-01 03:33:54:#0  0x00007ffff7151ebf in __GI___rawmemchr (s=s@entry=0x7fffffffe77a, c_in=c_in@entry=0) at ../string/rawmemchr.c:174
+#1  0x00007ffff7145ad0 in _IO_str_init_static_internal (sf=sf@entry=0x7fffffffe400, ptr=ptr@entry=0x7fffffffe77a "323.741698\n", size=size@entry=0, pstart=pstart@entry=0x0) at strops.c:44
+#2  0x00007ffff71365d5 in __GI___isoc99_vsscanf (string=0x7fffffffe77a "323.741698\n", format=0x407198 "%f", args=args@entry=0x7fffffffe528) at isoc99_vsscanf.c:41
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#5  main (argc=-6272, argv=0x7efeff0937383530) at hotspot_check.c:264
+
+2016-11-01 03:33:54:169	in ../string/rawmemchr.c
+
+2016-11-01 03:33:54:Backtrace END
+2016-11-01 03:33:54:Type: The type is a pointer.
+2016-11-01 03:33:54:Type sizeof: 8
+2016-11-01 03:33:54:Fliping a bit of the pointer
+2016-11-01 03:33:54:Mem contents(hex):0x970xee0xff0xff0xff0x7f0x000x00
+2016-11-01 03:33:54:base address to flip value: 0x7fffffffe608
+2016-11-01 03:33:54:address max offset: 8
+2016-11-01 03:33:54:Memory content before bitflip:0x970xee0xff0xff0xff0x7f0x000x00
+2016-11-01 03:33:54:Memory content after  bitflip:0x970xee0xff0xff0xff0x7f0x000x40
+2016-11-01 03:33:54:Mem contents(hex):0x970xee0xff0xff0xff0x7f0x000x40
+2016-11-01 03:33:54:frame name: main
+2016-11-01 03:33:54:symbol name: final_result
+2016-11-01 03:33:54:symbol filename: hotspot_check.c
+2016-11-01 03:33:54:symbol line: 230
+2016-11-01 03:33:54:value: 0x7fffffffee97
+2016-11-01 03:33:54:value address: 0x7fffffffe608
+2016-11-01 03:33:54:Type: The type is a pointer.
+2016-11-01 03:33:54:Type sizeof: 8
+2016-11-01 03:33:54:Fault Injection Successful after 2.36759209633s
+2016-11-01 03:33:56:Fault Already Injected
+2016-11-01 03:33:56:Fault Already Injected
+2016-11-01 03:33:57:Fault Already Injected
+2016-11-01 03:33:58:Fault Already Injected
+2016-11-01 03:34:00:event type: exit
+2016-11-01 03:34:00:exit code: 1

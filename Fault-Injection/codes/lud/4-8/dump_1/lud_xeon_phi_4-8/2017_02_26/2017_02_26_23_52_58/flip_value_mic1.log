@@ -1,0 +1,55 @@
+[INFO -- 2017-02-26 23:52:26]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 23:52:26]
+Initialization strings:
+[INFO -- 2017-02-26 23:52:26]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-26 23:52:26]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 23:52:26]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 23:52:26]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 23:52:26]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 23:52:26]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-26 23:52:26]
+initSignal:4
+[INFO -- 2017-02-26 23:52:26]
+endSignal:8
+[INFO -- 2017-02-26 23:52:26]
+seqSignal:30
+[INFO -- 2017-02-26 23:52:26]
+faultMode:2
+[INFO -- 2017-02-26 23:52:36]
+Backtrace BEGIN:
+#0  do_system (line=0x7fffffffe630 "echo 1488171128 > /micNfs/carol/logs/timestamp.txt") at ../sysdeps/posix/system.c:116
+#1  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#2  0x0000000000405f16 in log_error_count (kernel_errors=0) at ../include/log_helper.c:369
+#3  0x0000000000402def in main (argc=9, argv=0x7fffffffec08) at lud_check.c:149
+
+111	in ../sysdeps/posix/system.c
+
+Backtrace END
+Memory content before bitflip:0x380xd80x270xd70x7b0x490x050x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x60bd88 
+address max offset: 8
+Memory content after  bitflip:0xbb0x1b0xc30x7d0xe30xac0x010xe3
+frame name: log_error_count
+symbol name: it_time_start
+symbol filename: ../include/log_helper.c
+symbol line: 64
+value: -2089198659055707205
+value address: 0x60bd88 <it_time_start>
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2017-02-26 23:52:36]
+Fault Injection Successful after 10.6541500092s
+[INFO -- 2017-02-26 23:52:37]
+event type: exit
+[INFO -- 2017-02-26 23:52:37]
+exit code: 0

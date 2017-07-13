@@ -1,0 +1,56 @@
+2016-10-12 21:49:47:Initialization strings:
+2016-10-12 21:49:47:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-12 21:49:47:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 21:49:47:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 21:49:47:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-12 21:49:47:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-12 21:49:47:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-12 21:49:48:Trying Fault Injection
+2016-10-12 21:49:48:Inferior PID: 151295
+2016-10-12 21:49:48:Inferior is valid: True
+2016-10-12 21:49:48:Inferior #threads: 1
+2016-10-12 21:49:48:Backtrace BEGIN:
+2016-10-12 21:49:48:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec30, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec30) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec30) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000006 in ?? ()
+#7  0x00007fffffffee22 in ?? ()
+#8  0x00007fffffffee52 in ?? ()
+#9  0x00007fffffffee58 in ?? ()
+#10 0x00007fffffffee5b in ?? ()
+#11 0x00007fffffffee5f in ?? ()
+#12 0x00007fffffffee9c in ?? ()
+#13 0x0000000000000000 in ?? ()
+
+2016-10-12 21:49:48:69	in dl-debug.c
+
+2016-10-12 21:49:48:Backtrace END
+2016-10-12 21:49:48:Thread name: None
+2016-10-12 21:49:48:Thread num: 1
+2016-10-12 21:49:48:Thread ptid: (151295, 151295, 0)
+2016-10-12 21:49:48:bitFlip function
+2016-10-12 21:49:48:Type: The type is an integer type.
+2016-10-12 21:49:48:Type sizeof: 8
+2016-10-12 21:49:48:Mem contents(hex):0xe50xb10x0a0x5e0x960x5a0x870xd3
+2016-10-12 21:49:48:base address to flip value: 0x7ffff7ffcc90 
+2016-10-12 21:49:48:address max offset: 8
+2016-10-12 21:49:48:Memory content before bitflip:0xe50xb10x0a0x5e0x960x5a0x870xd3
+2016-10-12 21:49:48:Memory content after  bitflip:0xe50xb10x0a0x5e0x960x5a0x850xd3
+2016-10-12 21:49:48:Mem contents(hex):0xe50xb10x0a0x5e0x960x5a0x850xd3
+2016-10-12 21:49:48:frame name: _dl_start
+2016-10-12 21:49:48:symbol name: __pointer_chk_guard_local
+2016-10-12 21:49:48:symbol filename: rtld.c
+2016-10-12 21:49:48:symbol line: 96
+2016-10-12 21:49:48:value: 15241688115774665189
+2016-10-12 21:49:48:value address: 0x7ffff7ffcc90 <__pointer_chk_guard_local>
+2016-10-12 21:49:48:Type: The type is an integer type.
+2016-10-12 21:49:48:Type sizeof: 8
+2016-10-12 21:49:48:Fault Injection Successful after 1.23954892159s
+2016-10-12 21:49:55:Fault Already Injected
+2016-10-12 21:49:59:Fault Already Injected
+2016-10-12 21:49:59:Fault Already Injected
+2016-10-12 21:50:00:event type: exit
+2016-10-12 21:50:00:exit code: 0

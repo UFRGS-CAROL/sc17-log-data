@@ -1,0 +1,48 @@
+2017-02-22 05:03:53:Starting flip_value script
+2017-02-22 05:03:53:Initialization strings:
+2017-02-22 05:03:54:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-22 05:03:54:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 05:03:54:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-22 05:03:54:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-22 05:03:54:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-22 05:03:54:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-02-22 05:03:54:initSignal:0
+2017-02-22 05:03:54:endSignal:3
+2017-02-22 05:03:54:seqSignal:15
+2017-02-22 05:03:54:Backtrace BEGIN:
+2017-02-22 05:03:54:#0  do_system (line=0x7fffffffe3b0 "echo 1487757958 > /micNfs/carol/logs/timestamp.txt") at ../sysdeps/posix/system.c:116
+#1  0x0000000000405b29 in update_timestamp () at ../include/log_helper.c:107
+#2  0x0000000000405f0e in start_log_file (benchmark_name=0x407478 "openMPHotspot", test_info=0x7fffffffe7a0 "simIter:1000 gridSize:1024x1024") at ../include/log_helper.c:196
+#3  0x0000000000404a17 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:255
+
+2017-02-22 05:03:54:111	in ../sysdeps/posix/system.c
+
+2017-02-22 05:03:54:Backtrace END
+2017-02-22 05:03:54:Type: The type is an array.
+2017-02-22 05:03:54:Type sizeof: 10
+2017-02-22 05:03:54:Fliping array at pos: 4
+2017-02-22 05:03:54:Type: The type is an integer type.
+2017-02-22 05:03:54:Type sizeof: 1
+2017-02-22 05:03:54:Mem contents(hex):0xff
+2017-02-22 05:03:54:Fault Mode: Double bit-flip
+2017-02-22 05:03:54:base address to flip value: 0x7fffffffe56b 
+2017-02-22 05:03:54:address max offset: 1
+2017-02-22 05:03:54:Memory content before bitflip:0xff
+2017-02-22 05:03:54:Memory content after  bitflip:0x7b
+2017-02-22 05:03:54:Mem contents(hex):0x7b
+2017-02-22 05:03:54:frame name: start_log_file
+2017-02-22 05:03:54:symbol name: hour
+2017-02-22 05:03:54:symbol filename: ../include/log_helper.c
+2017-02-22 05:03:54:symbol line: 200
+2017-02-22 05:03:54:value: "\000\240\347\377{\377\177\000\000\240"
+2017-02-22 05:03:54:value address: 0x7fffffffe567
+2017-02-22 05:03:54:Type: The type is an array.
+2017-02-22 05:03:54:Type sizeof: 10
+2017-02-22 05:03:54:Field name: None
+2017-02-22 05:03:54:Field Type:
+2017-02-22 05:03:54:Type: A range type, that is, an integer type with bounds.
+2017-02-22 05:03:54:Type sizeof: 1
+2017-02-22 05:03:54:Type range: (0L, 9L)
+2017-02-22 05:03:54:Fault Injection Successful after 0.844111919403s
+2017-02-22 05:04:18:event type: exit
+2017-02-22 05:04:18:exit code: 0

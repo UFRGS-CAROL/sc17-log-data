@@ -1,0 +1,80 @@
+[INFO -- 2017-03-26 02:49:45]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 02:49:45]
+Initialization strings:
+[INFO -- 2017-03-26 02:49:45]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 02:49:45]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 02:49:45]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 02:49:45]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 02:49:45]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 02:49:45]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 02:49:45]
+initSignal:0
+[INFO -- 2017-03-26 02:49:45]
+endSignal:3
+[INFO -- 2017-03-26 02:49:45]
+seqSignal:30
+[INFO -- 2017-03-26 02:49:45]
+faultMode:0
+[INFO -- 2017-03-26 02:49:47]
+Backtrace BEGIN:
+#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff74312d0 in ?? () at pthread_create.c:237 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libpthread.so.0
+#2  0x00007fffed7f4d80 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+Backtrace END
+Fliping value of field: cpusetsize
+Memory content before bitflip:0x010x000x000x000x000x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffdae8
+address max offset: 8
+Memory content after  bitflip:0x010x000x000x100x000x000x000x00
+frame name: allocate_stack
+symbol name: default_attr
+symbol filename: pthread_create.c
+symbol line: 494
+value: {schedparam = {__sched_priority = -138954096}, schedpolicy = 32767, flags = 0, guardsize = 140737346923321, stackaddr = 0x2, stacksize = 140737349401232, cpuset = 0x4000, cpusetsize = 268435457}
+value address: 0x7fffffffdab8
+Type: The type is a structure.
+Type sizeof: 56
+Field name: schedparam
+Field Type: The type is a structure.
+Field Type sizeof: 4
+Field name: schedpolicy
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: flags
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: guardsize
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: stackaddr
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: stacksize
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: cpuset
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: cpusetsize
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-26 02:49:47]
+Fault Injection Successful after 2.74425411224s
+[INFO -- 2017-03-26 02:50:02]
+event type: exit
+[INFO -- 2017-03-26 02:50:02]
+exit code: 0

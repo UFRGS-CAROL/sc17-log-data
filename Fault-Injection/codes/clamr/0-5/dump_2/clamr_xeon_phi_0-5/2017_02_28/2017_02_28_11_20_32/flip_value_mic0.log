@@ -1,0 +1,216 @@
+2017-02-28 11:19:12:Starting flip_value script
+2017-02-28 11:19:12:Initialization strings:
+2017-02-28 11:19:12:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-28 11:19:12:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 11:19:12:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 11:19:12:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 11:19:12:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 11:19:12:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 11:19:12:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 11:19:12:initSignal:0
+2017-02-28 11:19:12:endSignal:5
+2017-02-28 11:19:12:seqSignal:20
+2017-02-28 11:19:13:Backtrace BEGIN:
+2017-02-28 11:19:13:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec50, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec50) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec50) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x000000000000000b in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+2017-02-28 11:19:13:69	in dl-debug.c
+
+2017-02-28 11:19:13:Backtrace END
+2017-02-28 11:19:13:Type: The type is a structure.
+2017-02-28 11:19:13:Type sizeof: 296
+2017-02-28 11:19:13:Fliping value of field: _dl_osversion
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 4
+2017-02-28 11:19:13:Mem contents(hex):0x260x060x020x00
+2017-02-28 11:19:13:Fault Mode: Single bit-flip
+2017-02-28 11:19:13:base address to flip value: 0x7ffff7ffccc4 
+2017-02-28 11:19:13:address max offset: 4
+2017-02-28 11:19:13:Memory content before bitflip:0x260x060x020x00
+2017-02-28 11:19:13:Memory content after  bitflip:0x260x060x0a0x00
+2017-02-28 11:19:13:Mem contents(hex):0x260x060x0a0x00
+2017-02-28 11:19:13:frame name: dl_main
+2017-02-28 11:19:13:symbol name: _rtld_local_ro
+2017-02-28 11:19:13:symbol filename: rtld.c
+2017-02-28 11:19:13:symbol line: 187
+2017-02-28 11:19:13:value: {_dl_debug_mask = 0, _dl_osversion = 656934, _dl_platform = 0x7fffffffee5b "k1om", _dl_platformlen = 4, _dl_pagesize = 4096, _dl_inhibit_cache = 0, _dl_initial_searchlist = {r_list = 0x7ffff7ff7710, r_nlist = 10}, _dl_clktck = 100, _dl_verbose = 0, _dl_debug_fd = 2, _dl_lazy = 1, _dl_bind_not = 0, _dl_dynamic_weak = 0, _dl_fpu_control = 895, _dl_correct_cache_id = 771, _dl_hwcap = 285299711, _dl_hwcap_mask = 0, _dl_auxv = 0x7fffffffed18, _dl_inhibit_rpath = 0x0, _dl_origin_path = 0x0, _dl_use_load_bias = 18446744073709551615, _dl_profile = 0x0, _dl_profile_output = 0x7ffff7df5aa0 "/var/tmp", _dl_trace_prelink = 0x0, _dl_trace_prelink_map = 0x0, _dl_init_all_dirs = 0x7ffff7ffa7d0, _dl_sysinfo_dso = 0x7ffff7ffb000, _dl_sysinfo_map = 0x7ffff7ffe700, _dl_hwcap2 = 0, _dl_debug_printf = 0x7ffff7decaf0 <_dl_debug_printf>, _dl_catch_error = 0x7ffff7deba10 <_dl_catch_error>, _dl_signal_error = 0x7ffff7deb7d0 <_dl_signal_error>, _dl_mcount = 0x7ffff7dedea0 <__GI__dl_mcount>, _dl_lookup_symbol_x = 0x7ffff7de6770 <_dl_lookup_symbol_x>, _dl_check_caller = 0x7ffff7def3e0 <_dl_check_caller>, _dl_open = 0x7ffff7def8f0 <_dl_open>, _dl_close = 0x7ffff7df1790 <_dl_close>, _dl_tls_get_addr_soft = 0x7ffff7deeff0 <_dl_tls_get_addr_soft>, _dl_discover_osversion = 0x7ffff7df2740 <_dl_discover_osversion>, _dl_audit = 0x0, _dl_naudit = 0, _dl_pointer_guard = 1}
+2017-02-28 11:19:13:value address: 0x7ffff7ffccc0 <_rtld_global_ro>
+2017-02-28 11:19:13:Type: The type is a structure.
+2017-02-28 11:19:13:Type sizeof: 296
+2017-02-28 11:19:13:Field name: _dl_debug_mask
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 4
+2017-02-28 11:19:13:Field name: _dl_osversion
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 4
+2017-02-28 11:19:13:Field name: _dl_platform
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_platformlen
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_pagesize
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_inhibit_cache
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 4
+2017-02-28 11:19:13:Field name: _dl_initial_searchlist
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a structure.
+2017-02-28 11:19:13:Type sizeof: 16
+2017-02-28 11:19:13:Field name: _dl_clktck
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 4
+2017-02-28 11:19:13:Field name: _dl_verbose
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 4
+2017-02-28 11:19:13:Field name: _dl_debug_fd
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 4
+2017-02-28 11:19:13:Field name: _dl_lazy
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 4
+2017-02-28 11:19:13:Field name: _dl_bind_not
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 4
+2017-02-28 11:19:13:Field name: _dl_dynamic_weak
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 4
+2017-02-28 11:19:13:Field name: _dl_fpu_control
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 2
+2017-02-28 11:19:13:Field name: _dl_correct_cache_id
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 4
+2017-02-28 11:19:13:Field name: _dl_hwcap
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_hwcap_mask
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_auxv
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_inhibit_rpath
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_origin_path
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_use_load_bias
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_profile
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_profile_output
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_trace_prelink
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_trace_prelink_map
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_init_all_dirs
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_sysinfo_dso
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_sysinfo_map
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_hwcap2
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_debug_printf
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_catch_error
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_signal_error
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_mcount
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_lookup_symbol_x
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_check_caller
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_open
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_close
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_tls_get_addr_soft
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_discover_osversion
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_audit
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is a pointer.
+2017-02-28 11:19:13:Type sizeof: 8
+2017-02-28 11:19:13:Field name: _dl_naudit
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 4
+2017-02-28 11:19:13:Field name: _dl_pointer_guard
+2017-02-28 11:19:13:Field Type:
+2017-02-28 11:19:13:Type: The type is an integer type.
+2017-02-28 11:19:13:Type sizeof: 4
+2017-02-28 11:19:13:Fault Injection Successful after 1.55640411377s
+2017-02-28 11:20:23:event type: exit
+2017-02-28 11:20:23:exit code: 0

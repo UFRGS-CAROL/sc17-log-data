@@ -1,0 +1,121 @@
+2017-03-02 01:56:00:Starting flip_value script
+2017-03-02 01:56:00:Initialization strings:
+2017-03-02 01:56:00:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 01:56:00:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 01:56:00:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 01:56:00:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-03-02 01:56:00:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-03-02 01:56:00:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-03-02 01:56:00:initSignal:2
+2017-03-02 01:56:00:endSignal:4
+2017-03-02 01:56:00:seqSignal:30
+2017-03-02 01:56:02:Backtrace BEGIN:
+2017-03-02 01:56:03:#0  0x0000000000404c74 in L_lud_omp_123__par_loop2_2_5 () at lud_omp.c:148
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-03-02 01:56:03:143	            for (i = 0; i < BS; i++)
+144	            {
+145	                for (k=0; k < BS; k++) {
+146	#pragma omp simd 
+147	                    for (j = 0; j < BS; j++) {
+148	                        sum[j] += temp_left[BS*i + k] * temp_top[BS*k + j];
+149	                    }
+150	                }
+151	#pragma omp simd 
+152	                for (j = 0; j < BS; j++) {
+
+2017-03-02 01:56:03:Backtrace END
+2017-03-02 01:56:14:Type: The type is an integer type.
+2017-03-02 01:56:14:Type sizeof: 4
+2017-03-02 01:56:14:Mem contents(hex):0xff0x7f0x000x00
+2017-03-02 01:56:14:Fault Mode: Zero bit-flip
+2017-03-02 01:56:14:base address to flip value: 0x7fffffffc6b4
+2017-03-02 01:56:14:address max offset: 4
+2017-03-02 01:56:14:Memory content before bitflip:0xff0x7f0x000x00
+2017-03-02 01:56:14:Backtrace BEGIN:
+2017-03-02 01:56:14:#0  0x0000000000404c74 in L_lud_omp_123__par_loop2_2_5 () at lud_omp.c:148
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-03-02 01:56:14:143	            for (i = 0; i < BS; i++)
+144	            {
+145	                for (k=0; k < BS; k++) {
+146	#pragma omp simd 
+147	                    for (j = 0; j < BS; j++) {
+148	                        sum[j] += temp_left[BS*i + k] * temp_top[BS*k + j];
+149	                    }
+150	                }
+151	#pragma omp simd 
+152	                for (j = 0; j < BS; j++) {
+
+2017-03-02 01:56:14:Backtrace END
+2017-03-02 01:56:17:Type: The type is an integer type.
+2017-03-02 01:56:17:Type sizeof: 4
+2017-03-02 01:56:17:Mem contents(hex):0xe50x250x000x00
+2017-03-02 01:56:17:Fault Mode: One bit-flip
+2017-03-02 01:56:17:base address to flip value: 0x7fffffffc614
+2017-03-02 01:56:17:address max offset: 4
+2017-03-02 01:56:17:Memory content before bitflip:0xe50x250x000x00
+2017-03-02 01:56:17:Backtrace BEGIN:
+2017-03-02 01:56:17:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd2d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff7fd2df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff7fd2d14 in ?? ()
+#8  0x00007ffff7fd2de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+2017-03-02 01:56:17:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-03-02 01:56:17:Backtrace END
+2017-03-02 01:56:20:Type: The type is an integer type.
+2017-03-02 01:56:20:Type sizeof: 4
+2017-03-02 01:56:20:Mem contents(hex):0xd00x030x000x00
+2017-03-02 01:56:20:Fault Mode: Random bit-flip
+2017-03-02 01:56:20:base address to flip value: 0x7fffffffc69c
+2017-03-02 01:56:20:address max offset: 4
+2017-03-02 01:56:20:Memory content before bitflip:0xd00x030x000x00
+2017-03-02 01:56:20:Backtrace BEGIN:
+2017-03-02 01:56:20:#0  0x0000000000404c74 in L_lud_omp_123__par_loop2_2_5 () at lud_omp.c:148
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-03-02 01:56:20:143	            for (i = 0; i < BS; i++)
+144	            {
+145	                for (k=0; k < BS; k++) {
+146	#pragma omp simd 
+147	                    for (j = 0; j < BS; j++) {
+148	                        sum[j] += temp_left[BS*i + k] * temp_top[BS*k + j];
+149	                    }
+150	                }
+151	#pragma omp simd 
+152	                for (j = 0; j < BS; j++) {
+
+2017-03-02 01:56:20:Backtrace END
+2017-03-02 01:56:23:Type: The type is an integer type.
+2017-03-02 01:56:23:Type sizeof: 4
+2017-03-02 01:56:23:Mem contents(hex):0xff0x7f0x000x00
+2017-03-02 01:56:23:Fault Mode: Zero bit-flip
+2017-03-02 01:56:23:base address to flip value: 0x7fffffffc6b4
+2017-03-02 01:56:23:address max offset: 4
+2017-03-02 01:56:23:Memory content before bitflip:0xff0x7f0x000x00
+2017-03-02 01:56:27:event type: exit
+2017-03-02 01:56:27:exit code: 0

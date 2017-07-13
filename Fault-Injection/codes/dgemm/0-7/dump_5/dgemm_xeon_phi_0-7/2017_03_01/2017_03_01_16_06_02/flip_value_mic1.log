@@ -1,0 +1,202 @@
+2017-03-01 16:02:54:Starting flip_value script
+2017-03-01 16:02:54:Initialization strings:
+2017-03-01 16:02:54:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 16:02:54:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 16:02:54:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 16:02:54:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-01 16:02:54:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-01 16:02:54:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-03-01 16:02:54:initSignal:0
+2017-03-01 16:02:54:endSignal:7
+2017-03-01 16:02:54:seqSignal:15
+2017-03-01 16:02:58:Backtrace BEGIN:
+2017-03-01 16:02:58:#0  0x0000000000403d18 in read_gold (gold=0x7fffeecc9040, fileGold=0x7fffffffee78 "/micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks", order=2048) at dgemm.c:266
+#1  0x00000000004041e3 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:329
+
+2017-03-01 16:02:58:261	        printf( "The gold file was not opened\n" );
+262	        exit(1);
+263	    }
+264	
+265	    for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+266	            fread(&gold[(i)+(order)*(j)], 1, sizeof(double), file);
+267	        }
+268	    fclose(file);
+269	}
+270	
+
+2017-03-01 16:02:58:Backtrace END
+2017-03-01 16:02:58:Type: The type is a pointer.
+2017-03-01 16:02:58:Type sizeof: 8
+2017-03-01 16:02:58:Fliping a bit of the pointer
+2017-03-01 16:02:58:Mem contents(hex):0x400xa00xcc0xf00xff0x7f0x000x00
+2017-03-01 16:02:58:Fault Mode: One bit-flip
+2017-03-01 16:02:58:base address to flip value: 0x606b58 
+2017-03-01 16:02:58:address max offset: 8
+2017-03-01 16:02:58:Memory content before bitflip:0x400xa00xcc0xf00xff0x7f0x000x00
+2017-03-01 16:02:58:Backtrace BEGIN:
+2017-03-01 16:02:58:#0  0x00007ffff7142959 in __GI__IO_file_xsgetn (fp=<optimized out>, data=<optimized out>, n=<optimized out>) at fileops.c:1441
+#1  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x6071c0) at iofread.c:42
+#2  0x0000000000403d42 in read_gold (gold=0x7fffeecc9040, fileGold=0x7fffffffee78 "/micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks", order=2048) at dgemm.c:266
+#3  0x00000000004041e3 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:329
+
+2017-03-01 16:02:58:1436	in fileops.c
+
+2017-03-01 16:02:58:Backtrace END
+2017-03-01 16:02:58:Type: The type is a pointer.
+2017-03-01 16:02:58:Type sizeof: 8
+2017-03-01 16:02:58:Fliping a bit of the pointer
+2017-03-01 16:02:58:Mem contents(hex):0xc00x710x600x000x000x000x000x00
+2017-03-01 16:02:58:Fault Mode: Random bit-flip
+2017-03-01 16:02:58:base address to flip value: 0x7fffffffe6f8
+2017-03-01 16:02:58:address max offset: 8
+2017-03-01 16:02:58:Memory content before bitflip:0xc00x710x600x000x000x000x000x00
+2017-03-01 16:02:58:Backtrace BEGIN:
+2017-03-01 16:02:58:#0  0x000000000040440b in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:367
+
+2017-03-01 16:02:58:362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+371	        kernel_start = timing_get_time();
+
+2017-03-01 16:02:58:Backtrace END
+2017-03-01 16:02:58:Type: The type is an integer type.
+2017-03-01 16:02:58:Type sizeof: 4
+2017-03-01 16:02:58:Mem contents(hex):0x010x000x000x00
+2017-03-01 16:02:58:Fault Mode: Random bit-flip
+2017-03-01 16:02:58:base address to flip value: 0x7fffffffe9b0
+2017-03-01 16:02:58:address max offset: 4
+2017-03-01 16:02:58:Memory content before bitflip:0x010x000x000x00
+2017-03-01 16:02:59:Backtrace BEGIN:
+2017-03-01 16:02:59:#0  0x000000000040440b in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:367
+
+2017-03-01 16:02:59:362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+371	        kernel_start = timing_get_time();
+
+2017-03-01 16:02:59:Backtrace END
+2017-03-01 16:02:59:Type: The type is a pointer.
+2017-03-01 16:02:59:Type sizeof: 8
+2017-03-01 16:02:59:Fliping a bit of the pointer
+2017-03-01 16:02:59:Mem contents(hex):0x780xee0xff0xff0xff0x7f0x000x00
+2017-03-01 16:02:59:Fault Mode: Zero bit-flip
+2017-03-01 16:02:59:base address to flip value: 0x7fffffffea18
+2017-03-01 16:02:59:address max offset: 8
+2017-03-01 16:02:59:Memory content before bitflip:0x780xee0xff0xff0xff0x7f0x000x00
+2017-03-01 16:02:59:Backtrace BEGIN:
+2017-03-01 16:02:59:#0  0x0000000000404432 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:366
+
+2017-03-01 16:02:59:361	                sleep(100);
+362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+
+2017-03-01 16:02:59:Backtrace END
+2017-03-01 16:02:59:Type: The type is a pointer.
+2017-03-01 16:02:59:Type sizeof: 8
+2017-03-01 16:02:59:Fliping a bit of the value pointed by a pointer
+2017-03-01 16:02:59:Type: A floating point type.
+2017-03-01 16:02:59:Type sizeof: 8
+2017-03-01 16:02:59:Mem contents(hex):0x160x6f0x6a0x790xe90x420x500xc3
+2017-03-01 16:02:59:Fault Mode: Random bit-flip
+2017-03-01 16:02:59:base address to flip value: 0x7ffff2ccb040
+2017-03-01 16:02:59:address max offset: 8
+2017-03-01 16:02:59:Memory content before bitflip:0x160x6f0x6a0x790xe90x420x500xc3
+2017-03-01 16:02:59:Backtrace BEGIN:
+2017-03-01 16:02:59:#0  0x000000000040440b in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:367
+
+2017-03-01 16:02:59:362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+371	        kernel_start = timing_get_time();
+
+2017-03-01 16:02:59:Backtrace END
+2017-03-01 16:02:59:Type: The type is an integer type.
+2017-03-01 16:02:59:Type sizeof: 4
+2017-03-01 16:02:59:Mem contents(hex):0xc30x020x000x00
+2017-03-01 16:02:59:Fault Mode: One bit-flip
+2017-03-01 16:02:59:base address to flip value: 0x7fffffffe940
+2017-03-01 16:02:59:address max offset: 4
+2017-03-01 16:02:59:Memory content before bitflip:0xc30x020x000x00
+2017-03-01 16:02:59:Backtrace BEGIN:
+2017-03-01 16:02:59:#0  0x000000000040440b in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:367
+
+2017-03-01 16:02:59:362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+371	        kernel_start = timing_get_time();
+
+2017-03-01 16:02:59:Backtrace END
+2017-03-01 16:02:59:Type: The type is a pointer.
+2017-03-01 16:02:59:Type sizeof: 8
+2017-03-01 16:02:59:Fliping a bit of the pointer
+2017-03-01 16:02:59:Mem contents(hex):0x780xee0xff0xff0xff0x7f0x000x00
+2017-03-01 16:02:59:Fault Mode: One bit-flip
+2017-03-01 16:02:59:base address to flip value: 0x7fffffffea18
+2017-03-01 16:02:59:address max offset: 8
+2017-03-01 16:02:59:Memory content before bitflip:0x780xee0xff0xff0xff0x7f0x000x00
+2017-03-01 16:02:59:Backtrace BEGIN:
+2017-03-01 16:02:59:#0  0x000000000040440b in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:367
+
+2017-03-01 16:02:59:362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+371	        kernel_start = timing_get_time();
+
+2017-03-01 16:02:59:Backtrace END
+2017-03-01 16:02:59:Type: The type is an integer type.
+2017-03-01 16:02:59:Type sizeof: 4
+2017-03-01 16:02:59:Mem contents(hex):0x000x000x000x00
+2017-03-01 16:02:59:Fault Mode: Single bit-flip
+2017-03-01 16:02:59:base address to flip value: 0x7fffffffe954
+2017-03-01 16:02:59:address max offset: 4
+2017-03-01 16:02:59:Memory content before bitflip:0x000x000x000x00
+2017-03-01 16:02:59:Memory content after  bitflip:0x000x100x000x00
+2017-03-01 16:02:59:Mem contents(hex):0x000x100x000x00
+2017-03-01 16:02:59:frame name: main
+2017-03-01 16:02:59:symbol name: errors
+2017-03-01 16:02:59:symbol filename: dgemm.c
+2017-03-01 16:02:59:symbol line: 388
+2017-03-01 16:02:59:value: 4096
+2017-03-01 16:02:59:value address: 0x7fffffffe954
+2017-03-01 16:02:59:Type: The type is an integer type.
+2017-03-01 16:02:59:Type sizeof: 4
+2017-03-01 16:02:59:Fault Injection Successful after 5.74138307571s
+2017-03-01 16:03:36:event type: exit
+2017-03-01 16:03:36:exit code: 0

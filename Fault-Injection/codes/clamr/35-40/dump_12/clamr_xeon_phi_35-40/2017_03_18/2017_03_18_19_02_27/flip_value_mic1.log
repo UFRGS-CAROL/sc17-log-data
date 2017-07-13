@@ -1,0 +1,59 @@
+[INFO -- 2017-03-18 19:01:14]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-18 19:01:14]
+Initialization strings:
+[INFO -- 2017-03-18 19:01:14]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-18 19:01:14]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-18 19:01:14]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-18 19:01:15]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-18 19:01:15]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-18 19:01:15]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-18 19:01:15]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-18 19:01:15]
+initSignal:35
+[INFO -- 2017-03-18 19:01:15]
+endSignal:40
+[INFO -- 2017-03-18 19:01:15]
+seqSignal:20
+[INFO -- 2017-03-18 19:01:15]
+faultMode:2
+[INFO -- 2017-03-18 19:01:54]
+Backtrace BEGIN:
+#0  __GI_memset (dstpp=0x428b880, c=0, len=16908552) at ../string/memset.c:57
+#1  0x0000000000552f8a in genvector_p (inum=4227136, elsize=4, file=0x5742c0 "/micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c", line=135) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/genmalloc/genmalloc.c:87
+#2  0x000000000054571b in compact_hash_init (ncells=265896, isize=2056, jsize=2056, report_level=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c:135
+#3  0x0000000000513572 in Mesh::calc_neighbors (this=0x7f9a50, ncells=265896) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3626
+#4  0x0000000000445e6e in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:434
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+52	in ../string/memset.c
+
+Backtrace END
+Memory content before bitflip:0x01
+Fault Mode: Random bit-flip
+base address to flip value: 0x7d0abd 
+address max offset: 1
+Memory content after  bitflip:0x05
+frame name: Mesh::calc_neighbors
+symbol name: neighbor_remap
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+symbol line: 143
+value: 5
+value address: 0x7d0abd <neighbor_remap>
+Type: A boolean type.
+Type sizeof: 1
+
+[INFO -- 2017-03-18 19:01:54]
+Fault Injection Successful after 39.5513188839s
+[INFO -- 2017-03-18 19:02:18]
+event type: exit
+[INFO -- 2017-03-18 19:02:18]
+exit code: 0

@@ -1,0 +1,67 @@
+[INFO -- 2017-02-25 10:57:56]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 10:57:56]
+Initialization strings:
+[INFO -- 2017-02-25 10:57:57]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-25 10:57:57]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 10:57:57]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 10:57:57]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 10:57:57]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 10:57:57]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-25 10:57:57]
+initSignal:0
+[INFO -- 2017-02-25 10:57:57]
+endSignal:2
+[INFO -- 2017-02-25 10:57:57]
+seqSignal:30
+[INFO -- 2017-02-25 10:57:57]
+faultMode:3
+[INFO -- 2017-02-25 10:58:00]
+Backtrace BEGIN:
+#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff74312d0 in ?? () at pthread_create.c:237 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libpthread.so.0
+#2  0x00007ffda0bbe300 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+Backtrace END
+Fliping value of field: next
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: prev
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: prev
+Fliping a bit of the pointer
+Memory content before bitflip:0x800x220x640xf70xff0x7f0x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffff7642288 
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: create_thread
+symbol name: stack_cache
+symbol filename: allocatestack.c
+symbol line: 112
+value: {next = 0x7ffff7642280 <stack_cache>, prev = 0x0}
+value address: 0x7ffff7642280 <stack_cache>
+Type: The type is a structure.
+Type sizeof: 16
+Field name: next
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: prev
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2017-02-25 10:58:00]
+Fault Injection Successful after 3.37671589851s
+[INFO -- 2017-02-25 10:58:16]
+event type: exit
+[INFO -- 2017-02-25 10:58:16]
+exit code: 0

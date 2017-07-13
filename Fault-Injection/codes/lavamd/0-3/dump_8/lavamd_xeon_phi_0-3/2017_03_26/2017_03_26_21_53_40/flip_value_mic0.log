@@ -1,0 +1,61 @@
+[INFO -- 2017-03-26 21:53:14]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 21:53:14]
+Initialization strings:
+[INFO -- 2017-03-26 21:53:14]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 21:53:14]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 21:53:14]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 21:53:14]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 21:53:14]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 21:53:14]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 21:53:14]
+initSignal:0
+[INFO -- 2017-03-26 21:53:14]
+endSignal:3
+[INFO -- 2017-03-26 21:53:14]
+seqSignal:30
+[INFO -- 2017-03-26 21:53:14]
+faultMode:1
+[INFO -- 2017-03-26 21:53:16]
+Backtrace BEGIN:
+#0  0x00007ffff7196b70 in __close_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142ee0 in _IO_new_file_close_it (fp=fp@entry=0x60ecf0) at fileops.c:171
+#2  0x00007ffff7137c17 in _IO_new_fclose (fp=0x60ecf0) at iofclose.c:59
+#3  0x00000000004070a9 in start_log_file (benchmark_name=0x408cc0 "openmpLavaMD", test_info=0x7fffffffe648 "box:15 spaceElem:337500 cores:228") at ../include/log_helper.c:274
+#4  0x0000000000402707 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:190
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping array at pos: 163
+Memory content before bitflip:0x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x60cca3  
+address max offset: 1
+Memory content after  bitflip:0x44
+frame name: start_log_file
+symbol name: timestamp_watchdog
+symbol filename: ../include/log_helper.c
+symbol line: 15
+value: "/micNfs/carol/logs/timestamp.txt", '\000' <repeats 131 times>, "D", '\000' <repeats 35 times>
+value address: 0x60cc00 <timestamp_watchdog>
+Type: The type is an array.
+Type sizeof: 200
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 199L)
+
+[INFO -- 2017-03-26 21:53:16]
+Fault Injection Successful after 2.53333997726s
+[INFO -- 2017-03-26 21:53:34]
+event type: exit
+[INFO -- 2017-03-26 21:53:34]
+exit code: 0

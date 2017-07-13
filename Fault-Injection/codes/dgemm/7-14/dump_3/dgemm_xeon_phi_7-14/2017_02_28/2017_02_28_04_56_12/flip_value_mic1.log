@@ -1,0 +1,63 @@
+2017-02-28 04:48:49:Starting flip_value script
+2017-02-28 04:48:49:Initialization strings:
+2017-02-28 04:48:49:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-28 04:48:49:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 04:48:49:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 04:48:49:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-02-28 04:48:49:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-02-28 04:48:49:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-02-28 04:48:49:initSignal:7
+2017-02-28 04:48:49:endSignal:14
+2017-02-28 04:48:49:seqSignal:15
+2017-02-28 04:48:59:Backtrace BEGIN:
+2017-02-28 04:48:59:#0  0x00000000004032f5 in L_dgemm_185__par_region0_2_0 () at dgemm.c:211
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe550 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-02-28 04:48:59:206	                        BB_arr(j,k) =  B_arr(kg,jg);
+207	
+208	                for(ii = 0; ii < order; ii+=block) {
+209	
+210	                    for (kg=kk,k=0; kg<MIN(kk+block,order); k++,kg++)
+211	                        for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+212	                            AA_arr(i,k) = A_arr(ig,kg);
+213	
+214	                    for (jg=jj,j=0; jg<MIN(jj+block,order); j++,jg++)
+215	                        for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+
+2017-02-28 04:48:59:Backtrace END
+2017-02-28 04:49:10:Type: The type is an integer type.
+2017-02-28 04:49:10:Type sizeof: 4
+2017-02-28 04:49:10:Mem contents(hex):0x000x000x000x00
+2017-02-28 04:49:10:Fault Mode: Random bit-flip
+2017-02-28 04:49:10:base address to flip value: 0x7fffffffde90
+2017-02-28 04:49:10:address max offset: 4
+2017-02-28 04:49:10:Memory content before bitflip:0x000x000x000x00
+2017-02-28 04:49:10:Backtrace BEGIN:
+2017-02-28 04:49:10:#0  0x00000000004032f5 in L_dgemm_185__par_region0_2_0 () at dgemm.c:211
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe550 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-02-28 04:49:10:206	                        BB_arr(j,k) =  B_arr(kg,jg);
+207	
+208	                for(ii = 0; ii < order; ii+=block) {
+209	
+210	                    for (kg=kk,k=0; kg<MIN(kk+block,order); k++,kg++)
+211	                        for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+212	                            AA_arr(i,k) = A_arr(ig,kg);
+213	
+214	                    for (jg=jj,j=0; jg<MIN(jj+block,order); j++,jg++)
+215	                        for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+
+2017-02-28 04:49:10:Backtrace END
+2017-02-28 04:49:20:Type: The type is an integer type.
+2017-02-28 04:49:20:Type sizeof: 4
+2017-02-28 04:49:20:Mem contents(hex):0x000x010x000x00
+2017-02-28 04:49:20:Fault Mode: One bit-flip
+2017-02-28 04:49:20:base address to flip value: 0x7fffffffded0
+2017-02-28 04:49:20:address max offset: 4
+2017-02-28 04:49:20:Memory content before bitflip:0x000x010x000x00
+2017-02-28 04:49:47:event type: exit
+2017-02-28 04:49:47:exit code: 0

@@ -1,0 +1,49 @@
+2016-10-22 00:47:58:Initialization strings:
+2016-10-22 00:47:58:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-22 00:47:58:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-22 00:47:58:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-22 00:47:58:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-22 00:47:58:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-22 00:47:58:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-22 00:48:03:Trying Fault Injection
+2016-10-22 00:48:03:Backtrace BEGIN:
+2016-10-22 00:48:03:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff71436c0 in _IO_new_file_underflow (fp=0x609b40) at fileops.c:580
+#2  0x00007ffff714459e in __GI__IO_default_uflow (fp=0x609b40) at genops.c:435
+#3  0x00007ffff713939e in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe87a "0.000008\n", n=251, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:69
+#4  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe87a "0.000008\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#5  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe87a "0.000008\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#6  0x00000000004017d6 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:201
+#7  main (argc=3, argv=0x7ffff7ef5000) at hotspot_check.c:265
+
+2016-10-22 00:48:03:76	in ../sysdeps/unix/syscall-template.S
+
+2016-10-22 00:48:03:Backtrace END
+2016-10-22 00:48:03:Type: The type is an integer type.
+2016-10-22 00:48:03:Type sizeof: 4
+2016-10-22 00:48:03:Mem contents(hex):0x010x000x000x00
+2016-10-22 00:48:03:base address to flip value: 0x7fffffffe594
+2016-10-22 00:48:03:address max offset: 4
+2016-10-22 00:48:03:Memory content before bitflip:0x010x000x000x00
+2016-10-22 00:48:03:Memory content after  bitflip:0x030x000x000x00
+2016-10-22 00:48:03:Mem contents(hex):0x030x000x000x00
+2016-10-22 00:48:03:frame name: __GI__IO_getline_info
+2016-10-22 00:48:03:symbol name: extract_delim
+2016-10-22 00:48:03:symbol filename: iogetline.c
+2016-10-22 00:48:03:symbol line: 56
+2016-10-22 00:48:03:value: 3
+2016-10-22 00:48:03:value address: 0x7fffffffe594
+2016-10-22 00:48:03:Type: The type is an integer type.
+2016-10-22 00:48:03:Type sizeof: 4
+2016-10-22 00:48:03:Fault Injection Successful after 5.72376704216s
+2016-10-22 00:48:05:Fault Already Injected
+2016-10-22 00:48:05:Fault Already Injected
+2016-10-22 00:48:06:Fault Already Injected
+2016-10-22 00:48:08:Fault Already Injected
+2016-10-22 00:48:08:Fault Already Injected
+2016-10-22 00:48:09:Fault Already Injected
+2016-10-22 00:48:10:Fault Already Injected
+2016-10-22 00:48:10:Fault Already Injected
+2016-10-22 00:48:11:Fault Already Injected
+2016-10-22 00:48:13:event type: exit
+2016-10-22 00:48:13:exit code: 0

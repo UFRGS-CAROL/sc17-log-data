@@ -1,0 +1,49 @@
+2017-03-01 00:46:21:Starting flip_value script
+2017-03-01 00:46:21:Initialization strings:
+2017-03-01 00:46:21:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 00:46:21:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 00:46:21:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 00:46:21:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 00:46:21:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 00:46:21:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-03-01 00:46:21:initSignal:3
+2017-03-01 00:46:21:endSignal:6
+2017-03-01 00:46:21:seqSignal:30
+2017-03-01 00:46:26:Backtrace BEGIN:
+2017-03-01 00:46:26:#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff7430125 in create_thread (pd=pd@entry=0x7ffe263e3080, attr=attr@entry=0x7fffffffdd18, stopped_start=<optimized out>, stopped_start@entry=false, stackaddr=<optimized out>, thread_ran=0x7fffffffdab7) at ../sysdeps/unix/sysv/linux/createthread.c:102
+#2  0x00007ffff7431adf in __pthread_create_2_1 (newthread=<optimized out>, attr=<optimized out>, start_routine=<optimized out>, arg=<optimized out>) at pthread_create.c:664
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-03-01 00:46:26:76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+2017-03-01 00:46:26:Backtrace END
+2017-03-01 00:46:28:Type: The type is an array.
+2017-03-01 00:46:28:Type sizeof: 12
+2017-03-01 00:46:28:Fliping array at pos: 0
+2017-03-01 00:46:28:Type: The type is an integer type.
+2017-03-01 00:46:28:Type sizeof: 4
+2017-03-01 00:46:28:Mem contents(hex):0x200x000x000x00
+2017-03-01 00:46:28:Fault Mode: Single bit-flip
+2017-03-01 00:46:28:base address to flip value: 0x7ffff743c350 
+2017-03-01 00:46:28:address max offset: 4
+2017-03-01 00:46:28:Memory content before bitflip:0x200x000x000x00
+2017-03-01 00:46:28:Memory content after  bitflip:0x200x080x000x00
+2017-03-01 00:46:28:Mem contents(hex):0x200x080x000x00
+2017-03-01 00:46:28:frame name: create_thread
+2017-03-01 00:46:28:symbol name: _thread_db_pthread_schedparam_sched_priority
+2017-03-01 00:46:28:symbol filename: ../nptl_db/structs.def
+2017-03-01 00:46:28:symbol line: 33
+2017-03-01 00:46:28:value: {2080, 1, 1592}
+2017-03-01 00:46:28:value address: 0x7ffff743c350 <_thread_db_pthread_schedparam_sched_priority>
+2017-03-01 00:46:28:Type: The type is an array.
+2017-03-01 00:46:28:Type sizeof: 12
+2017-03-01 00:46:28:Field name: None
+2017-03-01 00:46:28:Field Type:
+2017-03-01 00:46:28:Type: A range type, that is, an integer type with bounds.
+2017-03-01 00:46:28:Type sizeof: 8
+2017-03-01 00:46:28:Type range: (0L, 2L)
+2017-03-01 00:46:28:Fault Injection Successful after 7.4599339962s
+2017-03-01 00:47:04:event type: exit
+2017-03-01 00:47:04:exit code: 0

@@ -1,0 +1,46 @@
+2016-11-02 02:55:23:Initialization strings:
+2016-11-02 02:55:24:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-11-02 02:55:24:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-02 02:55:24:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-02 02:55:24:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-02 02:55:24:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-11-02 02:55:24:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-11-02 02:55:24:Trying Fault Injection
+2016-11-02 02:55:24:Backtrace BEGIN:
+2016-11-02 02:55:24:#0  __GI___waitpid (pid=27167, stat_loc=stat_loc@entry=0x7fffffffe268, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000405ccc in update_timestamp () at ../../include/log_helper.c:107
+#3  start_log_file (benchmark_name=0x6a1f <error: Cannot access memory at address 0x6a1f>, test_info=0x7fffffffe268 "") at ../../include/log_helper.c:196
+#4  0x0000000000401681 in main (argc=27167, argv=0x7fffffffe268) at hotspot_check.c:254
+
+2016-11-02 02:55:24:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-11-02 02:55:24:Backtrace END
+2016-11-02 02:55:24:Type: A floating point type.
+2016-11-02 02:55:24:Type sizeof: 8
+2016-11-02 02:55:24:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-11-02 02:55:24:base address to flip value: 0x608e98 
+2016-11-02 02:55:24:address max offset: 8
+2016-11-02 02:55:24:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-11-02 02:55:24:Memory content after  bitflip:0x000x000x200x000x000x000x000x00
+2016-11-02 02:55:24:Mem contents(hex):0x000x000x200x000x000x000x000x00
+2016-11-02 02:55:24:frame name: start_log_file
+2016-11-02 02:55:24:symbol name: kernel_time
+2016-11-02 02:55:24:symbol filename: ../../include/log_helper.c
+2016-11-02 02:55:24:symbol line: 63
+2016-11-02 02:55:24:value: 1.0361307573072619e-317
+2016-11-02 02:55:24:value address: 0x608e98 <kernel_time>
+2016-11-02 02:55:24:Type: A floating point type.
+2016-11-02 02:55:24:Type sizeof: 8
+2016-11-02 02:55:24:Fault Injection Successful after 0.566529035568s
+2016-11-02 02:55:27:Fault Already Injected
+2016-11-02 02:55:29:Fault Already Injected
+2016-11-02 02:55:31:Fault Already Injected
+2016-11-02 02:55:32:Fault Already Injected
+2016-11-02 02:55:35:Fault Already Injected
+2016-11-02 02:55:36:Fault Already Injected
+2016-11-02 02:55:37:Fault Already Injected
+2016-11-02 02:55:37:Fault Already Injected
+2016-11-02 02:55:38:Fault Already Injected
+2016-11-02 02:55:39:event type: exit
+2016-11-02 02:55:39:exit code: 0

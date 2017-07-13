@@ -1,0 +1,90 @@
+2017-01-24 14:45:54:Starting flip_value script
+2017-01-24 14:45:54:Initialization strings:
+2017-01-24 14:45:55:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-24 14:45:55:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 14:45:55:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 14:45:55:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 14:45:55:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 14:45:55:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-24 14:45:55:initSignal:2
+2017-01-24 14:45:55:endSignal:4
+2017-01-24 14:45:55:seqSignal:30
+2017-01-24 14:45:58:Trying Fault Injection
+2017-01-24 14:45:58:Inferior PID: 39596
+2017-01-24 14:45:58:Inferior is valid: True
+2017-01-24 14:45:58:Inferior #threads: 229
+2017-01-24 14:45:58:Backtrace BEGIN:
+2017-01-24 14:45:58:#0  0x0000000000404aee in L_lud_omp_123__par_loop2_2_5 () at lud_omp.c:138
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-01-24 14:45:58:133	            j_global = offset + BS * (1 + chunk_idx%chunks_in_inter_row);
+134	
+135	            for (i = 0; i < BS; i++) {
+136	#pragma omp simd
+137	                for (j =0; j < BS; j++){
+138	                    temp_top[i*BS + j]  = a[size*(i + offset) + j + j_global ];
+139	                    temp_left[i*BS + j] = a[size*(i + i_global) + offset + j];
+140	                }
+141	            }
+142	
+
+2017-01-24 14:45:58:Backtrace END
+2017-01-24 14:46:10:Thread name: None
+2017-01-24 14:46:10:Thread num: 48
+2017-01-24 14:46:10:Thread ptid: (39596, 39647, 0)
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:Error Exception(frameFlip): invalid frame
+2017-01-24 14:46:10:bitFlip function
+2017-01-24 14:46:10:Type: The type is an integer type.
+2017-01-24 14:46:10:Type sizeof: 4
+2017-01-24 14:46:10:Mem contents(hex):0x1c0x000x000x00
+2017-01-24 14:46:10:base address to flip value: 0x7fffffffc688
+2017-01-24 14:46:10:address max offset: 4
+2017-01-24 14:46:10:Memory content before bitflip:0x1c0x000x000x00
+2017-01-24 14:46:10:Memory content after  bitflip:0x1c0x000x000x01
+2017-01-24 14:46:10:Mem contents(hex):0x1c0x000x000x01
+2017-01-24 14:46:10:frame name: L_lud_omp_123__par_loop2_2_5
+2017-01-24 14:46:10:symbol name: size_inter
+2017-01-24 14:46:10:symbol filename: lud_omp.c
+2017-01-24 14:46:10:symbol line: 45
+2017-01-24 14:46:10:value: 16777244
+2017-01-24 14:46:10:value address: 0x7fffffffc688
+2017-01-24 14:46:10:Type: The type is an integer type.
+2017-01-24 14:46:10:Type sizeof: 4
+2017-01-24 14:46:10:Fault Injection Successful after 15.2558128834s
+2017-01-24 14:46:10:Fault Already Injected
+2017-01-24 14:46:10:Fault Already Injected
+2017-01-24 14:46:11:Fault Already Injected
+2017-01-24 14:46:11:Fault Already Injected
+2017-01-24 14:46:11:Fault Already Injected
+2017-01-24 14:46:15:event type: exit
+2017-01-24 14:46:15:exit code: 0

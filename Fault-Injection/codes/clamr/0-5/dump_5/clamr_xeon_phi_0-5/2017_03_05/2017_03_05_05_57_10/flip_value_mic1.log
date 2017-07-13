@@ -1,0 +1,59 @@
+[INFO -- 2017-03-05 05:56:10]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-05 05:56:10]
+Initialization strings:
+[INFO -- 2017-03-05 05:56:11]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-05 05:56:11]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 05:56:11]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 05:56:11]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 05:56:11]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 05:56:11]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-05 05:56:11]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-05 05:56:11]
+initSignal:0
+[INFO -- 2017-03-05 05:56:11]
+endSignal:5
+[INFO -- 2017-03-05 05:56:11]
+seqSignal:20
+[INFO -- 2017-03-05 05:56:11]
+faultMode:2
+[EXCEPTION -- 2017-03-05 05:56:12]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-03-05 05:56:12]
+Backtrace BEGIN:
+#0  strcat () at ../sysdeps/x86_64/strcat.S:242
+#1  0x000000000047bd08 in parseInput (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/input.cpp:208
+#2  0x000000000044477a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:191
+
+237	in ../sysdeps/x86_64/strcat.S
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x8a0xae0x540x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ce550 
+address max offset: 8
+Memory content after  bitflip:0x440xe80xf70xbb0x8d0xd50xa20xf4
+frame name: main
+symbol name: set_graphics_cell_data
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 117
+value: 0x54ae8a <set_graphics_cell_data_double>
+value address: 0x7ce550 <set_graphics_cell_data>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-05 05:56:12]
+Fault Injection Successful after 1.22354388237s
+[INFO -- 2017-03-05 05:56:41]
+event type: exit
+[EXCEPTION -- 2017-03-05 05:56:41]
+exit code: no exit code available

@@ -1,0 +1,57 @@
+[INFO -- 2017-02-24 21:53:45]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-24 21:53:45]
+Initialization strings:
+[INFO -- 2017-02-24 21:53:45]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-24 21:53:45]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-24 21:53:45]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-24 21:53:45]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-24 21:53:45]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-24 21:53:45]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-24 21:53:45]
+initSignal:0
+[INFO -- 2017-02-24 21:53:45]
+endSignal:3
+[INFO -- 2017-02-24 21:53:45]
+seqSignal:15
+[INFO -- 2017-02-24 21:53:45]
+faultMode:2
+[INFO -- 2017-02-24 21:53:47]
+Backtrace BEGIN:
+#0  _IO_old_init (fp=fp@entry=0x7fffffffe440, flags=flags@entry=32768) at genops.c:622
+#1  0x00007ffff714492b in _IO_no_init (fp=fp@entry=0x7fffffffe440, flags=flags@entry=32768, orientation=orientation@entry=-1, wd=wd@entry=0x0, jmp=jmp@entry=0x0) at genops.c:644
+#2  0x00007ffff71365b7 in __GI___isoc99_vsscanf (string=0x7fffffffe640 "324.602522\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:39
+#3  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#4  0x0000000000404598 in read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:207
+#5  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+617	in genops.c
+
+Backtrace END
+Memory content before bitflip:0x050x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff74266d8 
+address max offset: 4
+Memory content after  bitflip:0x330x8d0x290xef
+frame name: _IO_no_init
+symbol name: _IO_list_all_stamp
+symbol filename: genops.c
+symbol line: 42
+value: -282489549
+value address: 0x7ffff74266d8 <_IO_list_all_stamp>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-02-24 21:53:47]
+Fault Injection Successful after 2.29155993462s
+[INFO -- 2017-02-24 21:54:13]
+event type: exit
+[INFO -- 2017-02-24 21:54:13]
+exit code: 0

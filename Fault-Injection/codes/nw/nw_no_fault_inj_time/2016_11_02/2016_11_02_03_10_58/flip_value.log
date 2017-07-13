@@ -1,0 +1,52 @@
+2016-11-02 03:10:36:Initialization strings:
+2016-11-02 03:10:36:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-11-02 03:10:36:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-02 03:10:36:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-02 03:10:36:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-11-02 03:10:36:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-11-02 03:10:36:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-11-02 03:10:37:Trying Fault Injection
+2016-11-02 03:10:37:Inferior PID: 36022
+2016-11-02 03:10:37:Inferior is valid: True
+2016-11-02 03:10:37:Inferior #threads: 1
+2016-11-02 03:10:37:Backtrace BEGIN:
+2016-11-02 03:10:37:#0  __GI___waitpid (pid=36029, stat_loc=stat_loc@entry=0x7fffffffe5e8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff6d9d41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x000000000040648c in update_timestamp () at ../../include/log_helper.c:108
+#3  start_log_file (benchmark_name=0x8cbd <error: Cannot access memory at address 0x8cbd>, test_info=0x7fffffffe5e8 "") at ../../include/log_helper.c:197
+#4  0x00000000004014df in runTest (argc=<optimized out>, argv=<optimized out>) at needle_check.cpp:294
+#5  main (argc=36029, argv=0x7fffffffe5e8) at needle_check.cpp:114
+
+2016-11-02 03:10:37:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2016-11-02 03:10:37:Backtrace END
+2016-11-02 03:10:37:Thread name: None
+2016-11-02 03:10:37:Thread num: 1
+2016-11-02 03:10:37:Thread ptid: (36022, 36022, 0)
+2016-11-02 03:10:37:bitFlip function
+2016-11-02 03:10:37:Type: The type is a pointer.
+2016-11-02 03:10:37:Type sizeof: 8
+2016-11-02 03:10:37:Fliping a bit of the pointer
+2016-11-02 03:10:37:Mem contents(hex):0xb00xea0xff0xff0xff0x7f0x000x00
+2016-11-02 03:10:37:base address to flip value: 0x7fffffffea70
+2016-11-02 03:10:37:address max offset: 8
+2016-11-02 03:10:37:Memory content before bitflip:0xb00xea0xff0xff0xff0x7f0x000x00
+2016-11-02 03:10:37:Memory content after  bitflip:0xb00xfa0xff0xff0xff0x7f0x000x00
+2016-11-02 03:10:37:Mem contents(hex):0xb00xfa0xff0xff0xff0x7f0x000x00
+2016-11-02 03:10:37:frame name: runTest
+2016-11-02 03:10:37:symbol name: input_itemsets
+2016-11-02 03:10:37:symbol filename: needle_check.cpp
+2016-11-02 03:10:37:symbol line: 266
+2016-11-02 03:10:37:value: 0x7fffffffeab0
+2016-11-02 03:10:37:value address: 0x7fffffffea70
+2016-11-02 03:10:37:Type: The type is a pointer.
+2016-11-02 03:10:37:Type sizeof: 8
+2016-11-02 03:10:37:Fault Injection Successful after 1.2240459919s
+2016-11-02 03:10:41:Fault Already Injected
+2016-11-02 03:10:44:Fault Already Injected
+2016-11-02 03:10:45:Fault Already Injected
+2016-11-02 03:10:48:Fault Already Injected
+2016-11-02 03:10:49:Fault Already Injected
+2016-11-02 03:10:50:Fault Already Injected
+2016-11-02 03:10:51:event type: exit
+2016-11-02 03:10:51:exit code: 0

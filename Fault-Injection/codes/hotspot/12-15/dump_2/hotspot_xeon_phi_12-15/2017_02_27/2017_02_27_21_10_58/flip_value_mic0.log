@@ -1,0 +1,90 @@
+2017-02-27 21:10:23:Starting flip_value script
+2017-02-27 21:10:23:Initialization strings:
+2017-02-27 21:10:23:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-27 21:10:23:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 21:10:23:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 21:10:23:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-27 21:10:23:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-27 21:10:23:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-02-27 21:10:23:initSignal:12
+2017-02-27 21:10:23:endSignal:15
+2017-02-27 21:10:23:seqSignal:15
+2017-02-27 21:10:36:Backtrace BEGIN:
+2017-02-27 21:10:36:#0  0x00007ffff712654a in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2084
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "323.174866\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#4  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-02-27 21:10:36:2079	in vfscanf.c
+
+2017-02-27 21:10:36:Backtrace END
+2017-02-27 21:10:36:Type: The type is an array.
+2017-02-27 21:10:36:Type sizeof: 24
+2017-02-27 21:10:36:Fliping array at pos: 0
+2017-02-27 21:10:36:Type: The type is a structure.
+2017-02-27 21:10:36:Type sizeof: 24
+2017-02-27 21:10:36:Fliping value of field: overflow_arg_area
+2017-02-27 21:10:36:Type: The type is a pointer.
+2017-02-27 21:10:36:Type sizeof: 8
+2017-02-27 21:10:37:Backtrace BEGIN:
+2017-02-27 21:10:37:#0  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffdf98) at allocatestack.c:548
+#1  __pthread_create_2_1 (newthread=0x7fffffffdf90, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7ffff7f69600) at pthread_create.c:524
+#2  0x00007ffff790d323 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-02-27 21:10:37:543	in allocatestack.c
+
+2017-02-27 21:10:37:Backtrace END
+2017-02-27 21:10:37:Type: The type is a structure.
+2017-02-27 21:10:37:Type sizeof: 8
+2017-02-27 21:10:37:Fliping value of field: event_bits
+2017-02-27 21:10:37:Type: The type is an array.
+2017-02-27 21:10:37:Type sizeof: 8
+2017-02-27 21:10:37:Fliping array at pos: 1
+2017-02-27 21:10:37:Type: The type is an integer type.
+2017-02-27 21:10:37:Type sizeof: 4
+2017-02-27 21:10:37:Mem contents(hex):0x000x000x000x00
+2017-02-27 21:10:37:Fault Mode: Zero bit-flip
+2017-02-27 21:10:37:base address to flip value: 0x7ffff7646324 
+2017-02-27 21:10:37:address max offset: 4
+2017-02-27 21:10:37:Memory content before bitflip:0x000x000x000x00
+2017-02-27 21:10:37:Backtrace BEGIN:
+2017-02-27 21:10:37:#0  malloc (n=15) at dl-minimal.c:93
+#1  <function called from gdb>
+#2  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffdf98) at allocatestack.c:548
+#3  __pthread_create_2_1 (newthread=0x7fffffffdf90, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7ffff7f69600) at pthread_create.c:524
+#4  0x00007ffff790d323 in ?? ()
+#5  0x0000000000000000 in ?? ()
+
+2017-02-27 21:10:37:88	in dl-minimal.c
+
+2017-02-27 21:10:37:Backtrace END
+2017-02-27 21:10:38:Type: The type is an array.
+2017-02-27 21:10:38:Type sizeof: 12
+2017-02-27 21:10:38:Fliping array at pos: 1
+2017-02-27 21:10:38:Type: The type is an integer type.
+2017-02-27 21:10:38:Type sizeof: 4
+2017-02-27 21:10:38:Mem contents(hex):0x010x000x000x00
+2017-02-27 21:10:38:Fault Mode: Double bit-flip
+2017-02-27 21:10:38:base address to flip value: 0x7ffff743c254 
+2017-02-27 21:10:38:address max offset: 4
+2017-02-27 21:10:38:Memory content before bitflip:0x010x000x000x00
+2017-02-27 21:10:38:Memory content after  bitflip:0x010x120x000x00
+2017-02-27 21:10:38:Mem contents(hex):0x010x120x000x00
+2017-02-27 21:10:38:frame name: __pthread_create_2_1
+2017-02-27 21:10:38:symbol name: _thread_db_pthread_key_data_data
+2017-02-27 21:10:38:symbol filename: ../nptl_db/structs.def
+2017-02-27 21:10:38:symbol line: 68
+2017-02-27 21:10:38:value: {64, 4609, 8}
+2017-02-27 21:10:38:value address: 0x7ffff743c250 <_thread_db_pthread_key_struct_destr>
+2017-02-27 21:10:38:Type: The type is an array.
+2017-02-27 21:10:38:Type sizeof: 12
+2017-02-27 21:10:38:Field name: None
+2017-02-27 21:10:38:Field Type:
+2017-02-27 21:10:38:Type: A range type, that is, an integer type with bounds.
+2017-02-27 21:10:38:Type sizeof: 8
+2017-02-27 21:10:38:Type range: (0L, 2L)
+2017-02-27 21:10:38:Fault Injection Successful after 15.7288520336s
+2017-02-27 21:10:51:event type: exit
+2017-02-27 21:10:51:exit code: 0

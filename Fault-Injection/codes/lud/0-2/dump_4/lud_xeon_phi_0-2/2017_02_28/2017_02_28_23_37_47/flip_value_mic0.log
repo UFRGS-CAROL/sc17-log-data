@@ -1,0 +1,78 @@
+2017-02-28 23:37:24:Starting flip_value script
+2017-02-28 23:37:24:Initialization strings:
+2017-02-28 23:37:25:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 23:37:25:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 23:37:25:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 23:37:25:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-28 23:37:25:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-28 23:37:25:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-02-28 23:37:25:initSignal:0
+2017-02-28 23:37:25:endSignal:2
+2017-02-28 23:37:25:seqSignal:30
+2017-02-28 23:37:25:Backtrace BEGIN:
+2017-02-28 23:37:25:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142911 in __GI__IO_file_xsgetn (fp=0x60c010, data=<optimized out>, n=16777216) at fileops.c:1422
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=16777216, count=1, fp=0x60c010) at iofread.c:42
+#3  0x0000000000402b5a in main (argc=9, argv=0x7fffffffec08) at lud_check.c:105
+
+2017-02-28 23:37:25:76	in ../sysdeps/unix/syscall-template.S
+
+2017-02-28 23:37:25:Backtrace END
+2017-02-28 23:37:25:Type: The type is a structure.
+2017-02-28 23:37:25:Type sizeof: 168
+2017-02-28 23:37:25:Fliping value of field: __xsputn
+2017-02-28 23:37:25:Type: The type is a pointer.
+2017-02-28 23:37:25:Type sizeof: 8
+2017-02-28 23:37:25:Fliping a bit of the value pointed by a pointer
+2017-02-28 23:37:25:Type: The type is a function.
+2017-02-28 23:37:25:Type sizeof: 1
+2017-02-28 23:37:25:Mem contents(hex):0x31
+2017-02-28 23:37:25:Fault Mode: Random bit-flip
+2017-02-28 23:37:25:base address to flip value: 0x7ffff7142ba0 
+2017-02-28 23:37:25:address max offset: 1
+2017-02-28 23:37:25:Memory content before bitflip:0x31
+2017-02-28 23:37:25:Backtrace BEGIN:
+2017-02-28 23:37:25:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd2d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff7fd2df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff7fd2d14 in ?? ()
+#8  0x00007ffff7fd2de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+2017-02-28 23:37:25:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-02-28 23:37:25:Backtrace END
+2017-02-28 23:37:28:Type: The type is an array.
+2017-02-28 23:37:28:Type sizeof: 12
+2017-02-28 23:37:28:Fliping array at pos: 0
+2017-02-28 23:37:28:Type: The type is an integer type.
+2017-02-28 23:37:28:Type sizeof: 4
+2017-02-28 23:37:28:Mem contents(hex):0x400x000x000x00
+2017-02-28 23:37:28:Fault Mode: Single bit-flip
+2017-02-28 23:37:28:base address to flip value: 0x7ffff743c300 
+2017-02-28 23:37:28:address max offset: 4
+2017-02-28 23:37:28:Memory content before bitflip:0x400x000x000x00
+2017-02-28 23:37:28:Memory content after  bitflip:0x400x000x800x00
+2017-02-28 23:37:28:Mem contents(hex):0x400x000x800x00
+2017-02-28 23:37:28:frame name: __pthread_create_2_1
+2017-02-28 23:37:28:symbol name: _thread_db_pthread_nextevent
+2017-02-28 23:37:28:symbol filename: ../nptl_db/structs.def
+2017-02-28 23:37:28:symbol line: 38
+2017-02-28 23:37:28:value: {8388672, 1, 1640}
+2017-02-28 23:37:28:value address: 0x7ffff743c300 <_thread_db_pthread_nextevent>
+2017-02-28 23:37:28:Type: The type is an array.
+2017-02-28 23:37:28:Type sizeof: 12
+2017-02-28 23:37:28:Field name: None
+2017-02-28 23:37:28:Field Type:
+2017-02-28 23:37:28:Type: A range type, that is, an integer type with bounds.
+2017-02-28 23:37:28:Type sizeof: 8
+2017-02-28 23:37:28:Type range: (0L, 2L)
+2017-02-28 23:37:28:Fault Injection Successful after 3.33410692215s
+2017-02-28 23:37:41:event type: exit
+2017-02-28 23:37:41:exit code: 0

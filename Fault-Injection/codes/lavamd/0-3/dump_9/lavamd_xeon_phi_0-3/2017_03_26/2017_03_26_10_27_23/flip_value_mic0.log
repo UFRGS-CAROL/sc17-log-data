@@ -1,0 +1,61 @@
+[INFO -- 2017-03-26 10:26:56]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 10:26:56]
+Initialization strings:
+[INFO -- 2017-03-26 10:26:56]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 10:26:56]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 10:26:56]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 10:26:56]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 10:26:56]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 10:26:56]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 10:26:56]
+initSignal:0
+[INFO -- 2017-03-26 10:26:56]
+endSignal:3
+[INFO -- 2017-03-26 10:26:56]
+seqSignal:30
+[INFO -- 2017-03-26 10:26:56]
+faultMode:1
+[INFO -- 2017-03-26 10:27:01]
+Backtrace BEGIN:
+#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff7430125 in create_thread (pd=pd@entry=0x7ffce77f3380, attr=attr@entry=0x7fffffffdd18, stopped_start=<optimized out>, stopped_start@entry=false, stackaddr=<optimized out>, thread_ran=0x7fffffffdab7) at ../sysdeps/unix/sysv/linux/createthread.c:102
+#2  0x00007ffff7431adf in __pthread_create_2_1 (newthread=<optimized out>, attr=<optimized out>, start_routine=<optimized out>, arg=<optimized out>) at pthread_create.c:664
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+Backtrace END
+Fliping array at pos: 0
+Memory content before bitflip:0x400x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7ffff743c260 
+address max offset: 4
+Memory content after  bitflip:0x400x0a0x000x00
+frame name: __pthread_create_2_1
+symbol name: _thread_db___nptl_last_event
+symbol filename: ../nptl_db/structs.def
+symbol line: 58
+value: {2624, 1, 0}
+value address: 0x7ffff743c260 <_thread_db_pthread_key_struct_seq>
+Type: The type is an array.
+Type sizeof: 12
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 2L)
+
+[INFO -- 2017-03-26 10:27:01]
+Fault Injection Successful after 5.43914103508s
+[INFO -- 2017-03-26 10:27:16]
+event type: exit
+[INFO -- 2017-03-26 10:27:16]
+exit code: 0

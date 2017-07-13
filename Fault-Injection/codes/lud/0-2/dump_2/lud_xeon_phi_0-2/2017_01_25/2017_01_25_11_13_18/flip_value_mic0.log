@@ -1,0 +1,64 @@
+2017-01-25 11:13:06:Starting flip_value script
+2017-01-25 11:13:06:Initialization strings:
+2017-01-25 11:13:06:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 11:13:06:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 11:13:06:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 11:13:06:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 11:13:06:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 11:13:06:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 11:13:06:initSignal:0
+2017-01-25 11:13:06:endSignal:2
+2017-01-25 11:13:06:seqSignal:30
+2017-01-25 11:13:07:Trying Fault Injection
+2017-01-25 11:13:07:Inferior PID: 24365
+2017-01-25 11:13:07:Inferior is valid: True
+2017-01-25 11:13:07:Inferior #threads: 183
+2017-01-25 11:13:07:Backtrace BEGIN:
+2017-01-25 11:13:07:#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff7430125 in create_thread (pd=pd@entry=0x7ffd20fb7180, attr=attr@entry=0x7fffffffd3d8, stopped_start=<optimized out>, stopped_start@entry=false, stackaddr=<optimized out>, thread_ran=0x7fffffffd177) at ../sysdeps/unix/sysv/linux/createthread.c:102
+#2  0x00007ffff7431adf in __pthread_create_2_1 (newthread=<optimized out>, attr=<optimized out>, start_routine=<optimized out>, arg=<optimized out>) at pthread_create.c:664
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-01-25 11:13:07:76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+2017-01-25 11:13:07:Backtrace END
+2017-01-25 11:13:10:Thread name: None
+2017-01-25 11:13:10:Thread num: 1
+2017-01-25 11:13:10:Thread ptid: (24365, 24365, 0)
+2017-01-25 11:13:10:bitFlip function
+2017-01-25 11:13:10:Type: The type is a structure.
+2017-01-25 11:13:10:Type sizeof: 16
+2017-01-25 11:13:10:Fliping value of field: next
+2017-01-25 11:13:10:bitFlip function
+2017-01-25 11:13:10:Type: The type is a pointer.
+2017-01-25 11:13:10:Type sizeof: 8
+2017-01-25 11:13:10:Fliping a bit of the pointer
+2017-01-25 11:13:10:Mem contents(hex):0x800x220x640xf70xff0x7f0x000x00
+2017-01-25 11:13:10:base address to flip value: 0x7ffff7642280 
+2017-01-25 11:13:10:address max offset: 8
+2017-01-25 11:13:10:Memory content before bitflip:0x800x220x640xf70xff0x7f0x000x00
+2017-01-25 11:13:10:Memory content after  bitflip:0x800x220x640xf30xff0x7f0x000x00
+2017-01-25 11:13:10:Mem contents(hex):0x800x220x640xf30xff0x7f0x000x00
+2017-01-25 11:13:10:frame name: __pthread_create_2_1
+2017-01-25 11:13:10:symbol name: stack_cache
+2017-01-25 11:13:10:symbol filename: allocatestack.c
+2017-01-25 11:13:10:symbol line: 112
+2017-01-25 11:13:10:value: {next = 0x7ffff3642280, prev = 0x7ffff7642280 <stack_cache>}
+2017-01-25 11:13:10:value address: 0x7ffff7642280 <stack_cache>
+2017-01-25 11:13:10:Type: The type is a structure.
+2017-01-25 11:13:10:Type sizeof: 16
+2017-01-25 11:13:10:Field name: next
+2017-01-25 11:13:10:Field Type:
+2017-01-25 11:13:10:Type: The type is a pointer.
+2017-01-25 11:13:10:Type sizeof: 8
+2017-01-25 11:13:10:Field name: prev
+2017-01-25 11:13:10:Field Type:
+2017-01-25 11:13:10:Type: The type is a pointer.
+2017-01-25 11:13:10:Type sizeof: 8
+2017-01-25 11:13:10:Fault Injection Successful after 4.53931498528s
+2017-01-25 11:13:10:Fault Already Injected
+2017-01-25 11:13:10:Fault Already Injected
+2017-01-25 11:13:10:Fault Already Injected
+2017-01-25 11:13:10:event type: exit
+2017-01-25 11:13:10:exit code: no exit code available

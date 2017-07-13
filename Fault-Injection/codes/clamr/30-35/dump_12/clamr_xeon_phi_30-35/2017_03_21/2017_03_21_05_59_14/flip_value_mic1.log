@@ -1,0 +1,67 @@
+[INFO -- 2017-03-21 05:58:02]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-21 05:58:02]
+Initialization strings:
+[INFO -- 2017-03-21 05:58:02]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-21 05:58:02]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-21 05:58:02]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-21 05:58:02]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-21 05:58:02]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-21 05:58:02]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-21 05:58:02]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-21 05:58:02]
+initSignal:30
+[INFO -- 2017-03-21 05:58:02]
+endSignal:35
+[INFO -- 2017-03-21 05:58:02]
+seqSignal:20
+[INFO -- 2017-03-21 05:58:02]
+faultMode:0
+[INFO -- 2017-03-21 05:58:38]
+Backtrace BEGIN:
+#0  0x0000000000520c3d in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3217
+#1  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+3212	               nrht[nc] = (mpot[nrht_old[ic]] == 0) ? index[nrht_old[ic]] : -1;
+3213	            }
+3214	            if (nbot_old[ic] < (int)ncells && nbot_old[ic] >= 0){
+3215	               nbot[nc] = (mpot[nbot_old[ic]] == 0) ? index[nbot_old[ic]] : -1;
+3216	            }
+3217	            if (ntop_old[ic] < (int)ncells && ntop_old[ic] >= 0){
+3218	               ntop[nc] = (mpot[ntop_old[ic]] == 0) ? index[ntop_old[ic]] : -1;
+3219	            }
+3220	         } else if (mpot[ic] <= -2) {
+3221	            nlft[nc]  = -1;
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0xb053c0
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x10
+frame name: Mesh::rezone_all
+symbol name: level_old
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+symbol line: 2605
+value: 0xb053c0
+value address: 0x7fffffffdea0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-21 05:58:38]
+Fault Injection Successful after 36.5995290279s
+[INFO -- 2017-03-21 05:59:01]
+event type: exit
+[INFO -- 2017-03-21 05:59:01]
+exit code: 0

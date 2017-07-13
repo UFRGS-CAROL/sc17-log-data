@@ -1,0 +1,145 @@
+2017-01-24 11:47:04:Starting flip_value script
+2017-01-24 11:47:04:Initialization strings:
+2017-01-24 11:47:04:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-24 11:47:04:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 11:47:04:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 11:47:04:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 11:47:04:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 11:47:04:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-24 11:47:04:initSignal:0
+2017-01-24 11:47:04:endSignal:2
+2017-01-24 11:47:04:seqSignal:30
+2017-01-24 11:47:05:Trying Fault Injection
+2017-01-24 11:47:05:Inferior PID: 74998
+2017-01-24 11:47:05:Inferior is valid: True
+2017-01-24 11:47:05:Inferior #threads: 3
+2017-01-24 11:47:05:Backtrace BEGIN:
+2017-01-24 11:47:05:#0  0x00007ffff7930b60 in ?? ()
+#1  0x0000000000000000 in ?? ()
+
+2017-01-24 11:47:05:32	static struct option long_options[] = {
+33	  /* name, has_arg, flag, val */
+34	  {"input", 1, NULL, 'i'},
+35	  {"gold", 1, NULL, 'g'},
+36	  {"size", 1, NULL, 's'},
+37	  {0,0,0,0}
+38	};
+39	
+40	extern void
+41	lud_omp(float *m, int matrix_dim);
+
+2017-01-24 11:47:05:Backtrace END
+2017-01-24 11:47:05:Error(threadFlip): No Threads with symbols
+2017-01-24 11:47:05:Fault Injection Failed after 1.29774403572s
+2017-01-24 11:47:05:Trying Fault Injection
+2017-01-24 11:47:05:Inferior PID: 74998
+2017-01-24 11:47:05:Inferior is valid: True
+2017-01-24 11:47:05:Inferior #threads: 180
+2017-01-24 11:47:05:Backtrace BEGIN:
+2017-01-24 11:47:05:#0  _int_malloc (av=av@entry=0x7ffff7424aa0 <main_arena>, bytes=bytes@entry=288) at malloc.c:3766
+#1  0x00007ffff714ab2e in __libc_calloc (n=<optimized out>, elem_size=<optimized out>) at malloc.c:3210
+#2  0x00007ffff7dee27f in allocate_dtv (result=result@entry=0x7ffd217c3080) at dl-tls.c:322
+#3  0x00007ffff7deec4b in __GI__dl_allocate_tls (mem=mem@entry=0x7ffd217c3080) at dl-tls.c:544
+#4  0x00007ffff7431eb1 in allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:579
+#5  __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fff60341600) at pthread_create.c:524
+#6  0x00007ffff790d323 in ?? ()
+#7  0x0000000000000000 in ?? ()
+
+2017-01-24 11:47:05:3761	in malloc.c
+
+2017-01-24 11:47:05:Backtrace END
+2017-01-24 11:47:09:Thread name: None
+2017-01-24 11:47:09:Thread num: 1
+2017-01-24 11:47:09:Thread ptid: (74998, 74998, 0)
+2017-01-24 11:47:09:bitFlip function
+2017-01-24 11:47:09:Type: The type is an array.
+2017-01-24 11:47:09:Type sizeof: 12
+2017-01-24 11:47:09:Fliping array at pos: 1
+2017-01-24 11:47:09:bitFlip function
+2017-01-24 11:47:09:Type: The type is an integer type.
+2017-01-24 11:47:09:Type sizeof: 4
+2017-01-24 11:47:09:Mem contents(hex):0x010x000x000x00
+2017-01-24 11:47:09:base address to flip value: 0x7ffff743c254 
+2017-01-24 11:47:09:address max offset: 4
+2017-01-24 11:47:09:Memory content before bitflip:0x010x000x000x00
+2017-01-24 11:47:09:Memory content after  bitflip:0x010x000x000x40
+2017-01-24 11:47:09:Mem contents(hex):0x010x000x000x40
+2017-01-24 11:47:09:frame name: allocate_stack
+2017-01-24 11:47:09:symbol name: _thread_db_pthread_key_struct_destr
+2017-01-24 11:47:09:symbol filename: ../nptl_db/structs.def
+2017-01-24 11:47:09:symbol line: 64
+2017-01-24 11:47:09:value: {64, 1073741825, 8}
+2017-01-24 11:47:09:value address: 0x7ffff743c250 <_thread_db_pthread_key_struct_destr>
+2017-01-24 11:47:09:Type: The type is an array.
+2017-01-24 11:47:09:Type sizeof: 12
+2017-01-24 11:47:09:Field name: None
+2017-01-24 11:47:09:Field Type:
+2017-01-24 11:47:09:Type: A range type, that is, an integer type with bounds.
+2017-01-24 11:47:09:Type sizeof: 8
+2017-01-24 11:47:09:Type range: (0L, 2L)
+2017-01-24 11:47:09:Fault Injection Successful after 5.09018492699s
+2017-01-24 11:47:09:Fault Already Injected
+2017-01-24 11:47:09:Fault Already Injected
+2017-01-24 11:47:09:Fault Already Injected
+2017-01-24 11:47:09:Fault Already Injected
+2017-01-24 11:47:09:Fault Already Injected
+2017-01-24 11:47:09:Fault Already Injected
+2017-01-24 11:47:10:Fault Already Injected
+2017-01-24 11:47:10:Fault Already Injected
+2017-01-24 11:47:10:Fault Already Injected
+2017-01-24 11:47:10:Fault Already Injected
+2017-01-24 11:47:10:Fault Already Injected
+2017-01-24 11:47:10:Fault Already Injected
+2017-01-24 11:47:10:Fault Already Injected
+2017-01-24 11:47:11:Fault Already Injected
+2017-01-24 11:47:11:Fault Already Injected
+2017-01-24 11:47:11:Fault Already Injected
+2017-01-24 11:47:11:Fault Already Injected
+2017-01-24 11:47:11:Fault Already Injected
+2017-01-24 11:47:11:Fault Already Injected
+2017-01-24 11:47:11:Fault Already Injected
+2017-01-24 11:47:11:Fault Already Injected
+2017-01-24 11:47:12:Fault Already Injected
+2017-01-24 11:47:12:Fault Already Injected
+2017-01-24 11:47:12:Fault Already Injected
+2017-01-24 11:47:12:Fault Already Injected
+2017-01-24 11:47:12:Fault Already Injected
+2017-01-24 11:47:12:Fault Already Injected
+2017-01-24 11:47:12:Fault Already Injected
+2017-01-24 11:47:13:Fault Already Injected
+2017-01-24 11:47:13:Fault Already Injected
+2017-01-24 11:47:13:Fault Already Injected
+2017-01-24 11:47:13:Fault Already Injected
+2017-01-24 11:47:13:Fault Already Injected
+2017-01-24 11:47:13:Fault Already Injected
+2017-01-24 11:47:13:Fault Already Injected
+2017-01-24 11:47:14:Fault Already Injected
+2017-01-24 11:47:14:Fault Already Injected
+2017-01-24 11:47:14:Fault Already Injected
+2017-01-24 11:47:14:Fault Already Injected
+2017-01-24 11:47:14:Fault Already Injected
+2017-01-24 11:47:14:Fault Already Injected
+2017-01-24 11:47:14:Fault Already Injected
+2017-01-24 11:47:15:Fault Already Injected
+2017-01-24 11:47:15:Fault Already Injected
+2017-01-24 11:47:15:Fault Already Injected
+2017-01-24 11:47:15:Fault Already Injected
+2017-01-24 11:47:15:Fault Already Injected
+2017-01-24 11:47:15:Fault Already Injected
+2017-01-24 11:47:15:Fault Already Injected
+2017-01-24 11:47:16:Fault Already Injected
+2017-01-24 11:47:16:Fault Already Injected
+2017-01-24 11:47:16:Fault Already Injected
+2017-01-24 11:47:16:Fault Already Injected
+2017-01-24 11:47:16:Fault Already Injected
+2017-01-24 11:47:16:Fault Already Injected
+2017-01-24 11:47:16:Fault Already Injected
+2017-01-24 11:47:16:Fault Already Injected
+2017-01-24 11:47:17:Fault Already Injected
+2017-01-24 11:47:17:Fault Already Injected
+2017-01-24 11:47:17:Fault Already Injected
+2017-01-24 11:47:17:Fault Already Injected
+2017-01-24 11:47:17:Fault Already Injected
+2017-01-24 11:47:17:Fault Already Injected
+2017-01-24 11:47:18:Fault Already Injected
+2017-01-24 11:47:18:Fault Already Injected

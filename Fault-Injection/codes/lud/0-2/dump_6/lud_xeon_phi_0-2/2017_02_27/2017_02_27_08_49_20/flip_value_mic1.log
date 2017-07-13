@@ -1,0 +1,56 @@
+[INFO -- 2017-02-27 08:48:47]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 08:48:47]
+Initialization strings:
+[INFO -- 2017-02-27 08:48:47]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-27 08:48:47]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 08:48:47]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 08:48:47]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 08:48:47]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 08:48:47]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-27 08:48:47]
+initSignal:0
+[INFO -- 2017-02-27 08:48:47]
+endSignal:2
+[INFO -- 2017-02-27 08:48:47]
+seqSignal:30
+[INFO -- 2017-02-27 08:48:47]
+faultMode:0
+[INFO -- 2017-02-27 08:48:48]
+Backtrace BEGIN:
+#0  __GI___waitpid (pid=226814, stat_loc=stat_loc@entry=0x7fffffffe238, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405392 in start_log_file (benchmark_name=0x4075ac "openmpLUD", test_info=0x7fffffffe848 "matrix_dim:2048 threads:228") at ../include/log_helper.c:196
+#4  0x0000000000402c4b in main (argc=9, argv=0x7fffffffec08) at lud_check.c:118
+
+26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x60bd38 
+address max offset: 8
+Memory content after  bitflip:0x000x000x010x000x000x000x000x00
+frame name: start_log_file
+symbol name: kernel_time
+symbol filename: ../include/log_helper.c
+symbol line: 63
+value: 3.2379086165851934e-319
+value address: 0x60bd38 <kernel_time>
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-02-27 08:48:48]
+Fault Injection Successful after 1.0669939518s
+[INFO -- 2017-02-27 08:49:02]
+event type: exit
+[INFO -- 2017-02-27 08:49:02]
+exit code: 0

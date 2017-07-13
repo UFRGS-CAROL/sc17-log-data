@@ -1,0 +1,43 @@
+2017-03-01 09:57:37:Starting flip_value script
+2017-03-01 09:57:37:Initialization strings:
+2017-03-01 09:57:38:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 09:57:38:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 09:57:38:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 09:57:38:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 09:57:38:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 09:57:38:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 09:57:38:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 09:57:38:initSignal:20
+2017-03-01 09:57:38:endSignal:25
+2017-03-01 09:57:38:seqSignal:20
+2017-03-01 09:57:59:Backtrace BEGIN:
+2017-03-01 09:57:59:#0  __GI_memset (dstpp=0x3251410, c=0, len=16908552) at ../string/memset.c:63
+#1  0x0000000000552f8a in genvector_p (inum=4227136, elsize=4, file=0x5742c0 "/micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c", line=135) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/genmalloc/genmalloc.c:87
+#2  0x000000000054571b in compact_hash_init (ncells=264756, isize=2056, jsize=2056, report_level=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c:135
+#3  0x0000000000513572 in Mesh::calc_neighbors (this=0x7fae50, ncells=264756) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3626
+#4  0x0000000000445e6e in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:434
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-01 09:57:59:58	in ../string/memset.c
+
+2017-03-01 09:57:59:Backtrace END
+2017-03-01 09:58:03:Type: A floating point type.
+2017-03-01 09:58:03:Type sizeof: 8
+2017-03-01 09:58:03:Mem contents(hex):0x660x660x660x660x660x660xee0x3f
+2017-03-01 09:58:03:Fault Mode: Double bit-flip
+2017-03-01 09:58:03:base address to flip value: 0x7fffffffe500
+2017-03-01 09:58:03:address max offset: 8
+2017-03-01 09:58:03:Memory content before bitflip:0x660x660x660x660x660x660xee0x3f
+2017-03-01 09:58:03:Memory content after  bitflip:0x660x660x660xee0x660x660xee0x3f
+2017-03-01 09:58:03:Mem contents(hex):0x660x660x660xee0x660x660xee0x3f
+2017-03-01 09:58:03:frame name: do_calc
+2017-03-01 09:58:03:symbol name: sigma
+2017-03-01 09:58:03:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-03-01 09:58:03:symbol line: 393
+2017-03-01 09:58:03:value: 0.95000025331974025
+2017-03-01 09:58:03:value address: 0x7fffffffe500
+2017-03-01 09:58:03:Type: A floating point type.
+2017-03-01 09:58:03:Type sizeof: 8
+2017-03-01 09:58:03:Fault Injection Successful after 25.7674250603s
+2017-03-01 09:58:35:event type: exit
+2017-03-01 09:58:35:exit code: 0

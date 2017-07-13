@@ -1,0 +1,49 @@
+2017-03-01 01:22:21:Starting flip_value script
+2017-03-01 01:22:21:Initialization strings:
+2017-03-01 01:22:21:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 01:22:21:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 01:22:21:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 01:22:22:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 01:22:22:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 01:22:22:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 01:22:22:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 01:22:22:initSignal:30
+2017-03-01 01:22:22:endSignal:35
+2017-03-01 01:22:22:seqSignal:20
+2017-03-01 01:22:53:Backtrace BEGIN:
+2017-03-01 01:22:53:#0  Mesh::partition_cells (this=0x7fae50, numpe=0, z_order=..., method=ORIGINAL_ORDER) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:370
+#1  0x00000000004461e3 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:477
+#2  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-01 01:22:53:365	   int have_spatial_variables=0;
+366	   switch (method)
+367	   {   case ORIGINAL_ORDER:
+368	         //  Set z_order to the current cell order.
+369	         for (uint ic = 0; ic < ncells; ++ic)
+370	         {   z_order[ic] = ic; }
+371	
+372	         cpu_timers[MESH_TIMER_PARTITION] += cpu_timer_stop(tstart_cpu);
+373	
+374	         return;
+
+2017-03-01 01:22:53:Backtrace END
+2017-03-01 01:23:03:Type: A floating point type.
+2017-03-01 01:23:03:Type sizeof: 8
+2017-03-01 01:23:03:Mem contents(hex):0x160x050x620x0e0xdc0x2f0x370x3f
+2017-03-01 01:23:03:Fault Mode: Single bit-flip
+2017-03-01 01:23:03:base address to flip value: 0x7d0690 
+2017-03-01 01:23:03:address max offset: 8
+2017-03-01 01:23:03:Memory content before bitflip:0x160x050x620x0e0xdc0x2f0x370x3f
+2017-03-01 01:23:03:Memory content after  bitflip:0x160x050x220x0e0xdc0x2f0x370x3f
+2017-03-01 01:23:03:Mem contents(hex):0x160x050x220x0e0xdc0x2f0x370x3f
+2017-03-01 01:23:03:frame name: main
+2017-03-01 01:23:03:symbol name: deltaT
+2017-03-01 01:23:03:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-03-01 01:23:03:symbol line: 179
+2017-03-01 01:23:03:value: 0.00035380480233733588
+2017-03-01 01:23:03:value address: 0x7d0690 <deltaT>
+2017-03-01 01:23:03:Type: A floating point type.
+2017-03-01 01:23:03:Type sizeof: 8
+2017-03-01 01:23:03:Fault Injection Successful after 41.3583710194s
+2017-03-01 01:23:21:event type: exit
+2017-03-01 01:23:21:exit code: 0

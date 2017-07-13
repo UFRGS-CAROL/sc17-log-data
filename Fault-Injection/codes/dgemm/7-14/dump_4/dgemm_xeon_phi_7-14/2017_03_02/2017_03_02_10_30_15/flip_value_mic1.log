@@ -1,0 +1,60 @@
+2017-03-02 10:28:20:Starting flip_value script
+2017-03-02 10:28:20:Initialization strings:
+2017-03-02 10:28:20:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-02 10:28:20:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 10:28:20:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 10:28:20:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-02 10:28:20:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-03-02 10:28:20:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-03-02 10:28:20:initSignal:7
+2017-03-02 10:28:20:endSignal:14
+2017-03-02 10:28:20:seqSignal:15
+2017-03-02 10:28:28:Backtrace BEGIN:
+2017-03-02 10:28:28:#0  __GI___waitpid (pid=202394, stat_loc=stat_loc@entry=0x7fffffffe1d8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x00000000004015a5 in update_timestamp () at ../include/log_helper.c:107
+#3  0x000000000040198a in start_log_file (benchmark_name=0x405830 "openmpDGEMM", test_info=0x7fffffffe7e8 "matrix_dim:2048 threads:228 block_size:16 block_offset:12") at ../include/log_helper.c:196
+#4  0x0000000000404320 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:343
+
+2017-03-02 10:28:28:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-03-02 10:28:28:Backtrace END
+2017-03-02 10:28:29:Type: The type is a structure.
+2017-03-02 10:28:29:Type sizeof: 32
+2017-03-02 10:28:29:Fliping value of field: __canceltype
+2017-03-02 10:28:29:Type: The type is an integer type.
+2017-03-02 10:28:29:Type sizeof: 4
+2017-03-02 10:28:29:Mem contents(hex):0x000x000x000x00
+2017-03-02 10:28:29:Fault Mode: Double bit-flip
+2017-03-02 10:28:29:base address to flip value: 0x7fffffffe1c8
+2017-03-02 10:28:29:address max offset: 4
+2017-03-02 10:28:29:Memory content before bitflip:0x000x000x000x00
+2017-03-02 10:28:29:Memory content after  bitflip:0x000x000x0a0x00
+2017-03-02 10:28:29:Mem contents(hex):0x000x000x0a0x00
+2017-03-02 10:28:29:frame name: do_system
+2017-03-02 10:28:29:symbol name: _buffer
+2017-03-02 10:28:29:symbol filename: ../sysdeps/posix/system.c
+2017-03-02 10:28:29:symbol line: 112
+2017-03-02 10:28:29:value: {__routine = 0x7ffff710f720 <cancel_handler>, __arg = 0x7fffffffe1b4, __canceltype = 655360, __prev = 0x0}
+2017-03-02 10:28:29:value address: 0x7fffffffe1b8
+2017-03-02 10:28:29:Type: The type is a structure.
+2017-03-02 10:28:29:Type sizeof: 32
+2017-03-02 10:28:29:Field name: __routine
+2017-03-02 10:28:29:Field Type:
+2017-03-02 10:28:29:Type: The type is a pointer.
+2017-03-02 10:28:29:Type sizeof: 8
+2017-03-02 10:28:29:Field name: __arg
+2017-03-02 10:28:29:Field Type:
+2017-03-02 10:28:29:Type: The type is a pointer.
+2017-03-02 10:28:29:Type sizeof: 8
+2017-03-02 10:28:29:Field name: __canceltype
+2017-03-02 10:28:29:Field Type:
+2017-03-02 10:28:29:Type: The type is an integer type.
+2017-03-02 10:28:29:Type sizeof: 4
+2017-03-02 10:28:29:Field name: __prev
+2017-03-02 10:28:29:Field Type:
+2017-03-02 10:28:29:Type: The type is a pointer.
+2017-03-02 10:28:29:Type sizeof: 8
+2017-03-02 10:28:29:Fault Injection Successful after 9.08498692513s
+2017-03-02 10:29:24:event type: exit
+2017-03-02 10:29:24:exit code: 0

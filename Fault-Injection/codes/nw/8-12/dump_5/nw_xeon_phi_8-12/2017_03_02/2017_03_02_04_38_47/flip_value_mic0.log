@@ -1,0 +1,47 @@
+2017-03-02 04:38:01:Starting flip_value script
+2017-03-02 04:38:01:Initialization strings:
+2017-03-02 04:38:01:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 04:38:01:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 04:38:01:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 04:38:01:(4) file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-03-02 04:38:01:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-03-02 04:38:01:(6) set args 16394 10 228 /micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10 /micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10
+2017-03-02 04:38:01:initSignal:8
+2017-03-02 04:38:01:endSignal:12
+2017-03-02 04:38:01:seqSignal:30
+2017-03-02 04:38:10:Backtrace BEGIN:
+2017-03-02 04:38:10:#0  0x0000000000402c96 in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:329
+#1  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-03-02 04:38:10:324	    //    input_itemsets[j] = rand() % 10 + 1;
+325	    //}
+326	
+327	
+328	    for (int i = 1 ; i < max_cols; i++){
+329	        for (int j = 1 ; j < max_rows; j++){
+330	            referrence[i*max_cols+j] = blosum62[input_itemsets[i*max_cols]][input_itemsets[j]];
+331	        }
+332	    }
+333	
+
+2017-03-02 04:38:10:Backtrace END
+2017-03-02 04:38:10:Type: The type is an integer type.
+2017-03-02 04:38:10:Type sizeof: 4
+2017-03-02 04:38:10:Mem contents(hex):0x060x000x000x00
+2017-03-02 04:38:10:Fault Mode: Double bit-flip
+2017-03-02 04:38:10:base address to flip value: 0x7fffffffe9e8
+2017-03-02 04:38:10:address max offset: 4
+2017-03-02 04:38:10:Memory content before bitflip:0x060x000x000x00
+2017-03-02 04:38:10:Memory content after  bitflip:0x270x000x000x00
+2017-03-02 04:38:10:Mem contents(hex):0x270x000x000x00
+2017-03-02 04:38:10:frame name: runTest
+2017-03-02 04:38:10:symbol name: argc
+2017-03-02 04:38:10:symbol filename: needle_check.cpp
+2017-03-02 04:38:10:symbol line: 263
+2017-03-02 04:38:10:value: 39
+2017-03-02 04:38:10:value address: 0x7fffffffe9e8
+2017-03-02 04:38:10:Type: The type is an integer type.
+2017-03-02 04:38:10:Type sizeof: 4
+2017-03-02 04:38:10:Fault Injection Successful after 9.90774893761s
+2017-03-02 04:38:39:event type: exit
+2017-03-02 04:38:39:exit code: 0

@@ -1,0 +1,67 @@
+[INFO -- 2017-03-07 14:41:03]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-07 14:41:03]
+Initialization strings:
+[INFO -- 2017-03-07 14:41:04]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-07 14:41:04]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 14:41:04]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 14:41:04]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 14:41:04]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 14:41:04]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-07 14:41:04]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-07 14:41:04]
+initSignal:5
+[INFO -- 2017-03-07 14:41:04]
+endSignal:10
+[INFO -- 2017-03-07 14:41:04]
+seqSignal:20
+[INFO -- 2017-03-07 14:41:04]
+faultMode:2
+[INFO -- 2017-03-07 14:41:16]
+Backtrace BEGIN:
+#0  0x000000000054283b in Bounds_AddBounds (b=0x2b40e40, add=0x314ce50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/Bounds.c:82
+#1  0x000000000053d096 in KDTree_CreateTree (t=0x7f9d50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:255
+#2  0x000000000053d3f4 in KDTree_QueryCircleIntersect_Double (t=0x7f9d50, result_num=0x7fffffffe5dc, result_indicies=0x181ae10, circ_radius=24, ncells=264192, x=0x7fff0c0d6010, dx=0x7ffecc1ce010, y=0x7ffe8c1cc010, dy=0x7ffe4c1bf010) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:329
+#3  0x00000000005080fe in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1535
+#4  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+77	   assert(b && add);
+78	   b->min.x = MIN(b->min.x, add->min.x);
+79	   b->min.y = MIN(b->min.y, add->min.y);
+80	   b->max.x = MAX(b->max.x, add->max.x);
+81	   b->max.y = MAX(b->max.y, add->max.y);
+82	}
+83	
+84	void Bounds_AddEpsilon(TBounds* b, double add) {
+85	   assert(b);
+86	   b->min.x = b->min.x - add;
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x140x40
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe418
+address max offset: 8
+Memory content after  bitflip:0x5f0xb30xe50xa10xc50x860xf30xcd
+frame name: KDTree_CreateTree
+symbol name: width
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c
+symbol line: 181
+value: -3.290200843861103e+67
+value address: 0x7fffffffe418
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-07 14:41:16]
+Fault Injection Successful after 12.5918018818s
+[INFO -- 2017-03-07 14:42:03]
+event type: exit
+[INFO -- 2017-03-07 14:42:03]
+exit code: 0

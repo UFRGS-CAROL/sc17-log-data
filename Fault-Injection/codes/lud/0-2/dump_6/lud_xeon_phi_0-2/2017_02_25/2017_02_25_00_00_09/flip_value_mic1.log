@@ -1,0 +1,60 @@
+[INFO -- 2017-02-24 23:59:30]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-24 23:59:30]
+Initialization strings:
+[INFO -- 2017-02-24 23:59:30]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-24 23:59:30]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-24 23:59:30]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-24 23:59:30]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-24 23:59:30]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-24 23:59:30]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-24 23:59:30]
+initSignal:0
+[INFO -- 2017-02-24 23:59:30]
+endSignal:2
+[INFO -- 2017-02-24 23:59:30]
+seqSignal:30
+[INFO -- 2017-02-24 23:59:30]
+faultMode:2
+[INFO -- 2017-02-24 23:59:32]
+Backtrace BEGIN:
+#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff74312d0 in ?? () at pthread_create.c:237 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libpthread.so.0
+#2  0x00007fff20be5600 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+Backtrace END
+Fliping array at pos: 11
+Memory content before bitflip:0x61
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff743c16b  
+address max offset: 1
+Memory content after  bitflip:0x39
+frame name: create_thread
+symbol name: __PRETTY_FUNCTION__
+symbol filename: pthread_create.c
+symbol line: 0
+value: "create_thre9d"
+value address: 0x7ffff743c160 <__PRETTY_FUNCTION__.11396>
+Type: The type is an array.
+Type sizeof: 14
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 13L)
+
+[INFO -- 2017-02-24 23:59:32]
+Fault Injection Successful after 2.42023301125s
+[INFO -- 2017-02-24 23:59:54]
+event type: exit
+[INFO -- 2017-02-24 23:59:54]
+exit code: 1

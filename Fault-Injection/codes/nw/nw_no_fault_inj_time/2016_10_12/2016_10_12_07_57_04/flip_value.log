@@ -1,0 +1,50 @@
+2016-10-12 07:56:47:Initialization strings:
+2016-10-12 07:56:48:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-12 07:56:48:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 07:56:48:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-12 07:56:48:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-12 07:56:48:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-12 07:56:48:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-12 07:56:53:Trying Fault Injection
+2016-10-12 07:56:53:Inferior PID: 168710
+2016-10-12 07:56:53:Inferior is valid: True
+2016-10-12 07:56:53:Inferior #threads: 1
+2016-10-12 07:56:53:Backtrace BEGIN:
+2016-10-12 07:56:53:#0  0x00007ffff6e245d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6dd0911 in __GI__IO_file_xsgetn (fp=0x61db30, data=<optimized out>, n=1073872900) at fileops.c:1422
+#2  0x00007ffff6dc6929 in __GI__IO_fread (buf=<optimized out>, size=1073872900, count=1, fp=0x61db30) at iofread.c:42
+#3  0x00000000004015ff in ReadArrayFromFile (input_itemsets=<optimized out>, gold_itemsets=<optimized out>, max_rows=<optimized out>, filenameinput=<optimized out>, filenamegold=<optimized out>) at needle_check.cpp:50
+#4  runTest (argc=<optimized out>, argv=<optimized out>) at needle_check.cpp:317
+#5  main (argc=4, argv=0x7fff368f8010) at needle_check.cpp:114
+
+2016-10-12 07:56:53:76	in ../sysdeps/unix/syscall-template.S
+
+2016-10-12 07:56:53:Backtrace END
+2016-10-12 07:56:53:Thread name: None
+2016-10-12 07:56:53:Thread num: 1
+2016-10-12 07:56:53:Thread ptid: (168710, 168710, 0)
+2016-10-12 07:56:53:bitFlip function
+2016-10-12 07:56:53:Type: The type is an integer type.
+2016-10-12 07:56:53:Type sizeof: 4
+2016-10-12 07:56:53:Mem contents(hex):0x040x000x020x40
+2016-10-12 07:56:53:base address to flip value: 0x7fffffffe980
+2016-10-12 07:56:53:address max offset: 4
+2016-10-12 07:56:53:Memory content before bitflip:0x040x000x020x40
+2016-10-12 07:56:53:Memory content after  bitflip:0x040x800x020x40
+2016-10-12 07:56:53:Mem contents(hex):0x040x800x020x40
+2016-10-12 07:56:53:frame name: ReadArrayFromFile
+2016-10-12 07:56:53:symbol name: host_errors
+2016-10-12 07:56:53:symbol filename: needle_check.cpp
+2016-10-12 07:56:53:symbol line: 358
+2016-10-12 07:56:53:value: 1073905668
+2016-10-12 07:56:53:value address: 0x7fffffffe980
+2016-10-12 07:56:53:Type: The type is an integer type.
+2016-10-12 07:56:53:Type sizeof: 4
+2016-10-12 07:56:53:Fault Injection Successful after 5.49685192108s
+2016-10-12 07:56:53:Fault Already Injected
+2016-10-12 07:56:54:Fault Already Injected
+2016-10-12 07:56:54:Fault Already Injected
+2016-10-12 07:56:54:Fault Already Injected
+2016-10-12 07:56:56:Fault Already Injected
+2016-10-12 07:56:57:event type: exit
+2016-10-12 07:56:57:exit code: 0

@@ -1,0 +1,59 @@
+[INFO -- 2017-03-06 16:42:43]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 16:42:43]
+Initialization strings:
+[INFO -- 2017-03-06 16:42:44]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-06 16:42:44]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 16:42:44]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 16:42:44]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 16:42:44]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 16:42:44]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-06 16:42:44]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-06 16:42:44]
+initSignal:10
+[INFO -- 2017-03-06 16:42:44]
+endSignal:15
+[INFO -- 2017-03-06 16:42:44]
+seqSignal:20
+[INFO -- 2017-03-06 16:42:44]
+faultMode:0
+[INFO -- 2017-03-06 16:43:00]
+Backtrace BEGIN:
+#0  0x00007ffff6ba0590 in __GI_memcpy (dstpp=0x37d07b0, srcpp=0x7fffffffe5f8, len=32) at ../string/memcpy.c:53
+#1  0x0000000000542459 in Bounds_Copy (src=0x7fffffffe5f8, dest=0x37d07b0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/Bounds.c:65
+#2  0x000000000053c8fd in KDTree_AddElement (t=0x7f9d50, add=0x7fffffffe5f8) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:173
+#3  0x0000000000509f88 in Mesh::kdtree_setup (this=0x7f9a50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2368
+#4  0x0000000000471c62 in State::fill_circle (this=0x7fa5e0, circ_radius=24, fill_value=100, background=7) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:983
+#5  0x00000000004452cb in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:282
+
+48	in ../string/memcpy.c
+
+Backtrace END
+Memory content before bitflip:0x430x4c0x390xf70xff0x7f0x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffea68
+address max offset: 8
+Memory content after  bitflip:0x430x4c0xb90xf70xff0x7f0x000x00
+frame name: main
+symbol name: H_sum
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 292
+value: 6.9533489476712101e-310
+value address: 0x7fffffffea68
+Type: A floating point type.
+Type sizeof: 8
+
+[INFO -- 2017-03-06 16:43:00]
+Fault Injection Successful after 16.2979528904s
+[INFO -- 2017-03-06 16:44:06]
+event type: exit
+[INFO -- 2017-03-06 16:44:06]
+exit code: 0

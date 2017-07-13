@@ -1,0 +1,66 @@
+[INFO -- 2017-03-04 01:39:36]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-04 01:39:36]
+Initialization strings:
+[INFO -- 2017-03-04 01:39:36]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-04 01:39:36]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-04 01:39:36]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-04 01:39:36]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-04 01:39:36]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-04 01:39:36]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-04 01:39:36]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-04 01:39:36]
+initSignal:15
+[INFO -- 2017-03-04 01:39:36]
+endSignal:20
+[INFO -- 2017-03-04 01:39:36]
+seqSignal:20
+[INFO -- 2017-03-04 01:39:36]
+faultMode:1
+[INFO -- 2017-03-04 01:40:01]
+Backtrace BEGIN:
+#0  0x00007ffff6ba05d6 in __GI_memcpy (dstpp=<optimized out>, srcpp=srcpp@entry=0x57474d, len=<optimized out>, len@entry=1) at ../string/memcpy.c:59
+#1  0x00007ffff6b9ff79 in __GI___mempcpy (dest=<optimized out>, src=src@entry=0x57474d, len=len@entry=1) at ../string/mempcpy.c:35
+#2  0x00007ffff6b92c04 in _IO_new_file_xsputn (f=0x1920e80, data=0x57474d, n=1) at fileops.c:1307
+#3  0x00007ffff6b6747d in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1673
+#4  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#5  0x000000000054b98d in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:478
+#6  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#7  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+54	in ../string/memcpy.c
+
+Backtrace END
+Fliping array at pos: 14
+Memory content before bitflip:0x6e
+Fault Mode: Double bit-flip
+base address to flip value: 0x7ffff6c46d9e  
+address max offset: 1
+Memory content after  bitflip:0xef
+frame name: _IO_vfprintf_internal
+symbol name: __PRETTY_FUNCTION__
+symbol filename: vfprintf.c
+symbol line: 0
+value: "_IO_vfprintf_i\357ternal"
+value address: 0x7ffff6c46d90 <__PRETTY_FUNCTION__.11845>
+Type: The type is an array.
+Type sizeof: 22
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 21L)
+
+[INFO -- 2017-03-04 01:40:01]
+Fault Injection Successful after 25.3204710484s
+[INFO -- 2017-03-04 01:40:39]
+event type: exit
+[INFO -- 2017-03-04 01:40:39]
+exit code: 0

@@ -1,0 +1,48 @@
+2017-02-21 14:38:53:Starting flip_value script
+2017-02-21 14:38:53:Initialization strings:
+2017-02-21 14:38:53:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-21 14:38:53:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 14:38:53:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 14:38:53:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-21 14:38:53:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-21 14:38:53:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-02-21 14:38:53:initSignal:3
+2017-02-21 14:38:53:endSignal:6
+2017-02-21 14:38:53:seqSignal:30
+2017-02-21 14:38:58:Backtrace BEGIN:
+2017-02-21 14:38:58:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff4933d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff4933df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff4933d14 in ?? ()
+#8  0x00007ffff4933de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+2017-02-21 14:38:58:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-02-21 14:38:58:Backtrace END
+2017-02-21 14:39:00:Type: A boolean type.
+2017-02-21 14:39:00:Type sizeof: 1
+2017-02-21 14:39:00:Mem contents(hex):0x00
+2017-02-21 14:39:00:Fault Mode: Double bit-flip
+2017-02-21 14:39:00:base address to flip value: 0x7fffffffda67
+2017-02-21 14:39:00:address max offset: 1
+2017-02-21 14:39:00:Memory content before bitflip:0x00
+2017-02-21 14:39:00:Memory content after  bitflip:0x48
+2017-02-21 14:39:00:Mem contents(hex):0x48
+2017-02-21 14:39:00:frame name: __pthread_create_2_1
+2017-02-21 14:39:00:symbol name: free_cpuset
+2017-02-21 14:39:00:symbol filename: pthread_create.c
+2017-02-21 14:39:00:symbol line: 495
+2017-02-21 14:39:00:value: 72
+2017-02-21 14:39:00:value address: 0x7fffffffda67
+2017-02-21 14:39:00:Type: A boolean type.
+2017-02-21 14:39:00:Type sizeof: 1
+2017-02-21 14:39:00:Fault Injection Successful after 7.63475394249s
+2017-02-21 14:39:20:event type: exit
+2017-02-21 14:39:20:exit code: 0

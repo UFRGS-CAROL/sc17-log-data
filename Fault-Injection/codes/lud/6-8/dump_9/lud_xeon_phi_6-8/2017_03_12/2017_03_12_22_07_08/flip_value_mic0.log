@@ -1,0 +1,63 @@
+[INFO -- 2017-03-12 22:06:27]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-12 22:06:27]
+Initialization strings:
+[INFO -- 2017-03-12 22:06:27]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-12 22:06:27]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-12 22:06:27]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-12 22:06:28]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-12 22:06:28]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-12 22:06:28]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-03-12 22:06:28]
+initSignal:6
+[INFO -- 2017-03-12 22:06:28]
+endSignal:8
+[INFO -- 2017-03-12 22:06:28]
+seqSignal:30
+[INFO -- 2017-03-12 22:06:28]
+faultMode:0
+[INFO -- 2017-03-12 22:06:37]
+Backtrace BEGIN:
+#0  0x00000000004038c4 in lud_diagonal_omp (a=0x7ffff5ecc010, size=2048, offset=1200) at lud_omp.c:29
+#1  0x0000000000403af9 in lud_omp (a=0x7ffff5ecc010, size=2048) at lud_omp.c:62
+#2  0x0000000000402c78 in main (argc=9, argv=0x7fffffffec08) at lud_check.c:124
+
+24	        }
+25	   
+26	        float temp = 1.f/AA(i,i);
+27	        for (j = i+1; j < BS; j++) {
+28	            for (k = 0; k < i ; k++) {
+29	                AA(j,i) = AA(j,i) - AA(j,k) * AA(k,i);
+30	            }
+31	            AA(j,i) = AA(j,i)*temp;
+32	        }
+33	    }
+
+Backtrace END
+Memory content before bitflip:0xf90x0a0x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffd934
+address max offset: 4
+Memory content after  bitflip:0xf90x2a0x000x00
+frame name: lud_omp
+symbol name: chunks_per_inter
+symbol filename: lud_omp.c
+symbol line: 45
+value: 11001
+value address: 0x7fffffffd934
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-12 22:06:37]
+Fault Injection Successful after 9.83801388741s
+[INFO -- 2017-03-12 22:06:41]
+event type: exit
+[INFO -- 2017-03-12 22:06:41]
+exit code: 0

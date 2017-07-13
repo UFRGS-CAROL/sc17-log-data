@@ -1,0 +1,86 @@
+2017-03-02 06:26:54:Starting flip_value script
+2017-03-02 06:26:54:Initialization strings:
+2017-03-02 06:26:54:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 06:26:54:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 06:26:54:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 06:26:54:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 06:26:54:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 06:26:54:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-02 06:26:54:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-02 06:26:54:initSignal:15
+2017-03-02 06:26:54:endSignal:20
+2017-03-02 06:26:54:seqSignal:20
+2017-03-02 06:27:11:Backtrace BEGIN:
+2017-03-02 06:27:11:#0  0x000000000054b41a in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:465
+#1  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#2  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-03-02 06:27:11:460	            fprintf(fp,"%d,%lf\n",ncycle,simTime);
+461	            if (data_type == DATA_DOUBLE) {
+462	                for(i = 0; i < graphics_mysize; i++) {
+463	                    xloc = (int)((x_double[i]-graphics_xmin)*xconversion);
+464	                    xwid = (int)((x_double[i]+dx_double[i]-graphics_xmin)*xconversion-xloc);
+465	                    yloc = (int)((graphics_ymax-(y_double[i]+dy_double[i]))*yconversion);
+466	                    ywid = (int)((graphics_ymax-y_double[i])*yconversion);
+467	                    ywid -= yloc;
+468	                    color = graphics_proc[i]*step;
+469	                    //fprintf(fp,"%d,%d,%d,%d,%f\n",xloc,yloc,xwid,ywid,data[i]);
+
+2017-03-02 06:27:11:Backtrace END
+2017-03-02 06:27:16:Type: The type is an integer type.
+2017-03-02 06:27:16:Type sizeof: 4
+2017-03-02 06:27:16:Mem contents(hex):0x000x000x000x00
+2017-03-02 06:27:16:Fault Mode: Random bit-flip
+2017-03-02 06:27:16:base address to flip value: 0x7d0c40 
+2017-03-02 06:27:16:address max offset: 4
+2017-03-02 06:27:16:Memory content before bitflip:0x000x000x000x00
+2017-03-02 06:27:16:Backtrace BEGIN:
+2017-03-02 06:27:16:#0  0x000000000054b41a in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:465
+#1  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#2  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-03-02 06:27:16:460	            fprintf(fp,"%d,%lf\n",ncycle,simTime);
+461	            if (data_type == DATA_DOUBLE) {
+462	                for(i = 0; i < graphics_mysize; i++) {
+463	                    xloc = (int)((x_double[i]-graphics_xmin)*xconversion);
+464	                    xwid = (int)((x_double[i]+dx_double[i]-graphics_xmin)*xconversion-xloc);
+465	                    yloc = (int)((graphics_ymax-(y_double[i]+dy_double[i]))*yconversion);
+466	                    ywid = (int)((graphics_ymax-y_double[i])*yconversion);
+467	                    ywid -= yloc;
+468	                    color = graphics_proc[i]*step;
+469	                    //fprintf(fp,"%d,%d,%d,%d,%f\n",xloc,yloc,xwid,ywid,data[i]);
+
+2017-03-02 06:27:16:Backtrace END
+2017-03-02 06:27:22:Type: The type is an integer type.
+2017-03-02 06:27:22:Type sizeof: 4
+2017-03-02 06:27:22:Mem contents(hex):0x430x010x000x00
+2017-03-02 06:27:22:Fault Mode: One bit-flip
+2017-03-02 06:27:22:base address to flip value: 0x7fffffffe630
+2017-03-02 06:27:22:address max offset: 4
+2017-03-02 06:27:22:Memory content before bitflip:0x430x010x000x00
+2017-03-02 06:27:22:Backtrace BEGIN:
+2017-03-02 06:27:22:#0  0x000000000054b41a in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:465
+#1  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#2  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-03-02 06:27:22:460	            fprintf(fp,"%d,%lf\n",ncycle,simTime);
+461	            if (data_type == DATA_DOUBLE) {
+462	                for(i = 0; i < graphics_mysize; i++) {
+463	                    xloc = (int)((x_double[i]-graphics_xmin)*xconversion);
+464	                    xwid = (int)((x_double[i]+dx_double[i]-graphics_xmin)*xconversion-xloc);
+465	                    yloc = (int)((graphics_ymax-(y_double[i]+dy_double[i]))*yconversion);
+466	                    ywid = (int)((graphics_ymax-y_double[i])*yconversion);
+467	                    ywid -= yloc;
+468	                    color = graphics_proc[i]*step;
+469	                    //fprintf(fp,"%d,%d,%d,%d,%f\n",xloc,yloc,xwid,ywid,data[i]);
+
+2017-03-02 06:27:22:Backtrace END
+2017-03-02 06:27:27:Type: The type is an integer type.
+2017-03-02 06:27:27:Type sizeof: 4
+2017-03-02 06:27:27:Mem contents(hex):0x000x000x000x00
+2017-03-02 06:27:27:Fault Mode: Zero bit-flip
+2017-03-02 06:27:27:base address to flip value: 0x7cfd44 
+2017-03-02 06:27:27:address max offset: 4
+2017-03-02 06:27:27:Memory content before bitflip:0x000x000x000x00
+2017-03-02 06:28:02:event type: exit
+2017-03-02 06:28:02:exit code: 0

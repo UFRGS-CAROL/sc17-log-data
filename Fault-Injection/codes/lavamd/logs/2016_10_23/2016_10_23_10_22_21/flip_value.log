@@ -1,0 +1,89 @@
+2016-10-23 10:22:01:Initialization strings:
+2016-10-23 10:22:02:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-23 10:22:02:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-23 10:22:02:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-23 10:22:02:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-23 10:22:02:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-23 10:22:02:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-23 10:22:02:Trying Fault Injection
+2016-10-23 10:22:02:Inferior PID: 18885
+2016-10-23 10:22:02:Inferior is valid: True
+2016-10-23 10:22:02:Inferior #threads: 1
+2016-10-23 10:22:02:Backtrace BEGIN:
+2016-10-23 10:22:02:#0  0x00007ffff7dddbc0 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#1  0x0000000000000007 in ?? ()
+#2  0x00007fffffffedf0 in ?? ()
+#3  0x00007fffffffee1e in ?? ()
+#4  0x00007fffffffee22 in ?? ()
+#5  0x00007fffffffee25 in ?? ()
+#6  0x00007fffffffee62 in ?? ()
+#7  0x00007fffffffee9e in ?? ()
+#8  0x00007fffffffeed8 in ?? ()
+#9  0x0000000000000000 in ?? ()
+
+2016-10-23 10:22:02:50	    char * input_charges;
+51	    char * output_gold;
+52	
+53	    int i, j, k, l, m, n;
+54	
+55	    par_str par_cpu;
+56	    dim_str dim_cpu;
+57	    box_str* box_cpu;
+58	    FOUR_VECTOR* rv_cpu;
+59	    fp* qv_cpu;
+
+2016-10-23 10:22:02:Backtrace END
+2016-10-23 10:22:02:Error(threadFlip): No Threads with symbols
+2016-10-23 10:22:02:Fault Injection Failed after 0.428601026535s
+2016-10-23 10:22:03:Trying Fault Injection
+2016-10-23 10:22:03:Inferior PID: 18885
+2016-10-23 10:22:03:Inferior is valid: True
+2016-10-23 10:22:04:Inferior #threads: 164
+2016-10-23 10:22:04:Backtrace BEGIN:
+2016-10-23 10:22:04:#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff7430125 in create_thread (pd=pd@entry=0x7ffd657ca880, attr=attr@entry=0x7fffffffdd58, stopped_start=<optimized out>, stopped_start@entry=false, stackaddr=<optimized out>, thread_ran=0x7fffffffdaf7) at ../sysdeps/unix/sysv/linux/createthread.c:102
+#2  0x00007ffff7431adf in __pthread_create_2_1 (newthread=<optimized out>, attr=<optimized out>, start_routine=<optimized out>, arg=<optimized out>) at pthread_create.c:664
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2016-10-23 10:22:04:76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+2016-10-23 10:22:04:Backtrace END
+2016-10-23 10:22:06:Thread name: None
+2016-10-23 10:22:06:Thread num: 1
+2016-10-23 10:22:06:Thread ptid: (18885, 18885, 0)
+2016-10-23 10:22:06:bitFlip function
+2016-10-23 10:22:06:Type: The type is an array.
+2016-10-23 10:22:06:Type sizeof: 12
+2016-10-23 10:22:06:Fliping array at pos: 0
+2016-10-23 10:22:06:bitFlip function
+2016-10-23 10:22:06:Type: The type is an integer type.
+2016-10-23 10:22:06:Type sizeof: 4
+2016-10-23 10:22:06:Mem contents(hex):0x400x000x000x00
+2016-10-23 10:22:06:base address to flip value: 0x7ffff743c250 
+2016-10-23 10:22:06:address max offset: 4
+2016-10-23 10:22:06:Memory content before bitflip:0x400x000x000x00
+2016-10-23 10:22:06:Memory content after  bitflip:0x400x000x000x08
+2016-10-23 10:22:06:Mem contents(hex):0x400x000x000x08
+2016-10-23 10:22:06:frame name: __pthread_create_2_1
+2016-10-23 10:22:06:symbol name: _thread_db_list_t_prev
+2016-10-23 10:22:06:symbol filename: ../nptl_db/structs.def
+2016-10-23 10:22:06:symbol line: 42
+2016-10-23 10:22:06:value: {134217792, 1, 8}
+2016-10-23 10:22:06:value address: 0x7ffff743c250 <_thread_db_pthread_key_struct_destr>
+2016-10-23 10:22:06:Type: The type is an array.
+2016-10-23 10:22:06:Type sizeof: 12
+2016-10-23 10:22:06:Field name: None
+2016-10-23 10:22:06:Field Type:
+2016-10-23 10:22:06:Type: A range type, that is, an integer type with bounds.
+2016-10-23 10:22:06:Type sizeof: 8
+2016-10-23 10:22:06:Type range: (0L, 2L)
+2016-10-23 10:22:06:Fault Injection Successful after 4.10691809654s
+2016-10-23 10:22:06:Fault Already Injected
+2016-10-23 10:22:06:Fault Already Injected
+2016-10-23 10:22:06:Fault Already Injected
+2016-10-23 10:22:10:Fault Already Injected
+2016-10-23 10:22:10:Fault Already Injected
+2016-10-23 10:22:12:Fault Already Injected
+2016-10-23 10:22:15:event type: exit
+2016-10-23 10:22:15:exit code: 0

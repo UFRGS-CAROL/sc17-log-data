@@ -1,0 +1,75 @@
+2017-02-28 00:12:10:Starting flip_value script
+2017-02-28 00:12:10:Initialization strings:
+2017-02-28 00:12:10:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 00:12:10:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 00:12:10:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 00:12:10:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 00:12:10:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 00:12:10:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 00:12:10:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 00:12:10:initSignal:35
+2017-02-28 00:12:10:endSignal:40
+2017-02-28 00:12:10:seqSignal:20
+2017-02-28 00:12:48:Backtrace BEGIN:
+2017-02-28 00:12:48:#0  0x0000000000520ca4 in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3218
+#1  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 00:12:48:3213	            }
+3214	            if (nbot_old[ic] < (int)ncells && nbot_old[ic] >= 0){
+3215	               nbot[nc] = (mpot[nbot_old[ic]] == 0) ? index[nbot_old[ic]] : -1;
+3216	            }
+3217	            if (ntop_old[ic] < (int)ncells && ntop_old[ic] >= 0){
+3218	               ntop[nc] = (mpot[ntop_old[ic]] == 0) ? index[ntop_old[ic]] : -1;
+3219	            }
+3220	         } else if (mpot[ic] <= -2) {
+3221	            nlft[nc]  = -1;
+3222	            nrht[nc]  = -1;
+
+2017-02-28 00:12:48:Backtrace END
+2017-02-28 00:12:52:Type: The type is an integer type.
+2017-02-28 00:12:52:Type sizeof: 4
+2017-02-28 00:12:52:Mem contents(hex):0x060x000x000x00
+2017-02-28 00:12:52:Fault Mode: Random bit-flip
+2017-02-28 00:12:52:base address to flip value: 0x572f98 
+2017-02-28 00:12:52:address max offset: 4
+2017-02-28 00:12:52:Memory content before bitflip:0x060x000x000x00
+2017-02-28 00:12:52:Backtrace BEGIN:
+2017-02-28 00:12:52:#0  0x0000000000520ca4 in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3218
+#1  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 00:12:52:3213	            }
+3214	            if (nbot_old[ic] < (int)ncells && nbot_old[ic] >= 0){
+3215	               nbot[nc] = (mpot[nbot_old[ic]] == 0) ? index[nbot_old[ic]] : -1;
+3216	            }
+3217	            if (ntop_old[ic] < (int)ncells && ntop_old[ic] >= 0){
+3218	               ntop[nc] = (mpot[ntop_old[ic]] == 0) ? index[ntop_old[ic]] : -1;
+3219	            }
+3220	         } else if (mpot[ic] <= -2) {
+3221	            nlft[nc]  = -1;
+3222	            nrht[nc]  = -1;
+
+2017-02-28 00:12:52:Backtrace END
+2017-02-28 00:13:02:Type: The type is an integer type.
+2017-02-28 00:13:02:Type sizeof: 4
+2017-02-28 00:13:02:Mem contents(hex):0x000x000x000x00
+2017-02-28 00:13:02:Fault Mode: Single bit-flip
+2017-02-28 00:13:02:base address to flip value: 0x7d0750 
+2017-02-28 00:13:02:address max offset: 4
+2017-02-28 00:13:02:Memory content before bitflip:0x000x000x000x00
+2017-02-28 00:13:02:Memory content after  bitflip:0x080x000x000x00
+2017-02-28 00:13:02:Mem contents(hex):0x080x000x000x00
+2017-02-28 00:13:02:frame name: do_calc
+2017-02-28 00:13:02:symbol name: do_quo_setup
+2017-02-28 00:13:02:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-02-28 00:13:02:symbol line: 138
+2017-02-28 00:13:02:value: 8
+2017-02-28 00:13:02:value address: 0x7d0750 <do_quo_setup>
+2017-02-28 00:13:02:Type: The type is an integer type.
+2017-02-28 00:13:02:Type sizeof: 4
+2017-02-28 00:13:02:Fault Injection Successful after 52.3671760559s
+2017-02-28 00:13:18:event type: exit
+2017-02-28 00:13:18:exit code: 0

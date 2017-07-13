@@ -1,0 +1,60 @@
+2017-03-02 08:45:03:Starting flip_value script
+2017-03-02 08:45:03:Initialization strings:
+2017-03-02 08:45:03:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 08:45:03:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 08:45:03:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 08:45:03:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 08:45:03:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 08:45:03:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-02 08:45:03:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-02 08:45:03:initSignal:30
+2017-03-02 08:45:03:endSignal:35
+2017-03-02 08:45:03:seqSignal:20
+2017-03-02 08:45:35:Backtrace BEGIN:
+2017-03-02 08:45:35:#0  0x0000000000558e57 in std::_Rb_tree<char const*, std::pair<char const* const, malloc_plus_memory_entry*>, std::_Select1st<std::pair<char const* const, malloc_plus_memory_entry*> >, cmp_str, std::allocator<std::pair<char const* const, malloc_plus_memory_entry*> > >::find (this=0x7fb9e0, __k=@0x7fffffffd8e0: 0x7fb7a0 "H") at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_tree.h:2305
+#1  0x0000000000559197 in std::map<char const*, malloc_plus_memory_entry*, cmp_str, std::allocator<std::pair<char const* const, malloc_plus_memory_entry*> > >::find (this=0x7fb9e0, __x=@0x7fffffffd8e0: 0x7fb7a0 "H") at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_map.h:843
+#2  0x0000000000554a65 in MallocPlus::memory_replace (this=0x7fb9e0, malloc_mem_ptr_old=0x304c260, malloc_mem_ptr_new=0x8ff7a0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/MallocPlus/MallocPlus.cpp:901
+#3  0x0000000000451953 in State::calc_finite_difference (this=0x7fb9e0, deltaT=0.00035098952853179934) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1721
+#4  0x0000000000445f6c in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:451
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-03-02 08:45:35:2300	    typename _Rb_tree<_Key, _Val, _KeyOfValue,
+2301			      _Compare, _Alloc>::iterator
+2302	    _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::
+2303	    find(const _Key& __k)
+2304	    {
+2305	      iterator __j = _M_lower_bound(_M_begin(), _M_end(), __k);
+2306	      return (__j == end()
+2307		      || _M_impl._M_key_compare(__k,
+2308						_S_key(__j._M_node))) ? end() : __j;
+2309	    }
+
+2017-03-02 08:45:35:Backtrace END
+2017-03-02 08:45:38:Type: The type is a structure.
+2017-03-02 08:45:38:Type sizeof: 8
+2017-03-02 08:45:38:Fliping value of field: _M_node
+2017-03-02 08:45:38:Type: The type is a pointer.
+2017-03-02 08:45:38:Type sizeof: 8
+2017-03-02 08:45:38:Fliping a bit of the pointer
+2017-03-02 08:45:38:Mem contents(hex):0xf00xdf0xff0xff0xff0x7f0x000x00
+2017-03-02 08:45:38:Fault Mode: Single bit-flip
+2017-03-02 08:45:38:base address to flip value: 0x7d0c70 
+2017-03-02 08:45:38:address max offset: 8
+2017-03-02 08:45:38:Memory content before bitflip:0xf00xdf0xff0xff0xff0x7f0x000x00
+2017-03-02 08:45:38:Memory content after  bitflip:0xf00xdf0xff0xef0xff0x7f0x000x00
+2017-03-02 08:45:38:Mem contents(hex):0xf00xdf0xff0xef0xff0x7f0x000x00
+2017-03-02 08:45:38:frame name: std::map<char const*, malloc_plus_memory_entry*, cmp_str, std::allocator<std::pair<char const* const, malloc_plus_memory_entry*> > >::find
+2017-03-02 08:45:38:symbol name: it_save
+2017-03-02 08:45:38:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/MallocPlus/MallocPlus.cpp
+2017-03-02 08:45:38:symbol line: 94
+2017-03-02 08:45:38:value: {_M_node = 0x7fffefffdff0}
+2017-03-02 08:45:38:value address: 0x7d0c70 <it_save>
+2017-03-02 08:45:38:Type: The type is a structure.
+2017-03-02 08:45:38:Type sizeof: 8
+2017-03-02 08:45:38:Field name: _M_node
+2017-03-02 08:45:38:Field Type:
+2017-03-02 08:45:38:Type: The type is a pointer.
+2017-03-02 08:45:38:Type sizeof: 8
+2017-03-02 08:45:38:Fault Injection Successful after 35.95865798s
+2017-03-02 08:46:01:event type: exit
+2017-03-02 08:46:01:exit code: 0

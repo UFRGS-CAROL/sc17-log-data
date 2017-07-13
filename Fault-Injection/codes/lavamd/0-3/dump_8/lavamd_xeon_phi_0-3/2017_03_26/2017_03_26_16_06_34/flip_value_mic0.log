@@ -1,0 +1,81 @@
+[INFO -- 2017-03-26 16:06:11]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-26 16:06:11]
+Initialization strings:
+[INFO -- 2017-03-26 16:06:12]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-26 16:06:12]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 16:06:12]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-26 16:06:12]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 16:06:12]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-26 16:06:12]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-26 16:06:12]
+initSignal:0
+[INFO -- 2017-03-26 16:06:12]
+endSignal:3
+[INFO -- 2017-03-26 16:06:12]
+seqSignal:30
+[INFO -- 2017-03-26 16:06:12]
+faultMode:3
+[INFO -- 2017-03-26 16:06:13]
+Backtrace BEGIN:
+#0  0x00007ffff71388eb in __GI__IO_fread (buf=0x7ffff515b228, size=1, count=8, fp=0x60e1c0) at iofread.c:41
+#1  0x0000000000402670 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:182
+
+36	in iofread.c
+
+Backtrace END
+Fliping value of field: cur_arg
+Memory content before bitflip:0x000x8d0xff0xf7
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe850
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: main
+symbol name: dim_cpu
+symbol filename: main_check.c
+symbol line: 56
+value: {cur_arg = 0, arch_arg = 32767, cores_arg = 228, boxes1d_arg = 15, number_boxes = 3375, box_mem = 2214000, space_elem = 337500, space_mem = 10800000, space_mem2 = 2700000}
+value address: 0x7fffffffe850
+Type: The type is a structure.
+Type sizeof: 56
+Field name: cur_arg
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: arch_arg
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: cores_arg
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: boxes1d_arg
+Field Type: The type is an integer type.
+Field Type sizeof: 4
+Field name: number_boxes
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: box_mem
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: space_elem
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: space_mem
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+Field name: space_mem2
+Field Type: The type is an integer type.
+Field Type sizeof: 8
+
+[INFO -- 2017-03-26 16:06:13]
+Fault Injection Successful after 1.38831591606s
+[INFO -- 2017-03-26 16:06:27]
+event type: exit
+[INFO -- 2017-03-26 16:06:27]
+exit code: 0

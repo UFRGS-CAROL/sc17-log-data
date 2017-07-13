@@ -1,0 +1,68 @@
+[INFO -- 2017-03-09 22:30:45]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-09 22:30:45]
+Initialization strings:
+[INFO -- 2017-03-09 22:30:45]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-09 22:30:45]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-09 22:30:45]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-09 22:30:45]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-09 22:30:45]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-03-09 22:30:45]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-03-09 22:30:45]
+initSignal:6
+[INFO -- 2017-03-09 22:30:45]
+endSignal:8
+[INFO -- 2017-03-09 22:30:45]
+seqSignal:30
+[INFO -- 2017-03-09 22:30:45]
+faultMode:2
+[INFO -- 2017-03-09 22:30:56]
+Backtrace BEGIN:
+#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd2d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff7fd2df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff7fd2d14 in ?? ()
+#8  0x00007ffff7fd2de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+Backtrace END
+Fliping array at pos: 151
+Memory content before bitflip:0x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x60bc77  
+address max offset: 1
+Memory content after  bitflip:0x43
+frame name: log_error_count
+symbol name: full_log_file_name
+symbol filename: ../include/log_helper.c
+symbol line: 53
+value: "/micNfs/carol/logs/2017_03_10_03_30_45_openmpLUD_mic0.local.log", '\000' <repeats 88 times>, "C", '\000' <repeats 147 times>
+value address: 0x60bbe0 <full_log_file_name>
+Type: The type is an array.
+Type sizeof: 300
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 299L)
+
+[INFO -- 2017-03-09 22:30:56]
+Fault Injection Successful after 11.2800810337s
+[INFO -- 2017-03-09 22:30:57]
+event type: exit
+[INFO -- 2017-03-09 22:30:57]
+exit code: 0

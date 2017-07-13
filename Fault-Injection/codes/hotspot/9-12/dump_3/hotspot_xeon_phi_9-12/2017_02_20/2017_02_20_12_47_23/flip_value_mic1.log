@@ -1,0 +1,66 @@
+2017-02-20 12:46:50:Starting flip_value script
+2017-02-20 12:46:50:Initialization strings:
+2017-02-20 12:46:51:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-20 12:46:51:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 12:46:51:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 12:46:51:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-20 12:46:51:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-20 12:46:51:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-02-20 12:46:51:initSignal:9
+2017-02-20 12:46:51:endSignal:12
+2017-02-20 12:46:51:seqSignal:15
+2017-02-20 12:47:00:Backtrace BEGIN:
+2017-02-20 12:47:00:#0  0x00007ffff714f848 in __memchr (s=s@entry=0x7ffff7f2a8eb, c_in=c_in@entry=10, n=<optimized out>, n@entry=255) at ../string/memchr.c:153
+#1  0x00007ffff7139361 in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "329.339478\n", n=255, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:94
+#2  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "329.339478\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#3  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe640 "329.339478\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#4  0x0000000000404538 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:202
+#5  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-02-20 12:47:00:148	in ../string/memchr.c
+
+2017-02-20 12:47:00:Backtrace END
+2017-02-20 12:47:00:Type: A floating point type.
+2017-02-20 12:47:00:Type sizeof: 4
+2017-02-20 12:47:00:Mem contents(hex):0x740xab0xa40x43
+2017-02-20 12:47:00:Fault Mode: Random bit-flip
+2017-02-20 12:47:00:base address to flip value: 0x7fffffffe74c
+2017-02-20 12:47:00:address max offset: 4
+2017-02-20 12:47:00:Memory content before bitflip:0x740xab0xa40x43
+2017-02-20 12:47:01:Backtrace BEGIN:
+2017-02-20 12:47:01:#0  __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "324.235962\n", n=255, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#1  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe640 "324.235962\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#2  0x0000000000404538 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:202
+#3  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-02-20 12:47:01:33	in iogetline.c
+
+2017-02-20 12:47:01:Backtrace END
+2017-02-20 12:47:01:Type: The type is an array.
+2017-02-20 12:47:01:Type sizeof: 256
+2017-02-20 12:47:01:Fliping array at pos: 142
+2017-02-20 12:47:01:Type: The type is an integer type.
+2017-02-20 12:47:01:Type sizeof: 1
+2017-02-20 12:47:01:Mem contents(hex):0x00
+2017-02-20 12:47:01:Fault Mode: Single bit-flip
+2017-02-20 12:47:01:base address to flip value: 0x7fffffffe6ce 
+2017-02-20 12:47:01:address max offset: 1
+2017-02-20 12:47:01:Memory content before bitflip:0x00
+2017-02-20 12:47:01:Memory content after  bitflip:0x40
+2017-02-20 12:47:01:Mem contents(hex):0x40
+2017-02-20 12:47:01:frame name: read_input
+2017-02-20 12:47:01:symbol name: str
+2017-02-20 12:47:01:symbol filename: hotspot_check.c
+2017-02-20 12:47:01:symbol line: 194
+2017-02-20 12:47:01:value: "324.235962\n\000\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\220\344\377\377\377\177\000\000\240\211`\000\000\000\000\000\023\000\000\000\000\000\000\000\023\000\000\000\000\000\000\000\240\211`", '\000' <repeats 13 times>, "\060\000\000\000\060\000@\000\240\347\377\377\377\177\000\000\340\346\377\377\377\177\000\000\377\017\000\000\000\000\000\000\210\023\016\367\377\177\000\000\350\003\000\000\000\000\000\000\350\003\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000"...
+2017-02-20 12:47:01:value address: 0x7fffffffe640
+2017-02-20 12:47:01:Type: The type is an array.
+2017-02-20 12:47:01:Type sizeof: 256
+2017-02-20 12:47:01:Field name: None
+2017-02-20 12:47:01:Field Type:
+2017-02-20 12:47:01:Type: A range type, that is, an integer type with bounds.
+2017-02-20 12:47:01:Type sizeof: 1
+2017-02-20 12:47:01:Type range: (0L, 255L)
+2017-02-20 12:47:01:Fault Injection Successful after 10.1970939636s
+2017-02-20 12:47:16:event type: exit
+2017-02-20 12:47:16:exit code: 0

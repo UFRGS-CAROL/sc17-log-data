@@ -1,0 +1,48 @@
+2017-01-15 01:33:16:Starting flip_value script
+2017-01-15 01:33:16:Initialization strings:
+2017-01-15 01:33:16:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-15 01:33:16:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-15 01:33:16:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-15 01:33:16:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-15 01:33:16:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-15 01:33:16:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-15 01:33:16:initSignal:14
+2017-01-15 01:33:16:endSignal:21
+2017-01-15 01:33:16:seqSignal:15
+2017-01-15 01:33:31:Backtrace BEGIN:
+2017-01-15 01:33:31:#0  0x0000000000403709 in L_dgemm_185__par_region0_2_0 () at dgemm.c:221
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffe550 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-01-15 01:33:31:216	                            CC_arr(i,j) = 0.0;
+217	
+218	                    for (kg=kk,k=0; kg<MIN(kk+block,order); k++,kg++)
+219	                        for (jg=jj,j=0; jg<MIN(jj+block,order); j++,jg++)
+220	                            for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+221	                                CC_arr(i,j) += AA_arr(i,k)*BB_arr(j,k);
+222	
+223	                    for (jg=jj,j=0; jg<MIN(jj+block,order); j++,jg++)
+224	                        for (ig=ii,i=0; ig<MIN(ii+block,order); i++,ig++)
+225	                            C_arr(ig,jg) += CC_arr(i,j);
+
+2017-01-15 01:33:31:Backtrace END
+2017-01-15 01:33:42:Type: The type is an integer type.
+2017-01-15 01:33:42:Type sizeof: 4
+2017-01-15 01:33:42:Mem contents(hex):0x300x020x000x00
+2017-01-15 01:33:42:base address to flip value: 0x7fffffffded0
+2017-01-15 01:33:42:address max offset: 4
+2017-01-15 01:33:42:Memory content before bitflip:0x300x020x000x00
+2017-01-15 01:33:42:Memory content after  bitflip:0x300x000x000x00
+2017-01-15 01:33:42:Mem contents(hex):0x300x000x000x00
+2017-01-15 01:33:42:frame name: L_dgemm_185__par_region0_2_0
+2017-01-15 01:33:42:symbol name: kk
+2017-01-15 01:33:42:symbol filename: dgemm.c
+2017-01-15 01:33:42:symbol line: 183
+2017-01-15 01:33:42:value: 48
+2017-01-15 01:33:42:value address: 0x7fffffffded0
+2017-01-15 01:33:42:Type: The type is an integer type.
+2017-01-15 01:33:42:Type sizeof: 4
+2017-01-15 01:33:42:Fault Injection Successful after 26.2992990017s
+2017-01-15 01:34:15:event type: exit
+2017-01-15 01:34:15:exit code: 1

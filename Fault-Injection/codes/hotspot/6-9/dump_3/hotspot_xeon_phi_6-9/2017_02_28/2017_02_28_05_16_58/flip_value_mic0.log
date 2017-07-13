@@ -1,0 +1,39 @@
+2017-02-28 05:16:27:Starting flip_value script
+2017-02-28 05:16:27:Initialization strings:
+2017-02-28 05:16:27:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 05:16:27:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 05:16:27:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 05:16:27:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 05:16:27:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 05:16:27:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-02-28 05:16:27:initSignal:6
+2017-02-28 05:16:27:endSignal:9
+2017-02-28 05:16:27:seqSignal:15
+2017-02-28 05:16:33:Backtrace BEGIN:
+2017-02-28 05:16:33:#0  _IO_fgets (buf=0x7fffffffe640 "0.000008\n", n=256, fp=0x609b40) at iofgets.c:50
+#1  0x0000000000404538 in read_input (vect=0x7ffff66cb010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee43 "/micNfs/gdb-fault-injection/injector/data/hotspot/power_1024") at hotspot_check.c:202
+#2  0x0000000000404ad7 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:266
+
+2017-02-28 05:16:33:45	in iofgets.c
+
+2017-02-28 05:16:33:Backtrace END
+2017-02-28 05:16:33:Type: The type is an integer type.
+2017-02-28 05:16:33:Type sizeof: 4
+2017-02-28 05:16:33:Mem contents(hex):0x050x000x000x00
+2017-02-28 05:16:33:Fault Mode: Double bit-flip
+2017-02-28 05:16:33:base address to flip value: 0x7fffffffe9a0
+2017-02-28 05:16:33:address max offset: 4
+2017-02-28 05:16:33:Memory content before bitflip:0x050x000x000x00
+2017-02-28 05:16:33:Memory content after  bitflip:0x870x000x000x00
+2017-02-28 05:16:33:Mem contents(hex):0x870x000x000x00
+2017-02-28 05:16:33:frame name: main
+2017-02-28 05:16:33:symbol name: errors
+2017-02-28 05:16:33:symbol filename: hotspot_check.c
+2017-02-28 05:16:33:symbol line: 282
+2017-02-28 05:16:33:value: 135
+2017-02-28 05:16:33:value address: 0x7fffffffe9a0
+2017-02-28 05:16:33:Type: The type is an integer type.
+2017-02-28 05:16:33:Type sizeof: 4
+2017-02-28 05:16:33:Fault Injection Successful after 6.90151190758s
+2017-02-28 05:16:52:event type: exit
+2017-02-28 05:16:52:exit code: 0

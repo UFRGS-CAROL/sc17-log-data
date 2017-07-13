@@ -1,0 +1,51 @@
+2016-10-18 04:39:53:Initialization strings:
+2016-10-18 04:39:53:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-18 04:39:53:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-18 04:39:53:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-18 04:39:53:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-18 04:39:53:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-18 04:39:53:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-18 04:39:54:Trying Fault Injection
+2016-10-18 04:39:54:Inferior PID: 117717
+2016-10-18 04:39:54:Inferior is valid: True
+2016-10-18 04:39:54:Inferior #threads: 1
+2016-10-18 04:39:54:Backtrace BEGIN:
+2016-10-18 04:39:54:#0  0x0000000000402390 in main (argc=7, argv=0x7fffffffec08) at main_check.c:163
+
+2016-10-18 04:39:54:158	        exit(1);
+159	    }
+160	
+161	    qv_cpu = (fp*)malloc(dim_cpu.space_mem2);
+162	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+163	        fread(&(qv_cpu[i]), 1, sizeof(double), file);
+164	    }
+165	    fclose(file);
+166	
+167	    fv_cpu = (FOUR_VECTOR*)malloc(dim_cpu.space_mem);
+
+2016-10-18 04:39:54:Backtrace END
+2016-10-18 04:39:54:Thread name: None
+2016-10-18 04:39:54:Thread num: 1
+2016-10-18 04:39:54:Thread ptid: (117717, 117717, 0)
+2016-10-18 04:39:54:bitFlip function
+2016-10-18 04:39:54:Type: The type is a pointer.
+2016-10-18 04:39:54:Type sizeof: 8
+2016-10-18 04:39:54:Fliping a bit of the pointer
+2016-10-18 04:39:54:Mem contents(hex):0xc00xe10x600x000x000x000x000x00
+2016-10-18 04:39:54:base address to flip value: 0x7fffffffe950
+2016-10-18 04:39:54:address max offset: 8
+2016-10-18 04:39:54:Memory content before bitflip:0xc00xe10x600x000x000x000x000x00
+2016-10-18 04:39:54:Memory content after  bitflip:0xc00xe10x600x000x000x080x000x00
+2016-10-18 04:39:54:Mem contents(hex):0xc00xe10x600x000x000x080x000x00
+2016-10-18 04:39:54:frame name: main
+2016-10-18 04:39:54:symbol name: file
+2016-10-18 04:39:54:symbol filename: main_check.c
+2016-10-18 04:39:54:symbol line: 139
+2016-10-18 04:39:54:value: 0x60e1c0
+2016-10-18 04:39:54:value address: 0x7fffffffe950
+2016-10-18 04:39:54:Type: The type is a pointer.
+2016-10-18 04:39:54:Type sizeof: 8
+2016-10-18 04:39:54:Fault Injection Successful after 1.58384990692s
+2016-10-18 04:39:54:Fault Already Injected
+2016-10-18 04:39:54:event type: exit
+2016-10-18 04:39:54:exit code: no exit code available

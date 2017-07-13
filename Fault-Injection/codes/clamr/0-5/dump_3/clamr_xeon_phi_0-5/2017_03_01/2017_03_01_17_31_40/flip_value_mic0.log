@@ -1,0 +1,68 @@
+2017-03-01 17:30:44:Starting flip_value script
+2017-03-01 17:30:44:Initialization strings:
+2017-03-01 17:30:45:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-01 17:30:45:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 17:30:45:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 17:30:45:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 17:30:45:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 17:30:45:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 17:30:45:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 17:30:45:initSignal:0
+2017-03-01 17:30:45:endSignal:5
+2017-03-01 17:30:45:seqSignal:20
+2017-03-01 17:30:48:Backtrace BEGIN:
+2017-03-01 17:30:49:#0  __GI_memcpy (dstpp=dstpp@entry=0x7ffd0c09f16c, srcpp=srcpp@entry=0x7ffd4c38eb60, len=len@entry=12) at ../string/memcpy.c:31
+#1  0x00007ffff6b9ff79 in __GI___mempcpy (dest=dest@entry=0x7ffd0c09f16c, src=src@entry=0x7ffd4c38eb60, len=len@entry=12) at ../string/mempcpy.c:35
+#2  0x00007ffff6b551be in msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c38e704, n=n@entry=129) at msort.c:150
+#3  0x00007ffff6b55027 in msort_with_tmp (n=129, b=0x7ffd4c38e704, p=<optimized out>) at msort.c:45
+#4  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c38e0f8, n=n@entry=258) at msort.c:54
+#5  0x00007ffff6b55027 in msort_with_tmp (n=258, b=0x7ffd4c38e0f8, p=<optimized out>) at msort.c:45
+#6  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c38d4e0, n=n@entry=516) at msort.c:54
+#7  0x00007ffff6b55027 in msort_with_tmp (n=516, b=0x7ffd4c38d4e0, p=<optimized out>) at msort.c:45
+#8  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c38bcb0, n=n@entry=1032) at msort.c:54
+#9  0x00007ffff6b55027 in msort_with_tmp (n=1032, b=0x7ffd4c38bcb0, p=<optimized out>) at msort.c:45
+#10 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c388c50, n=n@entry=2064) at msort.c:54
+#11 0x00007ffff6b55027 in msort_with_tmp (n=2064, b=0x7ffd4c388c50, p=<optimized out>) at msort.c:45
+#12 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c382b90, n=n@entry=4128) at msort.c:54
+#13 0x00007ffff6b55027 in msort_with_tmp (n=4128, b=0x7ffd4c382b90, p=<optimized out>) at msort.c:45
+#14 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c376a10, n=n@entry=8256) at msort.c:54
+#15 0x00007ffff6b55011 in msort_with_tmp (n=8256, b=<optimized out>, p=<optimized out>) at msort.c:45
+#16 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c376a10, n=n@entry=16512) at msort.c:53
+#17 0x00007ffff6b55027 in msort_with_tmp (n=16512, b=0x7ffd4c376a10, p=<optimized out>) at msort.c:45
+#18 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c346410, n=n@entry=33024) at msort.c:54
+#19 0x00007ffff6b55027 in msort_with_tmp (n=33024, b=0x7ffd4c346410, p=<optimized out>) at msort.c:45
+#20 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c2e5810, n=n@entry=66048) at msort.c:54
+#21 0x00007ffff6b55027 in msort_with_tmp (n=66048, b=0x7ffd4c2e5810, p=<optimized out>) at msort.c:45
+#22 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c224010, n=n@entry=132096) at msort.c:54
+#23 0x00007ffff6b55027 in msort_with_tmp (n=132096, b=0x7ffd4c224010, p=<optimized out>) at msort.c:45
+#24 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c0a1010, n=n@entry=264192) at msort.c:54
+#25 0x00007ffff6b55537 in msort_with_tmp (n=3170304, b=0x7ffd4c0a1010, p=0x7fffffffdf28) at msort.c:45
+#26 __GI___qsort_r (b=0x7ffd4c0a1010, n=264192, s=12, cmp=<optimized out>, arg=<optimized out>) at msort.c:297
+#27 0x000000000053a863 in hsfc2sort (N=264192, X=0x7ffe0c1bf010, Y=0x7ffdcc1b0010, ibase=0, Info=0x7ffd8c0ae010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:161
+#28 0x0000000000536b19 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#29 0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#30 0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-03-01 17:30:49:26	in ../string/memcpy.c
+
+2017-03-01 17:30:49:Backtrace END
+2017-03-01 17:30:54:Type: The type is an integer type.
+2017-03-01 17:30:54:Type sizeof: 8
+2017-03-01 17:30:54:Mem contents(hex):0x000x810x000x000x000x000x000x00
+2017-03-01 17:30:54:Fault Mode: Single bit-flip
+2017-03-01 17:30:54:base address to flip value: 0x7fffffffdd58
+2017-03-01 17:30:54:address max offset: 8
+2017-03-01 17:30:54:Memory content before bitflip:0x000x810x000x000x000x000x000x00
+2017-03-01 17:30:54:Memory content after  bitflip:0x000x810x000x000x200x000x000x00
+2017-03-01 17:30:54:Mem contents(hex):0x000x810x000x000x200x000x000x00
+2017-03-01 17:30:54:frame name: msort_with_tmp
+2017-03-01 17:30:54:symbol name: n
+2017-03-01 17:30:54:symbol filename: msort.c
+2017-03-01 17:30:54:symbol line: 40
+2017-03-01 17:30:54:value: 137438986496
+2017-03-01 17:30:54:value address: 0x7fffffffdd58
+2017-03-01 17:30:54:Type: The type is an integer type.
+2017-03-01 17:30:54:Type sizeof: 8
+2017-03-01 17:30:54:Fault Injection Successful after 9.31826090813s
+2017-03-01 17:30:54:event type: exit
+2017-03-01 17:30:54:exit code: no exit code available

@@ -1,0 +1,140 @@
+2017-01-24 13:39:33:Starting flip_value script
+2017-01-24 13:39:33:Initialization strings:
+2017-01-24 13:39:34:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-24 13:39:34:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 13:39:34:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 13:39:34:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 13:39:34:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 13:39:34:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-24 13:39:34:initSignal:0
+2017-01-24 13:39:34:endSignal:2
+2017-01-24 13:39:34:seqSignal:30
+2017-01-24 13:39:34:Trying Fault Injection
+2017-01-24 13:39:34:Inferior PID: 49760
+2017-01-24 13:39:34:Inferior is valid: True
+2017-01-24 13:39:34:Inferior #threads: 1
+2017-01-24 13:39:34:Backtrace BEGIN:
+2017-01-24 13:39:34:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142911 in __GI__IO_file_xsgetn (fp=0x60c010, data=<optimized out>, n=16777216) at fileops.c:1422
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=16777216, count=1, fp=0x60c010) at iofread.c:42
+#3  0x0000000000402b5a in main (argc=9, argv=0x7fffffffec08) at lud_check.c:105
+
+2017-01-24 13:39:34:76	in ../sysdeps/unix/syscall-template.S
+
+2017-01-24 13:39:34:Backtrace END
+2017-01-24 13:39:34:Thread name: None
+2017-01-24 13:39:34:Thread num: 1
+2017-01-24 13:39:34:Thread ptid: (49760, 49760, 0)
+2017-01-24 13:39:34:bitFlip function
+2017-01-24 13:39:34:Type: The type is a structure.
+2017-01-24 13:39:34:Type sizeof: 168
+2017-01-24 13:39:34:Fliping value of field: __sync
+2017-01-24 13:39:34:bitFlip function
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Fliping a bit of the value pointed by a pointer
+2017-01-24 13:39:34:bitFlip function
+2017-01-24 13:39:34:Type: The type is a function.
+2017-01-24 13:39:34:Type sizeof: 1
+2017-01-24 13:39:34:Mem contents(hex):0x53
+2017-01-24 13:39:34:base address to flip value: 0x7ffff7141bf0 
+2017-01-24 13:39:34:address max offset: 1
+2017-01-24 13:39:34:Memory content before bitflip:0x53
+2017-01-24 13:39:34:Memory content after  bitflip:0xd3
+2017-01-24 13:39:34:Mem contents(hex):0xd3
+2017-01-24 13:39:34:frame name: __GI__IO_file_xsgetn
+2017-01-24 13:39:34:symbol name: __GI__IO_file_jumps
+2017-01-24 13:39:34:symbol filename: fileops.c
+2017-01-24 13:39:34:symbol line: 1525
+2017-01-24 13:39:34:value: {__dummy = 0, __dummy2 = 0, __finish = 0x7ffff7142f30 <_IO_new_file_finish>, __overflow = 0x7ffff71437f0 <_IO_new_file_overflow>, __underflow = 0x7ffff7143570 <_IO_new_file_underflow>, __uflow = 0x7ffff7144590 <__GI__IO_default_uflow>, __pbackfail = 0x7ffff7145450 <__GI__IO_default_pbackfail>, __xsputn = 0x7ffff7142ba0 <_IO_new_file_xsputn>, __xsgetn = 0x7ffff7142860 <__GI__IO_file_xsgetn>, __seekoff = 0x7ffff7141e30 <_IO_new_file_seekoff>, __seekpos = 0x7ffff71447f0 <_IO_default_seekpos>, __setbuf = 0x7ffff7141cb0 <_IO_new_file_setbuf>, __sync = 0x7ffff7141bf0 <_IO_new_file_sync>, __doallocate = 0x7ffff7137990 <__GI__IO_file_doallocate>, __read = 0x7ffff7142b80 <__GI__IO_file_read>, __write = 0x7ffff71426e0 <_IO_new_file_write>, __seek = 0x7ffff71424a0 <__GI__IO_file_seek>, __close = 0x7ffff7141ca0 <__GI__IO_file_close>, __stat = 0x7ffff71426d0 <__GI__IO_file_stat>, __showmanyc = 0x7ffff71455b0 <_IO_default_showmanyc>, __imbue = 0x7ffff71455c0 <_IO_default_imbue>}
+2017-01-24 13:39:34:value address: 0x7ffff74236c0 <_IO_file_jumps>
+2017-01-24 13:39:34:Type: The type is a structure.
+2017-01-24 13:39:34:Type sizeof: 168
+2017-01-24 13:39:34:Field name: __dummy
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is an integer type.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __dummy2
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is an integer type.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __finish
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __overflow
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __underflow
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __uflow
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __pbackfail
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __xsputn
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __xsgetn
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __seekoff
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __seekpos
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __setbuf
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __sync
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __doallocate
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __read
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __write
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __seek
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __close
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __stat
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __showmanyc
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Field name: __imbue
+2017-01-24 13:39:34:Field Type:
+2017-01-24 13:39:34:Type: The type is a pointer.
+2017-01-24 13:39:34:Type sizeof: 8
+2017-01-24 13:39:34:Fault Injection Successful after 0.675174951553s
+2017-01-24 13:39:34:Fault Already Injected
+2017-01-24 13:39:34:event type: exit
+2017-01-24 13:39:34:exit code: no exit code available

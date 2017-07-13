@@ -1,0 +1,61 @@
+2017-03-01 18:19:01:Starting flip_value script
+2017-03-01 18:19:01:Initialization strings:
+2017-03-01 18:19:02:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 18:19:02:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 18:19:02:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 18:19:02:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 18:19:02:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 18:19:02:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 18:19:02:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 18:19:02:initSignal:25
+2017-03-01 18:19:02:endSignal:30
+2017-03-01 18:19:02:seqSignal:20
+2017-03-01 18:19:27:Backtrace BEGIN:
+2017-03-01 18:19:28:#0  0x000000000045b6a5 in State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1546
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffdac0 in ?? ()
+#3  0x00007fffffffdab8 in ?? ()
+#4  0x00007fffffffdad0 in ?? ()
+#5  0x00007fffffffdad8 in ?? ()
+#6  0x00007fffffffda38 in ?? ()
+#7  0x00007fffffffda70 in ?? ()
+#8  0x00007fffffffda68 in ?? ()
+#9  0x00007fffffffdba8 in ?? ()
+#10 0x00007fffffffdbc8 in ?? ()
+#11 0x00007fffffffdbe8 in ?? ()
+#12 0x00007fffffffda30 in ?? ()
+#13 0x00000000000000f4 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2017-03-01 18:19:28:1541	                                  sqrt(g*Hxminus2), Hic-Hlt, Hlt-Hll2, Hr2-Hic) *
+1542	                      (Hic - Hlt)) + wminusx_H)*HALF*HALF;
+1543	      }
+1544	
+1545	
+1546	      if(level[nr] < level[nrr]) {
+1547	#if DEBUG >= 3
+1548	         size_t nrrt = ntop[nrr];
+1549	         if (nrrt < 0 || nrrt >= ncells_ghost ) printf("%d: Problem at file %s line %d with nrrt %ld\n",mesh->mype,__FILE__,__LINE__,nrrt);
+1550	#endif
+
+2017-03-01 18:19:28:Backtrace END
+2017-03-01 18:20:39:Type: A floating point type.
+2017-03-01 18:20:39:Type sizeof: 8
+2017-03-01 18:20:39:Mem contents(hex):0x000x000x000x000x000x000x1c0x40
+2017-03-01 18:20:39:Fault Mode: Single bit-flip
+2017-03-01 18:20:39:base address to flip value: 0x7fffffffd1a0
+2017-03-01 18:20:39:address max offset: 8
+2017-03-01 18:20:39:Memory content before bitflip:0x000x000x000x000x000x000x1c0x40
+2017-03-01 18:20:39:Memory content after  bitflip:0x000x000x080x000x000x000x1c0x40
+2017-03-01 18:20:39:Mem contents(hex):0x000x000x080x000x000x000x1c0x40
+2017-03-01 18:20:39:frame name: State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37
+2017-03-01 18:20:39:symbol name: Hb2
+2017-03-01 18:20:39:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+2017-03-01 18:20:39:symbol line: 1643
+2017-03-01 18:20:39:value: 7.0000000004656613
+2017-03-01 18:20:39:value address: 0x7fffffffd1a0
+2017-03-01 18:20:39:Type: A floating point type.
+2017-03-01 18:20:39:Type sizeof: 8
+2017-03-01 18:20:39:Fault Injection Successful after 97.1100819111s
+2017-03-01 18:21:02:event type: exit
+2017-03-01 18:21:02:exit code: 0

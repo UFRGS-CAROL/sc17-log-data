@@ -1,0 +1,124 @@
+2017-03-01 00:06:13:Starting flip_value script
+2017-03-01 00:06:13:Initialization strings:
+2017-03-01 00:06:13:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 00:06:13:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 00:06:13:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 00:06:13:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 00:06:13:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 00:06:13:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 00:06:13:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 00:06:13:initSignal:10
+2017-03-01 00:06:13:endSignal:15
+2017-03-01 00:06:13:seqSignal:20
+2017-03-01 00:06:24:Backtrace BEGIN:
+2017-03-01 00:06:24:#0  KDTree_AddElement (t=0x22d8290, add=0x26e02a0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:154
+#1  0x0000000000509f88 in Mesh::kdtree_setup (this=0x7f9a50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2368
+#2  0x0000000000471c62 in State::fill_circle (this=0x7fa5e0, circ_radius=24, fill_value=100, background=7) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:983
+#3  0x00000000004452cb in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:282
+
+2017-03-01 00:06:24:149	}
+150	
+151	
+152	
+153	void KDTree_AddElement(TKDTree* t, TBounds* add)
+154	{
+155	   assert(t && add);
+156	   /* Destroy the current tree if it is built */
+157	   if(t->tree_built) {
+158	      t->tree_built = false;
+
+2017-03-01 00:06:24:Backtrace END
+2017-03-01 00:06:29:Type: The type is an integer type.
+2017-03-01 00:06:29:Type sizeof: 4
+2017-03-01 00:06:29:Mem contents(hex):0x010x000x000x00
+2017-03-01 00:06:29:Fault Mode: Random bit-flip
+2017-03-01 00:06:29:base address to flip value: 0x572f9c 
+2017-03-01 00:06:29:address max offset: 4
+2017-03-01 00:06:29:Memory content before bitflip:0x010x000x000x00
+2017-03-01 00:06:29:Backtrace BEGIN:
+2017-03-01 00:06:29:#0  KDTree_AddElement (t=0x22d8290, add=0x26e02a0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:154
+#1  0x0000000000509f88 in Mesh::kdtree_setup (this=0x7f9a50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2368
+#2  0x0000000000471c62 in State::fill_circle (this=0x7fa5e0, circ_radius=24, fill_value=100, background=7) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:983
+#3  0x00000000004452cb in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:282
+
+2017-03-01 00:06:29:149	}
+150	
+151	
+152	
+153	void KDTree_AddElement(TKDTree* t, TBounds* add)
+154	{
+155	   assert(t && add);
+156	   /* Destroy the current tree if it is built */
+157	   if(t->tree_built) {
+158	      t->tree_built = false;
+
+2017-03-01 00:06:29:Backtrace END
+2017-03-01 00:06:35:Type: The type is a pointer.
+2017-03-01 00:06:35:Type sizeof: 8
+2017-03-01 00:06:35:Fliping a bit of the value pointed by a pointer
+2017-03-01 00:06:35:Type: The type is a structure.
+2017-03-01 00:06:35:Type sizeof: 32
+2017-03-01 00:06:35:Fliping value of field: min
+2017-03-01 00:06:35:Type: The type is a structure.
+2017-03-01 00:06:35:Type sizeof: 16
+2017-03-01 00:06:35:Fliping value of field: x
+2017-03-01 00:06:35:Type: A floating point type.
+2017-03-01 00:06:35:Type sizeof: 8
+2017-03-01 00:06:35:Mem contents(hex):0x000x000x000x000x000x000x500x40
+2017-03-01 00:06:35:Fault Mode: Random bit-flip
+2017-03-01 00:06:35:base address to flip value: 0x26e02a0
+2017-03-01 00:06:35:address max offset: 8
+2017-03-01 00:06:35:Memory content before bitflip:0x000x000x000x000x000x000x500x40
+2017-03-01 00:06:35:Backtrace BEGIN:
+2017-03-01 00:06:35:#0  pthread_cond_wait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S:185
+#1  0x00007ffff7911675 in ?? ()
+#2  0x0000000002b5786c in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-01 00:06:35:180	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S
+
+2017-03-01 00:06:35:Backtrace END
+2017-03-01 00:06:40:Type: The type is a pointer.
+2017-03-01 00:06:40:Type sizeof: 8
+2017-03-01 00:06:40:Fliping a bit of the value pointed by a pointer
+2017-03-01 00:06:40:Type: The type is a structure.
+2017-03-01 00:06:40:Type sizeof: 32
+2017-03-01 00:06:40:Fliping value of field: min
+2017-03-01 00:06:40:Type: The type is a structure.
+2017-03-01 00:06:40:Type sizeof: 16
+2017-03-01 00:06:40:Fliping value of field: y
+2017-03-01 00:06:40:Type: A floating point type.
+2017-03-01 00:06:40:Type sizeof: 8
+2017-03-01 00:06:40:Mem contents(hex):0x000x000x000x000x000x000x500x40
+2017-03-01 00:06:40:Fault Mode: Random bit-flip
+2017-03-01 00:06:40:base address to flip value: 0x26e02a8
+2017-03-01 00:06:40:address max offset: 8
+2017-03-01 00:06:40:Memory content before bitflip:0x000x000x000x000x000x000x500x40
+2017-03-01 00:06:40:Backtrace BEGIN:
+2017-03-01 00:06:40:#0  KDTree_AddElement (t=0x22d8290, add=0x26e02a0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:154
+#1  0x0000000000509f88 in Mesh::kdtree_setup (this=0x7f9a50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2368
+#2  0x0000000000471c62 in State::fill_circle (this=0x7fa5e0, circ_radius=24, fill_value=100, background=7) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:983
+#3  0x00000000004452cb in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:282
+
+2017-03-01 00:06:40:149	}
+150	
+151	
+152	
+153	void KDTree_AddElement(TKDTree* t, TBounds* add)
+154	{
+155	   assert(t && add);
+156	   /* Destroy the current tree if it is built */
+157	   if(t->tree_built) {
+158	      t->tree_built = false;
+
+2017-03-01 00:06:40:Backtrace END
+2017-03-01 00:06:45:Type: A reference type.
+2017-03-01 00:06:45:Type sizeof: 8
+2017-03-01 00:06:45:Fliping a bit of the reference
+2017-03-01 00:06:45:Mem contents(hex):0xd00x680xd20x010x000x000x000x00
+2017-03-01 00:06:45:Fault Mode: One bit-flip
+2017-03-01 00:06:45:base address to flip value: 0x7f9fc8
+2017-03-01 00:06:45:address max offset: 8
+2017-03-01 00:06:45:Memory content before bitflip:0xd00x680xd20x010x000x000x000x00
+2017-03-01 00:07:27:event type: exit
+2017-03-01 00:07:27:exit code: 0

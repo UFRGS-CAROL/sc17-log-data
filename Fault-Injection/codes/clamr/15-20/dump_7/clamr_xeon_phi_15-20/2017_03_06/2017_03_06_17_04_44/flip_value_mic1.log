@@ -1,0 +1,58 @@
+[INFO -- 2017-03-06 17:02:47]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 17:02:47]
+Initialization strings:
+[INFO -- 2017-03-06 17:02:47]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-06 17:02:47]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 17:02:47]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 17:02:47]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 17:02:47]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-06 17:02:47]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-06 17:02:47]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-06 17:02:47]
+initSignal:15
+[INFO -- 2017-03-06 17:02:47]
+endSignal:20
+[INFO -- 2017-03-06 17:02:47]
+seqSignal:20
+[INFO -- 2017-03-06 17:02:47]
+faultMode:0
+[INFO -- 2017-03-06 17:03:09]
+Backtrace BEGIN:
+#0  0x00007ffff6b677fd in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe118) at vfprintf.c:1641
+#1  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#2  0x000000000054b5c5 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:470
+#3  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#4  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+1636	in vfprintf.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffdb78
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x20
+frame name: _IO_vfprintf_internal
+symbol name: space
+symbol filename: vfprintf.c
+symbol line: 1359
+value: 536870912
+value address: 0x7fffffffdb78
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-06 17:03:09]
+Fault Injection Successful after 22.6397531033s
+[INFO -- 2017-03-06 17:03:48]
+event type: exit
+[INFO -- 2017-03-06 17:03:48]
+exit code: 0

@@ -1,0 +1,61 @@
+[INFO -- 2017-03-02 15:39:47]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-02 15:39:47]
+Initialization strings:
+[INFO -- 2017-03-02 15:39:48]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-02 15:39:48]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-02 15:39:48]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-02 15:39:48]
+(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-02 15:39:48]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-02 15:39:48]
+(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+[INFO -- 2017-03-02 15:39:48]
+initSignal:14
+[INFO -- 2017-03-02 15:39:48]
+endSignal:21
+[INFO -- 2017-03-02 15:39:48]
+seqSignal:15
+[INFO -- 2017-03-02 15:39:48]
+faultMode:2
+[INFO -- 2017-03-02 15:40:03]
+Backtrace BEGIN:
+#0  0x000000000040440b in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:367
+
+362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+371	        kernel_start = timing_get_time();
+
+Backtrace END
+Memory content before bitflip:0xb70x020x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe940
+address max offset: 4
+Memory content after  bitflip:0xd50x8d0x8d0xd4
+frame name: main
+symbol name: j
+symbol filename: dgemm.c
+symbol line: 277
+value: -728920619
+value address: 0x7fffffffe940
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-02 15:40:03]
+Fault Injection Successful after 15.280313015s
+[INFO -- 2017-03-02 15:40:03]
+event type: exit
+[EXCEPTION -- 2017-03-02 15:40:03]
+exit code: no exit code available

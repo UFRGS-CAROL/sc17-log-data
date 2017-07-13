@@ -1,0 +1,119 @@
+2017-01-24 14:09:03:Starting flip_value script
+2017-01-24 14:09:03:Initialization strings:
+2017-01-24 14:09:03:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-24 14:09:03:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 14:09:03:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 14:09:03:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 14:09:03:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 14:09:03:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-24 14:09:03:initSignal:0
+2017-01-24 14:09:03:endSignal:2
+2017-01-24 14:09:03:seqSignal:30
+2017-01-24 14:09:03:Trying Fault Injection
+2017-01-24 14:09:03:Inferior PID: 87339
+2017-01-24 14:09:03:Inferior is valid: True
+2017-01-24 14:09:03:Inferior #threads: 1
+2017-01-24 14:09:03:Backtrace BEGIN:
+2017-01-24 14:09:03:#0  0x00007ffff7df43b7 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7de3592 in _dl_map_segments (loader=0x7fffffffe410, has_holes=<optimized out>, maplength=3416768, nloadcmds=2, loadcmds=0x7fffffffe0b0, type=<optimized out>, header=0x7ffff7ffab30, fd=3, l=0x7ffff7ffab28) at ./dl-map-segments.h:72
+#2  _dl_map_object_from_fd (name=name@entry=0x400ba5 "libiomp5.so", fd=3, fbp=fbp@entry=0x7fffffffe3c8, realname=0x7ffff7ffab10 "/usr/lib64/libiomp5.so", loader=loader@entry=0x7ffff7ffe168, l_type=l_type@entry=1, mode=0, stack_endp=0x7fffffffe3c0, nsid=0) at dl-load.c:1222
+#3  0x00007ffff7de52f9 in _dl_map_object (loader=0x7ffff7ffe168, name=0x400ba5 "libiomp5.so", type=1, trace_mode=0, mode=0, nsid=<optimized out>) at dl-load.c:2188
+#4  0x00007ffff7de964f in openaux (a=a@entry=0x7fffffffe9b8) at dl-deps.c:63
+#5  0x00007ffff7deba83 in _dl_catch_error (objname=objname@entry=0x7fffffffe9b0, errstring=errstring@entry=0x7fffffffe9a8, mallocedp=mallocedp@entry=0x7fffffffe9a7, operate=operate@entry=0x7ffff7de9620 <openaux>, args=args@entry=0x7fffffffe9b8) at dl-error.c:187
+#6  0x00007ffff7de98a9 in _dl_map_object_deps (map=map@entry=0x7ffff7ffe168, preloads=<optimized out>, npreloads=npreloads@entry=0, trace_mode=trace_mode@entry=0, open_mode=open_mode@entry=0) at dl-deps.c:254
+#7  0x00007ffff7ddff28 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1612
+#8  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#9  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#10 _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#11 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#12 0x0000000000000009 in ?? ()
+#13 0x00007fffffffee08 in ?? ()
+#14 0x00007fffffffee3f in ?? ()
+#15 0x00007fffffffee42 in ?? ()
+#16 0x00007fffffffee47 in ?? ()
+#17 0x00007fffffffee4a in ?? ()
+#18 0x00007fffffffee4e in ?? ()
+#19 0x00007fffffffee51 in ?? ()
+#20 0x00007fffffffee90 in ?? ()
+#21 0x00007fffffffee93 in ?? ()
+#22 0x0000000000000000 in ?? ()
+
+2017-01-24 14:09:03:76	in ../sysdeps/unix/syscall-template.S
+
+2017-01-24 14:09:03:Backtrace END
+2017-01-24 14:09:04:Thread name: None
+2017-01-24 14:09:04:Thread num: 1
+2017-01-24 14:09:04:Thread ptid: (87339, 87339, 0)
+2017-01-24 14:09:04:bitFlip function
+2017-01-24 14:09:04:Type: The type is a pointer.
+2017-01-24 14:09:04:Type sizeof: 8
+2017-01-24 14:09:04:Error gdbException(frameFlip): Attempt to dereference a generic pointer.
+2017-01-24 14:09:04:Fault Injection Failed after 1.18443989754s
+2017-01-24 14:09:04:Trying Fault Injection
+2017-01-24 14:09:04:Inferior PID: 87339
+2017-01-24 14:09:04:Inferior is valid: True
+2017-01-24 14:09:04:Inferior #threads: 1
+2017-01-24 14:09:04:Backtrace BEGIN:
+2017-01-24 14:09:04:#0  malloc (n=16) at dl-minimal.c:93
+#1  <function called from gdb>
+#2  0x00007ffff7df43b7 in mprotect () at ../sysdeps/unix/syscall-template.S:81
+#3  0x00007ffff7de3592 in _dl_map_segments (loader=0x7fffffffe410, has_holes=<optimized out>, maplength=3416768, nloadcmds=2, loadcmds=0x7fffffffe0b0, type=<optimized out>, header=0x7ffff7ffab30, fd=3, l=0x7ffff7ffab28) at ./dl-map-segments.h:72
+#4  _dl_map_object_from_fd (name=name@entry=0x400ba5 "libiomp5.so", fd=3, fbp=fbp@entry=0x7fffffffe3c8, realname=0x7ffff7ffab10 "/usr/lib64/libiomp5.so", loader=loader@entry=0x7ffff7ffe168, l_type=l_type@entry=1, mode=0, stack_endp=0x7fffffffe3c0, nsid=0) at dl-load.c:1222
+#5  0x00007ffff7de52f9 in _dl_map_object (loader=0x7ffff7ffe168, name=0x400ba5 "libiomp5.so", type=1, trace_mode=0, mode=0, nsid=<optimized out>) at dl-load.c:2188
+#6  0x00007ffff7de964f in openaux (a=a@entry=0x7fffffffe9b8) at dl-deps.c:63
+#7  0x00007ffff7deba83 in _dl_catch_error (objname=objname@entry=0x7fffffffe9b0, errstring=errstring@entry=0x7fffffffe9a8, mallocedp=mallocedp@entry=0x7fffffffe9a7, operate=operate@entry=0x7ffff7de9620 <openaux>, args=args@entry=0x7fffffffe9b8) at dl-error.c:187
+#8  0x00007ffff7de98a9 in _dl_map_object_deps (map=map@entry=0x7ffff7ffe168, preloads=<optimized out>, npreloads=npreloads@entry=0, trace_mode=trace_mode@entry=0, open_mode=open_mode@entry=0) at dl-deps.c:254
+#9  0x00007ffff7ddff28 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1612
+#10 0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#11 0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#12 _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#13 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#14 0x0000000000000009 in ?? ()
+#15 0x00007fffffffee08 in ?? ()
+#16 0x00007fffffffee3f in ?? ()
+#17 0x00007fffffffee42 in ?? ()
+#18 0x00007fffffffee47 in ?? ()
+#19 0x00007fffffffee4a in ?? ()
+#20 0x00007fffffffee4e in ?? ()
+#21 0x00007fffffffee51 in ?? ()
+#22 0x00007fffffffee90 in ?? ()
+#23 0x00007fffffffee93 in ?? ()
+#24 0x0000000000000000 in ?? ()
+
+2017-01-24 14:09:04:88	in dl-minimal.c
+
+2017-01-24 14:09:04:Backtrace END
+2017-01-24 14:09:04:Thread name: None
+2017-01-24 14:09:04:Thread num: 1
+2017-01-24 14:09:04:Thread ptid: (87339, 87339, 0)
+2017-01-24 14:09:04:bitFlip function
+2017-01-24 14:09:04:Type: The type is a pointer.
+2017-01-24 14:09:04:Type sizeof: 8
+2017-01-24 14:09:04:Fliping a bit of the pointer
+2017-01-24 14:09:04:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-01-24 14:09:04:base address to flip value: 0x7ffff7ffe048 
+2017-01-24 14:09:04:address max offset: 8
+2017-01-24 14:09:04:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-01-24 14:09:04:Memory content after  bitflip:0x000x000x000x040x000x000x000x00
+2017-01-24 14:09:04:Mem contents(hex):0x000x000x000x040x000x000x000x00
+2017-01-24 14:09:04:frame name: _dl_catch_error
+2017-01-24 14:09:04:symbol name: receiver
+2017-01-24 14:09:04:symbol filename: dl-error.c
+2017-01-24 14:09:04:symbol line: 60
+2017-01-24 14:09:04:value: 0x0
+2017-01-24 14:09:04:value address: 0x7ffff7ffe048 <receiver>
+2017-01-24 14:09:04:Type: The type is a pointer.
+2017-01-24 14:09:04:Type sizeof: 8
+2017-01-24 14:09:04:Fault Injection Successful after 1.82772493362s
+2017-01-24 14:09:04:Fault Already Injected
+2017-01-24 14:09:04:Fault Already Injected
+2017-01-24 14:09:04:Fault Already Injected
+2017-01-24 14:09:04:Fault Already Injected
+2017-01-24 14:09:04:Fault Already Injected
+2017-01-24 14:09:04:Fault Already Injected
+2017-01-24 14:09:05:Fault Already Injected
+2017-01-24 14:09:05:Fault Already Injected
+2017-01-24 14:09:05:Fault Already Injected
+2017-01-24 14:09:05:Fault Already Injected
+2017-01-24 14:09:05:event type: exit
+2017-01-24 14:09:05:exit code: no exit code available

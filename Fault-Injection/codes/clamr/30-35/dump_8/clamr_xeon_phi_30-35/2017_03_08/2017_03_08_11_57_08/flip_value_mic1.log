@@ -1,0 +1,60 @@
+[INFO -- 2017-03-08 11:55:19]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-08 11:55:19]
+Initialization strings:
+[INFO -- 2017-03-08 11:55:20]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-08 11:55:20]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 11:55:20]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 11:55:20]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 11:55:20]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-08 11:55:20]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-08 11:55:20]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-08 11:55:20]
+initSignal:30
+[INFO -- 2017-03-08 11:55:20]
+endSignal:35
+[INFO -- 2017-03-08 11:55:20]
+seqSignal:20
+[INFO -- 2017-03-08 11:55:20]
+faultMode:2
+[INFO -- 2017-03-08 11:55:55]
+Backtrace BEGIN:
+#0  __GI_memset (dstpp=0x3e7d650, c=0, len=16908552) at ../string/memset.c:61
+#1  0x0000000000552f8a in genvector_p (inum=4227136, elsize=4, file=0x5742c0 "/micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c", line=135) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/genmalloc/genmalloc.c:87
+#2  0x000000000054571b in compact_hash_init (ncells=265776, isize=2056, jsize=2056, report_level=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/hash/hash.c:135
+#3  0x0000000000513572 in Mesh::calc_neighbors (this=0x7fae50, ncells=265776) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:3626
+#4  0x0000000000445e6e in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:434
+#5  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+56	in ../string/memset.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffdd50
+address max offset: 0
+Memory content after  bitflip:
+frame name: genvector_p
+symbol name: out
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/genmalloc/genmalloc.c
+symbol line: 83
+value: 0x7fffffffdd50
+value address: 0x7fffffffdd20
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-08 11:55:55]
+Fault Injection Successful after 35.034528017s
+[INFO -- 2017-03-08 11:56:17]
+event type: exit
+[INFO -- 2017-03-08 11:56:17]
+exit code: 0

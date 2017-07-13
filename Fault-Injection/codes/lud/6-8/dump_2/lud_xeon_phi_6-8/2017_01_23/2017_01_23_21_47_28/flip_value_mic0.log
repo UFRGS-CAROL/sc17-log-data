@@ -1,0 +1,62 @@
+2017-01-23 21:47:09:Starting flip_value script
+2017-01-23 21:47:09:Initialization strings:
+2017-01-23 21:47:09:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-23 21:47:09:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-23 21:47:09:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-23 21:47:09:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-23 21:47:09:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-23 21:47:09:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-23 21:47:09:initSignal:6
+2017-01-23 21:47:09:endSignal:8
+2017-01-23 21:47:09:seqSignal:30
+2017-01-23 21:47:16:Trying Fault Injection
+2017-01-23 21:47:16:Inferior PID: 64405
+2017-01-23 21:47:16:Inferior is valid: True
+2017-01-23 21:47:16:Inferior #threads: 229
+2017-01-23 21:47:16:Backtrace BEGIN:
+2017-01-23 21:47:16:#0  _dl_fixup (l=<optimized out>, reloc_arg=<optimized out>) at ../elf/dl-runtime.c:148
+#1  0x00007ffff7df1859 in _dl_runtime_resolve () at ../sysdeps/x86_64/dl-trampoline.S:89
+#2  0x00007ffff7ba29f1 in __do_global_dtors_aux () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libm.so.6
+#3  0x00007ffff7ffa658 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x00007fffffffeae0 in ?? ()
+#6  0x00007ffff7bcd0fd in _fini () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libm.so.6
+#7  0x00007fffffffeae0 in ?? ()
+#8  0x00007ffff7dec1dd in _dl_fini () at dl-fini.c:257
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+2017-01-23 21:47:16:143	in ../elf/dl-runtime.c
+
+2017-01-23 21:47:16:Backtrace END
+2017-01-23 21:47:20:Thread name: None
+2017-01-23 21:47:20:Thread num: 1
+2017-01-23 21:47:20:Thread ptid: (64405, 64405, 0)
+2017-01-23 21:47:20:bitFlip function
+2017-01-23 21:47:20:Type: The type is an integer type.
+2017-01-23 21:47:20:Type sizeof: 8
+2017-01-23 21:47:20:Mem contents(hex):0x900xe90xff0xff0xff0x7f0x000x00
+2017-01-23 21:47:20:base address to flip value: 0x7fffffffe990
+2017-01-23 21:47:20:address max offset: 8
+2017-01-23 21:47:20:Memory content before bitflip:0x900xe90xff0xff0xff0x7f0x000x00
+2017-01-23 21:47:20:Memory content after  bitflip:0x900xe90xff0xff0xfd0x7f0x000x00
+2017-01-23 21:47:20:Mem contents(hex):0x900xe90xff0xff0xfd0x7f0x000x00
+2017-01-23 21:47:20:frame name: _dl_fini
+2017-01-23 21:47:20:symbol name: ns
+2017-01-23 21:47:20:symbol filename: dl-fini.c
+2017-01-23 21:47:20:symbol line: 153
+2017-01-23 21:47:20:value: 140728898414992
+2017-01-23 21:47:20:value address: 0x7fffffffe990
+2017-01-23 21:47:20:Type: The type is an integer type.
+2017-01-23 21:47:20:Type sizeof: 8
+2017-01-23 21:47:20:Fault Injection Successful after 11.3428299427s
+2017-01-23 21:47:20:Fault Already Injected
+2017-01-23 21:47:20:Fault Already Injected
+2017-01-23 21:47:20:Fault Already Injected
+2017-01-23 21:47:21:Fault Already Injected
+2017-01-23 21:47:21:Fault Already Injected
+2017-01-23 21:47:21:Fault Already Injected
+2017-01-23 21:47:21:Fault Already Injected
+2017-01-23 21:47:21:Fault Already Injected
+2017-01-23 21:47:21:Fault Already Injected
+2017-01-23 21:47:21:event type: exit
+2017-01-23 21:47:21:exit code: 0

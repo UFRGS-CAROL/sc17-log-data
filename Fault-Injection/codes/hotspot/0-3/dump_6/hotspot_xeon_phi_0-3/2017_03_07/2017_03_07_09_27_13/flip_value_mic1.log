@@ -1,0 +1,57 @@
+[INFO -- 2017-03-07 09:26:08]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-07 09:26:08]
+Initialization strings:
+[INFO -- 2017-03-07 09:26:08]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-07 09:26:08]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 09:26:08]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 09:26:08]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-03-07 09:26:08]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-03-07 09:26:08]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-03-07 09:26:08]
+initSignal:0
+[INFO -- 2017-03-07 09:26:08]
+endSignal:3
+[INFO -- 2017-03-07 09:26:08]
+seqSignal:15
+[INFO -- 2017-03-07 09:26:08]
+faultMode:1
+[INFO -- 2017-03-07 09:26:09]
+Backtrace BEGIN:
+#0  0x00007ffff71963d0 in __open_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7143025 in __GI__IO_file_open (fp=fp@entry=0x609b40, filename=<optimized out>, posix_mode=<optimized out>, prot=prot@entry=438, read_write=4100, is32not64=is32not64@entry=1) at fileops.c:220
+#2  0x00007ffff7143130 in _IO_new_file_fopen (fp=fp@entry=0x609b40, filename=filename@entry=0x6089a0 <full_log_file_name> "/micNfs/carol/logs/2017_03_07_14_28_31_openMPHotspot_mic0-mic1.ece.neu.edu.log", mode=<optimized out>, mode@entry=0x407660 "a", is32not64=is32not64@entry=1) at fileops.c:327
+#3  0x00007ffff71384d2 in __fopen_internal (filename=0x6089a0 <full_log_file_name> "/micNfs/carol/logs/2017_03_07_14_28_31_openMPHotspot_mic0-mic1.ece.neu.edu.log", mode=0x407660 "a", is32=1) at iofopen.c:86
+#4  0x0000000000406485 in start_log_file (benchmark_name=0x407478 "openMPHotspot", test_info=0x7fffffffe7a0 "simIter:1000 gridSize:1024x1024") at ../include/log_helper.c:260
+#5  0x0000000000404a17 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:255
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Memory content before bitflip:0x040x100x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe3cc
+address max offset: 4
+Memory content after  bitflip:0x340x100x000x00
+frame name: __GI__IO_file_open
+symbol name: read_write
+symbol filename: fileops.c
+symbol line: 212
+value: 4148
+value address: 0x7fffffffe3cc
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-07 09:26:09]
+Fault Injection Successful after 1.25562596321s
+[INFO -- 2017-03-07 09:26:59]
+event type: exit
+[INFO -- 2017-03-07 09:26:59]
+exit code: 0

@@ -1,0 +1,56 @@
+[INFO -- 2017-03-27 09:19:49]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-27 09:19:49]
+Initialization strings:
+[INFO -- 2017-03-27 09:19:49]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-27 09:19:49]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 09:19:49]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-27 09:19:49]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 09:19:49]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+[INFO -- 2017-03-27 09:19:49]
+(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+[INFO -- 2017-03-27 09:19:49]
+initSignal:0
+[INFO -- 2017-03-27 09:19:49]
+endSignal:3
+[INFO -- 2017-03-27 09:19:49]
+seqSignal:30
+[INFO -- 2017-03-27 09:19:49]
+faultMode:2
+[INFO -- 2017-03-27 09:19:50]
+Backtrace BEGIN:
+#0  0x00007ffff713895f in _IO_acquire_lock_fct (p=<synthetic pointer>) at libioP.h:892
+#1  __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:41
+#2  0x00000000004021c3 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:148
+
+887	in libioP.h
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: v
+Memory content before bitflip:0x340x330x330x330x330x330xd30x3f
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff6063010
+address max offset: 8
+Memory content after  bitflip:0x030xc90x890x6c0x1b0x6c0x990x25
+frame name: main
+symbol name: rv_cpu
+symbol filename: main_check.c
+symbol line: 58
+value: 0x7ffff6063010
+value address: 0x7fffffffe940
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-27 09:19:50]
+Fault Injection Successful after 1.06305503845s
+[INFO -- 2017-03-27 09:20:07]
+event type: exit
+[INFO -- 2017-03-27 09:20:07]
+exit code: 1

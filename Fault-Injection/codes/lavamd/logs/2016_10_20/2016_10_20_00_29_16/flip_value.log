@@ -1,0 +1,68 @@
+2016-10-20 00:28:59:Initialization strings:
+2016-10-20 00:28:59:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-20 00:28:59:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-20 00:28:59:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-20 00:28:59:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-20 00:28:59:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-20 00:28:59:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-20 00:28:59:Trying Fault Injection
+2016-10-20 00:28:59:Inferior PID: 168660
+2016-10-20 00:28:59:Inferior is valid: True
+2016-10-20 00:28:59:Inferior #threads: 1
+2016-10-20 00:28:59:Backtrace BEGIN:
+2016-10-20 00:28:59:#0  _IO_vsscanf (string=0x7fffffffc1e0 "MemTotal:        5878668 kB\n", format=0x7ffff71f0a29 "MemTotal: %ld kB", args=args@entry=0x7fffffffc0f8) at iovsscanf.c:41
+#1  0x00007ffff7135309 in __sscanf (s=s@entry=0x7fffffffc1e0 "MemTotal:        5878668 kB\n", format=format@entry=0x7ffff71f0a29 "MemTotal: %ld kB") at sscanf.c:32
+#2  0x00007ffff71a1820 in phys_pages_info (format=format@entry=0x7ffff71f0a29 "MemTotal: %ld kB") at ../sysdeps/unix/sysv/linux/getsysstats.c:303
+#3  0x00007ffff71a1bec in __get_phys_pages () at ../sysdeps/unix/sysv/linux/getsysstats.c:335
+#4  0x00007ffff71755fe in posix_sysconf (name=85) at ../sysdeps/posix/sysconf.c:634
+#5  linux_sysconf (name=85) at ../sysdeps/unix/sysv/linux/x86_64/../sysconf.c:140
+#6  __GI___sysconf (name=name@entry=85) at ../sysdeps/unix/sysv/linux/x86_64/sysconf.c:36
+#7  0x00007ffff710555a in __GI___qsort_r (b=0x7ffff7b6f280, n=65, s=40, cmp=0x7ffff78f1cb0, arg=0x0) at msort.c:187
+#8  0x00007ffff78f457f in ?? ()
+#9  0x00007ffff6ecbc80 in ?? ()
+#10 0x00007ffff791a393 in ?? ()
+#11 0x0000003000000000 in ?? ()
+#12 0x00007fffffffe350 in ?? ()
+#13 0x00007fffffffeb20 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+2016-10-20 00:28:59:36	in iovsscanf.c
+
+2016-10-20 00:28:59:Backtrace END
+2016-10-20 00:28:59:Thread name: None
+2016-10-20 00:28:59:Thread num: 1
+2016-10-20 00:28:59:Thread ptid: (168660, 168660, 0)
+2016-10-20 00:28:59:bitFlip function
+2016-10-20 00:28:59:Type: The type is an array.
+2016-10-20 00:28:59:Type sizeof: 24
+2016-10-20 00:28:59:Fliping array at pos: 0
+2016-10-20 00:28:59:bitFlip function
+2016-10-20 00:28:59:Type: The type is a structure.
+2016-10-20 00:28:59:Type sizeof: 24
+2016-10-20 00:28:59:Fliping value of field: fp_offset
+2016-10-20 00:28:59:bitFlip function
+2016-10-20 00:28:59:Type: The type is an integer type.
+2016-10-20 00:28:59:Type sizeof: 4
+2016-10-20 00:28:59:Mem contents(hex):0x300x000x000x00
+2016-10-20 00:28:59:base address to flip value: 0x7fffffffc0fc
+2016-10-20 00:28:59:address max offset: 4
+2016-10-20 00:28:59:Memory content before bitflip:0x300x000x000x00
+2016-10-20 00:28:59:Memory content after  bitflip:0x300x000x000x40
+2016-10-20 00:28:59:Mem contents(hex):0x300x000x000x40
+2016-10-20 00:28:59:frame name: __sscanf
+2016-10-20 00:28:59:symbol name: arg
+2016-10-20 00:28:59:symbol filename: sscanf.c
+2016-10-20 00:28:59:symbol line: 28
+2016-10-20 00:28:59:value: {{gp_offset = 16, fp_offset = 1073741872, overflow_arg_area = 0x7fffffffc1d0, reg_save_area = 0x7fffffffc110}}
+2016-10-20 00:28:59:value address: 0x7fffffffc0f8
+2016-10-20 00:28:59:Type: The type is an array.
+2016-10-20 00:28:59:Type sizeof: 24
+2016-10-20 00:28:59:Fault Injection Successful after 0.987632036209s
+2016-10-20 00:29:02:Fault Already Injected
+2016-10-20 00:29:03:Fault Already Injected
+2016-10-20 00:29:03:Fault Already Injected
+2016-10-20 00:29:03:Fault Already Injected
+2016-10-20 00:29:03:Fault Already Injected
+2016-10-20 00:29:05:Fault Already Injected
+2016-10-20 00:29:09:event type: exit
+2016-10-20 00:29:09:exit code: 0

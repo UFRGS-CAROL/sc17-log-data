@@ -1,0 +1,38 @@
+2017-01-16 22:00:23:Starting flip_value script
+2017-01-16 22:00:23:Initialization strings:
+2017-01-16 22:00:23:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-01-16 22:00:23:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-16 22:00:23:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-16 22:00:23:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-16 22:00:23:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-01-16 22:00:23:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-01-16 22:00:23:initSignal:0
+2017-01-16 22:00:23:endSignal:7
+2017-01-16 22:00:23:seqSignal:15
+2017-01-16 22:00:24:Backtrace BEGIN:
+2017-01-16 22:00:24:#0  __GI__IO_fread (buf=0x7ffff347df90, size=1, count=8, fp=0x6073f0) at iofread.c:35
+#1  0x0000000000403c08 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:250
+#2  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+2017-01-16 22:00:24:30	in iofread.c
+
+2017-01-16 22:00:24:Backtrace END
+2017-01-16 22:00:24:Type: The type is an integer type.
+2017-01-16 22:00:24:Type sizeof: 4
+2017-01-16 22:00:24:Mem contents(hex):0x080x000x000x00
+2017-01-16 22:00:24:base address to flip value: 0x7fffffffe998
+2017-01-16 22:00:24:address max offset: 4
+2017-01-16 22:00:24:Memory content before bitflip:0x080x000x000x00
+2017-01-16 22:00:24:Memory content after  bitflip:0x0a0x000x000x00
+2017-01-16 22:00:24:Mem contents(hex):0x0a0x000x000x00
+2017-01-16 22:00:24:frame name: main
+2017-01-16 22:00:24:symbol name: argc
+2017-01-16 22:00:24:symbol filename: dgemm.c
+2017-01-16 22:00:24:symbol line: 271
+2017-01-16 22:00:24:value: 10
+2017-01-16 22:00:24:value address: 0x7fffffffe998
+2017-01-16 22:00:24:Type: The type is an integer type.
+2017-01-16 22:00:24:Type sizeof: 4
+2017-01-16 22:00:24:Fault Injection Successful after 1.49503111839s
+2017-01-16 22:01:03:event type: exit
+2017-01-16 22:01:03:exit code: 0

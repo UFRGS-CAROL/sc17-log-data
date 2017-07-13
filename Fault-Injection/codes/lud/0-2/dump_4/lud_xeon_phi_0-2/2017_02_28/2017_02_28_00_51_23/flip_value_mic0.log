@@ -1,0 +1,68 @@
+2017-02-28 00:50:42:Starting flip_value script
+2017-02-28 00:50:42:Initialization strings:
+2017-02-28 00:50:42:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 00:50:42:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 00:50:42:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 00:50:42:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-28 00:50:42:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-02-28 00:50:42:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-02-28 00:50:42:initSignal:0
+2017-02-28 00:50:42:endSignal:2
+2017-02-28 00:50:42:seqSignal:30
+2017-02-28 00:50:43:Backtrace BEGIN:
+2017-02-28 00:50:43:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142911 in __GI__IO_file_xsgetn (fp=0x60c010, data=<optimized out>, n=16777216) at fileops.c:1422
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=16777216, count=1, fp=0x60c010) at iofread.c:42
+#3  0x0000000000402b5a in main (argc=9, argv=0x7fffffffec08) at lud_check.c:105
+
+2017-02-28 00:50:43:76	in ../sysdeps/unix/syscall-template.S
+
+2017-02-28 00:50:43:Backtrace END
+2017-02-28 00:50:43:Type: The type is a structure.
+2017-02-28 00:50:43:Type sizeof: 168
+2017-02-28 00:50:43:Fliping value of field: __setbuf
+2017-02-28 00:50:43:Type: The type is a pointer.
+2017-02-28 00:50:43:Type sizeof: 8
+2017-02-28 00:50:43:Fliping a bit of the pointer
+2017-02-28 00:50:43:Mem contents(hex):0xe00x1c0x140xf70xff0x7f0x000x00
+2017-02-28 00:50:43:Fault Mode: Zero bit-flip
+2017-02-28 00:50:43:base address to flip value: 0x7ffff7423598 
+2017-02-28 00:50:43:address max offset: 8
+2017-02-28 00:50:43:Memory content before bitflip:0xe00x1c0x140xf70xff0x7f0x000x00
+2017-02-28 00:50:43:Backtrace BEGIN:
+2017-02-28 00:50:43:#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff74312d0 in ?? () at pthread_create.c:237 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libpthread.so.0
+#2  0x00007ffe20fcf380 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-02-28 00:50:43:76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+2017-02-28 00:50:43:Backtrace END
+2017-02-28 00:50:45:Type: The type is an array.
+2017-02-28 00:50:45:Type sizeof: 12
+2017-02-28 00:50:45:Fliping array at pos: 2
+2017-02-28 00:50:45:Type: The type is an integer type.
+2017-02-28 00:50:45:Type sizeof: 4
+2017-02-28 00:50:45:Mem contents(hex):0x380x060x000x00
+2017-02-28 00:50:45:Fault Mode: Single bit-flip
+2017-02-28 00:50:45:base address to flip value: 0x7ffff743c358 
+2017-02-28 00:50:45:address max offset: 4
+2017-02-28 00:50:45:Memory content before bitflip:0x380x060x000x00
+2017-02-28 00:50:45:Memory content after  bitflip:0x380x060x000x80
+2017-02-28 00:50:45:Mem contents(hex):0x380x060x000x80
+2017-02-28 00:50:45:frame name: create_thread
+2017-02-28 00:50:45:symbol name: _thread_db_pthread_schedparam_sched_priority
+2017-02-28 00:50:45:symbol filename: ../nptl_db/structs.def
+2017-02-28 00:50:45:symbol line: 33
+2017-02-28 00:50:45:value: {32, 1, 2147485240}
+2017-02-28 00:50:45:value address: 0x7ffff743c350 <_thread_db_pthread_schedparam_sched_priority>
+2017-02-28 00:50:45:Type: The type is an array.
+2017-02-28 00:50:45:Type sizeof: 12
+2017-02-28 00:50:45:Field name: None
+2017-02-28 00:50:45:Field Type:
+2017-02-28 00:50:45:Type: A range type, that is, an integer type with bounds.
+2017-02-28 00:50:45:Type sizeof: 8
+2017-02-28 00:50:45:Type range: (0L, 2L)
+2017-02-28 00:50:45:Fault Injection Successful after 3.55771303177s
+2017-02-28 00:50:56:event type: exit
+2017-02-28 00:50:56:exit code: 0

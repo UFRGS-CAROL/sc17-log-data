@@ -1,0 +1,47 @@
+2017-03-01 18:33:34:Starting flip_value script
+2017-03-01 18:33:34:Initialization strings:
+2017-03-01 18:33:34:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 18:33:34:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 18:33:34:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 18:33:34:(4) file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-03-01 18:33:34:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/nw/needle_check
+2017-03-01 18:33:34:(6) set args 16394 10 228 /micNfs/gdb-fault-injection/injector/bin/nw/input_16394_th_228_pen_10 /micNfs/gdb-fault-injection/injector/bin/nw/gold_16394_th_228_pen_10
+2017-03-01 18:33:34:initSignal:12
+2017-03-01 18:33:34:endSignal:17
+2017-03-01 18:33:34:seqSignal:30
+2017-03-01 18:33:46:Backtrace BEGIN:
+2017-03-01 18:33:46:#0  0x0000000000402c53 in runTest (argc=6, argv=0x7fffffffec08) at needle_check.cpp:330
+#1  0x0000000000401595 in main (argc=6, argv=0x7fffffffec08) at needle_check.cpp:114
+
+2017-03-01 18:33:46:325	    //}
+326	
+327	
+328	    for (int i = 1 ; i < max_cols; i++){
+329	        for (int j = 1 ; j < max_rows; j++){
+330	            referrence[i*max_cols+j] = blosum62[input_itemsets[i*max_cols]][input_itemsets[j]];
+331	        }
+332	    }
+333	
+334	    for( int i = 1; i< max_rows ; i++)
+
+2017-03-01 18:33:46:Backtrace END
+2017-03-01 18:33:46:Type: The type is an integer type.
+2017-03-01 18:33:46:Type sizeof: 4
+2017-03-01 18:33:46:Mem contents(hex):0x0b0x400x000x00
+2017-03-01 18:33:46:Fault Mode: Single bit-flip
+2017-03-01 18:33:46:base address to flip value: 0x7fffffffe928
+2017-03-01 18:33:46:address max offset: 4
+2017-03-01 18:33:46:Memory content before bitflip:0x0b0x400x000x00
+2017-03-01 18:33:46:Memory content after  bitflip:0x0b0x410x000x00
+2017-03-01 18:33:46:Mem contents(hex):0x0b0x410x000x00
+2017-03-01 18:33:46:frame name: runTest
+2017-03-01 18:33:46:symbol name: max_cols
+2017-03-01 18:33:46:symbol filename: needle_check.cpp
+2017-03-01 18:33:46:symbol line: 265
+2017-03-01 18:33:46:value: 16651
+2017-03-01 18:33:46:value address: 0x7fffffffe928
+2017-03-01 18:33:46:Type: The type is an integer type.
+2017-03-01 18:33:46:Type sizeof: 4
+2017-03-01 18:33:46:Fault Injection Successful after 12.8176269531s
+2017-03-01 18:34:09:event type: exit
+2017-03-01 18:34:09:exit code: no exit code available

@@ -1,0 +1,76 @@
+[INFO -- 2017-02-26 01:10:22]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 01:10:22]
+Initialization strings:
+[INFO -- 2017-02-26 01:10:23]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-26 01:10:23]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 01:10:23]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 01:10:23]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 01:10:23]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 01:10:23]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-26 01:10:23]
+initSignal:0
+[INFO -- 2017-02-26 01:10:23]
+endSignal:2
+[INFO -- 2017-02-26 01:10:23]
+seqSignal:30
+[INFO -- 2017-02-26 01:10:23]
+faultMode:0
+[EXCEPTION -- 2017-02-26 01:10:23]
+gdbException: Attempt to dereference a generic pointer.
+[INFO -- 2017-02-26 01:10:24]
+Backtrace BEGIN:
+#0  check_match (undef_name=undef_name@entry=0x7ffff742ced0 "__getrlimit", ref=ref@entry=0x7ffff742aef0, version=version@entry=0x7ffff7ff8bf8, flags=flags@entry=1, type_class=type_class@entry=1, sym=sym@entry=0x7ffff70d4ea8, symidx=26, strtab=0x7ffff70e17d8 "", map=0x7ffff7ff99a0, versioned_sym=0x7fffffffe868, num_versions=0x7fffffffe864) at dl-lookup.c:138
+#1  0x00007ffff7de6010 in do_lookup_x (undef_name=undef_name@entry=0x7ffff742ced0 "__getrlimit", new_hash=new_hash@entry=4025794932, old_hash=old_hash@entry=0x7fffffffe930, ref=0x7ffff742aef0, result=result@entry=0x7fffffffe940, scope=<optimized out>, i=5, version=0x7ffff7ff8bf8, flags=1, skip=0x0, type_class=1, undef_map=0x7ffff7ff94d0) at dl-lookup.c:423
+#2  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x7ffff742ced0 "__getrlimit", undef_map=0x7ffff7ff94d0, ref=ref@entry=0x7fffffffe9f8, symbol_scope=0x7ffff7ff9828, version=0x7ffff7ff8bf8, type_class=type_class@entry=1, flags=1, skip_map=0x0) at dl-lookup.c:775
+#3  0x00007ffff7deafea in _dl_fixup (l=<optimized out>, reloc_arg=<optimized out>) at ../elf/dl-runtime.c:111
+#4  0x00007ffff7df1859 in _dl_runtime_resolve () at ../sysdeps/x86_64/dl-trampoline.S:89
+#5  0x00007ffff742fe7c in __pthread_initialize_minimal_internal () at nptl-init.c:438
+#6  0x00007ffff742f529 in _init () at ../sysdeps/x86_64/crti.S:72
+#7  0x00007ffff7ddd380 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#8  0x00007ffff7debb98 in call_init (l=0x7ffff7ff94d0, argc=9, argv=0x7fffffffec08, env=0x7fffffffec58) at dl-init.c:58
+#9  0x00007ffff7debd57 in call_init (env=0x7fffffffec58, argv=0x7fffffffec08, argc=9, l=<optimized out>) at dl-init.c:88
+#10 _dl_init (main_map=0x7ffff7ffe168, argc=9, argv=0x7fffffffec08, env=0x7fffffffec58) at dl-init.c:87
+#11 0x00007ffff7dddbfa in _dl_start_user () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#12 0x0000000000000009 in ?? ()
+#13 0x00007fffffffee08 in ?? ()
+#14 0x00007fffffffee3f in ?? ()
+#15 0x00007fffffffee42 in ?? ()
+#16 0x00007fffffffee47 in ?? ()
+#17 0x00007fffffffee4a in ?? ()
+#18 0x00007fffffffee4e in ?? ()
+#19 0x00007fffffffee51 in ?? ()
+#20 0x00007fffffffee90 in ?? ()
+#21 0x00007fffffffee93 in ?? ()
+#22 0x0000000000000000 in ?? ()
+
+133	in dl-lookup.c
+
+Backtrace END
+Memory content before bitflip:0x010x000x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7fffffffe90c
+address max offset: 4
+Memory content after  bitflip:0x010x000x000x01
+frame name: _dl_lookup_symbol_x
+symbol name: type_class
+symbol filename: dl-lookup.c
+symbol line: 751
+value: 16777217
+value address: 0x7fffffffe90c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-02-26 01:10:24]
+Fault Injection Successful after 1.04578709602s
+[INFO -- 2017-02-26 01:10:38]
+event type: exit
+[INFO -- 2017-02-26 01:10:38]
+exit code: 0

@@ -1,0 +1,56 @@
+[INFO -- 2017-03-06 13:00:11]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-06 13:00:11]
+Initialization strings:
+[INFO -- 2017-03-06 13:00:12]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-06 13:00:12]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 13:00:12]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-06 13:00:12]
+(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-06 13:00:12]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-06 13:00:12]
+(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+[INFO -- 2017-03-06 13:00:12]
+initSignal:0
+[INFO -- 2017-03-06 13:00:12]
+endSignal:7
+[INFO -- 2017-03-06 13:00:12]
+seqSignal:15
+[INFO -- 2017-03-06 13:00:12]
+faultMode:1
+[INFO -- 2017-03-06 13:00:14]
+Backtrace BEGIN:
+#0  0x00007ffff7144687 in __GI__IO_sgetn (fp=0x6073f0, data=0x7ffff40b49a0, n=8) at genops.c:495
+#1  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x6073f0) at iofread.c:42
+#2  0x0000000000403c08 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:250
+#3  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+490	in genops.c
+
+Backtrace END
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7ffff0cca040
+address max offset: 8
+Memory content after  bitflip:0x000x000xc00x000x000x000x000x00
+frame name: main
+symbol name: C
+symbol filename: dgemm.c
+symbol line: 280
+value: 0x7ffff0cca040
+value address: 0x606b58 <C.1136>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-06 13:00:14]
+Fault Injection Successful after 2.18972611427s
+[INFO -- 2017-03-06 13:00:57]
+event type: exit
+[INFO -- 2017-03-06 13:00:57]
+exit code: 0

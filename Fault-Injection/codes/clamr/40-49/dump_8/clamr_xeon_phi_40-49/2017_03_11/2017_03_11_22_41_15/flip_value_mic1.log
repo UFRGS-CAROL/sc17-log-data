@@ -1,0 +1,65 @@
+[INFO -- 2017-03-11 22:38:42]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-11 22:38:42]
+Initialization strings:
+[INFO -- 2017-03-11 22:38:43]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-11 22:38:43]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-11 22:38:43]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-11 22:38:43]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-11 22:38:43]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-11 22:38:43]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-11 22:38:43]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-11 22:38:43]
+initSignal:40
+[INFO -- 2017-03-11 22:38:43]
+endSignal:49
+[INFO -- 2017-03-11 22:38:43]
+seqSignal:20
+[INFO -- 2017-03-11 22:38:43]
+faultMode:0
+[INFO -- 2017-03-11 22:39:33]
+Backtrace BEGIN:
+#0  0x00007ffff6ba2012 in __strchrnul (s=s@entry=0x574750 ",%d\n", c_in=c_in@entry=37) at ../string/strchrnul.c:136
+#1  0x00007ffff6b67453 in __find_specmb (format=0x574750 ",%d\n") at printf-parse.h:108
+#2  _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1669
+#3  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#4  0x000000000054b93d in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:477
+#5  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#6  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+131	in ../string/strchrnul.c
+
+Backtrace END
+Fliping array at pos: 17
+Memory content before bitflip:0x930x3b0x000x00
+Fault Mode: Single bit-flip
+base address to flip value: 0x7ffff6c38ec4 
+address max offset: 4
+Memory content after  bitflip:0xb30x3b0x000x00
+frame name: _IO_vfprintf_internal
+symbol name: step1_jumps
+symbol filename: vfprintf.c
+symbol line: 1345
+value: {0, 0, 0, 0, 0, 0, 0, 0, 0, 10702, 11241, 11427, 11515, 7172, 7466, 7747, 14505, 15283, 15266, 12292, 14748, 15690, 13002, 13086, 14646, 15439, 12622, 7270, 7368, 0}
+value address: 0x7ffff6c38e80 <step1_jumps>
+Type: The type is an array.
+Type sizeof: 120
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 29L)
+
+[INFO -- 2017-03-11 22:39:33]
+Fault Injection Successful after 50.0788960457s
+[INFO -- 2017-03-11 22:41:06]
+event type: exit
+[INFO -- 2017-03-11 22:41:06]
+exit code: 0

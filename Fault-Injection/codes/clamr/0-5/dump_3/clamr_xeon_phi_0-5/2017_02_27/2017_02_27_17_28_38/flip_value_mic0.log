@@ -1,0 +1,152 @@
+2017-02-27 17:27:14:Starting flip_value script
+2017-02-27 17:27:14:Initialization strings:
+2017-02-27 17:27:14:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-27 17:27:14:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 17:27:14:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 17:27:14:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-27 17:27:14:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-27 17:27:14:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-27 17:27:14:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-27 17:27:14:initSignal:0
+2017-02-27 17:27:14:endSignal:5
+2017-02-27 17:27:14:seqSignal:20
+2017-02-27 17:27:17:Backtrace BEGIN:
+2017-02-27 17:27:18:#0  0x00007ffff6ba0545 in __GI_memcpy (dstpp=dstpp@entry=0x7ffd0c09f028, srcpp=srcpp@entry=0x7ffd4c28bd80, len=len@entry=12) at ../string/memcpy.c:31
+#1  0x00007ffff6b9ff79 in __GI___mempcpy (dest=dest@entry=0x7ffd0c09f028, src=src@entry=0x7ffd4c28bd80, len=12) at ../string/mempcpy.c:35
+#2  0x00007ffff6b551e3 in msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28bd68, n=n@entry=16) at msort.c:144
+#3  0x00007ffff6b55011 in msort_with_tmp (n=16, b=<optimized out>, p=<optimized out>) at msort.c:45
+#4  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28bd68, n=n@entry=33) at msort.c:53
+#5  0x00007ffff6b55027 in msort_with_tmp (n=33, b=0x7ffd4c28bd68, p=<optimized out>) at msort.c:45
+#6  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28bbe8, n=n@entry=65) at msort.c:54
+#7  0x00007ffff6b55027 in msort_with_tmp (n=65, b=0x7ffd4c28bbe8, p=<optimized out>) at msort.c:45
+#8  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28b8e8, n=n@entry=129) at msort.c:54
+#9  0x00007ffff6b55011 in msort_with_tmp (n=129, b=<optimized out>, p=<optimized out>) at msort.c:45
+#10 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28b8e8, n=n@entry=258) at msort.c:53
+#11 0x00007ffff6b55027 in msort_with_tmp (n=258, b=0x7ffd4c28b8e8, p=<optimized out>) at msort.c:45
+#12 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28acd0, n=n@entry=516) at msort.c:54
+#13 0x00007ffff6b55011 in msort_with_tmp (n=516, b=<optimized out>, p=<optimized out>) at msort.c:45
+#14 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28acd0, n=n@entry=1032) at msort.c:53
+#15 0x00007ffff6b55011 in msort_with_tmp (n=1032, b=<optimized out>, p=<optimized out>) at msort.c:45
+#16 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28acd0, n=n@entry=2064) at msort.c:53
+#17 0x00007ffff6b55027 in msort_with_tmp (n=2064, b=0x7ffd4c28acd0, p=<optimized out>) at msort.c:45
+#18 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c284c10, n=n@entry=4128) at msort.c:54
+#19 0x00007ffff6b55011 in msort_with_tmp (n=4128, b=<optimized out>, p=<optimized out>) at msort.c:45
+#20 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c284c10, n=n@entry=8256) at msort.c:53
+#21 0x00007ffff6b55011 in msort_with_tmp (n=8256, b=<optimized out>, p=<optimized out>) at msort.c:45
+#22 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c284c10, n=n@entry=16512) at msort.c:53
+#23 0x00007ffff6b55011 in msort_with_tmp (n=16512, b=<optimized out>, p=<optimized out>) at msort.c:45
+#24 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c284c10, n=n@entry=33024) at msort.c:53
+#25 0x00007ffff6b55027 in msort_with_tmp (n=33024, b=0x7ffd4c284c10, p=<optimized out>) at msort.c:45
+#26 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c224010, n=n@entry=66048) at msort.c:54
+#27 0x00007ffff6b55011 in msort_with_tmp (n=66048, b=<optimized out>, p=<optimized out>) at msort.c:45
+#28 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c224010, n=n@entry=132096) at msort.c:53
+#29 0x00007ffff6b55027 in msort_with_tmp (n=132096, b=0x7ffd4c224010, p=<optimized out>) at msort.c:45
+#30 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c0a1010, n=n@entry=264192) at msort.c:54
+#31 0x00007ffff6b55537 in msort_with_tmp (n=3170304, b=0x7ffd4c0a1010, p=0x7fffffffdf28) at msort.c:45
+#32 __GI___qsort_r (b=0x7ffd4c0a1010, n=264192, s=12, cmp=<optimized out>, arg=<optimized out>) at msort.c:297
+#33 0x000000000053a863 in hsfc2sort (N=264192, X=0x7ffe0c1bf010, Y=0x7ffdcc1b0010, ibase=0, Info=0x7ffd8c0ae010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:161
+#34 0x0000000000536b19 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#35 0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#36 0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-27 17:27:18:26	in ../string/memcpy.c
+
+2017-02-27 17:27:18:Backtrace END
+2017-02-27 17:27:23:Type: The type is a pointer.
+2017-02-27 17:27:23:Type sizeof: 8
+2017-02-27 17:27:23:Fliping a bit of the pointer
+2017-02-27 17:27:23:Mem contents(hex):0x280xdf0xff0xff0xff0x7f0x000x00
+2017-02-27 17:27:23:Fault Mode: Random bit-flip
+2017-02-27 17:27:23:base address to flip value: 0x7fffffffdd48
+2017-02-27 17:27:23:address max offset: 8
+2017-02-27 17:27:23:Memory content before bitflip:0x280xdf0xff0xff0xff0x7f0x000x00
+2017-02-27 17:27:23:Backtrace BEGIN:
+2017-02-27 17:27:23:#0  0x00007ffff6ba0545 in __GI_memcpy (dstpp=dstpp@entry=0x7ffd0c09f028, srcpp=srcpp@entry=0x7ffd4c28bd80, len=len@entry=12) at ../string/memcpy.c:31
+#1  0x00007ffff6b9ff79 in __GI___mempcpy (dest=dest@entry=0x7ffd0c09f028, src=src@entry=0x7ffd4c28bd80, len=12) at ../string/mempcpy.c:35
+#2  0x00007ffff6b551e3 in msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28bd68, n=n@entry=16) at msort.c:144
+#3  0x00007ffff6b55011 in msort_with_tmp (n=16, b=<optimized out>, p=<optimized out>) at msort.c:45
+#4  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28bd68, n=n@entry=33) at msort.c:53
+#5  0x00007ffff6b55027 in msort_with_tmp (n=33, b=0x7ffd4c28bd68, p=<optimized out>) at msort.c:45
+#6  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28bbe8, n=n@entry=65) at msort.c:54
+#7  0x00007ffff6b55027 in msort_with_tmp (n=65, b=0x7ffd4c28bbe8, p=<optimized out>) at msort.c:45
+#8  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28b8e8, n=n@entry=129) at msort.c:54
+#9  0x00007ffff6b55011 in msort_with_tmp (n=129, b=<optimized out>, p=<optimized out>) at msort.c:45
+#10 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28b8e8, n=n@entry=258) at msort.c:53
+#11 0x00007ffff6b55027 in msort_with_tmp (n=258, b=0x7ffd4c28b8e8, p=<optimized out>) at msort.c:45
+#12 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28acd0, n=n@entry=516) at msort.c:54
+#13 0x00007ffff6b55011 in msort_with_tmp (n=516, b=<optimized out>, p=<optimized out>) at msort.c:45
+#14 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28acd0, n=n@entry=1032) at msort.c:53
+#15 0x00007ffff6b55011 in msort_with_tmp (n=1032, b=<optimized out>, p=<optimized out>) at msort.c:45
+#16 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28acd0, n=n@entry=2064) at msort.c:53
+#17 0x00007ffff6b55027 in msort_with_tmp (n=2064, b=0x7ffd4c28acd0, p=<optimized out>) at msort.c:45
+#18 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c284c10, n=n@entry=4128) at msort.c:54
+#19 0x00007ffff6b55011 in msort_with_tmp (n=4128, b=<optimized out>, p=<optimized out>) at msort.c:45
+#20 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c284c10, n=n@entry=8256) at msort.c:53
+#21 0x00007ffff6b55011 in msort_with_tmp (n=8256, b=<optimized out>, p=<optimized out>) at msort.c:45
+#22 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c284c10, n=n@entry=16512) at msort.c:53
+#23 0x00007ffff6b55011 in msort_with_tmp (n=16512, b=<optimized out>, p=<optimized out>) at msort.c:45
+#24 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c284c10, n=n@entry=33024) at msort.c:53
+#25 0x00007ffff6b55027 in msort_with_tmp (n=33024, b=0x7ffd4c284c10, p=<optimized out>) at msort.c:45
+#26 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c224010, n=n@entry=66048) at msort.c:54
+#27 0x00007ffff6b55011 in msort_with_tmp (n=66048, b=<optimized out>, p=<optimized out>) at msort.c:45
+#28 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c224010, n=n@entry=132096) at msort.c:53
+#29 0x00007ffff6b55027 in msort_with_tmp (n=132096, b=0x7ffd4c224010, p=<optimized out>) at msort.c:45
+#30 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c0a1010, n=n@entry=264192) at msort.c:54
+#31 0x00007ffff6b55537 in msort_with_tmp (n=3170304, b=0x7ffd4c0a1010, p=0x7fffffffdf28) at msort.c:45
+#32 __GI___qsort_r (b=0x7ffd4c0a1010, n=264192, s=12, cmp=<optimized out>, arg=<optimized out>) at msort.c:297
+#33 0x000000000053a863 in hsfc2sort (N=264192, X=0x7ffe0c1bf010, Y=0x7ffdcc1b0010, ibase=0, Info=0x7ffd8c0ae010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:161
+#34 0x0000000000536b19 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#35 0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#36 0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-27 17:27:23:26	in ../string/memcpy.c
+
+2017-02-27 17:27:23:Backtrace END
+2017-02-27 17:27:28:Type: The type is a pointer.
+2017-02-27 17:27:28:Type sizeof: 8
+2017-02-27 17:27:28:Backtrace BEGIN:
+2017-02-27 17:27:28:#0  0x00007ffff6ba0545 in __GI_memcpy (dstpp=dstpp@entry=0x7ffd0c09f028, srcpp=srcpp@entry=0x7ffd4c28bd80, len=len@entry=12) at ../string/memcpy.c:31
+#1  0x00007ffff6b9ff79 in __GI___mempcpy (dest=dest@entry=0x7ffd0c09f028, src=src@entry=0x7ffd4c28bd80, len=12) at ../string/mempcpy.c:35
+#2  0x00007ffff6b551e3 in msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28bd68, n=n@entry=16) at msort.c:144
+#3  0x00007ffff6b55011 in msort_with_tmp (n=16, b=<optimized out>, p=<optimized out>) at msort.c:45
+#4  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28bd68, n=n@entry=33) at msort.c:53
+#5  0x00007ffff6b55027 in msort_with_tmp (n=33, b=0x7ffd4c28bd68, p=<optimized out>) at msort.c:45
+#6  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28bbe8, n=n@entry=65) at msort.c:54
+#7  0x00007ffff6b55027 in msort_with_tmp (n=65, b=0x7ffd4c28bbe8, p=<optimized out>) at msort.c:45
+#8  msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28b8e8, n=n@entry=129) at msort.c:54
+#9  0x00007ffff6b55011 in msort_with_tmp (n=129, b=<optimized out>, p=<optimized out>) at msort.c:45
+#10 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28b8e8, n=n@entry=258) at msort.c:53
+#11 0x00007ffff6b55027 in msort_with_tmp (n=258, b=0x7ffd4c28b8e8, p=<optimized out>) at msort.c:45
+#12 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28acd0, n=n@entry=516) at msort.c:54
+#13 0x00007ffff6b55011 in msort_with_tmp (n=516, b=<optimized out>, p=<optimized out>) at msort.c:45
+#14 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28acd0, n=n@entry=1032) at msort.c:53
+#15 0x00007ffff6b55011 in msort_with_tmp (n=1032, b=<optimized out>, p=<optimized out>) at msort.c:45
+#16 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c28acd0, n=n@entry=2064) at msort.c:53
+#17 0x00007ffff6b55027 in msort_with_tmp (n=2064, b=0x7ffd4c28acd0, p=<optimized out>) at msort.c:45
+#18 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c284c10, n=n@entry=4128) at msort.c:54
+#19 0x00007ffff6b55011 in msort_with_tmp (n=4128, b=<optimized out>, p=<optimized out>) at msort.c:45
+#20 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c284c10, n=n@entry=8256) at msort.c:53
+#21 0x00007ffff6b55011 in msort_with_tmp (n=8256, b=<optimized out>, p=<optimized out>) at msort.c:45
+#22 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c284c10, n=n@entry=16512) at msort.c:53
+#23 0x00007ffff6b55011 in msort_with_tmp (n=16512, b=<optimized out>, p=<optimized out>) at msort.c:45
+#24 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c284c10, n=n@entry=33024) at msort.c:53
+#25 0x00007ffff6b55027 in msort_with_tmp (n=33024, b=0x7ffd4c284c10, p=<optimized out>) at msort.c:45
+#26 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c224010, n=n@entry=66048) at msort.c:54
+#27 0x00007ffff6b55011 in msort_with_tmp (n=66048, b=<optimized out>, p=<optimized out>) at msort.c:45
+#28 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c224010, n=n@entry=132096) at msort.c:53
+#29 0x00007ffff6b55027 in msort_with_tmp (n=132096, b=0x7ffd4c224010, p=<optimized out>) at msort.c:45
+#30 msort_with_tmp (p=p@entry=0x7fffffffdf28, b=b@entry=0x7ffd4c0a1010, n=n@entry=264192) at msort.c:54
+#31 0x00007ffff6b55537 in msort_with_tmp (n=3170304, b=0x7ffd4c0a1010, p=0x7fffffffdf28) at msort.c:45
+#32 __GI___qsort_r (b=0x7ffd4c0a1010, n=264192, s=12, cmp=<optimized out>, arg=<optimized out>) at msort.c:297
+#33 0x000000000053a863 in hsfc2sort (N=264192, X=0x7ffe0c1bf010, Y=0x7ffdcc1b0010, ibase=0, Info=0x7ffd8c0ae010, LDInfo=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/hsfc/hsfcsort.c:161
+#34 0x0000000000536b19 in Mesh::partition_cells (this=0x7f9a50, numpe=1, z_order=..., method=HILBERT_SORT) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/partition.cpp:493
+#35 0x0000000000507e48 in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1516
+#36 0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-27 17:27:28:26	in ../string/memcpy.c
+
+2017-02-27 17:27:28:Backtrace END
+2017-02-27 17:27:33:Type: The type is a pointer.
+2017-02-27 17:27:33:Type sizeof: 8
+2017-02-27 17:28:19:event type: exit
+2017-02-27 17:28:19:exit code: 0

@@ -1,0 +1,61 @@
+[INFO -- 2017-03-03 11:40:31]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-03 11:40:31]
+Initialization strings:
+[INFO -- 2017-03-03 11:40:31]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-03 11:40:31]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 11:40:31]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-03 11:40:31]
+(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-03 11:40:31]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-03 11:40:31]
+(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+[INFO -- 2017-03-03 11:40:31]
+initSignal:0
+[INFO -- 2017-03-03 11:40:31]
+endSignal:7
+[INFO -- 2017-03-03 11:40:31]
+seqSignal:15
+[INFO -- 2017-03-03 11:40:31]
+faultMode:3
+[INFO -- 2017-03-03 11:40:35]
+Backtrace BEGIN:
+#0  __GI___waitpid (pid=119434, stat_loc=stat_loc@entry=0x7fffffffe1d8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x00000000004015a5 in update_timestamp () at ../include/log_helper.c:107
+#3  0x000000000040198a in start_log_file (benchmark_name=0x405830 "openmpDGEMM", test_info=0x7fffffffe7e8 "matrix_dim:2048 threads:228 block_size:16 block_offset:12") at ../include/log_helper.c:196
+#4  0x0000000000404320 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:343
+
+26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+Backtrace END
+Fliping array at pos: 24
+Memory content before bitflip:0x73
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe348 
+address max offset: 1
+Memory content after  bitflip:0x00
+frame name: update_timestamp
+symbol name: string
+symbol filename: ../include/log_helper.c
+symbol line: 100
+value: "echo 1488558961 > /micNf\000/carol/logs/timestamp.txt", '\000' <repeats 49 times>
+value address: 0x7fffffffe330
+Type: The type is an array.
+Type sizeof: 100
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 99L)
+
+[INFO -- 2017-03-03 11:40:35]
+Fault Injection Successful after 4.66590809822s
+[INFO -- 2017-03-03 11:41:16]
+event type: exit
+[INFO -- 2017-03-03 11:41:16]
+exit code: 0

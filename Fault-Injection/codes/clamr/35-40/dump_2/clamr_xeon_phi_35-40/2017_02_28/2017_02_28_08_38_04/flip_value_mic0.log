@@ -1,0 +1,95 @@
+2017-02-28 08:34:55:Starting flip_value script
+2017-02-28 08:34:55:Initialization strings:
+2017-02-28 08:34:55:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 08:34:55:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 08:34:55:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 08:34:56:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 08:34:56:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 08:34:56:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 08:34:56:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 08:34:56:initSignal:35
+2017-02-28 08:34:56:endSignal:40
+2017-02-28 08:34:56:seqSignal:20
+2017-02-28 08:35:34:Backtrace BEGIN:
+2017-02-28 08:35:35:#0  _IO_new_file_xsputn (f=0x1920e80, data=<optimized out>, n=1) at fileops.c:1313
+#1  0x00007ffff6b6747d in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1673
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b8e1 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:476
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-28 08:35:35:1308	in fileops.c
+
+2017-02-28 08:35:35:Backtrace END
+2017-02-28 08:35:44:Type: The type is a structure.
+2017-02-28 08:35:44:Type sizeof: 168
+2017-02-28 08:35:44:Fliping value of field: __write
+2017-02-28 08:35:44:Type: The type is a pointer.
+2017-02-28 08:35:44:Type sizeof: 8
+2017-02-28 08:35:44:Fliping a bit of the value pointed by a pointer
+2017-02-28 08:35:44:Type: The type is a function.
+2017-02-28 08:35:44:Type sizeof: 1
+2017-02-28 08:35:44:Mem contents(hex):0x41
+2017-02-28 08:35:44:Fault Mode: One bit-flip
+2017-02-28 08:35:44:base address to flip value: 0x7ffff6b926e0 
+2017-02-28 08:35:44:address max offset: 1
+2017-02-28 08:35:44:Memory content before bitflip:0x41
+2017-02-28 08:35:45:Backtrace BEGIN:
+2017-02-28 08:35:45:#0  _IO_new_file_xsputn (f=0x1920e80, data=<optimized out>, n=1) at fileops.c:1313
+#1  0x00007ffff6b6747d in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1673
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b8e1 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:476
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-28 08:35:45:1308	in fileops.c
+
+2017-02-28 08:35:45:Backtrace END
+2017-02-28 08:35:55:Type: The type is an array.
+2017-02-28 08:35:55:Type sizeof: 24
+2017-02-28 08:35:55:Fliping array at pos: 0
+2017-02-28 08:35:55:Type: The type is a structure.
+2017-02-28 08:35:55:Type sizeof: 24
+2017-02-28 08:35:55:Fliping value of field: overflow_arg_area
+2017-02-28 08:35:55:Type: The type is a pointer.
+2017-02-28 08:35:55:Type sizeof: 8
+2017-02-28 08:35:55:Backtrace BEGIN:
+2017-02-28 08:35:55:#0  _IO_new_file_xsputn (f=0x1920e80, data=<optimized out>, n=1) at fileops.c:1313
+#1  0x00007ffff6b6747d in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1673
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b8e1 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:476
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-28 08:35:55:1308	in fileops.c
+
+2017-02-28 08:35:55:Backtrace END
+2017-02-28 08:36:01:Type: The type is a pointer.
+2017-02-28 08:36:01:Type sizeof: 8
+2017-02-28 08:36:01:Fliping a bit of the pointer
+2017-02-28 08:36:01:Mem contents(hex):0xa00xb80x710x010x000x000x000x00
+2017-02-28 08:36:01:Fault Mode: One bit-flip
+2017-02-28 08:36:01:base address to flip value: 0x7d0bd8 
+2017-02-28 08:36:01:address max offset: 8
+2017-02-28 08:36:01:Memory content before bitflip:0xa00xb80x710x010x000x000x000x00
+2017-02-28 08:36:01:Backtrace BEGIN:
+2017-02-28 08:36:01:#0  _IO_new_file_xsputn (f=0x1920e80, data=<optimized out>, n=1) at fileops.c:1313
+#1  0x00007ffff6b6747d in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1673
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b8e1 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:476
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-28 08:36:01:1308	in fileops.c
+
+2017-02-28 08:36:01:Backtrace END
+2017-02-28 08:36:06:Type: The type is an array.
+2017-02-28 08:36:06:Type sizeof: 24
+2017-02-28 08:36:06:Fliping array at pos: 0
+2017-02-28 08:36:06:Type: The type is a structure.
+2017-02-28 08:36:06:Type sizeof: 24
+2017-02-28 08:36:06:Fliping value of field: reg_save_area
+2017-02-28 08:36:06:Type: The type is a pointer.
+2017-02-28 08:36:06:Type sizeof: 8
+2017-02-28 08:36:41:event type: exit
+2017-02-28 08:36:41:exit code: 0

@@ -1,0 +1,102 @@
+[INFO -- 2017-02-25 05:08:50]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-25 05:08:50]
+Initialization strings:
+[INFO -- 2017-02-25 05:08:50]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-25 05:08:50]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 05:08:50]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-25 05:08:50]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 05:08:50]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-25 05:08:50]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-25 05:08:50]
+initSignal:0
+[INFO -- 2017-02-25 05:08:50]
+endSignal:2
+[INFO -- 2017-02-25 05:08:50]
+seqSignal:30
+[INFO -- 2017-02-25 05:08:50]
+faultMode:3
+[INFO -- 2017-02-25 05:08:57]
+Backtrace BEGIN:
+#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd2d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff7fd2df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff7fd2d14 in ?? ()
+#8  0x00007ffff7fd2de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+Backtrace END
+Fliping array at pos: 6
+Memory content before bitflip:0x36
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffff7df6606  
+address max offset: 1
+Memory content after  bitflip:0x00
+frame name: malloc
+symbol name: _itoa_lower_digits
+symbol filename: dl-minimal.c
+symbol line: 382
+value: "012345\000\067\070\071abcdef"
+value address: 0x7ffff7df6600 <_itoa_lower_digits>
+Type: The type is an array.
+Type sizeof: 16
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 15L)
+
+[INFO -- 2017-02-25 05:08:57]
+Fault Injection Successful after 7.90646290779s
+[INFO -- 2017-02-25 05:08:58]
+Backtrace BEGIN:
+#0  allocate_stack (stack=<synthetic pointer>, pdp=<synthetic pointer>, attr=0x7fffffffd3d8) at allocatestack.c:548
+#1  __pthread_create_2_1 (newthread=0x7fffffffd3d0, attr=<optimized out>, start_routine=0x7ffff790bb10, arg=0x7fff60296b00) at pthread_create.c:524
+#2  0x00007ffff790d323 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+543	in allocatestack.c
+
+Backtrace END
+Fliping value of field: next
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: next
+Fliping a bit of the value pointed by a pointer
+Fliping value of field: prev
+Fliping a bit of the pointer
+Memory content before bitflip:0xc00xf90xfc0xe10xfc0x7f0x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7ffce23d5948
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000x000x00
+frame name: __pthread_create_2_1
+symbol name: stack_used
+symbol filename: allocatestack.c
+symbol line: 115
+value: {next = 0x7ffce1fcf9c0, prev = 0x7ffff7fd39c0}
+value address: 0x7ffff7642270 <stack_used>
+Type: The type is a structure.
+Type sizeof: 16
+Field name: next
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+Field name: prev
+Field Type: The type is a pointer.
+Field Type sizeof: 8
+
+[INFO -- 2017-02-25 05:08:58]
+Fault Injection Successful after 8.30178904533s

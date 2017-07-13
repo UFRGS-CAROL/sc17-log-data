@@ -1,0 +1,60 @@
+[INFO -- 2017-03-08 03:51:53]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-08 03:51:53]
+Initialization strings:
+[INFO -- 2017-03-08 03:51:53]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-08 03:51:53]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 03:51:53]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-08 03:51:53]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-03-08 03:51:53]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-03-08 03:51:53]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-03-08 03:51:53]
+initSignal:6
+[INFO -- 2017-03-08 03:51:53]
+endSignal:9
+[INFO -- 2017-03-08 03:51:53]
+seqSignal:15
+[INFO -- 2017-03-08 03:51:53]
+faultMode:2
+[INFO -- 2017-03-08 03:52:00]
+Backtrace BEGIN:
+#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff71436c0 in _IO_new_file_underflow (fp=0x609b40) at fileops.c:580
+#2  0x00007ffff714459e in __GI__IO_default_uflow (fp=0x609b40) at genops.c:435
+#3  0x00007ffff713939e in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "0.000008\n", n=248, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:69
+#4  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "0.000008\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#5  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe640 "0.000008\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#6  0x0000000000404538 in read_input (vect=0x7ffff66cb010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee43 "/micNfs/gdb-fault-injection/injector/data/hotspot/power_1024") at hotspot_check.c:202
+#7  0x0000000000404ad7 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:266
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff74266c0 
+address max offset: 8
+Memory content after  bitflip:0xed0xc60x250x3d0xe70x920x540xb2
+frame name: __GI__IO_default_uflow
+symbol name: freeres_list
+symbol filename: genops.c
+symbol line: 944
+value: 0x0
+value address: 0x7ffff74266c0 <freeres_list>
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-08 03:52:00]
+Fault Injection Successful after 7.09113693237s
+[INFO -- 2017-03-08 03:52:17]
+event type: exit
+[INFO -- 2017-03-08 03:52:17]
+exit code: 0

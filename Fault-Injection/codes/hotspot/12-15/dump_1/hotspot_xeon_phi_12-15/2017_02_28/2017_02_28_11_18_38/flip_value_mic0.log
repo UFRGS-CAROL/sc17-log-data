@@ -1,0 +1,44 @@
+2017-02-28 11:18:05:Starting flip_value script
+2017-02-28 11:18:05:Initialization strings:
+2017-02-28 11:18:06:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 11:18:06:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 11:18:06:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 11:18:06:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 11:18:06:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-28 11:18:06:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-02-28 11:18:06:initSignal:12
+2017-02-28 11:18:06:endSignal:15
+2017-02-28 11:18:06:seqSignal:15
+2017-02-28 11:18:18:Backtrace BEGIN:
+2017-02-28 11:18:18:#0  0x00007ffff7126528 in _IO_vfscanf_internal (s=s@entry=0x7fffffffe440, format=format@entry=0x4071c8 "%f", argptr=argptr@entry=0x7fffffffe568, errp=errp@entry=0x0) at vfscanf.c:2084
+#1  0x00007ffff71365ea in __GI___isoc99_vsscanf (string=0x7fffffffe640 "323.173981\n", format=0x4071c8 "%f", args=args@entry=0x7fffffffe568) at isoc99_vsscanf.c:43
+#2  0x00007ffff7136569 in __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:31
+#3  0x0000000000404598 in read_input (vect=0x7ffff5ec9010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee80 "/micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th") at hotspot_check.c:207
+#4  0x0000000000404b00 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:267
+
+2017-02-28 11:18:18:2079	in vfscanf.c
+
+2017-02-28 11:18:18:Backtrace END
+2017-02-28 11:18:18:Type: The type is a pointer.
+2017-02-28 11:18:18:Type sizeof: 8
+2017-02-28 11:18:18:Fliping a bit of the value pointed by a pointer
+2017-02-28 11:18:18:Type: A floating point type.
+2017-02-28 11:18:18:Type sizeof: 4
+2017-02-28 11:18:18:Mem contents(hex):0x360xee0xa10x43
+2017-02-28 11:18:18:Fault Mode: Single bit-flip
+2017-02-28 11:18:18:base address to flip value: 0x7ffff6acc010
+2017-02-28 11:18:18:address max offset: 4
+2017-02-28 11:18:18:Memory content before bitflip:0x360xee0xa10x43
+2017-02-28 11:18:18:Memory content after  bitflip:0x360xae0xa10x43
+2017-02-28 11:18:18:Mem contents(hex):0x360xae0xa10x43
+2017-02-28 11:18:18:frame name: main
+2017-02-28 11:18:18:symbol name: temp
+2017-02-28 11:18:18:symbol filename: hotspot_check.c
+2017-02-28 11:18:18:symbol line: 231
+2017-02-28 11:18:18:value: 0x7ffff6acc010
+2017-02-28 11:18:18:value address: 0x7fffffffe9b0
+2017-02-28 11:18:18:Type: The type is a pointer.
+2017-02-28 11:18:18:Type sizeof: 8
+2017-02-28 11:18:18:Fault Injection Successful after 12.9751329422s
+2017-02-28 11:18:32:event type: exit
+2017-02-28 11:18:32:exit code: 0

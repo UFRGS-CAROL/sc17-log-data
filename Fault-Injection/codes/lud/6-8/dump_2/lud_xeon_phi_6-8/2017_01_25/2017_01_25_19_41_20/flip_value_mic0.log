@@ -1,0 +1,51 @@
+2017-01-25 19:41:02:Starting flip_value script
+2017-01-25 19:41:02:Initialization strings:
+2017-01-25 19:41:02:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 19:41:02:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 19:41:02:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 19:41:02:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 19:41:02:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 19:41:02:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 19:41:02:initSignal:6
+2017-01-25 19:41:02:endSignal:8
+2017-01-25 19:41:02:seqSignal:30
+2017-01-25 19:41:09:Trying Fault Injection
+2017-01-25 19:41:09:Inferior PID: 128185
+2017-01-25 19:41:09:Inferior is valid: True
+2017-01-25 19:41:09:Inferior #threads: 229
+2017-01-25 19:41:09:Backtrace BEGIN:
+2017-01-25 19:41:09:#0  do_system (line=0x7fffffffe630 "echo 1485390940 > /micNfs/carol/logs/timestamp.txt") at ../sysdeps/posix/system.c:116
+#1  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#2  0x0000000000405f16 in log_error_count (kernel_errors=0) at ../include/log_helper.c:369
+#3  0x0000000000402def in main (argc=9, argv=0x7fffffffec08) at lud_check.c:149
+
+2017-01-25 19:41:09:111	in ../sysdeps/posix/system.c
+
+2017-01-25 19:41:09:Backtrace END
+2017-01-25 19:41:12:Thread name: None
+2017-01-25 19:41:12:Thread num: 1
+2017-01-25 19:41:12:Thread ptid: (128185, 128185, 0)
+2017-01-25 19:41:12:bitFlip function
+2017-01-25 19:41:12:Type: The type is an integer type.
+2017-01-25 19:41:12:Type sizeof: 4
+2017-01-25 19:41:12:Mem contents(hex):0x010x000x000x00
+2017-01-25 19:41:12:base address to flip value: 0x7ffff7426424 
+2017-01-25 19:41:12:address max offset: 4
+2017-01-25 19:41:12:Memory content before bitflip:0x010x000x000x00
+2017-01-25 19:41:12:Memory content after  bitflip:0x010x000x000x80
+2017-01-25 19:41:12:Mem contents(hex):0x010x000x000x80
+2017-01-25 19:41:12:frame name: do_system
+2017-01-25 19:41:12:symbol name: sa_refcntr
+2017-01-25 19:41:12:symbol filename: ../sysdeps/posix/system.c
+2017-01-25 19:41:12:symbol line: 35
+2017-01-25 19:41:12:value: -2147483647
+2017-01-25 19:41:12:value address: 0x7ffff7426424 <sa_refcntr>
+2017-01-25 19:41:12:Type: The type is an integer type.
+2017-01-25 19:41:12:Type sizeof: 4
+2017-01-25 19:41:12:Fault Injection Successful after 10.8198881149s
+2017-01-25 19:41:13:Fault Already Injected
+2017-01-25 19:41:13:Fault Already Injected
+2017-01-25 19:41:13:Fault Already Injected
+2017-01-25 19:41:13:Fault Already Injected
+2017-01-25 19:41:13:event type: exit
+2017-01-25 19:41:13:exit code: 0

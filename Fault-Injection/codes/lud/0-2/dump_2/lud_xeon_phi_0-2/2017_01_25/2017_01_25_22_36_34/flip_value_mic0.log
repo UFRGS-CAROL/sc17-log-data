@@ -1,0 +1,48 @@
+2017-01-25 22:35:53:Starting flip_value script
+2017-01-25 22:35:53:Initialization strings:
+2017-01-25 22:35:53:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 22:35:53:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 22:35:54:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 22:35:54:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 22:35:54:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 22:35:54:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 22:35:54:initSignal:0
+2017-01-25 22:35:54:endSignal:2
+2017-01-25 22:35:54:seqSignal:30
+2017-01-25 22:35:54:Trying Fault Injection
+2017-01-25 22:35:54:Inferior PID: 90907
+2017-01-25 22:35:54:Inferior is valid: True
+2017-01-25 22:35:54:Inferior #threads: 1
+2017-01-25 22:35:54:Backtrace BEGIN:
+2017-01-25 22:35:54:#0  0x00007ffff71965d0 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142911 in __GI__IO_file_xsgetn (fp=0x60c010, data=<optimized out>, n=16777216) at fileops.c:1422
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=16777216, count=1, fp=0x60c010) at iofread.c:42
+#3  0x0000000000402b5a in main (argc=9, argv=0x7fffffffec08) at lud_check.c:105
+
+2017-01-25 22:35:54:76	in ../sysdeps/unix/syscall-template.S
+
+2017-01-25 22:35:54:Backtrace END
+2017-01-25 22:35:54:Thread name: None
+2017-01-25 22:35:54:Thread num: 1
+2017-01-25 22:35:54:Thread ptid: (90907, 90907, 0)
+2017-01-25 22:35:54:bitFlip function
+2017-01-25 22:35:54:Type: The type is an integer type.
+2017-01-25 22:35:54:Type sizeof: 4
+2017-01-25 22:35:54:Mem contents(hex):0x000x080x000x00
+2017-01-25 22:35:54:base address to flip value: 0x7fffffffe938
+2017-01-25 22:35:54:address max offset: 4
+2017-01-25 22:35:54:Memory content before bitflip:0x000x080x000x00
+2017-01-25 22:35:54:Memory content after  bitflip:0x000x080x200x00
+2017-01-25 22:35:54:Mem contents(hex):0x000x080x200x00
+2017-01-25 22:35:54:frame name: main
+2017-01-25 22:35:54:symbol name: matrix_dim
+2017-01-25 22:35:54:symbol filename: lud_check.c
+2017-01-25 22:35:54:symbol line: 46
+2017-01-25 22:35:54:value: 2099200
+2017-01-25 22:35:54:value address: 0x7fffffffe938
+2017-01-25 22:35:54:Type: The type is an integer type.
+2017-01-25 22:35:54:Type sizeof: 4
+2017-01-25 22:35:54:Fault Injection Successful after 0.600610017776s
+2017-01-25 22:35:54:Fault Already Injected
+2017-01-25 22:35:54:event type: exit
+2017-01-25 22:35:54:exit code: no exit code available

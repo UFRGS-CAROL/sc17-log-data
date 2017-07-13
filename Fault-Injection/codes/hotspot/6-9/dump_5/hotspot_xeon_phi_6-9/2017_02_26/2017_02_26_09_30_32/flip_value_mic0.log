@@ -1,0 +1,64 @@
+[INFO -- 2017-02-26 09:29:51]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 09:29:51]
+Initialization strings:
+[INFO -- 2017-02-26 09:29:52]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-26 09:29:52]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 09:29:52]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 09:29:52]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 09:29:52]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 09:29:52]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 09:29:52]
+initSignal:6
+[INFO -- 2017-02-26 09:29:52]
+endSignal:9
+[INFO -- 2017-02-26 09:29:52]
+seqSignal:15
+[INFO -- 2017-02-26 09:29:52]
+faultMode:2
+[INFO -- 2017-02-26 09:29:58]
+Backtrace BEGIN:
+#0  0x0000000000401150 in __isoc99_sscanf@plt ()
+#1  0x0000000000404598 in read_input (vect=0x7ffff66cb010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee43 "/micNfs/gdb-fault-injection/injector/data/hotspot/power_1024") at hotspot_check.c:207
+#2  0x0000000000404ad7 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:266
+
+221	    fprintf(stderr, "\t<no. of threads>   - number of threads\n");
+222	    fprintf(stderr, "\t<temp_file>  - name of the file containing the initial temperature values of each cell\n");
+223	    fprintf(stderr, "\t<power_file> - name of the file containing the dissipated power values of each cell\n");
+224	    fprintf(stderr, "\t<output_file> - name of the output file\n");
+225	    exit(1);
+226	}
+227	
+228	int main(int argc, char **argv)
+229	{
+230	    int grid_rows, grid_cols, sim_time, i;
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x100x900xec0xf50xff0x7f0x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe9f0
+address max offset: 8
+Memory content after  bitflip:0x050xd50xd30x610xb00x950xe20x8c
+frame name: main
+symbol name: gold
+symbol filename: hotspot_check.c
+symbol line: 231
+value: 0x7ffff5ec9010
+value address: 0x7fffffffe9f0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-02-26 09:29:58]
+Fault Injection Successful after 6.52404808998s
+[INFO -- 2017-02-26 09:30:01]
+event type: exit
+[EXCEPTION -- 2017-02-26 09:30:01]
+exit code: no exit code available

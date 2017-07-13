@@ -1,0 +1,40 @@
+2017-02-27 21:04:46:Starting flip_value script
+2017-02-27 21:04:46:Initialization strings:
+2017-02-27 21:04:47:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-27 21:04:47:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 21:04:47:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-27 21:04:47:(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-27 21:04:47:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+2017-02-27 21:04:47:(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+2017-02-27 21:04:47:initSignal:6
+2017-02-27 21:04:47:endSignal:9
+2017-02-27 21:04:47:seqSignal:15
+2017-02-27 21:04:53:Backtrace BEGIN:
+2017-02-27 21:04:53:#0  _IO_feof (fp=0x609b40) at feof.c:36
+#1  0x000000000040455e in read_input (vect=0x7ffff66cb010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee43 "/micNfs/gdb-fault-injection/injector/data/hotspot/power_1024") at hotspot_check.c:205
+#2  0x0000000000404ad7 in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:266
+
+2017-02-27 21:04:53:31	in feof.c
+
+2017-02-27 21:04:53:Backtrace END
+2017-02-27 21:04:53:Type: The type is a pointer.
+2017-02-27 21:04:53:Type sizeof: 8
+2017-02-27 21:04:53:Fliping a bit of the pointer
+2017-02-27 21:04:53:Mem contents(hex):0x430xee0xff0xff0xff0x7f0x000x00
+2017-02-27 21:04:53:Fault Mode: Single bit-flip
+2017-02-27 21:04:53:base address to flip value: 0x7fffffffe770
+2017-02-27 21:04:53:address max offset: 8
+2017-02-27 21:04:53:Memory content before bitflip:0x430xee0xff0xff0xff0x7f0x000x00
+2017-02-27 21:04:53:Memory content after  bitflip:0x430xee0xff0xff0xdf0x7f0x000x00
+2017-02-27 21:04:53:Mem contents(hex):0x430xee0xff0xff0xdf0x7f0x000x00
+2017-02-27 21:04:53:frame name: read_input
+2017-02-27 21:04:53:symbol name: file
+2017-02-27 21:04:53:symbol filename: hotspot_check.c
+2017-02-27 21:04:53:symbol line: 190
+2017-02-27 21:04:53:value: 0x7fffffffee43 "/micNfs/gdb-fault-injection/injector/data/hotspot/power_1024"
+2017-02-27 21:04:53:value address: 0x7fffffffe770
+2017-02-27 21:04:53:Type: The type is a pointer.
+2017-02-27 21:04:53:Type sizeof: 8
+2017-02-27 21:04:53:Fault Injection Successful after 6.90947699547s
+2017-02-27 21:05:12:event type: exit
+2017-02-27 21:05:12:exit code: 0

@@ -1,0 +1,192 @@
+2017-01-25 11:35:42:Starting flip_value script
+2017-01-25 11:35:42:Initialization strings:
+2017-01-25 11:35:43:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 11:35:43:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 11:35:43:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 11:35:43:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 11:35:43:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 11:35:43:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 11:35:43:initSignal:0
+2017-01-25 11:35:43:endSignal:2
+2017-01-25 11:35:43:seqSignal:30
+2017-01-25 11:35:43:Trying Fault Injection
+2017-01-25 11:35:43:Inferior PID: 48133
+2017-01-25 11:35:43:Inferior is valid: True
+2017-01-25 11:35:43:Inferior #threads: 1
+2017-01-25 11:35:43:Backtrace BEGIN:
+2017-01-25 11:35:43:#0  0x00007ffff7196b70 in __close_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7142ee0 in _IO_new_file_close_it (fp=fp@entry=0x60cb40) at fileops.c:171
+#2  0x00007ffff7137c17 in _IO_new_fclose (fp=0x60cb40) at iofclose.c:59
+#3  0x0000000000405a3d in start_log_file (benchmark_name=0x4075ac "openmpLUD", test_info=0x7fffffffe848 "matrix_dim:2048 threads:228") at ../include/log_helper.c:274
+#4  0x0000000000402c4b in main (argc=9, argv=0x7fffffffec08) at lud_check.c:118
+
+2017-01-25 11:35:43:76	in ../sysdeps/unix/syscall-template.S
+
+2017-01-25 11:35:43:Backtrace END
+2017-01-25 11:35:43:Thread name: None
+2017-01-25 11:35:43:Thread num: 1
+2017-01-25 11:35:43:Thread ptid: (48133, 48133, 0)
+2017-01-25 11:35:43:bitFlip function
+2017-01-25 11:35:43:Type: The type is a structure.
+2017-01-25 11:35:43:Type sizeof: 144
+2017-01-25 11:35:43:Fliping value of field: st_blocks
+2017-01-25 11:35:43:bitFlip function
+2017-01-25 11:35:43:Type: The type is an integer type.
+2017-01-25 11:35:43:Type sizeof: 8
+2017-01-25 11:35:43:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-01-25 11:35:43:base address to flip value: 0x7fffffffe6e8
+2017-01-25 11:35:43:address max offset: 8
+2017-01-25 11:35:43:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-01-25 11:35:43:Memory content after  bitflip:0x000x000x000x020x000x000x000x00
+2017-01-25 11:35:43:Mem contents(hex):0x000x000x000x020x000x000x000x00
+2017-01-25 11:35:43:frame name: start_log_file
+2017-01-25 11:35:43:symbol name: buf
+2017-01-25 11:35:43:symbol filename: ../include/log_helper.c
+2017-01-25 11:35:43:symbol line: 252
+2017-01-25 11:35:43:value: {st_dev = 206158430248, st_ino = 140737488349056, st_nlink = 140737488348864, st_mode = 4148316832, st_uid = 32767, st_gid = 4144894856, __pad0 = 32767, st_rdev = 2048, st_size = 2048, st_blksize = 228, st_blocks = 33554432, st_atim = {tv_sec = 6341184, tv_nsec = 16777216}, st_mtim = {tv_sec = 16777216, tv_nsec = 140733193388033}, st_ctim = {tv_sec = 0, tv_nsec = 4145298675}, __glibc_reserved = {140737338685920, 6341184, 0}}
+2017-01-25 11:35:43:value address: 0x7fffffffe6a8
+2017-01-25 11:35:43:Type: The type is a structure.
+2017-01-25 11:35:43:Type sizeof: 144
+2017-01-25 11:35:43:Field name: st_dev
+2017-01-25 11:35:43:Field Type:
+2017-01-25 11:35:43:Type: The type is an integer type.
+2017-01-25 11:35:43:Type sizeof: 8
+2017-01-25 11:35:43:Field name: st_ino
+2017-01-25 11:35:43:Field Type:
+2017-01-25 11:35:43:Type: The type is an integer type.
+2017-01-25 11:35:43:Type sizeof: 8
+2017-01-25 11:35:43:Field name: st_nlink
+2017-01-25 11:35:43:Field Type:
+2017-01-25 11:35:43:Type: The type is an integer type.
+2017-01-25 11:35:43:Type sizeof: 8
+2017-01-25 11:35:43:Field name: st_mode
+2017-01-25 11:35:43:Field Type:
+2017-01-25 11:35:43:Type: The type is an integer type.
+2017-01-25 11:35:43:Type sizeof: 4
+2017-01-25 11:35:43:Field name: st_uid
+2017-01-25 11:35:43:Field Type:
+2017-01-25 11:35:43:Type: The type is an integer type.
+2017-01-25 11:35:43:Type sizeof: 4
+2017-01-25 11:35:43:Field name: st_gid
+2017-01-25 11:35:43:Field Type:
+2017-01-25 11:35:43:Type: The type is an integer type.
+2017-01-25 11:35:43:Type sizeof: 4
+2017-01-25 11:35:43:Field name: __pad0
+2017-01-25 11:35:43:Field Type:
+2017-01-25 11:35:43:Type: The type is an integer type.
+2017-01-25 11:35:43:Type sizeof: 4
+2017-01-25 11:35:43:Field name: st_rdev
+2017-01-25 11:35:43:Field Type:
+2017-01-25 11:35:43:Type: The type is an integer type.
+2017-01-25 11:35:43:Type sizeof: 8
+2017-01-25 11:35:43:Field name: st_size
+2017-01-25 11:35:43:Field Type:
+2017-01-25 11:35:43:Type: The type is an integer type.
+2017-01-25 11:35:43:Type sizeof: 8
+2017-01-25 11:35:43:Field name: st_blksize
+2017-01-25 11:35:43:Field Type:
+2017-01-25 11:35:43:Type: The type is an integer type.
+2017-01-25 11:35:43:Type sizeof: 8
+2017-01-25 11:35:43:Field name: st_blocks
+2017-01-25 11:35:43:Field Type:
+2017-01-25 11:35:43:Type: The type is an integer type.
+2017-01-25 11:35:43:Type sizeof: 8
+2017-01-25 11:35:43:Field name: st_atim
+2017-01-25 11:35:43:Field Type:
+2017-01-25 11:35:43:Type: The type is a structure.
+2017-01-25 11:35:43:Type sizeof: 16
+2017-01-25 11:35:43:Field name: st_mtim
+2017-01-25 11:35:43:Field Type:
+2017-01-25 11:35:43:Type: The type is a structure.
+2017-01-25 11:35:43:Type sizeof: 16
+2017-01-25 11:35:43:Field name: st_ctim
+2017-01-25 11:35:43:Field Type:
+2017-01-25 11:35:43:Type: The type is a structure.
+2017-01-25 11:35:43:Type sizeof: 16
+2017-01-25 11:35:43:Field name: __glibc_reserved
+2017-01-25 11:35:43:Field Type:
+2017-01-25 11:35:43:Type: The type is an array.
+2017-01-25 11:35:43:Type sizeof: 24
+2017-01-25 11:35:43:Fault Injection Successful after 0.790707111359s
+2017-01-25 11:35:43:Fault Already Injected
+2017-01-25 11:35:44:Fault Already Injected
+2017-01-25 11:35:44:Fault Already Injected
+2017-01-25 11:35:44:Fault Already Injected
+2017-01-25 11:35:45:Fault Already Injected
+2017-01-25 11:35:45:Fault Already Injected
+2017-01-25 11:35:45:Fault Already Injected
+2017-01-25 11:35:45:Fault Already Injected
+2017-01-25 11:35:46:Fault Already Injected
+2017-01-25 11:35:46:Fault Already Injected
+2017-01-25 11:35:46:Fault Already Injected
+2017-01-25 11:35:46:Fault Already Injected
+2017-01-25 11:35:46:Fault Already Injected
+2017-01-25 11:35:46:Fault Already Injected
+2017-01-25 11:35:46:Fault Already Injected
+2017-01-25 11:35:47:Fault Already Injected
+2017-01-25 11:35:47:Fault Already Injected
+2017-01-25 11:35:47:Fault Already Injected
+2017-01-25 11:35:47:Fault Already Injected
+2017-01-25 11:35:47:Fault Already Injected
+2017-01-25 11:35:48:Fault Already Injected
+2017-01-25 11:35:48:Fault Already Injected
+2017-01-25 11:35:48:Fault Already Injected
+2017-01-25 11:35:48:Fault Already Injected
+2017-01-25 11:35:48:Fault Already Injected
+2017-01-25 11:35:49:Fault Already Injected
+2017-01-25 11:35:49:Fault Already Injected
+2017-01-25 11:35:49:Fault Already Injected
+2017-01-25 11:35:49:Fault Already Injected
+2017-01-25 11:35:49:Fault Already Injected
+2017-01-25 11:35:49:Fault Already Injected
+2017-01-25 11:35:49:Fault Already Injected
+2017-01-25 11:35:50:Fault Already Injected
+2017-01-25 11:35:50:Fault Already Injected
+2017-01-25 11:35:50:Fault Already Injected
+2017-01-25 11:35:50:Fault Already Injected
+2017-01-25 11:35:50:Fault Already Injected
+2017-01-25 11:35:50:Fault Already Injected
+2017-01-25 11:35:50:Fault Already Injected
+2017-01-25 11:35:51:Fault Already Injected
+2017-01-25 11:35:51:Fault Already Injected
+2017-01-25 11:35:51:Fault Already Injected
+2017-01-25 11:35:51:Fault Already Injected
+2017-01-25 11:35:51:Fault Already Injected
+2017-01-25 11:35:51:Fault Already Injected
+2017-01-25 11:35:51:Fault Already Injected
+2017-01-25 11:35:51:Fault Already Injected
+2017-01-25 11:35:52:Fault Already Injected
+2017-01-25 11:35:52:Fault Already Injected
+2017-01-25 11:35:52:Fault Already Injected
+2017-01-25 11:35:52:Fault Already Injected
+2017-01-25 11:35:52:Fault Already Injected
+2017-01-25 11:35:53:Fault Already Injected
+2017-01-25 11:35:53:Fault Already Injected
+2017-01-25 11:35:53:Fault Already Injected
+2017-01-25 11:35:53:Fault Already Injected
+2017-01-25 11:35:53:Fault Already Injected
+2017-01-25 11:35:53:Fault Already Injected
+2017-01-25 11:35:53:Fault Already Injected
+2017-01-25 11:35:54:Fault Already Injected
+2017-01-25 11:35:54:Fault Already Injected
+2017-01-25 11:35:54:Fault Already Injected
+2017-01-25 11:35:54:Fault Already Injected
+2017-01-25 11:35:54:Fault Already Injected
+2017-01-25 11:35:54:Fault Already Injected
+2017-01-25 11:35:54:Fault Already Injected
+2017-01-25 11:35:54:Fault Already Injected
+2017-01-25 11:35:55:Fault Already Injected
+2017-01-25 11:35:55:Fault Already Injected
+2017-01-25 11:35:55:Fault Already Injected
+2017-01-25 11:35:55:Fault Already Injected
+2017-01-25 11:35:55:Fault Already Injected
+2017-01-25 11:35:55:Fault Already Injected
+2017-01-25 11:35:55:Fault Already Injected
+2017-01-25 11:35:56:Fault Already Injected
+2017-01-25 11:35:56:Fault Already Injected
+2017-01-25 11:35:56:Fault Already Injected
+2017-01-25 11:35:56:Fault Already Injected
+2017-01-25 11:35:56:Fault Already Injected
+2017-01-25 11:35:57:Fault Already Injected
+2017-01-25 11:36:10:event type: exit
+2017-01-25 11:36:10:exit code: 1

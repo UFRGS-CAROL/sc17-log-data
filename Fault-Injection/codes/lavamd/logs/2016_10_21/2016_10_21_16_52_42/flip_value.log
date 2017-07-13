@@ -1,0 +1,62 @@
+2016-10-21 16:52:34:Initialization strings:
+2016-10-21 16:52:34:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-21 16:52:34:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-21 16:52:34:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-21 16:52:34:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-21 16:52:34:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-21 16:52:34:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-21 16:52:34:Trying Fault Injection
+2016-10-21 16:52:34:Inferior PID: 93878
+2016-10-21 16:52:34:Inferior is valid: True
+2016-10-21 16:52:34:Inferior #threads: 1
+2016-10-21 16:52:34:Backtrace BEGIN:
+2016-10-21 16:52:34:#0  __GI___fxstat (vers=vers@entry=1, fd=fd@entry=3, buf=buf@entry=0x7fffffffe1f0) at ../sysdeps/unix/sysv/linux/wordsize-64/fxstat.c:35
+#1  0x00007ffff7de2f7a in _dl_map_object_from_fd (name=name@entry=0x400be4 "libc.so.6", fd=3, fbp=fbp@entry=0x7fffffffe338, realname=0x7ffff7ff9988 "/lib64/libc.so.6", loader=loader@entry=0x7ffff7ffe168, l_type=l_type@entry=1, mode=0, stack_endp=0x7fffffffe330, nsid=0) at dl-load.c:883
+#2  0x00007ffff7de52f9 in _dl_map_object (loader=0x7ffff7ffe168, name=0x400be4 "libc.so.6", type=1, trace_mode=0, mode=0, nsid=<optimized out>) at dl-load.c:2188
+#3  0x00007ffff7de964f in openaux (a=a@entry=0x7fffffffe9b8) at dl-deps.c:63
+#4  0x00007ffff7deba83 in _dl_catch_error (objname=objname@entry=0x7fffffffe9b0, errstring=errstring@entry=0x7fffffffe9a8, mallocedp=mallocedp@entry=0x7fffffffe9a7, operate=operate@entry=0x7ffff7de9620 <openaux>, args=args@entry=0x7fffffffe9b8) at dl-error.c:187
+#5  0x00007ffff7de98a9 in _dl_map_object_deps (map=map@entry=0x7ffff7ffe168, preloads=<optimized out>, npreloads=npreloads@entry=0, trace_mode=trace_mode@entry=0, open_mode=open_mode@entry=0) at dl-deps.c:254
+#6  0x00007ffff7ddff28 in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:1612
+#7  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#8  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#9  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#10 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#11 0x0000000000000007 in ?? ()
+#12 0x00007fffffffedf0 in ?? ()
+#13 0x00007fffffffee1e in ?? ()
+#14 0x00007fffffffee22 in ?? ()
+#15 0x00007fffffffee25 in ?? ()
+#16 0x00007fffffffee62 in ?? ()
+#17 0x00007fffffffee9e in ?? ()
+#18 0x00007fffffffeed8 in ?? ()
+#19 0x0000000000000000 in ?? ()
+
+2016-10-21 16:52:34:30	in ../sysdeps/unix/sysv/linux/wordsize-64/fxstat.c
+
+2016-10-21 16:52:34:Backtrace END
+2016-10-21 16:52:35:Thread name: None
+2016-10-21 16:52:35:Thread num: 1
+2016-10-21 16:52:35:Thread ptid: (93878, 93878, 0)
+2016-10-21 16:52:35:bitFlip function
+2016-10-21 16:52:35:Type: The type is a pointer.
+2016-10-21 16:52:35:Type sizeof: 8
+2016-10-21 16:52:35:Fliping a bit of the pointer
+2016-10-21 16:52:35:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-10-21 16:52:35:base address to flip value: 0x7ffff7ffe048 
+2016-10-21 16:52:35:address max offset: 8
+2016-10-21 16:52:35:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-10-21 16:52:35:Memory content after  bitflip:0x800x000x000x000x000x000x000x00
+2016-10-21 16:52:35:Mem contents(hex):0x800x000x000x000x000x000x000x00
+2016-10-21 16:52:35:frame name: _dl_catch_error
+2016-10-21 16:52:35:symbol name: receiver
+2016-10-21 16:52:35:symbol filename: dl-error.c
+2016-10-21 16:52:35:symbol line: 60
+2016-10-21 16:52:35:value: 0x0
+2016-10-21 16:52:35:value address: 0x7ffff7ffe048 <receiver>
+2016-10-21 16:52:35:Type: The type is a pointer.
+2016-10-21 16:52:35:Type sizeof: 8
+2016-10-21 16:52:35:Fault Injection Successful after 1.15470194817s
+2016-10-21 16:52:35:Fault Already Injected
+2016-10-21 16:52:35:Fault Already Injected
+2016-10-21 16:52:35:event type: exit
+2016-10-21 16:52:35:exit code: no exit code available

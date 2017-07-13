@@ -1,0 +1,74 @@
+[INFO -- 2017-03-07 00:37:35]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-07 00:37:35]
+Initialization strings:
+[INFO -- 2017-03-07 00:37:35]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-07 00:37:35]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 00:37:35]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 00:37:35]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 00:37:35]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 00:37:35]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-07 00:37:35]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-07 00:37:35]
+initSignal:25
+[INFO -- 2017-03-07 00:37:35]
+endSignal:30
+[INFO -- 2017-03-07 00:37:35]
+seqSignal:20
+[INFO -- 2017-03-07 00:37:35]
+faultMode:2
+[INFO -- 2017-03-07 00:38:09]
+Backtrace BEGIN:
+#0  0x000000000044ad0e in std::__fill_n_a<int*, unsigned long, int> (__first=0x3e181bc, __n=265704, __value=@0x7fffffffd930: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:765
+#1  0x000000000044ac9e in std::fill_n<int*, unsigned long, int> (__first=0x3d775e0, __n=265704, __value=@0x7fffffffd930: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:801
+#2  0x0000000000448bba in std::__uninitialized_fill_n<true>::__uninit_fill_n<int*, unsigned long, int> (__first=0x3d775e0, __n=265704, __x=@0x7fffffffd930: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:220
+#3  0x000000000044ac56 in std::uninitialized_fill_n<int*, unsigned long, int> (__first=0x3d775e0, __n=265704, __x=@0x7fffffffd930: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:246
+#4  0x000000000044ac1a in std::__uninitialized_fill_n_a<int*, unsigned long, int, int> (__first=0x3d775e0, __n=265704, __x=@0x7fffffffd930: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:358
+#5  0x0000000000449f81 in std::vector<int, std::allocator<int> >::_M_fill_insert (this=0x7f9f58, __position=..., __n=265704, __x=@0x7fffffffd930: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/vector.tcc:496
+#6  0x0000000000449a69 in std::vector<int, std::allocator<int> >::insert (this=0x7f9f58, __position=..., __n=265704, __x=@0x7fffffffd930: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:1073
+#7  0x00000000004499c4 in std::vector<int, std::allocator<int> >::resize (this=0x7f9f58, __new_size=265704, __x=0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:716
+#8  0x000000000051f815 in Mesh::rezone_all (this=0x7f9a50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2612
+#9  0x0000000000471447 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#10 0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#11 0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+760	    __gnu_cxx::__enable_if<__is_scalar<_Tp>::__value, _OutputIterator>::__type
+761	    __fill_n_a(_OutputIterator __first, _Size __n, const _Tp& __value)
+762	    {
+763	      const _Tp __tmp = __value;
+764	      for (__decltype(__n + 0) __niter = __n;
+765		   __niter > 0; --__niter, ++__first)
+766		*__first = __tmp;
+767	      return __first;
+768	    }
+769	
+
+Backtrace END
+Memory content before bitflip:0x640x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7d06d0 
+address max offset: 4
+Memory content after  bitflip:0x4f0x130xcc0x8f
+frame name: std::vector<int, std::allocator<int> >::_M_fill_insert
+symbol name: next_graphics_cycle
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+symbol line: 165
+value: -1882451121
+value address: 0x7d06d0 <next_graphics_cycle>
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-07 00:38:09]
+Fault Injection Successful after 34.7257499695s
+[INFO -- 2017-03-07 00:38:37]
+event type: exit
+[INFO -- 2017-03-07 00:38:37]
+exit code: 0

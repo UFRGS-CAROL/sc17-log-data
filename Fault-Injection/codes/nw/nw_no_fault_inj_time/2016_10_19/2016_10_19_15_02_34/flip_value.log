@@ -1,0 +1,58 @@
+2016-10-19 15:02:14:Initialization strings:
+2016-10-19 15:02:14:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-19 15:02:14:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-19 15:02:14:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-19 15:02:14:(4) file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-19 15:02:14:(5) set remote exec-file /micNfs/gdb-fault-injection-nw/bin/needle_check
+2016-10-19 15:02:14:(6) set args 16384 10 228 /micNfs/gdb-fault-injection-nw/bin/input_16384_th_228_pen_10 /micNfs/gdb-fault-injection-nw/bin/gold_16384_th_228_pen_10
+2016-10-19 15:02:21:Trying Fault Injection
+2016-10-19 15:02:21:Inferior PID: 96303
+2016-10-19 15:02:21:Inferior is valid: True
+2016-10-19 15:02:21:Inferior #threads: 1
+2016-10-19 15:02:21:Backtrace BEGIN:
+2016-10-19 15:02:21:#0  0x000000000040185c in runTest (argc=<optimized out>, argv=<optimized out>) at needle_check.cpp:328
+#1  main (argc=1989251088, argv=0x4000) at needle_check.cpp:114
+
+2016-10-19 15:02:21:323	    //}
+324	
+325	
+326	    for (int i = 1 ; i < max_cols; i++){
+327	        for (int j = 1 ; j < max_rows; j++){
+328	            referrence[i*max_cols+j] = blosum62[input_itemsets[i*max_cols]][input_itemsets[j]];
+329	        }
+330	    }
+331	
+332	    for( int i = 1; i< max_rows ; i++)
+
+2016-10-19 15:02:21:Backtrace END
+2016-10-19 15:02:21:Thread name: None
+2016-10-19 15:02:21:Thread num: 1
+2016-10-19 15:02:21:Thread ptid: (96303, 96303, 0)
+2016-10-19 15:02:21:bitFlip function
+2016-10-19 15:02:21:Type: The type is a pointer.
+2016-10-19 15:02:21:Type sizeof: 8
+2016-10-19 15:02:21:Fliping a bit of the value pointed by a pointer
+2016-10-19 15:02:21:bitFlip function
+2016-10-19 15:02:21:Type: The type is an integer type.
+2016-10-19 15:02:21:Type sizeof: 4
+2016-10-19 15:02:21:Mem contents(hex):0x000x000x000x00
+2016-10-19 15:02:21:base address to flip value: 0x7fff76919010
+2016-10-19 15:02:21:address max offset: 4
+2016-10-19 15:02:21:Memory content before bitflip:0x000x000x000x00
+2016-10-19 15:02:21:Memory content after  bitflip:0x200x000x000x00
+2016-10-19 15:02:21:Mem contents(hex):0x200x000x000x00
+2016-10-19 15:02:21:frame name: runTest
+2016-10-19 15:02:21:symbol name: input_itemsets
+2016-10-19 15:02:21:symbol filename: needle_check.cpp
+2016-10-19 15:02:21:symbol line: 266
+2016-10-19 15:02:21:value: 0x7fff76919010
+2016-10-19 15:02:21:value address: 0x7fffffffea70
+2016-10-19 15:02:21:Type: The type is a pointer.
+2016-10-19 15:02:21:Type sizeof: 8
+2016-10-19 15:02:21:Fault Injection Successful after 7.6792678833s
+2016-10-19 15:02:22:Fault Already Injected
+2016-10-19 15:02:23:Fault Already Injected
+2016-10-19 15:02:25:Fault Already Injected
+2016-10-19 15:02:25:Fault Already Injected
+2016-10-19 15:02:27:event type: exit
+2016-10-19 15:02:27:exit code: 1

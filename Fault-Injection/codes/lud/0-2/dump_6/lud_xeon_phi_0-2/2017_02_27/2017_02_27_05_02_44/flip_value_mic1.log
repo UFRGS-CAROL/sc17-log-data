@@ -1,0 +1,98 @@
+[INFO -- 2017-02-27 05:02:05]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 05:02:05]
+Initialization strings:
+[INFO -- 2017-02-27 05:02:06]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-27 05:02:06]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 05:02:06]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 05:02:06]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 05:02:06]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 05:02:06]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-27 05:02:06]
+initSignal:0
+[INFO -- 2017-02-27 05:02:06]
+endSignal:2
+[INFO -- 2017-02-27 05:02:06]
+seqSignal:30
+[INFO -- 2017-02-27 05:02:06]
+faultMode:2
+[INFO -- 2017-02-27 05:02:11]
+Backtrace BEGIN:
+#0  pthread_cond_wait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S:185
+#1  0x00007ffff7911675 in ?? ()
+#2  0x0000000000000000 in ?? ()
+
+180	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S
+
+Backtrace END
+Fliping array at pos: 1
+Memory content before bitflip:0x010x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff743c264 
+address max offset: 4
+Memory content after  bitflip:0xe50x3b0x490x1c
+frame name: __pthread_create_2_1
+symbol name: _thread_db_pthread_key_data_seq
+symbol filename: ../nptl_db/structs.def
+symbol line: 67
+value: {64, 474561509, 0}
+value address: 0x7ffff743c260 <_thread_db_pthread_key_struct_seq>
+Type: The type is an array.
+Type sizeof: 12
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 2L)
+
+[INFO -- 2017-02-27 05:02:11]
+Fault Injection Successful after 5.98725390434s
+[INFO -- 2017-02-27 05:02:12]
+Backtrace BEGIN:
+#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd2d18 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+#5  0x00007ffff7fd2df0 in ?? ()
+#6  0x00007ffff70e17d8 in ?? () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libc.so.6
+#7  0x00007ffff7fd2d14 in ?? ()
+#8  0x00007ffff7fd2de0 in ?? ()
+#9  0x00007ffff7ff8630 in ?? ()
+#10 0x0000000000000008 in ?? ()
+#11 0x0000000000000000 in ?? ()
+
+233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+Backtrace END
+Fliping array at pos: 1
+Memory content before bitflip:0x010x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7ffff743c254 
+address max offset: 4
+Memory content after  bitflip:0x2a0x6a0xa00xdc
+frame name: allocate_stack
+symbol name: _thread_db_pthread_key_struct_destr
+symbol filename: ../nptl_db/structs.def
+symbol line: 64
+value: {64, 3701500458, 8}
+value address: 0x7ffff743c250 <_thread_db_pthread_key_struct_destr>
+Type: The type is an array.
+Type sizeof: 12
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 8
+Field Type range: (0L, 2L)
+
+[INFO -- 2017-02-27 05:02:12]
+Fault Injection Successful after 6.27166008949s
+[INFO -- 2017-02-27 05:02:26]
+event type: exit
+[INFO -- 2017-02-27 05:02:26]
+exit code: 0

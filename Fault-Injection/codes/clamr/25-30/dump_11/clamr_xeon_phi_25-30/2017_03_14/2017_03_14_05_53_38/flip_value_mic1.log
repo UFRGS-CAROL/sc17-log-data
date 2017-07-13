@@ -1,0 +1,72 @@
+[INFO -- 2017-03-14 05:51:50]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-14 05:51:50]
+Initialization strings:
+[INFO -- 2017-03-14 05:51:50]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-14 05:51:50]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-14 05:51:50]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-14 05:51:51]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-14 05:51:51]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-14 05:51:51]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-14 05:51:51]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-14 05:51:51]
+initSignal:25
+[INFO -- 2017-03-14 05:51:51]
+endSignal:30
+[INFO -- 2017-03-14 05:51:51]
+seqSignal:20
+[INFO -- 2017-03-14 05:51:51]
+faultMode:1
+[INFO -- 2017-03-14 05:52:22]
+Backtrace BEGIN:
+#0  0x000000000051f47c in Mesh::rezone_all (this=0x7fae50, icount=24, jcount=0, mpot=..., have_state=1, state_memory=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:2587
+#1  0x0000000000471447 in State::rezone_all (this=0x7fb9e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1034
+#2  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#3  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2582	   int new_ncells = ncells + add_ncells;
+2583	
+2584	   int ref_entry_count = 0;
+2585	   if (have_state){
+2586	      for (uint ic=0; ic<ncells; ic++) {
+2587	         if (mpot[ic] > 0) ref_entry_count++;
+2588	         if (mpot[ic] < 0) {
+2589	            // Normal cell coarsening
+2590	            if (is_lower_left(i[ic],j[ic]) ) mpot[ic] = -2;
+2591	            // Boundary cell case
+
+Backtrace END
+Fliping array at pos: 3
+Fliping a bit of the value pointed by a pointer
+Memory content before bitflip:0x73
+Fault Mode: Double bit-flip
+base address to flip value: 0x56a644 
+address max offset: 1
+Memory content after  bitflip:0xf7
+frame name: State::rezone_all
+symbol name: state_timer_descriptor
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 135
+value: {0x56a5f0 "state_timer_apply_BCs", 0x56a608 "state_timer_set_timestep", 0x56a624 "state_timer_finite_difference", 0x56a644 "\367tate_timer_refine_potential", 0x56a664 "state_timer_calc_mpot", 0x56a67c "state_timer_rezone_all", 0x56a694 "state_timer_mass_sum", 0x56a6ac "state_timer_read", 0x56a6c0 "state_timer_write"}
+value address: 0x7ceaa0 <state_timer_descriptor>
+Type: The type is an array.
+Type sizeof: 72
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 8L)
+
+[INFO -- 2017-03-14 05:52:22]
+Fault Injection Successful after 31.7589519024s
+[INFO -- 2017-03-14 05:52:49]
+event type: exit
+[INFO -- 2017-03-14 05:52:49]
+exit code: 0

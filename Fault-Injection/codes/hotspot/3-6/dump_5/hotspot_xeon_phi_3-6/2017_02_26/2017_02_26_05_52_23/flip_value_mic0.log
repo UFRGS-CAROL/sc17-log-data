@@ -1,0 +1,57 @@
+[INFO -- 2017-02-26 05:51:07]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 05:51:07]
+Initialization strings:
+[INFO -- 2017-02-26 05:51:08]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-02-26 05:51:08]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 05:51:08]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 05:51:08]
+(4) file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 05:51:08]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/hotspot/hotspot_check
+[INFO -- 2017-02-26 05:51:08]
+(6) set args 1024 1024 1000 64 /micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024 /micNfs/gdb-fault-injection/injector/data/hotspot/power_1024 /micNfs/gdb-fault-injection/injector/bin/hotspot/gold_1024_1000iter_64th
+[INFO -- 2017-02-26 05:51:08]
+initSignal:3
+[INFO -- 2017-02-26 05:51:08]
+endSignal:6
+[INFO -- 2017-02-26 05:51:08]
+seqSignal:15
+[INFO -- 2017-02-26 05:51:08]
+faultMode:1
+[INFO -- 2017-02-26 05:51:11]
+Backtrace BEGIN:
+#0  0x00007ffff71505d6 in __GI_memcpy (dstpp=dstpp@entry=0x7fffffffe640, srcpp=srcpp@entry=0x7ffff7fd1958, len=<optimized out>, len@entry=11) at ../string/memcpy.c:59
+#1  0x00007ffff713940b in __GI__IO_getline_info (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "324.063024\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1, eof=eof@entry=0x0) at iogetline.c:105
+#2  0x00007ffff7139498 in __GI__IO_getline (fp=fp@entry=0x609b40, buf=buf@entry=0x7fffffffe640 "324.063024\n", n=<optimized out>, delim=delim@entry=10, extract_delim=extract_delim@entry=1) at iogetline.c:38
+#3  0x00007ffff7138312 in _IO_fgets (buf=0x7fffffffe640 "324.063024\n", n=<optimized out>, fp=0x609b40) at iofgets.c:56
+#4  0x0000000000404538 in read_input (vect=0x7ffff6acc010, grid_rows=1024, grid_cols=1024, file=0x7fffffffee07 "/micNfs/gdb-fault-injection/injector/data/hotspot/temp_1024") at hotspot_check.c:202
+#5  0x0000000000404aae in main (argc=8, argv=0x7fffffffebb8) at hotspot_check.c:265
+
+54	in ../string/memcpy.c
+
+Backtrace END
+Memory content before bitflip:0x110x080xa20x43
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe74c
+address max offset: 4
+Memory content after  bitflip:0x110x080x230x43
+frame name: read_input
+symbol name: val
+symbol filename: hotspot_check.c
+symbol line: 195
+value: 163.031509
+value address: 0x7fffffffe74c
+Type: A floating point type.
+Type sizeof: 4
+
+[INFO -- 2017-02-26 05:51:11]
+Fault Injection Successful after 3.62345290184s
+[INFO -- 2017-02-26 05:51:32]
+event type: exit
+[INFO -- 2017-02-26 05:51:32]
+exit code: 0

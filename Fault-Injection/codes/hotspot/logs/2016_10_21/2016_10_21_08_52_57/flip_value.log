@@ -1,0 +1,35 @@
+2016-10-21 08:52:46:Initialization strings:
+2016-10-21 08:52:46:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-21 08:52:46:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-21 08:52:46:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-21 08:52:46:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-21 08:52:46:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-21 08:52:46:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-21 08:52:48:Trying Fault Injection
+2016-10-21 08:52:48:Backtrace BEGIN:
+2016-10-21 08:52:48:#0  __isoc99_sscanf (s=<optimized out>, format=<optimized out>) at isoc99_sscanf.c:35
+#1  0x0000000000401744 in read_input (vect=<optimized out>, grid_rows=<optimized out>, grid_cols=-160649200, file=<optimized out>) at hotspot_check.c:206
+#2  main (argc=-7552, argv=0x0) at hotspot_check.c:264
+
+2016-10-21 08:52:48:30	in isoc99_sscanf.c
+
+2016-10-21 08:52:48:Backtrace END
+2016-10-21 08:52:48:Type: The type is an integer type.
+2016-10-21 08:52:48:Type sizeof: 4
+2016-10-21 08:52:48:Mem contents(hex):0x640xee0xff0xff
+2016-10-21 08:52:48:base address to flip value: 0x7fffffffe610
+2016-10-21 08:52:48:address max offset: 4
+2016-10-21 08:52:48:Memory content before bitflip:0x640xee0xff0xff
+2016-10-21 08:52:48:Memory content after  bitflip:0x640xea0xff0xff
+2016-10-21 08:52:48:Mem contents(hex):0x640xea0xff0xff
+2016-10-21 08:52:48:frame name: main
+2016-10-21 08:52:48:symbol name: errors
+2016-10-21 08:52:48:symbol filename: hotspot_check.c
+2016-10-21 08:52:48:symbol line: 281
+2016-10-21 08:52:48:value: -5532
+2016-10-21 08:52:48:value address: 0x7fffffffe610
+2016-10-21 08:52:48:Type: The type is an integer type.
+2016-10-21 08:52:48:Type sizeof: 4
+2016-10-21 08:52:48:Fault Injection Successful after 2.12816309929s
+2016-10-21 08:52:51:event type: exit
+2016-10-21 08:52:51:exit code: 1

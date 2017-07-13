@@ -1,0 +1,64 @@
+[INFO -- 2017-03-05 15:31:22]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-05 15:31:22]
+Initialization strings:
+[INFO -- 2017-03-05 15:31:22]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-05 15:31:22]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 15:31:22]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 15:31:23]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 15:31:23]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-05 15:31:23]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-05 15:31:23]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-05 15:31:23]
+initSignal:20
+[INFO -- 2017-03-05 15:31:23]
+endSignal:25
+[INFO -- 2017-03-05 15:31:23]
+seqSignal:20
+[INFO -- 2017-03-05 15:31:23]
+faultMode:1
+[INFO -- 2017-03-05 15:31:49]
+Backtrace BEGIN:
+#0  0x00007ffff6be6b70 in __close_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6b92ee0 in _IO_new_file_close_it (fp=fp@entry=0x1920c50) at fileops.c:171
+#2  0x00007ffff6b87c17 in _IO_new_fclose (fp=0x1920c50) at iofclose.c:59
+#3  0x000000000054c1b1 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:502
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+76	in ../sysdeps/unix/syscall-template.S
+
+Backtrace END
+Fliping array at pos: 207
+Memory content before bitflip:0x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe4c3 
+address max offset: 1
+Memory content after  bitflip:0x82
+frame name: DrawSquaresToFile
+symbol name: filename2
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c
+symbol line: 447
+value: "/micNfs/gdb-fault-injection/injector/bin/clamr/graphics_output/outline00000.lin\000\377\177\000\000\002\000\000\000\000\000\000\000\b\000\000\000\000\000\000\000@\000\000\000\000\000\000\000\002\000\000\000\377\177\000\000\000\000\000\000\000\000\000\000\060\000\000\000\377\177\000\000\000\000\000\000\000\000\000\000[", '\000' <repeats 15 times>, "P\f\222\001n", '\000' <repeats 19 times>, "w\000\000\000|\000\000\000\001\000\000\000\000\000\000\000\240J\347\366"...
+value address: 0x7fffffffe3f4
+Type: The type is an array.
+Type sizeof: 500
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 499L)
+
+[INFO -- 2017-03-05 15:31:49]
+Fault Injection Successful after 26.4236791134s
+[INFO -- 2017-03-05 15:32:22]
+event type: exit
+[INFO -- 2017-03-05 15:32:22]
+exit code: 0

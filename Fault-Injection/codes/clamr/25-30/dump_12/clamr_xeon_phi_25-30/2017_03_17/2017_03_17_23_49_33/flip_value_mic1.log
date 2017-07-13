@@ -1,0 +1,81 @@
+[INFO -- 2017-03-17 23:47:00]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-17 23:47:00]
+Initialization strings:
+[INFO -- 2017-03-17 23:47:00]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-17 23:47:00]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-17 23:47:00]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-17 23:47:01]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-17 23:47:01]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-17 23:47:01]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-17 23:47:01]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-17 23:47:01]
+initSignal:25
+[INFO -- 2017-03-17 23:47:01]
+endSignal:30
+[INFO -- 2017-03-17 23:47:01]
+seqSignal:20
+[INFO -- 2017-03-17 23:47:01]
+faultMode:2
+[EXCEPTION -- 2017-03-17 23:47:49]
+pythonException: invalid frame
+[EXCEPTION -- 2017-03-17 23:47:49]
+pythonException: invalid frame
+[INFO -- 2017-03-17 23:47:49]
+Backtrace BEGIN:
+#0  0x000000000045240e in State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1290
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffdac0 in ?? ()
+#3  0x00007fffffffdab8 in ?? ()
+#4  0x00007fffffffdad0 in ?? ()
+#5  0x00007fffffffdad8 in ?? ()
+#6  0x00007fffffffda38 in ?? ()
+#7  0x00007fffffffda70 in ?? ()
+#8  0x00007fffffffda68 in ?? ()
+#9  0x00007fffffffdba8 in ?? ()
+#10 0x00007fffffffdbc8 in ?? ()
+#11 0x00007fffffffdbe8 in ?? ()
+#12 0x00007fffffffda30 in ?? ()
+#13 0x00000000000000e4 in ?? ()
+#14 0x0000000000000000 in ?? ()
+
+1285	#if DEBUG >= 3
+1286	      if (nbb < 0 || nbb >= ncells_ghost ) {printf("%d: Problem at file %s line %d ic %d %d with nbb %ld\n",mesh->mype,__FILE__,__LINE__,gix,gix+mesh->noffset,nbb); sleep(15); }
+1287	#endif
+1288	      real_t Hbb     = H[nbb];
+1289	      //real_t Ubb     = U[nbb];
+1290	      real_t Vbb     = V[nbb];
+1291	
+1292	#if DEBUG >= 3
+1293	      if (lvl < 0 || lvl >= (int)lev_deltax.size() ) printf("%d: Problem at file %s line %d with lvl %d\n",mesh->mype,__FILE__,__LINE__,lvl);
+1294	#endif
+
+Backtrace END
+Memory content before bitflip:0xf20x030x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffcb2c
+address max offset: 4
+Memory content after  bitflip:0x890xdc0x660x7d
+frame name: State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37
+symbol name: ntt
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 1246
+value: 2103893129
+value address: 0x7fffffffcb2c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-17 23:47:49]
+Fault Injection Successful after 48.1241710186s
+[INFO -- 2017-03-17 23:47:49]
+event type: exit
+[EXCEPTION -- 2017-03-17 23:47:49]
+exit code: no exit code available

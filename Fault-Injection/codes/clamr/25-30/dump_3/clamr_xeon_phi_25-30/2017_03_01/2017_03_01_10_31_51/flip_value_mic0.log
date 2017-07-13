@@ -1,0 +1,95 @@
+2017-03-01 10:30:21:Starting flip_value script
+2017-03-01 10:30:21:Initialization strings:
+2017-03-01 10:30:21:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 10:30:21:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 10:30:21:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 10:30:22:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 10:30:22:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 10:30:22:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 10:30:22:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 10:30:22:initSignal:25
+2017-03-01 10:30:22:endSignal:30
+2017-03-01 10:30:22:seqSignal:20
+2017-03-01 10:30:49:Backtrace BEGIN:
+2017-03-01 10:30:49:#0  Bounds_CenterAxis (b=0xc063d00000000000, axis=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/Bounds.c:116
+#1  0x000000000053c257 in median_sort (t=0x7fb150, cut_direction=0, k=4136, num=8273, idx=0x44ebd08) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:87
+#2  0x000000000053ce2b in KDTree_CreateTree (t=0x7fb150) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:236
+#3  0x00000000005413f6 in KDTree_QueryCircleInterior_Double (t=0x7fb150, result_num=0x7fffffffe65c, result_indicies=0xb02ed0, circ_radius=24, ncells=264756, x=0x1d27cd0, dx=0x212fce0, y=0x2537cf0, dy=0x2c44250) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:625
+#4  0x0000000000471e70 in State::fill_circle (this=0x7fb9e0, circ_radius=24, fill_value=100, background=7) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:990
+#5  0x00000000004452cb in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:282
+
+2017-03-01 10:30:49:111	      assert(NULL);
+112	   return(width);
+113	}
+114	
+115	double Bounds_CenterAxis(TBounds* b, unsigned int axis)
+116	{
+117	   double center;
+118	   
+119	   assert(b);
+120	   if(axis == XAXIS)
+
+2017-03-01 10:30:49:Backtrace END
+2017-03-01 10:30:56:Type: A floating point type.
+2017-03-01 10:30:56:Type sizeof: 8
+2017-03-01 10:30:56:Mem contents(hex):0x000xe60xff0xff0xff0x7f0x000x00
+2017-03-01 10:30:56:Fault Mode: Random bit-flip
+2017-03-01 10:30:56:base address to flip value: 0x7fffffffe5c0
+2017-03-01 10:30:56:address max offset: 8
+2017-03-01 10:30:56:Memory content before bitflip:0x000xe60xff0xff0xff0x7f0x000x00
+2017-03-01 10:30:56:Backtrace BEGIN:
+2017-03-01 10:30:56:#0  Bounds_CenterAxis (b=0xc063d00000000000, axis=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/Bounds.c:116
+#1  0x000000000053c257 in median_sort (t=0x7fb150, cut_direction=0, k=4136, num=8273, idx=0x44ebd08) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:87
+#2  0x000000000053ce2b in KDTree_CreateTree (t=0x7fb150) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:236
+#3  0x00000000005413f6 in KDTree_QueryCircleInterior_Double (t=0x7fb150, result_num=0x7fffffffe65c, result_indicies=0xb02ed0, circ_radius=24, ncells=264756, x=0x1d27cd0, dx=0x212fce0, y=0x2537cf0, dy=0x2c44250) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:625
+#4  0x0000000000471e70 in State::fill_circle (this=0x7fb9e0, circ_radius=24, fill_value=100, background=7) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:990
+#5  0x00000000004452cb in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:282
+
+2017-03-01 10:30:56:111	      assert(NULL);
+112	   return(width);
+113	}
+114	
+115	double Bounds_CenterAxis(TBounds* b, unsigned int axis)
+116	{
+117	   double center;
+118	   
+119	   assert(b);
+120	   if(axis == XAXIS)
+
+2017-03-01 10:30:56:Backtrace END
+2017-03-01 10:31:01:Type: The type is an integer type.
+2017-03-01 10:31:01:Type sizeof: 4
+2017-03-01 10:31:01:Mem contents(hex):0xe00xe60xff0xff
+2017-03-01 10:31:01:Fault Mode: Zero bit-flip
+2017-03-01 10:31:01:base address to flip value: 0x7fffffffe530
+2017-03-01 10:31:01:address max offset: 4
+2017-03-01 10:31:01:Memory content before bitflip:0xe00xe60xff0xff
+2017-03-01 10:31:02:Backtrace BEGIN:
+2017-03-01 10:31:02:#0  Bounds_CenterAxis (b=0xc063d00000000000, axis=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/Bounds.c:116
+#1  0x000000000053c257 in median_sort (t=0x7fb150, cut_direction=0, k=4136, num=8273, idx=0x44ebd08) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:87
+#2  0x000000000053ce2b in KDTree_CreateTree (t=0x7fb150) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:236
+#3  0x00000000005413f6 in KDTree_QueryCircleInterior_Double (t=0x7fb150, result_num=0x7fffffffe65c, result_indicies=0xb02ed0, circ_radius=24, ncells=264756, x=0x1d27cd0, dx=0x212fce0, y=0x2537cf0, dy=0x2c44250) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:625
+#4  0x0000000000471e70 in State::fill_circle (this=0x7fb9e0, circ_radius=24, fill_value=100, background=7) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:990
+#5  0x00000000004452cb in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:282
+
+2017-03-01 10:31:02:111	      assert(NULL);
+112	   return(width);
+113	}
+114	
+115	double Bounds_CenterAxis(TBounds* b, unsigned int axis)
+116	{
+117	   double center;
+118	   
+119	   assert(b);
+120	   if(axis == XAXIS)
+
+2017-03-01 10:31:02:Backtrace END
+2017-03-01 10:31:07:Type: The type is an integer type.
+2017-03-01 10:31:07:Type sizeof: 4
+2017-03-01 10:31:07:Mem contents(hex):0x020x000x000x00
+2017-03-01 10:31:07:Fault Mode: Random bit-flip
+2017-03-01 10:31:07:base address to flip value: 0x7ce558 
+2017-03-01 10:31:07:address max offset: 4
+2017-03-01 10:31:07:Memory content before bitflip:0x020x000x000x00
+2017-03-01 10:31:45:event type: exit
+2017-03-01 10:31:45:exit code: 0

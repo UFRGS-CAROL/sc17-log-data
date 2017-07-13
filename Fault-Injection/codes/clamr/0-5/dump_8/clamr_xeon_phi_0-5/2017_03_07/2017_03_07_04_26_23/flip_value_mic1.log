@@ -1,0 +1,69 @@
+[INFO -- 2017-03-07 04:23:30]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-07 04:23:30]
+Initialization strings:
+[INFO -- 2017-03-07 04:23:30]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-03-07 04:23:30]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 04:23:30]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-07 04:23:30]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 04:23:30]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-07 04:23:30]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-07 04:23:30]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-07 04:23:30]
+initSignal:0
+[INFO -- 2017-03-07 04:23:30]
+endSignal:5
+[INFO -- 2017-03-07 04:23:30]
+seqSignal:20
+[INFO -- 2017-03-07 04:23:30]
+faultMode:3
+[INFO -- 2017-03-07 04:23:35]
+Backtrace BEGIN:
+#0  0x0000000000507d7e in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1488
+#1  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+1483	
+1484	         if (ic >= (int)noffset && ic < (int)(ncells+noffset)){
+1485	            int iclocal = ic-noffset;
+1486	            index[iclocal] = ic;
+1487	            i[iclocal]     = ii;
+1488	            j[iclocal]     = jj;
+1489	            level[iclocal] = 0;
+1490	         }
+1491	         ic++;
+1492	      }
+
+Backtrace END
+Fliping array at pos: 1
+Memory content before bitflip:0x000x000x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffe5bc
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: Mesh::init
+symbol name: j_corner
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+symbol line: 1579
+value: {8366060, 0, -6548, 32767}
+value address: 0x7fffffffe5b8
+Type: The type is an array.
+Type sizeof: 16
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 3L)
+
+[INFO -- 2017-03-07 04:23:35]
+Fault Injection Successful after 5.68879508972s
+[INFO -- 2017-03-07 04:24:27]
+event type: exit
+[INFO -- 2017-03-07 04:24:27]
+exit code: 0

@@ -1,0 +1,170 @@
+2017-01-23 19:18:04:Starting flip_value script
+2017-01-23 19:18:04:Initialization strings:
+2017-01-23 19:18:04:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-23 19:18:04:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-23 19:18:04:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-23 19:18:04:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-23 19:18:04:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-23 19:18:04:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-23 19:18:04:initSignal:0
+2017-01-23 19:18:04:endSignal:2
+2017-01-23 19:18:04:seqSignal:30
+2017-01-23 19:18:05:Trying Fault Injection
+2017-01-23 19:18:05:Inferior PID: 132417
+2017-01-23 19:18:05:Inferior is valid: True
+2017-01-23 19:18:05:Inferior #threads: 1
+2017-01-23 19:18:05:Backtrace BEGIN:
+2017-01-23 19:18:05:#0  __GI__dl_debug_state () at dl-debug.c:74
+#1  0x00007ffff7de084c in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2170
+#2  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec00, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#3  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec00) at rtld.c:308
+#4  _dl_start (arg=0x7fffffffec00) at rtld.c:414
+#5  0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#6  0x0000000000000009 in ?? ()
+#7  0x00007fffffffee08 in ?? ()
+#8  0x00007fffffffee3f in ?? ()
+#9  0x00007fffffffee42 in ?? ()
+#10 0x00007fffffffee47 in ?? ()
+#11 0x00007fffffffee4a in ?? ()
+#12 0x00007fffffffee4e in ?? ()
+#13 0x00007fffffffee51 in ?? ()
+#14 0x00007fffffffee90 in ?? ()
+#15 0x00007fffffffee93 in ?? ()
+#16 0x0000000000000000 in ?? ()
+
+2017-01-23 19:18:05:69	in dl-debug.c
+
+2017-01-23 19:18:05:Backtrace END
+2017-01-23 19:18:05:Thread name: None
+2017-01-23 19:18:05:Thread num: 1
+2017-01-23 19:18:05:Thread ptid: (132417, 132417, 0)
+2017-01-23 19:18:05:bitFlip function
+2017-01-23 19:18:05:Type: The type is a structure.
+2017-01-23 19:18:05:Type sizeof: 40
+2017-01-23 19:18:05:Fliping value of field: r_map
+2017-01-23 19:18:05:bitFlip function
+2017-01-23 19:18:05:Type: The type is a pointer.
+2017-01-23 19:18:05:Type sizeof: 8
+2017-01-23 19:18:05:Fliping a bit of the value pointed by a pointer
+2017-01-23 19:18:05:bitFlip function
+2017-01-23 19:18:05:Type: The type is a structure.
+2017-01-23 19:18:05:Type sizeof: 40
+2017-01-23 19:18:05:Fliping value of field: l_ld
+2017-01-23 19:18:05:bitFlip function
+2017-01-23 19:18:05:Type: The type is a pointer.
+2017-01-23 19:18:05:Type sizeof: 8
+2017-01-23 19:18:05:Fliping a bit of the pointer
+2017-01-23 19:18:05:Mem contents(hex):0xe00xb00x600x000x000x000x000x00
+2017-01-23 19:18:05:base address to flip value: 0x7ffff7ffe178
+2017-01-23 19:18:05:address max offset: 8
+2017-01-23 19:18:05:Memory content before bitflip:0xe00xb00x600x000x000x000x000x00
+2017-01-23 19:18:05:Memory content after  bitflip:0xe00xb00x600x000x000x000x000x01
+2017-01-23 19:18:05:Mem contents(hex):0xe00xb00x600x000x000x000x000x01
+2017-01-23 19:18:05:frame name: __GI__dl_debug_state
+2017-01-23 19:18:05:symbol name: _r_debug
+2017-01-23 19:18:05:symbol filename: dl-debug.c
+2017-01-23 19:18:05:symbol line: 37
+2017-01-23 19:18:05:value: {r_version = 1, r_map = 0x7ffff7ffe168, r_brk = 140737351959488, r_state = RT_CONSISTENT, r_ldbase = 140737351897088}
+2017-01-23 19:18:05:value address: 0x7ffff7ffe140 <_r_debug>
+2017-01-23 19:18:05:Type: The type is a structure.
+2017-01-23 19:18:05:Type sizeof: 40
+2017-01-23 19:18:05:Field name: r_version
+2017-01-23 19:18:05:Field Type:
+2017-01-23 19:18:05:Type: The type is an integer type.
+2017-01-23 19:18:05:Type sizeof: 4
+2017-01-23 19:18:05:Field name: r_map
+2017-01-23 19:18:05:Field Type:
+2017-01-23 19:18:05:Type: The type is a pointer.
+2017-01-23 19:18:05:Type sizeof: 8
+2017-01-23 19:18:05:Field name: r_brk
+2017-01-23 19:18:05:Field Type:
+2017-01-23 19:18:05:Type: The type is an integer type.
+2017-01-23 19:18:05:Type sizeof: 8
+2017-01-23 19:18:05:Field name: r_state
+2017-01-23 19:18:05:Field Type:
+2017-01-23 19:18:05:Type: The type is an enum.
+2017-01-23 19:18:05:Type sizeof: 4
+2017-01-23 19:18:05:Field name: r_ldbase
+2017-01-23 19:18:05:Field Type:
+2017-01-23 19:18:05:Type: The type is an integer type.
+2017-01-23 19:18:05:Type sizeof: 8
+2017-01-23 19:18:05:Fault Injection Successful after 1.44687604904s
+2017-01-23 19:18:05:Fault Already Injected
+2017-01-23 19:18:05:Fault Already Injected
+2017-01-23 19:18:05:Fault Already Injected
+2017-01-23 19:18:05:Fault Already Injected
+2017-01-23 19:18:06:Fault Already Injected
+2017-01-23 19:18:06:Fault Already Injected
+2017-01-23 19:18:06:Fault Already Injected
+2017-01-23 19:18:06:Fault Already Injected
+2017-01-23 19:18:06:Fault Already Injected
+2017-01-23 19:18:07:Fault Already Injected
+2017-01-23 19:18:07:Fault Already Injected
+2017-01-23 19:18:07:Fault Already Injected
+2017-01-23 19:18:07:Fault Already Injected
+2017-01-23 19:18:07:Fault Already Injected
+2017-01-23 19:18:07:Fault Already Injected
+2017-01-23 19:18:08:Fault Already Injected
+2017-01-23 19:18:08:Fault Already Injected
+2017-01-23 19:18:08:Fault Already Injected
+2017-01-23 19:18:08:Fault Already Injected
+2017-01-23 19:18:08:Fault Already Injected
+2017-01-23 19:18:08:Fault Already Injected
+2017-01-23 19:18:08:Fault Already Injected
+2017-01-23 19:18:08:Fault Already Injected
+2017-01-23 19:18:09:Fault Already Injected
+2017-01-23 19:18:09:Fault Already Injected
+2017-01-23 19:18:09:Fault Already Injected
+2017-01-23 19:18:09:Fault Already Injected
+2017-01-23 19:18:09:Fault Already Injected
+2017-01-23 19:18:09:Fault Already Injected
+2017-01-23 19:18:10:Fault Already Injected
+2017-01-23 19:18:10:Fault Already Injected
+2017-01-23 19:18:10:Fault Already Injected
+2017-01-23 19:18:10:Fault Already Injected
+2017-01-23 19:18:10:Fault Already Injected
+2017-01-23 19:18:11:Fault Already Injected
+2017-01-23 19:18:11:Fault Already Injected
+2017-01-23 19:18:11:Fault Already Injected
+2017-01-23 19:18:11:Fault Already Injected
+2017-01-23 19:18:12:Fault Already Injected
+2017-01-23 19:18:12:Fault Already Injected
+2017-01-23 19:18:13:Fault Already Injected
+2017-01-23 19:18:13:Fault Already Injected
+2017-01-23 19:18:13:Fault Already Injected
+2017-01-23 19:18:14:Fault Already Injected
+2017-01-23 19:18:14:Fault Already Injected
+2017-01-23 19:18:15:Fault Already Injected
+2017-01-23 19:18:15:Fault Already Injected
+2017-01-23 19:18:15:Fault Already Injected
+2017-01-23 19:18:16:Fault Already Injected
+2017-01-23 19:18:16:Fault Already Injected
+2017-01-23 19:18:16:Fault Already Injected
+2017-01-23 19:18:17:Fault Already Injected
+2017-01-23 19:18:17:Fault Already Injected
+2017-01-23 19:18:17:Fault Already Injected
+2017-01-23 19:18:18:Fault Already Injected
+2017-01-23 19:18:18:Fault Already Injected
+2017-01-23 19:18:18:Fault Already Injected
+2017-01-23 19:18:19:Fault Already Injected
+2017-01-23 19:18:19:Fault Already Injected
+2017-01-23 19:18:19:Fault Already Injected
+2017-01-23 19:18:19:Fault Already Injected
+2017-01-23 19:18:20:Fault Already Injected
+2017-01-23 19:18:20:Fault Already Injected
+2017-01-23 19:18:20:Fault Already Injected
+2017-01-23 19:18:20:Fault Already Injected
+2017-01-23 19:18:20:Fault Already Injected
+2017-01-23 19:18:21:Fault Already Injected
+2017-01-23 19:18:21:Fault Already Injected
+2017-01-23 19:18:21:Fault Already Injected
+2017-01-23 19:18:22:Fault Already Injected
+2017-01-23 19:18:22:Fault Already Injected
+2017-01-23 19:18:22:Fault Already Injected
+2017-01-23 19:18:22:Fault Already Injected
+2017-01-23 19:18:22:Fault Already Injected
+2017-01-23 19:18:23:Fault Already Injected
+2017-01-23 19:18:23:Fault Already Injected
+2017-01-23 19:18:23:Fault Already Injected
+2017-01-23 19:18:23:event type: exit
+2017-01-23 19:18:23:exit code: 0

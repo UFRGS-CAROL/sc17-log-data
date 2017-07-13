@@ -1,0 +1,80 @@
+[INFO -- 2017-03-14 01:33:03]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-14 01:33:03]
+Initialization strings:
+[INFO -- 2017-03-14 01:33:04]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-14 01:33:04]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-14 01:33:04]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-14 01:33:04]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-14 01:33:04]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-14 01:33:04]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-14 01:33:04]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-14 01:33:04]
+initSignal:25
+[INFO -- 2017-03-14 01:33:04]
+endSignal:30
+[INFO -- 2017-03-14 01:33:04]
+seqSignal:20
+[INFO -- 2017-03-14 01:33:04]
+faultMode:3
+[EXCEPTION -- 2017-03-14 01:33:39]
+pythonException: invalid frame
+[INFO -- 2017-03-14 01:33:39]
+Backtrace BEGIN:
+#0  0x000000000055fc35 in fabs ()
+#1  0x000000000045f20b in State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37 () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1676
+#2  0x00007ffff790ba1f in ?? ()
+#3  0x00007fffffffdac0 in ?? ()
+#4  0x00007fffffffdab8 in ?? ()
+#5  0x00007fffffffdad0 in ?? ()
+#6  0x00007fffffffdad8 in ?? ()
+#7  0x00007fffffffda38 in ?? ()
+#8  0x00007fffffffda70 in ?? ()
+#9  0x00007fffffffda68 in ?? ()
+#10 0x00007fffffffdba8 in ?? ()
+#11 0x00007fffffffdbc8 in ?? ()
+#12 0x00007fffffffdbe8 in ?? ()
+#13 0x00007fffffffda30 in ?? ()
+#14 0x00000000000000f4 in ?? ()
+#15 0x0000000000000000 in ?? ()
+
+171	static double H_sum_initial = 0.0;
+172	static double cpu_time_graphics = 0.0;
+173	static double cpu_time_calcs    = 0.0;
+174	static double cpu_time_partmeas = 0.0;
+175	//static double cpu_time_check    = 0.0;
+176	
+177	static int     ncycle  = 0;
+178	static double  simTime = 0.0;
+179	static double  deltaT = 0.0;
+180	char total_sim_time_log[] = {"total_execution_time.log"};
+
+Backtrace END
+Memory content before bitflip:0x230x040x000x00
+Fault Mode: Zero bit-flip
+base address to flip value: 0x7fffffffcb2c
+address max offset: 4
+Memory content after  bitflip:0x000x000x000x00
+frame name: State::L__ZN5State22calc_finite_differenceEd_1210__par_loop0_2_37
+symbol name: ntt
+symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp
+symbol line: 1246
+value: 0
+value address: 0x7fffffffcb2c
+Type: The type is an integer type.
+Type sizeof: 4
+
+[INFO -- 2017-03-14 01:33:39]
+Fault Injection Successful after 35.4009759426s
+[INFO -- 2017-03-14 01:34:03]
+event type: exit
+[INFO -- 2017-03-14 01:34:03]
+exit code: 0

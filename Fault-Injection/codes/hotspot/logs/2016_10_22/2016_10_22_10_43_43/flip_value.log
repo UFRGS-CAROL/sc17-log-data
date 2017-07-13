@@ -1,0 +1,55 @@
+2016-10-22 10:43:21:Initialization strings:
+2016-10-22 10:43:21:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-22 10:43:21:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-22 10:43:21:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-22 10:43:21:(4) file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-22 10:43:21:(5) set remote exec-file /micNfs/gdb-fault-injection-hotspot/bin/hotspot_check
+2016-10-22 10:43:21:(6) set args 1024 1024 2000 228 /micNfs/gdb-fault-injection-hotspot/bin/temp_1024 /micNfs/gdb-fault-injection-hotspot/bin/power_1024 /micNfs/gdb-fault-injection-hotspot/bin/GOLD_1024-2000-228
+2016-10-22 10:43:22:Trying Fault Injection
+2016-10-22 10:43:22:Backtrace BEGIN:
+2016-10-22 10:43:22:#0  0x00007ffff71963d0 in __open_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7143025 in __GI__IO_file_open (fp=fp@entry=0x609b40, filename=<optimized out>, posix_mode=<optimized out>, prot=prot@entry=438, read_write=4100, is32not64=is32not64@entry=1) at fileops.c:220
+#2  0x00007ffff7143130 in _IO_new_file_fopen (fp=fp@entry=0x609b40, filename=filename@entry=0x608d40 <full_log_file_name> "/micNfs/carol/logs/2016_10_22_15_26_35_openMPHotspot_carolxeon1-mic0.log", mode=<optimized out>, mode@entry=0x40759c "a", is32not64=is32not64@entry=1) at fileops.c:327
+#3  0x00007ffff71384d2 in __fopen_internal (filename=0x608d40 <full_log_file_name> "/micNfs/carol/logs/2016_10_22_15_26_35_openMPHotspot_carolxeon1-mic0.log", mode=0x40759c "a", is32=1) at iofopen.c:86
+#4  0x0000000000406150 in start_log_file (benchmark_name=0x608d40 <full_log_file_name> "/micNfs/carol/logs/2016_10_22_15_26_35_openMPHotspot_carolxeon1-mic0.log", test_info=0x441 <error: Cannot access memory at address 0x441>) at ../../include/log_helper.c:260
+#5  0x0000000000401681 in main (argc=6327616, argv=0x441) at hotspot_check.c:254
+
+2016-10-22 10:43:22:76	in ../sysdeps/unix/syscall-template.S
+
+2016-10-22 10:43:22:Backtrace END
+2016-10-22 10:43:22:Type: The type is an array.
+2016-10-22 10:43:22:Type sizeof: 19
+2016-10-22 10:43:22:Fliping array at pos: 13
+2016-10-22 10:43:22:Type: The type is an integer type.
+2016-10-22 10:43:22:Type sizeof: 1
+2016-10-22 10:43:22:Mem contents(hex):0x66
+2016-10-22 10:43:22:base address to flip value: 0x7ffff71f6e4d  
+2016-10-22 10:43:22:address max offset: 1
+2016-10-22 10:43:22:Memory content before bitflip:0x66
+2016-10-22 10:43:22:Memory content after  bitflip:0x64
+2016-10-22 10:43:22:Mem contents(hex):0x64
+2016-10-22 10:43:22:frame name: _IO_new_file_fopen
+2016-10-22 10:43:22:symbol name: __PRETTY_FUNCTION__
+2016-10-22 10:43:22:symbol filename: fileops.c
+2016-10-22 10:43:22:symbol line: 0
+2016-10-22 10:43:22:value: "_IO_new_file_dopen"
+2016-10-22 10:43:22:value address: 0x7ffff71f6e40 <__PRETTY_FUNCTION__.11205>
+2016-10-22 10:43:22:Type: The type is an array.
+2016-10-22 10:43:22:Type sizeof: 19
+2016-10-22 10:43:22:Field name: None
+2016-10-22 10:43:22:Field Type:
+2016-10-22 10:43:22:Type: A range type, that is, an integer type with bounds.
+2016-10-22 10:43:22:Type sizeof: 8
+2016-10-22 10:43:22:Type range: (0L, 18L)
+2016-10-22 10:43:22:Fault Injection Successful after 1.32563591003s
+2016-10-22 10:43:23:Fault Already Injected
+2016-10-22 10:43:27:Fault Already Injected
+2016-10-22 10:43:28:Fault Already Injected
+2016-10-22 10:43:28:Fault Already Injected
+2016-10-22 10:43:34:Fault Already Injected
+2016-10-22 10:43:34:Fault Already Injected
+2016-10-22 10:43:34:Fault Already Injected
+2016-10-22 10:43:35:Fault Already Injected
+2016-10-22 10:43:36:Fault Already Injected
+2016-10-22 10:43:37:event type: exit
+2016-10-22 10:43:37:exit code: 0

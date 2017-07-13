@@ -1,0 +1,58 @@
+2017-02-21 11:36:10:Starting flip_value script
+2017-02-21 11:36:10:Initialization strings:
+2017-02-21 11:36:10:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-21 11:36:10:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 11:36:10:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 11:36:10:(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-02-21 11:36:10:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+2017-02-21 11:36:10:(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+2017-02-21 11:36:10:initSignal:0
+2017-02-21 11:36:10:endSignal:7
+2017-02-21 11:36:10:seqSignal:15
+2017-02-21 11:36:11:Backtrace BEGIN:
+2017-02-21 11:36:11:#0  0x00007ffff713893b in _IO_acquire_lock_fct (p=<synthetic pointer>) at libioP.h:892
+#1  __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x6073f0) at iofread.c:41
+#2  0x0000000000403c08 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:250
+#3  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+2017-02-21 11:36:11:887	in libioP.h
+
+2017-02-21 11:36:11:Backtrace END
+2017-02-21 11:36:11:Type: The type is a pointer.
+2017-02-21 11:36:11:Type sizeof: 8
+2017-02-21 11:36:11:Fliping a bit of the pointer
+2017-02-21 11:36:12:Mem contents(hex):0x3c0xee0xff0xff0xff0x7f0x000x00
+2017-02-21 11:36:12:Fault Mode: Zero bit-flip
+2017-02-21 11:36:12:base address to flip value: 0x7fffffffea08
+2017-02-21 11:36:12:address max offset: 8
+2017-02-21 11:36:12:Memory content before bitflip:0x3c0xee0xff0xff0xff0x7f0x000x00
+2017-02-21 11:36:12:Backtrace BEGIN:
+2017-02-21 11:36:12:#0  0x00007ffff7142865 in __GI__IO_file_xsgetn (fp=0x6073f0, data=0x7ffff3cf1868, n=8) at fileops.c:1348
+#1  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x6073f0) at iofread.c:42
+#2  0x0000000000403c08 in read_input (A=0x7ffff4ccc040, B=0x7ffff2ccb040, fileA=0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192", fileB=0x7fffffffee3c "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192", order=2048) at dgemm.c:250
+#3  0x00000000004041c0 in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:328
+
+2017-02-21 11:36:12:1343	in fileops.c
+
+2017-02-21 11:36:12:Backtrace END
+2017-02-21 11:36:12:Type: The type is a pointer.
+2017-02-21 11:36:12:Type sizeof: 8
+2017-02-21 11:36:12:Fliping a bit of the pointer
+2017-02-21 11:36:12:Mem contents(hex):0x000xee0xff0xff0xff0x7f0x000x00
+2017-02-21 11:36:12:Fault Mode: Single bit-flip
+2017-02-21 11:36:12:base address to flip value: 0x7fffffffe9f8
+2017-02-21 11:36:12:address max offset: 8
+2017-02-21 11:36:12:Memory content before bitflip:0x000xee0xff0xff0xff0x7f0x000x00
+2017-02-21 11:36:12:Memory content after  bitflip:0x000xee0xff0xff0xff0x7f0x000x10
+2017-02-21 11:36:12:Mem contents(hex):0x000xee0xff0xff0xff0x7f0x000x10
+2017-02-21 11:36:12:frame name: main
+2017-02-21 11:36:12:symbol name: inputA
+2017-02-21 11:36:12:symbol filename: dgemm.c
+2017-02-21 11:36:12:symbol line: 283
+2017-02-21 11:36:12:value: 0x7fffffffee00 "/micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192"
+2017-02-21 11:36:12:value address: 0x7fffffffe9f8
+2017-02-21 11:36:12:Type: The type is a pointer.
+2017-02-21 11:36:12:Type sizeof: 8
+2017-02-21 11:36:12:Fault Injection Successful after 2.45132493973s
+2017-02-21 11:36:51:event type: exit
+2017-02-21 11:36:51:exit code: 0

@@ -1,0 +1,54 @@
+2017-01-25 09:21:53:Starting flip_value script
+2017-01-25 09:21:53:Initialization strings:
+2017-01-25 09:21:54:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 09:21:54:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 09:21:54:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 09:21:54:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 09:21:54:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 09:21:54:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 09:21:54:initSignal:6
+2017-01-25 09:21:54:endSignal:8
+2017-01-25 09:21:54:seqSignal:30
+2017-01-25 09:22:00:Trying Fault Injection
+2017-01-25 09:22:00:Inferior PID: 133001
+2017-01-25 09:22:00:Inferior is valid: True
+2017-01-25 09:22:00:Inferior #threads: 229
+2017-01-25 09:22:00:Backtrace BEGIN:
+2017-01-25 09:22:00:#0  __GI___waitpid (pid=133244, stat_loc=stat_loc@entry=0x7fffffffe4f8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:40
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#3  0x0000000000405bee in end_iteration () at ../include/log_helper.c:336
+#4  0x0000000000402c82 in main (argc=9, argv=0x7fffffffec08) at lud_check.c:126
+
+2017-01-25 09:22:00:35	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-01-25 09:22:00:Backtrace END
+2017-01-25 09:22:04:Thread name: None
+2017-01-25 09:22:04:Thread num: 1
+2017-01-25 09:22:04:Thread ptid: (133001, 133001, 0)
+2017-01-25 09:22:04:bitFlip function
+2017-01-25 09:22:04:Type: The type is an integer type.
+2017-01-25 09:22:04:Type sizeof: 4
+2017-01-25 09:22:04:Mem contents(hex):0x200xd30xdd0xf7
+2017-01-25 09:22:04:base address to flip value: 0x7fffffffe780
+2017-01-25 09:22:04:address max offset: 4
+2017-01-25 09:22:04:Memory content before bitflip:0x200xd30xdd0xf7
+2017-01-25 09:22:04:Memory content after  bitflip:0x200xdb0xdd0xf7
+2017-01-25 09:22:04:Mem contents(hex):0x200xdb0xdd0xf7
+2017-01-25 09:22:04:frame name: main
+2017-01-25 09:22:04:symbol name: i
+2017-01-25 09:22:04:symbol filename: lud_check.c
+2017-01-25 09:22:04:symbol line: 129
+2017-01-25 09:22:04:value: -136455392
+2017-01-25 09:22:04:value address: 0x7fffffffe780
+2017-01-25 09:22:04:Type: The type is an integer type.
+2017-01-25 09:22:04:Type sizeof: 4
+2017-01-25 09:22:04:Fault Injection Successful after 10.3255579472s
+2017-01-25 09:22:04:Fault Already Injected
+2017-01-25 09:22:04:Fault Already Injected
+2017-01-25 09:22:04:Fault Already Injected
+2017-01-25 09:22:04:Fault Already Injected
+2017-01-25 09:22:05:Fault Already Injected
+2017-01-25 09:22:05:Fault Already Injected
+2017-01-25 09:22:05:event type: exit
+2017-01-25 09:22:05:exit code: 0

@@ -1,0 +1,59 @@
+[INFO -- 2017-03-02 16:47:04]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-02 16:47:04]
+Initialization strings:
+[INFO -- 2017-03-02 16:47:04]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-02 16:47:04]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-02 16:47:04]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-02 16:47:05]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-02 16:47:05]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-02 16:47:05]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-02 16:47:05]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-02 16:47:05]
+initSignal:15
+[INFO -- 2017-03-02 16:47:05]
+endSignal:20
+[INFO -- 2017-03-02 16:47:05]
+seqSignal:20
+[INFO -- 2017-03-02 16:47:05]
+faultMode:2
+[INFO -- 2017-03-02 16:47:27]
+Backtrace BEGIN:
+#0  0x00007ffff6b67883 in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe118) at vfprintf.c:1641
+#1  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#2  0x000000000054b5c5 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:470
+#3  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#4  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+1636	in vfprintf.c
+
+Backtrace END
+Fliping a bit of the pointer
+Memory content before bitflip:0x100x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffdba0
+address max offset: 8
+Memory content after  bitflip:0xc30x5c0xd10x300xaa0x420xe40x1e
+frame name: _IO_vfprintf_internal
+symbol name: string
+symbol filename: vfprintf.c
+symbol line: 1357
+value: 0x10 <error: Cannot access memory at address 0x10>
+value address: 0x7fffffffdba0
+Type: The type is a pointer.
+Type sizeof: 8
+
+[INFO -- 2017-03-02 16:47:27]
+Fault Injection Successful after 22.259098053s
+[INFO -- 2017-03-02 16:48:05]
+event type: exit
+[INFO -- 2017-03-02 16:48:05]
+exit code: 0

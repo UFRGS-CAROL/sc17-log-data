@@ -1,0 +1,58 @@
+2016-10-26 23:09:02:Initialization strings:
+2016-10-26 23:09:02:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-10-26 23:09:02:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-26 23:09:02:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-10-26 23:09:02:(4) file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-26 23:09:02:(5) set remote exec-file /micNfs/gdb-fault-injection-lavamd/bin/lavamd
+2016-10-26 23:09:02:(6) set args 228 15 /micNfs/gdb-fault-injection-lavamd/bin/input_distance_228_15 /micNfs/gdb-fault-injection-lavamd/bin/input_charges_228_15 /micNfs/gdb-fault-injection-lavamd/bin/output_gold_228_15 1
+2016-10-26 23:09:03:Trying Fault Injection
+2016-10-26 23:09:03:Inferior PID: 189655
+2016-10-26 23:09:03:Inferior is valid: True
+2016-10-26 23:09:03:Inferior #threads: 1
+2016-10-26 23:09:03:Backtrace BEGIN:
+2016-10-26 23:09:03:#0  0x00000000004021d0 in main (argc=7, argv=0x7fffffffec08) at main_check.c:149
+
+2016-10-26 23:09:03:144	    }
+145	
+146	    rv_cpu = (FOUR_VECTOR*)malloc(dim_cpu.space_mem);
+147	    for(i=0; i<dim_cpu.space_elem; i=i+1) {
+148	        fread(&(rv_cpu[i].v), 1, sizeof(double), file);
+149	        fread(&(rv_cpu[i].x), 1, sizeof(double), file);
+150	        fread(&(rv_cpu[i].y), 1, sizeof(double), file);
+151	        fread(&(rv_cpu[i].z), 1, sizeof(double), file);
+152	    }
+153	
+
+2016-10-26 23:09:03:Backtrace END
+2016-10-26 23:09:03:Thread name: None
+2016-10-26 23:09:03:Thread num: 1
+2016-10-26 23:09:03:Thread ptid: (189655, 189655, 0)
+2016-10-26 23:09:03:bitFlip function
+2016-10-26 23:09:03:Type: The type is a pointer.
+2016-10-26 23:09:03:Type sizeof: 8
+2016-10-26 23:09:03:Fliping a bit of the value pointed by a pointer
+2016-10-26 23:09:03:bitFlip function
+2016-10-26 23:09:03:Type: The type is a structure.
+2016-10-26 23:09:03:Type sizeof: 32
+2016-10-26 23:09:03:Fliping value of field: v
+2016-10-26 23:09:03:bitFlip function
+2016-10-26 23:09:03:Type: A floating point type.
+2016-10-26 23:09:03:Type sizeof: 8
+2016-10-26 23:09:03:Mem contents(hex):0x5f0x0d0x400x000x000x000x000x00
+2016-10-26 23:09:03:base address to flip value: 0x7ffff7ff86a0
+2016-10-26 23:09:03:address max offset: 8
+2016-10-26 23:09:03:Memory content before bitflip:0x5f0x0d0x400x000x000x000x000x00
+2016-10-26 23:09:03:Memory content after  bitflip:0x5f0x0d0x400x100x000x000x000x00
+2016-10-26 23:09:03:Mem contents(hex):0x5f0x0d0x400x100x000x000x000x00
+2016-10-26 23:09:03:frame name: main
+2016-10-26 23:09:03:symbol name: fv_cpu
+2016-10-26 23:09:03:symbol filename: main_check.c
+2016-10-26 23:09:03:symbol line: 60
+2016-10-26 23:09:03:value: 0x7ffff7ff86a0
+2016-10-26 23:09:03:value address: 0x7fffffffe9f8
+2016-10-26 23:09:03:Type: The type is a pointer.
+2016-10-26 23:09:03:Type sizeof: 8
+2016-10-26 23:09:03:Fault Injection Successful after 1.21940588951s
+2016-10-26 23:09:03:Fault Already Injected
+2016-10-26 23:09:03:event type: exit
+2016-10-26 23:09:03:exit code: no exit code available

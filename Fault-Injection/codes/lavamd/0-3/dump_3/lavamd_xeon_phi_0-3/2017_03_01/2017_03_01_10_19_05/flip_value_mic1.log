@@ -1,0 +1,105 @@
+2017-03-01 10:18:39:Starting flip_value script
+2017-03-01 10:18:39:Initialization strings:
+2017-03-01 10:18:39:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-03-01 10:18:39:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 10:18:39:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 10:18:39:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 10:18:39:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-03-01 10:18:39:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-03-01 10:18:39:initSignal:0
+2017-03-01 10:18:39:endSignal:3
+2017-03-01 10:18:39:seqSignal:30
+2017-03-01 10:18:40:Backtrace BEGIN:
+2017-03-01 10:18:40:#0  0x00007ffff71505d6 in __GI_memcpy (dstpp=dstpp@entry=0x7ffff4cd3ea0, srcpp=<optimized out>, len=<optimized out>, len@entry=8) at ../string/memcpy.c:59
+#1  0x00007ffff714296b in __GI__IO_file_xsgetn (fp=0x60e1c0, data=<optimized out>, n=8) at fileops.c:1371
+#2  0x00007ffff7138929 in __GI__IO_fread (buf=<optimized out>, size=1, count=8, fp=0x60e1c0) at iofread.c:42
+#3  0x000000000040262f in main (argc=7, argv=0x7fffffffebc8) at main_check.c:181
+
+2017-03-01 10:18:40:54	in ../string/memcpy.c
+
+2017-03-01 10:18:40:Backtrace END
+2017-03-01 10:18:40:Type: The type is a structure.
+2017-03-01 10:18:40:Type sizeof: 168
+2017-03-01 10:18:40:Fliping value of field: __overflow
+2017-03-01 10:18:40:Type: The type is a pointer.
+2017-03-01 10:18:40:Type sizeof: 8
+2017-03-01 10:18:40:Fliping a bit of the value pointed by a pointer
+2017-03-01 10:18:40:Type: The type is a function.
+2017-03-01 10:18:40:Type sizeof: 1
+2017-03-01 10:18:40:Mem contents(hex):0x8b
+2017-03-01 10:18:40:Fault Mode: Zero bit-flip
+2017-03-01 10:18:40:base address to flip value: 0x7ffff71437f0 
+2017-03-01 10:18:40:address max offset: 1
+2017-03-01 10:18:40:Memory content before bitflip:0x8b
+2017-03-01 10:18:40:Backtrace BEGIN:
+2017-03-01 10:18:40:#0  __GI___waitpid (pid=183793, stat_loc=stat_loc@entry=0x7fffffffdea8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007ffff710f41b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x0000000000406619 in update_timestamp () at ../include/log_helper.c:107
+#3  0x00000000004069fe in start_log_file (benchmark_name=0x408cc0 "openmpLavaMD", test_info=0x7fffffffe648 "box:15 spaceElem:337500 cores:228") at ../include/log_helper.c:196
+#4  0x0000000000402707 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:190
+
+2017-03-01 10:18:40:26	in ../sysdeps/unix/sysv/linux/waitpid.c
+
+2017-03-01 10:18:40:Backtrace END
+2017-03-01 10:18:41:Type: The type is a structure.
+2017-03-01 10:18:41:Type sizeof: 32
+2017-03-01 10:18:41:Fliping value of field: __arg
+2017-03-01 10:18:41:Type: The type is a pointer.
+2017-03-01 10:18:41:Type sizeof: 8
+2017-03-01 10:18:41:Backtrace BEGIN:
+2017-03-01 10:18:41:#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff74312d0 in ?? () at pthread_create.c:237 from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libpthread.so.0
+#2  0x00007ffdabffeb80 in ?? ()
+#3  0x0000000000000000 in ?? ()
+
+2017-03-01 10:18:41:76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+2017-03-01 10:18:41:Backtrace END
+2017-03-01 10:18:43:Type: The type is an array.
+2017-03-01 10:18:43:Type sizeof: 12
+2017-03-01 10:18:43:Fliping array at pos: 2
+2017-03-01 10:18:43:Type: The type is an integer type.
+2017-03-01 10:18:43:Type sizeof: 4
+2017-03-01 10:18:43:Mem contents(hex):0x080x000x000x00
+2017-03-01 10:18:43:Fault Mode: Random bit-flip
+2017-03-01 10:18:43:base address to flip value: 0x7ffff743c258 
+2017-03-01 10:18:43:address max offset: 4
+2017-03-01 10:18:43:Memory content before bitflip:0x080x000x000x00
+2017-03-01 10:18:43:Backtrace BEGIN:
+2017-03-01 10:18:43:#0  clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:81
+#1  0x00007ffff7430125 in create_thread (pd=pd@entry=0x7ffdabbf9c00, attr=attr@entry=0x7fffffffdd18, stopped_start=<optimized out>, stopped_start@entry=false, stackaddr=<optimized out>, thread_ran=0x7fffffffdab7) at ../sysdeps/unix/sysv/linux/createthread.c:102
+#2  0x00007ffff7431adf in __pthread_create_2_1 (newthread=<optimized out>, attr=<optimized out>, start_routine=<optimized out>, arg=<optimized out>) at pthread_create.c:664
+#3  0x00007ffff790d323 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+2017-03-01 10:18:43:76	in ../sysdeps/unix/sysv/linux/x86_64/clone.S
+
+2017-03-01 10:18:43:Backtrace END
+2017-03-01 10:18:45:Type: The type is an array.
+2017-03-01 10:18:45:Type sizeof: 12
+2017-03-01 10:18:45:Fliping array at pos: 1
+2017-03-01 10:18:45:Type: The type is an integer type.
+2017-03-01 10:18:45:Type sizeof: 4
+2017-03-01 10:18:45:Mem contents(hex):0x010x000x000x00
+2017-03-01 10:18:45:Fault Mode: Single bit-flip
+2017-03-01 10:18:45:base address to flip value: 0x7ffff743c2c4 
+2017-03-01 10:18:45:address max offset: 4
+2017-03-01 10:18:45:Memory content before bitflip:0x010x000x000x00
+2017-03-01 10:18:45:Memory content after  bitflip:0x010x000x000x10
+2017-03-01 10:18:45:Mem contents(hex):0x010x000x000x10
+2017-03-01 10:18:45:frame name: create_thread
+2017-03-01 10:18:45:symbol name: _thread_db___nptl_nthreads
+2017-03-01 10:18:45:symbol filename: ../nptl_db/structs.def
+2017-03-01 10:18:45:symbol line: 57
+2017-03-01 10:18:45:value: {32, 268435457, 0}
+2017-03-01 10:18:45:value address: 0x7ffff743c2c0 <_thread_db___nptl_nthreads>
+2017-03-01 10:18:45:Type: The type is an array.
+2017-03-01 10:18:45:Type sizeof: 12
+2017-03-01 10:18:45:Field name: None
+2017-03-01 10:18:45:Field Type:
+2017-03-01 10:18:45:Type: A range type, that is, an integer type with bounds.
+2017-03-01 10:18:45:Type sizeof: 8
+2017-03-01 10:18:45:Type range: (0L, 2L)
+2017-03-01 10:18:45:Fault Injection Successful after 6.77544403076s
+2017-03-01 10:18:58:event type: exit
+2017-03-01 10:18:58:exit code: 0

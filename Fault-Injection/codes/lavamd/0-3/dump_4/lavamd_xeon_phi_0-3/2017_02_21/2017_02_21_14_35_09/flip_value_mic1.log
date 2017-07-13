@@ -1,0 +1,44 @@
+2017-02-21 14:34:38:Starting flip_value script
+2017-02-21 14:34:38:Initialization strings:
+2017-02-21 14:34:38:(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+2017-02-21 14:34:38:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 14:34:38:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 14:34:38:(4) file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-21 14:34:38:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lavamd/lavamd_check
+2017-02-21 14:34:38:(6) set args 228 15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_distance_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/input_charges_228_15 /micNfs/gdb-fault-injection/injector/bin/lavamd/output_gold_228_15 1
+2017-02-21 14:34:38:initSignal:0
+2017-02-21 14:34:38:endSignal:3
+2017-02-21 14:34:38:seqSignal:30
+2017-02-21 14:34:39:Backtrace BEGIN:
+2017-02-21 14:34:39:#0  0x00007ffff71389ae in __GI__IO_fread (buf=<optimized out>, size=<optimized out>, count=8, fp=<optimized out>) at iofread.c:45
+#1  0x0000000000402204 in main (argc=7, argv=0x7fffffffebc8) at main_check.c:149
+
+2017-02-21 14:34:39:40	in iofread.c
+
+2017-02-21 14:34:39:Backtrace END
+2017-02-21 14:34:39:Type: The type is a pointer.
+2017-02-21 14:34:39:Type sizeof: 8
+2017-02-21 14:34:39:Fliping a bit of the value pointed by a pointer
+2017-02-21 14:34:39:Type: The type is a structure.
+2017-02-21 14:34:39:Type sizeof: 32
+2017-02-21 14:34:39:Fliping value of field: x
+2017-02-21 14:34:39:Type: A floating point type.
+2017-02-21 14:34:39:Type sizeof: 8
+2017-02-21 14:34:39:Mem contents(hex):0x9a0x990x990x990x990x990xc90x3f
+2017-02-21 14:34:39:Fault Mode: Double bit-flip
+2017-02-21 14:34:39:base address to flip value: 0x7ffff6063018
+2017-02-21 14:34:39:address max offset: 8
+2017-02-21 14:34:39:Memory content before bitflip:0x9a0x990x990x990x990x990xc90x3f
+2017-02-21 14:34:39:Memory content after  bitflip:0x9a0x990x990x990x990x110xc90x3f
+2017-02-21 14:34:39:Mem contents(hex):0x9a0x990x990x990x990x110xc90x3f
+2017-02-21 14:34:39:frame name: main
+2017-02-21 14:34:39:symbol name: rv_cpu
+2017-02-21 14:34:39:symbol filename: main_check.c
+2017-02-21 14:34:39:symbol line: 58
+2017-02-21 14:34:39:value: 0x7ffff6063010
+2017-02-21 14:34:39:value address: 0x7fffffffe940
+2017-02-21 14:34:39:Type: The type is a pointer.
+2017-02-21 14:34:39:Type sizeof: 8
+2017-02-21 14:34:39:Fault Injection Successful after 1.19366288185s
+2017-02-21 14:34:58:event type: exit
+2017-02-21 14:34:58:exit code: 1

@@ -1,0 +1,68 @@
+2017-03-01 14:06:53:Starting flip_value script
+2017-03-01 14:06:53:Initialization strings:
+2017-03-01 14:06:53:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 14:06:53:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 14:06:53:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 14:06:54:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 14:06:54:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 14:06:54:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 14:06:54:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 14:06:54:initSignal:15
+2017-03-01 14:06:54:endSignal:20
+2017-03-01 14:06:54:seqSignal:20
+2017-03-01 14:07:09:Backtrace BEGIN:
+2017-03-01 14:07:09:#0  0x00007ffff6be63ed in open64 () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6b93025 in __GI__IO_file_open (fp=fp@entry=0x1922050, filename=<optimized out>, posix_mode=<optimized out>, prot=prot@entry=438, read_write=4, is32not64=is32not64@entry=1) at fileops.c:220
+#2  0x00007ffff6b93130 in _IO_new_file_fopen (fp=fp@entry=0x1922050, filename=filename@entry=0x7fffffffe200 "/micNfs/gdb-fault-injection/injector/bin/clamr/graphics_output/graph00000.data", mode=<optimized out>, mode@entry=0x57472c "w", is32not64=is32not64@entry=1) at fileops.c:327
+#3  0x00007ffff6b884d2 in __fopen_internal (filename=0x7fffffffe200 "/micNfs/gdb-fault-injection/injector/bin/clamr/graphics_output/graph00000.data", mode=0x57472c "w", is32=1) at iofopen.c:86
+#4  0x000000000054b161 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:457
+#5  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#6  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-03-01 14:07:09:76	in ../sysdeps/unix/syscall-template.S
+
+2017-03-01 14:07:09:Backtrace END
+2017-03-01 14:07:14:Type: The type is a structure.
+2017-03-01 14:07:14:Type sizeof: 168
+2017-03-01 14:07:14:Fliping value of field: __overflow
+2017-03-01 14:07:14:Type: The type is a pointer.
+2017-03-01 14:07:14:Type sizeof: 8
+2017-03-01 14:07:14:Fliping a bit of the pointer
+2017-03-01 14:07:14:Mem contents(hex):0xf00x370xb90xf60xff0x7f0x000x00
+2017-03-01 14:07:14:Fault Mode: One bit-flip
+2017-03-01 14:07:14:base address to flip value: 0x7ffff6e73558 
+2017-03-01 14:07:14:address max offset: 8
+2017-03-01 14:07:14:Memory content before bitflip:0xf00x370xb90xf60xff0x7f0x000x00
+2017-03-01 14:07:15:Backtrace BEGIN:
+2017-03-01 14:07:15:#0  0x00007ffff6be63ed in open64 () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff6b93025 in __GI__IO_file_open (fp=fp@entry=0x1922050, filename=<optimized out>, posix_mode=<optimized out>, prot=prot@entry=438, read_write=4, is32not64=is32not64@entry=1) at fileops.c:220
+#2  0x00007ffff6b93130 in _IO_new_file_fopen (fp=fp@entry=0x1922050, filename=filename@entry=0x7fffffffe200 "/micNfs/gdb-fault-injection/injector/bin/clamr/graphics_output/graph00000.data", mode=<optimized out>, mode@entry=0x57472c "w", is32not64=is32not64@entry=1) at fileops.c:327
+#3  0x00007ffff6b884d2 in __fopen_internal (filename=0x7fffffffe200 "/micNfs/gdb-fault-injection/injector/bin/clamr/graphics_output/graph00000.data", mode=0x57472c "w", is32=1) at iofopen.c:86
+#4  0x000000000054b161 in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:457
+#5  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#6  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-03-01 14:07:15:76	in ../sysdeps/unix/syscall-template.S
+
+2017-03-01 14:07:15:Backtrace END
+2017-03-01 14:07:20:Type: The type is a pointer.
+2017-03-01 14:07:20:Type sizeof: 8
+2017-03-01 14:07:20:Fliping a bit of the pointer
+2017-03-01 14:07:20:Mem contents(hex):0x500xec0xff0xff0x1d0x000x000x00
+2017-03-01 14:07:20:Fault Mode: Single bit-flip
+2017-03-01 14:07:20:base address to flip value: 0x7fffffffe6a0
+2017-03-01 14:07:20:address max offset: 8
+2017-03-01 14:07:20:Memory content before bitflip:0x500xec0xff0xff0x1d0x000x000x00
+2017-03-01 14:07:20:Memory content after  bitflip:0x500xe80xff0xff0x1d0x000x000x00
+2017-03-01 14:07:20:Mem contents(hex):0x500xe80xff0xff0x1d0x000x000x00
+2017-03-01 14:07:20:frame name: DrawSquaresToFile
+2017-03-01 14:07:20:symbol name: fp2
+2017-03-01 14:07:20:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c
+2017-03-01 14:07:20:symbol line: 458
+2017-03-01 14:07:20:value: 0x1dffffec50
+2017-03-01 14:07:20:value address: 0x7fffffffe6a0
+2017-03-01 14:07:20:Type: The type is a pointer.
+2017-03-01 14:07:20:Type sizeof: 8
+2017-03-01 14:07:20:Fault Injection Successful after 26.6446909904s
+2017-03-01 14:07:54:event type: exit
+2017-03-01 14:07:54:exit code: 0

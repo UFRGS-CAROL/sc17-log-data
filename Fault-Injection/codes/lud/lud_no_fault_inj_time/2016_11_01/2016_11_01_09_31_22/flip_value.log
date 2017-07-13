@@ -1,0 +1,70 @@
+2016-11-01 09:31:05:Initialization strings:
+2016-11-01 09:31:05:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2016-11-01 09:31:05:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 09:31:05:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2016-11-01 09:31:05:(4) file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-11-01 09:31:05:(5) set remote exec-file /micNfs/gdb-fault-injection-lud/bin/lud_check
+2016-11-01 09:31:05:(6) set args -s 8192 -n 228 -i /micNfs/gdb-fault-injection-lud/bin/input_8192_th_228 -g /micNfs/gdb-fault-injection-lud/bin/gold_8192_th_228
+2016-11-01 09:31:06:Trying Fault Injection
+2016-11-01 09:31:06:Inferior PID: 167539
+2016-11-01 09:31:06:Inferior is valid: True
+2016-11-01 09:31:06:Inferior #threads: 1
+2016-11-01 09:31:06:Backtrace BEGIN:
+2016-11-01 09:31:06:#0  _dl_name_match_p (name=0x7ffff786387b "libdl.so.2", map=map@entry=0x7ffff7ffe168) at dl-misc.c:290
+#1  0x00007ffff7de5edb in do_lookup_x (undef_name=undef_name@entry=0x7ffff7863920 "dlerror", new_hash=new_hash@entry=416325247, old_hash=old_hash@entry=0x7fffffffe850, ref=0x7ffff7862228, result=result@entry=0x7fffffffe860, scope=<optimized out>, i=<optimized out>, version=0x7ffff7ff8940, flags=1, skip=0x0, type_class=1, undef_map=0x7ffff7ffab28) at dl-lookup.c:500
+#2  0x00007ffff7de68cc in _dl_lookup_symbol_x (undef_name=0x7ffff7863920 "dlerror", undef_map=undef_map@entry=0x7ffff7ffab28, ref=ref@entry=0x7fffffffe9b0, symbol_scope=symbol_scope@entry=0x7ffff7ffae80, version=0x7ffff7ff8940, type_class=1, flags=1, skip_map=0x0) at dl-lookup.c:775
+#3  0x00007ffff7de854f in elf_machine_rela (skip_ifunc=<optimized out>, reloc_addr_arg=<optimized out>, version=<optimized out>, sym=<optimized out>, reloc=0x7ffff7874bb0, map=0x7ffff7ffab28) at ../sysdeps/x86_64/dl-machine.h:277
+#4  elf_dynamic_do_Rela (skip_ifunc=<optimized out>, lazy=<optimized out>, nrelative=<optimized out>, relsize=<optimized out>, reladdr=<optimized out>, map=0x7ffff7ffab28) at do-rel.h:137
+#5  _dl_relocate_object (scope=<optimized out>, reloc_mode=<optimized out>, consider_profiling=<optimized out>, consider_profiling@entry=0) at dl-reloc.c:264
+#6  0x00007ffff7de09ed in dl_main (phdr=<optimized out>, phnum=<optimized out>, user_entry=<optimized out>, auxv=<optimized out>) at rtld.c:2074
+#7  0x00007ffff7df2548 in _dl_sysdep_start (start_argptr=start_argptr@entry=0x7fffffffec20, dl_main=dl_main@entry=0x7ffff7dde840 <dl_main>) at ../elf/dl-sysdep.c:249
+#8  0x00007ffff7de1c6a in _dl_start_final (arg=0x7fffffffec20) at rtld.c:308
+#9  _dl_start (arg=0x7fffffffec20) at rtld.c:414
+#10 0x00007ffff7dddbc8 in _start () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/ld-linux-k1om.so.2
+#11 0x0000000000000009 in ?? ()
+#12 0x00007fffffffee2c in ?? ()
+#13 0x00007fffffffee5a in ?? ()
+#14 0x00007fffffffee5d in ?? ()
+#15 0x00007fffffffee62 in ?? ()
+#16 0x00007fffffffee65 in ?? ()
+#17 0x00007fffffffee69 in ?? ()
+#18 0x00007fffffffee6c in ?? ()
+#19 0x00007fffffffeea2 in ?? ()
+#20 0x00007fffffffeea5 in ?? ()
+#21 0x0000000000000000 in ?? ()
+
+2016-11-01 09:31:06:285	in dl-misc.c
+
+2016-11-01 09:31:06:Backtrace END
+2016-11-01 09:31:06:Thread name: None
+2016-11-01 09:31:06:Thread num: 1
+2016-11-01 09:31:06:Thread ptid: (167539, 167539, 0)
+2016-11-01 09:31:06:bitFlip function
+2016-11-01 09:31:06:Type: The type is a pointer.
+2016-11-01 09:31:06:Type sizeof: 8
+2016-11-01 09:31:06:Fliping a bit of the pointer
+2016-11-01 09:31:06:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2016-11-01 09:31:06:base address to flip value: 0x7ffff7ffcbe8 
+2016-11-01 09:31:06:address max offset: 8
+2016-11-01 09:31:06:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2016-11-01 09:31:06:Memory content after  bitflip:0x000x000x000x000x000x080x000x00
+2016-11-01 09:31:06:Mem contents(hex):0x000x000x000x000x000x080x000x00
+2016-11-01 09:31:06:frame name: dl_main
+2016-11-01 09:31:06:symbol name: preloadlist
+2016-11-01 09:31:06:symbol filename: rtld.c
+2016-11-01 09:31:06:symbol line: 733
+2016-11-01 09:31:06:value: 0x0
+2016-11-01 09:31:06:value address: 0x7ffff7ffcbe8 <preloadlist>
+2016-11-01 09:31:06:Type: The type is a pointer.
+2016-11-01 09:31:06:Type sizeof: 8
+2016-11-01 09:31:06:Fault Injection Successful after 1.28298592567s
+2016-11-01 09:31:07:Fault Already Injected
+2016-11-01 09:31:07:Fault Already Injected
+2016-11-01 09:31:09:Fault Already Injected
+2016-11-01 09:31:09:Fault Already Injected
+2016-11-01 09:31:09:Fault Already Injected
+2016-11-01 09:31:11:Fault Already Injected
+2016-11-01 09:31:11:Fault Already Injected
+2016-11-01 09:31:14:Fault Already Injected
+2016-11-01 09:31:15:event type: exit
+2016-11-01 09:31:15:exit code: 0

@@ -1,0 +1,55 @@
+[INFO -- 2017-02-27 05:32:58]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 05:32:58]
+Initialization strings:
+[INFO -- 2017-02-27 05:32:58]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-27 05:32:58]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 05:32:58]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 05:32:58]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 05:32:58]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 05:32:58]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-27 05:32:58]
+initSignal:4
+[INFO -- 2017-02-27 05:32:58]
+endSignal:8
+[INFO -- 2017-02-27 05:32:58]
+seqSignal:30
+[INFO -- 2017-02-27 05:32:58]
+faultMode:1
+[INFO -- 2017-02-27 05:33:08]
+Backtrace BEGIN:
+#0  0x00007ffff710f44d in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:157
+#1  0x0000000000404fad in update_timestamp () at ../include/log_helper.c:107
+#2  0x0000000000405f16 in log_error_count (kernel_errors=0) at ../include/log_helper.c:369
+#3  0x0000000000402def in main (argc=9, argv=0x7fffffffec08) at lud_check.c:149
+
+152	in ../sysdeps/posix/system.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe740
+address max offset: 8
+Memory content after  bitflip:0x000x000x000x000x000x000xc00x00
+frame name: log_error_count
+symbol name: kernel_errors
+symbol filename: ../include/log_helper.c
+symbol line: 367
+value: 54043195528445952
+value address: 0x7fffffffe740
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2017-02-27 05:33:08]
+Fault Injection Successful after 10.4767889977s
+[INFO -- 2017-02-27 05:33:09]
+event type: exit
+[INFO -- 2017-02-27 05:33:09]
+exit code: 1

@@ -1,0 +1,61 @@
+[INFO -- 2017-02-26 00:53:33]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-26 00:53:33]
+Initialization strings:
+[INFO -- 2017-02-26 00:53:33]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-26 00:53:33]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 00:53:33]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-26 00:53:33]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 00:53:33]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-26 00:53:33]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-26 00:53:33]
+initSignal:0
+[INFO -- 2017-02-26 00:53:33]
+endSignal:2
+[INFO -- 2017-02-26 00:53:33]
+seqSignal:30
+[INFO -- 2017-02-26 00:53:33]
+faultMode:2
+[INFO -- 2017-02-26 00:53:34]
+Backtrace BEGIN:
+#0  __GI___fxstat (vers=<optimized out>, fd=3, buf=0x7fffffffe1d0) at ../sysdeps/unix/sysv/linux/wordsize-64/fxstat.c:35
+#1  0x00007ffff71379b5 in __GI__IO_file_doallocate (fp=0x60c030) at filedoalloc.c:111
+#2  0x00007ffff7144558 in __GI__IO_doallocbuf (fp=fp@entry=0x60c030) at genops.c:418
+#3  0x00007ffff7142a2d in __GI__IO_file_xsgetn (fp=0x60c030, data=0x7fffffffe324, n=44) at fileops.c:1363
+#4  0x00007ffff7141a3c in __GI___fread_unlocked (buf=buf@entry=0x7fffffffe324, size=size@entry=44, count=count@entry=1, fp=fp@entry=0x60c030) at iofread_u.c:44
+#5  0x00007ffff716605c in __tzfile_read (file=<optimized out>, file@entry=0x7ffff71f01ba "/etc/localtime", extra=extra@entry=0, extrap=extrap@entry=0x0) at tzfile.c:191
+#6  0x00007ffff7165960 in tzset_internal (always=<optimized out>, explicit=explicit@entry=1) at tzset.c:447
+#7  0x00007ffff7165cab in __tz_convert (timer=0x7fffffffe5e8, use_localtime=0, tp=0x7ffff7429460 <_tmbuf>) at tzset.c:632
+#8  0x00000000004053f6 in start_log_file (benchmark_name=0x4075ac "openmpLUD", test_info=0x7fffffffe848 "matrix_dim:2048 threads:228") at ../include/log_helper.c:204
+#9  0x0000000000402c4b in main (argc=9, argv=0x7fffffffec08) at lud_check.c:118
+
+30	in ../sysdeps/unix/sysv/linux/wordsize-64/fxstat.c
+
+Backtrace END
+Memory content before bitflip:0x000x000x000x000x000x000x000x00
+Fault Mode: Random bit-flip
+base address to flip value: 0x7fffffffe448
+address max offset: 8
+Memory content after  bitflip:0xf00x350xf20x710xb40x730x970xf0
+frame name: __tz_convert
+symbol name: leap_correction
+symbol filename: tzset.c
+symbol line: 618
+value: -1110291564280531472
+value address: 0x7fffffffe448
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2017-02-26 00:53:34]
+Fault Injection Successful after 1.42622494698s
+[INFO -- 2017-02-26 00:53:47]
+event type: exit
+[INFO -- 2017-02-26 00:53:47]
+exit code: 0

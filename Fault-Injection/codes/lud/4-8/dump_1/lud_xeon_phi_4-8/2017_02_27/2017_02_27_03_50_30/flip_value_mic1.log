@@ -1,0 +1,158 @@
+[INFO -- 2017-02-27 03:49:58]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-02-27 03:49:58]
+Initialization strings:
+[INFO -- 2017-02-27 03:49:58]
+(1) target extended-remote | ssh -T mic1 gdbserver --multi -
+[INFO -- 2017-02-27 03:49:58]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 03:49:58]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-02-27 03:49:58]
+(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 03:49:58]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+[INFO -- 2017-02-27 03:49:58]
+(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+[INFO -- 2017-02-27 03:49:58]
+initSignal:4
+[INFO -- 2017-02-27 03:49:58]
+endSignal:8
+[INFO -- 2017-02-27 03:49:58]
+seqSignal:30
+[INFO -- 2017-02-27 03:49:58]
+faultMode:1
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[EXCEPTION -- 2017-02-27 03:50:09]
+pythonException: invalid frame
+[INFO -- 2017-02-27 03:50:09]
+Backtrace BEGIN:
+#0  0x0000000000404c67 in L_lud_omp_123__par_loop2_2_5 () at lud_omp.c:148
+#1  0x00007ffff790ba1f in ?? ()
+#2  0x00007fffffffd9c0 in ?? ()
+#3  0x00007ffff4ea0100 in ?? ()
+#4  0x0000000000000001 in ?? ()
+#5  0x0000000000000003 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+143	            for (i = 0; i < BS; i++)
+144	            {
+145	                for (k=0; k < BS; k++) {
+146	#pragma omp simd 
+147	                    for (j = 0; j < BS; j++) {
+148	                        sum[j] += temp_left[BS*i + k] * temp_top[BS*k + j];
+149	                    }
+150	                }
+151	#pragma omp simd 
+152	                for (j = 0; j < BS; j++) {
+
+Backtrace END
+Fliping array at pos: 222
+Memory content before bitflip:0xdd0xab0xac0x3e
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffd3f8
+address max offset: 4
+Memory content after  bitflip:0xdd0xab0xac0xba
+frame name: L_lud_omp_123__par_loop2_2_5
+symbol name: temp_left
+symbol filename: lud_omp.c
+symbol line: 129
+value: {0.336890012, 0.337200493, 0.337516069, 0.337911367, 0.338210016, 0.338583201, 0.338967144, 0.339274198, 0.33959204, 0.339918613, 0.340324908, 0.340551585, 0.340924561, 0.34136191, 0.341633171, 0.341931432, 0.3365134, 0.336890608, 0.337141812, 0.33759743, 0.33791545, 0.338213474, 0.338606119, 0.33898142, 0.339233488, 0.339597017, 0.339953154, 0.340204835, 0.340613574, 0.340942383, 0.341346025, 0.341617823, 0.336173356, 0.336527795, 0.336854726, 0.337222815, 0.337588429, 0.337875426, 0.338295996, 0.338615209, 0.338942796, 0.339202672, 0.339585871, 0.339924425, 0.340245545, 0.340636581, 0.340925038, 0.341338158, 0.335821331, 0.336201906, 0.336492032, 0.336878747, 0.337293863, 0.337513924, 0.337935179, 0.338245779, 0.338597119, 0.338917226, 0.339217097, 0.339602649, 0.339931935, 0.340289742, 0.340587199, 0.340963781, 0.335511863, 0.335850328, 0.336194128, 0.336508691, 0.336897612, 0.337290168, 0.337542802, 0.337968141, 0.338236123, 0.338567823, 0.338902026, 0.339213371, 0.339573234, 0.339991421, 0.340237796, 0.340624809, 0.335183352, 0.335543454, 0.335817367, 0.336192161, 0.336572915, 0.336920619, 0.337231964, 0.337570012, 0.337918967, 0.338240057, 0.338554859, 0.33892107, 0.33926186, 0.33959201, 0.339964479, 0.340198964, 0.334813803, 0.335231006, 0.335519105, 0.335856318, 0.336242378, 0.336509675, 0.336916238, 0.337254882, 0.33758837, 0.337919176, 0.338196158, 0.338577658, 0.338890493, 0.339283586, 0.339607626, 0.339934975, 0.334542722, 0.334839553, 0.335180998, 0.335560352, 0.335855722, 0.336216211, 0.336616188, 0.336891443, 0.33725369, 0.337557852, 0.337865412, 0.338210016, 0.338559747, 0.338976681, 0.339226902, 0.33958444, 0.334147096, 0.334549755, 0.334786266, 0.335268319, 0.335563958, 0.335847616, 0.336229831, 0.33654049, 0.336941004, 0.337227464, 0.337536901, 0.337902755, 0.338173807, 0.338677227, 0.338890553, 0.3392317, 0.33385998, 0.334210157, 0.334495157, 0.334843099, 0.335218668, 0.335547984, 0.335907966, 0.336241961, 0.336531192, 0.336914808, 0.337214381, 0.33755973, 0.337844551, 0.338267744, 0.338569134, 0.338917345, 0.333494544, 0.333885014, 0.334133863, 0.334538937, 0.334852517, 0.335238278, 0.335566878, 0.335896999, 0.336204141, 0.336570621, 0.336861253, 0.337224156, 0.337543637, 0.337927997, 0.338210791, 0.338587344, 0.333144426, 0.333524019, 0.333846509, 0.3342112, 0.334558874, 0.334827155, 0.335272998, 0.335597128, 0.335849702, 0.336213589, 0.336493224, 0.336899757, 0.337251276, 0.337529719, 0.337925524, 0.33819133, 0.332815528, 0.333198935, 0.333486378, 0.333857089, 0.334223568, 0.334542632, 0.334920377, 0.335257024...}
+value address: 0x7fffffffd080
+Type: The type is an array.
+Type sizeof: 1024
+Field name: None
+Field Type: A range type, that is, an integer type with bounds.
+Field Type sizeof: 1
+Field Type range: (0L, 255L)
+
+[INFO -- 2017-02-27 03:50:09]
+Fault Injection Successful after 11.8767991066s
+[INFO -- 2017-02-27 03:50:19]
+event type: exit
+[INFO -- 2017-02-27 03:50:19]
+exit code: 1

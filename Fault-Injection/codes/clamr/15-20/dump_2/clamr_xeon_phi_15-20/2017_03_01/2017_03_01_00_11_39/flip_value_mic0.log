@@ -1,0 +1,43 @@
+2017-03-01 00:10:27:Starting flip_value script
+2017-03-01 00:10:27:Initialization strings:
+2017-03-01 00:10:27:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-01 00:10:27:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 00:10:27:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-01 00:10:27:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 00:10:27:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-01 00:10:27:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-01 00:10:27:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-01 00:10:27:initSignal:15
+2017-03-01 00:10:27:endSignal:20
+2017-03-01 00:10:27:seqSignal:20
+2017-03-01 00:10:44:Backtrace BEGIN:
+2017-03-01 00:10:44:#0  0x00007ffff6b641bf in _itoa_word (value=0, value@entry=771, buflim=0x7fffffffe0dd "771\360ED", buflim@entry=0x7fffffffe0e0 "\360ED", base=base@entry=10, upper_case=<optimized out>) at _itoa.c:179
+#1  0x00007ffff6b6781a in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1641
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b9dd in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:479
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-03-01 00:10:44:174	in _itoa.c
+
+2017-03-01 00:10:44:Backtrace END
+2017-03-01 00:10:49:Type: The type is an integer type.
+2017-03-01 00:10:49:Type sizeof: 4
+2017-03-01 00:10:49:Mem contents(hex):0xff0xff0xff0xff
+2017-03-01 00:10:49:Fault Mode: Double bit-flip
+2017-03-01 00:10:49:base address to flip value: 0x7fffffffdb7c
+2017-03-01 00:10:49:address max offset: 4
+2017-03-01 00:10:49:Memory content before bitflip:0xff0xff0xff0xff
+2017-03-01 00:10:49:Memory content after  bitflip:0xff0xff0xff0xf6
+2017-03-01 00:10:49:Mem contents(hex):0xff0xff0xff0xf6
+2017-03-01 00:10:49:frame name: _IO_vfprintf_internal
+2017-03-01 00:10:49:symbol name: alt
+2017-03-01 00:10:49:symbol filename: vfprintf.c
+2017-03-01 00:10:49:symbol line: 1358
+2017-03-01 00:10:49:value: -150994945
+2017-03-01 00:10:49:value address: 0x7fffffffdb7c
+2017-03-01 00:10:49:Type: The type is an integer type.
+2017-03-01 00:10:49:Type sizeof: 4
+2017-03-01 00:10:49:Fault Injection Successful after 22.9516620636s
+2017-03-01 00:11:31:event type: exit
+2017-03-01 00:11:31:exit code: 0

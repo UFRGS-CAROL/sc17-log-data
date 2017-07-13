@@ -1,0 +1,63 @@
+2017-02-21 12:43:26:Starting flip_value script
+2017-02-21 12:43:26:Initialization strings:
+2017-02-21 12:43:26:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-21 12:43:26:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 12:43:26:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-21 12:43:26:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-21 12:43:26:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-21 12:43:26:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-21 12:43:26:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-21 12:43:26:initSignal:5
+2017-02-21 12:43:26:endSignal:10
+2017-02-21 12:43:26:seqSignal:20
+2017-02-21 12:43:31:Backtrace BEGIN:
+2017-02-21 12:43:32:#0  Bounds_CenterAxis (b=0x15059a0, axis=1) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/Bounds.c:126
+#1  0x000000000053c1e5 in median_sort (t=0x7f9d50, cut_direction=1, k=64, num=129, idx=0x32338ec) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:86
+#2  0x000000000053ce2b in KDTree_CreateTree (t=0x7f9d50) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:236
+#3  0x000000000053d3f4 in KDTree_QueryCircleIntersect_Double (t=0x7f9d50, result_num=0x7fffffffe5dc, result_indicies=0x181ae10, circ_radius=24, ncells=264192, x=0x7fff0c0d6010, dx=0x7ffecc1ce010, y=0x7ffe8c1cc010, dy=0x7ffe4c1bf010) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/kdtree/KDTree.c:329
+#4  0x00000000005080fe in Mesh::init (this=0x7f9a50, nx=512, ny=512, circ_radius=24, initial_order=HILBERT_SORT, do_gpu_calc=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp:1535
+#5  0x000000000044516a in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:277
+
+2017-02-21 12:43:32:121	      center = (b->min.x + b->max.x) * 0.5;
+122	   else if(axis == YAXIS)
+123	      center = (b->min.y + b->max.y) * 0.5;
+124	   else
+125	      assert(NULL);
+126	   return(center);
+127	}
+
+2017-02-21 12:43:32:Backtrace END
+2017-02-21 12:43:36:Type: The type is a structure.
+2017-02-21 12:43:36:Type sizeof: 24
+2017-02-21 12:43:36:Fliping value of field: std::_Vector_base<int, std::allocator<int> >
+2017-02-21 12:43:36:Type: The type is a structure.
+2017-02-21 12:43:36:Type sizeof: 24
+2017-02-21 12:43:36:Fliping value of field: _M_impl
+2017-02-21 12:43:36:Type: The type is a structure.
+2017-02-21 12:43:36:Type sizeof: 24
+2017-02-21 12:43:36:Fliping value of field: _M_finish
+2017-02-21 12:43:36:Type: The type is a pointer.
+2017-02-21 12:43:36:Type sizeof: 8
+2017-02-21 12:43:36:Fliping a bit of the pointer
+2017-02-21 12:43:36:Mem contents(hex):0x100xce0x910x010x000x000x000x00
+2017-02-21 12:43:36:Fault Mode: Double bit-flip
+2017-02-21 12:43:36:base address to flip value: 0x7fffffffe678
+2017-02-21 12:43:36:address max offset: 8
+2017-02-21 12:43:36:Memory content before bitflip:0x100xce0x910x010x000x000x000x00
+2017-02-21 12:43:36:Memory content after  bitflip:0x100xfe0x910x010x000x000x000x00
+2017-02-21 12:43:37:Mem contents(hex):0x100xfe0x910x010x000x000x000x00
+2017-02-21 12:43:37:frame name: Mesh::init
+2017-02-21 12:43:37:symbol name: ind
+2017-02-21 12:43:37:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/mesh/mesh.cpp
+2017-02-21 12:43:37:symbol line: 1532
+2017-02-21 12:43:37:value: {<std::_Vector_base<int, std::allocator<int> >> = {_M_impl = {<std::allocator<int>> = {<__gnu_cxx::new_allocator<int>> = {<No data fields>}, <No data fields>}, _M_start = 0x181ae10, _M_finish = 0x191fe10, _M_end_of_storage = 0x191ce10}}, <No data fields>}
+2017-02-21 12:43:37:value address: 0x7fffffffe670
+2017-02-21 12:43:37:Type: The type is a structure.
+2017-02-21 12:43:37:Type sizeof: 24
+2017-02-21 12:43:37:Field name: std::_Vector_base<int, std::allocator<int> >
+2017-02-21 12:43:37:Field Type:
+2017-02-21 12:43:37:Type: The type is a structure.
+2017-02-21 12:43:37:Type sizeof: 24
+2017-02-21 12:43:37:Fault Injection Successful after 11.0200309753s
+2017-02-21 12:44:30:event type: exit
+2017-02-21 12:44:30:exit code: 0

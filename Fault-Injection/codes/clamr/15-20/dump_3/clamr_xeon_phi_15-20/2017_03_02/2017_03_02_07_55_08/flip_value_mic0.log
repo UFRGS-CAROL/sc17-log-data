@@ -1,0 +1,43 @@
+2017-03-02 07:51:14:Starting flip_value script
+2017-03-02 07:51:14:Initialization strings:
+2017-03-02 07:51:15:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-03-02 07:51:15:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 07:51:15:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-03-02 07:51:15:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 07:51:15:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-03-02 07:51:15:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-03-02 07:51:15:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-03-02 07:51:15:initSignal:15
+2017-03-02 07:51:15:endSignal:20
+2017-03-02 07:51:15:seqSignal:20
+2017-03-02 07:51:31:Backtrace BEGIN:
+2017-03-02 07:51:31:#0  0x00007ffff6b641b0 in _itoa_word (value=value@entry=242, buflim=buflim@entry=0x7fffffffe0e0 "\360ED", base=base@entry=10, upper_case=<optimized out>) at _itoa.c:179
+#1  0x00007ffff6b6781a in _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1641
+#2  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#3  0x000000000054b93d in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:477
+#4  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#5  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-03-02 07:51:31:174	in _itoa.c
+
+2017-03-02 07:51:31:Backtrace END
+2017-03-02 07:51:37:Type: A floating point type.
+2017-03-02 07:51:37:Type sizeof: 8
+2017-03-02 07:51:37:Mem contents(hex):0x190xe70x180xe70x180xe70xf80x3f
+2017-03-02 07:51:37:Fault Mode: Double bit-flip
+2017-03-02 07:51:37:base address to flip value: 0x7d0bb0 
+2017-03-02 07:51:37:address max offset: 8
+2017-03-02 07:51:37:Memory content before bitflip:0x190xe70x180xe70x180xe70xf80x3f
+2017-03-02 07:51:37:Memory content after  bitflip:0x190xe70x1b0xe70x180xe70xf80x3f
+2017-03-02 07:51:37:Mem contents(hex):0x190xe70x1b0xe70x180xe70xf80x3f
+2017-03-02 07:51:37:frame name: DrawSquaresToFile
+2017-03-02 07:51:37:symbol name: xconversion
+2017-03-02 07:51:37:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c
+2017-03-02 07:51:37:symbol line: 175
+2017-03-02 07:51:37:value: 1.5564202335066908
+2017-03-02 07:51:37:value address: 0x7d0bb0 <xconversion>
+2017-03-02 07:51:37:Type: A floating point type.
+2017-03-02 07:51:37:Type sizeof: 8
+2017-03-02 07:51:37:Fault Injection Successful after 22.5503880978s
+2017-03-02 07:52:12:event type: exit
+2017-03-02 07:52:12:exit code: 0

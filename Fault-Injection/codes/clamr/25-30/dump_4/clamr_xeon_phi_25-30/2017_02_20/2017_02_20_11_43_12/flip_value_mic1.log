@@ -1,0 +1,48 @@
+2017-02-20 11:36:29:Starting flip_value script
+2017-02-20 11:36:29:Initialization strings:
+2017-02-20 11:36:29:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-20 11:36:29:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 11:36:29:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-20 11:36:29:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-20 11:36:29:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-20 11:36:29:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-20 11:36:29:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-20 11:36:29:initSignal:25
+2017-02-20 11:36:29:endSignal:30
+2017-02-20 11:36:29:seqSignal:20
+2017-02-20 11:36:54:Backtrace BEGIN:
+2017-02-20 11:36:55:#0  __strchrnul (s=s@entry=0x574750 ",%d\n", c_in=c_in@entry=37) at ../string/strchrnul.c:136
+#1  0x00007ffff6b67453 in __find_specmb (format=0x574750 ",%d\n") at printf-parse.h:108
+#2  _IO_vfprintf_internal (s=<optimized out>, format=<optimized out>, ap=ap@entry=0x7fffffffe128) at vfprintf.c:1669
+#3  0x00007ffff6b6e969 in __fprintf (stream=<optimized out>, format=<optimized out>) at fprintf.c:32
+#4  0x000000000054b93d in DrawSquaresToFile (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:477
+#5  0x000000000054db06 in write_graphics_info (graph_num=0, ncycle=0, simTime=0, rollback_img=0, rollback_num=0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/graphics/graphics.c:751
+#6  0x0000000000445977 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:353
+
+2017-02-20 11:36:55:131	in ../string/strchrnul.c
+
+2017-02-20 11:36:55:Backtrace END
+2017-02-20 11:37:00:Type: The type is an array.
+2017-02-20 11:37:00:Type sizeof: 24
+2017-02-20 11:37:00:Fliping array at pos: 0
+2017-02-20 11:37:00:Type: The type is a structure.
+2017-02-20 11:37:00:Type sizeof: 24
+2017-02-20 11:37:00:Fliping value of field: fp_offset
+2017-02-20 11:37:00:Type: The type is an integer type.
+2017-02-20 11:37:00:Type sizeof: 4
+2017-02-20 11:37:00:Mem contents(hex):0x300x000x000x00
+2017-02-20 11:37:00:Fault Mode: Single bit-flip
+2017-02-20 11:37:00:base address to flip value: 0x7fffffffe12c
+2017-02-20 11:37:00:address max offset: 4
+2017-02-20 11:37:00:Memory content before bitflip:0x300x000x000x00
+2017-02-20 11:37:00:Memory content after  bitflip:0x320x000x000x00
+2017-02-20 11:37:00:Mem contents(hex):0x320x000x000x00
+2017-02-20 11:37:00:frame name: __fprintf
+2017-02-20 11:37:00:symbol name: arg
+2017-02-20 11:37:00:symbol filename: fprintf.c
+2017-02-20 11:37:00:symbol line: 28
+2017-02-20 11:37:00:value: {{gp_offset = 40, fp_offset = 50, overflow_arg_area = 0x7fffffffe200, reg_save_area = 0x7fffffffe140}}
+2017-02-20 11:37:00:value address: 0x7fffffffe128
+2017-02-20 11:37:00:Type: The type is an array.
+2017-02-20 11:37:00:Type sizeof: 24
+2017-02-20 11:37:00:Fault Injection Successful after 31.74355793s

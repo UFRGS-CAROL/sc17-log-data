@@ -1,0 +1,72 @@
+[INFO -- 2017-03-20 23:46:31]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-20 23:46:31]
+Initialization strings:
+[INFO -- 2017-03-20 23:46:31]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-20 23:46:31]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-20 23:46:31]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-20 23:46:31]
+(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-20 23:46:31]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+[INFO -- 2017-03-20 23:46:31]
+(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+[INFO -- 2017-03-20 23:46:31]
+(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+[INFO -- 2017-03-20 23:46:31]
+initSignal:35
+[INFO -- 2017-03-20 23:46:31]
+endSignal:40
+[INFO -- 2017-03-20 23:46:31]
+seqSignal:20
+[INFO -- 2017-03-20 23:46:31]
+faultMode:1
+[INFO -- 2017-03-20 23:47:19]
+Backtrace BEGIN:
+#0  0x00000000005587b9 in cmp_str::operator() (this=0x7fa5e0, a=0x56a168 "V", b=0x1920bb0 "V") at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/MallocPlus/MallocPlus.h:99
+#1  0x0000000000558ef2 in std::_Rb_tree<char const*, std::pair<char const* const, malloc_plus_memory_entry*>, std::_Select1st<std::pair<char const* const, malloc_plus_memory_entry*> >, cmp_str, std::allocator<std::pair<char const* const, malloc_plus_memory_entry*> > >::find (this=0x7fa5e0, __k=@0x7fffffffe310: 0x56a168 "V") at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_tree.h:2307
+#2  0x0000000000559197 in std::map<char const*, malloc_plus_memory_entry*, cmp_str, std::allocator<std::pair<char const* const, malloc_plus_memory_entry*> > >::find (this=0x7fa5e0, __x=@0x7fffffffe310: 0x56a168 "V") at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_map.h:843
+#3  0x0000000000558491 in MallocPlus::get_memory_ptr (this=0x7fa5e0, name=0x56a168 "V") at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/MallocPlus/MallocPlus.cpp:1082
+#4  0x000000000044b780 in State::memory_reset_ptrs (this=0x7fa5e0) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:323
+#5  0x0000000000471480 in State::rezone_all (this=0x7fa5e0, icount=24, jcount=0, mpot=...) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/state.cpp:1035
+#6  0x0000000000446030 in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:462
+#7  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+94	
+95	struct cmp_str
+96	{
+97	   bool operator()(char const *a, char const *b)
+98	   {
+99	      return strcmp(a, b) < 0;
+100	   }
+101	};
+102	
+103	/****************************************************************//**
+
+Backtrace END
+Fliping a bit of the value pointed by a reference
+Fliping a bit of the pointer
+Memory content before bitflip:0x680xa10x560x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe310
+address max offset: 8
+Memory content after  bitflip:0x680xa10x560x300x000x000x000x00
+frame name: std::_Rb_tree<char const*, std::pair<char const* const, malloc_plus_memory_entry*>, std::_Select1st<std::pair<char const* const, malloc_plus_memory_entry*> >, cmp_str, std::allocator<std::pair<char const* const, malloc_plus_memory_entry*> > >::find
+symbol name: __k
+symbol filename: /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_tree.h
+symbol line: 2303
+value: @0x7fffffffe310
+value address: 0x7fffffffe310
+Type: A reference type.
+Type sizeof: 8
+
+[INFO -- 2017-03-20 23:47:19]
+Fault Injection Successful after 48.1859500408s
+[INFO -- 2017-03-20 23:47:36]
+event type: exit
+[INFO -- 2017-03-20 23:47:36]
+exit code: 0

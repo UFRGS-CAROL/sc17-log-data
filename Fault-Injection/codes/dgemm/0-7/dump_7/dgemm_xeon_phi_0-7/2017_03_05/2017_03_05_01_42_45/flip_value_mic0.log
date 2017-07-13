@@ -1,0 +1,61 @@
+[INFO -- 2017-03-05 01:42:32]
+Starting flip_value script
+version: 2.0
+[INFO -- 2017-03-05 01:42:32]
+Initialization strings:
+[INFO -- 2017-03-05 01:42:33]
+(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+[INFO -- 2017-03-05 01:42:33]
+(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 01:42:33]
+(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+[INFO -- 2017-03-05 01:42:33]
+(4) file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-05 01:42:33]
+(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_check
+[INFO -- 2017-03-05 01:42:33]
+(6) set args 228 2048 16 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_a_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/dgemm_b_8192 /micNfs/gdb-fault-injection/injector/bin/dgemm/gold_2048_m-order_228_ths_16_blocks 1
+[INFO -- 2017-03-05 01:42:33]
+initSignal:0
+[INFO -- 2017-03-05 01:42:33]
+endSignal:7
+[INFO -- 2017-03-05 01:42:33]
+seqSignal:15
+[INFO -- 2017-03-05 01:42:33]
+faultMode:1
+[INFO -- 2017-03-05 01:42:37]
+Backtrace BEGIN:
+#0  0x000000000040440b in main (argc=8, argv=0x7fffffffebf0) at dgemm.c:367
+
+362	            }
+363	        }
+364	#endif
+365	
+366	        for(j = 0; j < order; j++) for(i = 0; i < order; i++) {
+367	                C[i*order+j] = 0;
+368	            }
+369	
+370	#ifdef TIMING
+371	        kernel_start = timing_get_time();
+
+Backtrace END
+Memory content before bitflip:0x000x080x000x000x000x000x000x00
+Fault Mode: Double bit-flip
+base address to flip value: 0x7fffffffe9d8
+address max offset: 8
+Memory content after  bitflip:0x000x080x000x000x000x000x110x00
+frame name: main
+symbol name: order
+symbol filename: dgemm.c
+symbol line: 281
+value: 4785074604083200
+value address: 0x7fffffffe9d8
+Type: The type is an integer type.
+Type sizeof: 8
+
+[INFO -- 2017-03-05 01:42:37]
+Fault Injection Successful after 4.86702799797s
+[INFO -- 2017-03-05 01:42:37]
+event type: exit
+[EXCEPTION -- 2017-03-05 01:42:37]
+exit code: no exit code available

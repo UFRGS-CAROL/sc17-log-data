@@ -1,0 +1,116 @@
+2017-02-28 12:17:35:Starting flip_value script
+2017-02-28 12:17:35:Initialization strings:
+2017-02-28 12:17:35:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-02-28 12:17:35:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 12:17:35:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-02-28 12:17:35:(4) file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 12:17:35:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/clamr/clamr_openmponly
+2017-02-28 12:17:35:(6) cd /micNfs/gdb-fault-injection/injector/bin/clamr
+2017-02-28 12:17:35:(7) set args -n 512 -t 100 -g 100 -G data -j md5file
+2017-02-28 12:17:35:initSignal:25
+2017-02-28 12:17:35:endSignal:30
+2017-02-28 12:17:35:seqSignal:20
+2017-02-28 12:18:01:Backtrace BEGIN:
+2017-02-28 12:18:01:#0  std::__fill_n_a<int*, unsigned long, int> (__first=0x15e67e0, __n=265608, __value=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:766
+#1  0x000000000044ac9e in std::fill_n<int*, unsigned long, int> (__first=0x1516b40, __n=265608, __value=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:801
+#2  0x0000000000448bba in std::__uninitialized_fill_n<true>::__uninit_fill_n<int*, unsigned long, int> (__first=0x1516b40, __n=265608, __x=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:220
+#3  0x000000000044ac56 in std::uninitialized_fill_n<int*, unsigned long, int> (__first=0x1516b40, __n=265608, __x=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:246
+#4  0x000000000044ac1a in std::__uninitialized_fill_n_a<int*, unsigned long, int, int> (__first=0x1516b40, __n=265608, __x=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:358
+#5  0x0000000000449f81 in std::vector<int, std::allocator<int> >::_M_fill_insert (this=0x7fffffffe510, __position=..., __n=265608, __x=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/vector.tcc:496
+#6  0x0000000000449a69 in std::vector<int, std::allocator<int> >::insert (this=0x7fffffffe510, __position=..., __n=265608, __x=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:1073
+#7  0x00000000004499c4 in std::vector<int, std::allocator<int> >::resize (this=0x7fffffffe510, __new_size=265608, __x=0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:716
+#8  0x0000000000445f9e in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:457
+#9  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 12:18:01:761	    __fill_n_a(_OutputIterator __first, _Size __n, const _Tp& __value)
+762	    {
+763	      const _Tp __tmp = __value;
+764	      for (__decltype(__n + 0) __niter = __n;
+765		   __niter > 0; --__niter, ++__first)
+766		*__first = __tmp;
+767	      return __first;
+768	    }
+769	
+770	  template<typename _Size, typename _Tp>
+
+2017-02-28 12:18:01:Backtrace END
+2017-02-28 12:18:05:Type: A floating point type.
+2017-02-28 12:18:05:Type sizeof: 8
+2017-02-28 12:18:05:Mem contents(hex):0x550xc50x060x470x550x910x3e0x41
+2017-02-28 12:18:05:Fault Mode: Random bit-flip
+2017-02-28 12:18:05:base address to flip value: 0x7d0688 
+2017-02-28 12:18:05:address max offset: 8
+2017-02-28 12:18:05:Memory content before bitflip:0x550xc50x060x470x550x910x3e0x41
+2017-02-28 12:18:05:Backtrace BEGIN:
+2017-02-28 12:18:06:#0  std::__fill_n_a<int*, unsigned long, int> (__first=0x15e67e0, __n=265608, __value=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:766
+#1  0x000000000044ac9e in std::fill_n<int*, unsigned long, int> (__first=0x1516b40, __n=265608, __value=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_algobase.h:801
+#2  0x0000000000448bba in std::__uninitialized_fill_n<true>::__uninit_fill_n<int*, unsigned long, int> (__first=0x1516b40, __n=265608, __x=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:220
+#3  0x000000000044ac56 in std::uninitialized_fill_n<int*, unsigned long, int> (__first=0x1516b40, __n=265608, __x=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:246
+#4  0x000000000044ac1a in std::__uninitialized_fill_n_a<int*, unsigned long, int, int> (__first=0x1516b40, __n=265608, __x=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_uninitialized.h:358
+#5  0x0000000000449f81 in std::vector<int, std::allocator<int> >::_M_fill_insert (this=0x7fffffffe510, __position=..., __n=265608, __x=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/vector.tcc:496
+#6  0x0000000000449a69 in std::vector<int, std::allocator<int> >::insert (this=0x7fffffffe510, __position=..., __n=265608, __x=@0x7fffffffe3d0: 0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:1073
+#7  0x00000000004499c4 in std::vector<int, std::allocator<int> >::resize (this=0x7fffffffe510, __new_size=265608, __x=0) at /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/stl_vector.h:716
+#8  0x0000000000445f9e in do_calc () at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:457
+#9  0x0000000000445a73 in main (argc=11, argv=0x7fffffffec58) at /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp:380
+
+2017-02-28 12:18:06:761	    __fill_n_a(_OutputIterator __first, _Size __n, const _Tp& __value)
+762	    {
+763	      const _Tp __tmp = __value;
+764	      for (__decltype(__n + 0) __niter = __n;
+765		   __niter > 0; --__niter, ++__first)
+766		*__first = __tmp;
+767	      return __first;
+768	    }
+769	
+770	  template<typename _Size, typename _Tp>
+
+2017-02-28 12:18:06:Backtrace END
+2017-02-28 12:18:10:Type: The type is an integer type.
+2017-02-28 12:18:10:Type sizeof: 4
+2017-02-28 12:18:10:Mem contents(hex):0x010x000x000x00
+2017-02-28 12:18:10:Fault Mode: One bit-flip
+2017-02-28 12:18:10:base address to flip value: 0x7d0748 
+2017-02-28 12:18:10:address max offset: 4
+2017-02-28 12:18:10:Memory content before bitflip:0x010x000x000x00
+2017-02-28 12:18:10:Backtrace BEGIN:
+2017-02-28 12:18:10:#0  pthread_cond_timedwait@@GLIBC_2.3.2 () at ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:238
+#1  0x00007ffff790c5ea in ?? ()
+#2  0x00007ffff7fd0cd8 in ?? ()
+#3  0x0000000002a10a06 in ?? ()
+#4  0x0000000000000017 in ?? ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+2017-02-28 12:18:10:233	in ../sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+
+2017-02-28 12:18:10:Backtrace END
+2017-02-28 12:18:14:Type: The type is a structure.
+2017-02-28 12:18:14:Type sizeof: 16
+2017-02-28 12:18:14:Fliping value of field: tv_usec
+2017-02-28 12:18:14:Type: The type is an integer type.
+2017-02-28 12:18:14:Type sizeof: 8
+2017-02-28 12:18:14:Mem contents(hex):0x440x0b0x000x000x000x000x000x00
+2017-02-28 12:18:14:Fault Mode: Double bit-flip
+2017-02-28 12:18:14:base address to flip value: 0x7d06a8 
+2017-02-28 12:18:14:address max offset: 8
+2017-02-28 12:18:14:Memory content before bitflip:0x440x0b0x000x000x000x000x000x00
+2017-02-28 12:18:14:Memory content after  bitflip:0x440xcb0x000x000x000x000x000x00
+2017-02-28 12:18:14:Mem contents(hex):0x440xcb0x000x000x000x000x000x00
+2017-02-28 12:18:14:frame name: std::vector<int, std::allocator<int> >::resize
+2017-02-28 12:18:14:symbol name: tstart_cpu
+2017-02-28 12:18:14:symbol filename: /micNfs/gdb-fault-injection/injector/src/clamr/CLAMR/clamr_cpuonly.cpp
+2017-02-28 12:18:14:symbol line: 168
+2017-02-28 12:18:14:value: {tv_sec = 1488301998, tv_usec = 52036}
+2017-02-28 12:18:14:value address: 0x7d06a0 <tstart_cpu>
+2017-02-28 12:18:14:Type: The type is a structure.
+2017-02-28 12:18:14:Type sizeof: 16
+2017-02-28 12:18:14:Field name: tv_sec
+2017-02-28 12:18:14:Field Type:
+2017-02-28 12:18:14:Type: The type is an integer type.
+2017-02-28 12:18:14:Type sizeof: 8
+2017-02-28 12:18:14:Field name: tv_usec
+2017-02-28 12:18:14:Field Type:
+2017-02-28 12:18:14:Type: The type is an integer type.
+2017-02-28 12:18:14:Type sizeof: 8
+2017-02-28 12:18:14:Fault Injection Successful after 39.3871030807s
+2017-02-28 12:18:40:event type: exit
+2017-02-28 12:18:40:exit code: 0

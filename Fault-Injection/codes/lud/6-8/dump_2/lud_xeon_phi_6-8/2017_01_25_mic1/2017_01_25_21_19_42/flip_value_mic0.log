@@ -1,0 +1,70 @@
+2017-01-25 21:19:04:Starting flip_value script
+2017-01-25 21:19:04:Initialization strings:
+2017-01-25 21:19:05:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 21:19:05:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 21:19:05:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 21:19:05:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 21:19:05:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 21:19:05:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 21:19:05:initSignal:6
+2017-01-25 21:19:05:endSignal:8
+2017-01-25 21:19:05:seqSignal:30
+2017-01-25 21:19:11:Trying Fault Injection
+2017-01-25 21:19:11:Inferior PID: 192569
+2017-01-25 21:19:11:Inferior is valid: True
+2017-01-25 21:19:11:Inferior #threads: 229
+2017-01-25 21:19:11:Backtrace BEGIN:
+2017-01-25 21:19:11:#0  __unsetenv (name=0x7ffff4ebfe00 "__KMP_REGISTERED_LIB_192569") at setenv.c:278
+#1  0x00007ffff78de454 in ?? ()
+#2  0x00007ffff7bcd0f4 in __do_global_ctors_aux () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libm.so.6
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+2017-01-25 21:19:11:273	in setenv.c
+
+2017-01-25 21:19:11:Backtrace END
+2017-01-25 21:19:14:Thread name: None
+2017-01-25 21:19:14:Thread num: 1
+2017-01-25 21:19:14:Thread ptid: (192569, 192569, 0)
+2017-01-25 21:19:14:bitFlip function
+2017-01-25 21:19:14:Type: The type is a pointer.
+2017-01-25 21:19:14:Type sizeof: 8
+2017-01-25 21:19:14:Error gdbException(frameFlip): Attempt to dereference a generic pointer.
+2017-01-25 21:19:14:Fault Injection Failed after 9.64675998688s
+2017-01-25 21:19:14:Trying Fault Injection
+2017-01-25 21:19:14:Inferior PID: 192569
+2017-01-25 21:19:14:Inferior is valid: True
+2017-01-25 21:19:15:Inferior #threads: 229
+2017-01-25 21:19:15:Backtrace BEGIN:
+2017-01-25 21:19:15:#0  __unsetenv (name=0x7ffff4ebfe00 "__KMP_REGISTERED_LIB_192569") at setenv.c:278
+#1  0x00007ffff78de454 in ?? ()
+#2  0x00007ffff7bcd0f4 in __do_global_ctors_aux () from /opt/mpss/3.7/sysroots/k1om-mpss-linux/lib64/libm.so.6
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+
+2017-01-25 21:19:15:273	in setenv.c
+
+2017-01-25 21:19:15:Backtrace END
+2017-01-25 21:19:36:Thread name: None
+2017-01-25 21:19:36:Thread num: 1
+2017-01-25 21:19:36:Thread ptid: (192569, 192569, 0)
+2017-01-25 21:19:36:bitFlip function
+2017-01-25 21:19:36:Type: The type is a pointer.
+2017-01-25 21:19:36:Type sizeof: 8
+2017-01-25 21:19:36:Fliping a bit of the pointer
+2017-01-25 21:19:36:Mem contents(hex):0x900xc10x600x000x000x000x000x00
+2017-01-25 21:19:36:base address to flip value: 0x7ffff7425b98 
+2017-01-25 21:19:36:address max offset: 8
+2017-01-25 21:19:36:Memory content before bitflip:0x900xc10x600x000x000x000x000x00
+2017-01-25 21:19:36:Memory content after  bitflip:0x900xc10x600x000x000x080x000x00
+2017-01-25 21:19:36:Mem contents(hex):0x900xc10x600x000x000x080x000x00
+2017-01-25 21:19:36:frame name: __unsetenv
+2017-01-25 21:19:36:symbol name: last_environ
+2017-01-25 21:19:36:symbol filename: setenv.c
+2017-01-25 21:19:36:symbol line: 99
+2017-01-25 21:19:36:value: 0x60c190
+2017-01-25 21:19:36:value address: 0x7ffff7425b98 <last_environ>
+2017-01-25 21:19:36:Type: The type is a pointer.
+2017-01-25 21:19:36:Type sizeof: 8
+2017-01-25 21:19:36:Fault Injection Successful after 31.1718249321s
+2017-01-25 21:19:36:Fault Already Injected
+2017-01-25 21:19:36:event type: exit
+2017-01-25 21:19:36:exit code: 0

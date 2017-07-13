@@ -1,0 +1,94 @@
+2017-01-25 10:42:00:Starting flip_value script
+2017-01-25 10:42:00:Initialization strings:
+2017-01-25 10:42:01:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-25 10:42:01:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 10:42:01:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-25 10:42:01:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 10:42:01:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-25 10:42:01:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-25 10:42:01:initSignal:0
+2017-01-25 10:42:01:endSignal:2
+2017-01-25 10:42:01:seqSignal:30
+2017-01-25 10:42:01:Trying Fault Injection
+2017-01-25 10:42:01:Inferior PID: 222791
+2017-01-25 10:42:01:Inferior is valid: True
+2017-01-25 10:42:01:Inferior #threads: 1
+2017-01-25 10:42:01:Backtrace BEGIN:
+2017-01-25 10:42:01:#0  0x00007ffff71963d0 in __open_nocancel () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ffff7143025 in __GI__IO_file_open (fp=fp@entry=0x60cb40, filename=<optimized out>, posix_mode=<optimized out>, prot=prot@entry=438, read_write=4100, is32not64=is32not64@entry=1) at fileops.c:220
+#2  0x00007ffff7143130 in _IO_new_file_fopen (fp=fp@entry=0x60cb40, filename=filename@entry=0x60bbe0 <full_log_file_name> "/micNfs/carol/logs/2017_01_25_15_36_32_openmpLUD_mic0-mic0.ece.neu.edu.log", mode=<optimized out>, mode@entry=0x407840 "a", is32not64=is32not64@entry=1) at fileops.c:327
+#3  0x00007ffff71384d2 in __fopen_internal (filename=0x60bbe0 <full_log_file_name> "/micNfs/carol/logs/2017_01_25_15_36_32_openmpLUD_mic0-mic0.ece.neu.edu.log", mode=0x407840 "a", is32=1) at iofopen.c:86
+#4  0x0000000000405909 in start_log_file (benchmark_name=0x4075ac "openmpLUD", test_info=0x7fffffffe848 "matrix_dim:2048 threads:228") at ../include/log_helper.c:260
+#5  0x0000000000402c4b in main (argc=9, argv=0x7fffffffec08) at lud_check.c:118
+
+2017-01-25 10:42:01:76	in ../sysdeps/unix/syscall-template.S
+
+2017-01-25 10:42:01:Backtrace END
+2017-01-25 10:42:01:Thread name: None
+2017-01-25 10:42:01:Thread num: 1
+2017-01-25 10:42:01:Thread ptid: (222791, 222791, 0)
+2017-01-25 10:42:01:bitFlip function
+2017-01-25 10:42:01:Type: A floating point type.
+2017-01-25 10:42:01:Type sizeof: 8
+2017-01-25 10:42:01:Mem contents(hex):0x000x000x000x000x000x000x000x00
+2017-01-25 10:42:01:base address to flip value: 0x60bd30 
+2017-01-25 10:42:01:address max offset: 8
+2017-01-25 10:42:01:Memory content before bitflip:0x000x000x000x000x000x000x000x00
+2017-01-25 10:42:01:Memory content after  bitflip:0x000x000x000x200x000x000x000x00
+2017-01-25 10:42:01:Mem contents(hex):0x000x000x000x200x000x000x000x00
+2017-01-25 10:42:01:frame name: start_log_file
+2017-01-25 10:42:01:symbol name: kernel_time_acc
+2017-01-25 10:42:01:symbol filename: ../include/log_helper.c
+2017-01-25 10:42:01:symbol line: 62
+2017-01-25 10:42:01:value: 2.6524947387065904e-315
+2017-01-25 10:42:01:value address: 0x60bd30 <kernel_time_acc>
+2017-01-25 10:42:01:Type: A floating point type.
+2017-01-25 10:42:01:Type sizeof: 8
+2017-01-25 10:42:01:Fault Injection Successful after 0.78123998642s
+2017-01-25 10:42:01:Fault Already Injected
+2017-01-25 10:42:01:Fault Already Injected
+2017-01-25 10:42:02:Fault Already Injected
+2017-01-25 10:42:02:Fault Already Injected
+2017-01-25 10:42:03:Fault Already Injected
+2017-01-25 10:42:03:Fault Already Injected
+2017-01-25 10:42:04:Fault Already Injected
+2017-01-25 10:42:04:Fault Already Injected
+2017-01-25 10:42:05:Fault Already Injected
+2017-01-25 10:42:05:Fault Already Injected
+2017-01-25 10:42:05:Fault Already Injected
+2017-01-25 10:42:05:Fault Already Injected
+2017-01-25 10:42:06:Fault Already Injected
+2017-01-25 10:42:06:Fault Already Injected
+2017-01-25 10:42:06:Fault Already Injected
+2017-01-25 10:42:06:Fault Already Injected
+2017-01-25 10:42:07:Fault Already Injected
+2017-01-25 10:42:07:Fault Already Injected
+2017-01-25 10:42:07:Fault Already Injected
+2017-01-25 10:42:08:Fault Already Injected
+2017-01-25 10:42:08:Fault Already Injected
+2017-01-25 10:42:09:Fault Already Injected
+2017-01-25 10:42:09:Fault Already Injected
+2017-01-25 10:42:09:Fault Already Injected
+2017-01-25 10:42:10:Fault Already Injected
+2017-01-25 10:42:10:Fault Already Injected
+2017-01-25 10:42:10:Fault Already Injected
+2017-01-25 10:42:11:Fault Already Injected
+2017-01-25 10:42:11:Fault Already Injected
+2017-01-25 10:42:11:Fault Already Injected
+2017-01-25 10:42:11:Fault Already Injected
+2017-01-25 10:42:12:Fault Already Injected
+2017-01-25 10:42:12:Fault Already Injected
+2017-01-25 10:42:12:Fault Already Injected
+2017-01-25 10:42:13:Fault Already Injected
+2017-01-25 10:42:13:Fault Already Injected
+2017-01-25 10:42:13:Fault Already Injected
+2017-01-25 10:42:14:Fault Already Injected
+2017-01-25 10:42:14:Fault Already Injected
+2017-01-25 10:42:14:Fault Already Injected
+2017-01-25 10:42:14:Fault Already Injected
+2017-01-25 10:42:15:Fault Already Injected
+2017-01-25 10:42:15:Fault Already Injected
+2017-01-25 10:42:15:Fault Already Injected
+2017-01-25 10:42:15:Fault Already Injected
+2017-01-25 10:42:16:event type: exit
+2017-01-25 10:42:16:exit code: 0

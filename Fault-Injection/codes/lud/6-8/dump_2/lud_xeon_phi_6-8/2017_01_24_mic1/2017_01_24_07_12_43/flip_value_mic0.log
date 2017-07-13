@@ -1,0 +1,73 @@
+2017-01-24 07:12:25:Starting flip_value script
+2017-01-24 07:12:25:Initialization strings:
+2017-01-24 07:12:25:(1) target extended-remote | ssh -T mic0 gdbserver --multi -
+2017-01-24 07:12:25:(2) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 07:12:25:(3) set sysroot /opt/mpss/3.7/sysroots/k1om-mpss-linux/
+2017-01-24 07:12:25:(4) file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 07:12:25:(5) set remote exec-file /micNfs/gdb-fault-injection/injector/bin/lud/lud_check
+2017-01-24 07:12:25:(6) set args -s 2048 -n 228 -i /micNfs/gdb-fault-injection/injector/bin/lud/input_2048_th_228 -g /micNfs/gdb-fault-injection/injector/bin/lud/gold_2048_th_228
+2017-01-24 07:12:25:initSignal:6
+2017-01-24 07:12:25:endSignal:8
+2017-01-24 07:12:25:seqSignal:30
+2017-01-24 07:12:32:Trying Fault Injection
+2017-01-24 07:12:32:Inferior PID: 59241
+2017-01-24 07:12:32:Inferior is valid: True
+2017-01-24 07:12:32:Inferior #threads: 229
+2017-01-24 07:12:32:Backtrace BEGIN:
+2017-01-24 07:12:32:#0  _IO_vsnprintf (string=0x7ffff4ebfe00 "", maxlen=<optimized out>, format=0x7ffff793b0bc "__KMP_REGISTERED_LIB_%d", args=0x7fffffffe960) at vsnprintf.c:117
+#1  0x00007ffff78fa647 in ?? ()
+#2  0x000000000bea6495 in ?? ()
+#3  0x000000000000e769 in ?? ()
+#4  0x000000000000e769 in ?? ()
+#5  0x0000000000000200 in ?? ()
+#6  0x0000000000000000 in ?? ()
+
+2017-01-24 07:12:32:112	in vsnprintf.c
+
+2017-01-24 07:12:32:Backtrace END
+2017-01-24 07:12:35:Thread name: None
+2017-01-24 07:12:35:Thread num: 1
+2017-01-24 07:12:35:Thread ptid: (59241, 59241, 0)
+2017-01-24 07:12:35:bitFlip function
+2017-01-24 07:12:35:Type: The type is a structure.
+2017-01-24 07:12:35:Type sizeof: 304
+2017-01-24 07:12:35:Fliping value of field: overflow_buf
+2017-01-24 07:12:35:bitFlip function
+2017-01-24 07:12:35:Type: The type is an array.
+2017-01-24 07:12:35:Type sizeof: 64
+2017-01-24 07:12:35:Fliping array at pos: 2
+2017-01-24 07:12:35:bitFlip function
+2017-01-24 07:12:35:Type: The type is an integer type.
+2017-01-24 07:12:35:Type sizeof: 1
+2017-01-24 07:12:35:Mem contents(hex):0x00
+2017-01-24 07:12:35:base address to flip value: 0x7fffffffe802 
+2017-01-24 07:12:35:address max offset: 1
+2017-01-24 07:12:35:Memory content before bitflip:0x00
+2017-01-24 07:12:35:Memory content after  bitflip:0x10
+2017-01-24 07:12:35:Mem contents(hex):0x10
+2017-01-24 07:12:35:frame name: _IO_vsnprintf
+2017-01-24 07:12:35:symbol name: sf
+2017-01-24 07:12:35:symbol filename: vsnprintf.c
+2017-01-24 07:12:35:symbol line: 101
+2017-01-24 07:12:35:value: {f = {_sbf = {_f = {_flags = -72515584, _IO_read_ptr = 0x0, _IO_read_end = 0x0, _IO_read_base = 0x0, _IO_write_base = 0x0, _IO_write_ptr = 0x0, _IO_write_end = 0x0, _IO_buf_base = 0x0, _IO_buf_end = 0x0, _IO_save_base = 0x0, _IO_backup_base = 0x0, _IO_save_end = 0x0, _markers = 0x0, _chain = 0x0, _fileno = -6032, _flags2 = 0, _old_offset = 140737354106416, _cur_column = 0, _vtable_offset = 0 '\000', _shortbuf = "", _lock = 0x0, _offset = 4158509856, _codecvt = 0x0, _wide_data = 0xffffffffffffffff, _freeres_list = 0x0, _freeres_buf = 0x7fffffffe910, _freeres_size = 140737346898259, _mode = -1, _unused2 = "\000\000\000\000\070\351\377\377\377\177\000\000\250\207\377\367\377\177\000"}, vtable = 0x7ffff7423480 <_IO_strn_jumps>}, _s = {_allocate_buffer = 0x5, _free_buffer = 0x7ffff7ff87a8}}, overflow_buf = "\005\000\020", '\000' <repeats 13 times>, "\200%\267\367\377\177\000\000\001\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\274\260\223\367\377\177\000\000\000\002\000\000\000\000\000\000\001\000\000\000\000\000\000"}
+2017-01-24 07:12:35:value address: 0x7fffffffe710
+2017-01-24 07:12:35:Type: The type is a structure.
+2017-01-24 07:12:35:Type sizeof: 304
+2017-01-24 07:12:35:Field name: f
+2017-01-24 07:12:35:Field Type:
+2017-01-24 07:12:35:Type: The type is a structure.
+2017-01-24 07:12:35:Type sizeof: 240
+2017-01-24 07:12:35:Field name: overflow_buf
+2017-01-24 07:12:35:Field Type:
+2017-01-24 07:12:35:Type: The type is an array.
+2017-01-24 07:12:35:Type sizeof: 64
+2017-01-24 07:12:35:Fault Injection Successful after 10.4905700684s
+2017-01-24 07:12:35:Fault Already Injected
+2017-01-24 07:12:35:Fault Already Injected
+2017-01-24 07:12:35:Fault Already Injected
+2017-01-24 07:12:36:Fault Already Injected
+2017-01-24 07:12:36:Fault Already Injected
+2017-01-24 07:12:36:Fault Already Injected
+2017-01-24 07:12:36:Fault Already Injected
+2017-01-24 07:12:36:event type: exit
+2017-01-24 07:12:36:exit code: 0
